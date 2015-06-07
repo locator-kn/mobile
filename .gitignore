@@ -1,0 +1,11 @@
+node_modules/
+temp/
+npm-debug.log
+.DS_Store
+.idea
+bower_components/
+platforms
+typings/
+www/
+resources/
+www-develop/lib/components/
