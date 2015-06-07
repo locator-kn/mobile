@@ -1,3 +1,9 @@
+/// <reference path="../../typings/angularjs/angular.d.ts" />
+/// <reference path="../../typings/angular-translate/angular-translate.d.ts" />
+/// <reference path="../../typings/cordova-ionic/cordova-ionic.d.ts" />
+/// <reference path="../../typings/cordova/cordova.d.ts" />
+/// <reference path="../../typings/moment/moment.d.ts" />
+
 // Ionic Starter App
 
 // angular.module is a global place for creating, registering and retrieving Angular modules
@@ -5,7 +11,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
+angular.module('starter', ['ionic'])
 
     .run(function ($ionicPlatform) {
         $ionicPlatform.ready(function () {
@@ -14,10 +20,11 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
             if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
                 cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
             }
-            if (window.StatusBar) {
+
+            /*if (window.StatusBar) {
                 // org.apache.cordova.statusbar required
                 StatusBar.styleLightContent();
-            }
+            }*/
         });
     })
 
@@ -43,7 +50,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
                 views: {
                     'tab-dash': {
                         templateUrl: 'templates/tab-dash.html',
-                        controller: 'DashCtrl'
                     }
                 }
             })
@@ -53,7 +59,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
                 views: {
                     'tab-chats': {
                         templateUrl: 'templates/tab-chats.html',
-                        controller: 'ChatsCtrl'
                     }
                 }
             })
@@ -62,7 +67,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
                 views: {
                     'tab-chats': {
                         templateUrl: 'templates/chat-detail.html',
-                        controller: 'ChatDetailCtrl'
                     }
                 }
             })
@@ -72,7 +76,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
                 views: {
                     'tab-account': {
                         templateUrl: 'templates/tab-account.html',
-                        controller: 'AccountCtrl'
                     }
                 }
             });
