@@ -14,3 +14,4 @@ www-develop/lib/components/
 app/bower_components
 platforms/ios
 platforms/android
+*.zip
