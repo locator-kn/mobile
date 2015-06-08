@@ -67,12 +67,11 @@ angular.module('starter', ['ionic'])
                         templateUrl: 'templates/tab-chats.html'
                     }
                 }
-            })
-            .state('tab.chat-detail', {
-                url: '/chats/:chatId',
+            }).state('tab.location', {
+                url: '/locations',
                 views: {
-                    'tab-chats': {
-                        templateUrl: 'templates/chat-detail.html'
+                    'tab-location': {
+                        templateUrl: 'templates/tab-location.html'
                     }
                 }
             })
