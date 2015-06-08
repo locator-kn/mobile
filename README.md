@@ -10,5 +10,6 @@
 
 
 ## upload
+- gulp
 - ionic login
 - ionic upload
