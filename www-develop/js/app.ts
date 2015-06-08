@@ -49,7 +49,7 @@ angular.module('starter', ['ionic'])
                 url: '/dash',
                 views: {
                     'tab-dash': {
-                        templateUrl: 'templates/tab-dash.html'
+                        templateUrl: 'templates/tab-welcome.html'
                     }
                 }
             })
