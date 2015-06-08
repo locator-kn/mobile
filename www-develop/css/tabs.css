@@ -1,0 +1,15 @@
+/* image tap icon */
+.tabs .tab-item .icon.location {
+    background-repeat: no-repeat;
+    background-position: 50%;
+    height: 69%;
+    background-image: url('../images/icons/header/location.png');
+    background-size:contain;
+}
+
+
+.tab-nav {
+    color: white;
+    background-color: black;
+    border-top-width: 0px;
+}
