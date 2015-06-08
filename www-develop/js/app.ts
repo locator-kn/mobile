@@ -49,7 +49,7 @@ angular.module('starter', ['ionic'])
                 url: '/dash',
                 views: {
                     'tab-dash': {
-                        templateUrl: 'templates/tab-dash.html',
+                        templateUrl: 'templates/tab-dash.html'
                     }
                 }
             })
@@ -58,7 +58,7 @@ angular.module('starter', ['ionic'])
                 url: '/chats',
                 views: {
                     'tab-chats': {
-                        templateUrl: 'templates/tab-chats.html',
+                        templateUrl: 'templates/tab-chats.html'
                     }
                 }
             })
@@ -66,7 +66,7 @@ angular.module('starter', ['ionic'])
                 url: '/chats/:chatId',
                 views: {
                     'tab-chats': {
-                        templateUrl: 'templates/chat-detail.html',
+                        templateUrl: 'templates/chat-detail.html'
                     }
                 }
             })
@@ -75,7 +75,7 @@ angular.module('starter', ['ionic'])
                 url: '/account',
                 views: {
                     'tab-account': {
-                        templateUrl: 'templates/tab-account.html',
+                        templateUrl: 'templates/tab-account.html'
                     }
                 }
             });
