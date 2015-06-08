@@ -1,0 +1,5 @@
+.welcome .padding .search,
+.welcome .padding .insert,
+.welcome .padding .locate{
+    height:calc(33vh - 50px);
+}
