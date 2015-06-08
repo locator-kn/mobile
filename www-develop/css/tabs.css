@@ -7,8 +7,15 @@
     background-size:contain;
 }
 
+.tabs .tab-item .icon.chat {
+    background-repeat: no-repeat;
+    background-position: 50%;
+    height: 69%;
+    background-image: url('../images/icons/header/chat.png');
+    background-size:contain;
+}
 
-.tab-nav {
+.tab-nav.tabs {
     color: white;
     background-color: black;
     border-top-width: 0px;
