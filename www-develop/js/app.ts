@@ -4,6 +4,10 @@
 /// <reference path="../../typings/cordova/cordova.d.ts" />
 /// <reference path="../../typings/moment/moment.d.ts" />
 
+/// <reference path="controller/welcomeCtrl.ts" />
+
+
+
 // Ionic Starter App
 
 // angular.module is a global place for creating, registering and retrieving Angular modules
@@ -27,6 +31,8 @@ angular.module('starter', ['ionic'])
             }*/
         });
     })
+
+    .controller(Controller.WelcomeCtrl.controllerId, Controller.WelcomeCtrl)
 
     .config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
 
