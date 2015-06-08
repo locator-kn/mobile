@@ -51,10 +51,10 @@ angular.module('starter', ['ionic'])
 
             // Each tab has its own nav history stack:
 
-            .state('tab.dash', {
-                url: '/dash',
+            .state('tab.welcome', {
+                url: '/welcome',
                 views: {
-                    'tab-dash': {
+                    'tab-welcome': {
                         templateUrl: 'templates/tab-welcome.html'
                     }
                 }
@@ -90,6 +90,6 @@ angular.module('starter', ['ionic'])
         $ionicConfigProvider.tabs.position('bottom');
 
         // if none of the above states are matched, use this as the fallback
-        $urlRouterProvider.otherwise('/tab/dash');
+        $urlRouterProvider.otherwise('/tab/welcome');
 
     });
