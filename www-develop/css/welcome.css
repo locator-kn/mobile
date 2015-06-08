@@ -1,13 +1,17 @@
 .welcome .search,
 .welcome .insert,
 .welcome .locate {
-    /* 30px = (top(43)+ bottom(49)) / 3 */
-    height: calc(33vh - 30px);
+
     width: 100%;
     margin-top: 0px;
     margin-bottom: 0px;
     border-radius: 0px;
     border-width: 0px;
+}
+
+.welcome .height-3 {
+    /* 30px = (top(43)+ bottom(49)) / 3 */
+    /*height: calc(33vh - 30px);*/
 }
 
 .background-coral {
@@ -23,4 +27,9 @@
 .background-black {
     background: rgb(0, 0, 0);
     color: #fff;
+}
+
+.logo {
+    /* TODO use other picture and remove this css option*/
+    height: 50px;
 }
