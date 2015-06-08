@@ -1,5 +1,8 @@
 .welcome .padding .search,
 .welcome .padding .insert,
 .welcome .padding .locate{
-    height:calc(33vh - 50px);
+    /* 30px = (top(43)+ bottom(49)) / 3 */
+    height:calc(33vh - 30px);
+    margin-top: 0px;
+    margin-bottom: 0px;
 }
