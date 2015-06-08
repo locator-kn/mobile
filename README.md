@@ -7,3 +7,8 @@
 
 ## run
 - gulp watch
+
+
+## upload
+- ionic login
+- ionic upload
