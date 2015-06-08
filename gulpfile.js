@@ -24,7 +24,7 @@ var tsProjectEmily = ts.createProject({
     typescript: typescript15
 });
 
-gulp.task('default', ['ts', 'html', 'css', 'lib', 'locale', 'ionicserve']);
+gulp.task('default', ['ts', 'html', 'css', 'lib', 'locale', 'ionicserve', 'img']);
 
 
 gulp.task('ts', function () {
@@ -65,7 +65,11 @@ gulp.task('lib', function () {
     gulp.src('./www-develop/lib/**/*').pipe(gulp.dest('./www/lib'));
 });
 
-gulp.task('watch', ['ts', 'html', 'css', 'lib', 'locale'], function () {
+gulp.task('img', function () {
+    gulp.src('./www-develop/images/**/*').pipe(gulp.dest('./www/images'));
+});
+
+gulp.task('watch', ['ts', 'html', 'css', 'lib', 'locale', 'img'], function () {
     gulp.watch('./www-develop/**/*.ts', ['ts']);
     gulp.watch('./www-develop/**/*.css', ['css']);
     gulp.watch('./www-develop/**/*.html', ['html']);
