@@ -1,8 +1,26 @@
-.welcome .padding .search,
-.welcome .padding .insert,
-.welcome .padding .locate{
+.welcome .search,
+.welcome .insert,
+.welcome .locate {
     /* 30px = (top(43)+ bottom(49)) / 3 */
-    height:calc(33vh - 30px);
+    height: calc(33vh - 30px);
+    width: 100%;
     margin-top: 0px;
     margin-bottom: 0px;
+    border-radius: 0px;
+    border-width: 0px;
+}
+
+.background-coral {
+    background: rgb(241, 100, 73);
+    color: #fff;
+}
+
+.background-green {
+    background: rgb(65, 191, 180);
+    color: #fff;
+}
+
+.background-black {
+    background: rgb(0, 0, 0);
+    color: #fff;
 }
