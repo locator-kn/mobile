@@ -1,9 +1,0 @@
-/* image tap icon */
-.tabs .tab-item .icon.location {
-    background-repeat: no-repeat;
-    background-position: 50%;
-    height: 100%;
-    background-image: url('../images/icons/header/location.png');
-    background-size:contain;
-}
-
