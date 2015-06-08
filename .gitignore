@@ -9,3 +9,8 @@ typings/
 www/
 resources/
 www-develop/lib/components/
+.tmp
+.sass-cache
+app/bower_components
+platforms/ios
+platforms/android
