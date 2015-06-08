@@ -7,6 +7,12 @@
     margin-bottom: 0px;
     border-radius: 0px;
     border-width: 0px;
+
+    /*text*/
+    font-size: 28px;
+    font-weight: 500;
+    text-align: left;
+    padding-left: 30px;
 }
 
 .welcome .height-3 {
@@ -32,4 +38,5 @@
 .logo {
     /* TODO use other picture and remove this css option*/
     height: 50px;
+    left: 50%;
 }
