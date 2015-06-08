@@ -28,7 +28,7 @@ angular.module('starter', ['ionic'])
         });
     })
 
-    .config(function ($stateProvider, $urlRouterProvider) {
+    .config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
 
         // Ionic uses AngularUI Router which uses the concept of states
         // Learn more here: https://github.com/angular-ui/ui-router
@@ -79,6 +79,9 @@ angular.module('starter', ['ionic'])
                     }
                 }
             });
+
+        // for android to set tabs at bottom position
+        $ionicConfigProvider.tabs.position('bottom');
 
         // if none of the above states are matched, use this as the fallback
         $urlRouterProvider.otherwise('/tab/dash');
