@@ -3,7 +3,7 @@
     background-repeat: no-repeat;
     background-position: 50%;
     height: 69%;
-    background-image: url('../images/icons/header/location.png');
+    background-image: url('../images/icons/white/locate.png');
     background-size:contain;
 }
 
@@ -11,7 +11,31 @@
     background-repeat: no-repeat;
     background-position: 50%;
     height: 69%;
-    background-image: url('../images/icons/header/chat.png');
+    background-image: url('../images/icons/white/messenger.png');
+    background-size:contain;
+}
+
+.tabs .tab-item .icon.offer {
+    background-repeat: no-repeat;
+    background-position: 50%;
+    height: 69%;
+    background-image: url('../images/icons/white/biete.png');
+    background-size:contain;
+}
+
+.tabs .tab-item .icon.search {
+    background-repeat: no-repeat;
+    background-position: 50%;
+    height: 69%;
+    background-image: url('../images/icons/white/suche.png');
+    background-size:contain;
+}
+
+.tabs .tab-item .icon.profile {
+    background-repeat: no-repeat;
+    background-position: 50%;
+    height: 69%;
+    background-image: url('../images/icons/white/profil.png');
     background-size:contain;
 }
 
