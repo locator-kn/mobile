@@ -60,6 +60,15 @@ angular.module('starter', ['ionic'])
                 }
             })
 
+            .state('tab.search', {
+                url: '/search',
+                views: {
+                    'tab-search': {
+                        templateUrl: 'templates/tab-search.html'
+                    }
+                }
+            })
+
             .state('tab.chats', {
                 url: '/chats',
                 views: {
@@ -76,11 +85,11 @@ angular.module('starter', ['ionic'])
                 }
             })
 
-            .state('tab.account', {
-                url: '/account',
+            .state('tab.profile', {
+                url: '/profile',
                 views: {
-                    'tab-account': {
-                        templateUrl: 'templates/tab-account.html'
+                    'tab-profile': {
+                        templateUrl: 'templates/tab-profile.html'
                     }
                 }
             });
