@@ -42,10 +42,6 @@ angular.module('starter', ['ionic'])
         $stateProvider
 
 
-            .state('welcome', {
-                url: '/welcome',
-                templateUrl: 'templates/welcome.html'
-            })
 
             // setup an abstract state for the tabs directive
             .state('tab', {
@@ -53,6 +49,16 @@ angular.module('starter', ['ionic'])
                 abstract: true,
                 templateUrl: "templates/tabs.html"
             })
+
+            .state('tab.welcome', {
+                url: '/welcome',
+                views: {
+                    'tab-welcome': {
+                        templateUrl: 'templates/tab-welcome.html'
+                    }
+                }
+            })
+
 
             // Each tab has its own nav history stack:
             .state('tab.offer', {
@@ -102,6 +108,6 @@ angular.module('starter', ['ionic'])
         $ionicConfigProvider.tabs.position('bottom');
 
         // if none of the above states are matched, use this as the fallback
-        $urlRouterProvider.otherwise('/welcome');
+        $urlRouterProvider.otherwise('/tab/welcome');
 
     });
