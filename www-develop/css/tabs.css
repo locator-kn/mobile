@@ -1,42 +1,32 @@
 /* image tap icon */
-.tabs .tab-item .icon.location {
+
+.tabs .tab-item .icon {
     background-repeat: no-repeat;
     background-position: 50%;
     height: 69%;
+    background-size: contain;
+
+}
+
+.tabs .tab-item .icon.location {
     background-image: url('../images/icons/white/locate.png');
-    background-size:contain;
 }
 
 .tabs .tab-item .icon.chat {
-    background-repeat: no-repeat;
-    background-position: 50%;
-    height: 69%;
     background-image: url('../images/icons/white/messenger.png');
-    background-size:contain;
 }
 
 .tabs .tab-item .icon.offer {
-    background-repeat: no-repeat;
-    background-position: 50%;
-    height: 69%;
     background-image: url('../images/icons/white/biete.png');
-    background-size:contain;
 }
 
 .tabs .tab-item .icon.search {
-    background-repeat: no-repeat;
-    background-position: 50%;
-    height: 69%;
+
     background-image: url('../images/icons/white/suche.png');
-    background-size:contain;
 }
 
 .tabs .tab-item .icon.profile {
-    background-repeat: no-repeat;
-    background-position: 50%;
-    height: 69%;
     background-image: url('../images/icons/white/profil.png');
-    background-size:contain;
 }
 
 .tab-nav.tabs {
