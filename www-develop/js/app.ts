@@ -7,7 +7,6 @@
 /// <reference path="controller/welcomeCtrl.ts" />
 
 
-
 // Ionic Starter App
 
 // angular.module is a global place for creating, registering and retrieving Angular modules
@@ -26,9 +25,9 @@ angular.module('starter', ['ionic'])
             }
 
             /*if (window.StatusBar) {
-                // org.apache.cordova.statusbar required
-                StatusBar.styleLightContent();
-            }*/
+             // org.apache.cordova.statusbar required
+             StatusBar.styleLightContent();
+             }*/
         });
     })
 
@@ -42,6 +41,12 @@ angular.module('starter', ['ionic'])
         // Each state's controller can be found in controllers.js
         $stateProvider
 
+
+            .state('welcome', {
+                url: '/welcome',
+                templateUrl: 'templates/welcome.html'
+            })
+
             // setup an abstract state for the tabs directive
             .state('tab', {
                 url: "/tab",
@@ -50,12 +55,11 @@ angular.module('starter', ['ionic'])
             })
 
             // Each tab has its own nav history stack:
-
-            .state('tab.welcome', {
-                url: '/welcome',
+            .state('tab.offer', {
+                url: '/offer',
                 views: {
-                    'tab-welcome': {
-                        templateUrl: 'templates/tab-welcome.html'
+                    'tab-offer': {
+                        templateUrl: 'templates/tab-offer.html'
                     }
                 }
             })
@@ -76,11 +80,11 @@ angular.module('starter', ['ionic'])
                         templateUrl: 'templates/tab-chats.html'
                     }
                 }
-            }).state('tab.location', {
-                url: '/locations',
+            }).state('tab.locate', {
+                url: '/locate',
                 views: {
-                    'tab-location': {
-                        templateUrl: 'templates/tab-location.html'
+                    'tab-locate': {
+                        templateUrl: 'templates/tab-locate.html'
                     }
                 }
             })
@@ -98,6 +102,6 @@ angular.module('starter', ['ionic'])
         $ionicConfigProvider.tabs.position('bottom');
 
         // if none of the above states are matched, use this as the fallback
-        $urlRouterProvider.otherwise('/tab/welcome');
+        $urlRouterProvider.otherwise('/welcome');
 
     });
