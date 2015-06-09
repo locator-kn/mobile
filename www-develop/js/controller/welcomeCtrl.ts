@@ -1,7 +1,7 @@
 module Controller {
     export class WelcomeCtrl {
 
-        constructor(private $scope, private $rootScope, private $element) {
+        constructor(private $scope, private $rootScope, private $element, private $state) {
             // add logo to navbar
             $scope.navTitle= '<img src="./images/locator-logo.png" class="logo"/>';
 
@@ -13,6 +13,15 @@ module Controller {
         }
 
 
+        search() {
+                this.$state.go('tab.search');
+        }
+        offer() {
+                this.$state.go('tab.offer');
+        }
+        locate() {
+                this.$state.go('tab.locate');
+        }
 
         static controllerId:string = "WelcomeCtrl";
     }
