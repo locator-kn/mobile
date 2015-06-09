@@ -7,10 +7,14 @@ navigation history that also transitions its views in and out.
 
 
     <!-- Welcome Tab  TODO: remove-->
-    <ion-tab title="ToRemove" icon-off="" icon-on="" href="#/tab/welcome">
+    <ion-tab title="Biete" icon-off="offer" icon-on="offer" href="#/tab/welcome">
         <ion-nav-view name="tab-welcome"></ion-nav-view>
     </ion-tab>
 
+    <!-- Search Tab -->
+    <ion-tab title="Suche" icon-off="search" icon-on="search" href="#/tab/search" class="search">
+        <ion-nav-view name="tab-suche"></ion-nav-view>
+    </ion-tab>
 
     <!-- Location Tab -->
     <ion-tab title="Location" icon-off="location" icon-on="location" href="#/tab/locations" class="location">
@@ -23,8 +27,8 @@ navigation history that also transitions its views in and out.
     </ion-tab>
 
     <!-- Account Tab -->
-    <ion-tab title="Account" icon-off="ion-ios-gear-outline" icon-on="ion-ios-gear" href="#/tab/account">
-        <ion-nav-view name="tab-account"></ion-nav-view>
+    <ion-tab title="Profil" icon-off="profile" icon-on="profile" href="#/tab/profile">
+        <ion-nav-view name="tab-profile"></ion-nav-view>
     </ion-tab>
 
 
