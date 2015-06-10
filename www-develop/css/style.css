@@ -1,0 +1,15 @@
+.circle {
+    border-radius: 50%;
+    border: 1px solid black;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    display: inline-block;
+    vertical-align: middle;
+
+}
+.circle-selected {
+    background-color: black;
+    color: rgb(33, 205, 196);
+}
