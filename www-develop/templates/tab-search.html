@@ -9,11 +9,19 @@
             </li>
             <li class="item">
                 Tage
-
                 <div class="select-elements">
                     <div class="circle" ng-repeat="day in sc.availableDays"
                          ng-click="sc.selectedDays=day.value"
                          ng-class="{'circle-selected': sc.selectedDays == day.value}">{{day.title}}
+                    </div>
+                </div>
+            </li>
+            <li class="item">
+                Personen
+                <div class="select-elements">
+                    <div class="circle" ng-repeat="person in sc.availablePersons"
+                         ng-click="sc.selectedPersons=person.value"
+                         ng-class="{'circle-selected': sc.selectedPersons == person.value}">{{person.title}}
                     </div>
                 </div>
             </li>
