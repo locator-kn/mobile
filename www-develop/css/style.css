@@ -1,12 +1,13 @@
 .circle {
     border-radius: 50%;
     border: 1px solid black;
-    width: 30px;
-    height: 30px;
+    width: 35px;
+    height: 35px;
     line-height: 30px;
     text-align: center;
     display: inline-block;
     vertical-align: middle;
+    margin-left: 5px;
 
 }
 .circle-selected {
