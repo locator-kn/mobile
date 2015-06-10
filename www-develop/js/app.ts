@@ -5,6 +5,7 @@
 /// <reference path="../../typings/moment/moment.d.ts" />
 
 /// <reference path="controller/welcomeCtrl.ts" />
+/// <reference path="controller/searchCtrl.ts" />
 
 
 // Ionic Starter App
@@ -32,6 +33,7 @@ angular.module('starter', ['ionic'])
     })
 
     .controller(Controller.WelcomeCtrl.controllerId, Controller.WelcomeCtrl)
+    .controller(Controller.SearchCtrl.controllerId, Controller.SearchCtrl)
 
     .config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
 
