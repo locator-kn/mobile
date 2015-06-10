@@ -106,6 +106,8 @@ angular.module('starter', ['ionic'])
 
         // for android to set tabs at bottom position
         $ionicConfigProvider.tabs.position('bottom');
+        // set navbar Title to center
+        $ionicConfigProvider.navBar.alignTitle('center');
 
         // if none of the above states are matched, use this as the fallback
         $urlRouterProvider.otherwise('/tab/welcome');
