@@ -1,39 +1,49 @@
 <ion-view view-title="Search" ng-controller="SearchCtrl as sc">
     <ion-content>
-        <ul class="list">
-            <li>
-                <label class="item item-input">
-                    <i class="icon ion-search placeholder-icon"></i>
-                    <input type="text" placeholder="Wohin?">
-                </label>
-            </li>
-            <li class="item">
-                Tage
-                <div class="select-elements">
-                    <div class="circle" ng-repeat="day in sc.availableDays"
-                         ng-click="sc.selectedDays=day.value"
-                         ng-class="{'circle-selected': sc.selectedDays == day.value}">{{day.title}}
+        <div>
+            <ul class="list">
+                <li>
+                    <label class="item item-input">
+                        <i class="icon ion-search placeholder-icon"></i>
+                        <input type="text" placeholder="Wohin?">
+                    </label>
+                </li>
+                <li class="item">
+                    Tage
+                    <div class="select-elements">
+                        <div class="circle" ng-repeat="day in sc.availableDays"
+                             ng-click="sc.selectedDays=day.value"
+                             ng-class="{'circle-selected': sc.selectedDays == day.value}">{{day.title}}
+                        </div>
                     </div>
-                </div>
-            </li>
-            <li class="item">
-                Personen
-                <div class="select-elements">
-                    <div class="circle" ng-repeat="person in sc.availablePersons"
-                         ng-click="sc.selectedPersons=person.value"
-                         ng-class="{'circle-selected': sc.selectedPersons == person.value}">{{person.title}}
+                </li>
+                <li class="item">
+                    Personen
+                    <div class="select-elements">
+                        <div class="circle" ng-repeat="person in sc.availablePersons"
+                             ng-click="sc.selectedPersons=person.value"
+                             ng-class="{'circle-selected': sc.selectedPersons == person.value}">{{person.title}}
+                        </div>
                     </div>
-                </div>
-            </li>
-            <li class="item item-toggle">
-                Übernachtung
-                <label class="toggle toggle-dark toggle-assertive">
-                    <input type="checkbox">
-                    <div class="track">
-                        <div class="handle"></div>
-                    </div>
-                </label>
-            </li>
-        </ul>
+                </li>
+                <li class="item item-toggle">
+                    Übernachtung
+                    <label class="toggle toggle-dark toggle-assertive">
+                        <input type="checkbox">
+
+                        <div class="track">
+                            <div class="handle"></div>
+                        </div>
+                    </label>
+                </li>
+
+
+            </ul>
+        </div>
+        <div>
+            <button class="button button-full background-green bottom">
+                Los geht's
+            </button>
+        </div>
     </ion-content>
 </ion-view>
