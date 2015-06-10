@@ -13,15 +13,6 @@ module Controller {
         }
 
 
-        search() {
-                this.$state.go('tab.search');
-        }
-        offer() {
-                this.$state.go('tab.offer');
-        }
-        locate() {
-                this.$state.go('tab.locate');
-        }
 
         static controllerId:string = "WelcomeCtrl";
     }
