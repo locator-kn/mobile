@@ -1,7 +1,8 @@
 # Locator MOBILE
 
 ## setup
-- tsd reinstall (Version 
+- tsd reinstall (Version upgrade is required)
+- bower install
 - npm install
 
 
