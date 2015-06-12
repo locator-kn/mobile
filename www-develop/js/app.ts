@@ -16,7 +16,13 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic'])
+
+var deps = [
+    'ionic',
+    'angular-cache'
+];
+
+angular.module('starter', deps)
 
     .run(function ($ionicPlatform) {
         $ionicPlatform.ready(function () {
@@ -39,6 +45,9 @@ angular.module('starter', ['ionic'])
     // services
     .service(Service.DataService.serviceId, Service.DataService)
 
+    .config(function (CacheFactoryProvider) {
+        angular.extend(CacheFactoryProvider.defaults, {maxAge: 15 * 60 * 1000});
+    })
 
     .config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
 
@@ -47,7 +56,6 @@ angular.module('starter', ['ionic'])
         // Set up the various states which the app can be in.
         // Each state's controller can be found in controllers.js
         $stateProvider
-
 
 
             // setup an abstract state for the tabs directive
