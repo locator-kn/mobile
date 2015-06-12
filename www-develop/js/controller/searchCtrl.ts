@@ -8,8 +8,9 @@ module Controller {
         availablePersons:any = [];
 
         tripCities:any = [];
+        searchCities:any = [];
 
-        constructor(private $scope, private $rootScope, private $element, private $state, private DataService) {
+        constructor(private $scope, private $rootScope, private $element, private $state, private DataService, private $q) {
             this.availableDays = [
                 {value: 1, title: "1"},
                 {value: 2, title: "2"},
@@ -27,9 +28,43 @@ module Controller {
             this.DataService.getCities()
                 .then(result => {
                     this.tripCities = result.data;
+                    this.searchCities = result.data;
+                    console.log(this.tripCities);
+
                 });
         }
 
-        static controllerId:string = "SearchCtrl";
+        searchCity(searchFilter) {
+
+            console.log('Searching cities for ' + searchFilter);
+
+            // TODO: was macht q?
+            var deferred = this.$q.defer();
+
+            var matches = this.searchCities.filter(function (city) {
+                if (city.title.toLowerCase().indexOf(searchFilter.toLowerCase()) !== -1) return true;
+            });
+
+            //$timeout(function () {
+            //
+            deferred.resolve(matches);
+            this.tripCities = matches;
+            //
+            //}, 100);
+
+            return deferred.promise;
+        }
+
+        //search() {
+        //
+        //    this.DataService.searchCities().then(
+        //        function(matches) {
+        //            this.tripCities = matches;
+        //        }
+        //    )
+        //}
+
+        static
+            controllerId:string = "SearchCtrl";
     }
 }
