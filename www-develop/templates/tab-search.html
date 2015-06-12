@@ -5,11 +5,15 @@
                 <li>
                     <label class="item item-input">
                         <i class="icon ion-search placeholder-icon"></i>
-                        <input type="text" placeholder="Wohin?">
+                        <input type="text" placeholder="Wohin?" ng-model-options='{ debounce: 100 }' ng-model="test" ng-change="sc.searchCity(test)" >
                     </label>
                 </li>
+                <li class="item"  ng-show="$index<3" ng-repeat="city in sc.tripCities">{{city.title}}</li>
+
                 <li class="item">
                     Tage
+
+                    {{sc.tripCities}}
                     <div class="select-elements">
                         <div class="circle" ng-repeat="day in sc.availableDays"
                              ng-click="sc.selectedDays=day.value"
