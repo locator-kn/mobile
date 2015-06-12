@@ -39,6 +39,10 @@ angular.module('starter', deps)
         });
     })
 
+    // constants
+    .constant('basePath', '<%= basePath %>')
+
+    // controler
     .controller(Controller.WelcomeCtrl.controllerId, Controller.WelcomeCtrl)
     .controller(Controller.SearchCtrl.controllerId, Controller.SearchCtrl)
 

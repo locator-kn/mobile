@@ -10,7 +10,9 @@ var path = require('path');
 var notifier = require('node-notifier');
 var sourcemaps = require('gulp-sourcemaps');
 var merge = require('merge2');
-var shell = require('gulp-shell')
+var shell = require('gulp-shell');
+var template = require('gulp-template');
+
 var typescript15 = require('typescript');
 
 
@@ -28,7 +30,19 @@ gulp.task('default', ['ts', 'html', 'css', 'lib', 'locale', 'ionicserve', 'img']
 
 
 gulp.task('ts', function () {
+    var baseIdx = process.argv.indexOf('--base');
+    var baseUrl = '';
+    if (baseIdx !== -1) {
+        baseUrl = process.argv[baseIdx + 1];
+    }
+
+    var templateObject = {
+        basePath: baseUrl || 'http://locator.in.htwg-konstanz.de:3001/api/v1'
+    };
+
+
     var tsResult = gulp.src(['./www-develop/**/*.ts', '!./www-develop/lib/components/**/*.ts'])
+        .pipe(template(templateObject))
         .pipe(sourcemaps.init())
         .pipe(ts(tsProjectEmily));
 
