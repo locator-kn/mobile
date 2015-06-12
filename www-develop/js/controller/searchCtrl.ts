@@ -38,6 +38,10 @@ module Controller {
                 });
         }
 
+        setCity(cityId) {
+            this.tripCities = [];
+        }
+
         static
             controllerId:string = "SearchCtrl";
     }
