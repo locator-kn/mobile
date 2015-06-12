@@ -8,9 +8,9 @@ module Controller {
         availablePersons:any = [];
 
         tripCities:any = [];
-        searchCities:any = [];
 
-        constructor(private $scope, private $rootScope, private $element, private $state, private DataService, private $q) {
+        constructor(private $scope, private $rootScope, private $element, private $state, private DataService) {
+            // TODO - outsource in service
             this.availableDays = [
                 {value: 1, title: "1"},
                 {value: 2, title: "2"},
