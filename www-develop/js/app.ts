@@ -7,6 +7,7 @@
 /// <reference path="controller/welcomeCtrl.ts" />
 /// <reference path="controller/searchCtrl.ts" />
 
+/// <reference path="./service/dataService.ts" />
 
 // Ionic Starter App
 
@@ -34,6 +35,10 @@ angular.module('starter', ['ionic'])
 
     .controller(Controller.WelcomeCtrl.controllerId, Controller.WelcomeCtrl)
     .controller(Controller.SearchCtrl.controllerId, Controller.SearchCtrl)
+
+    // services
+    .service(Service.DataService.serviceId, Service.DataService)
+
 
     .config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
 
