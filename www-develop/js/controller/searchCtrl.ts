@@ -25,44 +25,18 @@ module Controller {
                 {value: 5, title: "4+"}
             ];
 
-            this.DataService.getCities()
-                .then(result => {
-                    this.tripCities = result.data;
-                    this.searchCities = result.data;
-                    console.log(this.tripCities);
-
-                });
         }
 
         searchCity(searchFilter) {
-
             console.log('Searching cities for ' + searchFilter);
 
-            // TODO: was macht q?
-            var deferred = this.$q.defer();
-
-            var matches = this.searchCities.filter(function (city) {
-                if (city.title.toLowerCase().indexOf(searchFilter.toLowerCase()) !== -1) return true;
-            });
-
-            //$timeout(function () {
-            //
-            deferred.resolve(matches);
-            this.tripCities = matches;
-            //
-            //}, 100);
-
-            return deferred.promise;
+            this.DataService.getCities()
+                .then(result => {
+                    this.tripCities = result.data.filter(function (city) {
+                        if (city.title.toLowerCase().indexOf(searchFilter.toLowerCase()) !== -1) return true;
+                    });
+                });
         }
-
-        //search() {
-        //
-        //    this.DataService.searchCities().then(
-        //        function(matches) {
-        //            this.tripCities = matches;
-        //        }
-        //    )
-        //}
 
         static
             controllerId:string = "SearchCtrl";
