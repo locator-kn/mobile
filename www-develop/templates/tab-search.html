@@ -5,8 +5,8 @@
                 <li>
                     <label class="item item-input">
                         <i class="icon ion-search placeholder-icon"></i>
-                        <input class="city" type="text"  placeholder="Wohin?" value="sc.selectedDays" ng-model-options='{ debounce: 100 }' ng-model="cityInput"
-                               ng-change="sc.searchCity(cityInput)">
+                        <input class="city" type="text"  placeholder="Wohin?" ng-model-options='{ debounce: 100 }' ng-model="sc.city"
+                               ng-change="sc.searchCity(sc.city)">
                     </label>
                 </li>
                 <li class="item" ng-show="$index<3" ng-repeat="city in sc.tripCities" ng-click="sc.setCity(city.id)">{{city.title}}</li>
@@ -44,7 +44,7 @@
             </ul>
         </div>
         <div>
-            <button class="button button-full background-green bottom">
+            <button ng-click="sc.searchTrips()" class="button button-full background-green bottom">
                 Los geht's
             </button>
         </div>
