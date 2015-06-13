@@ -8,6 +8,7 @@
 /// <reference path="controller/searchCtrl.ts" />
 
 /// <reference path="./service/dataService.ts" />
+/// <reference path="./service/searchService.ts" />
 
 // Ionic Starter App
 
@@ -19,6 +20,7 @@
 
 var deps = [
     'ionic',
+    'ngLodash',
     'angular-cache'
 ];
 
@@ -48,6 +50,7 @@ angular.module('starter', deps)
 
     // services
     .service(Service.DataService.serviceId, Service.DataService)
+    .service(Service.SearchService.serviceId, Service.SearchService)
 
     .config(function (CacheFactoryProvider) {
         angular.extend(CacheFactoryProvider.defaults, {maxAge: 15 * 60 * 1000});
