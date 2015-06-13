@@ -8,6 +8,7 @@ module Controller {
         availablePersons:any = [];
 
         tripCities:any = [];
+        city:string;
 
         constructor(private $scope, private $rootScope, private $element, private $state, private DataService) {
             // TODO - outsource in service
@@ -39,7 +40,12 @@ module Controller {
         }
 
         setCity(cityId) {
+            var city = this.tripCities.filter(function (obj) {
+                return obj.id == cityId;
+            });
             this.tripCities = [];
+            angular.element(".city").val(city[0].title);
+            this.city = cityId;
         }
 
         static
