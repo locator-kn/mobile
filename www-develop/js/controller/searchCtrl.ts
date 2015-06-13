@@ -10,7 +10,7 @@ module Controller {
         tripCities:any = [];
         city:string;
 
-        constructor(private $scope, private $rootScope, private $element, private $state, private DataService) {
+        constructor(private $scope, private $rootScope, private $element, private $state, private DataService, private SearchService) {
             this.availableDays = this.DataService.getAvailableDays();
             this.availablePersons = this.DataService.getAvailablePersons();
         }
@@ -18,7 +18,7 @@ module Controller {
         searchCity(searchFilter) {
             console.log('Searching cities for ' + searchFilter);
 
-            this.DataService.getCities()
+            this.DataService.getAvailableCities()
                 .then(result => {
                     this.tripCities = result.data.filter(function (city) {
                         if (city.title.toLowerCase().indexOf(searchFilter.toLowerCase()) !== -1) return true;
@@ -31,8 +31,23 @@ module Controller {
                 return obj.id == cityId;
             });
             this.tripCities = [];
-            angular.element(".city").val(city[0].title);
-            this.city = cityId;
+            var cityTitle = city[0].title;
+            angular.element(".city").val(cityTitle);
+            this.city = cityTitle;
+        }
+
+        searchTrips() {
+            var query = {
+                city: this.city,
+                days: this.selectedDays,
+                persons: this.selectedPersons
+            };
+
+            console.log(query);
+
+            this.SearchService.getTripsByQuery(query);
+
+
         }
 
         static
