@@ -22,7 +22,7 @@ module Service {
             this.dataCitiesCache = CacheFactory.createCache('dataCities');
         }
 
-        getCities() {
+        getAvailableCities() {
             return this.$http.get(this.basePath + '/data/cities', {cache: this.dataCitiesCache});
         }
 
