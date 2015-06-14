@@ -10,7 +10,7 @@ module Controller {
         tripCities:any = [];
         city:string;
 
-        constructor(private $scope, private $rootScope, private $element, private $state, private DataService, private SearchService, private $ionicHistory) {
+        constructor(private $scope, private $rootScope, private $element, private $state, private DataService, private SearchService, private ResultService) {
             this.availableDays = this.DataService.getAvailableDays();
             this.availablePersons = this.DataService.getAvailablePersons();
 
@@ -47,10 +47,8 @@ module Controller {
             console.log(query);
 
             this.SearchService.getTripsByQuery(query).then(result => {
-                this.$rootScope.$emit('newSearchResults', result);
+                this.ResultService.setResults(result.data);
             });
-
-            this.$state
 
 
         }
