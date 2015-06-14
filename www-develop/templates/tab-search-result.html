@@ -1,5 +1,23 @@
-<ion-view  ng-controller="SearchResultCtrl as sr">
+<ion-view view-title="Suchergebnisse" ng-controller="SearchResultCtrl as src">
     <ion-content>
-        {{sr.results}}
+        <ul class="list">
+            <div ng-repeat="result in src.results">
+                <li>
+                    <img class="tmpImageWidth" src="./images/noImagePlaceholder.jpg">
+                    <ul>
+                        <li class="item">
+                            <div>{{result.title}}</div>
+                            <div>von {{result.userid}}</div>
+                        </li>
+                        <li class="item">
+                            <resultdate date="result.start_date"></resultdate> bis
+                            <resultdate date="result.end_date"></resultdate>
+                            <div>Dauer: {{result.days}} Tage</div>
+                        </li>
+                    </ul>
+                </li>
+
+            </div>
+        </ul>
     </ion-content>
 </ion-view>
