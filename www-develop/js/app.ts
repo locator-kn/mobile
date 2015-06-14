@@ -10,6 +10,7 @@
 
 /// <reference path="./service/dataService.ts" />
 /// <reference path="./service/searchService.ts" />
+/// <reference path="./service/resultService.ts" />
 
 // Ionic Starter App
 
@@ -53,6 +54,7 @@ angular.module('starter', deps)
     // services
     .service(Service.DataService.serviceId, Service.DataService)
     .service(Service.SearchService.serviceId, Service.SearchService)
+    .service(Service.ResultService.serviceId, Service.ResultService)
 
     .config(function (CacheFactoryProvider) {
         angular.extend(CacheFactoryProvider.defaults, {maxAge: 15 * 60 * 1000});
