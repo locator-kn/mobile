@@ -100,6 +100,14 @@ angular.module('starter', deps)
                     }
                 }
             })
+            .state('tab.search-result', {
+                url: '/search-result',
+                views: {
+                    'tab-search': {
+                        templateUrl: 'templates/tab-search-result.html'
+                    }
+                }
+            })
 
             .state('tab.chats', {
                 url: '/chats',
