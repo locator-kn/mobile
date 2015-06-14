@@ -10,9 +10,13 @@ module Controller {
         tripCities:any = [];
         city:string;
 
-        constructor(private $scope, private $rootScope, private $element, private $state, private DataService, private SearchService) {
+        constructor(private $scope, private $rootScope, private $element, private $state, private DataService, private SearchService, private $ionicHistory) {
             this.availableDays = this.DataService.getAvailableDays();
             this.availablePersons = this.DataService.getAvailablePersons();
+
+            $scope.myGoBack = function() {
+                $ionicHistory.goBack();
+            };
         }
 
         searchCity(searchFilter) {
