@@ -7,16 +7,25 @@
                     <ul>
                         <li class="item">
                             <div>{{result.title}}</div>
-                            <div>von {{result.username || 'anonym'}}</div>
+
+                            <resultdate class="text-color-red" date="result.start_date"></resultdate>
+                            bis
+                            <resultdate class="text-color-red" date="result.end_date"></resultdate>
+                            <div>von </div>
+                            <div class="text-color-red">{{result.username || 'anonym'}}</div>
+
                         </li>
                         <li class="item">
-                            <resultdate date="result.start_date"></resultdate> bis
-                            <resultdate date="result.end_date"></resultdate>
-                            <div>Dauer: {{result.days}} Tage</div>
+                            <div>
+                                Dauer:
+                                <div class="text-color-red">{{result.days}} Tage</div>
+                            </div>
+                        </li>
+                        <li class="item">
+                            MOODS
                         </li>
                     </ul>
                 </li>
-
             </div>
         </ul>
     </ion-content>
