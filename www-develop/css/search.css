@@ -4,3 +4,20 @@
     right: 16px;
     z-index: 3;
 }
+
+/** TODO refactor - only tests **/
+.search-icon {
+    margin-left: 50px;
+    height: 80px;
+}
+
+.insert-icon {
+    height: 80px;
+    margin-left: 66px;
+
+}
+
+.locate-icon {
+    height: 80px;
+    margin-left: 153px;
+}
