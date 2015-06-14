@@ -7,6 +7,7 @@
     "dependencies": {
         "jquery": "~2.1.4",
         "angular-cache": "~4.2.0",
+        "moment": "~2.10.2",
         "ng-lodash": "~0.2.3"
     }
 }
