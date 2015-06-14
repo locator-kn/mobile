@@ -18,5 +18,10 @@
 
 /*TODO refactor and remove */
 .tmpImageWidth {
-    width: 384px;
+    width: 100%;
+}
+
+
+.text-color-red {
+    color: red;
 }
