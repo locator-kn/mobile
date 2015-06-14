@@ -46,7 +46,11 @@ module Controller {
 
             console.log(query);
 
-            this.SearchService.getTripsByQuery(query);
+            this.SearchService.getTripsByQuery(query).then(result => {
+                this.$rootScope.$emit('newSearchResults', result);
+            });
+
+            this.$state
 
 
         }
