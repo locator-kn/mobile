@@ -14,9 +14,6 @@ module Controller {
             this.availableDays = this.DataService.getAvailableDays();
             this.availablePersons = this.DataService.getAvailablePersons();
 
-            $scope.myGoBack = function() {
-                $ionicHistory.goBack();
-            };
         }
 
         searchCity(searchFilter) {
