@@ -10,7 +10,13 @@
     margin-left: 5px;
 
 }
+
 .circle-selected {
     background-color: black;
     color: rgb(33, 205, 196);
+}
+
+/*TODO refactor and remove */
+.tmpImageWidth {
+    width: 384px;
 }
