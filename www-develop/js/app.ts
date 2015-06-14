@@ -6,6 +6,7 @@
 
 /// <reference path="controller/welcomeCtrl.ts" />
 /// <reference path="controller/searchCtrl.ts" />
+/// <reference path="controller/searchResultCtrl.ts" />
 
 /// <reference path="./service/dataService.ts" />
 /// <reference path="./service/searchService.ts" />
@@ -47,6 +48,7 @@ angular.module('starter', deps)
     // controler
     .controller(Controller.WelcomeCtrl.controllerId, Controller.WelcomeCtrl)
     .controller(Controller.SearchCtrl.controllerId, Controller.SearchCtrl)
+    .controller(Controller.SearchResultCtrl.controllerId, Controller.SearchResultCtrl)
 
     // services
     .service(Service.DataService.serviceId, Service.DataService)
