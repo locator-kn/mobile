@@ -60,6 +60,17 @@ angular.module('starter', deps)
         angular.extend(CacheFactoryProvider.defaults, {maxAge: 15 * 60 * 1000});
     })
 
+    .directive('resultdate', function () {
+        return {
+            scope: {date: '='},
+            controller: function ($scope) {
+                var date = new Date($scope.date);
+                $scope.date = moment(date).format('L');
+            },
+            template: '{{date}}'
+        };
+    })
+
     .config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
 
         // Ionic uses AngularUI Router which uses the concept of states
