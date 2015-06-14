@@ -8,7 +8,14 @@ module Service {
 
 
 
+        setResults(results) {
+            this.results = results;
+            this.$rootScope.$emit('newSearchResults');
+        }
 
+        getResults() {
+            return this.results;
+        }
 
         static
             serviceId:string = "ResultService";
