@@ -3,10 +3,13 @@ module Controller {
         results:any;
 
 
-        constructor(private $scope, private $rootScope) {
-            $rootScope.$on('newSearchResults', (scope, result) => {
-                this.results = result;
+        constructor(private $scope, private $rootScope, private ResultService) {
+            this.results = ResultService.getResults();
+
+            $rootScope.$on('newSearchResults', () => {
+                this.results = ResultService.getResults();
             });
+
         }
 
         static
