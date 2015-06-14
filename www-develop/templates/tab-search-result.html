@@ -7,19 +7,19 @@
                     <ul>
                         <li class="item">
                             <div>{{result.title}}</div>
-
-                            <resultdate class="text-color-red" date="result.start_date"></resultdate>
-                            bis
-                            <resultdate class="text-color-red" date="result.end_date"></resultdate>
-                            <div>von </div>
-                            <div class="text-color-red">{{result.username || 'anonym'}}</div>
+                            <label>von </label>
+                            <label class="text-color-red">{{result.username || 'anonym'}}</label>
 
                         </li>
                         <li class="item">
-                            <div>
+                            <resultdate class="text-color-red" date="result.start_date"></resultdate>
+                            bis
+                            <resultdate class="text-color-red" date="result.end_date"></resultdate>
+                            </br>
+                            <label>
                                 Dauer:
-                                <div class="text-color-red">{{result.days}} Tage</div>
-                            </div>
+                                <label class="text-color-red">{{result.days}} Tage</label>
+                            </label>
                         </li>
                         <li class="item">
                             MOODS
