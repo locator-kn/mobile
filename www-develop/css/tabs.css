@@ -3,8 +3,9 @@
 .tabs .tab-item .icon {
     background-repeat: no-repeat;
     background-position: 50%;
-    height: 69%;
+    height: 50%;
     background-size: contain;
+    margin-top: 5px;
 
 }
 
