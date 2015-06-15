@@ -11,8 +11,13 @@ module Controller {
         city:string;
 
         constructor(private $scope, private $rootScope, private $element, private $state, private DataService, private SearchService, private ResultService) {
-            this.availableDays = this.DataService.getAvailableDays();
-            this.availablePersons = this.DataService.getAvailablePersons();
+            this.DataService.getAvailableDays().then((result)=> {
+                this.availableDays = result.data;
+            });
+
+            this.DataService.getAvailablePersons().then((result) => {
+                this.availablePersons = result.data;
+            });
 
             this.DataService.getAvailableCities().then((result) => {
                     this.tripCities = result.data;
