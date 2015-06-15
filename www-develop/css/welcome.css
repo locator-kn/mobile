@@ -47,3 +47,17 @@
     height: 50px;
     left: 50%;
 }
+
+.welcome .tab-icon {
+    height: 50%;
+    float: right;
+    margin-right: 15px;
+}
+
+.welcome .tab-title {
+    float: left;
+    margin-top: 3%;
+    display: table-cell;
+}
+
+
