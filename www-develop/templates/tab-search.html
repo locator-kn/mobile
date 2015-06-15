@@ -5,11 +5,14 @@
                 <li>
                     <label class="item item-input">
                         <i class="icon ion-search placeholder-icon"></i>
-                        <input class="city" type="text"  placeholder="Wohin?" ng-model-options='{ debounce: 100 }' ng-model="sc.city"
-                               ng-change="sc.searchCity(sc.city)">
+                        <input class="city" type="text" placeholder="Wohin?" ng-model-options='{ debounce: 100 }'
+                               ng-model="sc.city"
+                            >
                     </label>
                 </li>
-                <li class="item" ng-show="$index<3" ng-repeat="city in sc.tripCities" ng-click="sc.setCity(city.id)">{{city.title}}</li>
+                <li class="item" ng-show="$index<3" ng-repeat="city in sc.tripCities | filter:sc.city" ng-if="sc.city"
+                    ng-click="sc.setCity(city.id)">{{city.title}}
+                </li>
 
                 <li class="item">
                     Tage
@@ -44,7 +47,8 @@
             </ul>
         </div>
         <div>
-            <button ng-click="sc.searchTrips()" ui-sref="tab.search-result" class="button button-full background-green bottom">
+            <button ng-click="sc.searchTrips()" ui-sref="tab.search-result"
+                    class="button button-full background-green bottom">
                 Los geht's
             </button>
         </div>
