@@ -2,8 +2,9 @@ module Controller {
     export class SearchResultCtrl {
         results:any;
 
+        moods:any = [];
 
-        constructor(private $scope, private $rootScope, private ResultService, private $element) {
+        constructor(private $scope, private $rootScope, private ResultService, private $element, private DataService) {
             // css test TOOD: remove
             var elementWidth = angular.element(this.$element).width();
             angular.element(".tmpImageWidth").css({'width': elementWidth + "px"})
@@ -11,6 +12,10 @@ module Controller {
             this.results = ResultService.getResults();
             $rootScope.$on('newSearchResults', () => {
                 this.results = ResultService.getResults();
+            });
+
+            this.DataService.getAvailableMoods().then((result) => {
+                this.moods = result.data;
             });
 
         }
