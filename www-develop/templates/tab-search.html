@@ -1,5 +1,5 @@
 <ion-view view-title="Suche" ng-controller="SearchCtrl as sc">
-    <ion-content>
+    <ion-content class="background-color-grey">
         <div>
             <ul class="list">
                 <li>
@@ -9,7 +9,7 @@
                                ng-model="sc.city"/>
                     </label>
                 </li>
-                <li class="item" ng-show="$index<3" ng-repeat="city in sc.tripCities | filter:sc.city" ng-if="sc.city"
+                <li class="item" ng-show="$index<3" ng-repeat="city in sc.tripCities | startsWith: sc.city" ng-if="sc.city"
                     ng-click="sc.setCity(city.id)">{{city.title}}
                 </li>
 

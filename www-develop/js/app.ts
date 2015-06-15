@@ -60,6 +60,19 @@ angular.module('starter', deps)
         angular.extend(CacheFactoryProvider.defaults, {maxAge: 15 * 60 * 1000});
     })
 
+    .filter('startsWith', function () {
+        return function (array, search) {
+            var matches = [];
+            for (var i = 0; i < array.length; i++) {
+                if (array[i].title.indexOf(search) === 0 &&
+                    search.length < array[i].title.length) {
+                    matches.push(array[i]);
+                }
+            }
+            return matches;
+        };
+    })
+
     .directive('resultdate', function () {
         return {
             scope: {date: '='},
