@@ -3,7 +3,7 @@
     border: 1px solid black;
     width: 35px;
     height: 35px;
-    line-height: 30px;
+    line-height: 31px;
     text-align: center;
     display: inline-block;
     vertical-align: middle;
@@ -21,7 +21,20 @@
     width: 100%;
 }
 
-
 .text-color-red {
     color: red;
 }
+
+.background-color-grey {
+    background-color: rgb(246, 247, 246)
+}
+
+.background-color-grey .item {
+    background-color: transparent;
+    /*border-color: transparent;*/
+}
+
+.background-color-grey .toggle .track {
+    background-color: transparent;
+}
+
