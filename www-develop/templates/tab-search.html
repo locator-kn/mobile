@@ -6,8 +6,7 @@
                     <label class="item item-input">
                         <i class="icon ion-search placeholder-icon"></i>
                         <input class="city" type="text" placeholder="Wohin?" ng-model-options='{ debounce: 100 }'
-                               ng-model="sc.city"
-                            >
+                               ng-model="sc.city"/>
                     </label>
                 </li>
                 <li class="item" ng-show="$index<3" ng-repeat="city in sc.tripCities | filter:sc.city" ng-if="sc.city"
