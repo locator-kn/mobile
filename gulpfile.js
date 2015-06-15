@@ -37,7 +37,7 @@ gulp.task('ts', function () {
     }
 
     var templateObject = {
-        basePath: baseUrl || 'http://locator.in.htwg-konstanz.de:3001/api/v1'
+        basePath: baseUrl || 'http://locator.in.htwg-konstanz.de/api/v1'
     };
 
 
