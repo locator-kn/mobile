@@ -14,17 +14,10 @@ module Controller {
             this.availableDays = this.DataService.getAvailableDays();
             this.availablePersons = this.DataService.getAvailablePersons();
 
-        }
-
-        searchCity(searchFilter) {
-            console.log('Searching cities for ' + searchFilter);
-
-            this.DataService.getAvailableCities()
-                .then(result => {
-                    this.tripCities = result.data.filter(function (city) {
-                        if (city.title.toLowerCase().indexOf(searchFilter.toLowerCase()) !== -1) return true;
-                    });
-                });
+            this.DataService.getAvailableCities().then((result) => {
+                    this.tripCities = result.data;
+                }
+            );
         }
 
         setCity(cityId) {
