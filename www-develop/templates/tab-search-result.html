@@ -3,7 +3,7 @@
         <ul class="list">
             <div ng-repeat="result in src.results">
                 <li>
-                    <img class="tmpImageWidth" src="./images/noImagePlaceholder.jpg">
+                    <img class="tmpImageWidth" ng-src="../../images/noImagePlaceholder.jpg">
                     <ul>
                         <li class="item">
                             <div>{{result.title}}</div>
@@ -22,7 +22,11 @@
                             </label>
                         </li>
                         <li class="item">
-                            MOODS
+                            <div ng-repeat="mood in result.moods">
+                                <div ng-repeat="availableMood in src.moods |filter:mood">
+                                    <img class="result-mood" ng-src="../../images/icons/{{availableMood.icon}}">
+                                </div>
+                            </div>
                         </li>
                     </ul>
                 </li>
