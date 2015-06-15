@@ -33,7 +33,7 @@ module Service {
         }, {
             query_name: "halligalli_drecksau",
             title: "halligalli drecksau",
-            icon: "hallihalli_drecksau.png",
+            icon: "halligalli_drecksau.png",
             icon_grey: "halligalli_drecksau_grey.png",
             description: ""
         }, {
@@ -73,7 +73,7 @@ module Service {
             icon_grey: "family_fun_grey.png",
             description: ""
         }, {
-            query_name: "kultur_und_siteseeing",
+            query_name: "kultur_und_sighteseeing",
             title: "kultur und sighteseeing",
             icon: "kultur_und_sighteseeing.png",
             icon_grey: "kultur_und_sighteseeing_grey.png",
@@ -107,6 +107,10 @@ module Service {
 
         getAvailablePersons() {
             return this.availablePersons;
+        }
+
+        getAvailableMoods() {
+            return this.availableMoods;
         }
 
 
