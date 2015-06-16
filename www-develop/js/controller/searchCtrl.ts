@@ -19,11 +19,17 @@ module Controller {
                 this.availablePersons = result.data;
             });
 
-            this.DataService.getAvailableCities().then((result) => {
-                    this.tripCities = result.data;
-                }
-            );
+            this.updateCities();
         }
+
+        updateCities = ()=> {
+            if (this.tripCities <= 0) {
+                this.DataService.getAvailableCities().then((result) => {
+                        this.tripCities = result.data;
+                    }
+                );
+            }
+        };
 
         setCity(cityId) {
             var city = this.tripCities.filter(function (obj) {
