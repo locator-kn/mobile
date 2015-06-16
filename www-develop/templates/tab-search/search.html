@@ -13,12 +13,7 @@
                 <!--ng-if="sc.city"-->
                 <!--ng-click="sc.setCity(city.id)">{{city.title}}-->
                 <!--</li>-->
-                <!--<li class="item">-->
-                <!--<input class="search-date" type="date" placeholder="Von?">-->
-                <!--</li>-->
-                <!--<li class="item">-->
-                <!--<input class="search-date" type="date" placeholder="Bis?" value="">-->
-                <!--</li>-->
+
 
                 <li class="item search-filter" ng-click="showDetails = ! showDetails">
                     Filter <i class="ion-chevron-down filter-icon-down"></i>
@@ -26,6 +21,13 @@
                     <div class="select-elements"></div>
                 </li>
                 <div ng-show="showDetails">
+                    <label class="item item-input">
+                        <span class="input-label">Zeitraum</span>
+                        <input class="text-right" type="text" placeholder="Von" onfocus="(this.type='date')">
+                    </label>
+                    <label class="item item-input">
+                        <input class="text-right" type="text" placeholder="Bis" onfocus="(this.type='date')">
+                    </label>
                     <li class="item">
                         Tage
                         <div class="select-elements">
