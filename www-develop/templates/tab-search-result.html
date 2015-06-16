@@ -11,16 +11,16 @@
                             <label class="text-color-red">{{result.username || 'anonym'}}</label>
 
                         </li>
-                        <!--<li class="item">-->
-                            <!--<resultdate class="text-color-red" date="result.start_date"></resultdate>-->
-                            <!--bis-->
-                            <!--<resultdate class="text-color-red" date="result.end_date"></resultdate>-->
-                            <!--</br>-->
-                            <!--<label>-->
-                                <!--Dauer:-->
-                                <!--<label class="text-color-red">{{result.days}} Tage</label>-->
-                            <!--</label>-->
-                        <!--</li>-->
+                        <li class="item">
+                            <resultdate class="text-color-red" date="result.start_date"></resultdate>
+                            bis
+                            <resultdate class="text-color-red" date="result.end_date"></resultdate>
+                            </br>
+                            <label>
+                                Dauer:
+                                <label class="text-color-red">{{result.days}} Tage</label>
+                            </label>
+                        </li>
                         <li class="item">
                             <div ng-repeat="mood in result.moods">
                                 <div ng-repeat="availableMood in src.moods |filter:mood">
