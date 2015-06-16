@@ -6,11 +6,16 @@ module Service {
         city:any = {};
 
         // TODO: same as in web project - outsource into util library
-        constructor(private $http, private $rootScope, private basePath, private CacheFactory, private lodash, private DataService, private $q) {
+        constructor(private $http, private $rootScope, private basePath, private CacheFactory, private lodash, private DataService, private $q, private $ionicLoading) {
         }
 
 
         getTripsByQuery(searchQuery) {
+            // start loading screen
+            this.$ionicLoading.show({
+                template: 'Trips werden gesucht...'
+            });
+
             // create a copy by value
             var sq = this.lodash.cloneDeep(searchQuery);
             var query = this.basePath + '/trips/search';
