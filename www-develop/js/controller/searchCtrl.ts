@@ -8,7 +8,7 @@ module Controller {
         availablePersons:any = [];
 
         tripCities:any = [];
-        city:string;
+        city:any = {};
 
         constructor(private $scope, private $rootScope, private $element, private $state, private DataService, private SearchService, private ResultService) {
             this.DataService.getAvailableDays().then((result)=> {
@@ -17,6 +17,12 @@ module Controller {
 
             this.DataService.getAvailablePersons().then((result) => {
                 this.availablePersons = result.data;
+            });
+
+            $rootScope.$on('newSearchCity', () => {
+                this.city = this.SearchService.getCity();
+                console.log('new city: ' + this.city.title)
+
             });
 
             this.updateCities();
@@ -53,8 +59,6 @@ module Controller {
             this.SearchService.getTripsByQuery(query).then(result => {
                 this.ResultService.setResults(result.data);
             });
-
-
         }
 
         static
