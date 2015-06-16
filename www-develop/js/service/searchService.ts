@@ -6,7 +6,7 @@ module Service {
         city:any = {};
 
         // TODO: same as in web project - outsource into util library
-        constructor(private $http, private $rootScope, private basePath, private CacheFactory, private lodash, private DataService, private $q, private $ionicLoading) {
+        constructor(private $http, private $rootScope, private basePath, private lodash, private DataService, private $q, private $ionicLoading) {
         }
 
 

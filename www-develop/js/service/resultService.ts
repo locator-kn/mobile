@@ -3,9 +3,8 @@ module Service {
 
         results:any;
 
-        constructor(private $http, private $rootScope, private basePath, private CacheFactory, private lodash, private DataService, private $q) {
+        constructor(private $rootScope) {
         }
-
 
 
         setResults(results) {

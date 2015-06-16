@@ -4,7 +4,7 @@ module Controller {
 
         moods:any = [];
 
-        constructor(private $scope, private $rootScope, private ResultService, private $element, private DataService, private  $ionicLoading) {
+        constructor(private $rootScope, private ResultService, private $element, private DataService, private  $ionicLoading) {
             // css test TOOD: remove
             var elementWidth = angular.element(this.$element).width();
             angular.element(".tmpImageWidth").css({'width': elementWidth + "px"});

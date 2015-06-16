@@ -3,7 +3,7 @@ module Controller {
 
         cities:any = {};
 
-        constructor(private $scope, private $rootScope, private $stateParams, private DataService, private SearchService) {
+        constructor(private DataService, private SearchService) {
             this.DataService.getAvailableCities().then((result) => {
                 this.cities = result.data;
             });

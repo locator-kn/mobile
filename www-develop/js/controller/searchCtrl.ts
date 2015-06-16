@@ -10,7 +10,7 @@ module Controller {
         tripCities:any = [];
         city:any = {};
 
-        constructor(private $scope, private $rootScope, private $element, private $state, private DataService, private SearchService, private ResultService) {
+        constructor(private $rootScope, private DataService, private SearchService, private ResultService) {
             this.DataService.getAvailableDays().then((result)=> {
                 this.availableDays = result.data;
             });
