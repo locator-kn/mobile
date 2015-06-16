@@ -1,8 +1,15 @@
 module Controller {
     export class TripCtrl {
 
-        constructor(private $scope, private $rootScope, private $stateParams, private $state) {
-            console.log(this.$stateParams.tripId)
+        trip:any = {};
+        tripId:string;
+
+        constructor(private $scope, private $rootScope, private $stateParams, private $state, private SearchService) {
+            // get trip by id from state param
+            SearchService.getTripById(this.$stateParams.tripId).then((result) => {
+                this.trip = result.data;
+            });
+
         }
 
         static
