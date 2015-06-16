@@ -13,7 +13,7 @@ module Service {
         getTripsByQuery(searchQuery) {
             // start loading screen
             this.$ionicLoading.show({
-                template: 'Trips werden gesucht...'
+                template: '<ion-spinner icon="spiral"></ion-spinner>'
             });
 
             // create a copy by value

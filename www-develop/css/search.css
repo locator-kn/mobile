@@ -11,3 +11,11 @@
     background-color: transparent;
 }
 
+.spinner svg {
+    width: 75px;
+    height: 75px;
+}
+
+.loading-container .loading{
+    background-color: transparent;
+}
