@@ -134,6 +134,15 @@ angular.module('starter', deps)
                     }
                 }
             })
+
+            .state('tab.search-city', {
+                url: '/city',
+                views: {
+                    'tab-search': {
+                        templateUrl: 'templates/tab-search/city.html'
+                    }
+                }
+            })
             .state('tab.search-result', {
                 url: '/result',
                 views: {
