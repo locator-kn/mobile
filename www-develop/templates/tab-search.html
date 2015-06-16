@@ -6,7 +6,7 @@
                     <label class="item item-input">
                         <i class="icon ion-search placeholder-icon"></i>
                         <!-- call update cities if anyone use 'back' -> no static data anymore-->
-                        <input class="city" type="text" placeholder="Wohin?" ng-change-options='{ debounce: 1000 }'
+                        <input class="city" type="search" placeholder="Wohin?" ng-change-options='{ debounce: 1000 }'
                                ng-change="sc.updateCities()" ng-model="sc.city"/>
                     </label>
                 </li>
