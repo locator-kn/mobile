@@ -1,10 +1,10 @@
 module Controller {
     export class SearchCtrl {
 
-        selectedDays:number = 1;
+        selectedDays:number ;
         availableDays:any = [];
 
-        selectedPersons:number = 1;
+        selectedPersons:number;
         availablePersons:any = [];
 
         tripCities:any = [];
