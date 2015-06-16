@@ -7,6 +7,7 @@
 /// <reference path="controller/welcomeCtrl.ts" />
 /// <reference path="controller/searchCtrl.ts" />
 /// <reference path="controller/searchResultCtrl.ts" />
+/// <reference path="controller/tripCtrl.ts" />
 
 /// <reference path="./service/dataService.ts" />
 /// <reference path="./service/searchService.ts" />
@@ -50,6 +51,7 @@ angular.module('starter', deps)
     .controller(Controller.WelcomeCtrl.controllerId, Controller.WelcomeCtrl)
     .controller(Controller.SearchCtrl.controllerId, Controller.SearchCtrl)
     .controller(Controller.SearchResultCtrl.controllerId, Controller.SearchResultCtrl)
+    .controller(Controller.TripCtrl.controllerId, Controller.TripCtrl)
 
     // services
     .service(Service.DataService.serviceId, Service.DataService)
@@ -126,15 +128,22 @@ angular.module('starter', deps)
                 url: '/search',
                 views: {
                     'tab-search': {
-                        templateUrl: 'templates/tab-search.html'
+                        templateUrl: 'templates/tab-search/search.html'
                     }
                 }
             })
             .state('tab.search-result', {
-                url: '/search-result',
+                url: '/result',
                 views: {
                     'tab-search': {
-                        templateUrl: 'templates/tab-search-result.html'
+                        templateUrl: 'templates/tab-search/result.html'
+                    }
+                }
+            }).state('tab.search-result-trip', {
+                url: '/trip/:tripId',
+                views: {
+                    'tab-search': {
+                        templateUrl: 'templates/tab-search/trip.html'
                     }
                 }
             })
