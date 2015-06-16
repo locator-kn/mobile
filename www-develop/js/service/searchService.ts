@@ -3,26 +3,26 @@ module Service {
 
         citiesWithTrips = [];
 
+        city:any = {};
+
         // TODO: same as in web project - outsource into util library
-        constructor(private $http, private basePath, private CacheFactory, private lodash, private DataService, private $q) {
+        constructor(private $http, private $rootScope, private basePath, private CacheFactory, private lodash, private DataService, private $q) {
         }
 
 
         getTripsByQuery(searchQuery) {
             // create a copy by value
             var sq = this.lodash.cloneDeep(searchQuery);
-
             var query = this.basePath + '/trips/search';
-            return this.getCityId(sq.city).then(cityid => {
-                // delete city from query since it is part of the path
-                delete sq.city;
+            // delete city from query since it is part of the path
+            var cityid = sq.city.id;
+            delete sq.city;
 
-                // returning a promise inside a promise will make the outside promise resolving if inside is resolved.
-                return this.$http({
-                    url: query + '/' + cityid,
-                    params: sq,
-                    method: 'GET'
-                });
+            // returning a promise inside a promise will make the outside promise resolving if inside is resolved.
+            return this.$http({
+                url: query + '/' + cityid,
+                params: sq,
+                method: 'GET'
             });
         }
 
@@ -44,7 +44,17 @@ module Service {
         }
 
         getTripById(tripId) {
-            return this.$http.get(this.basePath + '/trips/'+tripId);
+            return this.$http.get(this.basePath + '/trips/' + tripId);
+        }
+
+
+        setCity(city) {
+            this.city = city;
+            this.$rootScope.$emit('newSearchCity');
+        }
+
+        getCity() {
+            return this.city;
         }
 
         static
