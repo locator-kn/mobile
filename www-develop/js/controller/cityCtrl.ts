@@ -9,6 +9,9 @@ module Controller {
             });
         }
 
+        setCity(city) {
+            this.SearchService.setCity(city);
+        }
 
         static
             controllerId:string = "CityCtrl";
