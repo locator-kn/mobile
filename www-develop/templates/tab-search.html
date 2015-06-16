@@ -5,14 +5,21 @@
                 <li>
                     <label class="item item-input">
                         <i class="icon ion-search placeholder-icon"></i>
-                        <input class="city" type="text" placeholder="Wohin?" ng-model-options='{ debounce: 100 }'
-                               ng-model="sc.city"/>
+                        <!-- call update cities if anyone use 'back' -> no static data anymore-->
+                        <input class="city" type="text" placeholder="Wohin?" ng-change-options='{ debounce: 1000 }'
+                               ng-change="sc.updateCities()" ng-model="sc.city"/>
                     </label>
                 </li>
-                <li class="item" ng-show="$index<3" ng-repeat="city in sc.tripCities | startsWith: sc.city" ng-if="sc.city"
+                <li class="item" ng-show="$index<3" ng-repeat="city in sc.tripCities | startsWith: sc.city"
+                    ng-if="sc.city"
                     ng-click="sc.setCity(city.id)">{{city.title}}
                 </li>
-
+                <!--<li class="item">-->
+                    <!--<input class="search-date" type="date" placeholder="Von?">-->
+                <!--</li>-->
+                <!--<li class="item">-->
+                    <!--<input class="search-date" type="date" placeholder="Bis?" value="">-->
+                <!--</li>-->
                 <li class="item">
                     Tage
                     <div class="select-elements">
