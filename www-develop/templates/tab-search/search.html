@@ -1,54 +1,61 @@
 <ion-view view-title="Suche" ng-controller="SearchCtrl as sc">
     <ion-nav-buttons side="left">
-            <i class="ion-chevron-left" ui-sref="tab.welcome">Home</i>
+        <i class="ion-chevron-left" ui-sref="tab.welcome">Home</i>
     </ion-nav-buttons>
     <ion-content class="background-color-grey">
         <div>
             <ul class="list">
                 <li class="item item-icon-right" ui-sref="tab.search-city">
                     {{sc.city.title || "Wo willst du hin?"}}&nbsp;
-                        <i class="icon ion-chevron-right icon-accessory"></i>
+                    <i class="icon ion-chevron-right icon-accessory"></i>
                 </li>
                 <!--<li class="item" ng-show="$index<3" ng-repeat="city in sc.tripCities | startsWith: sc.city"-->
-                    <!--ng-if="sc.city"-->
-                    <!--ng-click="sc.setCity(city.id)">{{city.title}}-->
+                <!--ng-if="sc.city"-->
+                <!--ng-click="sc.setCity(city.id)">{{city.title}}-->
                 <!--</li>-->
                 <!--<li class="item">-->
-                    <!--<input class="search-date" type="date" placeholder="Von?">-->
+                <!--<input class="search-date" type="date" placeholder="Von?">-->
                 <!--</li>-->
                 <!--<li class="item">-->
-                    <!--<input class="search-date" type="date" placeholder="Bis?" value="">-->
+                <!--<input class="search-date" type="date" placeholder="Bis?" value="">-->
                 <!--</li>-->
-                <li class="item">
-                    Tage
-                    <div class="select-elements">
-                        <div class="circle" ng-repeat="day in sc.availableDays"
-                             ng-click="sc.selectedDays=day.value"
-                             ng-class="{'circle-selected': sc.selectedDays == day.value}">{{day.title}}
-                        </div>
-                    </div>
-                </li>
-                <li class="item">
-                    Personen
-                    <div class="select-elements">
-                        <div class="circle" ng-repeat="person in sc.availablePersons"
-                             ng-click="sc.selectedPersons=person.value"
-                             ng-class="{'circle-selected': sc.selectedPersons == person.value}">{{person.title}}
-                        </div>
-                    </div>
-                </li>
-                <li class="item item-toggle">
-                    Übernachtung
-                    <label class="toggle toggle-dark toggle-assertive">
-                        <input type="checkbox">
 
-                        <div class="track">
-                            <div class="handle"></div>
-                        </div>
-                    </label>
+                <li class="item search-filter" ng-click="showDetails = ! showDetails">
+                    Filter <i class="ion-chevron-down filter-icon-down"></i>
+
+                    <div class="select-elements"></div>
                 </li>
+                <div ng-show="showDetails">
+                    <li class="item">
+                        Tage
+                        <div class="select-elements">
+                            <div class="circle" ng-repeat="day in sc.availableDays"
+                                 ng-click="sc.selectedDays=day.value"
+                                 ng-class="{'circle-selected': sc.selectedDays == day.value}">{{day.title}}
+                            </div>
+                        </div>
+                    </li>
+                    <li class="item">
+                        Personen
+                        <div class="select-elements">
+                            <div class="circle" ng-repeat="person in sc.availablePersons"
+                                 ng-click="sc.selectedPersons=person.value"
+                                 ng-class="{'circle-selected': sc.selectedPersons == person.value}">{{person.title}}
+                            </div>
+                        </div>
+                    </li>
+                    <li class="item item-toggle">
+                        Übernachtung
+                        <label class="toggle toggle-dark toggle-assertive">
+                            <input type="checkbox">
 
+                            <div class="track">
+                                <div class="handle"></div>
+                            </div>
+                        </label>
+                    </li>
 
+                </div>
             </ul>
         </div>
         <div>
