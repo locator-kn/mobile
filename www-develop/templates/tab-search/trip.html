@@ -1,4 +1,31 @@
-<ion-view ng-controller="TripCtrl as tc">
+<ion-view view-title="Trip" ng-controller="TripCtrl as tc">
     <ion-content>
+        <img class="tmpImageWidth" src="./images/noImagePlaceholder.jpg">
+        <ul>
+            <li class="item">
+                <div>{{tc.trip.title}}</div>
+                <label>von </label>
+                <label class="text-color-red">{{tc.trip.username || 'anonym'}}</label>
+
+            </li>
+            <li class="item">
+                <resultdate class="text-color-red" date="tc.trip.start_date"></resultdate>
+                bis
+                <resultdate class="text-color-red" date="tc.trip.end_date"></resultdate>
+                </br>
+                <label>
+                    Dauer:
+                    <label class="text-color-red">{{tc.trip.days}} Tage</label>
+                </label>
+            </li>
+            <li class="item">
+                <div ng-repeat="mood in tc.trip.moods">
+                    <div ng-repeat="availableMood in tc.moods |filter:mood">
+                        <img class="tc.trip-mood" src="./images/icons/{{availableMood.icon}}">
+                    </div>
+                </div>
+            </li>
+        </ul>
+        {{tc.trip}}
     </ion-content>
 </ion-view>
