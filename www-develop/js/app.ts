@@ -8,6 +8,7 @@
 /// <reference path="controller/searchCtrl.ts" />
 /// <reference path="controller/searchResultCtrl.ts" />
 /// <reference path="controller/tripCtrl.ts" />
+/// <reference path="controller/cityCtrl.ts" />
 
 /// <reference path="./service/dataService.ts" />
 /// <reference path="./service/searchService.ts" />
@@ -52,6 +53,7 @@ angular.module('starter', deps)
     .controller(Controller.SearchCtrl.controllerId, Controller.SearchCtrl)
     .controller(Controller.SearchResultCtrl.controllerId, Controller.SearchResultCtrl)
     .controller(Controller.TripCtrl.controllerId, Controller.TripCtrl)
+    .controller(Controller.CityCtrl.controllerId, Controller.CityCtrl)
 
     // services
     .service(Service.DataService.serviceId, Service.DataService)
