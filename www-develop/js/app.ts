@@ -63,10 +63,12 @@ angular.module('starter', deps)
     .filter('startsWith', function () {
         return function (array, search) {
             var matches = [];
-            for (var i = 0; i < array.length; i++) {
-                if (array[i].title.indexOf(search) === 0 &&
-                    search.length < array[i].title.length) {
-                    matches.push(array[i]);
+            if (search) {
+                for (var i = 0; i < array.length; i++) {
+                    if (array[i].title.toLowerCase().indexOf(search.toLowerCase()) === 0 &&
+                        search.length < array[i].title.length) {
+                        matches.push(array[i]);
+                    }
                 }
             }
             return matches;
