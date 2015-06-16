@@ -43,6 +43,9 @@ module Service {
             return promise;
         }
 
+        getTripById(tripId) {
+            return this.$http.get(this.basePath + '/trips/'+tripId);
+        }
 
         static
             serviceId:string = "SearchService";
