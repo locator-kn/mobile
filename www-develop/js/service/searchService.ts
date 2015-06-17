@@ -4,6 +4,7 @@ module Service {
         citiesWithTrips = [];
 
         city:any = {};
+        moods:any = {};
 
         // TODO: same as in web project - outsource into util library
         constructor(private $http, private $rootScope, private basePath, private lodash, private DataService, private $q, private $ionicLoading) {
@@ -60,6 +61,10 @@ module Service {
 
         getCity() {
             return this.city;
+        }
+
+        setMoods(moods){
+            this.moods = moods;
         }
 
         static
