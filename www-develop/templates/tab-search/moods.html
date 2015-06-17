@@ -1,0 +1,14 @@
+<ion-view view-title="Moods" ng-controller="MoodCtrl as cc">
+    <ion-content class="background-color-grey">
+        <ul class="list">
+            <li class="item" ng-repeat="mood in cc.moods" ng-click="cc.setMood(mood)">
+                <img class="result-mood" src="./images/icons/{{mood.icon_grey}}">
+
+                <span class="mood-text">{{mood.title}}</span>
+                <label class="checkbox mood-checkbox checkbox-assertive">
+                    <input type="checkbox">
+                </label>
+            </li>
+        </ul>
+    </ion-content>
+</ion-view>
