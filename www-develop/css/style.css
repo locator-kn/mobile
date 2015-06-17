@@ -16,6 +16,9 @@
     color: rgb(33, 205, 196);
 }
 
+.moods-style{
+    height: 33px;
+}
 /*TODO refactor and remove */
 .tmpImageWidth {
     width: 100%;
