@@ -9,6 +9,8 @@ module Controller {
 
         selectedMoods:any = [];
 
+        accommodation:boolean;
+
         start_date:string;
         end_date:string;
 
