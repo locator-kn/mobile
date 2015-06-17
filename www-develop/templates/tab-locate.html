@@ -6,6 +6,12 @@
               Mach ein Foto!
           </button>
           <img class="tmpImageWidth" src="{{lc.imageURI}}">
+          <button ng-click="lc.getCurrentPosition()"
+                  class="button button-full background-green bottom">
+              GPS Position
+          </button>
+          Latitude: {{lc.lat}}
+          Longitude: {{lc.long}}
       </div>
   </ion-content>
 </ion-view>
