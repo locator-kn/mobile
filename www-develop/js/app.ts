@@ -178,11 +178,11 @@ angular.module('starter', deps)
                 }
             })
 
-            .state('tab.chats', {
-                url: '/chats',
+            .state('tab.chat', {
+                url: '/chat',
                 views: {
-                    'tab-chats': {
-                        templateUrl: 'templates/tab-chats.html'
+                    'tab-chat': {
+                        templateUrl: 'templates/tab-chat.html'
                     }
                 }
             }).state('tab.locate', {
