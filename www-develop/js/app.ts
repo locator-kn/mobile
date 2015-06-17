@@ -30,6 +30,7 @@
 var deps = [
     'ionic',
     'ngLodash',
+    'locator.accommodation-equipment-chooser',
     'angular-cache'
 ];
 
