@@ -1,5 +1,11 @@
-<ion-view view-title="Locate">
+<ion-view  view-title="Locate"  ng-controller="LocateCtrl as lc">
   <ion-content>
-
+      <div>
+          <button ng-click="lc.getPhoto()"
+                  class="button button-full background-green bottom">
+              Mach ein Foto!
+          </button>
+          <img class="tmpImageWidth" src="{{lc.imageURI}}">
+      </div>
   </ion-content>
 </ion-view>
