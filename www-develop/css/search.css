@@ -33,3 +33,12 @@
 .text-right {
     text-align: right;
 }
+
+.mood-text {
+    float: left;
+    line-height: 37px;
+}
+
+.mood-checkbox {
+    float: right;
+}
