@@ -62,25 +62,20 @@ module Controller {
                 moodQueryArray.push(this.selectedMoods[mood].query_name);
             }
 
-            // check if start & end date is committed
-            if (this.start_date && this.end_date) {
-                this.start_date = new Date(this.start_date).toISOString();
-                this.end_date = new Date(this.end_date).toISOString();
-            } else {
-                // if only one of both is committed
-                this.start_date = '';
-                this.end_date = '';
-            }
-
-            new Date(this.start_date).toISOString();
             var query = {
                 city: this.city,
                 days: this.selectedDays,
                 persons: this.selectedPersons,
                 moods: moodQueryArray,
-                start_date: this.start_date,
-                end_date: this.end_date
+                start_date: '',
+                end_date: ''
             };
+
+            // check if start & end date is committed
+            if (this.start_date && this.end_date) {
+                query.start_date = new Date(this.start_date).toISOString();
+                query.end_date = new Date(this.end_date).toISOString();
+            }
 
             console.log(query);
 
