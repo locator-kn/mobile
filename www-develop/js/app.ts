@@ -15,6 +15,7 @@
 /// <reference path="./service/searchService.ts" />
 /// <reference path="./service/resultService.ts" />
 /// <reference path="./service/cameraService.ts" />
+/// <reference path="./service/geolocationService.ts" />
 
 // Ionic Starter App
 
@@ -63,6 +64,7 @@ angular.module('starter', deps)
     .service(Service.SearchService.serviceId, Service.SearchService)
     .service(Service.ResultService.serviceId, Service.ResultService)
     .service(Service.CameraService.serviceId, Service.CameraService)
+    .service(Service.GeolocationService.serviceId, Service.GeolocationService)
 
     .config(function (CacheFactoryProvider) {
         angular.extend(CacheFactoryProvider.defaults, {maxAge: 15 * 60 * 1000});
