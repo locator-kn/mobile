@@ -10,10 +10,6 @@ module Controller {
             });
         }
 
-        setMoods(moods) {
-            this.SearchService.setMoods(moods);
-        }
-
         sync(bool, item) {
             if (bool) {
                 // add item
@@ -32,6 +28,7 @@ module Controller {
                     }
                 }
             }
+            this.SearchService.setMoods(this.selected);
         }
 
         static
