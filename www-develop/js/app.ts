@@ -14,6 +14,7 @@
 
 /// <reference path="./service/dataService.ts" />
 /// <reference path="./service/searchService.ts" />
+/// <reference path="./service/userService.ts" />
 /// <reference path="./service/resultService.ts" />
 /// <reference path="./service/cameraService.ts" />
 /// <reference path="./service/geolocationService.ts" />
@@ -67,6 +68,7 @@ angular.module('starter', deps)
     .service(Service.ResultService.serviceId, Service.ResultService)
     .service(Service.CameraService.serviceId, Service.CameraService)
     .service(Service.GeolocationService.serviceId, Service.GeolocationService)
+    .service(Service.UserService.serviceId, Service.UserService)
 
     .config(function (CacheFactoryProvider) {
         angular.extend(CacheFactoryProvider.defaults, {maxAge: 15 * 60 * 1000});
