@@ -2,3 +2,9 @@
     border-radius: 50%;
     width: 60px;
 }
+
+.trip .list-text {
+    border-color: #ddd;
+    border-width: 1px;
+    border-style: solid;
+}
