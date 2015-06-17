@@ -9,6 +9,7 @@
 /// <reference path="controller/searchResultCtrl.ts" />
 /// <reference path="controller/tripCtrl.ts" />
 /// <reference path="controller/cityCtrl.ts" />
+/// <reference path="controller/moodCtrl.ts" />
 /// <reference path="controller/locateCtrl.ts" />
 
 /// <reference path="./service/dataService.ts" />
@@ -57,6 +58,7 @@ angular.module('starter', deps)
     .controller(Controller.SearchResultCtrl.controllerId, Controller.SearchResultCtrl)
     .controller(Controller.TripCtrl.controllerId, Controller.TripCtrl)
     .controller(Controller.CityCtrl.controllerId, Controller.CityCtrl)
+    .controller(Controller.MoodCtrl.controllerId, Controller.MoodCtrl)
     .controller(Controller.LocateCtrl.controllerId, Controller.LocateCtrl)
 
     // services
@@ -146,6 +148,14 @@ angular.module('starter', deps)
                 views: {
                     'tab-search': {
                         templateUrl: 'templates/tab-search/city.html'
+                    }
+                }
+            })
+            .state('tab.search-moods', {
+                url: '/moods',
+                views: {
+                    'tab-search': {
+                        templateUrl: 'templates/tab-search/moods.html'
                     }
                 }
             })
