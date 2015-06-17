@@ -9,6 +9,9 @@ module Controller {
 
         selectedMoods:any = [];
 
+        start_date:string;
+        end_date:string;
+
         tripCities:any = [];
         city:any = {};
 
@@ -52,7 +55,6 @@ module Controller {
         }
 
         searchTrips() {
-
             var moodQueryArray = [];
             for (var mood in this.selectedMoods) {
                 moodQueryArray.push(this.selectedMoods[mood].query_name);
@@ -62,8 +64,12 @@ module Controller {
                 city: this.city,
                 days: this.selectedDays,
                 persons: this.selectedPersons,
-                moods: moodQueryArray
+                moods: moodQueryArray,
+                start_date: new Date(this.start_date).toISOString(),
+                end_date: new Date(this.end_date).toISOString()
             };
+
+            console.log(query);
 
             this.SearchService.getTripsByQuery(query).then(result => {
                 this.ResultService.setResults(result.data);

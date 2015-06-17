@@ -23,10 +23,10 @@
                 <div ng-show="showDetails">
                     <label class="item item-input">
                         <span class="input-label">Zeitraum</span>
-                        <input class="text-right" type="text" placeholder="Von" onfocus="(this.type='date')">
+                        <input class="text-right" ng-model="sc.start_date" type="text" placeholder="Von" onfocus="(this.type='date')">
                     </label>
                     <label class="item item-input">
-                        <input class="text-right" type="text" placeholder="Bis" onfocus="(this.type='date')">
+                        <input class="text-right" ng-model="sc.end_date" type="text" placeholder="Bis" onfocus="(this.type='date')">
                     </label>
                     <li class="item">
                         Tage
