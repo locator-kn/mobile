@@ -1,11 +1,13 @@
 module Controller {
     export class SearchCtrl {
 
-        selectedDays:number ;
+        selectedDays:number;
         availableDays:any = [];
 
         selectedPersons:number;
         availablePersons:any = [];
+
+        selectedMoods:any = [];
 
         tripCities:any = [];
         city:any = {};
@@ -21,8 +23,10 @@ module Controller {
 
             $rootScope.$on('newSearchCity', () => {
                 this.city = this.SearchService.getCity();
-                console.log('new city: ' + this.city.title)
+            });
 
+            $rootScope.$on('newSearchMoods', () => {
+                this.selectedMoods = this.SearchService.getMoods();
             });
 
             this.updateCities();
@@ -48,13 +52,18 @@ module Controller {
         }
 
         searchTrips() {
+
+            var moodQueryArray = [];
+            for (var mood in this.selectedMoods) {
+                moodQueryArray.push(this.selectedMoods[mood].query_name);
+            }
+
             var query = {
                 city: this.city,
                 days: this.selectedDays,
-                persons: this.selectedPersons
+                persons: this.selectedPersons,
+                moods: moodQueryArray
             };
-
-            console.log(query);
 
             this.SearchService.getTripsByQuery(query).then(result => {
                 this.ResultService.setResults(result.data);
