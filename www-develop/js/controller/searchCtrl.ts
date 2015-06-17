@@ -8,6 +8,7 @@ module Controller {
         availablePersons:any = [];
 
         selectedMoods:any = [];
+        availableMoods:any = [];
 
         accommodation:boolean;
 
@@ -24,6 +25,10 @@ module Controller {
 
             this.DataService.getAvailablePersons().then((result) => {
                 this.availablePersons = result.data;
+            });
+
+            this.DataService.getAvailableMoods().then((result) => {
+                this.availableMoods = result.data;
             });
 
             $rootScope.$on('newSearchCity', () => {
