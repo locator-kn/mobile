@@ -4,5 +4,13 @@
             "type": "registry",
             "id": "com.ionic.keyboard"
         }
+    },
+    "org.apache.cordova.camera": {
+        "source": {
+            "type": "registry",
+            "id": "org.apache.cordova.camera"
+        },
+        "is_top_level": true,
+        "variables": {}
     }
 }
