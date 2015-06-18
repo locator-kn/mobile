@@ -18,7 +18,7 @@ module Controller {
         tripCities:any = [];
         city:any = {};
 
-        constructor(private $rootScope, private DataService, private SearchService, private ResultService) {
+        constructor(private $rootScope, private $scope, private DataService, private $state, private SearchService, private ResultService, private $ionicPopup) {
             this.DataService.getAvailableDays().then((result)=> {
                 this.availableDays = result.data;
             });
@@ -62,6 +62,18 @@ module Controller {
         }
 
         searchTrips() {
+            if (this.isEmpty(this.city)) {
+                var alertPopup = this.$ionicPopup.alert({
+                    title: '',
+                    template: 'Bitte eine Stadt auswählen.'
+                });
+                alertPopup.then(function (res) {
+                    // do nothing
+                });
+                // break search
+                return;
+            }
+
             var moodQueryArray = [];
             for (var mood in this.selectedMoods) {
                 moodQueryArray.push(this.selectedMoods[mood].query_name);
@@ -82,11 +94,21 @@ module Controller {
                 query.end_date = new Date(this.end_date).toISOString();
             }
 
-            console.log(query);
 
             this.SearchService.getTripsByQuery(query).then(result => {
                 this.ResultService.setResults(result.data);
             });
+            this.$state.go('tab.search-result');
+
+        }
+
+        isEmpty(myObject) {
+            for (var key in myObject) {
+                if (myObject.hasOwnProperty(key)) {
+                    return false;
+                }
+            }
+            return true;
         }
 
         static
