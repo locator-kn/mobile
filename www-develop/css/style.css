@@ -61,3 +61,10 @@
     display: inline-block;
 }
 
+.button-not-authenticated {
+    background-color: transparent;
+    color: white;
+    border-color: transparent;
+    width: 100%;
+    font-size: 10px;
+}
