@@ -1,0 +1,60 @@
+.moodal .user-input {
+    border-radius: 3px;
+    border: 1px solid white;
+    background: none;
+    padding: 8px 13px;
+    color: white;
+    width: 100%;
+    margin-top: 5px;
+}
+
+.moodal .button {
+    width: 100%;
+    margin-top: 5px;
+    text-align: left;
+    border: 1px solid white;
+    border-radius: 3px;
+
+}
+
+.moodal .backbutton {
+    margin-top: 77px;
+    background-color: transparent;
+    color: white;
+}
+
+.moodal .password-forgotten {
+    float: left;
+    font-size: 14px;
+    margin-top: 5px;
+    padding-left: 12px;
+}
+
+.moodal .register {
+    float: right;
+    padding-right: 12px;
+    font-size: 14px;
+    padding-top: 5px;
+}
+
+.moodal input::-webkit-input-placeholder {
+    color: white;
+}
+
+.loading {
+    width: 90%;
+}
+
+.backdrop {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal a.submit {
+    width: 100%;
+    background: white;
+    color: black;
+    float: left;
+    border-radius: 3px;
+    padding: 8px 13px;
+
+}
