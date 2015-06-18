@@ -11,6 +11,7 @@
 /// <reference path="controller/cityCtrl.ts" />
 /// <reference path="controller/moodCtrl.ts" />
 /// <reference path="controller/locateCtrl.ts" />
+/// <reference path="controller/loginCtrl.ts" />
 
 /// <reference path="./service/dataService.ts" />
 /// <reference path="./service/searchService.ts" />
@@ -62,6 +63,7 @@ angular.module('starter', deps)
     .controller(Controller.CityCtrl.controllerId, Controller.CityCtrl)
     .controller(Controller.MoodCtrl.controllerId, Controller.MoodCtrl)
     .controller(Controller.LocateCtrl.controllerId, Controller.LocateCtrl)
+    .controller(Controller.LoginCtrl.controllerId, Controller.LoginCtrl)
 
     // services
     .service(Service.DataService.serviceId, Service.DataService)
