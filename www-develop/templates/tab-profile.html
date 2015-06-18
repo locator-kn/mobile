@@ -1,4 +1,4 @@
-<ion-view class="profile" view-title="Profile"  >
+<ion-view class="profile" view-title="Profile">
     <ion-nav-buttons side="left ">
         <i class="icon ion-ios-arrow-back home-back-button" ui-sref="tab.welcome"></i>
     </ion-nav-buttons>
@@ -34,9 +34,10 @@
                         Abmelden
                     </li>
                 </ul>
-
-
             </div>
+        </div>
+        <div ng-if="!authenticated">
+            Bitte zuerst anmelden
         </div>
     </ion-content>
 </ion-view>
