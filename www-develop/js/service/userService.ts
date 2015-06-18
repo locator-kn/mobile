@@ -40,12 +40,16 @@ module Service {
         };
 
         login(mail, password) {
-
             return this.$http.post(this.basePath + '/login',
                 {
                     "mail": mail,
                     "password": password
                 })
+        }
+
+        logout() {
+            this.CacheFactory.clearAll();
+            return this.$http.get(this.basePath + '/logout');
         }
 
         getMe() {
