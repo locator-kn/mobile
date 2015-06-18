@@ -50,7 +50,7 @@
 }
 
 .mood-checkbox .border-transparent:before {
-    border-color: #343434;
+    border-color: #ddd;
 
 }
 .checkbox input:checked:before, .checkbox input:checked + .checkbox-icon:before{
