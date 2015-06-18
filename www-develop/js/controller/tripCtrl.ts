@@ -11,13 +11,15 @@ module Controller {
         // TODO remove variable
         witdh;
 
-        constructor(private $rootScope, private $element, private $stateParams, private SearchService, private DataService, private UserService) {
+        constructor(private $scope, private $element, private $stateParams, private SearchService, private DataService, private UserService) {
             // TODO remove line
             this.witdh = angular.element(this.$element).width();
 
             // get trip by id from state param
             SearchService.getTripById(this.$stateParams.tripId).then((result) => {
                 this.trip = result.data[0];
+                // TODO: workaround, because title do not update in trip.html
+                $scope.navTitle = this.trip.title;
 
                 this.UserService.getUser(this.trip.userid)
                     .then(result => {
