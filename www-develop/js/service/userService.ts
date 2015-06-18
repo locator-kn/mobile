@@ -4,7 +4,7 @@ module Service {
         usersIdCache;
 
 
-        constructor( private $http, private $q, private basePath, private CacheFactory, private $ionicLoading) {
+        constructor(private $http, private $q, private basePath, private CacheFactory, private $ionicLoading) {
             this.usersIdCache = CacheFactory.createCache('usersId');
         }
 
@@ -37,6 +37,14 @@ module Service {
             });
         };
 
+        login(mail, password) {
+
+            return this.$http.post(this.basePath + '/login',
+                {
+                    "mail": mail,
+                    "password": password
+                })
+        }
 
         openLoginModal = () => {
             this.$ionicLoading.show({templateUrl: 'templates/login-modal.html'}, {
