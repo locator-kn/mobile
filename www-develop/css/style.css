@@ -12,8 +12,8 @@
 }
 
 .circle-selected {
-    background-color: black;
-    color: rgb(33, 205, 196);
+    color: black;
+    background-color: rgb(33, 205, 196);
 }
 
 .moods-style {
@@ -59,3 +59,4 @@
 .welcome .back-button-text {
     display: inline-block;
 }
+
