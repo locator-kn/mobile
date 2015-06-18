@@ -8,9 +8,15 @@ module Controller {
         }
 
 
-        closeModal() {
+        openLoginModal = () => {
+            this.$ionicLoading.show({templateUrl: 'templates/login-modal.html'}, {
+                animation: 'slide-in-up'
+            })
+        };
+
+        closeLoginModal = ()=> {
             this.$ionicLoading.hide();
-        }
+        };
 
         static
             controllerId:string = "LoginCtrl";
