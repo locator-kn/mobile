@@ -28,7 +28,7 @@ module Controller {
                     console.info("Login Success");
                     this.errormsg = '';
 
-                    //this.getMe();
+                    this.getMe();
                     this.$rootScope.authenticated = true;
                     this.closeLoginModal();
 
@@ -38,6 +38,19 @@ module Controller {
                         return;
                     }
                     this.errormsg = "Oops, da lief etwas falsch";
+                });
+        }
+
+        getMe() {
+            this.UserService.getMe()
+
+                .then(result => {
+                    this.$rootScope.authenticated = true;
+                    this.$rootScope.userID = result.data._id;
+                    console.info(result.data._id);
+                    this.$rootScope.$emit('login_success');
+                }).catch(() => {
+                    this.$rootScope.authenticated = false;
                 });
         }
 
