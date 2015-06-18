@@ -46,6 +46,7 @@
 
 .toggle.toggle-dark input:checked + .track {
     background-color: rgb(33, 205, 196);
+    border-color: transparent;
 }
 
 .mood-checkbox .border-transparent:before {
