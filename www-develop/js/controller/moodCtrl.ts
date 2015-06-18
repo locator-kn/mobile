@@ -13,7 +13,7 @@ module Controller {
                 // TODO: search alternative - only a hack
                 for (var mood in this.moods) {
                     for (var selected in this.selected) {
-                        if(this.moods[mood].query_name == this.selected[selected].query_name){
+                        if (this.moods[mood].query_name == this.selected[selected].query_name) {
                             this.moods[mood].checked = true;
                         }
                     }
@@ -32,6 +32,7 @@ module Controller {
                 if (this.selected.length > 3) {
                     //remove oldest item
                     this.selected[0].checked = false;
+                    this.select(this.selected[0].query_name, false);
                     this.selected.splice(0, 1);
                 }
             } else {
@@ -43,6 +44,14 @@ module Controller {
                 }
             }
             this.SearchService.setMoods(this.selected);
+        }
+
+        select(query_name, value) {
+            for (var mood in this.moods) {
+                if (this.moods[mood].query_name == query_name) {
+                    this.moods[mood].checked = value;
+                }
+            }
         }
 
         static
