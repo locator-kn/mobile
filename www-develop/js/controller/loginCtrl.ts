@@ -3,20 +3,43 @@ module Controller {
 
         mail:string;
         password:string;
+        errormsg:string;
 
-        constructor(private $ionicLoading) {
+        constructor(private $rootScope, private UserService) {
+
         }
 
 
-        openLoginModal = () => {
-            this.$ionicLoading.show({templateUrl: 'templates/login-modal.html'}, {
-                animation: 'slide-in-up'
-            })
-        };
+        closeLoginModal() {
+            this.UserService.closeLoginModal();
+        }
 
-        closeLoginModal = ()=> {
-            this.$ionicLoading.hide();
-        };
+        login(form) {
+            if (form.$invalid) {
+                return;
+            }
+
+
+            console.info('Login ' + this.mail);
+
+            this.UserService.login(this.mail, this.password)
+
+                .then(result => {
+                    console.info("Login Success");
+                    this.errormsg = '';
+
+                    //this.getMe();
+                    this.$rootScope.authenticated = true;
+                    this.closeLoginModal();
+
+                }).catch(resp => {
+                    if (resp.status === 401) {
+                        this.errormsg = "Falsche Mail oder falsches Passwort angegeben.";
+                        return;
+                    }
+                    this.errormsg = "Oops, da lief etwas falsch";
+                });
+        }
 
         static
             controllerId:string = "LoginCtrl";
