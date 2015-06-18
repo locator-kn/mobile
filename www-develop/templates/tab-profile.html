@@ -1,4 +1,4 @@
-<ion-view view-title="Profile"  >
+<ion-view class="profile" view-title="Profile"  >
     <ion-nav-buttons side="left ">
         <i class="icon ion-ios-arrow-back home-back-button" ui-sref="tab.welcome"></i>
     </ion-nav-buttons>
@@ -7,7 +7,8 @@
             <div ng-controller="ProfileCtrl as pc">
                 <ul>
                     <li class="item">
-                        <img class="user-picture" src="http://locator-app.com/{{pc.user.picture.picture}}">
+                        <img class="profile-image" src="http://locator-app.com/{{pc.user.picture.picture}}">
+                        <span class="username">{{pc.user.name}}</span>
                     </li>
                 </ul>
 

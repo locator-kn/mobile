@@ -1,0 +1,16 @@
+.profile .profile-image {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 30px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 50%;
+}
+
+.profile .username {
+    text-align: center;
+    display: block;
+    font-weight: bold;
+    color: rgb(33, 205, 196);;
+}
