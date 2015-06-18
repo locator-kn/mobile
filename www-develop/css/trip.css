@@ -1,6 +1,11 @@
 .trip .user-picture {
     border-radius: 50%;
     width: 60px;
+    margin-top: -10%;
+}
+
+.trip .first-element {
+    border-top: transparent;
 }
 
 .trip .list-text {

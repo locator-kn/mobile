@@ -1,11 +1,9 @@
 <ion-view class="trip" view-title="{{tc.trip.title}}" ng-controller="TripCtrl as tc">
     <ion-content>
         <img class="tmpImageWidth" src="http://placehold.it/{{tc.witdh}}x{{tc.witdh}}">
+            <img class="user-picture" src="http://locator-app.com/{{tc.user.picture.picture}}">
         <ul>
-            <li class="item">
-                <div class="profile-image">
-                    <img class="user-picture" src="http://locator-app.com/{{tc.user.picture.picture}}">
-                </div>
+            <li class="item first-element">
                 <label>von </label>
                 <label class="text-color-red">{{tc.trip.username || 'anonym'}}</label>
 
