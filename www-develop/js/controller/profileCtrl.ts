@@ -3,7 +3,7 @@ module Controller {
 
         user:any = {};
 
-        constructor(private UserService, private $stateParams) {
+        constructor(private $rootScope, private $state, private UserService, private $stateParams) {
 
             this.UserService.getMe($stateParams.profileId)
                 .then(result => {
@@ -13,6 +13,17 @@ module Controller {
         }
 
 
+        logout() {
+            this.UserService.logout()
+                .then(() => {
+                    console.info("Logout Success");
+                    this.$rootScope.authenticated = false;
+                    this.$rootScope.userID = '';
+                    this.$state.go('tab.welcome');
+                }).catch(() => {
+                    console.info("Logout Error");
+                });
+        }
 
         static
             controllerId:string = "ProfileCtrl";
