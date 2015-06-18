@@ -4,7 +4,7 @@ module Service {
         usersIdCache;
 
 
-        constructor( private $http, private $q, private basePath, private CacheFactory) {
+        constructor( private $http, private $q, private basePath, private CacheFactory, private $ionicLoading) {
             this.usersIdCache = CacheFactory.createCache('usersId');
         }
 
@@ -37,6 +37,16 @@ module Service {
             });
         };
 
+
+        openLoginModal = () => {
+            this.$ionicLoading.show({templateUrl: 'templates/login-modal.html'}, {
+                animation: 'slide-in-up'
+            })
+        };
+
+        closeLoginModal = ()=> {
+            this.$ionicLoading.hide();
+        };
 
         static serviceId:string = "UserService";
     }
