@@ -1,6 +1,6 @@
-<ion-view view-title="Suche" ng-controller="SearchCtrl as sc">
-    <ion-nav-buttons side="left">
-        <i class="ion-chevron-left" ui-sref="tab.welcome">Home</i>
+<ion-view class="welcome" view-title="Suche" ng-controller="SearchCtrl as sc">
+    <ion-nav-buttons side="left ">
+        <i class="icon ion-ios-arrow-back home-back-button" ui-sref="tab.welcome"></i>
     </ion-nav-buttons>
     <ion-content class="background-color-grey">
         <div>
@@ -16,59 +16,59 @@
 
 
                 <!--<li class="item search-filter" ng-click="showDetails = ! showDetails">-->
-                    <!--Filter <i class="ion-chevron-down filter-icon-down"></i>-->
-<!--&lt;!&ndash;&ndash;&gt;-->
-                    <!--<div class="select-elements"></div>-->
+                <!--Filter <i class="ion-chevron-down filter-icon-down"></i>-->
+                <!--&lt;!&ndash;&ndash;&gt;-->
+                <!--<div class="select-elements"></div>-->
                 <!--</li>-->
                 <!--<div ng-show="showDetails">-->
-                    <label class="item item-input">
-                        <span class="input-label">Zeitraum</span>
-                        <input class="text-right" ng-model="sc.start_date" type="text" placeholder="Von"
-                               onfocus="(this.type='date')">
-                    </label>
-                    <label class="item item-input">
-                        <input class="text-right" ng-model="sc.end_date" type="text" placeholder="Bis"
-                               onfocus="(this.type='date')">
-                    </label>
-                    <li class="item">
-                        Tage
-                        <div class="select-elements">
-                            <div class="circle" ng-repeat="day in sc.availableDays"
-                                 ng-click="sc.selectedDays=day.value"
-                                 ng-class="{'circle-selected': sc.selectedDays == day.value}">{{day.title}}
-                            </div>
+                <label class="item item-input">
+                    <span class="input-label">Zeitraum</span>
+                    <input class="text-right" ng-model="sc.start_date" type="text" placeholder="Von"
+                           onfocus="(this.type='date')">
+                </label>
+                <label class="item item-input">
+                    <input class="text-right" ng-model="sc.end_date" type="text" placeholder="Bis"
+                           onfocus="(this.type='date')">
+                </label>
+                <li class="item">
+                    Tage
+                    <div class="select-elements">
+                        <div class="circle" ng-repeat="day in sc.availableDays"
+                             ng-click="sc.selectedDays=day.value"
+                             ng-class="{'circle-selected': sc.selectedDays == day.value}">{{day.title}}
                         </div>
-                    </li>
-                    <li class="item">
-                        Personen
-                        <div class="select-elements">
-                            <div class="circle" ng-repeat="person in sc.availablePersons"
-                                 ng-click="sc.selectedPersons=person.value"
-                                 ng-class="{'circle-selected': sc.selectedPersons == person.value}">{{person.title}}
-                            </div>
+                    </div>
+                </li>
+                <li class="item">
+                    Personen
+                    <div class="select-elements">
+                        <div class="circle" ng-repeat="person in sc.availablePersons"
+                             ng-click="sc.selectedPersons=person.value"
+                             ng-class="{'circle-selected': sc.selectedPersons == person.value}">{{person.title}}
                         </div>
-                    </li>
-                    <li class="item item-toggle">
-                        Übernachtung
-                        <label class="toggle toggle-dark toggle-assertive"
-                               ng-click="sc.accommodation = ! sc.accommodation">
-                            <input type="checkbox">
+                    </div>
+                </li>
+                <li class="item item-toggle">
+                    Übernachtung
+                    <label class="toggle toggle-dark toggle-assertive"
+                           ng-click="sc.accommodation = ! sc.accommodation">
+                        <input type="checkbox">
 
-                            <div class="track">
-                                <div class="handle"></div>
-                            </div>
-                        </label>
-                    </li>
-                    <li class="item item-icon-right" ui-sref="tab.search-moods">
-                        Wie solls sein?
-                        <i class="icon ion-chevron-right icon-accessory"></i>
-
-                        <div ng-repeat="mood in sc.selectedMoods">
-                            <div ng-repeat="availableMood in sc.availableMoods |filter:mood.query_name">
-                                <img class="result-mood" src="./images/icons/{{availableMood.icon}}">
-                            </div>
+                        <div class="track">
+                            <div class="handle"></div>
                         </div>
-                    </li>
+                    </label>
+                </li>
+                <li class="item item-icon-right" ui-sref="tab.search-moods">
+                    Wie solls sein?
+                    <i class="icon ion-chevron-right icon-accessory"></i>
+
+                    <div ng-repeat="mood in sc.selectedMoods">
+                        <div ng-repeat="availableMood in sc.availableMoods |filter:mood.query_name">
+                            <img class="result-mood" src="./images/icons/{{availableMood.icon}}">
+                        </div>
+                    </div>
+                </li>
 
                 <!--</div>-->
             </ul>

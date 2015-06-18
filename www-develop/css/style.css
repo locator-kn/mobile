@@ -16,9 +16,10 @@
     color: rgb(33, 205, 196);
 }
 
-.moods-style{
+.moods-style {
     height: 33px;
 }
+
 /*TODO refactor and remove */
 .tmpImageWidth {
     width: 100%;
@@ -41,3 +42,20 @@
     background-color: transparent;
 }
 
+.home-back-button {
+    border-color: transparent;
+    background: none;
+    box-shadow: none;
+    color: #444;
+    font-size: 17px;
+    line-height: 28px;
+}
+
+.ion-ios-arrow-back:before {
+    font-size: 32px;
+}
+
+.welcome .back-button-text {
+    display: inline-block;
+    color: red;
+}
