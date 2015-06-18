@@ -49,6 +49,7 @@
     color: #444;
     font-size: 17px;
     line-height: 28px;
+    width: 50px;
 }
 
 .ion-ios-arrow-back:before {
@@ -57,5 +58,4 @@
 
 .welcome .back-button-text {
     display: inline-block;
-    color: red;
 }
