@@ -2,10 +2,12 @@ module Service {
     export class UserService {
 
         usersIdCache;
-
+        usersMeCache;
 
         constructor(private $http, private $q, private basePath, private CacheFactory, private $ionicLoading) {
             this.usersIdCache = CacheFactory.createCache('usersId');
+            this.usersMeCache = CacheFactory.createCache('usersMe');
+
         }
 
         getUser(_Id) {
@@ -44,6 +46,26 @@ module Service {
                     "mail": mail,
                     "password": password
                 })
+        }
+
+        getMe() {
+            return this.$q((resolve, reject) => {
+
+                if (!this.usersIdCache) {
+                    this.usersMeCache = this.CacheFactory.createCache('usersMe');
+                }
+
+                this.$http.get(this.basePath + '/users/me', {cache: this.usersIdCache})
+                    .then(data => {
+                        return this.decorateUserImage(data);
+                    })
+                    .then(data => {
+                        resolve(data)
+                    })
+                    .catch(err => {
+                        reject(err);
+                    });
+            });
         }
 
         openLoginModal = () => {
