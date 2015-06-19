@@ -3,46 +3,48 @@ Create tabs with an icon and label, using the tabs-positive style.
 Each tab's child <ion-nav-view> directive will have its own
 navigation history that also transitions its views in and out.
 -->
+<div ng-controller="TabCtrl as tc">
+    <ion-tabs class="tabs-icon-top tab-nav" ng-class="{'tabs-item-hide': !authenticated}">
 
-<ion-tabs class="tabs-icon-top tab-nav" ng-class="{'tabs-item-hide': !authenticated}">
-
-    <!-- Search Tab -->
-    <ion-tab hidden="true" href="#/tab/welcome">
-        <ion-nav-view name="tab-welcome"></ion-nav-view>
-    </ion-tab>
+        <!-- Search Tab -->
+        <ion-tab hidden="true" href="#/tab/welcome">
+            <ion-nav-view name="tab-welcome"></ion-nav-view>
+        </ion-tab>
 
 
-    <!-- Search Tab -->
-    <ion-tab title="Suche" icon-off="search" icon-on="search" href="#/tab/search" class="search">
-        <ion-nav-view name="tab-search"></ion-nav-view>
-    </ion-tab>
+        <!-- Search Tab -->
+        <ion-tab title="Suche" icon-off="search" icon-on="search" href="#/tab/search" class="search">
+            <ion-nav-view name="tab-search"></ion-nav-view>
+        </ion-tab>
 
-    <ion-tab title="Biete" icon-off="offer" icon-on="offer" href="#/tab/offer">
-        <ion-nav-view name="tab-offer"></ion-nav-view>
-    </ion-tab>
+        <ion-tab title="Biete" icon-off="offer" icon-on="offer" href="#/tab/offer">
+            <ion-nav-view name="tab-offer"></ion-nav-view>
+        </ion-tab>
 
-    <!-- Location Tab -->
-    <ion-tab title="Location" icon-off="locate" icon-on="locate" href="#/tab/locate" class="locate">
-        <ion-nav-view name="tab-locate"></ion-nav-view>
-    </ion-tab>
+        <!-- Location Tab -->
+        <ion-tab title="Location" icon-off="locate" icon-on="locate" href="#/tab/locate" class="locate">
+            <ion-nav-view name="tab-locate"></ion-nav-view>
+        </ion-tab>
 
-    <!-- Chats Tab -->
-    <ion-tab title="Chat" icon-off="chat" icon-on="chat" href="#/tab/chat">
-        <ion-nav-view name="tab-chat"></ion-nav-view>
-    </ion-tab>
+        <!-- Chats Tab -->
+        <ion-tab title="Chat" icon-off="chat" icon-on="chat" href="#/tab/chat">
+            <ion-nav-view name="tab-chat"></ion-nav-view>
+        </ion-tab>
 
-    <!-- Account Tab -->
-    <ion-tab title="Profil" icon-off="profile" icon-on="profile" href="#/tab/profile">
-        <ion-nav-view name="tab-profile"></ion-nav-view>
-    </ion-tab>
+        <!-- Account Tab -->
+        <ion-tab title="{{userID}}Profil" icon-off="profile" icon-on="profile" ui-sref="tab.profile({userId:userID})">
 
-</ion-tabs>
+            <ion-nav-view name="tab-profile"></ion-nav-view>
+        </ion-tab>
 
-<ion-tabs class="tabs-icon-top tab-nav" ng-class="{'tabs-item-hide': authenticated}" ng-controller="TabCtrl as tc">
-    <button class="button button-not-authenticated" ng-click="tc.openLoginModal()">
-        Anmelden
-    </button>
-    <button class="button button-not-authenticated">
-        Registrieren
-    </button>
-</ion-tabs>
+    </ion-tabs>
+
+    <ion-tabs class="tabs-icon-top tab-nav" ng-class="{'tabs-item-hide': authenticated}">
+        <button class="button button-not-authenticated" ng-click="tc.openLoginModal()">
+            Anmelden
+        </button>
+        <button class="button button-not-authenticated">
+            Registrieren
+        </button>
+    </ion-tabs>
+</div>
