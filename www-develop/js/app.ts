@@ -13,7 +13,7 @@
 /// <reference path="controller/locateCtrl.ts" />
 /// <reference path="controller/loginCtrl.ts" />
 /// <reference path="controller/tabCtrl.ts" />
-/// <reference path="controller/profileCtrl.ts" />
+/// <reference path="controller/profileOverviewCtrl.ts" />
 
 /// <reference path="./service/dataService.ts" />
 /// <reference path="./service/searchService.ts" />
@@ -67,7 +67,7 @@ angular.module('starter', deps)
     .controller(Controller.LocateCtrl.controllerId, Controller.LocateCtrl)
     .controller(Controller.LoginCtrl.controllerId, Controller.LoginCtrl)
     .controller(Controller.TabCtrl.controllerId, Controller.TabCtrl)
-    .controller(Controller.ProfileCtrl.controllerId, Controller.ProfileCtrl)
+    .controller(Controller.ProfileOverviewCtrl.controllerId, Controller.ProfileOverviewCtrl)
 
     // services
     .service(Service.DataService.serviceId, Service.DataService)

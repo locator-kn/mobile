@@ -1,5 +1,5 @@
 module Controller {
-    export class ProfileCtrl {
+    export class ProfileOverviewCtrl {
 
         user:any = {};
 
@@ -26,6 +26,6 @@ module Controller {
         }
 
         static
-            controllerId:string = "ProfileCtrl";
+            controllerId:string = "ProfileOverviewCtrl";
     }
 }
