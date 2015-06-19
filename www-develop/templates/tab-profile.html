@@ -1,10 +1,10 @@
-<ion-view class="profile" view-title="Profile">
+<ion-view class="profile" view-title="Profile" ng-controller="UserCtrl as pc">
     <ion-nav-buttons side="left ">
         <i class="icon ion-ios-arrow-back home-back-button" ui-sref="tab.welcome"></i>
     </ion-nav-buttons>
     <ion-content>
-        <div ng-if="authenticated">
-            <div ng-controller="ProfileCtrl as pc">
+        <div>
+            <div>
                 <ul>
                     <li class="item">
                         <img class="profile-image" src="http://locator-app.com/{{pc.user.picture.picture}}">
