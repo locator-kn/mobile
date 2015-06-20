@@ -1,8 +1,10 @@
 module Controller {
     export class UserCtrl {
 
+        // user object
         user:any = {};
 
+        // age of user
         birthdate:any;
         birthAvailable:boolean;
 
