@@ -18,7 +18,7 @@ module Controller {
             // get trip by id from state param
             SearchService.getTripById(this.$stateParams.tripId).then((result) => {
                 this.trip = result.data[0];
-                // TODO: workaround, because title do not update in trip.html
+                // TODO: workaround, because title do not update in tripDetail.html
                 $scope.navTitle = this.trip.title;
 
                 this.UserService.getUser(this.trip.userid)

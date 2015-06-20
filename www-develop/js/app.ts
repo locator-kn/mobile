@@ -174,14 +174,14 @@ angular.module('starter', deps)
                 url: '/result',
                 views: {
                     'tab-search': {
-                        templateUrl: 'templates/trip/tripOverview.html'
+                        templateUrl: 'templates/trip/trips.html'
                     }
                 }
             }).state('tab.search-result-trip', {
                 url: '/trip/:tripId',
                 views: {
                     'tab-search': {
-                        templateUrl: 'templates/trip/trip.html'
+                        templateUrl: 'templates/trip/tripDetail.html'
                     }
                 }
             })
@@ -222,7 +222,7 @@ angular.module('starter', deps)
                 url: '/profile/:userId/trips',
                 views: {
                     'tab-profile': {
-                        templateUrl: 'templates/trip/tripOverview.html'
+                        templateUrl: 'templates/trip/trips.html'
                     }
                 }
             })
@@ -230,7 +230,7 @@ angular.module('starter', deps)
                 url: '/profile/:userId/trips/:tripId',
                 views: {
                     'tab-profile': {
-                        templateUrl: 'templates/trip/trip.html'
+                        templateUrl: 'templates/trip/tripDetail.html'
                     }
                 }
             });
