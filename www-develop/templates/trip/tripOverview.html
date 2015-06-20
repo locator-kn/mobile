@@ -1,9 +1,9 @@
-<ion-view view-title="Suchergebnisse" ng-controller="SearchResultCtrl as src">
+<ion-view view-title="Suchergebnisse" ng-controller="TripOverviewCtrl as toc">
     <ion-content class="background-color-grey">
         <ul class="list">
-            <div ng-repeat="result in src.results">
-                <li ui-sref="tab.search-result-trip({tripId:result._id})">
-                    <img class="tmpImageWidth" src="http://placehold.it/{{src.witdh}}x{{src.witdh}}">
+            <div ng-repeat="result in toc.results">
+                <li ng-click="toc.showTripDetail(result._id, result.userid)" >
+                    <img class="tmpImageWidth" src="http://placehold.it/{{toc.witdh}}x{{toc.witdh}}">
                     <ul>
                         <li class="item">
                             <div>{{result.title}}</div>
@@ -23,7 +23,7 @@
                         </li>
                         <li class="item">
                             <div ng-repeat="mood in result.moods">
-                                <div ng-repeat="availableMood in src.moods |filter:mood">
+                                <div ng-repeat="availableMood in toc.moods |filter:mood">
                                     <img class="result-mood" src="./images/icons/{{availableMood.icon}}">
                                 </div>
                             </div>
