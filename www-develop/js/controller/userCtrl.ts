@@ -19,7 +19,7 @@ module Controller {
         }
 
         isItMe() {
-            return this.$rootScope.userID === this.$stateParams.profileId;
+            return this.$rootScope.userID === this.$stateParams.userId;
         }
 
         getUser = (_id)  => {
