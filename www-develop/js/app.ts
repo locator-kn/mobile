@@ -233,6 +233,14 @@ angular.module('starter', deps)
                         templateUrl: 'templates/trip/tripDetail.html'
                     }
                 }
+            })
+            .state('tab.profile-settings', {
+                url: '/profile/:userId/settings',
+                views: {
+                    'tab-profile': {
+                        templateUrl: 'templates/tab-profile/settings.html'
+                    }
+                }
             });
 
         // for android to set tabs at bottom position
