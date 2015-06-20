@@ -21,6 +21,7 @@ module Controller {
                 .then(result => {
                     this.user = result.data;
 
+                    // TODO: save local date string
                     this.user.birthdate = new Date(result.data.birthdate);
 
                     var ageDifMs = Date.now() - new Date(result.data.birthdate).getTime() + 86400000;
