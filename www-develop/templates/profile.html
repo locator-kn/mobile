@@ -1,11 +1,13 @@
 <ion-view class="profile" view-title="Beschreibung" ng-controller="UserCtrl as uc">
     <ion-content class="background-color-grey">
+        <button class="button button-light" ng-if="uc.me" ng-if="!uc.edit">
+            Bearbeiten
+        </button>
         <ul class="list">
             <li class="item">
                 <img class="profile-image" src="http://locator-app.com/{{uc.user.picture.picture}}">
                 <span class="username">{{uc.user.name}}</span>
                 <span class="birthdate">{{uc.birthdate}}</span>
-
             </li>
 
             <li class="item">
