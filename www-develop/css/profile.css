@@ -14,3 +14,11 @@
     font-weight: bold;
     color: rgb(33, 205, 196);;
 }
+
+.config-button {
+    width: 100%;
+}
+
+.save-button {
+    width: 100%;
+}
