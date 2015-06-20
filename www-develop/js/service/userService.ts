@@ -47,10 +47,10 @@ module Service {
                 })
         }
 
-        logout() {
+        logout = () => {
             this.CacheFactory.clearAll();
             return this.$http.get(this.basePath + '/logout');
-        }
+        };
 
         getMe() {
             return this.$q((resolve, reject) => {
