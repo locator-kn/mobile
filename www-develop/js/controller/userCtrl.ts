@@ -16,7 +16,7 @@ module Controller {
         }
 
 
-        getUser(_id) {
+        getUser = (_id)  => {
             this.UserService.getUser(_id)
                 .then(result => {
                     this.user = result.data;
@@ -32,9 +32,9 @@ module Controller {
                         this.birthAvailable = false;
                     }
                 });
-        }
+        };
 
-        logout() {
+        logout = () => {
             this.UserService.logout()
                 .then(() => {
                     console.info("Logout Success");
@@ -44,7 +44,7 @@ module Controller {
                 }).catch(() => {
                     console.info("Logout Error");
                 });
-        }
+        };
 
         static
             controllerId:string = "UserCtrl";
