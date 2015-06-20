@@ -6,7 +6,7 @@
 
 /// <reference path="controller/welcomeCtrl.ts" />
 /// <reference path="controller/searchCtrl.ts" />
-/// <reference path="controller/searchResultCtrl.ts" />
+/// <reference path="controller/tripOverviewCtrl.ts" />
 /// <reference path="controller/tripCtrl.ts" />
 /// <reference path="controller/cityCtrl.ts" />
 /// <reference path="controller/moodCtrl.ts" />
@@ -61,7 +61,7 @@ angular.module('starter', deps)
     // controler
     .controller(Controller.WelcomeCtrl.controllerId, Controller.WelcomeCtrl)
     .controller(Controller.SearchCtrl.controllerId, Controller.SearchCtrl)
-    .controller(Controller.SearchResultCtrl.controllerId, Controller.SearchResultCtrl)
+    .controller(Controller.TripOverviewCtrl.controllerId, Controller.TripOverviewCtrl)
     .controller(Controller.TripCtrl.controllerId, Controller.TripCtrl)
     .controller(Controller.CityCtrl.controllerId, Controller.CityCtrl)
     .controller(Controller.MoodCtrl.controllerId, Controller.MoodCtrl)
@@ -211,10 +211,18 @@ angular.module('starter', deps)
                 }
             })
             .state('tab.profile-description', {
-                url: '/description/:userId',
+                url: '/profile/:userId/description',
                 views: {
                     'tab-profile': {
                         templateUrl: 'templates/profile.html'
+                    }
+                }
+            })
+            .state('tab.profile-trips', {
+                url: '/profile/:userId/trips',
+                views: {
+                    'tab-profile': {
+                        templateUrl: 'templates/tab-search/result.html'
                     }
                 }
             });
