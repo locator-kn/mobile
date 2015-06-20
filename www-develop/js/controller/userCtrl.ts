@@ -10,6 +10,7 @@ module Controller {
         // age of user
         birthdate:any;
         birthAvailable:boolean;
+        modifyBirtdate;
 
         constructor(private $rootScope, private $state, private UserService, private $stateParams, private $ionicPopup) {
 
@@ -29,9 +30,10 @@ module Controller {
                 .then(result => {
                     this.user = result.data;
 
+                    this.modifyBirtdate = result.data.birthdate.substr(0,10);
+
                     // TODO: save local date string
                     this.user.birthdate = new Date(result.data.birthdate);
-
                     var ageDifMs = Date.now() - new Date(result.data.birthdate).getTime() + 86400000;
                     var ageDate = new Date(ageDifMs); // miliseconds from epoch
                     this.birthdate = Math.abs(ageDate.getUTCFullYear() - 1970);
