@@ -1,0 +1,20 @@
+<ion-view view-title="Einstellungen" ng-controller="UserCtrl as uc">
+    <ion-content class="background-color-grey">
+        <ul class="list">
+            <li class="item item-toggle">
+                Push-Benachrichtigung für Nachrichten
+                <label class="toggle toggle-balanced" ng-click="uc.user.settings.push = ! uc.user.settings.push">
+                    <input type="checkbox">
+
+                    <div class="track">
+                        <div class="handle"></div>
+                    </div>
+                </label>
+            </li>
+            <button ng-click="uc.updateSettings()"
+                    class="button button-full background-green bottom">
+                Änderungen speichern
+            </button>
+        </ul>
+    </ion-content>
+</ion-view>
