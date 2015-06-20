@@ -8,7 +8,7 @@
                 Speichern
             </button>
         </div>
-        <ul class="list">
+        <ul class="list" ng-if="!uc.edit">
             <li class="item">
                 <img class="profile-image" src="http://locator-app.com/{{uc.user.picture.picture}}">
                 <span class="username">{{uc.user.name}}</span>
@@ -27,6 +27,29 @@
             <li class="item">
                 <h5 class="text-color-red">Beschreibung</h5>
                 <span class="description">{{uc.user.description}}</span>
+            </li>
+        </ul>
+
+        <ul class="list" ng-if="uc.edit" ng-model-options="{ getterSetter: true }" >
+            <li class="item">
+                <img class="profile-image" src="http://locator-app.com/{{uc.user.picture.picture}}">
+                <input class="username" ng-model="uc.user.name"/>
+                <span class="birthdate">{{uc.birthdate}}</span>
+            </li>
+
+            <li class="item">
+                <h5 class="text-color-red">Geburtsdatum</h5>
+                <input type="date" ng-model="uc.birthdate"/>
+
+
+            </li>
+            <li class="item">
+                <h5 class="text-color-red">Wohnort</h5>
+                <input class="residence" ng-model="uc.user.residence" type="text"/>
+            </li>
+            <li class="item">
+                <h5 class="text-color-red">Beschreibung</h5>
+                <input class="description" ng-model="uc.user.description" type="text"/>
             </li>
 
 
