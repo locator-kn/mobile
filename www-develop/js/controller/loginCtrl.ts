@@ -14,7 +14,7 @@ module Controller {
             this.UserService.closeLoginModal();
         }
 
-        login(form) {
+        login = (form) => {
             if (form.$invalid) {
                 return;
             }
@@ -39,7 +39,7 @@ module Controller {
                     }
                     this.errormsg = "Oops, da lief etwas falsch";
                 });
-        }
+        };
 
         getMe() {
             this.UserService.getMe()
