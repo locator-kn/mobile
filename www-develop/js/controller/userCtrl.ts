@@ -8,10 +8,7 @@ module Controller {
 
         constructor(private $rootScope, private $state, private UserService, private $stateParams) {
 
-            if($rootScope.authenticated) {
-                this.getUser($stateParams.userId);
-            }
-
+            this.getUser($stateParams.userId);
 
         }
 
