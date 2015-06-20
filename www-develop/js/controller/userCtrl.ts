@@ -8,7 +8,7 @@ module Controller {
         birthdate:any;
         birthAvailable:boolean;
 
-        constructor(private $rootScope, private $state, private UserService, private $stateParams) {
+        constructor(private $rootScope, private $state, private UserService, private $stateParams, private $ionicPopup) {
 
             this.getUser($stateParams.userId);
 
@@ -44,6 +44,17 @@ module Controller {
                     console.info("Logout Error");
                 });
         };
+
+        updateSettings = () => {
+            var alertPopup = this.$ionicPopup.alert({
+                title: 'Noch nicht impelemntiert'
+            });
+            alertPopup.then(function (res) {
+                // do nothing
+            });
+        };
+
+
 
         static
             controllerId:string = "UserCtrl";
