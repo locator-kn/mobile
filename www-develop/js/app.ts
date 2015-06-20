@@ -204,7 +204,7 @@ angular.module('starter', deps)
                 url: '/profile/:userId',
                 views: {
                     'tab-profile': {
-                        templateUrl: 'templates/tab-profile.html'
+                        templateUrl: 'templates/tab-profile/tab-profile.html'
                     }
                 }
             });
