@@ -4,6 +4,8 @@ module Controller {
         // user object
         user:any = {};
         me:boolean;
+        edit:boolean;
+
 
         // age of user
         birthdate:any;
@@ -52,9 +54,13 @@ module Controller {
                 });
         };
 
+        editTrigger() {
+            this.edit = !this.edit;
+        }
+
         updateSettings = () => {
             var alertPopup = this.$ionicPopup.alert({
-                title: 'Noch nicht impelemntiert'
+                title: 'Noch nicht implementiert'
             });
             alertPopup.then(function (res) {
                 // do nothing
