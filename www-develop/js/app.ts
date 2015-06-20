@@ -204,7 +204,15 @@ angular.module('starter', deps)
                 url: '/profile/:userId',
                 views: {
                     'tab-profile': {
-                        templateUrl: 'templates/tab-profile/tab-profile.html'
+                        templateUrl: 'templates/tab-profile/overview.html'
+                    }
+                }
+            })
+            .state('tab.profile-description', {
+                url: '/description/:userId',
+                views: {
+                    'tab-profile': {
+                        templateUrl: 'templates/profile.html'
                     }
                 }
             });
