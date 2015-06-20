@@ -32,7 +32,7 @@ navigation history that also transitions its views in and out.
         </ion-tab>
 
         <!-- Account Tab -->
-        <ion-tab title="{{userID}}Profil" icon-off="profile" icon-on="profile" ui-sref="tab.profile({userId:userID})">
+        <ion-tab title="{{userID}}Profil" icon-off="profile" icon-on="profile" ng-click="tc.showMyProfile()">
 
             <ion-nav-view name="tab-profile"></ion-nav-view>
         </ion-tab>
