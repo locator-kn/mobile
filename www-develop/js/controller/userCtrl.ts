@@ -55,19 +55,28 @@ module Controller {
         };
 
         editTrigger() {
+            // if was in edit mode -> now to save
+            if(this.edit){
+                // TODO
+                this.notImpl()
+            }
             this.edit = !this.edit;
         }
 
         updateSettings = () => {
+            // TODO
+            this.notImpl();
+        };
+
+
+        notImpl() {
             var alertPopup = this.$ionicPopup.alert({
                 title: 'Noch nicht implementiert'
             });
             alertPopup.then(function (res) {
                 // do nothing
             });
-        };
-
-
+        }
         static
             controllerId:string = "UserCtrl";
     }
