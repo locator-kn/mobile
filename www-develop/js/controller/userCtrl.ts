@@ -3,6 +3,7 @@ module Controller {
 
         // user object
         user:any = {};
+        me:boolean;
 
         // age of user
         birthdate:any;
@@ -12,8 +13,14 @@ module Controller {
 
             this.getUser($stateParams.userId);
 
+            if (this.$rootScope.authenticated) {
+                this.me = this.isItMe();
+            }
         }
 
+        isItMe() {
+            return this.$rootScope.userID === this.$stateParams.profileId;
+        }
 
         getUser = (_id)  => {
             this.UserService.getUser(_id)
@@ -53,7 +60,6 @@ module Controller {
                 // do nothing
             });
         };
-
 
 
         static
