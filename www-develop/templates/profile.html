@@ -1,0 +1,28 @@
+<ion-view class="profile" view-title="Beschreibung" ng-controller="UserCtrl as uc">
+    <ion-content class="background-color-grey">
+        <ul class="list">
+            <li class="item">
+                <img class="profile-image" src="http://locator-app.com/{{uc.user.picture.picture}}">
+                <span class="username">{{uc.user.name}}</span>
+                <span class="birthdate">{{uc.birthdate}}</span>
+
+            </li>
+
+            <li class="item">
+                <h5 class="text-color-red">Geburtsdatum</h5>
+                <resultdate date="uc.user.birthdate"></resultdate>
+
+            </li>
+            <li class="item">
+                <h5 class="text-color-red">Wohnort</h5>
+                <span class="residence">{{uc.user.residence}}</span>
+            </li>
+            <li class="item">
+                <h5 class="text-color-red">Beschreibung</h5>
+                <span class="description">{{uc.user.description}}</span>
+            </li>
+
+
+        </ul>
+    </ion-content>
+</ion-view>
