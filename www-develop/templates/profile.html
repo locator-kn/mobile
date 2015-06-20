@@ -1,8 +1,13 @@
 <ion-view class="profile" view-title="Beschreibung" ng-controller="UserCtrl as uc">
     <ion-content class="background-color-grey">
-        <button class="button button-light" ng-if="uc.me" ng-if="!uc.edit">
-            Bearbeiten
-        </button>
+        <div ng-click="uc.editTrigger()">
+            <button class="button button-light config-button" ng-if="uc.me && !uc.edit">
+                Bearbeiten
+            </button>
+            <button class="button button-light save-button" ng-if="uc.me && uc.edit">
+                Speichern
+            </button>
+        </div>
         <ul class="list">
             <li class="item">
                 <img class="profile-image" src="http://locator-app.com/{{uc.user.picture.picture}}">
