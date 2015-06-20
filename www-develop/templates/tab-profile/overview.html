@@ -1,4 +1,4 @@
-<ion-view class="profile" view-title="Profile" ng-controller="UserCtrl as pc">
+<ion-view class="profile" view-title="Profile" ng-controller="UserCtrl as uc">
     <ion-nav-buttons side="left ">
         <i class="icon ion-ios-arrow-back home-back-button" ui-sref="tab.welcome"></i>
     </ion-nav-buttons>
@@ -7,10 +7,10 @@
             <div>
                 <ul>
                     <li class="item">
-                        <img class="profile-image" src="http://locator-app.com/{{pc.user.picture.picture}}">
-                        <span class="username">{{pc.user.name}}</span>
+                        <img class="profile-image" src="http://locator-app.com/{{uc.user.picture.picture}}">
+                        <span class="username">{{uc.user.name}}</span>
                     </li>
-                    <li class="item item-icon-right">
+                    <li class="item item-icon-right" ui-sref="tab.profile-description({userId:userID})">
                         Beschreibung
                         <i class="icon ion-chevron-right icon-accessory"></i>
                     </li>
@@ -30,7 +30,7 @@
                         Einstellungen
                         <i class="icon ion-chevron-right icon-accessory"></i>
                     </li>
-                    <li class="item" ng-click="pc.logout()">
+                    <li class="item" ng-click="uc.logout()">
                         Abmelden
                     </li>
                 </ul>
