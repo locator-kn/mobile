@@ -71,6 +71,10 @@ module Controller {
             this.$ionicPopup.alert({title: 'Noch nicht implementiert'});
         };
 
+        startConversation = () => {
+            // TODO
+            this.$ionicPopup.alert({title: 'Noch nicht implementiert'});
+        };
 
 
         static controllerId:string = "UserCtrl";
