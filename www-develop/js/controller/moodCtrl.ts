@@ -11,7 +11,7 @@ module Controller {
                 // old selected moods - needed because of state change
                 this.selected = this.SearchService.getMoods();
 
-                // TODO: search alternative for initialisation of old selections
+                // initialisation of old selections
                 for (var mood in this.moods) {
                     for (var selected in this.selected) {
                         if (this.moods[mood].query_name == this.selected[selected].query_name) {
@@ -19,10 +19,7 @@ module Controller {
                         }
                     }
                 }
-
             });
-
-
         }
 
         sync(bool, item) {
@@ -32,7 +29,7 @@ module Controller {
                 // if we have gone over maxItems:
                 if (this.selected.length > 3) {
                     this.select(this.selected[3].query_name, false);
-                    this.selected.splice(3,1);
+                    this.selected.splice(3, 1);
                 }
             } else {
                 // remove item
@@ -54,7 +51,6 @@ module Controller {
             }
         }
 
-        static
-            controllerId:string = "MoodCtrl";
+        static controllerId:string = "MoodCtrl";
     }
 }
