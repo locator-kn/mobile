@@ -51,8 +51,12 @@
                 <h5 class="text-color-red">Beschreibung</h5>
                 <input class="description" ng-model="uc.user.description" type="text"/>
             </li>
-
-
         </ul>
+        <div>
+            <button ng-if="!uc.me" ng-click="uc.startConversation()"
+                    class="button button-full background-green bottom">
+                Anschreiben
+            </button>
+        </div>
     </ion-content>
 </ion-view>
