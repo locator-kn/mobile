@@ -18,7 +18,7 @@ module Controller {
         tripCities:any = [];
         city:any = {};
 
-        constructor(private $rootScope, private DataService, private $state, private SearchService, private ResultService, private $ionicPopup) {
+        constructor(private $rootScope, private DataService, private $state, private SearchService, private ResultService, private $ionicPopup, private $ionicLoading) {
             this.DataService.getAvailableDays().then((result)=> {
                 this.availableDays = result.data;
             });
@@ -28,6 +28,7 @@ module Controller {
             });
 
             this.DataService.getAvailableMoods().then((result) => {
+                this.$ionicLoading.hide();
                 this.availableMoods = result.data;
             });
 
@@ -39,27 +40,8 @@ module Controller {
                 this.selectedMoods = this.SearchService.getMoods();
             });
 
-            this.updateCities();
         }
 
-        updateCities = ()=> {
-            if (this.tripCities <= 0) {
-                this.DataService.getAvailableCities().then((result) => {
-                        this.tripCities = result.data;
-                    }
-                );
-            }
-        };
-
-        setCity(cityId) {
-            var city = this.tripCities.filter(function (obj) {
-                return obj.id == cityId;
-            });
-            this.tripCities = [];
-            var cityTitle = city[0].title;
-            angular.element(".city").val(cityTitle);
-            this.city = cityTitle;
-        }
 
         searchTrips() {
             if (this.isEmpty(this.city)) {
@@ -108,7 +90,6 @@ module Controller {
             return true;
         }
 
-        static
-            controllerId:string = "SearchCtrl";
+        static controllerId:string = "SearchCtrl";
     }
 }
