@@ -6,13 +6,12 @@ module Controller {
         me:boolean;
         edit:boolean;
 
-
         // age of user
         birthdate:any;
         birthAvailable:boolean;
-        modifyBirtdate;
+        modifyBirthday;
 
-        constructor(private $rootScope, private $state, private UserService, private $stateParams, private $ionicPopup) {
+        constructor(private $rootScope, private $state, private UserService, private $stateParams, private $ionicPopup, private $ionicLoading) {
 
             this.getUser($stateParams.userId);
 
@@ -29,10 +28,9 @@ module Controller {
             this.UserService.getUser(_id)
                 .then(result => {
                     this.user = result.data;
+                    // for edit user birthday input field value
+                    this.modifyBirthday = result.data.birthdate.substr(0, 10);
 
-                    this.modifyBirtdate = result.data.birthdate.substr(0,10);
-
-                    // TODO: save local date string
                     this.user.birthdate = new Date(result.data.birthdate);
                     var ageDifMs = Date.now() - new Date(result.data.birthdate).getTime() + 86400000;
                     var ageDate = new Date(ageDifMs); // miliseconds from epoch
@@ -41,6 +39,9 @@ module Controller {
                     if (isNaN(this.birthdate)) {
                         this.birthAvailable = false;
                     }
+
+                    this.$ionicLoading.hide();
+
                 });
         };
 
@@ -58,28 +59,20 @@ module Controller {
 
         editTrigger() {
             // if was in edit mode -> now to save
-            if(this.edit){
+            if (this.edit) {
                 // TODO
-                this.notImpl()
+                this.$ionicPopup.alert({title: 'Noch nicht implementiert'});
             }
             this.edit = !this.edit;
         }
 
         updateSettings = () => {
             // TODO
-            this.notImpl();
+            this.$ionicPopup.alert({title: 'Noch nicht implementiert'});
         };
 
 
-        notImpl() {
-            var alertPopup = this.$ionicPopup.alert({
-                title: 'Noch nicht implementiert'
-            });
-            alertPopup.then(function (res) {
-                // do nothing
-            });
-        }
-        static
-            controllerId:string = "UserCtrl";
+
+        static controllerId:string = "UserCtrl";
     }
 }
