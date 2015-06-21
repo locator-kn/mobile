@@ -6,16 +6,13 @@ module Service {
         city:any = {};
         moods:any = [];
 
-        // TODO: same as in web project - outsource into util library
         constructor(private $http, private $rootScope, private basePath, private lodash, private DataService, private $q, private $ionicLoading) {
         }
 
 
         getTripsByQuery(searchQuery) {
             // start loading screen
-            this.$ionicLoading.show({
-                template: '<ion-spinner icon="spiral"></ion-spinner>'
-            });
+            this.$ionicLoading.show({template: '<ion-spinner icon="spiral"></ion-spinner>'});
 
             // create a copy by value
             var sq = this.lodash.cloneDeep(searchQuery);
@@ -32,22 +29,6 @@ module Service {
             });
         }
 
-
-        getCityId(city) {
-            var promise = this.$q((resolve, reject) => {
-                this.DataService.getAvailableCities()
-                    .then(result => {
-                        this.citiesWithTrips = result.data;
-                        var cityObject = this.lodash.findWhere(this.citiesWithTrips, {title: city});
-                        if (cityObject.place_id) {
-                            return resolve(cityObject.id);
-                        }
-                        reject({msg: 'not found'});
-                    });
-            });
-
-            return promise;
-        }
 
         getTripById(tripId) {
             return this.$http.get(this.basePath + '/trips/' + tripId);
