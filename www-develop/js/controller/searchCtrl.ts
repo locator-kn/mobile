@@ -18,7 +18,7 @@ module Controller {
         tripCities:any = [];
         city:any = {};
 
-        constructor(private $rootScope, private $scope, private DataService, private $state, private SearchService, private ResultService, private $ionicPopup) {
+        constructor(private $rootScope, private DataService, private $state, private SearchService, private ResultService, private $ionicPopup) {
             this.DataService.getAvailableDays().then((result)=> {
                 this.availableDays = result.data;
             });
@@ -63,14 +63,7 @@ module Controller {
 
         searchTrips() {
             if (this.isEmpty(this.city)) {
-                var alertPopup = this.$ionicPopup.alert({
-                    title: '',
-                    template: 'Bitte eine Stadt auswählen.'
-                });
-                alertPopup.then(function (res) {
-                    // do nothing
-                });
-                // break search
+                this.$ionicPopup.alert({title: 'Bitte eine Stadt auswählen.'});
                 return;
             }
 
@@ -90,6 +83,10 @@ module Controller {
 
             // check if start & end date is committed
             if (this.start_date && this.end_date) {
+                if (this.end_date < this.start_date) {
+                    this.$ionicPopup.alert({title: 'Startdatum muss vor dem Enddatum liegen.'});
+                    return;
+                }
                 query.start_date = new Date(this.start_date).toISOString();
                 query.end_date = new Date(this.end_date).toISOString();
             }
