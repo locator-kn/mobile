@@ -34,6 +34,7 @@ module Controller {
 
             this.DataService.getAvailableMoods().then((result) => {
                 this.moods = result.data;
+                this.$ionicLoading.hide();
             });
 
         }
