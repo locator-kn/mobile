@@ -1,16 +1,18 @@
 <ion-view view-title="Stadt" ng-controller="CityCtrl as cc">
     <ion-content class="background-color-grey">
         <ul class="list">
-            <!--<label class="item item-input">-->
-            <!--<i class="icon ion-search placeholder-icon"></i>-->
-            <!--call update cities if anyone use 'back' -> no static data anymore-->
-            <!--<input class="city" type="search" placeholder="Wohin?" ng-change-options='{ debounce: 1000 }'-->
-            <!--ng-model="cc.city"/>-->
-            <!--</label>-->
-
-            <li class="item" ng-repeat="city in cc.cities" ng-click="cc.setCity(city)" ui-sref="tab.search"
-                >{{city.title}}
+            <!-- display only of more then 8 cities available -->
+            <label class="item item-input" ng-if="cc.cities.length>8">
+                <i class="icon ion-search placeholder-icon"></i>
+                <!--call update cities if anyone use 'back' -> no static data anymore-->
+                <input class="city" type="search" placeholder="Wohin?" ng-change-options='{ debounce: 1000 }'
+                       ng-model="cc.city"/>
+            </label>
+            <!--starts with filter -> if empty show all-->
+            <li class="item" ng-repeat="city in cc.cities | startsWith: cc.city"
+                ng-click="cc.setCity(city)" ui-sref="tab.search">{{city.title}}
             </li>
+
         </ul>
     </ion-content>
 </ion-view>
