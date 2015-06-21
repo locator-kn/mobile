@@ -3,9 +3,10 @@ module Controller {
 
         cities:any = {};
 
-        constructor(private DataService, private SearchService) {
+        constructor(private DataService, private SearchService, private $ionicLoading) {
             this.DataService.getAvailableCities().then((result) => {
                 this.cities = result.data;
+                this.$ionicLoading.hide();
             });
         }
 
