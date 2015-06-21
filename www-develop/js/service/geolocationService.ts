@@ -2,14 +2,14 @@ module Service {
     export class GeolocationService {
 
 
-        constructor(private $q) {
+        constructor(private $q, private $ionicLoading) {
         }
 
 
         getCurrentLocation() {
             var q = this.$q.defer();
-
             var posOptions = {maximumAge: 3000, timeout: 5000, enableHighAccuracy: true};
+            this.$ionicLoading.show({template: '<ion-spinner icon="spiral"></ion-spinner>'});
             navigator.geolocation.getCurrentPosition((result) => {
                 // Do any magic we need
                 q.resolve(result);
@@ -20,7 +20,6 @@ module Service {
             return q.promise;
         }
 
-        static
-            serviceId:string = "GeolocationService";
+        static serviceId:string = "GeolocationService";
     }
 }

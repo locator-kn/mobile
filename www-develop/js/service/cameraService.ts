@@ -8,7 +8,6 @@ module Service {
 
         getPicture() {
             var q = this.$q.defer();
-
             navigator.camera.getPicture((result) => {
                 // Do any magic we need
                 q.resolve(result);

@@ -1,12 +1,10 @@
 module Service {
     export class SearchService {
 
-        citiesWithTrips = [];
-
         city:any = {};
         moods:any = [];
 
-        constructor(private $http, private $rootScope, private basePath, private lodash, private DataService, private $q, private $ionicLoading) {
+        constructor(private $http, private $rootScope, private basePath, private lodash, private $ionicLoading) {
         }
 
 
@@ -31,6 +29,7 @@ module Service {
 
 
         getTripById(tripId) {
+            this.$ionicLoading.show({template: '<ion-spinner icon="spiral"></ion-spinner>'});
             return this.$http.get(this.basePath + '/trips/' + tripId);
         }
 

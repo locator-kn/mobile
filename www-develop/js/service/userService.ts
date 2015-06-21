@@ -11,6 +11,7 @@ module Service {
         }
 
         getUser(_Id) {
+
             return this.$q((resolve, reject) => {
 
                 this.$http.get(this.basePath + '/users/' + _Id, {cache: this.usersIdCache})

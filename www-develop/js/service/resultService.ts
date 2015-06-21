@@ -16,7 +16,6 @@ module Service {
             return this.results;
         }
 
-        static
-            serviceId:string = "ResultService";
+        static serviceId:string = "ResultService";
     }
 }
