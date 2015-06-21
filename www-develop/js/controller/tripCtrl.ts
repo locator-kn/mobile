@@ -8,34 +8,33 @@ module Controller {
 
         moods:any = [];
 
-        // TODO remove variable
+        // mobile screen with
         witdh;
 
-        constructor(private $scope, private $element, private $stateParams, private SearchService, private DataService, private UserService) {
-            // TODO remove line
+        constructor(private $scope, private $element, private $stateParams, private SearchService, private DataService, private UserService, private $ionicLoading) {
+
             this.witdh = angular.element(this.$element).width();
 
             // get trip by id from state param
             SearchService.getTripById(this.$stateParams.tripId).then((result) => {
                 this.trip = result.data[0];
-                // TODO: workaround, because title do not update in tripDetail.html
+                // workaround, because title do not update in tripDetail.html
                 $scope.navTitle = this.trip.title;
 
                 this.UserService.getUser(this.trip.userid)
                     .then(result => {
                         this.user = result.data;
+                        this.$ionicLoading.hide();
                     });
             });
 
 
             this.DataService.getAvailableMoods().then((result) => {
                 this.moods = result.data;
+                this.$ionicLoading.hide();
             });
-
-
         }
 
-        static
-            controllerId:string = "TripCtrl";
+        static controllerId:string = "TripCtrl";
     }
 }
