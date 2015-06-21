@@ -6,7 +6,7 @@ module Service {
         dataPersonsCache;
         dataMoodsCache;
 
-        constructor(private $http, private basePath, private CacheFactory, private $q) {
+        constructor(private $http, private basePath, private CacheFactory, private $q, private $ionicLoading) {
             this.dataCitiesCache = CacheFactory.createCache('dataCities');
             this.dataDaysCache = CacheFactory.createCache('dataDays');
             this.dataPersonsCache = CacheFactory.createCache('dataPersons');
@@ -14,6 +14,7 @@ module Service {
         }
 
         getAvailableCities() {
+            this.$ionicLoading.show({template: '<ion-spinner icon="spiral"></ion-spinner>'});
             return this.$http.get(this.basePath + '/data/cities', {cache: this.dataCitiesCache});
         }
 
@@ -51,6 +52,7 @@ module Service {
         }
 
         getAvailableMoods() {
+            this.$ionicLoading.show({template: '<ion-spinner icon="spiral"></ion-spinner>'});
             return this.$q(function (resolve) {
                 setTimeout(function () {
                     resolve(
