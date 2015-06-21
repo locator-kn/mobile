@@ -6,9 +6,10 @@ module Controller {
         long:string;
 
 
-        constructor(private $scope, private CameraService, private GeolocationService) {
+        constructor(private CameraService, private GeolocationService) {
         }
 
+        // sample
         getPhoto = ()  => {
             this.CameraService.getPicture().then((imageURI) => {
                 this.imageURI = imageURI;
@@ -17,14 +18,14 @@ module Controller {
             })
         };
 
+        // sample
         getCurrentPosition = () => {
-           this.GeolocationService.getCurrentLocation().then((position) => {
-               this.lat  = position.coords.latitude;
-               this.long = position.coords.longitude;
+            this.GeolocationService.getCurrentLocation().then((position) => {
+                this.lat = position.coords.latitude;
+                this.long = position.coords.longitude;
             })
         };
 
-        static
-            controllerId:string = "LocateCtrl";
+        static controllerId:string = "LocateCtrl";
     }
 }
