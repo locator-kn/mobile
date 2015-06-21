@@ -19,6 +19,7 @@
 
 .moods-style {
     height: 33px;
+    float: left;
 }
 
 /*TODO refactor and remove */
