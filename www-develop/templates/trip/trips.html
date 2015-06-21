@@ -3,7 +3,12 @@
         <ul class="list">
             <div ng-repeat="result in toc.results">
                 <li ng-click="toc.showTripDetail(result._id, result.userid)">
-                    <img class="tmpImageWidth" src="http://placehold.it/{{toc.witdh}}x{{toc.witdh}}">
+                    <!-- for each pictures-->
+                    <ion-slide-box on-slide-changed="slideHasChanged($index)">
+                        <ion-slide ng-repeat="location in result.locations">
+                            <img class="tmpImageWidth" src="http://locator-app.com{{location.thumbnail}}">
+                        </ion-slide>
+                    </ion-slide-box>
                     <ul>
                         <li class="item">
                             <div>{{result.title}}</div>
