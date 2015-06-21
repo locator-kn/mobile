@@ -4,13 +4,11 @@ module Controller {
 
         moods:any = [];
 
-        // TODO: to test
         witdh;
 
         searchView:boolean;
 
         constructor(private $rootScope, private $state, private ResultService, private $stateParams, private TripService, private $element, private DataService, private  $ionicLoading) {
-            // css test TOOD: remove
             var elementWidth = angular.element(this.$element).width();
             this.witdh = elementWidth;
             angular.element(".tmpImageWidth").css({'width': elementWidth + "px"});
@@ -30,6 +28,8 @@ module Controller {
                     .then(result => {
                         this.results = result.data;
                     });
+                this.$ionicLoading.hide();
+
             }
 
             this.DataService.getAvailableMoods().then((result) => {
@@ -49,11 +49,8 @@ module Controller {
                 tripId: tripId,
                 userId: userId
             });
-
-            //ui-sref="tab.search-result-trip({tripId:result._id})"
         };
 
-        static
-            controllerId:string = "TripOverviewCtrl";
+        static controllerId:string = "TripOverviewCtrl";
     }
 }
