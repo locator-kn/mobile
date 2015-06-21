@@ -93,6 +93,8 @@ angular.module('starter', deps)
                         matches.push(array[i]);
                     }
                 }
+            } else {
+                matches = array;
             }
             return matches;
         };
