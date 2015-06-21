@@ -179,11 +179,20 @@ angular.module('starter', deps)
                         templateUrl: 'templates/trip/trips.html'
                     }
                 }
-            }).state('tab.search-result-trip', {
+            })
+            .state('tab.search-result-trip', {
                 url: '/trip/:tripId',
                 views: {
                     'tab-search': {
                         templateUrl: 'templates/trip/tripDetail.html'
+                    }
+                }
+            })
+            .state('tab.search-user', {
+                url: '/user/:userId',
+                views: {
+                    'tab-search': {
+                        templateUrl: 'templates/profile.html'
                     }
                 }
             })
