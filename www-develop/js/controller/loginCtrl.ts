@@ -6,7 +6,6 @@ module Controller {
         errormsg:string;
 
         constructor(private $rootScope, private UserService) {
-
         }
 
 
@@ -18,9 +17,6 @@ module Controller {
             if (form.$invalid) {
                 return;
             }
-
-
-            console.info('Login ' + this.mail);
 
             this.UserService.login(this.mail, this.password)
 
@@ -54,7 +50,6 @@ module Controller {
                 });
         }
 
-        static
-            controllerId:string = "LoginCtrl";
+        static controllerId:string = "LoginCtrl";
     }
 }
