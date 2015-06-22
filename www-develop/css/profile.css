@@ -15,12 +15,17 @@
     color: rgb(33, 205, 196);;
 }
 
-.config-button {
+.profile .config-button {
     width: 100%;
 }
 
-.save-button {
-    width: 100%;
+.profile .save-button {
+    width: 50%;
+}
+
+.profile .abort-button{
+    float: right;
+    width: 50%;
 }
 
 .profile .edit .title {
@@ -28,7 +33,7 @@
 }
 
 .profile .edit .item input {
-    float: right;
+    text-align: right;
     border: 0;
 }
 
