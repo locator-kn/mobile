@@ -30,27 +30,26 @@
             </li>
         </ul>
 
-        <ul class="list" ng-if="uc.edit" ng-model-options="{ getterSetter: true }" >
-            <li class="item">
-                <img class="profile-image" src="http://locator-app.com/{{uc.user.picture.picture}}">
-                <input class="username" ng-model="uc.user.name"/>
-                <span class="birthdate">{{uc.birthdate}}</span>
-            </li>
+        <ul class="list edit" ng-if="uc.edit" ng-model-options="{ getterSetter: true }">
+            <img class="profile-image" src="http://locator-app.com/{{uc.user.picture.picture}}">
+            <label class="text-color-red item item-input">
+                <span class="title">Name</span>
+                <input class="username" type="input" ng-model="uc.user.name"/>
+            </label>
+            <label class="item item-input">
+                <span class="text-color-red title">Geburtsdatum</span>
+                <input class="text-right" type="date" ng-model="uc.user.birthdate" value="{{uc.modifyBirthday}}">
+            </label>
+            <label class="item item-input">
+                <span class="text-color-red">Wohnort</span>
+                <input class="text-right" type="input" ng-model="uc.user.residence">
+            </label>
 
-            <li class="item">
-                <h5 class="text-color-red">Geburtsdatum</h5>
-                <input type="date" value="{{uc.modifyBirthday}}"/>
+            <label class="item item-input">
+                <span class="text-color-red description">Beschreibung</span>
+                <textarea rows="{{uc.descriptionRows}}" type="input" ng-model="uc.user.description"></textarea>
+            </label>
 
-
-            </li>
-            <li class="item">
-                <h5 class="text-color-red">Wohnort</h5>
-                <input class="residence" ng-model="uc.user.residence" type="text"/>
-            </li>
-            <li class="item">
-                <h5 class="text-color-red">Beschreibung</h5>
-                <input class="description" ng-model="uc.user.description" type="text"/>
-            </li>
         </ul>
         <div>
             <button ng-if="!uc.me" ng-click="uc.startConversation()"
