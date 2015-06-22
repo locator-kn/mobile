@@ -8,14 +8,7 @@ module Controller {
 
         moods:any = [];
 
-        // mobile screen with
-        witdh;
-
         constructor(private $scope, private $element, private $stateParams, private SearchService, private DataService, private $ionicSlideBoxDelegate, private UserService, private $ionicLoading) {
-            var elementWidth = angular.element(this.$element).width();
-            this.witdh = elementWidth;
-            angular.element(".tmpImageWidth").css({'width': elementWidth + "px"});
-
             // get trip by id from state param
             SearchService.getTripById(this.$stateParams.tripId).then((result) => {
                 this.trip = result.data[0];
