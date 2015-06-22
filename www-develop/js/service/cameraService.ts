@@ -2,7 +2,7 @@ module Service {
     export class CameraService {
 
 
-        constructor(private $q, private $ionicPopup, private $timeout, private $ionicActionSheet) {
+        constructor(private $q, private $ionicActionSheet) {
         }
 
 
@@ -31,7 +31,6 @@ module Service {
                 cancelText: 'Abbrechen',
                 cancel: ()=> {
                     hideSheet();
-                    // add cancel code..
                 },
                 buttonClicked: (index) => {
                     if (index === 0) {
@@ -57,7 +56,7 @@ module Service {
                             q.resolve(data);
                             hideSheet();
                         }).catch((err)=> {
-                            q.reject(err)
+                            q.reject(err);
                             hideSheet();
                         });
                     }
@@ -67,7 +66,6 @@ module Service {
         };
 
 
-        static
-            serviceId:string = "CameraService";
+        static serviceId:string = "CameraService";
     }
 }
