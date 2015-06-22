@@ -67,12 +67,36 @@ module Controller {
                 });
         };
 
-        editTrigger() {
-            // if was in edit mode -> now to save
-            if (this.edit) {
-                // TODO
-                this.$ionicPopup.alert({title: 'Noch nicht implementiert'});
+        updateProfile() {
+
+            if (!this.user.birthdate) {
+                this.user.birthdate = '';
             }
+
+            if (this.user.birthdate > new Date()) {
+                this.$ionicPopup.alert({title: 'Datum muss in der Vergangenheit liegen!'});
+                return;
+            }
+
+            this.$ionicLoading.show({template: '<ion-spinner icon="spiral"></ion-spinner>'});
+            this.UserService.updateProfile(this.user)
+                .then(result => {
+                    this.$ionicLoading.hide();
+                    var alertPopup = this.$ionicPopup.alert({
+                        title: 'Änderungen gespeichert!'
+                    });
+                    alertPopup.then((res) => {
+                        this.editTrigger();
+                    });
+                })
+                .catch(result => {
+                    this.$ionicLoading.hide();
+                    console.info(this.user);
+                    this.$ionicPopup.alert({title: 'Fehler beim speichern!'});
+                });
+        }
+
+        editTrigger() {
             this.edit = !this.edit;
         }
 
