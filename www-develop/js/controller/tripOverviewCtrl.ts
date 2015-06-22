@@ -4,14 +4,9 @@ module Controller {
 
         moods:any = [];
 
-        witdh;
-
         searchView:boolean;
 
         constructor(private $rootScope, private $state, private ResultService, private $stateParams, private TripService, private $element, private DataService, private  $ionicLoading) {
-            var elementWidth = angular.element(this.$element).width();
-            this.witdh = elementWidth;
-            angular.element(".tmpImageWidth").css({'width': elementWidth + "px"});
 
             // if no user id is committed -> controller used for search results
             if (!$stateParams.userId) {
