@@ -11,6 +11,11 @@ module Controller {
         birthAvailable:boolean;
         modifyBirthday;
 
+        // textarea
+        descriptionRows:number = 4;
+        //for description
+        lettersPerLine = 25;
+
         constructor(private $rootScope, private $state, private UserService, private $stateParams, private $ionicPopup, private $ionicLoading) {
 
             this.getUser($stateParams.userId);
@@ -38,6 +43,11 @@ module Controller {
 
                     if (isNaN(this.birthdate)) {
                         this.birthAvailable = false;
+                    }
+
+                    // check if default not okay to display description
+                    if (result.data.description.length > (this.descriptionRows * this.lettersPerLine)) {
+                        this.descriptionRows = Math.round(result.data.description.length / 25);
                     }
 
                     this.$ionicLoading.hide();
