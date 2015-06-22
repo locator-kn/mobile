@@ -22,3 +22,22 @@
 .save-button {
     width: 100%;
 }
+
+.profile .edit .title {
+    margin-right: 20px;
+}
+
+.profile .edit .item input {
+    float: right;
+    border: 0;
+}
+
+.profile .edit .item textarea {
+    width: 100%;
+    background-color: transparent;
+
+}
+
+.edit .description{
+    width: 50%;
+}
