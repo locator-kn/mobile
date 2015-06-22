@@ -10,20 +10,17 @@ module Controller {
         }
 
         // sample
-        getPhoto = ()  => {
-            this.CameraService.getPicture().then((imageURI) => {
-                this.imageURI = imageURI;
-            }, (err)=> {
-                console.log(err);
-            })
-        };
-
-        // sample
         getCurrentPosition = () => {
             this.GeolocationService.getCurrentLocation().then((position) => {
                 this.lat = position.coords.latitude;
                 this.long = position.coords.longitude;
             })
+        };
+
+        showPictureActions= () => {
+            this.CameraService.showPictureActions().then((data) => {
+                this.imageURI = data;
+            });
         };
 
         static controllerId:string = "LocateCtrl";
