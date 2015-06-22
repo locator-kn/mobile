@@ -1,12 +1,10 @@
 module Controller {
     export class TripOverviewCtrl {
         results:any;
-
         moods:any = [];
-
         searchView:boolean;
 
-        constructor(private $rootScope, private $state, private ResultService, private $stateParams, private TripService, private $element, private DataService, private  $ionicLoading) {
+        constructor(private $rootScope, private $state, private ResultService, private $stateParams, private TripService, private UserService, private DataService, private  $ionicLoading) {
 
             // if no user id is committed -> controller used for search results
             if (!$stateParams.userId) {
@@ -15,6 +13,7 @@ module Controller {
                 $rootScope.$on('newSearchResults', () => {
                     this.results = ResultService.getResults();
                     this.$ionicLoading.hide();
+                    this.updateUserInfo();
                 });
             } else {
                 this.searchView = false;
@@ -22,6 +21,7 @@ module Controller {
                 this.TripService.getTripsByUser($stateParams.userId)
                     .then(result => {
                         this.results = result.data;
+                        this.updateUserInfo();
                     });
                 this.$ionicLoading.hide();
 
@@ -34,9 +34,20 @@ module Controller {
 
         }
 
-        formatDate(date) {
+        /**
+         * Function to update userinfo of each trip
+         */
+        updateUserInfo = ()=> {
+            this.results.forEach((currentValue) => {
+                this.UserService.getUser(currentValue.userid).then((result) => {
+                    currentValue.username = result.data.name;
+                })
+            })
+        };
+
+        formatDate = (date) => {
             return moment(new Date(date)).format('L');
-        }
+        };
 
         showTripDetail = (tripId, userId) => {
             if (this.searchView) {
