@@ -38,6 +38,10 @@
 
 }
 
+.profile .birthdate {
+    margin-left: 5px;
+}
+
 .edit .description{
     width: 50%;
 }
