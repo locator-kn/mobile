@@ -11,7 +11,7 @@ module Controller {
         constructor(private $scope, private $element, private $stateParams, private SearchService, private DataService, private $ionicSlideBoxDelegate, private UserService, private $ionicLoading) {
             // get trip by id from state param
             SearchService.getTripById(this.$stateParams.tripId).then((result) => {
-                this.trip = result.data[0];
+                this.trip = result.data;
                 // important for ion-slide!
                 this.$ionicSlideBoxDelegate.update();
                 // workaround, because title do not update in tripDetail.html
