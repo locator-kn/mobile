@@ -34,6 +34,10 @@ module Controller {
 
         }
 
+        formatDate(date) {
+            return moment(new Date(date)).format('L');
+        }
+
         showTripDetail = (tripId, userId) => {
             if (this.searchView) {
                 var state = 'tab.search-result-trip';
