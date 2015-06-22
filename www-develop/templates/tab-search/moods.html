@@ -3,7 +3,7 @@
         <div>
             <ul class="list">
                 <li class="item" ng-repeat="mood in cc.moods">
-                    <img class="result-mood" src="./images/icons/{{mood.icon}}">
+                    <img class="result-mood" ng-src="./images/icons/{{mood.icon}}">
                     <span class="mood-text">{{mood.title}}</span>
                     <label class="checkbox mood-checkbox">
                         <input class="border-transparent" type="checkbox" ng-change="cc.sync(mood.checked, mood)"

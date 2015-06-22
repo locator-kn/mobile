@@ -4,8 +4,8 @@
         <ul>
             <ion-slide-box on-slide-changed="slideHasChanged($index)">
                 <ion-slide  ng-repeat="location in tc.trip.locations">
-                    <img class="tmpImageWidth" src="http://locator-app.com{{location.thumbnail}}">
-                    <img class="user-picture"  ui-sref="tab.search-user({userId:tc.trip.userid})" src="http://locator-app.com/{{tc.user.picture.picture}}">
+                    <img class="tmpImageWidth" ng-src="http://locator-app.com{{location.thumbnail}}">
+                    <img class="user-picture"  ui-sref="tab.search-user({userId:tc.trip.userid})" ng-src="http://locator-app.com/{{tc.user.picture.picture}}">
                 </ion-slide>
             </ion-slide-box>
 
@@ -27,7 +27,7 @@
             <li class="item">
                 <div ng-repeat="mood in tc.trip.moods">
                     <div ng-repeat="availableMood in tc.moods |filter:mood">
-                        <img class="moods-style" src="./images/icons/{{availableMood.icon}}">
+                        <img class="moods-style" ng-src="./images/icons/{{availableMood.icon}}">
                     </div>
                 </div>
             </li>

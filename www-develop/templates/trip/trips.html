@@ -6,7 +6,7 @@
                     <!-- for each pictures-->
                     <ion-slide-box on-slide-changed="slideHasChanged($index)">
                         <ion-slide ng-repeat="location in result.locations">
-                            <img class="tmpImageWidth" src="http://locator-app.com{{location.thumbnail}}">
+                            <img class="tmpImageWidth" ng-src="http://locator-app.com{{location.thumbnail}}">
                         </ion-slide>
                     </ion-slide-box>
                     <ul>
@@ -29,7 +29,7 @@
                         <li class="item">
                             <div ng-repeat="mood in result.moods">
                                 <div ng-repeat="availableMood in toc.moods |filter:mood">
-                                    <img class="result-mood" src="./images/icons/{{availableMood.icon}}">
+                                    <img class="result-mood" ng-src="./images/icons/{{availableMood.icon}}">
                                 </div>
                             </div>
                         </li>
