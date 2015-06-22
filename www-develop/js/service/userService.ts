@@ -73,6 +73,17 @@ module Service {
             });
         }
 
+        updateProfile(newUserData) {
+            return this.$http.put(this.basePath + '/users/my/profile',
+                {
+                    "name": newUserData.name,
+                    "surname": newUserData.surname,
+                    "description": newUserData.description,
+                    "residence": newUserData.residence,
+                    "birthdate": newUserData.birthdate
+                })
+        }
+
         openLoginModal = () => {
             this.$ionicLoading.show({templateUrl: 'templates/login-modal.html'}, {
                 animation: 'slide-in-up'
