@@ -1,16 +1,19 @@
 <ion-view class="profile" view-title="Beschreibung" ng-controller="UserCtrl as uc">
     <ion-content class="background-color-grey">
-        <div ng-click="uc.editTrigger()">
-            <button class="button button-light config-button" ng-if="uc.me && !uc.edit">
+        <div>
+            <button class="button button-dark config-button" ng-if="uc.me && !uc.edit" ng-click="uc.editTrigger()">
                 Bearbeiten
             </button>
-            <button class="button button-light save-button" ng-if="uc.me && uc.edit">
+            <button class="button  button-balanced save-button" ng-if="uc.me && uc.edit" ng-click="uc.updateProfile()">
                 Speichern
+            </button>
+            <button class="button button-assertive abort-button" ng-if="uc.me && uc.edit" ng-click="uc.editTrigger()">
+                Abbrechen
             </button>
         </div>
         <ul class="list" ng-if="!uc.edit">
             <li class="item">
-                <img class="profile-image" src="http://locator-app.com/{{uc.user.picture.picture}}">
+                <img class="profile-image" ng-src="http://locator-app.com/{{uc.user.picture.picture}}">
                 <span class="username">{{uc.user.name}} <span class="birthdate">({{uc.birthdate}})</span></span>
             </li>
 
@@ -30,7 +33,7 @@
         </ul>
 
         <ul class="list edit" ng-if="uc.edit" ng-model-options="{ getterSetter: true }">
-            <img class="profile-image" src="http://locator-app.com/{{uc.user.picture.picture}}">
+            <img class="profile-image" ng-src="http://locator-app.com/{{uc.user.picture.picture}}">
             <label class="text-color-red item item-input">
                 <span class="title">Name</span>
                 <input class="username" type="input" ng-model="uc.user.name"/>
