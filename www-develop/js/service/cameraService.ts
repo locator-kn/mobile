@@ -6,7 +6,7 @@ module Service {
         }
 
 
-        getPicture(options) {
+        getPicture = (options) => {
             var q = this.$q.defer();
             navigator.camera.getPicture((result) => {
                 // Do any magic we need
@@ -16,30 +16,54 @@ module Service {
             }, options);
 
             return q.promise;
-        }
+        };
 
         showPictureActions = () => {
+            var q = this.$q.defer();
+
             // Show the action sheet
-            this.$ionicActionSheet.show({
+            var hideSheet = this.$ionicActionSheet.show({
                 buttons: [
                     {text: 'Foto aufnehmen'},
                     {text: 'Fotoalbum'}
                 ],
                 titleText: 'Fotoauswahl',
                 cancelText: 'Abbrechen',
-                cancel: function () {
+                cancel: ()=> {
+                    hideSheet();
                     // add cancel code..
                 },
-                buttonClicked: function (index) {
+                buttonClicked: (index) => {
                     if (index === 0) {
                         // take a picture
+                        this.getPicture({
+                            quality: 100,
+                            saveToPhotoAlbum: true
+                        }).then((data) => {
+                            q.resolve(data);
+                            hideSheet();
 
+                        }).catch((err)=> {
+                            q.reject(err);
+                            hideSheet();
+
+                        });
                     } else {
                         // take from gallery
+                        return this.getPicture({
+                            quality: 100,
+                            sourceType: Camera.PictureSourceType.PHOTOLIBRARY
+                        }).then((data) => {
+                            q.resolve(data);
+                            hideSheet();
+                        }).catch((err)=> {
+                            q.reject(err)
+                            hideSheet();
+                        });
                     }
-                    return true;
                 }
             });
+            return q.promise;
         };
 
 
