@@ -20,7 +20,8 @@ module Controller {
 
         path:string = 'http://locator-app.com/';
 
-        constructor(private $rootScope, private $state, private UserService, private CameraService, private $stateParams, private $ionicPopup, private $ionicLoading) {
+        constructor(private $rootScope, private $state, private UserService, private CameraService, private PictureUploadService,
+                    private basePath, private $stateParams, private $ionicPopup, private $ionicLoading) {
 
             this.getUser($stateParams.userId);
 
@@ -83,6 +84,7 @@ module Controller {
             }
 
             this.$ionicLoading.show({template: '<ion-spinner icon="spiral"></ion-spinner>'});
+
             this.UserService.updateProfile(this.user)
                 .then(result => {
                     this.$ionicLoading.hide();
@@ -123,7 +125,7 @@ module Controller {
         };
 
         uploadImage() {
-            this.UserService.uploadImage(this.newImagePath);
+            this.PictureUploadService.uploadImage(this.newImagePath, this.basePath + '/users/my/picture');
         }
 
         static controllerId:string = "UserCtrl";
