@@ -123,8 +123,9 @@ module Controller {
         };
 
         uploadImage() {
-
+            this.UserService.uploadImage(this.newImagePath);
         }
+
         static controllerId:string = "UserCtrl";
     }
 }
