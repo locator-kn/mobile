@@ -16,7 +16,9 @@ module Controller {
         //for description
         lettersPerLine = 25;
 
-        constructor(private $rootScope, private $state, private UserService, private $stateParams, private $ionicPopup, private $ionicLoading) {
+        path:string = 'http://locator-app.com/';
+
+        constructor(private $rootScope, private $state, private UserService, private CameraService, private $stateParams, private $ionicPopup, private $ionicLoading) {
 
             this.getUser($stateParams.userId);
 
@@ -108,6 +110,13 @@ module Controller {
         startConversation = () => {
             // TODO
             this.$ionicPopup.alert({title: 'Noch nicht implementiert'});
+        };
+
+        updatePicture = ()=> {
+            this.CameraService.showPictureActions().then((result) => {
+                this.path ='';
+                this.user.picture.picture = result;
+            })
         };
 
 
