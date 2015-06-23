@@ -16,6 +16,8 @@ module Controller {
         //for description
         lettersPerLine = 25;
 
+        newImagePath:string;
+
         path:string = 'http://locator-app.com/';
 
         constructor(private $rootScope, private $state, private UserService, private CameraService, private $stateParams, private $ionicPopup, private $ionicLoading) {
@@ -115,29 +117,14 @@ module Controller {
         updatePicture = ()=> {
             this.CameraService.showPictureActions().then((result) => {
                 this.path = '';
-                this.resolveFileURI(result);
-                //this.user.picture.picture = result;
+                this.newImagePath = result;
+                this.uploadImage();
             })
         };
 
-        resolveFileURI = (imageURI) => {
+        uploadImage() {
 
-            console.log('1' + imageURI)
-
-            //A hack that you should include to catch bug on Android 4.4 (bug < Cordova 3.5):
-            if (imageURI.substring(0, 21) == "content://com.android") {
-                var photo_split = imageURI.split("%3A");
-                imageURI = "content://media/external/images/media/" + photo_split[1];
-            }
-
-            window.resolveLocalFileSystemURI(imageURI, (fileEntry) => {
-                this.user.picture.picture = fileEntry.nativeURL;
-                console.log(imageURI)
-            }, (err)=> {
-                console.log(err)
-            });
-        };
-
+        }
         static controllerId:string = "UserCtrl";
     }
 }
