@@ -9,6 +9,7 @@ module Service {
             // TODO: check if png or jpeg
             // TODO: grep picture
             // TODO: implement processing
+            var q = this.$q.defer();
 
             var options = {
                 // IMPORTANT!!
@@ -24,10 +25,14 @@ module Service {
                 }
             };
             this.$cordovaFileTransfer.upload(destinationPath, filePath, options).then(function (result) {
+                q.resolve(result);
                 console.log("SUCCESS: " + result.response);
             }, function (err) {
+                q.reject(err);
                 console.log("ERROR: " + err);
             }, function (progress) {
+                // TODO how?
+                //q.notify(progress)
                 // constant progress updates
             });
         };
