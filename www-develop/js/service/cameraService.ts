@@ -36,8 +36,7 @@ module Service {
                     if (index === 0) {
                         // take a picture
                         this.getPicture({
-                            quality: 100,
-                            saveToPhotoAlbum: true
+                            quality: 100
                         }).then((data) => {
                             q.resolve(data);
                             hideSheet();
