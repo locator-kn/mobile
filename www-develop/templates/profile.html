@@ -13,7 +13,7 @@
         </div>
         <ul class="list" ng-if="!uc.edit">
             <li class="item">
-                <img class="profile-image" ng-src="http://locator-app.com/{{uc.user.picture.picture}}">
+                <img class="profile-image" ng-src="{{uc.path}}{{uc.user.picture.picture}}">
                 <span class="username">{{uc.user.name}} <span class="birthdate">({{uc.birthdate}})</span></span>
             </li>
 
@@ -33,7 +33,7 @@
         </ul>
 
         <ul class="list edit" ng-if="uc.edit" ng-model-options="{ getterSetter: true }">
-            <img class="profile-image" ng-src="http://locator-app.com/{{uc.user.picture.picture}}">
+            <img class="profile-image" ng-src="{{uc.path}}{{uc.user.picture.picture}}" ng-click="uc.updatePicture()">
             <label class="text-color-red item item-input">
                 <span class="title">Name</span>
                 <input class="username" type="input" ng-model="uc.user.name"/>
