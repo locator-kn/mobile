@@ -112,10 +112,7 @@ angular.module('starter', deps)
     })
 
 
-    .config(function($compileProvider){
-        $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|file|blob|cdvfile|content):|data:image\//);
-    })
-    .config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
+    .config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider, $compileProvider) {
 
         // Ionic uses AngularUI Router which uses the concept of states
         // Learn more here: https://github.com/angular-ui/ui-router
@@ -265,5 +262,9 @@ angular.module('starter', deps)
 
         // if none of the above states are matched, use this as the fallback
         $urlRouterProvider.otherwise('/tab/welcome');
+
+        $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|local|data|file|blob|cdvfile|content):\//);
+
+
 
     });
