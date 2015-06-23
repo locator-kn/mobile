@@ -5,7 +5,7 @@ module Service {
         }
 
 
-        uploadImage = (filePath)=> {
+        uploadImage = (filePath, destinationPath)=> {
             // TODO: check if png or jpeg
             // TODO: grep picture
             // TODO: implement processing
@@ -23,7 +23,7 @@ module Service {
                     yCoord: 0
                 }
             };
-            this.$cordovaFileTransfer.upload(this.basePath + '/users/my/picture', filePath, options).then(function (result) {
+            this.$cordovaFileTransfer.upload(destinationPath, filePath, options).then(function (result) {
                 console.log("SUCCESS: " + result.response);
             }, function (err) {
                 console.log("ERROR: " + err);
