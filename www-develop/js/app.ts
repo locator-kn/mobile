@@ -35,7 +35,8 @@ var deps = [
     'ionic',
     'ngLodash',
     'locator.accommodation-equipment-chooser',
-    'angular-cache'
+    'angular-cache',
+    'ngCordova'
 ];
 
 angular.module('starter', deps)
