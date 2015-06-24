@@ -36,7 +36,8 @@ module Service {
                     if (index === 0) {
                         // take a picture
                         this.getPicture({
-                            quality: 100
+                            quality: 100,
+                            correctOrientation: true
                         }).then((data) => {
                             q.resolve(data);
                             hideSheet();
