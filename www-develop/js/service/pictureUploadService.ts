@@ -18,8 +18,8 @@ module Service {
                 chunkedMode: false,
                 mimeType: "image/png",
                 params: {
-                    width: 500,
-                    height: 500,
+                    width: 2000,
+                    height: 2000,
                     xCoord: 0,
                     yCoord: 0
                 }
