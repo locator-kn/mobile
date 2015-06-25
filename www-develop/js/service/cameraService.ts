@@ -9,7 +9,6 @@ module Service {
         getPicture = (options) => {
             var q = this.$q.defer();
             navigator.camera.getPicture((result) => {
-                // Do any magic we need
                 q.resolve(result);
             }, (err) => {
                 q.reject(err)
@@ -18,7 +17,7 @@ module Service {
             return q.promise;
         };
 
-        showPictureActions = () => {
+        selectPicture = (opts) => {
             var q = this.$q.defer();
 
             // Show the action sheet
@@ -39,7 +38,7 @@ module Service {
                             quality: 100,
                             correctOrientation: true
                         }).then((url) => {
-                            this.cropImage(url).then((data)=> {
+                            this.cropImage(url, opts).then((data)=> {
                                 q.resolve(data);
                             }).catch((err)=> {
                                 q.reject(err);
@@ -56,7 +55,7 @@ module Service {
                             quality: 100,
                             sourceType: Camera.PictureSourceType.PHOTOLIBRARY
                         }).then((url) => {
-                            this.cropImage(url).then((data)=> {
+                            this.cropImage(url, opts).then((data)=> {
                                 q.resolve(data);
                             }).catch((err)=> {
                                 q.reject(err);
@@ -72,13 +71,13 @@ module Service {
             return q.promise;
         };
 
-        cropImage = (url) => {
+        cropImage = (url, opts) => {
             var q = this.$q.defer();
 
             this.$jrCrop.crop({
                 url: url,
-                width: 200,
-                height: 200,
+                width: opts.width,
+                height: opts.height,
                 cancelText: 'Abbrechen',
                 chooseText: 'Auswählen',
                 getOnlyData: true,
