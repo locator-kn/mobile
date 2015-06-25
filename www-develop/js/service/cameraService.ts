@@ -2,7 +2,7 @@ module Service {
     export class CameraService {
 
 
-        constructor(private $q, private $ionicActionSheet,private $jrCrop) {
+        constructor(private $q, private $ionicActionSheet, private $jrCrop) {
         }
 
 
@@ -38,53 +38,28 @@ module Service {
                         this.getPicture({
                             quality: 100,
                             correctOrientation: true
-                        }).then((data) => {
-                            var options;
-
-                            this.$jrCrop.crop({
-                                url: data,
-                                width: 200,
-                                height: 200,
-                                cancelText: 'Abbrechen',
-                                chooseText: 'Auswählen',
-                                getOnlyData: true,
-                                roundData: true
-                            }).then((canvas) =>  {
-                                console.log('canvas: '+ canvas)
-                                // success!
-                                debugger;
-
-                                q.resolve(canvas);
-
-                            }, function() {
-                                console.log('eeerrorororoor')
+                        }).then((url) => {
+                            this.cropImage(url).then((data)=> {
+                                q.resolve(data);
+                            }).catch((err)=> {
+                                q.reject(err);
                             });
                             hideSheet();
 
                         }).catch((err)=> {
                             q.reject(err);
                             hideSheet();
-
                         });
                     } else {
                         // take from gallery
                         return this.getPicture({
                             quality: 100,
                             sourceType: Camera.PictureSourceType.PHOTOLIBRARY
-                        }).then((data) => {
-                            console.log(data)
-                            this.$jrCrop.crop({
-                                url: data,
-                                width: 200,
-                                height: 200
-                            }).then((canvas) =>  {
-                                console.log('canvas: '+ canvas)
-                                // success!
-                                debugger;
-                                q.resolve(canvas);
-
-                            }, function() {
-                                console.log('eeerrorororoor')
+                        }).then((url) => {
+                            this.cropImage(url).then((data)=> {
+                                q.resolve(data);
+                            }).catch((err)=> {
+                                q.reject(err);
                             });
                             hideSheet();
                         }).catch((err)=> {
@@ -95,6 +70,26 @@ module Service {
                 }
             });
             return q.promise;
+        };
+
+        cropImage = (url) => {
+            var q = this.$q.defer();
+
+            this.$jrCrop.crop({
+                url: url,
+                width: 200,
+                height: 200,
+                cancelText: 'Abbrechen',
+                chooseText: 'Auswählen',
+                getOnlyData: true,
+                roundData: true
+            }).then((cropInfo) => {
+                q.resolve(cropInfo);
+            }).catch((err) => {
+                q.reject(err);
+            });
+            return q.promise;
+
         };
 
 
