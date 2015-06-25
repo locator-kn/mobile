@@ -1,0 +1,20 @@
+.md-avatar {
+    width: 70px;
+    height: 70px;
+    margin-right: 16px;
+    border-radius: 50%;
+    float: left;
+
+}
+
+.messenger label.ng-binding {
+    padding-top: 23px;
+    float: left;
+    font-size: 15px;
+    font-weight: bold;
+    padding-left: 5px;
+}
+
+.messenger li.item {
+    padding: 5px;
+}
