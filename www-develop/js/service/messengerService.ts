@@ -3,7 +3,7 @@ module Service {
         myConversationsCache;
         messagesIdCache;
 
-        constructor(private $http, private $q, private basePathRealtime, private CacheFactory) {
+        constructor(private $http, private CacheFactory, private basePathRealtime) {
             this.myConversationsCache = this.CacheFactory.createCache('myConversations');
             this.messagesIdCache = this.CacheFactory.createCache('messagesId');
         }
