@@ -12,9 +12,9 @@ module Controller {
         modifyBirthday;
 
         // textarea
-        descriptionRows:number = 4;
+        descriptionRows:number = 3;
         //for description
-        lettersPerLine = 25;
+        lettersPerLine = 35;
 
         newImagePath:string;
 
@@ -45,6 +45,8 @@ module Controller {
                     var ageDifMs = Date.now() - new Date(result.data.birthdate).getTime() + 86400000;
                     var ageDate = new Date(ageDifMs); // miliseconds from epoch
                     this.birthdate = Math.abs(ageDate.getUTCFullYear() - 1970);
+
+                    this.user.birthdate = moment(new Date(this.user.birthdate)).format('L');
 
                     if (isNaN(this.birthdate)) {
                         this.birthAvailable = false;
