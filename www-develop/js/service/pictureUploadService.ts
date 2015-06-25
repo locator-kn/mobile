@@ -5,9 +5,8 @@ module Service {
         }
 
 
-        uploadImage = (filePath, destinationPath)=> {
+        uploadImage = (filePath, destinationPath, opt)=> {
             // TODO: check if png or jpeg
-            // TODO: grep picture
             // TODO: implement processing
             var q = this.$q.defer();
 
@@ -18,18 +17,18 @@ module Service {
                 chunkedMode: false,
                 mimeType: "image/png",
                 params: {
-                    width: 2000,
-                    height: 2000,
-                    xCoord: 0,
-                    yCoord: 0
+                    width: opt.width,
+                    height: opt.height,
+                    xCoord: opt.x,
+                    yCoord: opt.y
                 }
             };
-            this.$cordovaFileTransfer.upload(destinationPath, filePath, options).then(function (result) {
-                q.resolve(result);
+            this.$cordovaFileTransfer.upload(destinationPath, filePath, options, true).then(function (result) {
                 console.log("SUCCESS: " + result.response);
+                q.resolve(result);
             }, function (err) {
-                q.reject(err);
                 console.log("ERROR: " + err);
+                q.reject(err);
             }, function (progress) {
                 // TODO how?
                 //q.notify(progress)
