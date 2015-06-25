@@ -1,11 +1,9 @@
 .profile .profile-image {
     width: 125px;
     height: 125px;
-    margin-bottom: 30px;
     display: block;
-    margin-left: auto;
-    margin-right: auto;
     border-radius: 50%;
+    margin: 10px auto 30px;
 }
 
 .profile .username {
@@ -23,30 +21,63 @@
     width: 50%;
 }
 
-.profile .abort-button{
+.profile .abort-button {
     float: right;
-    width: 50%;
-}
-
-.profile .edit .title {
-    margin-right: 20px;
+    /* TODO validate why buttons break with 50% */
+    width: 49%;
 }
 
 .profile .edit .item input {
-    text-align: right;
+    text-align: left;
     border: 0;
 }
 
 .profile .edit .item textarea {
     width: 100%;
     background-color: transparent;
-
 }
 
 .profile .birthdate {
     margin-left: 5px;
 }
 
-.edit .description{
-    width: 50%;
+.profile .background-color-edit {
+    background-color: rgb(203, 203, 203);
+}
+
+.profile .image-description{
+    text-align: center;
+    width: 100%;
+    display: inline-block;
+}
+
+.profile .item .birthday input{
+    border: 0;
+    padding-top: 0px;
+    height: auto;
+}
+
+.edit input {
+    width: 100%;
+    text-align: left;
+}
+.edit .item span {
+    margin-top: 10px;
+}
+
+.edit li {
+    margin-bottom: 10px;
+}
+.edit .birthdate {
+    padding-left: 16px;
+    margin-left: 0px;
+}
+
+.edit textarea {
+    width: 100%;
+    padding-left: 16px;
+}
+.edit .item input,
+.edit .item textarea{
+    text-align: left;
 }
