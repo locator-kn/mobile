@@ -37,6 +37,7 @@ var deps = [
     'ngLodash',
     'locator.accommodation-equipment-chooser',
     'angular-cache',
+    'jrCrop',
     'ngCordova'
 ];
 
@@ -201,11 +202,11 @@ angular.module('starter', deps)
                 }
             })
 
-            .state('tab.chat', {
-                url: '/chat',
+            .state('tab.messenger', {
+                url: '/messenger',
                 views: {
-                    'tab-chat': {
-                        templateUrl: 'templates/tab-chat.html'
+                    'tab-messenger': {
+                        templateUrl: 'templates/tab-messenger/contacts.html'
                     }
                 }
             }).state('tab.locate', {
