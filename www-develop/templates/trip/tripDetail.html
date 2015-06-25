@@ -1,11 +1,12 @@
 <!--cache view false needed for slider -->
-<ion-view class="trip" cache-view="false" view-title="{{tc.trip.title}}" ng-controller="TripCtrl as tc">
+<ion-view class="trip pageWithButton" cache-view="false" view-title="{{tc.trip.title}}" ng-controller="TripCtrl as tc">
     <ion-content>
         <ul>
             <ion-slide-box on-slide-changed="slideHasChanged($index)">
-                <ion-slide  ng-repeat="location in tc.trip.locations">
+                <ion-slide ng-repeat="location in tc.trip.locations">
                     <img class="tmpImageWidth" ng-src="http://locator-app.com{{location.thumbnail}}">
-                    <img class="user-picture"  ui-sref="tab.search-user({userId:tc.trip.userid})" ng-src="http://locator-app.com/{{tc.user.picture.picture}}">
+                    <img class="user-picture" ui-sref="tab.search-user({userId:tc.trip.userid})"
+                         ng-src="http://locator-app.com/{{tc.user.picture.picture}}">
                 </ion-slide>
             </ion-slide-box>
 
@@ -52,11 +53,9 @@
                 </div>
             </li>
         </ul>
-        <div>
-            <button ui-sref="tab.chat"
-                    class="button button-full background-green bottom">
-                Anschreiben
-            </button>
-        </div>
     </ion-content>
+    <button ui-sref="tab.chat"
+            class="button-bottom button button-full background-green bottom">
+        Anschreiben
+    </button>
 </ion-view>
