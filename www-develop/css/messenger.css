@@ -24,3 +24,27 @@ label.last-message.ng-binding {
     float: right;
     padding-right: 5px;
 }
+
+/*+++++++++++++++++++++++++++++++++++++++++++++++++++*/
+
+
+.messenger-container .content .message {
+    min-width: 100%;
+}
+
+.messenger-container .content .message.out p {
+    background-color: #ff4637;
+    float: right;
+    min-width: 80%;
+}
+.messenger-container .content .message p {
+    background-color: #33c4b7;
+    color: white;
+    max-width: 80%;
+    position: relative;
+    float: left;
+    padding: 15px;
+    word-wrap: break-word;
+    border-radius: 5px;
+    min-width: 80%;
+}
