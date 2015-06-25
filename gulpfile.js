@@ -43,12 +43,7 @@ gulp.task('ts', function () {
 
     var realtimeUrl = url.parse(templateObject.basePath);
     var port = parseInt(realtimeUrl.port, 10) + 1;
-    if(baseIdx === -1) {
-
-        templateObject.basePathRealtime = url.parse(realtimeUrl.protocol + '//' + realtimeUrl.hostname + ':' + port + realtimeUrl.path + '/r').href;
-    } else {
-        templateObject.basePathRealtime = templateObject.basePath + '/r';
-    }
+    templateObject.basePathRealtime = templateObject.basePath + '/r';
 
 
     var tsResult = gulp.src(['./www-develop/**/*.ts', '!./www-develop/lib/components/**/*.ts'])
