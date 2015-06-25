@@ -15,6 +15,8 @@
 /// <reference path="controller/tabCtrl.ts" />
 /// <reference path="controller/userCtrl.ts" />
 /// <reference path="controller/messengerCtrl.ts" />
+/// <reference path="controller/messagesCtrl.ts" />
+/// <reference path="controller/mainCtrl.ts" />
 
 /// <reference path="./service/dataService.ts" />
 /// <reference path="./service/searchService.ts" />
@@ -77,6 +79,8 @@ angular.module('starter', deps)
     .controller(Controller.TabCtrl.controllerId, Controller.TabCtrl)
     .controller(Controller.UserCtrl.controllerId, Controller.UserCtrl)
     .controller(Controller.MessengerCtrl.controllerId, Controller.MessengerCtrl)
+    .controller(Controller.MessagesCtrl.controllerId, Controller.MessagesCtrl)
+    .controller(Controller.MainCtrl.controllerId, Controller.MainCtrl)
 
     // services
     .service(Service.DataService.serviceId, Service.DataService)
@@ -207,7 +211,6 @@ angular.module('starter', deps)
                     }
                 }
             })
-
             .state('tab.messenger', {
                 url: '/messenger',
                 views: {
@@ -215,7 +218,16 @@ angular.module('starter', deps)
                         templateUrl: 'templates/tab-messenger/contacts.html'
                     }
                 }
-            }).state('tab.locate', {
+            })
+            .state('tab.messenger-messages', {
+                url: '/messenger/:opponentId',
+                views: {
+                    'tab-messenger': {
+                        templateUrl: 'templates/tab-messenger/messages.html'
+                    }
+                }
+            })
+            .state('tab.locate', {
                 url: '/locate',
                 views: {
                     'tab-locate': {
