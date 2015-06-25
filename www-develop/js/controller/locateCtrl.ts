@@ -5,6 +5,8 @@ module Controller {
         lat:string;
         long:string;
 
+        pictureWidth:number = 256;
+        pictureHeight:number = 150;
 
         constructor(private CameraService, private GeolocationService) {
         }
@@ -18,7 +20,11 @@ module Controller {
         };
 
         showPictureActions= () => {
-            this.CameraService.showPictureActions().then((data) => {
+            var opt = {
+                width: this.pictureWidth,
+                height: this.pictureHeight
+            };
+            this.CameraService.selectPicture(opt).then((data) => {
                 this.imageURI = data;
             });
         };
