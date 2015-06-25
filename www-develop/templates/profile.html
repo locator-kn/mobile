@@ -19,8 +19,7 @@
 
             <li class="item">
                 <h5 class="text-color-red">Geburtsdatum</h5>
-                <resultdate date="uc.user.birthdate"></resultdate>
-
+                <label class="text-color-red">{{uc.user.birthdate}}</label>
             </li>
             <li class="item">
                 <h5 class="text-color-red">Wohnort</h5>
@@ -34,23 +33,25 @@
 
         <ul class="list edit" ng-if="uc.edit" ng-model-options="{ getterSetter: true }">
             <img class="profile-image" ng-src="{{uc.path}}{{uc.user.picture.picture}}" ng-click="uc.updatePicture()">
-            <label class="text-color-red item item-input">
-                <span class="title">Name</span>
-                <input class="username" type="input" ng-model="uc.user.name"/>
-            </label>
-            <label class="item item-input">
+            <span class="image-description">Bild berühren um es zu ändern.</span>
+            <li>
+                <span class="title text-color-red">Name</span>
+                <input class="item item-input background-color-edit" type="input" ng-model="uc.user.name"/>
+            </li>
+            <li>
                 <span class="text-color-red title">Geburtsdatum</span>
-                <input class="text-right" type="date" ng-model="uc.user.birthdate" value="{{uc.modifyBirthday}}">
-            </label>
-            <label class="item item-input">
-                <span class="text-color-red">Wohnort</span>
-                <input class="text-right" type="input" ng-model="uc.user.residence">
-            </label>
-
-            <label class="item item-input">
-                <span class="text-color-red description">Beschreibung</span>
-                <textarea rows="{{uc.descriptionRows}}" type="input" ng-model="uc.user.description"></textarea>
-            </label>
+                <input class="item item-input background-color-edit birthdate" type="date" ng-model="uc.user.birthdate"
+                       value="{{uc.modifyBirthday}}">
+            </li>
+            <li>
+                <span class="text-color-red title">Wohnort</span>
+                <input class="item item-input background-color-edit" type="input" ng-model="uc.user.residence">
+            </li>
+            <li>
+                <span class="text-color-red title description">Beschreibung</span>
+                <textarea class="background-color-edit" rows="{{uc.descriptionRows}}" type="input"
+                          ng-model="uc.user.description"></textarea>
+            </li>
 
         </ul>
         <div>
