@@ -14,6 +14,7 @@
 /// <reference path="controller/loginCtrl.ts" />
 /// <reference path="controller/tabCtrl.ts" />
 /// <reference path="controller/userCtrl.ts" />
+/// <reference path="controller/messengerCtrl.ts" />
 
 /// <reference path="./service/dataService.ts" />
 /// <reference path="./service/searchService.ts" />
@@ -72,6 +73,7 @@ angular.module('starter', deps)
     .controller(Controller.LoginCtrl.controllerId, Controller.LoginCtrl)
     .controller(Controller.TabCtrl.controllerId, Controller.TabCtrl)
     .controller(Controller.UserCtrl.controllerId, Controller.UserCtrl)
+    .controller(Controller.MessengerCtrl.controllerId, Controller.MessengerCtrl)
 
     // services
     .service(Service.DataService.serviceId, Service.DataService)
