@@ -1,0 +1,21 @@
+<ion-view view-title="Messenger" class="messenger messenger-container">
+    <ion-content class="background-color-grey">
+        <div ng-if="authenticated">
+            <div ng-controller="MessagesCtrl as mc">
+
+                <div class="content" >
+                    <div ng-class="{'out' : message.from === userID}" class="message"
+                         ng-repeat="message in mc.messages">
+                        <p><span ng-bind-html="message.message" class="message-content"></span>
+                            <span class="bubble"></span>
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div ng-if="!authenticated">
+            Bitte zuerst Registrieren!
+        </div>
+    </ion-content>
+</ion-view>
