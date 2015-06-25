@@ -119,14 +119,14 @@ module Controller {
         updatePicture = ()=> {
             this.CameraService.showPictureActions().then((result) => {
                 this.path = '';
-                this.newImagePath = result;
-                this.uploadImage();
+                this.newImagePath = result.src;
+                this.uploadImage(result);
             })
         };
 
-        uploadImage() {
-            this.PictureUploadService.uploadImage(this.newImagePath, this.basePath + '/users/my/picture');
-        }
+        uploadImage = (result) => {
+            this.PictureUploadService.uploadImage(this.newImagePath, this.basePath + '/users/my/picture', result);
+        };
 
         static controllerId:string = "UserCtrl";
     }
