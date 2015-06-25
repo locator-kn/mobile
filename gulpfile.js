@@ -12,6 +12,7 @@ var sourcemaps = require('gulp-sourcemaps');
 var merge = require('merge2');
 var shell = require('gulp-shell');
 var template = require('gulp-template');
+var url = require('url');
 
 var typescript15 = require('typescript');
 
