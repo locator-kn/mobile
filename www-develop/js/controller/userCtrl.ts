@@ -118,7 +118,6 @@ module Controller {
 
         updatePicture = ()=> {
             this.CameraService.showPictureActions().then((result) => {
-                this.path = '';
                 this.newImagePath = result.src;
                 this.uploadImage(result);
             })
@@ -127,7 +126,9 @@ module Controller {
         uploadImage = (result) => {
             this.PictureUploadService.uploadImage(this.newImagePath, this.basePath + '/users/my/picture', result).then((data) => {
                 // update profile picture
-                this.UserService.getMe();
+                this.UserService.getMe().then((user) => {
+                    this.user = user;
+                });
             }).catch((err) => {
                 // TODO: show Error
             }).progress((process) => {
