@@ -1,8 +1,19 @@
-<ion-view view-title="Chats">
+<ion-view view-title="Messenger" ng-controller="MessengerCtrl as mc">
     <ion-nav-buttons side="left ">
         <i class="icon ion-ios-arrow-back home-back-button" ui-sref="tab.welcome"></i>
     </ion-nav-buttons>
-    <ion-content>
+    <ion-content class="background-color-grey">
+        <ul class="list">
+            <label class="item item-input">
+                <i class="icon ion-search placeholder-icon"></i>
+                <input class="city" type="search" placeholder="Suche" ng-change-options='{ debounce: 1000 }'
+                       ng-model="mc.contact"/>
+            </label>
+            <!--starts with filter -> if empty show all-->
+            <li class="item" ng-repeat="contact in mc.contacts | startsWith: mc.contact">
+                {{contact.name}}
+            </li>
 
+        </ul>
     </ion-content>
 </ion-view>
