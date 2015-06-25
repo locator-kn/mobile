@@ -125,8 +125,17 @@ module Controller {
         };
 
         uploadImage = (result) => {
-            this.PictureUploadService.uploadImage(this.newImagePath, this.basePath + '/users/my/picture', result);
+            this.PictureUploadService.uploadImage(this.newImagePath, this.basePath + '/users/my/picture', result).then((data) => {
+                // update profile picture
+                this.UserService.getMe();
+            }).catch((err) => {
+                // TODO: show Error
+            }).progress((process) => {
+                // TODO implement processing
+            });
         };
+
+
 
         static controllerId:string = "UserCtrl";
     }
