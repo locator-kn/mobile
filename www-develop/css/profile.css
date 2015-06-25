@@ -42,7 +42,7 @@
 }
 
 .profile .background-color-edit {
-    background-color: rgb(203, 203, 203);
+    background-color: rgb(227, 227, 227);
 }
 
 .profile .image-description{
@@ -66,6 +66,10 @@
     margin-top: 10px;
 }
 
+.edit .title {
+    padding-left: 5px;
+}
+
 .edit li {
     margin-bottom: 10px;
 }
@@ -78,6 +82,9 @@
     width: 100%;
     padding-left: 16px;
     padding-right: 16px;
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 1.42857;
 }
 .edit .item input,
 .edit .item textarea{
