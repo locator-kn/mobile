@@ -1,4 +1,4 @@
-<ion-view class="welcome" view-title="Suche" ng-controller="SearchCtrl as sc">
+<ion-view class="welcome pageWithButton" view-title="Suche" ng-controller="SearchCtrl as sc">
     <ion-nav-buttons side="left ">
         <i class="icon ion-ios-arrow-back home-back-button" ui-sref="tab.welcome"></i>
     </ion-nav-buttons>
@@ -59,11 +59,9 @@
                 </li>
             </ul>
         </div>
-        <div>
-            <button ng-click="sc.searchTrips()" ng-disabled="!sc.city.title"
-                    class="button button-full background-green bottom">
-                Los geht's
-            </button>
-        </div>
     </ion-content>
+    <button ng-click="sc.searchTrips()" ng-disabled="!sc.city.title"
+            class="button-bottom button button-full background-green bottom">
+        Los geht's
+    </button>
 </ion-view>
