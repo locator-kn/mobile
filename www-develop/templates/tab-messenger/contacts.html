@@ -12,9 +12,8 @@
                         <input class="city" type="search" placeholder="Suche" ng-change-options='{ debounce: 1000 }'
                                ng-model="mc.contact"/>
                     </label>
-                    <!--starts with filter -> if empty show all-->
-                    <li class="item" ng-repeat="conversation in mc.conversations | startsWith: mc.conversation">
-
+                    <!-- TODO: search in conversation.name instead of conversation -->
+                    <li class="item" ng-repeat="conversation in mc.conversations | filter: mc.contact">
                             <img class="md-avatar"  ng-src="http://locator-app.com{{conversation.opponent.picture.picture}}"/>
                             <label>{{ conversation.opponent.name }}</label>
                     </li>
