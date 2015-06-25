@@ -17,6 +17,9 @@ module Controller {
         lettersPerLine = 35;
 
         newImagePath:string;
+        // picture dimension
+        width:number = 200;
+        height:number = 200;
 
         path:string = 'http://locator-app.com/';
 
@@ -119,7 +122,11 @@ module Controller {
         };
 
         updatePicture = ()=> {
-            this.CameraService.showPictureActions().then((result) => {
+            var opts = {
+                height: this.height,
+                width: this.width
+            };
+            this.CameraService.selectPicture(opts).then((result) => {
                 this.newImagePath = result.src;
                 this.uploadImage(result);
             })
