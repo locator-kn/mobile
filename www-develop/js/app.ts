@@ -62,6 +62,8 @@ angular.module('starter', deps)
 
     // constants
     .constant('basePath', '<%= basePath %>')
+    .constant('basePathRealtime', '<%= basePathRealtime %>')
+
 
     // controler
     .controller(Controller.WelcomeCtrl.controllerId, Controller.WelcomeCtrl)
