@@ -2,7 +2,7 @@ module Service {
     export class CameraService {
 
 
-        constructor(private $q, private $ionicActionSheet) {
+        constructor(private $q, private $ionicActionSheet,private $jrCrop) {
         }
 
 
@@ -39,7 +39,26 @@ module Service {
                             quality: 100,
                             correctOrientation: true
                         }).then((data) => {
-                            q.resolve(data);
+                            var options;
+
+                            this.$jrCrop.crop({
+                                url: data,
+                                width: 200,
+                                height: 200,
+                                cancelText: 'Abbrechen',
+                                chooseText: 'Auswählen',
+                                getOnlyData: true,
+                                roundData: true
+                            }).then((canvas) =>  {
+                                console.log('canvas: '+ canvas)
+                                // success!
+                                debugger;
+
+                                q.resolve(canvas);
+
+                            }, function() {
+                                console.log('eeerrorororoor')
+                            });
                             hideSheet();
 
                         }).catch((err)=> {
@@ -53,7 +72,20 @@ module Service {
                             quality: 100,
                             sourceType: Camera.PictureSourceType.PHOTOLIBRARY
                         }).then((data) => {
-                            q.resolve(data);
+                            console.log(data)
+                            this.$jrCrop.crop({
+                                url: data,
+                                width: 200,
+                                height: 200
+                            }).then((canvas) =>  {
+                                console.log('canvas: '+ canvas)
+                                // success!
+                                debugger;
+                                q.resolve(canvas);
+
+                            }, function() {
+                                console.log('eeerrorororoor')
+                            });
                             hideSheet();
                         }).catch((err)=> {
                             q.reject(err);
