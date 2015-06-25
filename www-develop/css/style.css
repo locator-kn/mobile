@@ -69,3 +69,12 @@
     width: 100%;
     font-size: 10px;
 }
+
+.pageWithContactButton .scroll {
+    padding-bottom: 100px;
+}
+
+.button-contact {
+    bottom: 38px;
+    position: absolute;
+}
