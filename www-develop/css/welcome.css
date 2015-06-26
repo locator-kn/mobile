@@ -21,9 +21,8 @@
 
 .welcome .height-3,
 .welcome .height-3 img {
-    /* 30px = (top(43)+ bottom(49)) / 3 */
-    /*height: calc(33vh - 30px);*/
     vertical-align: middle;
+    height: 33.4%
 
 }
 
