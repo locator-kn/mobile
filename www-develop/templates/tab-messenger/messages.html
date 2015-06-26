@@ -1,4 +1,4 @@
-<ion-view view-title="Messenger" class="messenger messenger-container">
+<ion-view view-title="Messenger" class="messages messenger-container">
     <ion-content class="background-color-grey">
         <div ng-if="authenticated">
             <div ng-controller="MessagesCtrl as mc">
@@ -18,4 +18,9 @@
             Bitte zuerst Registrieren!
         </div>
     </ion-content>
+    <div class="list list-inset bottom">
+        <label class="item item-input">
+            <input type="text" placeholder="schreib etwas">
+        </label>
+    </div>
 </ion-view>

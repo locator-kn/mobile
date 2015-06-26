@@ -1,10 +1,23 @@
+.messenger .bottom {
+    bottom: 38px;
+    position: absolute;
+}
+
+.list.list-inset.bottom {
+    width: 100%;
+    margin: 0px 0px 11px 0px;
+}
+
+.messages ion-content.background-color-grey.scroll-content.ionic-scroll.has-header.has-tabs {
+    margin-bottom: 47px;
+}
+
 .md-avatar {
     width: 70px;
     height: 70px;
     margin-right: 16px;
     border-radius: 50%;
     float: left;
-
 }
 
 .messenger label.ng-binding {
@@ -35,7 +48,6 @@ label.last-message.ng-binding {
 .messenger-container .content .message.out p {
     background-color: #ff4637;
     float: right;
-    min-width: 80%;
 }
 .messenger-container .content .message p {
     background-color: #33c4b7;
@@ -43,8 +55,146 @@ label.last-message.ng-binding {
     max-width: 80%;
     position: relative;
     float: left;
-    padding: 15px;
+    padding: 8px;
     word-wrap: break-word;
     border-radius: 5px;
-    min-width: 80%;
+}
+
+
+/*##################################################### copy ################################################*/
+
+.messenger-container .conversations .item {
+    padding: 10px;
+    float: left;
+    width: 100%;
+}
+/**/
+.messenger-container .conversations .item:nth-child(odd) {
+    background: rgb(232, 232, 232);
+}
+/**/
+.messenger-container .conversations .item:nth-child(even) {
+    background: whitesmoke;
+}
+/**/
+.messenger-container .conversations .item.active {
+    background-color: #33c4b7;
+}
+/**/
+.messenger-container .conversations .item.unread {
+    background-color: #100e10;
+}
+/**/
+.messenger-container .conversations {
+    max-height: calc(100vh - 60px);
+    overflow-y: scroll;
+}
+/**/
+.md-avatar {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 8px;
+    margin-top: 16px;
+    margin-right: 16px;
+    border-radius: 50%;
+    box-sizing: content-box;
+    float: left;
+}
+/**/
+.messenger-container .header {
+    float: left;
+    width: 100%;
+}
+/**/
+.messenger-container .content {
+    /*overflow-y: scroll;*/
+    /*overflow-x: hidden;*/
+    float: left;
+    width: 100%;
+    height: 200px;
+}
+/**/
+
+/**/
+.messenger-container .content .message {
+    float: left;
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+/**/
+
+/**/
+
+/**/
+.messenger-button {
+    width: 60px;
+    height: 70px;
+    border: none;
+    float: left;
+    background: white;
+}
+/**/
+button#chat_submit {
+    float: right;
+}
+/**/
+#chat_box {
+    width: calc(100% - 60px);
+    background: white;
+    border: none;
+    float: left;
+    padding: 11px;
+    height: 70px;
+}
+/**/
+.chat-input {
+    padding-top: 15px;
+    float: left;
+    width: 100%;
+    padding-bottom: 20px;
+    padding: 2px;
+    background-color: #ff4637;
+    margin-top: 20px;
+    border-radius: 3px;
+}
+/**/
+span.bubble {
+    height: 20px;
+    width: 30px;
+    background-color: #33C4B7;
+    float: left;
+    position: absolute;
+    bottom: -4px;
+    left: -16px;
+    transform: rotate(52deg);
+}
+/**/
+.out span.bubble {
+    right: -13px;
+    background-color: #ff4637;
+    left: inherit;
+    bottom: -5px;
+    transform: rotate(35deg);
+}
+/**/
+.emoji-overlay {
+    position: absolute;
+    background-color: white;
+    padding: 15px;
+    padding: 9px;
+    right: 60px;
+}
+/**/
+.conversations {
+    padding-top: 15px;
+    float: left;
+    width: 100%;
+}
+/**/
+.emoji-icon {
+    height: 20px;
+}
+/**/
+.logged-out .messenger-popover {
+    display: none;
 }
