@@ -1,14 +1,16 @@
 {
-    "name": "LocatorApp",
-    "private": "true",
-    "devDependencies": {
-        "ionic": "driftyco/ionic-bower#1.0.0"
-    },
-    "dependencies": {
-        "jquery": "~2.1.4",
-        "angular-cache": "~4.2.0",
-        "moment": "~2.10.2",
-        "ng-lodash": "~0.2.3",
-        "angular-accommodation-equipment-chooser": "~0.2.3"
-    }
+  "name": "LocatorApp",
+  "private": "true",
+  "devDependencies": {
+    "ionic": "driftyco/ionic-bower#1.0.0"
+  },
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "angular-cache": "~4.2.0",
+    "moment": "~2.10.2",
+    "ng-lodash": "~0.2.3",
+    "angular-accommodation-equipment-chooser": "~0.2.3",
+    "cropme": "~0.3.2",
+    "angular-socket-io": "~0.7.0"
+  }
 }
