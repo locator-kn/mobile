@@ -94,6 +94,10 @@ module Service {
             this.$ionicLoading.hide();
         };
 
+        clearMyProfileCache() {
+            this.usersMeCache.remove(this.basePath + '/users/my/profile');
+        }
+
         static serviceId:string = "UserService";
     }
 }
