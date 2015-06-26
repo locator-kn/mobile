@@ -16,7 +16,7 @@ module Controller {
                 .then(result => {
                     this.conversations = result.data;
                     this.conversations.forEach(element => {
-                        element.lastMessage = moment(new Date(element.modified_date)).startOf('hour').fromNow();
+                        element.lastMessage = moment(new Date(element.modified_date)).startOf('minutes').fromNow();
                         this.conversationsHash[element._id] = element;
                         this.UserService.getUser(element['opponent'])
                             .then(result => {
