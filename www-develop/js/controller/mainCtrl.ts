@@ -2,15 +2,27 @@ module Controller {
     export class MainCtrl {
 
 
-        constructor(private $scope, private $rootScope, private $location, private $window) {
+        user:any = {};
 
+        constructor(private UserService, private $rootScope) {
+            this.getMe();
 
         }
 
-        closeOverlay() {
-            this.$rootScope.$emit('closeDialog');
-        }
 
+        getMe() {
+            this.UserService.getMe()
+                .then(result => {
+                    this.user = result.data;
+                    this.$rootScope.authenticated = true;
+                    this.$rootScope.userID = result.data._id;
+                    console.info(result.data._id);
+                    this.$rootScope.$emit('login_success');
+                    //this.getConversations()
+                }).catch(() => {
+                    this.$rootScope.authenticated = false;
+                });
+        }
         static controllerId:string = "MainCtrl";
     }
 }
