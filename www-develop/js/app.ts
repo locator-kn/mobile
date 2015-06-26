@@ -70,7 +70,6 @@ angular.module('starter', deps)
     .constant('webPath', '<%= webPath %>')
 
 
-
     // controler
     .controller(Controller.WelcomeCtrl.controllerId, Controller.WelcomeCtrl)
     .controller(Controller.SearchCtrl.controllerId, Controller.SearchCtrl)
@@ -116,6 +115,21 @@ angular.module('starter', deps)
                 matches = array;
             }
             return matches;
+        };
+    })
+
+    .directive('ngEnter', function () {
+        return function (scope, element, attrs) {
+            element.bind("keydown keypress", function (event) {
+                if (event.which === 13) {
+                    scope.$apply(function () {
+                        scope.$eval(attrs.ngEnter);
+                        element.val('');
+                    });
+
+                    event.preventDefault();
+                }
+            });
         };
     })
 
@@ -291,7 +305,6 @@ angular.module('starter', deps)
         $urlRouterProvider.otherwise('/tab/welcome');
 
         $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|local|data|file|blob|cdvfile|content):\//);
-
 
 
     });
