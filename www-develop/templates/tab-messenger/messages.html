@@ -5,8 +5,8 @@
                 <div class="content">
                     <div ng-class="{'out' : message.from === userID}" class="message"
                          ng-repeat="message in mc.messages">
-                        <p><span class="message-content">{{message.message}}
-                            <span class="since">{{mc.since(message.create_date)}}</span></span>
+                        <p><span class="message-content">{{message.message}}</span>
+                            <!--<span class="since">{{mc.since(message.create_date)}}</span></span>-->
                             <span class="bubble"></span>
                         </p>
 
@@ -20,7 +20,7 @@
     </ion-content>
     <div class="list list-inset bottom">
         <label class="item item-input">
-            <input type="text" ng-enter="mc.sendText(text)" ng-model="text" placeholder="schreib etwas">
+            <input type="text" ng-enter="mc.sendMessage(message)" ng-model="message" placeholder="schreib etwas">
         </label>
     </div>
 </ion-view>
