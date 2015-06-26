@@ -28,6 +28,15 @@ module Controller {
 
             this.getUser($stateParams.userId);
 
+            $rootScope.$on('userUpdate', () => {
+                // clear profile cache
+                this.UserService.clearMyProfileCache();
+                // update profile picture
+                this.UserService.getMe().then((user) => {
+                    this.user = user;
+                });
+            });
+
             if (this.$rootScope.authenticated) {
                 this.me = this.isItMe();
             }
@@ -92,6 +101,7 @@ module Controller {
 
             this.UserService.updateProfile(this.user)
                 .then(result => {
+                    this.$rootScope.$emit('userUpdate');
                     this.$ionicLoading.hide();
                     var alertPopup = this.$ionicPopup.alert({
                         title: 'Änderungen gespeichert!'
@@ -99,6 +109,7 @@ module Controller {
                     alertPopup.then((res) => {
                         this.editTrigger();
                     });
+
                 })
                 .catch(result => {
                     this.$ionicLoading.hide();
@@ -134,10 +145,8 @@ module Controller {
 
         uploadImage = (result) => {
             this.PictureUploadService.uploadImage(this.newImagePath, this.basePath + '/users/my/picture', result).then((data) => {
-                // update profile picture
-                this.UserService.getMe().then((user) => {
-                    this.user = user;
-                });
+                // update user
+                this.$rootScope.$emit('userUpdate');
             }).catch((err) => {
                 // TODO: show Error
             }).progress((process) => {
