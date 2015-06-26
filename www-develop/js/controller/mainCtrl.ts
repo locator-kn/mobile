@@ -17,16 +17,16 @@ module Controller {
 
         }
 
-        registerWebsockets() {
+        registerWebsockets = () => {
             this.SocketService.onEvent('new_message', (newMessage) => {
                 this.showBadge = true;
                 this.unreadMessages += 1;
                 console.info('new message');
                 console.log(newMessage);
             });
-        }
+        };
 
-        getMe() {
+        getMe = () => {
             this.UserService.getMe()
                 .then(result => {
                     this.user = result.data;
@@ -38,7 +38,7 @@ module Controller {
                 }).catch(() => {
                     this.$rootScope.authenticated = false;
                 });
-        }
+        };
         static controllerId:string = "MainCtrl";
     }
 }
