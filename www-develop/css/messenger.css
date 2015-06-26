@@ -38,6 +38,14 @@ label.last-message.ng-binding {
     padding-right: 5px;
 }
 
+span.since.ng-binding {
+    font-size: 9px;
+    color: black;
+    padding-left: 5px;
+    margin-top: 5px;
+    float: right;
+}
+
 /*+++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
 
@@ -55,7 +63,7 @@ label.last-message.ng-binding {
     max-width: 80%;
     position: relative;
     float: left;
-    padding: 8px;
+    padding: 5px;
     word-wrap: break-word;
     border-radius: 5px;
 }
