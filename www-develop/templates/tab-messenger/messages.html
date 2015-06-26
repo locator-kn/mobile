@@ -1,8 +1,7 @@
-<ion-view view-title="Messenger" class="messages messenger-container">
+<ion-view view-title="Messenger" class="messages messenger-container" ng-controller="MessagesCtrl as mc">
     <ion-content class="background-color-grey">
         <div ng-if="authenticated">
-            <div ng-controller="MessagesCtrl as mc">
-
+            <div>
                 <div class="content">
                     <div ng-class="{'out' : message.from === userID}" class="message"
                          ng-repeat="message in mc.messages">
@@ -21,7 +20,7 @@
     </ion-content>
     <div class="list list-inset bottom">
         <label class="item item-input">
-            <input type="text" placeholder="schreib etwas">
+            <input type="text" ng-enter="mc.sendText(text)" ng-model="text" placeholder="schreib etwas">
         </label>
     </div>
 </ion-view>
