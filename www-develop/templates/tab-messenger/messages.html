@@ -3,10 +3,11 @@
         <div ng-if="authenticated">
             <div ng-controller="MessagesCtrl as mc">
 
-                <div class="content" >
+                <div class="content">
                     <div ng-class="{'out' : message.from === userID}" class="message"
                          ng-repeat="message in mc.messages">
-                        <p><span ng-bind-html="message.message" class="message-content"></span>
+                        <p><span class="message-content">{{message.message}}
+                            <span class="since">{{mc.since(message.create_date)}}</span></span>
                             <span class="bubble"></span>
                         </p>
 
