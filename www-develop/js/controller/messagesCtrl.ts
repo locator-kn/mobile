@@ -31,15 +31,15 @@ module Controller {
                 if (this.opponentId === newMessage.conversation_id) {
                     this.messages.push(newMessage);
                     this.$ionicScrollDelegate.scrollBottom(true);
-
-                    //this.emitAck(newMessage.from, newMessage.conversation_id);
                 } else {
-                    //this.conversationsHash[newMessage.conversation_id][this.$rootScope.userID + '_read'] = false;
                 }
                 //this.messagesIdCache.remove(this.basePathRealtime + '/messages/' + newMessage.conversation_id);
             });
         }
 
+        since(date) {
+            return moment(new Date(date)).startOf('hour').fromNow();
+        }
 
         static controllerId:string = "MessagesCtrl";
     }
