@@ -239,7 +239,7 @@ angular.module('starter', deps)
                 }
             })
             .state('tab.messenger-messages', {
-                url: '/messenger/:opponentId',
+                url: '/messenger/:conversationId/:opponentId',
                 views: {
                     'tab-messenger': {
                         templateUrl: 'templates/tab-messenger/messages.html'
