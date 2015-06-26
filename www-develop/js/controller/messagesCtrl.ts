@@ -6,7 +6,7 @@ module Controller {
 
         opponentId:string;
 
-        constructor(private MessengerService, private UserService, private $state, private SocketService) {
+        constructor(private MessengerService, private UserService, private $state, private SocketService, private $ionicScrollDelegate) {
             this.opponentId = this.$state.params.opponentId;
             this.getConversation(this.opponentId);
 
@@ -19,6 +19,7 @@ module Controller {
             return this.MessengerService.getConversation(conversationId)
                 .then(result => {
                     this.messages = result.data;
+                    this.$ionicScrollDelegate.scrollBottom(true);
                 });
         }
 
@@ -29,6 +30,7 @@ module Controller {
                 console.log('newMessage');
                 if (this.opponentId === newMessage.conversation_id) {
                     this.messages.push(newMessage);
+                    this.$ionicScrollDelegate.scrollBottom(true);
 
                     //this.emitAck(newMessage.from, newMessage.conversation_id);
                 } else {
