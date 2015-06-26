@@ -43,6 +43,7 @@ var deps = [
     'locator.accommodation-equipment-chooser',
     'angular-cache',
     'jrCrop',
+    'btford.socket-io',
     'ngCordova'
 ];
 
@@ -66,6 +67,8 @@ angular.module('starter', deps)
     // constants
     .constant('basePath', '<%= basePath %>')
     .constant('basePathRealtime', '<%= basePathRealtime %>')
+    .constant('webPath', '<%= webPath %>')
+
 
 
     // controler
