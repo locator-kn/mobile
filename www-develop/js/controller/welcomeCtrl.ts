@@ -1,24 +1,15 @@
 module Controller {
     export class WelcomeCtrl {
 
+        private screenHeight;
+
         constructor(private $scope, private $element, $window) {
             // add logo to navbar
             $scope.navTitle = '<img src="./images/locator-logo.png" class="logo"/>';
 
-            this.onResizeFunction();
-            angular.element($window).bind('resize', () => {
-                this.onResizeFunction();
-            });
-
+            this.screenHeight = window.innerHeight;
         }
 
-        onResizeFunction() {
-            // set height (workaround) for each button
-            var elementHeigth = angular.element(this.$element).height();
-            var heightTop = 42.9805;
-            var heightBottom = 48.9865;
-            angular.element(".height-3").css({'height': (elementHeigth - (heightBottom + heightTop)) / 3 + "px"});
-        }
 
 
         static controllerId:string = "WelcomeCtrl";
