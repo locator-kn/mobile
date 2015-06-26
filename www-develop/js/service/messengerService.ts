@@ -1,10 +1,8 @@
 module Service {
     export class MessengerService {
-        myConversationsCache;
         messagesIdCache;
 
         constructor(private $http, private CacheFactory, private basePathRealtime) {
-            this.myConversationsCache = this.CacheFactory.createCache('myConversations');
             this.messagesIdCache = this.CacheFactory.createCache('messagesId');
         }
 
@@ -35,6 +33,10 @@ module Service {
                     "user_id": userId
                 }
             )
+        }
+
+        clearMessageCacheById(messageId) {
+            this.messagesIdCache.remove(this.basePathRealtime + '/messages/' + messageId);
         }
 
         static serviceId:string = "MessengerService";
