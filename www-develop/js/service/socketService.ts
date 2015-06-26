@@ -9,7 +9,7 @@ module Service {
             this.socketInit();
         }
 
-        getSocket() {
+        getSocket =() => {
             return this.$q((resolve, reject) => {
                 if (this.socket) {
                     resolve(this.socket);
