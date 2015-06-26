@@ -27,6 +27,7 @@
 /// <reference path="./service/tripService.ts" />
 /// <reference path="./service/pictureUploadService.ts" />
 /// <reference path="./service/messengerService.ts" />
+/// <reference path="./service/socketService.ts" />
 
 // Ionic Starter App
 
@@ -92,6 +93,7 @@ angular.module('starter', deps)
     .service(Service.TripService.serviceId, Service.TripService)
     .service(Service.PictureUploadService.serviceId, Service.PictureUploadService)
     .service(Service.MessengerService.serviceId, Service.MessengerService)
+    .service(Service.SocketService.serviceId, Service.SocketService)
 
     .config(function (CacheFactoryProvider) {
         angular.extend(CacheFactoryProvider.defaults, {maxAge: 15 * 60 * 1000});
