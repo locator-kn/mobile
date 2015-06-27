@@ -1,0 +1,15 @@
+<div class="moodal" ng-controller="LoginCtrl as lc">
+    <form autocomplete="off" name="form">
+        <input required ng-model="lc.name" type="text" placeholder="Name" name="name" class="user-input">
+        <input required ng-model="lc.mail" type="email" placeholder="E-Mail" name="inputMail" class="user-input">
+        <input required ng-model="lc.password" type="password" placeholder="Passwort" name="inputPassword"
+               class="user-input">
+
+        <div ng-class="{open: lc.errormsg}" class="msg error-msg">{{lc.errormsg}}</div>
+        <input ng-click="lc.register(form)" class="pointer register submit button" value="Registrieren"
+               type="submit">
+    </form>
+    <input ng-click="lc.closeLoginModal()" class="backbutton button" value="Abbrechen" type="submit">
+
+
+</div>
