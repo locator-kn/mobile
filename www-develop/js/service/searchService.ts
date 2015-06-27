@@ -2,7 +2,7 @@ module Service {
     export class SearchService {
 
         city:any = {};
-        moods:any = [];
+        mood:any = {};
 
         constructor(private $http, private $rootScope, private basePath, private lodash, private $ionicLoading) {
         }
@@ -43,13 +43,14 @@ module Service {
             return this.city;
         }
 
-        setMoods(moods) {
-            this.moods = moods;
-            this.$rootScope.$emit('newSearchMoods');
+
+        setMood(mood) {
+            this.mood = mood;
+            this.$rootScope.$emit('newSearchMood');
         }
 
-        getMoods() {
-            return this.moods;
+        getMood() {
+            return this.mood;
         }
 
         static
