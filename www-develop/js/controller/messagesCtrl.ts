@@ -28,7 +28,7 @@ module Controller {
 
 
         registerSocketEvent =() =>  {
-            //this.SocketService.offEvent('new_message');
+            this.SocketService.offEvent('new_message');
             this.SocketService.onEvent('new_message', (newMessage) => {
                 console.log('newMessage');
                 if (this.conversationId === newMessage.conversation_id) {
