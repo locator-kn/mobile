@@ -4,7 +4,8 @@ module Controller {
         moods:any = [];
         searchView:boolean;
 
-        constructor(private $rootScope, private $state, private ResultService, private $stateParams, private TripService, private UserService, private DataService, private  $ionicLoading) {
+        constructor(private $rootScope, private $state, private ResultService, private $stateParams, private TripService,
+                    private UserService, private DataService, private  $ionicLoading, private webPath) {
 
             // if no user id is committed -> controller used for search results
             if (!$stateParams.userId) {
