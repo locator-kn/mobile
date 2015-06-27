@@ -42,13 +42,13 @@ module Service {
             this.getSocket().then(socket => {
                 socket.on(event, fn);
             })
-        }
+        };
 
         offEvent = (event) => {
             this.getSocket().then(socket => {
                 socket.removeListener(event);
             })
-        }
+        };
 
         socketInit = ()  => {
             if (!this.$rootScope.authenticated) {
@@ -60,7 +60,7 @@ module Service {
                 this.socket = this.socketFactory({ioSocket: myIoSocket});
             });
 
-        }
+        };
 
         static serviceId:string = "SocketService";
     }
