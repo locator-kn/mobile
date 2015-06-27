@@ -4,12 +4,15 @@ module Controller {
         mail:string;
         password:string;
 
+
+        forgotPassword:boolean = false;
+
         // no error if empty string
         errormsg:string = '';
         // success message
         successmsg:string = '';
 
-        constructor(private $rootScope, private UserService) {
+        constructor(private $rootScope, private UserService, private $timeout) {
         }
 
 
@@ -19,7 +22,7 @@ module Controller {
 
         login = (form) => {
             if (form.$invalid) {
-                this.errormsg = "Bitte E-Mail und Benutzernamen eingeben.";
+                this.errormsg = "Bitte E-Mail und Benutzernamen angeben.";
                 return;
             }
 
@@ -53,6 +56,38 @@ module Controller {
                 }).catch(() => {
                     this.$rootScope.authenticated = false;
                 });
+        }
+
+        sendNewPassword(mail, form) {
+            this.errormsg = '';
+            if (form.$invalid) {
+                this.errormsg = "Bitte E-Mail angeben.";
+                return;
+            }
+
+            this.UserService.sendNewPassword(mail)
+                .then(() => {
+                    console.info("Success");
+                    this.successmsg = 'Email wurde an dich verschickt';
+
+
+                    this.$timeout(() => {
+
+                        this.successmsg = '';
+                        this.forgotPassword = false;
+                        // this.openLoginDialog();
+                    }, 2000)
+
+                }).catch(() => {
+                    console.info("Error");
+                    this.errormsg = "Mail nicht gefunden";
+                })
+        }
+
+        triggerforgotPassword() {
+            debugger;
+            this.errormsg = '';
+            this.forgotPassword = true;
         }
 
         static controllerId:string = "LoginCtrl";

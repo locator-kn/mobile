@@ -98,6 +98,10 @@ module Service {
             this.usersMeCache.remove(this.basePath + '/users/my/profile');
         }
 
+        sendNewPassword(mail) {
+            return this.$http.get(this.basePath + '/forgot/' + mail);
+        }
+
         static serviceId:string = "UserService";
     }
 }
