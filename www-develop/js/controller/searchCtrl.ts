@@ -7,8 +7,9 @@ module Controller {
         selectedPersons:number;
         availablePersons:any = [];
 
-        selectedMoods:any = [];
+        selectedMood:any = {};
         availableMoods:any = [];
+        moodAvailable:boolean;
 
         accommodation:boolean;
 
@@ -36,8 +37,10 @@ module Controller {
                 this.city = this.SearchService.getCity();
             });
 
-            $rootScope.$on('newSearchMoods', () => {
-                this.selectedMoods = this.SearchService.getMoods();
+
+            $rootScope.$on('newSearchMood', () => {
+                this.selectedMood = this.SearchService.getMood();
+                this.moodAvailable = true;
             });
 
         }
@@ -49,16 +52,11 @@ module Controller {
                 return;
             }
 
-            var moodQueryArray = [];
-            for (var mood in this.selectedMoods) {
-                moodQueryArray.push(this.selectedMoods[mood].query_name);
-            }
-
             var query = {
                 city: this.city,
                 days: this.selectedDays,
                 persons: this.selectedPersons,
-                moods: moodQueryArray,
+                moods: this.selectedMood,
                 start_date: '',
                 end_date: ''
             };
