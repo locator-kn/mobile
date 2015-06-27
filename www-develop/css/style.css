@@ -3,7 +3,7 @@
     border: 1px solid #ddd;
     width: 35px;
     height: 35px;
-    line-height: 31px;
+    line-height: 33px;
     text-align: center;
     display: inline-block;
     vertical-align: middle;
@@ -12,7 +12,7 @@
 }
 
 .circle-selected {
-    color: black;
+    color: white;
     background-color: rgb(33, 205, 196);
     border: transparent;
 }
