@@ -38,10 +38,10 @@ navigation history that also transitions its views in and out.
     </ion-tabs>
 
     <ion-tabs class="tabs-icon-top tab-nav" ng-class="{'tabs-item-hide': authenticated}">
-        <button class="button button-not-authenticated" ng-click="tc.openLoginModal()">
+        <button class="button button-not-authenticated left" ng-click="tc.openLoginModal()">
             Anmelden
         </button>
-        <button class="button button-not-authenticated">
+        <button class="button button-not-authenticated right" ng-click="tc.openRegistrationModal()">
             Registrieren
         </button>
     </ion-tabs>
