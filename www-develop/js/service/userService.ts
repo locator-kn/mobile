@@ -98,13 +98,13 @@ module Service {
         }
 
         openLoginModal = () => {
-            this.$ionicLoading.show({templateUrl: 'templates/login-modal.html'}, {
+            this.$ionicLoading.show({templateUrl: 'templates/modals/login-modal.html'}, {
                 animation: 'slide-in-up'
             })
         };
 
         openRegistrationModal = () => {
-            this.$ionicLoading.show({templateUrl: 'templates/registration-modal.html'}, {
+            this.$ionicLoading.show({templateUrl: 'templates/modals/registration-modal.html'}, {
                 animation: 'slide-in-up'
             })
         };
