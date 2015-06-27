@@ -84,6 +84,19 @@ module Service {
                 })
         }
 
+        register(name, mail, password) {
+            this.usersIdCache.remove();
+            this.usersMeCache.remove();
+
+            return this.$http.post(this.basePath + '/users',
+                {
+                    "name": name,
+                    "mail": mail,
+                    "password": password
+                }
+            )
+        }
+
         openLoginModal = () => {
             this.$ionicLoading.show({templateUrl: 'templates/login-modal.html'}, {
                 animation: 'slide-in-up'
