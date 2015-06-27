@@ -4,9 +4,9 @@
         <ul>
             <ion-slide-box class=" parallax-card" on-slide-changed="slideHasChanged($index)"  data-stellar-ratio="0.5">
                 <ion-slide ng-repeat="location in tc.trip.locations">
-                    <img class="tmpImageWidth" ng-src="http://locator-app.com{{location.thumbnail}}">
+                    <img class="tmpImageWidth" ng-src="{{webPath}}{{location.thumbnail}}">
                     <img class="user-picture" ui-sref="tab.search-user({userId:tc.trip.userid})"
-                         ng-src="http://locator-app.com/{{tc.user.picture.picture}}">
+                         ng-src="{{tc.webPath}}{{tc.user.picture.picture}}">
                 </ion-slide>
             </ion-slide-box>
 

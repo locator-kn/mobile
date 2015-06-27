@@ -8,7 +8,8 @@ module Controller {
 
         moods:any = [];
 
-        constructor(private $scope, private $element, private $stateParams, private SearchService, private DataService, private $ionicSlideBoxDelegate, private UserService, private $ionicLoading) {
+        constructor(private $scope, private $element, private $stateParams, private SearchService, private DataService,
+                    private $ionicSlideBoxDelegate, private UserService, private $ionicLoading, private webPath) {
             // get trip by id from state param
             SearchService.getTripById(this.$stateParams.tripId).then((result) => {
                 this.trip = result.data;
