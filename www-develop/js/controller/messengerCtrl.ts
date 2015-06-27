@@ -4,7 +4,7 @@ module Controller {
         conversations;
         conversationsHash = {};
 
-        constructor(private MessengerService, private UserService) {
+        constructor(private MessengerService, private UserService, private webPath) {
             this.getConversations();
         }
 
