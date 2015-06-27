@@ -33,7 +33,7 @@ module Controller {
                 this.UserService.clearMyProfileCache();
                 // update profile picture
                 this.UserService.getMe().then((user) => {
-                    this.user = user;
+                    this.user = user.data;
                 });
             });
 
@@ -153,7 +153,6 @@ module Controller {
                 // TODO implement processing
             });
         };
-
 
 
         static controllerId:string = "UserCtrl";
