@@ -116,6 +116,24 @@ angular.module('starter', deps)
         };
     })
 
+    .directive('stellax', function ($timeout) {
+        return {
+            restrict: 'A',
+            link: function ($scope, $element, $attr) {
+
+                $timeout(function () {
+                    (<any> $('.scroll')).stellar({
+                        scrollProperty: 'transform',
+                        positionProperty: 'transform',
+                        horizontalScrolling: false
+                        //,verticalOffset: -150
+                    });
+                });
+
+            }
+        };
+    })
+
     .directive('ngEnter', function () {
         return function (scope, element, attrs) {
             element.bind("keydown keypress", function (event) {
