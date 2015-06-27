@@ -90,6 +90,12 @@ module Service {
             })
         };
 
+        openRegistrationModal = () => {
+            this.$ionicLoading.show({templateUrl: 'templates/registration-modal.html'}, {
+                animation: 'slide-in-up'
+            })
+        };
+
         closeLoginModal = ()=> {
             this.$ionicLoading.hide();
         };
