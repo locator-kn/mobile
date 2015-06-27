@@ -5,11 +5,11 @@ module Service {
 
         socket = null;
 
-        constructor(private $http, private $q, private basePathRealtime, private $rootScope, private socketFactory, private webPath) {
+        constructor(private $http, private $q, private $ionicPlatform, private basePathRealtime, private $rootScope, private socketFactory, private webPath) {
             this.socketInit();
         }
 
-        getSocket =() => {
+        getSocket = () => {
             return this.$q((resolve, reject) => {
                 if (this.socket) {
                     resolve(this.socket);
@@ -19,33 +19,38 @@ module Service {
                             reject(err);
                         })
                         .then(response => {
-                            var myIoSocket = io.connect(this.webPath + response.data.namespace);
-                            this.socket = this.socketFactory({ioSocket: myIoSocket});
-                            resolve(this.socket)
+                            this.$ionicPlatform.ready(()=> {
+                                console.log('ionic is ready');
+                                console.log('connect')
+                                var myIoSocket = io.connect(this.webPath + response.data.namespace);
+                                this.socket = this.socketFactory({ioSocket: myIoSocket});
+                                resolve(this.socket);
+                            });
+
                         });
                 }
             });
-        }
+        };
 
-        emit(event, data) {
+        emit = (event, data)=> {
             this.getSocket().then(socket => {
                 socket.emit(event, data);
             });
-        }
+        };
 
-        onEvent(event, fn) {
+        onEvent = (event, fn) => {
             this.getSocket().then(socket => {
                 socket.on(event, fn);
             })
         }
 
-        offEvent(event) {
+        offEvent = (event) => {
             this.getSocket().then(socket => {
                 socket.removeListener(event);
             })
         }
 
-        socketInit() {
+        socketInit = ()  => {
             if (!this.$rootScope.authenticated) {
                 return;
             }
