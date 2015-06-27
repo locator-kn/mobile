@@ -1,10 +1,10 @@
 <!--cache view false needed for slider -->
 <ion-view class="trip pageWithButton" cache-view="false" view-title="{{tc.trip.title}}" ng-controller="TripCtrl as tc">
-    <ion-content stellax>
+    <ion-content>
         <ul>
-            <ion-slide-box class=" parallax-card" on-slide-changed="slideHasChanged($index)"  data-stellar-ratio="0.5">
+            <ion-slide-box class=" parallax-card" on-slide-changed="slideHasChanged($index)">
                 <ion-slide ng-repeat="location in tc.trip.locations">
-                    <img class="tmpImageWidth" ng-src="{{webPath}}{{location.thumbnail}}">
+                    <img class="tmpImageWidth" ng-src="{{tc.webPath}}{{location.thumbnail}}">
                     <img class="user-picture" ui-sref="tab.search-user({userId:tc.trip.userid})"
                          ng-src="{{tc.webPath}}{{tc.user.picture.picture}}">
                 </ion-slide>

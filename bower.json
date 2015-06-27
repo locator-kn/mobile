@@ -11,7 +11,6 @@
     "ng-lodash": "~0.2.3",
     "angular-accommodation-equipment-chooser": "~0.2.3",
     "cropme": "~0.3.2",
-    "angular-socket-io": "~0.7.0",
-    "jquery.stellar": "~0.6.2"
+    "angular-socket-io": "~0.7.0"
   }
 }
