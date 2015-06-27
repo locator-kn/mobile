@@ -51,10 +51,8 @@
                     Wie soll es sein?
                     <i class="icon ion-chevron-right icon-accessory"></i>
 
-                    <div ng-repeat="mood in sc.selectedMoods">
-                        <div ng-repeat="availableMood in sc.availableMoods |filter:mood.query_name">
-                            <img class="result-mood" ng-src="./images/icons/{{availableMood.icon}}">
-                        </div>
+                    <div ng-if="sc.moodAvailable">
+                        <img class="result-mood" ng-src="./images/icons/{{sc.selectedMood.icon}}">
                     </div>
                 </li>
             </ul>
