@@ -3,7 +3,11 @@ module Controller {
 
         mail:string;
         password:string;
-        errormsg:string;
+
+        // no error if empty string
+        errormsg:string = '';
+        // success message
+        successmsg:string = '';
 
         constructor(private $rootScope, private UserService) {
         }
@@ -15,6 +19,7 @@ module Controller {
 
         login = (form) => {
             if (form.$invalid) {
+                this.errormsg = "Bitte E-Mail und Benutzernamen eingeben.";
                 return;
             }
 

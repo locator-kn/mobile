@@ -4,6 +4,9 @@
         <input class="user-input" required ng-model="lc.password" type="password" placeholder="Passwort"
                name="inputPassword">
 
+        <div ng-class="{open: lc.errormsg}" class="msg error-msg">{{lc.errormsg}}</div>
+        <div ng-class="{open: lc.successmsg}" class="msg success-msg">{{lc.successmsg}}</div>
+
         <input ng-click="lc.login(loginform)" class="submit button" value="Login" type="submit">
 
     </form>
