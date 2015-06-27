@@ -9,6 +9,9 @@ module Controller {
             this.UserService.openLoginModal();
         }
 
+        openRegistrationModal() {
+            this.UserService.openRegistrationModal();
+        }
 
         showMyProfile = () => {
             this.$state.go('tab.profile', {
