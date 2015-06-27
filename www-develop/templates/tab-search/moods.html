@@ -1,22 +1,13 @@
-<ion-view view-title="Moods" ng-controller="MoodCtrl as cc">
+<ion-view view-title="Moods" ng-controller="MoodCtrl as mc">
     <ion-content class="background-color-grey">
         <div>
             <ul class="list">
-                <li class="item" ng-repeat="mood in cc.moods">
+                <li class="item" ng-repeat="mood in mc.moods"
+                    ng-click="mc.setMood(mood)" ui-sref="tab.search">
                     <img class="result-mood" ng-src="./images/icons/{{mood.icon}}">
-                    <span class="mood-text">{{mood.title}}</span>
-                    <label class="checkbox mood-checkbox">
-                        <input class="border-transparent" type="checkbox" ng-change="cc.sync(mood.checked, mood)"
-                               ng-model="mood.checked">
-                    </label>
+                    {{mood.title}}
                 </li>
             </ul>
-        </div>
-        <div>
-            <button ng-click="$ionicGoBack()"
-                    class="button button-full background-green bottom">
-              Auswahl bestätigen
-            </button>
         </div>
     </ion-content>
 </ion-view>
