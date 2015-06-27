@@ -3,13 +3,12 @@ module Controller {
 
         mail:string;
         password:string;
-
+        name:string;
 
         forgotPassword:boolean = false;
 
         // no error if empty string
         errormsg:string = '';
-        // success message
         successmsg:string = '';
 
         constructor(private $rootScope, private UserService, private $timeout) {
@@ -22,7 +21,7 @@ module Controller {
 
         login = (form) => {
             if (form.$invalid) {
-                this.errormsg = "Bitte E-Mail und Benutzernamen angeben.";
+                this.errormsg = "Bitte E-Mail und Benutzernamen angeben";
                 return;
             }
 
@@ -38,7 +37,7 @@ module Controller {
 
                 }).catch(resp => {
                     if (resp.status === 401) {
-                        this.errormsg = "Falsche Mail oder falsches Passwort angegeben.";
+                        this.errormsg = "Falsche E-Mail oder falsches Passwort angegeben";
                         return;
                     }
                     this.errormsg = "Oops, da lief etwas falsch";
@@ -80,14 +79,39 @@ module Controller {
 
                 }).catch(() => {
                     console.info("Error");
-                    this.errormsg = "Mail nicht gefunden";
+                    this.errormsg = "E-Mail wurde nicht gefunden";
                 })
         }
 
         triggerforgotPassword() {
-            debugger;
             this.errormsg = '';
             this.forgotPassword = true;
+        }
+
+        register(form) {
+            if (form.$invalid) {
+                this.errormsg = "Bitte fülle alle Felder aus";
+                return;
+            }
+
+            this.UserService.register(this.name, this.mail, this.password)
+                .then(result => {
+                    console.info("Register Success");
+                    this.getMe();
+
+                    //close the dialog after success
+                    this.closeLoginModal();
+
+                })
+                .catch(resp => {
+                    if (resp.status === 409) {
+                        this.errormsg = 'Diese Mail gibt es schon';
+                        return;
+                    }
+                    console.info("Register Error");
+                    console.info(resp);
+                    this.errormsg = "Oops, da lief etwas falsch";
+                });
         }
 
         static controllerId:string = "LoginCtrl";
