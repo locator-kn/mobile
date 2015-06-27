@@ -21,10 +21,8 @@ module Controller {
         width:number = 200;
         height:number = 200;
 
-        path:string = 'http://locator-app.com/';
-
         constructor(private $rootScope, private $state, private UserService, private CameraService, private PictureUploadService,
-                    private basePath, private $stateParams, private $ionicPopup, private $ionicLoading) {
+                    private basePath, private $stateParams, private $ionicPopup, private $ionicLoading, private webPath) {
 
             this.getUser($stateParams.userId);
 
