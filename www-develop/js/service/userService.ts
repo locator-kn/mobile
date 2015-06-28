@@ -4,6 +4,8 @@ module Service {
         usersIdCache;
         usersMeCache;
 
+        conversationUserId;
+
         constructor(private $http, private $q, private basePath, private CacheFactory, private $ionicLoading) {
             this.usersIdCache = CacheFactory.createCache('usersId');
             this.usersMeCache = CacheFactory.createCache('usersMe');
@@ -103,6 +105,13 @@ module Service {
             })
         };
 
+        openConversationModal = (userId) => {
+            this.conversationUserId = userId;
+            this.$ionicLoading.show({templateUrl: 'templates/modals/start-conversation-modal.html'}, {
+                animation: 'slide-in-up'
+            })
+        };
+
         openRegistrationModal = () => {
             this.$ionicLoading.show({templateUrl: 'templates/modals/registration-modal.html'}, {
                 animation: 'slide-in-up'
@@ -120,6 +129,10 @@ module Service {
         sendNewPassword(mail) {
             return this.$http.get(this.basePath + '/forgot/' + mail);
         }
+
+        getConversationUserId = () => {
+            return this.conversationUserId;
+        };
 
         static serviceId:string = "UserService";
     }
