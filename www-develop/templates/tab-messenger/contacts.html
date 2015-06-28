@@ -6,7 +6,7 @@
         <div ng-if="authenticated">
             <div ng-controller="MessengerCtrl as mc">
                 <ul class="list">
-                    <label class="item item-input">
+                    <label class="item item-input" ng-if="mc.conversations.length>8">>
                         <i class="icon ion-search placeholder-icon"></i>
                         <input class="city" type="search" placeholder="Suche" ng-change-options='{ debounce: 1000 }'
                                ng-model="mc.contact"/>
