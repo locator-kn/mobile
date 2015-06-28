@@ -20,8 +20,6 @@ module Service {
                         })
                         .then(response => {
                             this.$ionicPlatform.ready(()=> {
-                                console.log('ionic is ready');
-                                console.log('connect')
                                 var myIoSocket = io.connect(this.webPath + response.data.namespace);
                                 this.socket = this.socketFactory({ioSocket: myIoSocket});
                                 resolve(this.socket);
