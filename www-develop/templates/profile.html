@@ -55,7 +55,7 @@
 
         </ul>
     </ion-content>
-    <button ng-if="!uc.me" ng-click="uc.startConversation()"
+    <button ng-if="!uc.me && authenticated" ng-click="uc.openConversationModal()"
             class="button-bottom button button-full background-green bottom">
         Anschreiben
     </button>
