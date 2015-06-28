@@ -2,7 +2,7 @@ module Service {
     export class MessengerService {
         messagesIdCache;
 
-        constructor(private $http, private CacheFactory, private basePathRealtime) {
+        constructor(private $http, private CacheFactory, private basePathRealtime, private UserService) {
             this.messagesIdCache = this.CacheFactory.createCache('messagesId');
         }
 
@@ -26,7 +26,8 @@ module Service {
             )
         }
 
-        startConversation(msg, userId) {
+        startConversation(msg) {
+            var userId = this.UserService.getConversationUserId();
             return this.$http.post(this.basePathRealtime + '/conversations',
                 {
                     "message": msg,
