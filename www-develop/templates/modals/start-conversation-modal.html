@@ -1,0 +1,8 @@
+<div class="moodal" ng-controller="UserCtrl as uc">
+    <form name="loginform">
+        <input class="user-input" required ng-model="lc.message" type="text" placeholder="Nachricht" name="inputMail">
+        <input ng-click="uc.test()" class="submit button" value="Senden" type="submit">
+    </form>
+</div>
+
+<input ng-click="uc.closeLoginModal()" class="backbutton button" value="Abbrechen" type="submit">
