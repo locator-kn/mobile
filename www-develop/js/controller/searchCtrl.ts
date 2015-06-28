@@ -47,7 +47,7 @@ module Controller {
 
 
         searchTrips() {
-            if (this.isEmpty(this.city)) {
+            if (Controller.SearchCtrl.isEmpty(this.city)) {
                 this.$ionicPopup.alert({title: 'Bitte eine Stadt auswählen.'});
                 return;
             }
@@ -79,7 +79,7 @@ module Controller {
 
         }
 
-        isEmpty(myObject) {
+        static isEmpty(myObject) {
             for (var key in myObject) {
                 if (myObject.hasOwnProperty(key)) {
                     return false;
