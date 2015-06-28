@@ -3,8 +3,7 @@ module Controller {
 
         textMessage:string;
 
-        constructor(private MessengerService) {
-        }
+        constructor(private MessengerService) {}
 
         startConversation() {
             this.textMessage = '';
@@ -12,25 +11,18 @@ module Controller {
 
                 .then(result => {
                     console.info("Started Conversation");
+                    // TODO: state change?
                     //this.$state.go("messenger.opponent", {opponentId: result.data.id});
                 })
                 .error(result => {
-                    console.info("Oops");
                     console.info(result);
-
                     if (result.statusCode === 409) {
+                        // TODO: state change?
                         //this.$state.go("messenger.opponent", {opponentId: result.data.id});
-
                     }
                 });
 
         }
-
-        submitConversation() {
-
-        }
-
-
 
         static controllerId:string = "LoginCtrl";
     }
