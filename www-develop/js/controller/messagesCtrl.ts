@@ -40,7 +40,7 @@ module Controller {
             });
         };
 
-        since(date) {
+        static since(date) {
             return moment(new Date(date)).startOf('minutes').fromNow();
         }
 
