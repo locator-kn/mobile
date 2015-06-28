@@ -16,6 +16,7 @@
 /// <reference path="controller/messengerCtrl.ts" />
 /// <reference path="controller/messagesCtrl.ts" />
 /// <reference path="controller/mainCtrl.ts" />
+/// <reference path="controller/defaultCtrl.ts" />
 
 /// <reference path="./service/dataService.ts" />
 /// <reference path="./service/searchService.ts" />
@@ -82,6 +83,7 @@ angular.module('starter', deps)
     .controller(Controller.MessengerCtrl.controllerId, Controller.MessengerCtrl)
     .controller(Controller.MessagesCtrl.controllerId, Controller.MessagesCtrl)
     .controller(Controller.MainCtrl.controllerId, Controller.MainCtrl)
+    .controller(Controller.DefaultCtrl.controllerId, Controller.DefaultCtrl)
 
     // services
     .service(Service.DataService.serviceId, Service.DataService)
