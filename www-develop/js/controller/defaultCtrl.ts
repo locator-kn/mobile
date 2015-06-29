@@ -16,10 +16,9 @@ module Controller {
 
 
             this.MessengerService.startConversation(this.message).then((result) => {
-                this.successmsg = 'Nachricht erfolgreich versendet'
+                this.successmsg = 'Nachricht erfolgreich versendet';
             }).catch((result) => {
                 if (result.status === 409) {
-                    debugger;
                     var fromUser = this.$rootScope.userID;
                     var toUser;
                     if (result.data.data.user_1 === this.$rootScope.userID) {
@@ -28,11 +27,11 @@ module Controller {
                         toUser = result.data.data.user_1;
                     }
                     this.MessengerService.sendMessage(this.message, result.data.data._id, toUser, fromUser).then(result => {
-                        this.successmsg = 'Nachricht erfolgreich versendet'
+                        this.successmsg = 'Nachricht erfolgreich versendet';
                         this.message = '';
                     });
                 } else {
-                    this.errormsg = 'Nachricht konnte nicht versendet werden'
+                    this.errormsg = 'Nachricht konnte nicht versendet werden';
                 }
             });
         }
