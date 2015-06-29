@@ -32,3 +32,7 @@ label.name.ng-binding {
 label.dekotext {
     font-size: 11px;
 }
+
+.removeSliderItem .ion-record:before {
+    content: '';
+}

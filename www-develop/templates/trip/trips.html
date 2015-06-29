@@ -4,7 +4,8 @@
             <div ng-repeat="result in toc.results">
                 <li ng-click="toc.showTripDetail(result._id, result.userid)">
                     <!-- for each pictures-->
-                    <ion-slide-box on-slide-changed="slideHasChanged($index)">
+                    <ion-slide-box on-slide-changed="slideHasChanged($index)"
+                                   ng-class="{true: 'removeSliderItem'}[toc.numberOfElelementsIn(result.locations) === 1]">
                         <ion-slide ng-repeat="location in result.locations">
                             <img class="tmpImageWidth" ng-src="{{toc.webPath}}{{location.thumbnail}}">
                         </ion-slide>
