@@ -35,6 +35,10 @@
     color: red;
 }
 
+.text-bold {
+    font-weight: bold;
+}
+
 .background-color-grey {
     background-color: rgb(246, 247, 246)
 }

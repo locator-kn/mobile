@@ -12,16 +12,22 @@
 
             <li class="item first-element">
                 <label>von </label>
-                <label class="text-color-red">{{tc.user.name || 'anonym'}}</label>
+                <label class="text-bold">{{tc.user.name || 'anonym'}}</label>
 
             </li>
+
             <li class="item">
-                <label class="text-color-red">{{tc.trip.start_date}}</label>
+                <label class="description">{{tc.trip.description}}</label>
+            </li>
+            <li class="item">
+                <label>von</label>
+                <label class="text-bold">{{tc.trip.start_date}}</label>
                 <label>bis</label>
-                <label class="text-color-red">{{tc.trip.end_date}}</label>
+                <label class="text-bold">{{tc.trip.end_date}}</label>
+            </li>
+            <li class="item">
                 <label>
-                    Dauer:
-                    <label class="text-color-red">{{tc.trip.days}} Tage</label>
+                    <label class="text-bold">{{tc.trip.days}} </label>{{tc.trip.days === 1 ? 'Tag' : 'Tage'}}
                 </label>
             </li>
             <li class="item">
@@ -32,22 +38,18 @@
                 </div>
             </li>
             <li class="list-text">
-                <h5 class="text-color-red">Beschreibung</h5>
-
-                <p>{{tc.trip.description}}</p>
-            </li>
-            <li class="list-text">
-                <h5 class="text-color-red">Für was braucht man Geld?</h5>
+                <h5 class="text-bold">Für was braucht man Geld?</h5>
 
                 <p>{{tc.trip.description_money}}</p>
             </li>
             <li>
                 <div ng-hide="tc.trip.accommodation == false">
-                    <h5 class="text-color-red">Unterkunft</h5>
+                    <h5 class="text-bold">Unterkunft</h5>
 
                     <div class="accommodation-equipment">
                         <acc-equ-chooser accommodation-equipment-selectable="false"
                                          accommodation-equipment="tc.trip.accommodation_equipment"></acc-equ-chooser>
+                        <label>{{tc.trip.accommodation.title}}</label>
                     </div>
                 </div>
             </li>

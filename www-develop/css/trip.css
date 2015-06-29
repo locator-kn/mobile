@@ -13,3 +13,8 @@
     border-width: 1px;
     border-style: solid;
 }
+
+
+.trip .description {
+    padding: 16px;
+}
