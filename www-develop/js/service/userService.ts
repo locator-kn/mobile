@@ -6,7 +6,7 @@ module Service {
 
         conversationUserId;
 
-        constructor(private $http, private $q, private basePath, private CacheFactory, private $ionicLoading) {
+        constructor(private $http, private $q, private basePath, private CacheFactory, private $ionicLoading, private $rootScope, private $ionicPopup) {
             this.usersIdCache = CacheFactory.createCache('usersId');
             this.usersMeCache = CacheFactory.createCache('usersMe');
 
@@ -106,13 +106,19 @@ module Service {
         };
 
         openConversationModal = (userId) => {
-            this.conversationUserId = userId;
-            this.$ionicLoading.show({templateUrl: 'templates/modals/start-conversation-modal.html'}, {
-                animation: 'slide-in-up'
-            })
+            if (this.$rootScope.authenticated) {
+                this.conversationUserId = userId;
+                this.$ionicLoading.show({templateUrl: 'templates/modals/start-conversation-modal.html'}, {
+                    animation: 'slide-in-up'
+                })
+            } else {
+                this.openLoginModal();
+            }
+
         };
 
         openRegistrationModal = () => {
+            this.$ionicLoading.hide();
             this.$ionicLoading.show({templateUrl: 'templates/modals/registration-modal.html'}, {
                 animation: 'slide-in-up'
             })
