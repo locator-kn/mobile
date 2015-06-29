@@ -63,6 +63,9 @@ module Controller {
             });
         };
 
+        numberOfElelementsIn(obj){
+            return Object.keys(obj).length;
+        }
         static controllerId:string = "TripOverviewCtrl";
     }
 }
