@@ -1,29 +1,46 @@
 module Controller {
     export class DefaultCtrl {
 
-        textMessage:string;
+        message:string;
+        errormsg:string;
+        successmsg:string;
 
-        constructor(private MessengerService) {}
-
-        startConversation() {
-            this.textMessage = '';
-            this.MessengerService.startConversation(this.textMessage)
-
-                .then(result => {
-                    console.info("Started Conversation");
-                    // TODO: state change?
-                    //this.$state.go("messenger.opponent", {opponentId: result.data.id});
-                })
-                .error(result => {
-                    console.info(result);
-                    if (result.statusCode === 409) {
-                        // TODO: state change?
-                        //this.$state.go("messenger.opponent", {opponentId: result.data.id});
-                    }
-                });
-
+        constructor(private $rootScope, private MessengerService, private $ionicLoading) {
         }
 
-        static controllerId:string = "LoginCtrl";
+        startConversation(form) {
+            if (form.$invalid) {
+                this.errormsg = "Bitte Nachricht eingeben";
+                return;
+            }
+
+
+            this.MessengerService.startConversation(this.message).then((result) => {
+                this.successmsg = 'Nachricht erfolgreich versendet'
+            }).catch((result) => {
+                if (result.status === 409) {
+                    debugger;
+                    var fromUser = this.$rootScope.userID;
+                    var toUser;
+                    if (result.data.data.user_1 === this.$rootScope.userID) {
+                        toUser = result.data.data.user_2;
+                    } else {
+                        toUser = result.data.data.user_1;
+                    }
+                    this.MessengerService.sendMessage(this.message, result.data.data._id, toUser, fromUser).then(result => {
+                        this.successmsg = 'Nachricht erfolgreich versendet'
+                        this.message = '';
+                    });
+                } else {
+                    this.errormsg = 'Nachricht konnte nicht versendet werden'
+                }
+            });
+        }
+
+        closeModal() {
+            this.$ionicLoading.hide();
+        }
+
+        static controllerId:string = "DefaultCtrl";
     }
 }
