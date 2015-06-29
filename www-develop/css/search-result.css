@@ -13,3 +13,22 @@
     line-height: 31px;
     font-weight: bold;
 }
+
+li.item.trip-options {
+    background-color: #343434;
+    color: white;
+}
+
+li.item.trip-options .user {
+    float: right;
+    padding-right: 10px;
+}
+
+label.name.ng-binding {
+    font-weight: bold;
+    font-size: 12px;
+}
+
+label.dekotext {
+    font-size: 11px;
+}
