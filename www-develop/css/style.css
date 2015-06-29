@@ -17,6 +17,10 @@
     border: transparent;
 }
 
+.button-full.background-green.bottom {
+    height: 65px;
+}
+
 .moods-style {
     height: 33px;
     float: left;
