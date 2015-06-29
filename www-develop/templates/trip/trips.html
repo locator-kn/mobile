@@ -35,10 +35,11 @@
                                 </label>
                             </label>
                         </li>
-                        <li class="item">
+                        <li class="item mood-container">
                             <div ng-repeat="mood in result.moods">
                                 <div ng-repeat="availableMood in toc.moods |filter:mood">
                                     <img class="result-mood" ng-src="./images/icons/{{availableMood.icon}}">
+                                    <label class="mood-title">{{availableMood.title}}</label>
                                 </div>
                             </div>
                         </li>
