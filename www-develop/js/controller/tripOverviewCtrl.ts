@@ -41,7 +41,7 @@ module Controller {
         updateUserInfo = ()=> {
             this.results.forEach((currentValue) => {
                 this.UserService.getUser(currentValue.userid).then((result) => {
-                    currentValue.username = result.data.name;
+                    currentValue.username = result.data.name + ' ' + result.data.surname;
                 })
             })
         };
@@ -63,9 +63,10 @@ module Controller {
             });
         };
 
-        numberOfElelementsIn(obj){
+        numberOfElelementsIn(obj) {
             return Object.keys(obj).length;
         }
+
         static controllerId:string = "TripOverviewCtrl";
     }
 }
