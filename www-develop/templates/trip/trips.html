@@ -11,18 +11,28 @@
                     </ion-slide-box>
                     <ul>
                         <li class="item">
-                            <div>{{result.title}}</div>
+                            <div class="text-bold">{{result.title}}</div>
                             <label>von </label>
-                            <label class="text-color-red">{{result.username || 'anonym'}}</label>
+                            <label class="text-bold">{{result.username || 'anonym'}}</label>
 
                         </li>
-                        <li class="item">
-                            <label class="text-color-red">{{toc.formatDate(result.start_date)}}</label>
+                        <li class="item" ng-if="result.start_date && result.end_date">
+                            <label class="text-bold">{{toc.formatDate(result.start_date)}}</label>
                             <label>bis</label>
-                            <label class="text-color-red">{{toc.formatDate(result.end_date)}}></label>
+                            <label class="text-bold">{{toc.formatDate(result.end_date)}}</label>
+                        </li>
+                        <li class="item">
                             <label>
-                                Dauer:
-                                <label class="text-color-red">{{result.days}} Tage</label>
+                                <label ng-if="result.days" class="text-bold">{{result.days}}</label>
+                                <label>{{result.days === 1 ? 'Tag' : 'Tage'}}</label>
+                                <label ng-if="result.days && result.persons" class="text-bold">|</label>
+                                <label class="text-bold">{{result.persons}} </label>
+                                <label ng-if="result.persons">{{result.persons === 1 ? 'Person' : 'Personen'}}</label>
+                                <label ng-if="result.persons && result.locations" class="text-bold">|</label>
+                                <label class="text-bold">{{toc.numberOfElelementsIn(result.locations)}}</label>
+                                <label ng-if="result.locations">
+                                    {{toc.numberOfElelementsIn(result.locations) === 1 ? 'Location' : 'Locations'}}
+                                </label>
                             </label>
                         </li>
                         <li class="item">
