@@ -19,7 +19,7 @@
             <li class="item">
                 <label>{{tc.trip.description}}</label>
             </li>
-            <li class="item">
+            <li class="item" ng-if="tc.trip.start_date && tc.trip.end_date">
                 <label>von</label>
                 <label class="text-bold">{{tc.trip.start_date}}</label>
                 <label>bis</label>

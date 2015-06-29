@@ -13,9 +13,11 @@ module Controller {
             // get trip by id from state param
             SearchService.getTripById(this.$stateParams.tripId).then((result) => {
                 this.trip = result.data;
-                // date format
-                this.trip.start_date = moment(new Date(this.trip.start_date)).format('L');
-                this.trip.end_date = moment(new Date(this.trip.end_date)).format('L');
+                if (this.trip.start_date && this.trip.end_date) {
+                    // date format
+                    this.trip.start_date = moment(new Date(this.trip.start_date)).format('L');
+                    this.trip.end_date = moment(new Date(this.trip.end_date)).format('L');
+                }
                 // important for ion-slide!
                 this.$ionicSlideBoxDelegate.update();
                 // workaround, because title do not update in tripDetail.html
