@@ -34,6 +34,14 @@
                     <label ng-if="tc.trip.persons">{{tc.trip.persons === 1 ? 'Person' : 'Personen'}}</label>
                 </label>
             </li>
+            <!--  ui-sref="tab.search-locations"-->
+            <li class="item item-icon-right" ng-if="tc.trip.locations">
+                <label class="text-bold">{{tc.numberOfElelementsIn(tc.trip.locations)}}</label>
+                <label ng-if="tc.trip.locations">
+                    {{tc.numberOfElelementsIn(tc.trip.locations) === 1 ? 'Location' : 'Locations'}}
+                </label>
+                <i class="icon ion-chevron-right icon-accessory"></i>
+            </li>
             <li class="item mood-container">
                 <div ng-repeat="mood in tc.trip.moods">
                     <div ng-repeat="availableMood in tc.moods |filter:mood">
