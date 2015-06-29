@@ -35,6 +35,10 @@ module Controller {
             });
         }
 
+        openConversationModal = () => {
+            this.UserService.openConversationModal(this.user._id);
+        };
+
         static controllerId:string = "TripCtrl";
     }
 }
