@@ -39,6 +39,10 @@ module Controller {
             this.UserService.openConversationModal(this.user._id);
         };
 
+        numberOfElelementsIn(obj) {
+            return Object.keys(obj).length;
+        }
+
         static controllerId:string = "TripCtrl";
     }
 }
