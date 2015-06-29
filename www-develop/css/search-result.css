@@ -1,5 +1,15 @@
 .result-mood {
     float: left;
-    height: 35px;
+    height: 34px;
     padding-right: 10px;
+}
+
+.mood-container {
+    padding: 9px;
+}
+
+.mood-title {
+    float: left;
+    line-height: 31px;
+    font-weight: bold;
 }
