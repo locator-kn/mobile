@@ -1,8 +1,13 @@
-<div class="moodal" ng-controller="UserCtrl as uc">
-    <form name="loginform">
-        <input class="user-input" required ng-model="lc.message" type="text" placeholder="Nachricht" name="inputMail">
-        <input ng-click="uc.test()" class="submit button" value="Senden" type="submit">
-    </form>
-</div>
+<div class="moodal" ng-controller="DefaultCtrl as dc">
+        <form name="conversation">
 
-<input ng-click="uc.closeLoginModal()" class="backbutton button" value="Abbrechen" type="submit">
+            <textarea class="user-input" required ng-model="dc.message" placeholder="Nachricht" rows="8" cols="10"/>
+
+            <div ng-class="{open: dc.errormsg}" class="msg error-msg">{{dc.errormsg}}</div>
+
+            <div ng-class="{open: dc.successmsg}" class="msg success-msg">{{dc.successmsg}}</div>
+
+            <input ng-click="dc.startConversation(conversation)" class="submit button" value="Nachricht Senden" type="submit">
+        </form>
+    <input ng-click="dc.closeModal()" class="backbutton button" value="Abbrechen" type="submit">
+</div>
