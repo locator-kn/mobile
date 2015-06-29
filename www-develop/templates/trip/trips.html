@@ -28,7 +28,7 @@
                                 <label ng-if="result.days && result.persons" class="text-bold">|</label>
                                 <label class="text-bold">{{result.persons}} </label>
                                 <label ng-if="result.persons">{{result.persons === 1 ? 'Person' : 'Personen'}}</label>
-                                <label ng-if="result.persons && result.locations" class="text-bold">|</label>
+                                <label ng-if="result.persons || result.locations" class="text-bold">|</label>
                                 <label class="text-bold">{{toc.numberOfElelementsIn(result.locations)}}</label>
                                 <label ng-if="result.locations">
                                     {{toc.numberOfElelementsIn(result.locations) === 1 ? 'Location' : 'Locations'}}
