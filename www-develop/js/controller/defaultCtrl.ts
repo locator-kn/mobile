@@ -17,6 +17,7 @@ module Controller {
 
             this.MessengerService.startConversation(this.message).then((result) => {
                 this.successmsg = 'Nachricht erfolgreich versendet';
+                this.message = '';
             }).catch((result) => {
                 if (result.status === 409) {
                     var fromUser = this.$rootScope.userID;
