@@ -297,6 +297,14 @@ angular.module('starter', deps)
                     }
                 }
             })
+            .state('tab.profile-locations', {
+                url: '/profile/:userId/locations',
+                views: {
+                    'tab-profile': {
+                        templateUrl: 'templates/location/locationOverview.html'
+                    }
+                }
+            })
             .state('tab.profile-settings', {
                 url: '/profile/:userId/settings',
                 views: {
