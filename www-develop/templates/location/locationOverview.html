@@ -1,7 +1,12 @@
 <ion-view view-title="Locations" class="location-overview" ng-controller="LocationOverviewCtrl as loc">
     <ion-content class="background-color-grey">
         <ul class="list">
-            <li class="item item-icon-right" ng-repeat="location in loc.results">
+            <label class="item item-input" ng-if="loc.results.length>8">
+                <i class="icon ion-search placeholder-icon"></i>
+                <input type="search" placeholder="Suche" ng-change-options='{ debounce: 1000 }'
+                       ng-model="loc.location"/>
+            </label>
+            <li class="item item-icon-right" ng-repeat="location in loc.results | filter: loc.location">
                 <div class="image-container">
                     <!-- images -->
                     <img ng-if="location.images.picture" class="picture"
