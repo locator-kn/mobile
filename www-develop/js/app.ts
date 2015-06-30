@@ -225,7 +225,7 @@ angular.module('starter', deps)
                 }
             })
             .state('tab.search-result-locations', {
-                url: '/location/:typeId/:sourceId',
+                url: '/locations/:locationSourceId',
                 views: {
                     'tab-search': {
                         templateUrl: 'templates/location/locationOverview.html'
