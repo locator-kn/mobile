@@ -18,6 +18,7 @@
 /// <reference path="controller/mainCtrl.ts" />
 /// <reference path="controller/defaultCtrl.ts" />
 /// <reference path="controller/locationOverviewCtrl.ts" />
+/// <reference path="controller/locationCtrl.ts" />
 
 /// <reference path="./service/dataService.ts" />
 /// <reference path="./service/searchService.ts" />
@@ -87,6 +88,7 @@ angular.module('starter', deps)
     .controller(Controller.MainCtrl.controllerId, Controller.MainCtrl)
     .controller(Controller.DefaultCtrl.controllerId, Controller.DefaultCtrl)
     .controller(Controller.LocationOverviewCtrl.controllerId, Controller.LocationOverviewCtrl)
+    .controller(Controller.LocationCtrl.controllerId, Controller.LocationCtrl)
 
     // services
     .service(Service.DataService.serviceId, Service.DataService)
