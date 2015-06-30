@@ -1,4 +1,4 @@
-<ion-view view-title="Locations" class="location" ng-controller="LocationOverviewCtrl as loc">
+<ion-view view-title="Locations" class="location-overview" ng-controller="LocationOverviewCtrl as loc">
     <ion-content class="background-color-grey">
         <ul class="list">
             <li class="item" ng-repeat="location in loc.results">
@@ -10,12 +10,14 @@
                          ng-src="{{location.images.googlemap}}&size=200x200">
                 </div>
 
-                <!-- title, tags and description-->
-                <label class="title">{{location.title}}</label>
 
-                <div class="location-tags tags">
-                    <span ng-repeat="tag in location.tags | limitTo: 3" class="tag">{{tag}}</span>
-                </div>
+                <!-- title, tags and description-->
+                    <label class="title">{{location.title}}</label>
+
+                    <div class="location-tags tags">
+                        <span ng-repeat="tag in location.tags | limitTo: 3" class="tag">{{tag}}</span>
+                    </div>
+                <p class="description">{{location.description}}</p>
             </li>
         </ul>
     </ion-content>
