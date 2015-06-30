@@ -17,6 +17,7 @@
 /// <reference path="controller/messagesCtrl.ts" />
 /// <reference path="controller/mainCtrl.ts" />
 /// <reference path="controller/defaultCtrl.ts" />
+/// <reference path="controller/locationOverviewCtrl.ts" />
 
 /// <reference path="./service/dataService.ts" />
 /// <reference path="./service/searchService.ts" />
@@ -84,6 +85,7 @@ angular.module('starter', deps)
     .controller(Controller.MessagesCtrl.controllerId, Controller.MessagesCtrl)
     .controller(Controller.MainCtrl.controllerId, Controller.MainCtrl)
     .controller(Controller.DefaultCtrl.controllerId, Controller.DefaultCtrl)
+    .controller(Controller.LocationOverviewCtrl.controllerId, Controller.LocationOverviewCtrl)
 
     // services
     .service(Service.DataService.serviceId, Service.DataService)
@@ -219,6 +221,14 @@ angular.module('starter', deps)
                 views: {
                     'tab-search': {
                         templateUrl: 'templates/trip/tripDetail.html'
+                    }
+                }
+            })
+            .state('tab.search-result-locations', {
+                url: '/location/:typeId/:sourceId',
+                views: {
+                    'tab-search': {
+                        templateUrl: 'templates/location/locationOverview.html'
                     }
                 }
             })
