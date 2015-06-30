@@ -17,7 +17,7 @@ module Controller {
         // - location by trip
         // +++++++++++++++++++++++++++++++
 
-        constructor(private $state, private $stateParams, private locationService) {
+        constructor(private $state, private $stateParams, private LocationService) {
             this.state = this.$state.current.name;
 
             this.locationSourceId = $stateParams.locationSourceId;
@@ -26,7 +26,7 @@ module Controller {
                 // TODO call route to get all locations from trip
             } else if (this.state === this.userType) {
                 // if location by user x
-                this.locationService.getLocationsByUser(this.locationSourceId).then((result) => {
+                this.LocationService.getLocationsByUser(this.locationSourceId).then((result) => {
                     this.results = result;
                 })
             }
