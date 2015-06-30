@@ -234,6 +234,14 @@ angular.module('starter', deps)
                     }
                 }
             })
+            .state('tab.search-user-locations', {
+                url: '/user/:locationSourceId/locations',
+                views: {
+                    'tab-search': {
+                        templateUrl: 'templates/location/locationOverview.html'
+                    }
+                }
+            })
             .state('tab.search-user', {
                 url: '/user/:userId',
                 views: {

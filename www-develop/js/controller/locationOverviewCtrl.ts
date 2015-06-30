@@ -3,7 +3,9 @@ module Controller {
         results:any;
 
         tripType = 'tab.search-result-locations';
-        profileType = 'tab.profile-locations';
+        userType = 'tab.search-user-locations';
+        myType = 'tab.profile-locations';
+
 
         state:string;
         locationSourceId:string;
@@ -22,7 +24,8 @@ module Controller {
 
             if(this.state === this.tripType) {
                 // TODO call route to get all locations from trip
-            } else if (this.state === this.profileType) {
+            } else if (this.state === this.userType) {
+                // if location by user x
                 this.locationService.getLocationsByUser(this.locationSourceId).then((result) => {
                     this.results = result;
                 })
