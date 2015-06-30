@@ -1,7 +1,11 @@
-<ion-view view-title="Locations" ng-controller="LocationOverviewCtrl as loc">
+<ion-view view-title="Locations" class="location" ng-controller="LocationOverviewCtrl as loc">
     <ion-content class="background-color-grey">
         <ul class="list">
-            {{loc.results}}
+            <li class="item" ng-repeat="location in loc.results">
+                <img ng-if="location.images.picture" class="" ng-src="{{loc.webPath}}{{location.images.picture}}">
+                <img ng-if="!location.images.picture" class="" ng-src="{{location.images.googlemap}}&size=200x200">
+                <label></label>
+            </li>
         </ul>
     </ion-content>
 </ion-view>
