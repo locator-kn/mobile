@@ -17,18 +17,28 @@ module Controller {
         // - location by trip
         // +++++++++++++++++++++++++++++++
 
-        constructor(private $state, private $stateParams, private LocationService, private webPath) {
+        constructor(private $state, private $stateParams, private LocationService, private $ionicLoading, private webPath) {
             this.state = this.$state.current.name;
 
             this.locationSourceId = $stateParams.locationSourceId;
 
-            if(this.state === this.tripType) {
-                // TODO call route to get all locations from trip
+            if (this.state === this.tripType) {
+                this.LocationService.getLocationsByTripId(this.locationSourceId).then((result) => {
+                    this.results = result.data;
+                    this.$ionicLoading.hide();
+                }).catch((err) => {
+                    console.log(err);
+                    this.$ionicLoading.hide();
+                });
             } else if (this.state === this.userType) {
                 // if location by user x
                 this.LocationService.getLocationsByUser(this.locationSourceId).then((result) => {
                     this.results = result.data;
-                })
+                    this.$ionicLoading.hide();
+                }).catch((err) => {
+                    console.log(err);
+                    this.$ionicLoading.hide();
+                });
             }
 
 
