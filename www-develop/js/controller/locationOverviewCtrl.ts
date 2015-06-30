@@ -17,7 +17,7 @@ module Controller {
         // - location by trip
         // +++++++++++++++++++++++++++++++
 
-        constructor(private $state, private $stateParams, private LocationService) {
+        constructor(private $state, private $stateParams, private LocationService, private webPath) {
             this.state = this.$state.current.name;
 
             this.locationSourceId = $stateParams.locationSourceId;
@@ -27,7 +27,7 @@ module Controller {
             } else if (this.state === this.userType) {
                 // if location by user x
                 this.LocationService.getLocationsByUser(this.locationSourceId).then((result) => {
-                    this.results = result;
+                    this.results = result.data;
                 })
             }
 
