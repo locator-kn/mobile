@@ -10,6 +10,8 @@ module Controller {
         state:string;
         locationSourceId:string;
 
+        me:boolean = false;
+
         // ++++++++ TODO +++++++++++++++++
         // - location by user x
         // - location by my
@@ -39,6 +41,9 @@ module Controller {
                     console.log(err);
                     this.$ionicLoading.hide();
                 });
+            } else if (this.state === this.myType){
+                this.me = true;
+                // TODO get my locations
             }
 
 
