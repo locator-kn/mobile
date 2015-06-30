@@ -3,12 +3,19 @@
         <ul class="list">
             <li class="item" ng-repeat="location in loc.results">
                 <div class="image-container">
+                    <!-- images -->
                     <img ng-if="location.images.picture" class="picture"
                          ng-src="{{loc.webPath}}{{location.images.picture}}">
                     <img ng-if="!location.images.picture" class="googlemap"
                          ng-src="{{location.images.googlemap}}&size=200x200">
                 </div>
-                <label></label>
+
+                <!-- title, tags and description-->
+                <label class="title">{{location.title}}</label>
+
+                <div class="location-tags tags">
+                    <span ng-repeat="tag in location.tags | limitTo: 3" class="tag">{{tag}}</span>
+                </div>
             </li>
         </ul>
     </ion-content>
