@@ -2,8 +2,12 @@
     <ion-content class="background-color-grey">
         <ul class="list">
             <li class="item" ng-repeat="location in loc.results">
-                <img ng-if="location.images.picture" class="" ng-src="{{loc.webPath}}{{location.images.picture}}">
-                <img ng-if="!location.images.picture" class="" ng-src="{{location.images.googlemap}}&size=200x200">
+                <div class="image-container">
+                    <img ng-if="location.images.picture" class="picture"
+                         ng-src="{{loc.webPath}}{{location.images.picture}}">
+                    <img ng-if="!location.images.picture" class="googlemap"
+                         ng-src="{{location.images.googlemap}}&size=200x200">
+                </div>
                 <label></label>
             </li>
         </ul>

@@ -1,0 +1,19 @@
+.location .image-container {
+    width: 80px;
+    height: 80px;
+    overflow: hidden;
+}
+
+.location .picture {
+    width: 136px;
+}
+
+.location .googlemap {
+    width: 80px
+}
+
+.location .item {
+    padding: 5px;
+}
+
+
