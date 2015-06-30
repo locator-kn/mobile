@@ -1,7 +1,7 @@
 <ion-view view-title="Locations" class="location-overview" ng-controller="LocationOverviewCtrl as loc">
     <ion-content class="background-color-grey">
         <ul class="list">
-            <li class="item" ng-repeat="location in loc.results">
+            <li class="item item-icon-right" ng-repeat="location in loc.results">
                 <div class="image-container">
                     <!-- images -->
                     <img ng-if="location.images.picture" class="picture"
@@ -18,6 +18,7 @@
                         <span ng-repeat="tag in location.tags | limitTo: 3" class="tag">{{tag}}</span>
                     </div>
                 <p class="description">{{location.description}}</p>
+                <i class="icon ion-chevron-right icon-accessory"></i>
             </li>
         </ul>
     </ion-content>

@@ -34,8 +34,12 @@
     color: white;
 }
 
+.location-overview .location-tags {
+    padding-right: 25px;
+}
+
 .location-overview .description {
-    margin-top: 21px;
+    margin-top: 23px;
     width: 241px;
     height: 54px;
     white-space: initial;
