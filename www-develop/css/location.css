@@ -1,8 +1,13 @@
 .location .image-container {
+    width: 100%;
     overflow: hidden;
     float: left;
 }
 
 .tag-detail {
     float: left;
+}
+
+.location .image-container img {
+    width: 100%;
 }

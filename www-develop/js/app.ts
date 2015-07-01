@@ -47,6 +47,7 @@ var deps = [
     'angular-cache',
     'jrCrop',
     'btford.socket-io',
+    'uiGmapgoogle-maps',
     'ngCordova'
 ];
 
