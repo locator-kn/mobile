@@ -17,6 +17,7 @@
 
 .trip .description {
     padding: 16px;
+    white-space: initial;
 }
 
 

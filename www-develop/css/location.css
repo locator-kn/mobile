@@ -18,3 +18,7 @@
     margin-left: 10%;
     margin-right: 10%;
 }
+
+.location .description {
+    white-space: initial;
+}
