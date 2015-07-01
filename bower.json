@@ -11,6 +11,8 @@
     "ng-lodash": "~0.2.3",
     "angular-accommodation-equipment-chooser": "~0.2.3",
     "cropme": "~0.3.2",
-    "angular-socket-io": "~0.7.0"
+    "angular-socket-io": "~0.7.0",
+    "angular-google-maps": "~2.1.5",
+    "lodash": "~3.10.0"
   }
 }
