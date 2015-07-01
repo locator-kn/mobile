@@ -1,0 +1,24 @@
+.insert-location .placeholder-image {
+    width: 100%;
+}
+
+.insert-location a.choose-image {
+    width: auto;
+    margin-top: -54px;
+    margin-left: -36px;
+    background-color: rgb(34, 34, 34);
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+.insert-location a.choose-image {
+    top: 50%;
+    left: 50%;
+    position: fixed;
+}
+
+.insert-location .choose-image img{
+    width: 60px;
+    height: 60px;
+    padding: 15px;
+}
