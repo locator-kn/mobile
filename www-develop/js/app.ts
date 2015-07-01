@@ -80,7 +80,7 @@ angular.module('starter', deps)
     .controller(Controller.TripCtrl.controllerId, Controller.TripCtrl)
     .controller(Controller.CityCtrl.controllerId, Controller.CityCtrl)
     .controller(Controller.MoodCtrl.controllerId, Controller.MoodCtrl)
-    .controller(Controller.LocateCtrl.controllerId, Controller.LocateCtrl)
+    .controller(Controller.InsertLocationCtrl.controllerId, Controller.InsertLocationCtrl)
     .controller(Controller.LoginCtrl.controllerId, Controller.LoginCtrl)
     .controller(Controller.TabCtrl.controllerId, Controller.TabCtrl)
     .controller(Controller.UserCtrl.controllerId, Controller.UserCtrl)
@@ -281,7 +281,7 @@ angular.module('starter', deps)
                 url: '/locate',
                 views: {
                     'tab-locate': {
-                        templateUrl: 'templates/tab-locate/locate.html'
+                        templateUrl: 'templates/tab-locate/insert-location.html'
                     }
                 }
             })
