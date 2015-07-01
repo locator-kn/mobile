@@ -14,8 +14,8 @@
                 <label>am </label>
                 <label class="text-bold">{{lc.result.create_date}}</label>
             </li>
-            <li class="item">
-                <span>{{lc.result.description}}</span>
+            <li class="item description">
+                <label>{{lc.result.description}}</label>
             </li>
             <li class="item">
                 <div class="location-tags tags tag-detail">
@@ -26,13 +26,6 @@
                 <div class="image-container">
                     <img class="image" ng-src="{{lc.result.images.googlemap}}&size=400x400">
                 </div>
-            </li>
-            <li class="item">
-                <ui-gmap-google-map center='lc.map.center' zoom='lc.map.zoom' panControl='lc.map.panControl' draggable='lc.map.draggable' scrollwheel='lc.map.scrollwheel'>
-                    <ui-gmap-marker coords="lc.map.clickedMarker" idKey="lc.map.clickedMarker.id"
-                                    options="lc.map.clickedMarker.options">
-                    </ui-gmap-marker>
-                </ui-gmap-google-map>
             </li>
         </ul>
     </ion-content>
