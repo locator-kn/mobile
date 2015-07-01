@@ -1,30 +1,53 @@
 <ion-view view-title="Locations" class="location" ng-controller="LocationCtrl as lc">
     <ion-content class="background-color-grey">
         <ul class="list">
-            {{lc.results}}
+            <div>
+                <div class="image-container">
+                    <img class="image" ng-src="{{lc.webPath}}{{lc.result.images.thumbnail}}">
+                </div>
+            </div>
+
+            <li class="item">
+                <div class="text-bold">{{lc.result.title}}</div>
+                <label>von </label>
+                <label class="text-bold">{{lc.user.name || 'anonym'}}</label>
+                <label>am </label>
+                <label class="text-bold">{{lc.result.create_date}}</label>
+            </li>
+            <li class="item">
+                <span>{{lc.result.description}}</span>
+            </li>
+            <li class="item">
+                <div class="location-tags tags tag-detail">
+                    <span ng-repeat="tag in lc.result.tags | limitTo: 3" class="tag">{{tag}}</span>
+                </div>
+            </li>
+
+
+            {{lc.result}}
             <!--<label class="item item-input" ng-if="loc.results.length>8">-->
-                <!--<i class="icon ion-search placeholder-icon"></i>-->
-                <!--<input type="search" placeholder="Suche" ng-change-options='{ debounce: 1000 }'-->
-                       <!--ng-model="loc.location"/>-->
+            <!--<i class="icon ion-search placeholder-icon"></i>-->
+            <!--<input type="search" placeholder="Suche" ng-change-options='{ debounce: 1000 }'-->
+            <!--ng-model="loc.location"/>-->
             <!--</label>-->
             <!--<li class="item item-icon-right" ng-repeat="location in loc.results | filter: loc.location">-->
-                <!--<div class="image-container">-->
+            <!--<div class="image-container">-->
 
-                    <!--<img ng-if="location.images.picture" class="picture"-->
-                         <!--ng-src="{{loc.webPath}}{{location.images.thumbnail}}">-->
-                    <!--<img ng-if="!location.images.picture" class="googlemap"-->
-                         <!--ng-src="{{location.images.googlemap}}&size=200x200">-->
-                <!--</div>-->
+            <!--<img ng-if="location.images.picture" class="picture"-->
+            <!--ng-src="{{loc.webPath}}{{location.images.thumbnail}}">-->
+            <!--<img ng-if="!location.images.picture" class="googlemap"-->
+            <!--ng-src="{{location.images.googlemap}}&size=200x200">-->
+            <!--</div>-->
 
 
-                <!-- title, tags and description-->
-                <!--<label class="title">{{location.title}}</label>-->
+            <!-- title, tags and description-->
+            <!--<label class="title">{{location.title}}</label>-->
 
-                <!--<div class="location-tags tags">-->
-                    <!--<span ng-repeat="tag in location.tags | limitTo: 3" class="tag">{{tag}}</span>-->
-                <!--</div>-->
-                <!--<p class="description">{{location.description}}</p>-->
-                <!--<i class="icon ion-chevron-right icon-accessory"></i>-->
+            <!--<div class="location-tags tags">-->
+            <!--<span ng-repeat="tag in location.tags | limitTo: 3" class="tag">{{tag}}</span>-->
+            <!--</div>-->
+            <!--<p class="description">{{location.description}}</p>-->
+            <!--<i class="icon ion-chevron-right icon-accessory"></i>-->
             </li>
         </ul>
     </ion-content>
