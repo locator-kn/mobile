@@ -11,3 +11,10 @@
 .location .image-container img {
     width: 100%;
 }
+
+.angular-google-map-container {
+    height: 280px;
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+}

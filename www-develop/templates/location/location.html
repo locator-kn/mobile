@@ -22,6 +22,13 @@
                     <span ng-repeat="tag in lc.result.tags | limitTo: 3" class="tag">{{tag}}</span>
                 </div>
             </li>
+            <li class="item">
+                <ui-gmap-google-map center='lc.map.center' zoom='lc.map.zoom'>
+                    <ui-gmap-marker coords="lc.map.clickedMarker" idKey="lc.map.clickedMarker.id"
+                                    options="lc.map.clickedMarker.options">
+                    </ui-gmap-marker>
+                </ui-gmap-google-map>
+            </li>
         </ul>
     </ion-content>
 </ion-view>
