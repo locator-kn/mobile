@@ -1,5 +1,5 @@
 module Controller {
-    export class LocateCtrl {
+    export class InsertLocationCtrl {
         imageURI;
 
         lat:string;
@@ -29,6 +29,6 @@ module Controller {
             });
         };
 
-        static controllerId:string = "LocateCtrl";
+        static controllerId:string = "InsertLocationCtrl";
     }
 }
