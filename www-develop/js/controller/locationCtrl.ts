@@ -1,13 +1,13 @@
 module Controller {
     export class LocationCtrl {
-        results:any;
+        result:any;
         locationId:number;
 
         constructor(private $state, private $stateParams, private LocationService, private $ionicLoading, private webPath) {
             this.locationId = $stateParams.locationId;
 
             this.LocationService.getLocationById(this.locationId).then((result)=> {
-                this.results = result.data;
+                this.result = result.data;
             })
 
         }
