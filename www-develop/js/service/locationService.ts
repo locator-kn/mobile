@@ -32,6 +32,10 @@ module Service {
             return q.promise;
         }
 
+        getLocationById(locationId) {
+            return this.$http.get(this.basePath + '/locations/' + locationId);
+        }
+
         static serviceId:string = "LocationService";
     }
 }
