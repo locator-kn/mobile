@@ -22,8 +22,13 @@
                     <span ng-repeat="tag in lc.result.tags | limitTo: 3" class="tag">{{tag}}</span>
                 </div>
             </li>
+            <li>
+                <div class="image-container">
+                    <img class="image" ng-src="{{lc.result.images.googlemap}}&size=400x400">
+                </div>
+            </li>
             <li class="item">
-                <ui-gmap-google-map center='lc.map.center' zoom='lc.map.zoom'>
+                <ui-gmap-google-map center='lc.map.center' zoom='lc.map.zoom' panControl='lc.map.panControl' draggable='lc.map.draggable' scrollwheel='lc.map.scrollwheel'>
                     <ui-gmap-marker coords="lc.map.clickedMarker" idKey="lc.map.clickedMarker.id"
                                     options="lc.map.clickedMarker.options">
                     </ui-gmap-marker>
