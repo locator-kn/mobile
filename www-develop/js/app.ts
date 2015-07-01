@@ -281,7 +281,7 @@ angular.module('starter', deps)
                 url: '/locate',
                 views: {
                     'tab-locate': {
-                        templateUrl: 'templates/tab-locate.html'
+                        templateUrl: 'templates/tab-locate/locate.html'
                     }
                 }
             })
