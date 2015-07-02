@@ -22,3 +22,6 @@
     height: 60px;
     padding: 15px;
 }
+.insert-location .gps-button {
+    width: 100%;
+}

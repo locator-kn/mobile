@@ -65,7 +65,7 @@ module Controller {
                 }).catch((err) => {
                     console.log(err);
                     this.isUploading = false;
-                })
+                });
             // TODO impl.. processing
         }
 
