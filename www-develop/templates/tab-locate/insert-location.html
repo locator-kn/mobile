@@ -15,20 +15,20 @@
                 </a>
             </div>
             <li class="item item-input">
-                <input type="input" ng-model="ilc.locationFormDetails.title" placeholder="Gib der Location einen Titel">
+                <input type="text" ng-model="ilc.locationFormDetails.title" placeholder="Gib der Location einen Titel">
             </li>
             <li class="item item-input">
                 <textarea ng-model="ilc.locationFormDetails.description" rows="4" type="input"
                           placeholder="Beschreibe die Location"></textarea>
             </li>
             <li class="item item-input">
-                <input type="input" ng-model="ilc.locationFormDetails.tags"
+                <input type="text" ng-model="ilc.locationFormDetails.tags"
                        placeholder="Füge aussagekräftige Tags hinzu">
             </li>
             <li class="item item-toggle">
                 Location öffentlich
-                <label class="toggle toggle-dark toggle-assertive">
-                    <!--ng-click="sc.accommodation = ! sc.accommodation"-->
+                <label class="toggle toggle-dark toggle-assertive"  ng-click="ilc.locationFormDetails.public = ! ilc.locationFormDetails.public">
+
                     <input type="checkbox">
 
                     <div class="track">
