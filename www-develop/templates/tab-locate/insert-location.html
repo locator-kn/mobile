@@ -26,32 +26,13 @@
             <label class="toggle toggle-dark toggle-assertive">
                 <!--ng-click="sc.accommodation = ! sc.accommodation"-->
                 <input type="checkbox">
-
                 <div class="track">
                     <div class="handle"></div>
                 </div>
             </label>
         </li>
-        <button class="button button-dark gps-button">
-            Aktuelle Position ermitteln
+        <button class="button button-dark gps-button" ng-click="ilc.showPositionActions()">
+            Position ermitteln
         </button>
-        <!--<div>-->
-        <!--<button ng-click="lc.getPhoto()"-->
-        <!--class="button button-full background-green bottom">-->
-        <!--Mach ein Foto!-->
-        <!--</button>-->
-        <!--<img class="tmpImageWidth" ng-src="{{lc.imageURI}}">-->
-        <!--<button ng-click="lc.getCurrentPosition()"-->
-        <!--class="button button-full background-green bottom">-->
-        <!--GPS Position-->
-        <!--</button>-->
-        <!---->
-        <!--<button ng-click="lc.showPictureActions()"-->
-        <!--class="button button-full background-green bottom">-->
-        <!--actions-->
-        <!--</button>-->
-        <!--Latitude: {{lc.lat}}-->
-        <!--Longitude: {{lc.long}}-->
-        <!--</div>-->
     </ion-content>
 </ion-view>
