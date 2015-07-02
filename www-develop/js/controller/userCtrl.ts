@@ -142,7 +142,15 @@ module Controller {
         };
 
         uploadImage = (result) => {
-            this.PictureUploadService.uploadImage(this.newImagePath, this.basePath + '/users/my/picture', result).then((data) => {
+            var formData = {
+                width: Math.round(result.width),
+                height: Math.round(result.height),
+                xCoord: Math.round(result.x),
+                yCoord: Math.round(result.y)
+            };
+
+            this.PictureUploadService.uploadImage(this.newImagePath, this.basePath + '/users/my/picture', formData).then((data) => {
+                console.log('update user: ' + data);
                 // update user
                 this.$rootScope.$emit('userUpdate');
             }).catch((err) => {
