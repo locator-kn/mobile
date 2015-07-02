@@ -4,6 +4,7 @@
   "description": "locator: An Ionic project",
   "repository": "git:locator-kn/mobile.git",
   "dependencies": {
+    "angular": "^1.4.1",
     "chalk": "^1.0.0",
     "gulp": "^3.5.6",
     "gulp-concat": "^2.2.0",
