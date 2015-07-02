@@ -2,7 +2,7 @@ module Service {
     export class GeolocationService {
 
 
-        constructor(private $q, private $ionicLoading, private $ionicPopup, private $http) {
+        constructor(private $q, private $ionicLoading, private $ionicPopup, private $http, private basePath) {
         }
 
 
@@ -25,6 +25,13 @@ module Service {
         // by michaelknoch
         getCityByCoords(lat, long) {
             return this.$http.get('http://maps.googleapis.com/maps/api/geocode/json?latlng=' + lat + ',' + long + '&sensor=true');
+        }
+
+        saveLocation(location, id?:string) {
+            if (id) {
+                return this.$http.put(this.basePath + '/users/my/locations/' + id, location);
+            }
+            return this.$http.post(this.basePath + '/users/my/locations', location)
         }
 
         static serviceId:string = "GeolocationService";
