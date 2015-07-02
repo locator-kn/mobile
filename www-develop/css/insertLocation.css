@@ -14,7 +14,7 @@
 .insert-location a.choose-image {
     top: 50%;
     left: 50%;
-    position: fixed;
+    position: absolute;
 }
 
 .insert-location .choose-image img{
@@ -24,4 +24,8 @@
 }
 .insert-location .gps-button {
     width: 100%;
+}
+
+.insert-location .location-image {
+    position: relative;
 }
