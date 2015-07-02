@@ -147,9 +147,11 @@ module Controller {
                 this.$rootScope.$emit('userUpdate');
             }).catch((err) => {
                 // TODO: show Error
-            }).progress((process) => {
-                // TODO implement processing
+                console.log(err);
             });
+                //.progress((process) => {
+                // TODO implement processing
+            //});
         };
 
 
