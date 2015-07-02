@@ -2,7 +2,7 @@ module Service {
     export class GeolocationService {
 
 
-        constructor(private $q, private $ionicLoading, private $ionicActionSheet) {
+        constructor(private $q, private $ionicLoading, private $ionicActionSheet, private $http) {
         }
 
 
@@ -15,10 +15,16 @@ module Service {
                 q.resolve(result);
             }, (err) => {
                 this.$ionicLoading.hide();
+                // TODO: Überprüfe deine GPS Verbindung und versuche es erneut
                 q.reject(err)
             }, posOptions);
 
             return q.promise;
+        }
+
+        // by michaelknoch
+        getCityByCoords(lat, long) {
+            return this.$http.get('http://maps.googleapis.com/maps/api/geocode/json?latlng=' + lat + ',' + long + '&sensor=true');
         }
 
         static serviceId:string = "GeolocationService";
