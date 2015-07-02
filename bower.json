@@ -13,6 +13,7 @@
     "cropme": "~0.3.2",
     "angular-socket-io": "~0.7.0",
     "angular-google-maps": "~2.1.5",
-    "lodash": "~3.10.0"
+    "lodash": "~3.10.0",
+    "jr-crop-locator": "~1.1.0"
   }
 }
