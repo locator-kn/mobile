@@ -18,19 +18,66 @@ module Controller {
         pictureWidth:number = 256;
         pictureHeight:number = 150;
 
+        map:any = {};
 
         // TODO: refactor
         uploadIsDone:boolean;
         isUploading:boolean;
         documentWasCreated:boolean;
         imageHasBeenUploaded:boolean;
+        mapMarkerSet:boolean;
 
-        constructor(private CameraService, private basePath, private GeolocationService, private UserService,
+        constructor(private CameraService, private $scope,  private basePath, private GeolocationService, private UserService,
                     private PictureUploadService, private webPath) {
 
             this.UserService.getMe().then(user => {
                 this.me = user.data;
             });
+
+            this.map = {
+                center: {
+                    // kn fh
+                    latitude: 47.668403,
+                    longitude: 9.170499
+                },
+                zoom: 12,
+                clickedMarker: {
+                    id: 0,
+                    latitude: null,
+                    longitude: null
+                },
+                events: this.getEvents()
+            };
+        }
+
+        getEvents() {
+            return {
+                mousedown: (mapModel, eventName, originalEventArgs) => {
+                    this.clickMapEvent(mapModel, eventName, originalEventArgs);
+                }
+            }
+        }
+
+        clickMapEvent(mapModel, eventName, originalEventArgs) {
+            console.log(mapModel);
+            var e = originalEventArgs[0];
+            var lat = e.latLng.lat(),
+                lon = e.latLng.lng();
+            this.map.clickedMarker = {
+                id: 0,
+                options: {
+                    labelClass: "marker-labels",
+                    labelAnchor: "50 0"
+                },
+                latitude: lat,
+                longitude: lon
+            };
+            console.log(this.map.clickedMarker);
+            //this.mapMarkerSet = true;
+            this.$scope.$apply();
+            //
+            //this.getCityFromMarker();
+
         }
 
         uploadImage(image) {
@@ -80,6 +127,20 @@ module Controller {
             this.GeolocationService.getCurrentLocation().then((position) => {
                 this.lat = position.coords.latitude;
                 this.long = position.coords.longitude;
+
+                this.map.clickedMarker = {
+                    id: 0,
+                    options: {
+                        labelClass: "marker-labels",
+                        labelAnchor: "50 0"
+                    },
+                    latitude: this.lat,
+                    longitude: this.long
+                };
+                console.log(this.map.clickedMarker);
+                this.mapMarkerSet = true;
+                this.$scope.$apply();
+
             })
         };
 
@@ -94,12 +155,6 @@ module Controller {
                 this.uploadImage(data);
 
             });
-        };
-
-        showPositionActions = () => {
-            this.GeolocationService.getGeoLocation().then((data) => {
-                this.geotag = data;
-            })
         };
 
         static controllerId:string = "InsertLocationCtrl";
