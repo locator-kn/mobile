@@ -1,12 +1,13 @@
 module Controller {
     export class InsertLocationCtrl {
         imageURI;
+        headerImagePath;
 
         result:any = {};
 
         //trip
         documentId:string;
-        locationTitle:string;
+        locationTitle:string = '';
         revision:string;
 
         lat:string;
@@ -22,9 +23,10 @@ module Controller {
         uploadIsDone:boolean;
         isUploading:boolean;
         documentWasCreated:boolean;
+        imageHasBeenUploaded:boolean;
 
         constructor(private CameraService, private basePath, private GeolocationService, private UserService,
-                    private PictureUploadService) {
+                    private PictureUploadService, private webPath) {
 
             this.UserService.getMe().then(user => {
                 this.me = user.data;
@@ -51,22 +53,23 @@ module Controller {
                 formData._rev = this.revision;
             }
             this.PictureUploadService.uploadImage(file, this.basePath + '/users/my/locations/picture', formData)
-                .error(() => {
-                    this.isUploading = false;
-                })
-                .progress(evt => {
-                    // TODO: impl processing
-                }).success((data, status, headers, config) => {
-                    console.log('file', config.file.name, 'uploaded. Response:', data);
-
-                    //this.showNewImage(data);
+                .then((data) => {
+                    this.showNewImage(data);
                     this.documentId = data.id;
                     this.revision = data.rev;
                     this.uploadIsDone = true;
                     this.isUploading = false;
-                });
+                }).catch((err) => {
+                    console.log(err);
+                    this.isUploading = false;
+                })
+            // TODO impl.. processing
+        }
 
-            //this.InsertTripService.uploadImage(formData);
+        showNewImage(data) {
+            this.imageHasBeenUploaded = true;
+            var path = JSON.parse(data.response);
+            this.headerImagePath = path.imageLocation.thumbnail;
         }
 
         // sample
@@ -83,10 +86,9 @@ module Controller {
                 height: this.pictureHeight
             };
             this.CameraService.selectPicture(opt).then((data) => {
-
                 // TODO: check image size
-
                 this.imageURI = data;
+                this.uploadImage(data);
 
             });
         };
