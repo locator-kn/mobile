@@ -26,13 +26,20 @@
             <label class="toggle toggle-dark toggle-assertive">
                 <!--ng-click="sc.accommodation = ! sc.accommodation"-->
                 <input type="checkbox">
+
                 <div class="track">
                     <div class="handle"></div>
                 </div>
             </label>
         </li>
-        <button class="button button-dark gps-button" ng-click="ilc.showPositionActions()">
+        <button class="button button-dark gps-button" ng-click="ilc.getCurrentPosition()">
             Position ermitteln
         </button>
+        <ui-gmap-google-map center='ilc.map.center' zoom='ilc.map.zoom'
+                            events="ilc.map.events">
+            <ui-gmap-marker coords="ilc.map.clickedMarker" idKey="ilc.map.clickedMarker.id"
+                            options="ilc.map.clickedMarker.options">
+            </ui-gmap-marker>
+        </ui-gmap-google-map>
     </ion-content>
 </ion-view>
