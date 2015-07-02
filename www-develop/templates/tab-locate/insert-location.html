@@ -35,11 +35,14 @@
         <button class="button button-dark gps-button" ng-click="ilc.getCurrentPosition()">
             Position ermitteln
         </button>
-        <ui-gmap-google-map center='ilc.map.center' zoom='ilc.map.zoom'
+        <ui-gmap-google-map class="google-map" center='ilc.map.center' zoom='ilc.map.zoom'
                             events="ilc.map.events">
             <ui-gmap-marker coords="ilc.map.clickedMarker" idKey="ilc.map.clickedMarker.id"
                             options="ilc.map.clickedMarker.options">
             </ui-gmap-marker>
         </ui-gmap-google-map>
+        <button class="button background-green gps-button" ng-click="ilc.getCurrentPosition()">
+            Location erstellen
+        </button>
     </ion-content>
 </ion-view>

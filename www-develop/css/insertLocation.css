@@ -29,3 +29,7 @@
 .insert-location .location-image {
     position: relative;
 }
+
+.insert-location .google-map {
+    padding: 10px;
+}
