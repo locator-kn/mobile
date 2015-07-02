@@ -37,7 +37,7 @@ module Controller {
         error:boolean = false;
 
         constructor(private CameraService, private $scope, private basePath, private GeolocationService, private UserService,
-                    private PictureUploadService, private webPath, private $ionicLoading) {
+                    private PictureUploadService, private webPath, private $ionicLoading, private $ionicPopup) {
 
             this.UserService.getMe().then(user => {
                 this.me = user.data;
@@ -108,7 +108,7 @@ module Controller {
                 delete formData._id;
                 delete formData._rev;
             }
-            this.$ionicLoading.show({template: '<ion-spinner icon="spiral"></ion-spinner>'});
+            this.$ionicPopup.alert({title: 'Das Bild wird im Hintergrund hochgeladen. Beschreibe doch deine Location solange du wartest.'});
             this.PictureUploadService.uploadImage(file, this.basePath + '/users/my/locations/picture', formData)
                 .then((data) => {
                     this.$ionicLoading.hide();
@@ -121,10 +121,9 @@ module Controller {
                     this.isUploading = false;
                 }).catch((err) => {
                     console.log(err);
-                    this.$ionicLoading.hide()
+                    this.$ionicLoading.hide();
                     this.isUploading = false;
                 });
-            // TODO impl.. processing
         }
 
         showNewImage(data) {
@@ -180,7 +179,6 @@ module Controller {
                 // TODO: check image size
                 this.imageURI = data;
                 this.uploadImage(data);
-
             });
         };
 
