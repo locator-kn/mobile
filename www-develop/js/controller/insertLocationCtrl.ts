@@ -111,7 +111,7 @@ module Controller {
             this.$ionicLoading.show({template: '<ion-spinner icon="spiral"></ion-spinner>'});
             this.PictureUploadService.uploadImage(file, this.basePath + '/users/my/locations/picture', formData)
                 .then((data) => {
-                    this.$ionicLoading.hide()
+                    this.$ionicLoading.hide();
                     var dataObject = JSON.parse(data.response);
 
                     this.showNewImage(dataObject);
