@@ -17,7 +17,8 @@ module Controller {
             title: '',
             description: '',
             budget: '',
-            city: {}
+            city: {},
+            public: true
         };
 
         me:any = {};
@@ -189,10 +190,8 @@ module Controller {
                 || !this.locationFormDetails.description
                 || !this.locationFormDetails.tags) {
                 this.error = true;
-                console.log('error: missing values')
                 return;
             }
-            debugger;
             var formValues = angular.copy(this.locationFormDetails);
 
             formValues.geotag = {
