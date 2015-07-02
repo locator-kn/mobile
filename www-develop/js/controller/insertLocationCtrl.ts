@@ -51,6 +51,9 @@ module Controller {
             if (this.documentWasCreated) {
                 formData._id = this.documentId;
                 formData._rev = this.revision;
+            } else {
+                delete formData._id;
+                delete formData._rev;
             }
             this.PictureUploadService.uploadImage(file, this.basePath + '/users/my/locations/picture', formData)
                 .then((data) => {
