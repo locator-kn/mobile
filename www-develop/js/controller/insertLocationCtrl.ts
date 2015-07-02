@@ -37,7 +37,7 @@ module Controller {
         error:boolean = false;
 
         constructor(private CameraService, private $scope, private basePath, private GeolocationService, private UserService,
-                    private PictureUploadService, private webPath) {
+                    private PictureUploadService, private webPath, private $ionicLoading) {
 
             this.UserService.getMe().then(user => {
                 this.me = user.data;
@@ -108,8 +108,10 @@ module Controller {
                 delete formData._id;
                 delete formData._rev;
             }
+            this.$ionicLoading.show({template: '<ion-spinner icon="spiral"></ion-spinner>'});
             this.PictureUploadService.uploadImage(file, this.basePath + '/users/my/locations/picture', formData)
                 .then((data) => {
+                    this.$ionicLoading.hide()
                     var dataObject = JSON.parse(data.response);
 
                     this.showNewImage(dataObject);
@@ -119,6 +121,7 @@ module Controller {
                     this.isUploading = false;
                 }).catch((err) => {
                     console.log(err);
+                    this.$ionicLoading.hide()
                     this.isUploading = false;
                 });
             // TODO impl.. processing
