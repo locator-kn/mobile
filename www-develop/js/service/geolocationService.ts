@@ -2,7 +2,7 @@ module Service {
     export class GeolocationService {
 
 
-        constructor(private $q, private $ionicLoading, private $ionicActionSheet, private $http) {
+        constructor(private $q, private $ionicLoading, private $ionicPopup, private $http) {
         }
 
 
@@ -15,7 +15,7 @@ module Service {
                 q.resolve(result);
             }, (err) => {
                 this.$ionicLoading.hide();
-                // TODO: Überprüfe deine GPS Verbindung und versuche es erneut
+                this.$ionicPopup.show({title: 'Überprüfe deine GPS Verbindung und versuche es erneut'});
                 q.reject(err)
             }, posOptions);
 
