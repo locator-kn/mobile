@@ -1,4 +1,5 @@
-<ion-view class="profile" ng-class="!uc.me ? 'pageWithButton' : ''" view-title="Beschreibung" ng-controller="UserCtrl as uc">
+<ion-view class="profile" ng-class="!uc.me ? 'pageWithButton' : ''" view-title="Beschreibung"
+          ng-controller="UserCtrl as uc">
     <ion-content class="background-color-grey">
         <div>
             <button class="button button-dark config-button" ng-if="uc.me && !uc.edit" ng-click="uc.editTrigger()">
@@ -16,7 +17,6 @@
                 <img class="profile-image" ng-src="{{uc.webPath}}{{uc.user.picture.picture}}">
                 <span class="username">{{uc.user.name}} <span class="birthdate">({{uc.birthdate}})</span></span>
             </li>
-
             <li class="item" ng-if="uc.user.birthdate">
                 <h5 class="text-color-red">Geburtsdatum</h5>
                 <label>{{uc.user.birthdate}}</label>
@@ -57,7 +57,6 @@
                 <textarea class="background-color-edit" rows="{{uc.descriptionRows}}" type="input"
                           ng-model="uc.user.description"></textarea>
             </li>
-
         </ul>
     </ion-content>
     <button ng-if="!uc.me" ng-click="uc.openConversationModal()"

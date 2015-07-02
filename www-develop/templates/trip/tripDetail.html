@@ -21,7 +21,6 @@
             <li class="item first-element">
                 <label>von </label>
                 <label class="text-bold">{{tc.user.name || 'anonym'}}</label>
-
             </li>
 
             <li class="item description">
@@ -42,7 +41,6 @@
                     <label ng-if="tc.trip.persons">{{tc.trip.persons === 1 ? 'Person' : 'Personen'}}</label>
                 </label>
             </li>
-            <!--  ui-sref="tab.search-locations"-->
             <li class="item item-icon-right" ng-if="tc.trip.locations"
                 ui-sref="tab.search-result-locations({locationSourceId:tc.trip._id})">
                 <label class="text-bold">{{tc.numberOfElelementsIn(tc.trip.locations)}}</label>

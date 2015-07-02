@@ -1,13 +1,14 @@
 <div class="moodal" ng-controller="DefaultCtrl as dc">
-        <form name="conversation">
+    <form name="conversation">
 
-            <textarea class="user-input" required ng-model="dc.message" placeholder="Nachricht" rows="8" cols="10"/>
+        <textarea class="user-input" required ng-model="dc.message" placeholder="Nachricht" rows="8" cols="10"/>
 
-            <div ng-class="{open: dc.errormsg}" class="msg error-msg">{{dc.errormsg}}</div>
+        <div ng-class="{open: dc.errormsg}" class="msg error-msg">{{dc.errormsg}}</div>
 
-            <div ng-class="{open: dc.successmsg}" class="msg success-msg">{{dc.successmsg}}</div>
+        <div ng-class="{open: dc.successmsg}" class="msg success-msg">{{dc.successmsg}}</div>
 
-            <input ng-click="dc.startConversation(conversation)" class="submit button" value="Nachricht Senden" type="submit">
-        </form>
+        <input ng-click="dc.startConversation(conversation)" class="submit button" value="Nachricht Senden"
+               type="submit">
+    </form>
     <input ng-click="dc.closeModal()" class="backbutton button" value="Abbrechen" type="submit">
 </div>

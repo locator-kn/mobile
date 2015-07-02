@@ -12,10 +12,11 @@
                                ng-model="mc.contact"/>
                     </label>
                     <!-- TODO: search in conversation.name instead of conversation -->
-                    <li class="item" ng-repeat="conversation in mc.conversations | filter: mc.contact" ui-sref="tab.messenger-messages({ conversationId: conversation._id, opponentId: conversation.opponent._id})">
-                            <img class="md-avatar"  ng-src="{{mc.webPath}}{{conversation.opponent.picture.picture}}"/>
-                            <label>{{ conversation.opponent.name }}</label>
-                            <label class="last-message">{{ conversation.lastMessage }}</label>
+                    <li class="item" ng-repeat="conversation in mc.conversations | filter: mc.contact"
+                        ui-sref="tab.messenger-messages({ conversationId: conversation._id, opponentId: conversation.opponent._id})">
+                        <img class="md-avatar" ng-src="{{mc.webPath}}{{conversation.opponent.picture.picture}}"/>
+                        <label>{{ conversation.opponent.name }}</label>
+                        <label class="last-message">{{ conversation.lastMessage }}</label>
                     </li>
                 </ul>
             </div>

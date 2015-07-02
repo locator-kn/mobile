@@ -4,7 +4,8 @@
             <div ng-repeat="result in toc.results">
                 <li ng-click="toc.showTripDetail(result._id, result.userid)">
                     <!-- for each pictures-->
-                    <ion-slide-box ng-if="toc.numberOfElelementsIn(result.locations) !== 1" on-slide-changed="slideHasChanged($index)">
+                    <ion-slide-box ng-if="toc.numberOfElelementsIn(result.locations) !== 1"
+                                   on-slide-changed="slideHasChanged($index)">
                         <ion-slide ng-repeat="location in result.locations">
                             <img class="tmpImageWidth" ng-src="{{toc.webPath}}{{location.thumbnail}}">
                         </ion-slide>
@@ -49,7 +50,7 @@
                             </div>
                         </li>
                         <li class="item" ng-if="result.accommodation">
-                                    <label>mit Übernachtung</label>
+                            <label>mit Übernachtung</label>
                         </li>
                         <li class="item trip-options">
                             <label class="user">
@@ -60,7 +61,6 @@
                         <li class="item last-trip-element">
                             &nbsp;
                         </li>
-
                     </ul>
                 </li>
             </div>
