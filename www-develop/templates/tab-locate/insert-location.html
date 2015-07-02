@@ -5,9 +5,10 @@
     <ion-content>
 
         <div class="location-image">
-            <img class="placeholder-image" src="images/header-image-placeholder.png">
+            <img ng-if="!ilc.headerImagePath" class="placeholder-image" src="images/header-image-placeholder.png">
+            <img ng-if="ilc.headerImagePath" class="placeholder-image" ng-src="{{ilc.webPath}}{{ilc.headerImagePath}}">
 
-            <a class="choose-image" ng-click="ilc.showImageChooser()">
+            <a class="choose-image" ng-click="ilc.showPictureActions()">
                 <img class="image" src="images/icons/camera.png">
             </a>
         </div>
