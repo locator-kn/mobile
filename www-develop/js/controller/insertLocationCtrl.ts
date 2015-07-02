@@ -34,6 +34,8 @@ module Controller {
         imageHasBeenUploaded:boolean;
         mapMarkerSet:boolean;
 
+        error:boolean = false;
+
         constructor(private CameraService, private $scope, private basePath, private GeolocationService, private UserService,
                     private PictureUploadService, private webPath) {
 
@@ -108,9 +110,11 @@ module Controller {
             }
             this.PictureUploadService.uploadImage(file, this.basePath + '/users/my/locations/picture', formData)
                 .then((data) => {
-                    this.showNewImage(data);
-                    this.documentId = data.id;
-                    this.revision = data.rev;
+                    var dataObject = JSON.parse(data.response);
+
+                    this.showNewImage(dataObject);
+                    this.documentId = dataObject.id;
+                    this.revision = dataObject.rev;
                     this.uploadIsDone = true;
                     this.isUploading = false;
                 }).catch((err) => {
@@ -122,8 +126,7 @@ module Controller {
 
         showNewImage(data) {
             this.imageHasBeenUploaded = true;
-            var path = JSON.parse(data.response);
-            this.headerImagePath = path.imageLocation.thumbnail;
+            this.headerImagePath = data.imageLocation.thumbnail;
         }
 
         // sample
@@ -142,7 +145,7 @@ module Controller {
                     longitude: this.long
                 };
                 this.mapMarkerSet = true;
-                if(!this.$scope.$$phase) {
+                if (!this.$scope.$$phase) {
                     this.$scope.$apply();
                 }
 
@@ -177,6 +180,35 @@ module Controller {
 
             });
         };
+
+        saveLocation = () => {
+            if (!this.mapMarkerSet
+                || !this.locationFormDetails.title
+                || !this.locationFormDetails.description
+                || !this.locationFormDetails.tags) {
+                this.error = true;
+                console.log('error: missing values')
+                return;
+            }
+            debugger;
+            var formValues = angular.copy(this.locationFormDetails);
+
+            formValues.geotag = {
+                long: this.map.clickedMarker.longitude,
+                lat: this.map.clickedMarker.latitude
+            };
+
+            formValues.tags = formValues.tags.split(" ");
+
+            this.GeolocationService.saveLocation(formValues, this.documentId).
+                then((result) => {
+                    console.log('saved ' + result);
+                    this.documentWasCreated = true;
+                }).catch((err) => {
+                    console.log(err);
+                })
+        };
+
 
         static controllerId:string = "InsertLocationCtrl";
     }
