@@ -142,6 +142,9 @@ module Controller {
                     longitude: this.long
                 };
                 this.mapMarkerSet = true;
+                // TODO check if skpy applay
+                this.$scope.$apply();
+
             })
         };
 
