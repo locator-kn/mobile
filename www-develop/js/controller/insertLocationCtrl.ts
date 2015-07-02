@@ -147,6 +147,7 @@ module Controller {
                     longitude: this.long
                 };
                 this.mapMarkerSet = true;
+                this.getCityFromMarker();
                 if (!this.$scope.$$phase) {
                     this.$scope.$apply();
                 }
