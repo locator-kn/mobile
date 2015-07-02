@@ -4,45 +4,50 @@
     </ion-nav-buttons>
     <ion-content>
 
-        <div class="location-image">
-            <img ng-if="!ilc.headerImagePath" class="placeholder-image" src="images/header-image-placeholder.png">
-            <img ng-if="ilc.headerImagePath" class="placeholder-image" ng-src="{{ilc.webPath}}{{ilc.headerImagePath}}">
+        <form novalidate name="ilc.form" id="insertLocationForm">
+            <div class="location-image">
+                <img ng-if="!ilc.headerImagePath" class="placeholder-image" src="images/header-image-placeholder.png">
+                <img ng-if="ilc.headerImagePath" class="placeholder-image"
+                     ng-src="{{ilc.webPath}}{{ilc.headerImagePath}}">
 
-            <a class="choose-image" ng-click="ilc.showPictureActions()">
-                <img class="image" src="images/icons/camera.png">
-            </a>
-        </div>
-        <li class="item item-input">
-            <input type="text" placeholder="Gib der Location einen Titel">
-        </li>
-        <li class="item item-input">
-            <textarea rows="4" type="input" placeholder="Beschreibe die Location"></textarea>
-        </li>
-        <li class="item item-input">
-            <input type="text" placeholder="Füge aussagekräftige Tags hinzu">
-        </li>
-        <li class="item item-toggle">
-            Location öffentlich
-            <label class="toggle toggle-dark toggle-assertive">
-                <!--ng-click="sc.accommodation = ! sc.accommodation"-->
-                <input type="checkbox">
+                <a class="choose-image" ng-click="ilc.showPictureActions()">
+                    <img class="image" src="images/icons/camera.png">
+                </a>
+            </div>
+            <li class="item item-input">
+                <input type="input" ng-model="ilc.locationFormDetails.title" placeholder="Gib der Location einen Titel">
+            </li>
+            <li class="item item-input">
+                <textarea ng-model="ilc.locationFormDetails.description" rows="4" type="input"
+                          placeholder="Beschreibe die Location"></textarea>
+            </li>
+            <li class="item item-input">
+                <input type="input" ng-model="ilc.locationFormDetails.tags"
+                       placeholder="Füge aussagekräftige Tags hinzu">
+            </li>
+            <li class="item item-toggle">
+                Location öffentlich
+                <label class="toggle toggle-dark toggle-assertive">
+                    <!--ng-click="sc.accommodation = ! sc.accommodation"-->
+                    <input type="checkbox">
 
-                <div class="track">
-                    <div class="handle"></div>
-                </div>
-            </label>
-        </li>
-        <button class="button button-dark gps-button" ng-click="ilc.getCurrentPosition()">
-            Position ermitteln
-        </button>
-        <ui-gmap-google-map class="google-map" center='ilc.map.center' zoom='ilc.map.zoom'
-                            events="ilc.map.events">
-            <ui-gmap-marker coords="ilc.map.clickedMarker" idKey="ilc.map.clickedMarker.id"
-                            options="ilc.map.clickedMarker.options">
-            </ui-gmap-marker>
-        </ui-gmap-google-map>
-        <button class="button background-green gps-button" ng-click="ilc.getCurrentPosition()">
-            Location erstellen
-        </button>
+                    <div class="track">
+                        <div class="handle"></div>
+                    </div>
+                </label>
+            </li>
+            <button class="button button-dark gps-button" ng-click="ilc.getCurrentPosition()">
+                Position ermitteln
+            </button>
+            <ui-gmap-google-map class="google-map" center='ilc.map.center' zoom='ilc.map.zoom'
+                                events="ilc.map.events">
+                <ui-gmap-marker coords="ilc.map.clickedMarker" idKey="ilc.map.clickedMarker.id"
+                                options="ilc.map.clickedMarker.options">
+                </ui-gmap-marker>
+            </ui-gmap-google-map>
+            <button class="button background-green gps-button" ng-click="ilc.saveLocation()">
+                Location erstellen
+            </button>
+        </form>
     </ion-content>
 </ion-view>
