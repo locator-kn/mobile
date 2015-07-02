@@ -12,6 +12,13 @@ module Controller {
         geotag:any = {};
         lat:string;
         long:string;
+        locationFormDetails:any = {
+            tags: '',
+            title: '',
+            description: '',
+            budget: '',
+            city: {}
+        };
 
         me:any = {};
 
@@ -27,7 +34,7 @@ module Controller {
         imageHasBeenUploaded:boolean;
         mapMarkerSet:boolean;
 
-        constructor(private CameraService, private $scope,  private basePath, private GeolocationService, private UserService,
+        constructor(private CameraService, private $scope, private basePath, private GeolocationService, private UserService,
                     private PictureUploadService, private webPath) {
 
             this.UserService.getMe().then(user => {
@@ -72,11 +79,8 @@ module Controller {
                 latitude: lat,
                 longitude: lon
             };
-            console.log(this.map.clickedMarker);
-            //this.mapMarkerSet = true;
-            this.$scope.$apply();
-            //
-            //this.getCityFromMarker();
+            this.mapMarkerSet = true;
+            this.getCityFromMarker();
 
         }
 
@@ -137,12 +141,25 @@ module Controller {
                     latitude: this.lat,
                     longitude: this.long
                 };
-                console.log(this.map.clickedMarker);
                 this.mapMarkerSet = true;
-                this.$scope.$apply();
-
             })
         };
+
+        getCityFromMarker() {
+            this.GeolocationService.getCityByCoords(this.map.clickedMarker.latitude, this.map.clickedMarker.longitude)
+                .then(result => {
+                    var locality;
+                    result.data.results.forEach(item => {
+                        if (item.types[0] == 'locality') {
+                            locality = item;
+                        }
+                    });
+
+                    this.locationFormDetails.city.title = locality.formatted_address;
+                    this.locationFormDetails.city.place_id = locality.place_id;
+                    this.locationFormDetails.city.id = locality.place_id;
+                });
+        }
 
         showPictureActions = () => {
             var opt = {
