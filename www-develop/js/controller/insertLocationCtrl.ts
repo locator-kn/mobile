@@ -9,7 +9,7 @@ module Controller {
         documentId:string;
         locationTitle:string = '';
         revision:string;
-
+        geotag:any = {};
         lat:string;
         long:string;
 
@@ -94,6 +94,12 @@ module Controller {
                 this.uploadImage(data);
 
             });
+        };
+
+        showPositionActions = () => {
+            this.GeolocationService.getGeoLocation().then((data) => {
+                this.geotag = data;
+            })
         };
 
         static controllerId:string = "InsertLocationCtrl";
