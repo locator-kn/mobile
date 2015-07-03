@@ -7,7 +7,7 @@
                 <ion-slide ng-repeat="location in tc.trip.locations">
                     <img class="tmpImageWidth" ng-src="{{tc.webPath}}{{location.thumbnail}}">
                     <img class="user-picture" ui-sref="tab.search-user({userId:tc.trip.userid})"
-                         ng-src="{{tc.webPath}}{{tc.user.picture.picture}}">
+                         ng-src="{{tc.user.picture.picture}}">
                 </ion-slide>
             </ion-slide-box>
             <div ng-if="tc.trip.locations && tc.numberOfElelementsIn(tc.trip.locations) === 1">
