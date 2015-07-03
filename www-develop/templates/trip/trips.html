@@ -41,7 +41,7 @@
                                 </label>
                             </label>
                         </li>
-                        <li class="item mood-container">
+                        <li class="item mood-container" ng-if="result.moods">
                             <div ng-repeat="mood in result.moods">
                                 <div ng-repeat="availableMood in toc.moods |filter:mood">
                                     <img class="result-mood" ng-src="./images/icons/{{availableMood.icon}}">
@@ -53,13 +53,16 @@
                             <label>mit Übernachtung</label>
                         </li>
                         <li class="item trip-options">
+                            <img class="icon" ng-src="./images/icons/ansehen_weiss.png">
+                            <img class="icon" ng-src="./images/icons/alle_locations_weiss.png">
+                            <img class="icon" ng-src="./images/icons/messenger_weiss.png">
+
                             <label class="user">
                                 <label class="dekotext">erstellt von </label>
                                 <label class="name">{{result.username || 'anonym'}}</label>
                             </label>
                         </li>
                         <li class="item last-trip-element">
-                            &nbsp;
                         </li>
                     </ul>
                 </li>
