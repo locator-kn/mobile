@@ -27,7 +27,7 @@ var tsProjectEmily = ts.createProject({
     typescript: typescript15
 });
 
-gulp.task('default', ['ts', 'html', 'css', 'lib', 'locale', 'ionicserve', 'img']);
+gulp.task('default', ['ts', 'html', 'css', 'lib', 'locale', 'fonts', 'ionicserve', 'img']);
 
 
 gulp.task('ts', function () {
@@ -78,6 +78,10 @@ gulp.task('css', function () {
     gulp.src('./www-develop/**/*.css').pipe(gulp.dest('./www'));
 });
 
+gulp.task('fonts', function () {
+    gulp.src('./www-develop/**/*.ttf').pipe(gulp.dest('./www'));
+});
+
 gulp.task('html', function () {
     gulp.src('./www-develop/**/*.html').pipe(gulp.dest('./www'));
 });
@@ -90,9 +94,10 @@ gulp.task('img', function () {
     gulp.src('./www-develop/images/**/*').pipe(gulp.dest('./www/images'));
 });
 
-gulp.task('watch', ['ts', 'html', 'css', 'lib', 'locale', 'img'], function () {
+gulp.task('watch', ['ts', 'html', 'css', 'fonts', 'lib', 'locale', 'img'], function () {
     gulp.watch('./www-develop/**/*.ts', ['ts']);
     gulp.watch('./www-develop/**/*.css', ['css']);
+    gulp.watch('./www-develop/**/*.fonts', ['fonts']);
     gulp.watch('./www-develop/**/*.html', ['html']);
     gulp.watch('./www-develop/locale/**/*', ['locale']);
 
