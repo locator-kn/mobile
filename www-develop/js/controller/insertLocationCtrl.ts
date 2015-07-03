@@ -197,6 +197,11 @@ module Controller {
                 this.error = true;
                 return;
             }
+
+            if(this.isUploading) {
+                this.$ionicPopup.alert({title: 'Du kannst deine Location speichern, sobald dein Bild hochgeladen ist.'});
+                return;
+            }
             var formValues = angular.copy(this.locationFormDetails);
 
             formValues.geotag = {
