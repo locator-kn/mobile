@@ -2,17 +2,19 @@
     <ion-content class="background-color-grey">
         <ul class="list">
             <div ng-repeat="result in toc.results">
-                <li ng-click="toc.showTripDetail(result._id, result.userid)">
-                    <!-- for each pictures-->
-                    <ion-slide-box ng-if="toc.numberOfElelementsIn(result.locations) !== 1"
-                                   on-slide-changed="slideHasChanged($index)">
-                        <ion-slide ng-repeat="location in result.locations">
-                            <img class="tmpImageWidth" ng-src="{{toc.webPath}}{{location.thumbnail}}">
-                        </ion-slide>
-                    </ion-slide-box>
-                    <div ng-if="toc.numberOfElelementsIn(result.locations) === 1">
-                        <div ng-repeat="location in result.locations">
-                            <img class="tmpImageWidth" ng-src="{{toc.webPath}}{{location.thumbnail}}">
+                <li>
+                    <div ng-click="toc.showTripDetail(result._id, result.userid)">
+                        <!-- for each pictures-->
+                        <ion-slide-box ng-if="toc.numberOfElelementsIn(result.locations) !== 1"
+                                       on-slide-changed="slideHasChanged($index)">
+                            <ion-slide ng-repeat="location in result.locations">
+                                <img class="tmpImageWidth" ng-src="{{toc.webPath}}{{location.thumbnail}}">
+                            </ion-slide>
+                        </ion-slide-box>
+                        <div ng-if="toc.numberOfElelementsIn(result.locations) === 1">
+                            <div ng-repeat="location in result.locations">
+                                <img class="tmpImageWidth" ng-src="{{toc.webPath}}{{location.thumbnail}}">
+                            </div>
                         </div>
                     </div>
                     <ul>
@@ -53,8 +55,10 @@
                             <label>mit Übernachtung</label>
                         </li>
                         <li class="item trip-options">
-                            <img class="icon" ng-src="./images/icons/ansehen_weiss.png">
-                            <img class="icon" ng-src="./images/icons/alle_locations_weiss.png">
+                            <img class="icon icon-small" ng-src="./images/icons/ansehen_weiss.png"
+                                 ng-click="toc.showTripDetail(result._id, result.userid)">
+                            <img class="icon" ng-src="./images/icons/alle_locations_weiss.png"
+                                 ui-sref="tab.search-result-locations({locationSourceId:result._id})">
                             <img class="icon" ng-src="./images/icons/messenger_weiss.png">
 
                             <label class="user">

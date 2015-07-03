@@ -25,6 +25,11 @@ li.item.trip-options .icon {
     margin-right: 10px;
 }
 
+li.item.trip-options .icon-small {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
 li.item.trip-options .user {
     float: right;
     padding-right: 10px;
