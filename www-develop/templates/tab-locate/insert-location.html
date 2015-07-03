@@ -15,16 +15,20 @@
                         <img class="image" src="images/icons/camera.png">
                     </a>
                 </div>
-                <li class="item item-input">
-                    <input type="text" ng-model="ilc.locationFormDetails.title"
+                <li ng-class="{'error' : (ilc.error) && ilc.form.locationTitle.$error.required}"
+                    class="item item-input">
+                    <input type="text" ng-model="ilc.locationFormDetails.title" name="locationTitle"
                            placeholder="Gib der Location einen Titel" required>
                 </li>
-                <li class="item item-input">
+                <li ng-class="{'error' : (ilc.error) && ilc.form.locationDescription.$error.required}"
+                    class="item item-input">
                 <textarea ng-model="ilc.locationFormDetails.description" rows="4" type="input"
+                          name="locationDescription"
                           placeholder="Beschreibe die Location" required></textarea>
                 </li>
-                <li class="item item-input">
-                    <input type="text" ng-model="ilc.locationFormDetails.tags"
+                <li ng-class="{'error' : (ilc.error) && ilc.form.locationTags.$error.required}"
+                    class="item item-input">
+                    <input type="text" ng-model="ilc.locationFormDetails.tags" name="locationTags"
                            placeholder="Füge aussagekräftige Tags hinzu" required>
                 </li>
                 <li class="item item-toggle">
@@ -39,23 +43,35 @@
                         </div>
                     </label>
                 </li>
-                <button class="button button-dark gps-button" ng-click="ilc.toggleMap()">
+                <button ng-class="{'error-button' : (ilc.error) && ilc.form.locationGps.$error.required}"
+                        class="button button-dark gps-button" ng-click="ilc.toggleMap()">
                     Standort
                 </button>
-                <div ng-if="ilc.googleMap">
-                    <ui-gmap-google-map class="google-map" center='ilc.map.center' zoom='ilc.map.zoom'
+                <div ng-if="ilc.googleMap" ng-class="{'error' : (ilc.error) && ilc.form.locationGps.$error.required}">
+                    <ui-gmap-google-map class="google-map"
+                                        center='ilc.map.center'
+                                        zoom='ilc.map.zoom'
                                         events="ilc.map.events">
-                        <ui-gmap-marker coords="ilc.map.clickedMarker" idKey="ilc.map.clickedMarker.id"
+                        <ui-gmap-marker coords="ilc.map.clickedMarker"
+                                        idKey="ilc.map.clickedMarker.id"
                                         options="ilc.map.clickedMarker.options">
                         </ui-gmap-marker>
                     </ui-gmap-google-map>
-                    <button class="button button-dark gps-button" ng-click="ilc.getCurrentPosition()">
+                    <button ng-class="{'error-button' : (ilc.error) && ilc.form.locationGps.$error.required}"
+                            class="button button-dark gps-button" ng-click="ilc.getCurrentPosition()">
                         Wo bin ich?
                     </button>
                 </div>
-                <button class="button background-green gps-button" ng-click="ilc.saveLocation()">
+
+                <div class="invisible">
+                    <input type="checkbox" ng-model="ilc.mapMarkerSet" name="locationGps" required>
+                </div>
+                <button class="button background-green gps-button" type="submit" ng-click="ilc.saveLocation()">
                     Location erstellen
                 </button>
+                <div ng-if="ilc.error">
+                    Wooop..
+                </div>
             </form>
         </div>
         <div ng-if="!authenticated">

@@ -34,7 +34,19 @@
     padding: 10px;
 }
 
+.insert-location .error-button {
+    background-color: red;
+}
+
 
 .insert-location .error {
-    background-color: green;
+    background-color: rgb(255, 200, 200);
+}
+
+.insert-location textarea {
+    background-color: transparent;
+}
+
+.insert-location .invisible {
+    visibility: hidden;
 }
