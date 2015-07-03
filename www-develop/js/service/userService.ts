@@ -6,7 +6,7 @@ module Service {
 
         conversationUserId;
 
-        constructor(private $http, private $q, private basePath, private CacheFactory, private $ionicLoading, private $rootScope, private $ionicPopup) {
+        constructor(private $http, private $q, private basePath, private CacheFactory, private $ionicLoading, private $rootScope, private webPath) {
             this.usersIdCache = CacheFactory.createCache('usersId');
             this.usersMeCache = CacheFactory.createCache('usersMe');
 
@@ -34,8 +34,13 @@ module Service {
             return this.$q((resolve, reject) => {
                 if (!data.data.picture) {
                     data.data.picture = {
-                        picture: '/images/profile.jpg',
-                        thumbnail: '/images/profile.jpg'
+                        picture: './images/profile.png',
+                        thumbnail: './images/profile.png'
+                    }
+                } else {
+                    data.data.picture = {
+                        picture: this.webPath + data.data.picture.picture,
+                        thumbnail: this.webPath + data.data.picture.thumbnail
                     }
                 }
                 resolve(data);
