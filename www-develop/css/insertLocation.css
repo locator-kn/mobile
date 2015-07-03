@@ -33,3 +33,8 @@
 .insert-location .google-map {
     padding: 10px;
 }
+
+
+.insert-location .error {
+    background-color: green;
+}
