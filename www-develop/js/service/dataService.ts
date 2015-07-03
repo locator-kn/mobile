@@ -113,10 +113,10 @@ module Service {
                                     icon_grey: "family_fun_grey.png",
                                     description: ""
                                 }, {
-                                    query_name: "kultur_und_sighteseeing",
-                                    title: "kultur und sighteseeing",
-                                    icon: "kultur_und_sighteseeing.png",
-                                    icon_grey: "kultur_und_sighteseeing_grey.png",
+                                    query_name: "kultur_und_sightseeing",
+                                    title: "kultur und sightseeing",
+                                    icon: "kultur_und_sightseeing.png",
+                                    icon_grey: "kultur_und_sightseeing_grey.png",
                                     description: ""
                                 }, {
                                     query_name: 'leckermaeulchen',
