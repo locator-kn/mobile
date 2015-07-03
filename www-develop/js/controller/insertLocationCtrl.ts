@@ -35,7 +35,7 @@ module Controller {
         imageHasBeenUploaded:boolean;
         mapMarkerSet:boolean;
 
-        googleMap:boolean =false;
+        googleMap:boolean = false;
         error:boolean = false;
 
         constructor(private CameraService, private $scope, private basePath, private GeolocationService, private UserService,
@@ -65,6 +65,10 @@ module Controller {
             return {
                 mousedown: (mapModel, eventName, originalEventArgs) => {
                     this.clickMapEvent(mapModel, eventName, originalEventArgs);
+                },
+                tilesloaded: () => {
+                    this.$ionicLoading.hide();
+
                 }
             }
         }
@@ -211,8 +215,11 @@ module Controller {
                 })
         };
 
-        toggleMap=()=> {
+        toggleMap = ()=> {
             this.googleMap = !this.googleMap;
+            if(this.googleMap){
+                this.$ionicLoading.show({template: '<ion-spinner icon="spiral"></ion-spinner>'});
+            }
         };
 
 
