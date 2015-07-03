@@ -18,6 +18,9 @@ module Service {
 
                 this.$http.get(this.basePath + '/users/' + _Id, {cache: this.usersIdCache})
                     .then(data => {
+                        if(data.data.birthdate === '') {
+                            delete data.data.birthdate;
+                        }
                         return this.decorateUserImage(data);
                     })
                     .then(data => {
