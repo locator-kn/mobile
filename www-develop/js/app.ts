@@ -319,10 +319,18 @@ angular.module('starter', deps)
                 }
             })
             .state('tab.profile-locations', {
-                url: '/profile/:userId/locations',
+                url: '/profile/my/locations',
                 views: {
                     'tab-profile': {
                         templateUrl: 'templates/location/locationOverview.html'
+                    }
+                }
+            })
+            .state('tab.profile-locations-detail', {
+                url: '/profile/my/locations/:locationId',
+                views: {
+                    'tab-profile': {
+                        templateUrl: 'templates/location/location.html'
                     }
                 }
             })
