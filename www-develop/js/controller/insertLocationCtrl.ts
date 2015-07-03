@@ -35,6 +35,7 @@ module Controller {
         imageHasBeenUploaded:boolean;
         mapMarkerSet:boolean;
 
+        googleMap:boolean =false;
         error:boolean = false;
 
         constructor(private CameraService, private $scope, private basePath, private GeolocationService, private UserService,
@@ -208,6 +209,10 @@ module Controller {
                 }).catch((err) => {
                     console.log(err);
                 })
+        };
+
+        toggleMap=()=> {
+            this.googleMap = !this.googleMap;
         };
 
 
