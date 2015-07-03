@@ -41,8 +41,15 @@ module Controller {
                     console.log(err);
                     this.$ionicLoading.hide();
                 });
-            } else if (this.state === this.myType){
+            } else if (this.state === this.myType) {
                 this.me = true;
+                this.LocationService.getMyLocations().then((result) => {
+                    this.results = result.data;
+                    this.$ionicLoading.hide();
+                }).catch((err) => {
+                    console.log(err);
+                    this.$ionicLoading.hide();
+                });
                 // TODO get my locations
             }
 
