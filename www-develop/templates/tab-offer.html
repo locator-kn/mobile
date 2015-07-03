@@ -1,10 +1,10 @@
-<ion-view view-title="Locate" class="insert-location" >
+<ion-view view-title="Locate" class="insert-location" ng-controller="InsertLocationCtrl as ilc">
     <ion-nav-buttons side="left ">
         <i class="icon ion-ios-arrow-back home-back-button" ui-sref="tab.welcome"></i>
     </ion-nav-buttons>
     <ion-content>
-        <div ng-if="authenticated">
-            <form novalidate name="ilc.form" id="insertLocationForm" nng-controller="InsertLocationCtrl as ilc">
+        <div ng-if="authenticated" ng-controller="InsertLocationCtrl as ilc">
+            <form novalidate name="ilc.form" id="insertLocationForm">
                 <div class="location-image">
                     <img ng-if="!ilc.headerImagePath" class="placeholder-image"
                          src="images/header-image-placeholder.png">
@@ -53,7 +53,7 @@
                 </button>
             </form>
         </div>
-        <div class="!authenticated">
+        <div ng-if="!authenticated">
             Um diese Funktionalität zu verwenden, musst du eingeloogt sein
         </div>
     </ion-content>
