@@ -18,42 +18,45 @@
                         </div>
                     </div>
                     <ul>
-                        <li class="item">
-                            <div class="text-bold">{{result.title}}</div>
-                            <label>von </label>
-                            <label class="text-bold">{{result.username || 'anonym'}}</label>
+                        <div ng-click="toc.showTripDetail(result._id, result.userid)">
+                            <li class="item">
+                                <div class="text-bold">{{result.title}}</div>
+                                <label>von </label>
+                                <label class="text-bold">{{result.username || 'anonym'}}</label>
 
-                        </li>
-                        <li class="item" ng-if="result.start_date && result.end_date">
-                            <label class="text-bold">{{toc.formatDate(result.start_date)}}</label>
-                            <label>bis</label>
-                            <label class="text-bold">{{toc.formatDate(result.end_date)}}</label>
-                        </li>
-                        <li class="item">
-                            <label>
-                                <label ng-if="result.days" class="text-bold">{{result.days}}</label>
-                                <label>{{result.days === 1 ? 'Tag' : 'Tage'}}</label>
-                                <label ng-if="result.days && result.persons" class="text-bold">|</label>
-                                <label class="text-bold">{{result.persons}} </label>
-                                <label ng-if="result.persons">{{result.persons === 1 ? 'Person' : 'Personen'}}</label>
-                                <label ng-if="result.persons || result.locations" class="text-bold">|</label>
-                                <label class="text-bold">{{toc.numberOfElelementsIn(result.locations)}}</label>
-                                <label ng-if="result.locations">
-                                    {{toc.numberOfElelementsIn(result.locations) === 1 ? 'Location' : 'Locations'}}
+                            </li>
+                            <li class="item" ng-if="result.start_date && result.end_date">
+                                <label class="text-bold">{{toc.formatDate(result.start_date)}}</label>
+                                <label>bis</label>
+                                <label class="text-bold">{{toc.formatDate(result.end_date)}}</label>
+                            </li>
+                            <li class="item">
+                                <label>
+                                    <label ng-if="result.days" class="text-bold">{{result.days}}</label>
+                                    <label>{{result.days === 1 ? 'Tag' : 'Tage'}}</label>
+                                    <label ng-if="result.days && result.persons" class="text-bold">|</label>
+                                    <label class="text-bold">{{result.persons}} </label>
+                                    <label ng-if="result.persons">{{result.persons === 1 ? 'Person' :
+                                        'Personen'}}</label>
+                                    <label ng-if="result.persons || result.locations" class="text-bold">|</label>
+                                    <label class="text-bold">{{toc.numberOfElelementsIn(result.locations)}}</label>
+                                    <label ng-if="result.locations">
+                                        {{toc.numberOfElelementsIn(result.locations) === 1 ? 'Location' : 'Locations'}}
+                                    </label>
                                 </label>
-                            </label>
-                        </li>
-                        <li class="item mood-container" ng-if="result.moods">
-                            <div ng-repeat="mood in result.moods">
-                                <div ng-repeat="availableMood in toc.moods |filter:mood">
-                                    <img class="result-mood" ng-src="./images/icons/{{availableMood.icon}}">
-                                    <label class="mood-title">{{availableMood.title}}</label>
+                            </li>
+                            <li class="item mood-container" ng-if="result.moods">
+                                <div ng-repeat="mood in result.moods">
+                                    <div ng-repeat="availableMood in toc.moods |filter:mood">
+                                        <img class="result-mood" ng-src="./images/icons/{{availableMood.icon}}">
+                                        <label class="mood-title">{{availableMood.title}}</label>
+                                    </div>
                                 </div>
-                            </div>
-                        </li>
-                        <li class="item" ng-if="result.accommodation">
-                            <label>mit Übernachtung</label>
-                        </li>
+                            </li>
+                            <li class="item" ng-if="result.accommodation">
+                                <label>mit Übernachtung</label>
+                            </li>
+                        </div>
                         <li class="item trip-options">
                             <img class="icon icon-small" ng-src="./images/icons/ansehen_weiss.png"
                                  ng-click="toc.showTripDetail(result._id, result.userid)">
