@@ -48,15 +48,17 @@ module Controller {
             this.UserService.getUser(_id)
                 .then(result => {
                     this.user = result.data;
-                    // for edit user birthday input field value
-                    this.modifyBirthday = result.data.birthdate.substr(0, 10);
+                    if(result.data.birthdate) {
+                        // for edit user birthday input field value
+                        this.modifyBirthday = result.data.birthdate.substr(0, 10);
+                        this.user.birthdate = new Date(result.data.birthdate);
 
-                    this.user.birthdate = new Date(result.data.birthdate);
-                    var ageDifMs = Date.now() - new Date(result.data.birthdate).getTime() + 86400000;
-                    var ageDate = new Date(ageDifMs); // miliseconds from epoch
-                    this.birthdate = Math.abs(ageDate.getUTCFullYear() - 1970);
+                        var ageDifMs = Date.now() - new Date(result.data.birthdate).getTime() + 86400000;
+                        var ageDate = new Date(ageDifMs); // miliseconds from epoch
+                        this.birthdate = Math.abs(ageDate.getUTCFullYear() - 1970);
 
-                    this.user.birthdate = moment(new Date(this.user.birthdate)).format('L');
+                        this.user.birthdate = moment(new Date(this.user.birthdate)).format('L');
+                    }
 
                     if (isNaN(this.birthdate)) {
                         this.birthAvailable = false;
