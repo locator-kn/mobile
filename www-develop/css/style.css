@@ -1,3 +1,9 @@
+@font-face {
+    font-family: 'Signika';
+    src: url('../fonts/Signika-Regular.ttf') format('truetype'),
+        url('../fonts/Signika-Bold.ttf') format('truetype');
+}
+
 * {
     font-family: Signika;
 }
