@@ -19,6 +19,12 @@ li.item.trip-options {
     color: white;
 }
 
+li.item.trip-options .icon {
+    width: 31px;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
 li.item.trip-options .user {
     float: right;
     padding-right: 10px;
