@@ -8,7 +8,7 @@
             </label>
             <!-- check if current sate on profile oder on search tab -->
             <li class="item item-icon-right" ng-repeat="location in loc.results | filter: loc.location"
-                ui-sref="{{loc.me ? 'tab.profile-locations({ locationId: location._id})' : 'tab.search-result-location-detail({ locationId: location._id})'}}">
+                ui-sref="{{loc.me ? 'tab.profile-locations-detail({ locationId: location._id})' : 'tab.search-result-location-detail({ locationId: location._id})'}}">
                 <div class="image-container">
                     <!-- images -->
                     <img ng-if="location.images.picture" class="picture"
