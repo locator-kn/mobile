@@ -37,7 +37,6 @@
                     <label ng-if="tc.trip.days" class="text-bold">{{tc.trip.days}} </label>
                     <label>{{tc.trip.days === 1 ? 'Tag' : 'Tage'}}</label>
                     <label ng-if="tc.trip.days && tc.trip.persons" class="text-bold">|</label>
-                    <label class="text-bold">{{tc.trip.days}} </label>
                     <label ng-if="tc.trip.persons">{{tc.trip.persons === 1 ? 'Person' : 'Personen'}}</label>
                 </label>
             </li>
@@ -49,7 +48,7 @@
                 </label>
                 <i class="icon ion-chevron-right icon-accessory"></i>
             </li>
-            <li class="item mood-container">
+            <li class="item mood-container" ng-if="tc.trip.moods">
                 <div ng-repeat="mood in tc.trip.moods">
                     <div ng-repeat="availableMood in tc.moods |filter:mood">
                         <img class="result-mood" ng-src="./images/icons/{{availableMood.icon}}">
