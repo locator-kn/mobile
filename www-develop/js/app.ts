@@ -180,13 +180,20 @@ angular.module('starter', deps)
                 }
             })
 
-
             // Each tab has its own nav history stack:
             .state('tab.offer', {
                 url: '/offer',
                 views: {
                     'tab-offer': {
                         templateUrl: 'templates/tab-offer/insert-trip.html'
+                    }
+                }
+            })
+            .state('tab.offer-city', {
+                url: '/offer/city',
+                views: {
+                    'tab-offer': {
+                        templateUrl: 'templates/static/city.html'
                     }
                 }
             })
@@ -201,15 +208,15 @@ angular.module('starter', deps)
             })
 
             .state('tab.search-city', {
-                url: '/city',
+                url: '/search/city',
                 views: {
                     'tab-search': {
-                        templateUrl: 'templates/tab-search/city.html'
+                        templateUrl: 'templates/static/city.html'
                     }
                 }
             })
             .state('tab.search-moods', {
-                url: '/moods',
+                url: '/search/moods',
                 views: {
                     'tab-search': {
                         templateUrl: 'templates/tab-search/moods.html'
@@ -217,7 +224,7 @@ angular.module('starter', deps)
                 }
             })
             .state('tab.search-result', {
-                url: '/result',
+                url: '/search/result',
                 views: {
                     'tab-search': {
                         templateUrl: 'templates/trip/trips.html'
@@ -225,7 +232,7 @@ angular.module('starter', deps)
                 }
             })
             .state('tab.search-result-trip', {
-                url: '/trip/:tripId',
+                url: '/search/trip/:tripId',
                 views: {
                     'tab-search': {
                         templateUrl: 'templates/trip/tripDetail.html'
@@ -233,7 +240,7 @@ angular.module('starter', deps)
                 }
             })
             .state('tab.search-result-locations', {
-                url: '/locations/:locationSourceId',
+                url: '/search/locations/:locationSourceId',
                 views: {
                     'tab-search': {
                         templateUrl: 'templates/location/locationOverview.html'
@@ -241,7 +248,7 @@ angular.module('starter', deps)
                 }
             })
             .state('tab.search-result-location-detail', {
-                url: '/locations/:locationId/detail',
+                url: '/search/locations/:locationId/detail',
                 views: {
                     'tab-search': {
                         templateUrl: 'templates/location/location.html'
@@ -249,7 +256,7 @@ angular.module('starter', deps)
                 }
             })
             .state('tab.search-user-locations', {
-                url: '/user/:locationSourceId/locations',
+                url: '/search/user/:locationSourceId/locations',
                 views: {
                     'tab-search': {
                         templateUrl: 'templates/location/locationOverview.html'
@@ -257,7 +264,7 @@ angular.module('starter', deps)
                 }
             })
             .state('tab.search-user', {
-                url: '/user/:userId',
+                url: '/search/user/:userId',
                 views: {
                     'tab-search': {
                         templateUrl: 'templates/profile.html'
