@@ -20,6 +20,7 @@
 /// <reference path="controller/defaultCtrl.ts" />
 /// <reference path="controller/locationOverviewCtrl.ts" />
 /// <reference path="controller/locationCtrl.ts" />
+/// <reference path="controller/accommodationEqipmentCtrl.ts" />
 
 /// <reference path="./service/dataService.ts" />
 /// <reference path="./service/searchService.ts" />
@@ -93,6 +94,7 @@ angular.module('starter', deps)
     .controller(Controller.DefaultCtrl.controllerId, Controller.DefaultCtrl)
     .controller(Controller.LocationOverviewCtrl.controllerId, Controller.LocationOverviewCtrl)
     .controller(Controller.LocationCtrl.controllerId, Controller.LocationCtrl)
+    .controller(Controller.AccommodationEquipmentCtrl.controllerId, Controller.AccommodationEquipmentCtrl)
 
     // services
     .service(Service.DataService.serviceId, Service.DataService)
@@ -194,6 +196,14 @@ angular.module('starter', deps)
                 views: {
                     'tab-offer': {
                         templateUrl: 'templates/static/city.html'
+                    }
+                }
+            })
+            .state('tab.offer-equipment', {
+                url: '/offer/equipment',
+                views: {
+                    'tab-offer': {
+                        templateUrl: '../templates/tab-offer/accommodationEquipment.html'
                     }
                 }
             })
