@@ -125,11 +125,15 @@ module Controller {
                     this.revision = dataObject.rev;
                     this.uploadIsDone = true;
                     this.isUploading = false;
-                }).catch((err) => {
+                }, (err) => {
                     console.log(err);
                     this.$ionicLoading.hide();
                     this.isUploading = false;
-                });
+                }, (process) => {
+                    var perc:number = process.loaded / process.total;
+                    var progressPercentage = Math.round(perc * 100);
+                    console.log('progress:', progressPercentage, '% ');
+                })
         }
 
         showNewImage(data) {
@@ -198,7 +202,7 @@ module Controller {
                 return;
             }
 
-            if(this.isUploading) {
+            if (this.isUploading) {
                 this.$ionicPopup.alert({title: 'Du kannst deine Location speichern, sobald dein Bild hochgeladen ist.'});
                 return;
             }
@@ -222,7 +226,7 @@ module Controller {
 
         toggleMap = ()=> {
             this.googleMap = !this.googleMap;
-            if(this.googleMap){
+            if (this.googleMap) {
                 this.$ionicLoading.show({template: '<ion-spinner icon="spiral"></ion-spinner>'});
             }
         };
