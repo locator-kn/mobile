@@ -1,0 +1,64 @@
+<ion-view view-title="Trip einstellen" class="insert-trip" ng-controller="InsertTripCtrl as itc">
+    <ion-nav-buttons side="left ">
+        <i class="icon ion-ios-arrow-back home-back-button" ui-sref="tab.welcome"></i>
+    </ion-nav-buttons>
+    <ion-content class="background-color-grey">
+        <div ng-if="authenticated">
+            <ul class="list">
+                <li class="item item-icon-right" ui-sref="tab.search-city">
+                    {{itc.city.title || "Wohin geht der Trip?"}}&nbsp;
+                    <i class="icon ion-chevron-right icon-accessory"></i>
+                </li>
+                <label class="item item-input">
+                    <span class="input-label">Zeitraum</span>
+                    <input class="text-right" ng-model="itc.start_date" type="text" placeholder="Von"
+                           onfocus="(this.type='date')">
+                </label>
+                <label class="item item-input">
+                    <input class="text-right" ng-model="itc.end_date" type="text" placeholder="Bis"
+                           onfocus="(this.type='date')">
+                </label>
+                <li class="item">
+                    Tage
+                    <div class="select-elements">
+                        <div class="circle" ng-repeat="day in itc.availableDays"
+                             ng-click="itc.selectedDays=day.value"
+                             ng-class="{'circle-selected': itc.selectedDays == day.value}">{{day.title}}
+                        </div>
+                    </div>
+                </li>
+                <li class="item">
+                    Personen
+                    <div class="select-elements">
+                        <div class="circle" ng-repeat="person in itc.availablePersons"
+                             ng-click="itc.selectedPersons=person.value"
+                             ng-class="{'circle-selected': itc.selectedPersons == person.value}">{{person.title}}
+                        </div>
+                    </div>
+                </li>
+                <li class="item item-toggle">
+                    Übernachtung
+                    <label class="toggle toggle-dark toggle-assertive"
+                           ng-click="itc.accommodation = ! itc.accommodation">
+                        <input type="checkbox">
+
+                        <div class="track">
+                            <div class="handle"></div>
+                        </div>
+                    </label>
+                </li>
+                <li class="item item-icon-right" ui-sref="tab.search-moods">
+                    Wie fühlt sich der Trip an?
+                    <i class="icon ion-chevron-right icon-accessory"></i>
+
+                    <div ng-if="itc.moodAvailable">
+                        <img class="result-mood" ng-src="./images/icons/{{itc.selectedMood.icon}}">
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div ng-if="!authenticated">
+            Um diese Funktionalität zu verwenden, musst du eingeloogt sein
+        </div>
+    </ion-content>
+</ion-view>
