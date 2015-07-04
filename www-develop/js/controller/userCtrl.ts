@@ -32,6 +32,9 @@ module Controller {
                 // update profile picture
                 this.UserService.getMe().then((user) => {
                     this.user = user.data;
+                    if (user.data.birthdate) {
+                        this.formatBirthdate(user);
+                    }
                 });
             });
 
@@ -48,16 +51,8 @@ module Controller {
             this.UserService.getUser(_id)
                 .then(result => {
                     this.user = result.data;
-                    if(result.data.birthdate) {
-                        // for edit user birthday input field value
-                        this.modifyBirthday = result.data.birthdate.substr(0, 10);
-                        this.user.birthdate = new Date(result.data.birthdate);
-
-                        var ageDifMs = Date.now() - new Date(result.data.birthdate).getTime() + 86400000;
-                        var ageDate = new Date(ageDifMs); // miliseconds from epoch
-                        this.birthdate = Math.abs(ageDate.getUTCFullYear() - 1970);
-
-                        this.user.birthdate = moment(new Date(this.user.birthdate)).format('L');
+                    if (result.data.birthdate) {
+                        this.formatBirthdate(result);
                     }
 
                     if (isNaN(this.birthdate)) {
@@ -74,6 +69,18 @@ module Controller {
                 });
         };
 
+        formatBirthdate = (result)=> {
+            // for edit user birthday input field value
+            this.modifyBirthday = result.data.birthdate.substr(0, 10);
+            this.user.birthdate = new Date(result.data.birthdate);
+
+            var ageDifMs = Date.now() - new Date(result.data.birthdate).getTime() + 86400000;
+            var ageDate = new Date(ageDifMs); // miliseconds from epoch
+            this.birthdate = Math.abs(ageDate.getUTCFullYear() - 1970);
+
+            this.user.birthdate = moment(new Date(this.user.birthdate)).format('L');
+        };
+
         logout = () => {
             this.UserService.logout()
                 .then(() => {
@@ -86,17 +93,16 @@ module Controller {
                 });
         };
 
-        updateProfile() {
+        updateProfile = ()=> {
 
-            if (!this.user.birthdate) {
-                this.user.birthdate = '';
+            if (this.user.birthdate) {
+                if (this.user.birthdate > new Date()) {
+                    this.$ionicPopup.alert({title: 'Datum muss in der Vergangenheit liegen!'});
+                    return;
+                }
+                var date = new Date( this.user.birthdate);
+                this.user.birthdate = date.toISOString();
             }
-
-            if (this.user.birthdate > new Date()) {
-                this.$ionicPopup.alert({title: 'Datum muss in der Vergangenheit liegen!'});
-                return;
-            }
-
             this.$ionicLoading.show({template: '<ion-spinner icon="spiral"></ion-spinner>'});
 
             this.UserService.updateProfile(this.user)
@@ -159,8 +165,8 @@ module Controller {
                 // TODO: show Error
                 console.log(err);
             });
-                //.progress((process) => {
-                // TODO implement processing
+            //.progress((process) => {
+            // TODO implement processing
             //});
         };
 
@@ -168,6 +174,10 @@ module Controller {
         openConversationModal = () => {
             this.UserService.openConversationModal(this.user._id);
         };
+
+        getFormattedDateof(date) {
+            return moment(new Date(date)).format('L');
+        }
 
         static controllerId:string = "UserCtrl";
     }
