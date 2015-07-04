@@ -28,7 +28,6 @@ module Controller {
 
         map:any = {};
 
-        // TODO: refactor
         uploadIsDone:boolean;
         isUploading:boolean;
         documentWasCreated:boolean;
@@ -39,7 +38,7 @@ module Controller {
         error:boolean = false;
 
         constructor(private CameraService, private $scope, private basePath, private GeolocationService, private UserService,
-                    private PictureUploadService, private webPath, private $ionicLoading, private $ionicPopup) {
+                    private PictureUploadService, private webPath, private $ionicLoading, private $ionicPopup, private ngProgressLite) {
 
             this.UserService.getMe().then(user => {
                 this.me = user.data;
@@ -114,6 +113,7 @@ module Controller {
                 delete formData._id;
                 delete formData._rev;
             }
+            this.ngProgressLite.start();
             this.$ionicPopup.alert({title: 'Das Bild wird im Hintergrund hochgeladen. Beschreibe doch deine Location solange du wartest.'});
             this.PictureUploadService.uploadImage(file, this.basePath + '/users/my/locations/picture', formData)
                 .then((data) => {
@@ -125,14 +125,16 @@ module Controller {
                     this.revision = dataObject.rev;
                     this.uploadIsDone = true;
                     this.isUploading = false;
+                    this.ngProgressLite.done();
                 }, (err) => {
                     console.log(err);
                     this.$ionicLoading.hide();
                     this.isUploading = false;
+                    this.ngProgressLite.done();
                 }, (process) => {
                     var perc:number = process.loaded / process.total;
-                    var progressPercentage = Math.round(perc * 100);
-                    console.log('progress:', progressPercentage, '% ');
+                    this.ngProgressLite.set(perc);
+                    console.log('progress:', perc, '% ');
                 })
         }
 
