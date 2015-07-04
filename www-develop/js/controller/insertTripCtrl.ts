@@ -3,10 +3,20 @@ module Controller {
 
         // trip
         city:any = {};
+        selectedDays:number;
+        start_date;
+        end_date;
 
-        constructor(private $rootScope, private TripService) {
+        // static data
+        availableDays:any = [];
+
+        constructor(private $rootScope, private TripService, private DataService) {
             $rootScope.$on('newInsertTripCity', () => {
                 this.city = this.TripService.getCity();
+            });
+
+            this.DataService.getAvailableDays().then((result)=> {
+                this.availableDays = result.data;
             });
         }
 
