@@ -221,10 +221,44 @@ module Controller {
                 then((result) => {
                     console.log('saved ' + result);
                     this.documentWasCreated = true;
+                    this.$ionicPopup.alert({title: 'Herzlichen Glückwunsch, deine FETT GEILE Location wurde erstellt. Dieser Text wird durch einen Screen ersetzt und erscheint bald nicht mehr...'});
+                    this.resetController();
+
                 }).catch((err) => {
                     console.log(err);
                 })
         };
+
+        resetController() {
+            // TODO: another, smarter way?
+            this.imageURI = '';
+            this.headerImagePath = '';
+            this.result = {};
+            //trip
+            this.documentId = '';
+            this.locationTitle = '';
+            this.revision = '';
+            this.geotag = {};
+            this.lat = '';
+            this.long = '';
+            this.locationFormDetails = {
+                tags: '',
+                title: '',
+                description: '',
+                budget: '',
+                city: {},
+                public: true
+            };
+            this.me = {};
+            this.map = {};
+            this.uploadIsDone = false;
+            this.isUploading = false;
+            this.documentWasCreated = false;
+            this.imageHasBeenUploaded = false;
+            this.mapMarkerSet = false;
+            this.googleMap = false;
+            this.error = false;
+        }
 
         toggleMap = ()=> {
             this.googleMap = !this.googleMap;
