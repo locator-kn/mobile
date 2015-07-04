@@ -46,6 +46,7 @@ var deps = [
     'locator.accommodation-equipment-chooser',
     'angular-cache',
     'jrCrop',
+    'ngProgressLite',
     'btford.socket-io',
     'uiGmapgoogle-maps',
     'ngCordova'

@@ -16,6 +16,7 @@
     "lodash": "~3.10.0",
     "jr-crop-locator": "~1.1.0",
     "ngCordova": "~0.1.17-alpha",
-    "angular": "~1.4.1"
+    "angular": "~1.4.1",
+    "ngprogress-lite": "~1.0.7"
   }
 }
