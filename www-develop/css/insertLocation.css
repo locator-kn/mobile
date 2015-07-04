@@ -50,3 +50,13 @@
 .insert-location .invisible {
     visibility: hidden;
 }
+
+.ngProgressLiteBar {
+    background: rgba(65, 191, 180, 1) !important;
+    position: fixed;
+    z-index: 99999;
+    top: 0;
+    left: 0;
+    height: 6px !important;
+}
+
