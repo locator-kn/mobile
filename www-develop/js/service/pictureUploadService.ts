@@ -21,17 +21,14 @@ module Service {
 
             this.$ionicPlatform.ready(()=> {
 
-                this.$cordovaFileTransfer.upload(destinationPath, filePath, options, true).then(function (result) {
+                this.$cordovaFileTransfer.upload(destinationPath, filePath, options, true).then((result) => {
                     console.log("SUCCESS: " + result.response);
                     q.resolve(result);
-                }, function (err) {
+                }, (err) => {
                     console.log("ERROR: " + err);
                     q.reject(err);
-                }, function (progress) {
-
-                    // TODO how?
-                    //q.notify(progress)
-                    // constant progress updates
+                },  (progress) => {
+                    q.notify(progress);
                 });
             });
             return q.promise;
