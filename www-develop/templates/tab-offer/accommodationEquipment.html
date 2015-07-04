@@ -1,0 +1,19 @@
+<ion-view view-title="Wohnung" class="pageWithButton" ng-controller="AccommodationEquipmentCtrl as aec">
+    <ion-content class="background-color-grey">
+        <div>
+            <ul class="list">
+                <li class="item" ng-repeat="equipment in aec.availableAccommodationEquipment">
+                    <img class="result-mood" ng-src="./images/icons/{{equipment.icon}}">
+                    <span>{{equipment.title}}</span>
+                    <label class="checkbox mood-checkbox">
+                        <input class="border-transparent" type="checkbox" ng-model="equipment.checked">
+                    </label>
+                </li>
+            </ul>
+        </div>
+    </ion-content>
+    <button ng-click="aec.setAccommodationEquipment()"
+            class="button-bottom button button-full background-green bottom">
+        Fertig
+    </button>
+</ion-view>
