@@ -10,6 +10,7 @@
 /// <reference path="controller/cityCtrl.ts" />
 /// <reference path="controller/moodCtrl.ts" />
 /// <reference path="controller/insertLocationCtrl.ts" />
+/// <reference path="controller/insertTripCtrl.ts" />
 /// <reference path="controller/loginCtrl.ts" />
 /// <reference path="controller/tabCtrl.ts" />
 /// <reference path="controller/userCtrl.ts" />
@@ -82,6 +83,7 @@ angular.module('starter', deps)
     .controller(Controller.CityCtrl.controllerId, Controller.CityCtrl)
     .controller(Controller.MoodCtrl.controllerId, Controller.MoodCtrl)
     .controller(Controller.InsertLocationCtrl.controllerId, Controller.InsertLocationCtrl)
+    .controller(Controller.InsertTripCtrl.controllerId, Controller.InsertTripCtrl)
     .controller(Controller.LoginCtrl.controllerId, Controller.LoginCtrl)
     .controller(Controller.TabCtrl.controllerId, Controller.TabCtrl)
     .controller(Controller.UserCtrl.controllerId, Controller.UserCtrl)
@@ -184,7 +186,7 @@ angular.module('starter', deps)
                 url: '/offer',
                 views: {
                     'tab-offer': {
-                        templateUrl: 'templates/tab-offer.html'
+                        templateUrl: 'templates/tab-offer/insert-trip.html'
                     }
                 }
             })
