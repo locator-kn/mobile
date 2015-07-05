@@ -20,6 +20,7 @@
 /// <reference path="controller/defaultCtrl.ts" />
 /// <reference path="controller/locationOverviewCtrl.ts" />
 /// <reference path="controller/locationCtrl.ts" />
+/// <reference path="controller/selectLocationCtrl.ts" />
 /// <reference path="controller/accommodationEqipmentCtrl.ts" />
 
 /// <reference path="./service/dataService.ts" />
@@ -94,6 +95,7 @@ angular.module('starter', deps)
     .controller(Controller.DefaultCtrl.controllerId, Controller.DefaultCtrl)
     .controller(Controller.LocationOverviewCtrl.controllerId, Controller.LocationOverviewCtrl)
     .controller(Controller.LocationCtrl.controllerId, Controller.LocationCtrl)
+    .controller(Controller.SelectLocationCtrl.controllerId, Controller.SelectLocationCtrl)
     .controller(Controller.AccommodationEquipmentCtrl.controllerId, Controller.AccommodationEquipmentCtrl)
 
     // services
