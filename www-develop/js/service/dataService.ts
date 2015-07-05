@@ -5,14 +5,14 @@ module Service {
         dataDaysCache;
         dataPersonsCache;
         dataMoodsCache;
-        accommodationEquipment;
+        accommodationEquipmentCache;
 
         constructor(private $http, private basePath, private CacheFactory, private $q, private $ionicLoading) {
             this.dataCitiesCache = CacheFactory.createCache('dataCities');
             this.dataDaysCache = CacheFactory.createCache('dataDays');
             this.dataPersonsCache = CacheFactory.createCache('dataPersons');
             this.dataMoodsCache = CacheFactory.createCache('dataMoods');
-            this.accommodationEquipment = CacheFactory.createCache('accommodationEquipment');
+            this.accommodationEquipmentCache = CacheFactory.createCache('accommodationEquipment');
         }
 
         getAvailableCities() {
@@ -110,7 +110,7 @@ module Service {
                             ]
                         });
                 }, 0);
-            }, {cache: this.dataPersonsCache});
+            }, {cache: this.accommodationEquipmentCache});
         }
 
         getAvailableMoods() {
