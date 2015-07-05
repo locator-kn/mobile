@@ -207,6 +207,14 @@ angular.module('starter', deps)
                     }
                 }
             })
+            .state('tab.offer-moods', {
+                url: '/offer/moods',
+                views: {
+                    'tab-offer': {
+                        templateUrl: 'templates/static/moods.html'
+                    }
+                }
+            })
 
             .state('tab.search', {
                 url: '/search',
@@ -229,7 +237,7 @@ angular.module('starter', deps)
                 url: '/search/moods',
                 views: {
                     'tab-search': {
-                        templateUrl: 'templates/tab-search/moods.html'
+                        templateUrl: 'templates/static/moods.html'
                     }
                 }
             })
