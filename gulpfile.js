@@ -38,7 +38,7 @@ gulp.task('ts', function () {
     }
 
     var templateObject = {
-        basePath: baseUrl || 'http://locator.in.htwg-konstanz.de/api/v1',
+        basePath: baseUrl || 'http://locator-app.com/api/v1',
         // TODO: refactor -> currently only for connection with online backend
         webPath: 'http://locator-app.com'
     };
