@@ -7,11 +7,11 @@ module Controller {
 
         myLocations:boolean = true;
 
-        constructor(private LocationService, private $stateParams, private webPath) {
+        constructor(private LocationService, private $stateParams, private webPath, private $rootScope) {
             this.cityId = $stateParams.cityId;
 
             this.LocationService.getMyLocationsByCity(this.cityId).then((result) => {
-                if(result.data.length === 0) {
+                if (result.data.length === 0) {
                     // display all locations if no locationy by me available
                     this.myLocations = false;
                 }
@@ -21,6 +21,33 @@ module Controller {
             this.LocationService.getLocationsByCity(this.cityId).then((result)=> {
                 this.locationsByCity = result.data
             })
+        }
+
+        toogleSelect(location) {
+            var newStatus = !location.selected;
+            // if element public
+            if (location.public) {
+                // select from public array
+                var cityElement = this.locationsByCity.filter((obj => {
+                    return obj._id === location._id;
+                }));
+                cityElement[0].selected = newStatus;
+
+                // if element my element
+                if (location.userid === this.$rootScope.userID) {
+                    // select from my array
+                    var myElement = this.myLocationsByCity.filter((obj => {
+                        return obj._id === location._id;
+                    }));
+                    myElement[0].selected = newStatus;
+                }
+            } else {
+                // select from my array
+                var myElement = this.myLocationsByCity.filter((obj => {
+                    return obj._id === location._id;
+                }));
+                myElement[0].selected = newStatus;
+            }
         }
 
         static controllerId:string = "SelectLocationCtrl";
