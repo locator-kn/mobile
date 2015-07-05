@@ -66,8 +66,6 @@ module Controller {
         }
 
         selectLocations = () => {
-            debugger;
-
              var trip = {
                 title: '',
                 accommodation: this.accommodation,
