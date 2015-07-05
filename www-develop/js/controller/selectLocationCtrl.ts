@@ -8,7 +8,7 @@ module Controller {
         myLocations:boolean = true;
         selectedLocations:number = 0;
 
-        constructor(private LocationService, private $stateParams, private webPath, private $rootScope) {
+        constructor(private LocationService, private $stateParams, private webPath, private $state, private $rootScope, private TripService) {
             this.cityId = $stateParams.cityId;
 
             this.LocationService.getMyLocationsByCity(this.cityId).then((result) => {
@@ -25,7 +25,7 @@ module Controller {
         }
 
         toogleSelect(location) {
-            if(!location.selected){
+            if (!location.selected) {
                 this.selectedLocations++;
             } else {
                 this.selectedLocations--;
@@ -54,6 +54,33 @@ module Controller {
                 }));
                 myElement[0].selected = newStatus;
             }
+        }
+
+        getSelectedLocations = () => {
+            var publicLocations = this.locationsByCity.filter((obj => {
+                return obj.selected === true;
+            }));
+            var privateLocations = this.myLocationsByCity.filter((obj => {
+                return ((obj.selected === true) && (obj.public === false));
+            }));
+
+            var locations = {};
+            var index;
+            for (index = 0; index < publicLocations.length; ++index) {
+                locations[publicLocations[index]._id] = publicLocations[index].images;
+            }
+            for (index = 0; index < privateLocations.length; ++index) {
+                locations[privateLocations[index]._id] = privateLocations[index].images;
+            }
+            return locations;
+        };
+
+        tripPreview() {
+            this.TripService.setLocations(this.getSelectedLocations());
+            console.log('ab zur preview');
+            //this.$state.go('tab.offer-locations', {
+            //    cityId: this.city.place_id
+            //});
         }
 
         static controllerId:string = "SelectLocationCtrl";
