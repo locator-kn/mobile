@@ -4,6 +4,7 @@ module Service {
         // create trip
         city:any = {};
         accommodationEquipment:any = [];
+        mood:any = {};
 
         constructor(private $http, private basePath, private $ionicLoading, private $rootScope) {
         }
@@ -30,6 +31,16 @@ module Service {
         getAccommodationEquipment() {
            return this.accommodationEquipment;
         }
+
+        setMood(mood) {
+            this.mood = mood;
+            this.$rootScope.$emit('newInsertTripMood');
+        }
+
+        getMood() {
+            return this.mood;
+        }
+
         static serviceId:string = "TripService";
     }
 }
