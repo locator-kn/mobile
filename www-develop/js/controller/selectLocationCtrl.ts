@@ -77,10 +77,7 @@ module Controller {
 
         tripPreview() {
             this.TripService.setLocations(this.getSelectedLocations());
-            console.log('ab zur preview');
-            //this.$state.go('tab.offer-locations', {
-            //    cityId: this.city.place_id
-            //});
+            this.$state.go('tab.offer-preview');
         }
 
         static controllerId:string = "SelectLocationCtrl";
