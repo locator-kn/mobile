@@ -19,8 +19,9 @@ module Controller {
 
         // info
         moodAvailable:boolean;
+        selectLocationState:string = 'tab.offer-locations';
 
-        constructor(private $rootScope, private TripService, private DataService) {
+        constructor(private $rootScope, private TripService, private DataService, private $state) {
             $rootScope.$on('newInsertTripCity', () => {
                 this.city = this.TripService.getCity();
             });
@@ -46,6 +47,13 @@ module Controller {
                 this.availableAccommodationEquipment = result.data;
             });
         }
+
+        selectLocations =() => {
+            // TODO: save entries to tripService
+            this.$state.go('tab.offer-locations', {
+                cityId: this.city.id
+            });
+        };
 
         static controllerId:string = "InsertTripCtrl";
     }
