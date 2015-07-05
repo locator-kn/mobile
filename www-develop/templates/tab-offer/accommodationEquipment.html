@@ -6,7 +6,7 @@
                     <img class="result-mood" ng-src="./images/icons/{{equipment.icon}}">
                     <span>{{equipment.title}}</span>
                     <label class="checkbox mood-checkbox">
-                        <input class="border-transparent" type="checkbox" ng-model="equipment.checked">
+                        <input class="border-transparent" type="checkbox" ng-model="equipment.checked" ng-change="aec.sync(equipment.checked, equipment)">
                     </label>
                 </li>
             </ul>
