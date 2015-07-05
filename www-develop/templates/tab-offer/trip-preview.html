@@ -37,7 +37,7 @@
                 <label>bis</label>
                 <label class="text-bold">{{tpc.trip.end_date}}</label>
             </li>
-            <li class="item">
+            <li class="item" ng-if="tpc.trip.days || tpc.trip.persons">
                 <label>
                     <label ng-if="tpc.trip.days" class="text-bold">{{tpc.trip.days}} </label>
                     <label ng-if="tpc.trip.days">  {{tpc.trip.days === 1 ? 'Tag' : 'Tage'}}</label>
@@ -75,4 +75,8 @@
             </li>
         </ul>
     </ion-content>
+    <button ng-if="authenticated" ng-click="tpc.saveTrip()" ng-disabled=""
+            class="button-bottom button button-full background-coral bottom">
+        Trip Erstellen
+    </button>
 </ion-view>
