@@ -65,4 +65,9 @@
             Um diese Funktionalität zu verwenden, musst du eingeloogt sein
         </div>
     </ion-content>
+    <button ng-if="authenticated" ng-click="itc.selectLocations()" ng-disabled="!itc.city.title"
+            class="button-bottom button button-full background-coral bottom item-icon-right">
+        Locations auswählen
+        <i class="icon ion-chevron-right icon-accessory"></i>
+    </button>
 </ion-view>
