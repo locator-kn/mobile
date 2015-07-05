@@ -2,10 +2,12 @@
     <ion-content class="background-color-grey locations">
         <div class="header">
             <div class="center">
-                <button class="button button-all" ng-click="slc.myLocations=false" ng-class="!slc.myLocations ? 'selected' : ''"   >
+                <button class="button button-all" ng-click="slc.myLocations=false"
+                        ng-class="!slc.myLocations ? 'selected' : ''">
                     Alle
                 </button>
-                <button class="button button-my" ng-click="slc.myLocations=true" ng-class="slc.myLocations ? 'selected' : ''" >
+                <button class="button button-my" ng-click="slc.myLocations=true"
+                        ng-class="slc.myLocations ? 'selected' : ''">
                     Meine
                 </button>
             </div>
@@ -28,11 +30,31 @@
                         <span ng-repeat="tag in location.tags | limitTo: 3" class="tag">{{tag}}</span>
                     </div>
                     <p class="description">{{location.description}}</p>
-                    <i class="icon ion-chevron-right icon-accessory"></i>
+                    <i class="icon ion-plus-circled icon-accessory"></i>
                 </li>
             </ul>
         </div>
         <div ng-if="!slc.myLocations">
+            <ul class="list">
+                <li class="item item-icon-right" ng-repeat="location in slc.locationsByCity">
+                    <div class="image-container">
+                        <!-- images -->
+                        <img ng-if="location.images.picture" class="picture"
+                             ng-src="{{slc.webPath}}{{location.images.thumbnail}}">
+                        <img ng-if="!location.images.picture" class="googlemap"
+                             ng-src="{{location.images.googlemap}}&size=200x200">
+                    </div>
+
+                    <!-- title, tags and description-->
+                    <label class="title">{{location.title}}</label>
+
+                    <div class="location-tags tags">
+                        <span ng-repeat="tag in location.tags | limitTo: 3" class="tag">{{tag}}</span>
+                    </div>
+                    <p class="description">{{location.description}}</p>
+                    <i class="icon ion-plus-circled icon-accessory"></i>
+                </li>
+            </ul>
         </div>
 
     </ion-content>
