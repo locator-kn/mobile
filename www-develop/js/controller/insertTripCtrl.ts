@@ -17,6 +17,9 @@ module Controller {
         availableAccommodationEquipment:any = [];
         availableMoods:any = {};
 
+        // info
+        moodAvailable:boolean;
+
         constructor(private $rootScope, private TripService, private DataService) {
             $rootScope.$on('newInsertTripCity', () => {
                 this.city = this.TripService.getCity();
@@ -28,6 +31,7 @@ module Controller {
 
             $rootScope.$on('newInsertTripMood', () => {
                 this.selectedMood = this.TripService.getMood();
+                this.moodAvailable = true;
             });
 
             this.DataService.getAvailableDays().then((result)=> {

@@ -5,7 +5,7 @@ module Controller {
         selected:any = [];
 
         offerState = 'tab.offer';
-        moodSearchState = 'tab.search-mood';
+        moodSearchState = 'tab.search-moods';
         searchState = 'tab.search';
 
         state:string;
