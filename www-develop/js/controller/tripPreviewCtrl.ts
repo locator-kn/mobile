@@ -16,9 +16,6 @@ module Controller {
                 this.trip.end_date = moment(new Date(this.trip.end_date)).format('L');
             }
 
-            // workaround, because title do not update in tripDetail.html
-            $scope.navTitle = this.trip.title;
-
             // important for ion-slide!
             this.$ionicSlideBoxDelegate.update();
 

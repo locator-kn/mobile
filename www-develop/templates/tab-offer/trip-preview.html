@@ -1,5 +1,5 @@
 <!--cache view false needed for slider -->
-<ion-view class="trip pageWithButton" cache-view="false" view-title="{{tpc.trip.title}}"
+<ion-view class="trip pageWithButton" cache-view="false" view-title="Vorschau"
           ng-controller="TripPreviewCtrl as tpc">
     <ion-content>
         <ul>
@@ -22,8 +22,9 @@
                 <label class="text-bold">{{tpc.user.name || 'anonym'}}</label>
             </li>
 
-            <li class="item description">
-                <label>{{tpc.trip.description}}</label>
+            <li class="item item-input">
+                <input type="text" ng-model="ilc.trip.title" name="TripTitle"
+                       placeholder="Gib deinem Trip einen Titel" required>
             </li>
             <li class="item" ng-if="tpc.trip.start_date && tpc.trip.end_date">
                 <label>von</label>
