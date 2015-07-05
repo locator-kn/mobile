@@ -218,7 +218,7 @@ angular.module('starter', deps)
                 }
             })
             .state('tab.offer-locations', {
-                url: '/offer/locations',
+                url: '/offer/locations/:cityId',
                 views: {
                     'tab-offer': {
                         templateUrl: 'templates/tab-offer/select-location.html'
