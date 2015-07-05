@@ -21,6 +21,14 @@ module Service {
             return this.$http.get(this.basePath + '/users/my/locations');
         }
 
+        getLocationsByCity(city:string) {
+            return this.$http.get(this.basePath + '/locations/city/' + city);
+        }
+
+        getMyLocationsByCity(city:string) {
+            return this.$http.get(this.basePath + '/users/my/locations/city/' + city);
+        }
+
         static serviceId:string = "LocationService";
     }
 }
