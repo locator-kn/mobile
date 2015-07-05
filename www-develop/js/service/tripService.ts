@@ -1,6 +1,9 @@
 module Service {
     export class TripService {
 
+        preTrip:any = {};
+        locations:any = [];
+
         // create trip
         city:any = {};
         accommodationEquipment:any = [];
@@ -39,6 +42,19 @@ module Service {
 
         getMood() {
             return this.mood;
+        }
+
+        setPreTrip(trip){
+            this.preTrip = trip;
+        }
+
+        getPreTrip(trip){
+            this.preTrip = trip;
+        }
+
+        setLocations(locations){
+            this.locations = locations;
+            debugger;
         }
 
         static serviceId:string = "TripService";
