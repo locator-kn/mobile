@@ -7,7 +7,7 @@ module Controller {
         end_date;
         selectedDays:number;
         selectedPersons:number;
-        accommodation:boolean;
+        accommodation:boolean = false;
         selectedAccommodationEquipment:any = [];
         selectedMood:any = {};
 
@@ -58,7 +58,7 @@ module Controller {
         }
 
         toIsoDate(dateString) {
-            if (dateString !== '') {
+            if (dateString !== undefined) {
                 var date = new Date(dateString);
                 return date.toISOString();
             }
