@@ -48,8 +48,8 @@ module Service {
             this.preTrip = trip;
         }
 
-        getPreTrip(trip){
-            this.preTrip = trip;
+        getPreTrip(){
+            return this.preTrip;
         }
 
         setLocations(locations){
@@ -57,7 +57,7 @@ module Service {
         }
 
         getLocations(){
-            this.locations;
+            return this.locations;
         }
         static serviceId:string = "TripService";
     }
