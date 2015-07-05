@@ -9,10 +9,7 @@ module Controller {
             this.DataService.getAvailableAccommodationEquipment().then((result) => {
                 this.$ionicLoading.hide();
                 this.availableAccommodationEquipment = result.data;
-
                 this.selectedAccommodationEquipment = this.TripService.getAccommodationEquipment();
-
-                debugger;
 
                 // initialisation of old selections
                 for (var equipment in this.availableAccommodationEquipment) {
@@ -25,7 +22,7 @@ module Controller {
             });
         }
 
-        sync = (bool, item) =>  {
+        sync = (bool, item) => {
             if (bool) {
                 // add item
                 this.selectedAccommodationEquipment.push(item);
@@ -38,7 +35,7 @@ module Controller {
                     }
                 }
             }
-            this.TripService.setAccommodationEquipment (this.selectedAccommodationEquipment);
+            this.TripService.setAccommodationEquipment(this.selectedAccommodationEquipment);
         };
 
         setAccommodationEquipment() {
