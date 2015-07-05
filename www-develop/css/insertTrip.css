@@ -92,3 +92,15 @@
     border-color: rgb(241, 100, 73);
     border-width: 2px;
 }
+
+.insert-trip .mood-title {
+    font-size: 16px;
+    line-height: 31px;
+    font-weight: normal;
+}
+
+.insert-trip .required-text {
+    float: right;
+    margin-right: 10px;
+    margin-top: 5px;
+}
