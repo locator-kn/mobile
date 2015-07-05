@@ -205,7 +205,7 @@ angular.module('starter', deps)
                 url: '/offer/equipment',
                 views: {
                     'tab-offer': {
-                        templateUrl: '../templates/tab-offer/accommodationEquipment.html'
+                        templateUrl: 'templates/tab-offer/accommodationEquipment.html'
                     }
                 }
             })
@@ -214,6 +214,14 @@ angular.module('starter', deps)
                 views: {
                     'tab-offer': {
                         templateUrl: 'templates/static/moods.html'
+                    }
+                }
+            })
+            .state('tab.offer-locations', {
+                url: '/offer/locations',
+                views: {
+                    'tab-offer': {
+                        templateUrl: 'templates/tab-offer/select-location.html'
                     }
                 }
             })
