@@ -11,7 +11,6 @@ module Controller {
             this.cityId = $stateParams.cityId;
 
             this.LocationService.getMyLocationsByCity(this.cityId).then((result) => {
-                debugger;
                 if(result.data.length === 0) {
                     // display all locations if no locationy by me available
                     this.myLocations = false;

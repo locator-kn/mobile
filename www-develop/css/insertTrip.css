@@ -1,11 +1,11 @@
 .insert-trip .toggle.toggle-dark input:checked + .track,
 .mood-checkbox .border-transparent:after,
 .insert-trip .circle-selected,
-.insert-trip .checkbox input:checked:before, .checkbox input:checked + .checkbox-icon:before{
+.insert-trip .checkbox input:checked:before, .checkbox input:checked + .checkbox-icon:before {
     background-color: rgb(241, 100, 73);
 }
 
-.insert-trip .checkbox input:checked:before, .checkbox input:checked + .checkbox-icon:before{
+.insert-trip .checkbox input:checked:before, .checkbox input:checked + .checkbox-icon:before {
     border-color: rgb(241, 100, 73);
 }
 
@@ -41,4 +41,40 @@
     text-overflow: ellipsis;
     padding-left: 5px;
     line-height: 18px;
+}
+
+.insert-trip .header {
+    margin: 10px;
+    height: 50px;
+}
+
+.insert-trip .center {
+    text-align: center;
+    padding-top: 10px
+}
+
+.insert-trip .button-my,
+.insert-trip .button-all {
+    width: 25%;
+    margin-left: -3px;
+    margin-right: -3px;
+    border-color: rgb(241, 100, 73);
+    color: rgb(241, 100, 73);
+    min-height: 33px;
+    line-height: 33px;
+}
+
+.insert-trip .selected {
+    background-color: rgb(241, 100, 73);
+    color: white;
+}
+
+.insert-trip .button-my {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+.insert-trip .button-all {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+
 }

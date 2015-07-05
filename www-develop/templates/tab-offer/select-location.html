@@ -1,12 +1,14 @@
 <ion-view view-title="Locations" class=" insert-trip" ng-controller="SelectLocationCtrl as slc">
     <ion-content class="background-color-grey locations">
         <div class="header">
-            <button class="button button-positive">
-                button-positive
-            </button>
-            <button class="button button-positive">
-                button-positive
-            </button>
+            <div class="center">
+                <button class="button button-all" ng-click="slc.myLocations=false" ng-class="!slc.myLocations ? 'selected' : ''"   >
+                    Alle
+                </button>
+                <button class="button button-my" ng-click="slc.myLocations=true" ng-class="slc.myLocations ? 'selected' : ''" >
+                    Meine
+                </button>
+            </div>
         </div>
         <div ng-if="slc.myLocations">
             <ul class="list">
