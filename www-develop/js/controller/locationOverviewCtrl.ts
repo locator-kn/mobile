@@ -12,13 +12,6 @@ module Controller {
 
         me:boolean = false;
 
-        // ++++++++ TODO +++++++++++++++++
-        // - location by user x
-        // - location by my
-        // - location by city
-        // - location by trip
-        // +++++++++++++++++++++++++++++++
-
         constructor(private $state, private $stateParams, private LocationService, private $ionicLoading, private webPath) {
             this.state = this.$state.current.name;
 
@@ -50,7 +43,6 @@ module Controller {
                     console.log(err);
                     this.$ionicLoading.hide();
                 });
-                // TODO get my locations
             }
 
 
