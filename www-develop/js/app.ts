@@ -233,7 +233,6 @@ angular.module('starter', deps)
                     }
                 }
             })
-
             .state('tab.search', {
                 url: '/search',
                 views: {
@@ -242,7 +241,6 @@ angular.module('starter', deps)
                     }
                 }
             })
-
             .state('tab.search-city', {
                 url: '/search/city',
                 views: {

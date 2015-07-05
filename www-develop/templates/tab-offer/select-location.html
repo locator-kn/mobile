@@ -16,7 +16,7 @@
             <ul class="list">
                 <li class="item item-icon-right" ng-repeat="location in slc.myLocationsByCity"
                     ng-class="location.selected ? 'selected-location' : ''">
-                    <div class="image-container">
+                    <div class="image-container" ui-sref='tab.offer-locations-detail({ locationId: location._id})'>
                         <!-- images -->
                         <img ng-if="location.images.picture" class="picture"
                              ng-src="{{slc.webPath}}{{location.images.thumbnail}}">
@@ -40,7 +40,7 @@
             <ul class="list">
                 <li class="item item-icon-right" ng-repeat="location in slc.locationsByCity"
                     ng-class="location.selected ? 'selected-location' : ''">
-                    <div class="image-container">
+                    <div class="image-container" ui-sref='tab.offer-locations-detail({ locationId: location._id})'>
                         <!-- images -->
                         <img ng-if="location.images.picture" class="picture"
                              ng-src="{{slc.webPath}}{{location.images.thumbnail}}">
