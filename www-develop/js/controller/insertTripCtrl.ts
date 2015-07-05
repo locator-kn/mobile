@@ -51,7 +51,7 @@ module Controller {
         selectLocations =() => {
             // TODO: save entries to tripService
             this.$state.go('tab.offer-locations', {
-                cityId: this.city.id
+                cityId: this.city.place_id
             });
         };
 
