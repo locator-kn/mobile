@@ -22,6 +22,7 @@
 /// <reference path="controller/locationCtrl.ts" />
 /// <reference path="controller/selectLocationCtrl.ts" />
 /// <reference path="controller/accommodationEqipmentCtrl.ts" />
+/// <reference path="controller/tripPreviewCtrl.ts" />
 
 /// <reference path="./service/dataService.ts" />
 /// <reference path="./service/searchService.ts" />
@@ -97,6 +98,7 @@ angular.module('starter', deps)
     .controller(Controller.LocationCtrl.controllerId, Controller.LocationCtrl)
     .controller(Controller.SelectLocationCtrl.controllerId, Controller.SelectLocationCtrl)
     .controller(Controller.AccommodationEquipmentCtrl.controllerId, Controller.AccommodationEquipmentCtrl)
+    .controller(Controller.TripPreviewCtrl.controllerId, Controller.TripPreviewCtrl)
 
     // services
     .service(Service.DataService.serviceId, Service.DataService)
@@ -230,6 +232,14 @@ angular.module('starter', deps)
                 views: {
                     'tab-offer': {
                         templateUrl: 'templates/location/location.html'
+                    }
+                }
+            })
+            .state('tab.offer-preview', {
+                url: '/offer/preview',
+                views: {
+                    'tab-offer': {
+                        templateUrl: 'templates/tab-offer/trip-preview.html'
                     }
                 }
             })
