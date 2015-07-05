@@ -3,7 +3,7 @@ module Service {
 
         // create trip
         city:any = {};
-        accommodationEquipment:any = {};
+        accommodationEquipment:any = [];
 
         constructor(private $http, private basePath, private $ionicLoading, private $rootScope) {
         }
