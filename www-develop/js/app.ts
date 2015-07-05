@@ -225,6 +225,14 @@ angular.module('starter', deps)
                     }
                 }
             })
+            .state('tab.offer-locations-detail', {
+                url: '/offer/locations/:locationId',
+                views: {
+                    'tab-offer': {
+                        templateUrl: 'templates/location/location.html'
+                    }
+                }
+            })
 
             .state('tab.search', {
                 url: '/search',
