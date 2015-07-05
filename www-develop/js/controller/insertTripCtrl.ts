@@ -9,11 +9,13 @@ module Controller {
         selectedPersons:number;
         accommodation:boolean;
         selectedAccommodationEquipment:any = [];
+        selectedMood:any = {};
 
         // static data
         availableDays:any = [];
         availablePersons:any = [];
         availableAccommodationEquipment:any = [];
+        availableMoods:any = {};
 
         constructor(private $rootScope, private TripService, private DataService) {
             $rootScope.$on('newInsertTripCity', () => {
@@ -24,6 +26,9 @@ module Controller {
                 this.selectedAccommodationEquipment = this.TripService.getAccommodationEquipment();
             });
 
+            $rootScope.$on('newInsertTripMood', () => {
+                this.selectedMood = this.TripService.getMood();
+            });
 
             this.DataService.getAvailableDays().then((result)=> {
                 this.availableDays = result.data;
