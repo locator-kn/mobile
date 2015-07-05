@@ -6,8 +6,26 @@
         <div ng-if="authenticated">
             <ul class="list">
                 <li class="item item-icon-right" ui-sref="tab.offer-city">
-                    {{itc.city.title || "Wohin geht der Trip?"}}&nbsp;
+                    {{itc.city.title || "Wohin geht der Trip? *"}}&nbsp;
                     <i class="icon ion-chevron-right icon-accessory"></i>
+                </li>
+                <li class="item item-icon-right" ui-sref="tab.offer-moods">
+                    <span ng-if="!itc.moodAvailable">Wie fühlt sich der Trip an? *</span>
+                    <i class="icon ion-chevron-right icon-accessory"></i>
+
+                    <div ng-if="itc.moodAvailable">
+                        <img class="result-mood" ng-src="./images/icons/{{itc.selectedMood.icon}}">
+                        <label class="mood-title">{{itc.selectedMood.title}}</label>
+                    </div>
+                </li>
+                <li class="item">
+                    Tage *
+                    <div class="select-elements">
+                        <div class="circle" ng-repeat="day in itc.availableDays"
+                             ng-click="itc.selectedDays=day.value"
+                             ng-class="{'circle-selected': itc.selectedDays == day.value}">{{day.title}}
+                        </div>
+                    </div>
                 </li>
                 <label class="item item-input">
                     <span class="input-label">Zeitraum</span>
@@ -18,15 +36,7 @@
                     <input class="text-right" ng-model="itc.end_date" type="text" placeholder="Bis"
                            onfocus="(this.type='date')">
                 </label>
-                <li class="item">
-                    Tage
-                    <div class="select-elements">
-                        <div class="circle" ng-repeat="day in itc.availableDays"
-                             ng-click="itc.selectedDays=day.value"
-                             ng-class="{'circle-selected': itc.selectedDays == day.value}">{{day.title}}
-                        </div>
-                    </div>
-                </li>
+
                 <li class="item">
                     Personen
                     <div class="select-elements">
@@ -51,13 +61,8 @@
                    Angaben zur Unterkunft
                     <i class="icon ion-chevron-right icon-accessory"></i>
                 </li>
-                <li class="item item-icon-right" ui-sref="tab.offer-moods">
-                    Wie fühlt sich der Trip an?
-                    <i class="icon ion-chevron-right icon-accessory"></i>
-
-                    <div ng-if="itc.moodAvailable">
-                        <img class="result-mood" ng-src="./images/icons/{{itc.selectedMood.icon}}">
-                    </div>
+                <li>
+                    <span class="required-text">* Pflichtfeld</span>
                 </li>
             </ul>
         </div>
