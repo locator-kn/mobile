@@ -1,0 +1,14 @@
+.insert-trip .toggle.toggle-dark input:checked + .track,
+.mood-checkbox .border-transparent:after,
+.insert-trip .circle-selected,
+.insert-trip .checkbox input:checked:before, .checkbox input:checked + .checkbox-icon:before{
+    background-color: rgb(241, 100, 73);
+}
+
+.insert-trip .checkbox input:checked:before, .checkbox input:checked + .checkbox-icon:before{
+    border-color: rgb(241, 100, 73);
+}
+
+.insert-trip .equipment span.ng-binding {
+    line-height: 34px;
+}

@@ -1,5 +1,5 @@
-<ion-view view-title="Wohnung" class="pageWithButton" ng-controller="AccommodationEquipmentCtrl as aec">
-    <ion-content class="background-color-grey">
+<ion-view view-title="Wohnung" class="pageWithButton insert-trip" ng-controller="AccommodationEquipmentCtrl as aec">
+    <ion-content class="background-color-grey equipment">
         <div>
             <ul class="list">
                 <li class="item" ng-repeat="equipment in aec.availableAccommodationEquipment">
@@ -13,7 +13,7 @@
         </div>
     </ion-content>
     <button ng-click="aec.setAccommodationEquipment()"
-            class="button-bottom button button-full background-green bottom">
+            class="button-bottom button button-full background-coral bottom">
         Fertig
     </button>
 </ion-view>
