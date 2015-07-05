@@ -1,0 +1,72 @@
+<!--cache view false needed for slider -->
+<ion-view class="trip pageWithButton" cache-view="false" view-title="{{tpc.trip.title}}"
+          ng-controller="TripPreviewCtrl as tpc">
+    <ion-content>
+        <ul>
+            <ion-slide-box ng-if="tpc.trip.locations && tpc.numberOfElelementsIn(tpc.trip.locations) !== 1"
+                           class=" parallax-card" on-slide-changed="slideHasChanged($index)">
+                <ion-slide ng-repeat="location in tpc.trip.locations">
+                    <img class="tmpImageWidth" ng-src="{{tpc.webPath}}{{location.thumbnail}}">
+                    <img class="user-picture" ng-src="{{tpc.user.picture.picture}}">
+                </ion-slide>
+            </ion-slide-box>
+            <div ng-if="tpc.trip.locations && tpc.numberOfElelementsIn(tpc.trip.locations) === 1">
+                <div ng-repeat="location in tpc.trip.locations">
+                    <img class="tmpImageWidth" ng-src="{{tpc.webPath}}{{location.thumbnail}}">
+                    <img class="user-picture" ng-src="{{tpc.user.picture.picture}}">
+                </div>
+            </div>
+
+            <li class="item first-element">
+                <label>von </label>
+                <label class="text-bold">{{tpc.user.name || 'anonym'}}</label>
+            </li>
+
+            <li class="item description">
+                <label>{{tpc.trip.description}}</label>
+            </li>
+            <li class="item" ng-if="tpc.trip.start_date && tpc.trip.end_date">
+                <label>von</label>
+                <label class="text-bold">{{tpc.trip.start_date}}</label>
+                <label>bis</label>
+                <label class="text-bold">{{tpc.trip.end_date}}</label>
+            </li>
+            <li class="item">
+                <label>
+                    <label ng-if="tpc.trip.days" class="text-bold">{{tpc.trip.days}} </label>
+                    <label>{{tpc.trip.days === 1 ? 'Tag' : 'Tage'}}</label>
+                    <label ng-if="tpc.trip.days && tpc.trip.persons" class="text-bold">|</label>
+                    <label ng-if="tpc.trip.persons" class="text-bold">{{tpc.trip.persons}} </label>
+                    <label ng-if="tpc.trip.persons">{{tpc.trip.persons === 1 ? 'Person' : 'Personen'}}</label>
+                </label>
+            </li>
+            <li class="item item-icon-right" ng-if="tpc.trip.locations"
+                ui-sref="tab.search-result-locations({locationSourceId:tc.trip._id})">
+                <label class="text-bold">{{tpc.numberOfElelementsIn(tpc.trip.locations)}}</label>
+                <label ng-if="tpc.trip.locations">
+                    {{tpc.numberOfElelementsIn(tpc.trip.locations) === 1 ? 'Location' : 'Locations'}}
+                </label>
+                <i class="icon ion-chevron-right icon-accessory"></i>
+            </li>
+            <li class="item mood-container" ng-if="tpc.trip.moods">
+                <div ng-repeat="mood in tpc.trip.moods">
+                    <div ng-repeat="availableMood in tpc.moods |filter:mood">
+                        <img class="result-mood" ng-src="./images/icons/{{availableMood.icon}}">
+                        <label class="mood-title">{{availableMood.title}}</label>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div ng-hide="tpc.trip.accommodation == false">
+                    <h5 class="text-bold">Unterkunft</h5>
+
+                    <div class="accommodation-equipment">
+                        <acc-equ-chooser accommodation-equipment-selectable="false"
+                                         accommodation-equipment="tpc.trip.accommodation_equipment"></acc-equ-chooser>
+                        <label>{{tpc.trip.accommodation.title}}</label>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </ion-content>
+</ion-view>
