@@ -81,6 +81,10 @@
 
 .insert-trip i.icon.ion-plus-circled.icon-accessory {
     font-size: 23px;
+}
+
+.insert-trip i.icon.ion-minus-circled.icon-accessory {
+    font-size: 23px;
     color: rgb(241, 100, 73);
 }
 
