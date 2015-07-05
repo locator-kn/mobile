@@ -46,13 +46,11 @@
                     <label ng-if="tpc.trip.persons">{{tpc.trip.persons === 1 ? 'Person' : 'Personen'}}</label>
                 </label>
             </li>
-            <li class="item item-icon-right" ng-if="tpc.trip.locations"
-                ui-sref="tab.search-result-locations({locationSourceId:tc.trip._id})">
+            <li class="item" ng-if="tpc.trip.locations">
                 <label class="text-bold">{{tpc.numberOfElelementsIn(tpc.trip.locations)}}</label>
                 <label ng-if="tpc.trip.locations">
                     {{tpc.numberOfElelementsIn(tpc.trip.locations) === 1 ? 'Location' : 'Locations'}}
                 </label>
-                <i class="icon ion-chevron-right icon-accessory"></i>
             </li>
             <li class="item mood-container" ng-if="tpc.trip.moods">
                 <img class="result-mood" ng-src="./images/icons/{{tpc.trip.moods.icon}}">
