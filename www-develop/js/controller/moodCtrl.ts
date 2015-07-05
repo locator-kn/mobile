@@ -21,7 +21,6 @@ module Controller {
         }
 
         setMood(mood) {
-            debugger;
             if(this.state === this.moodSearchState) {
                 this.SearchService.setMood(mood);
                 this.$state.go(this.searchState);
