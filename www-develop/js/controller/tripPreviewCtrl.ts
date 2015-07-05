@@ -6,7 +6,7 @@ module Controller {
         moods:any = [];
 
         constructor(private TripService, private $ionicSlideBoxDelegate, private $scope, private UserService,
-                    private DataService, private $ionicLoading) {
+                    private DataService, private $ionicLoading, private webPath) {
             this.trip = TripService.getPreTrip();
             this.trip.locations = TripService.getLocations();
 
