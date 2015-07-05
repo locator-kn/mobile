@@ -48,8 +48,40 @@ module Controller {
             });
         }
 
-        selectLocations =() => {
-            // TODO: save entries to tripService
+        getQueryNameArrayOf(array) {
+            var equipmentArray = [];
+            var index;
+            for (index = 0; index < array.length; ++index) {
+                equipmentArray.push(array[index].query_name);
+            }
+            return equipmentArray;
+        }
+
+        toIsoDate(dateString) {
+            if (dateString !== '') {
+                var date = new Date(dateString);
+                return date.toISOString();
+            }
+            return dateString;
+        }
+
+        selectLocations = () => {
+            debugger;
+
+             var trip = {
+                title: '',
+                accommodation: this.accommodation,
+                accommodation_equipment: this.getQueryNameArrayOf(this.selectedAccommodationEquipment),
+                city: this.city,
+                days: this.selectedDays,
+                moods: this.getQueryNameArrayOf(this.selectedAccommodationEquipment),
+                start_date: this.toIsoDate(this.start_date),
+                end_date: this.toIsoDate(this.end_date),
+                persons: this.selectedPersons
+            };
+
+            this.TripService.setPreTrip(trip);
+
             this.$state.go('tab.offer-locations', {
                 cityId: this.city.place_id
             });
