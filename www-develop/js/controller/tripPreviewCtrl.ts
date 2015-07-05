@@ -9,6 +9,7 @@ module Controller {
                     private DataService, private $ionicLoading, private webPath) {
             this.trip = TripService.getPreTrip();
             this.trip.locations = TripService.getLocations();
+            this.trip.moods = TripService.getMood();
 
             if (this.trip.start_date && this.trip.end_date) {
                 // date format
