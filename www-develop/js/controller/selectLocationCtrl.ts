@@ -5,12 +5,17 @@ module Controller {
 
         cityId:string;
 
-        constructor(private LocationService, private $stateParams) {
+        myLocations:boolean = true;
+
+        constructor(private LocationService, private $stateParams, private webPath) {
             this.cityId = $stateParams.cityId;
 
-            console.log(this.cityId);
-
             this.LocationService.getMyLocationsByCity(this.cityId).then((result) => {
+                debugger;
+                if(result.data.length === 0) {
+                    // display all locations if no locationy by me available
+                    this.myLocations = false;
+                }
                 this.myLocationsByCity = result.data;
             });
 
