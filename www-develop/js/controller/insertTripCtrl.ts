@@ -66,13 +66,13 @@ module Controller {
         }
 
         selectLocations = () => {
-             var trip = {
+            var trip = {
                 title: '',
                 accommodation: this.accommodation,
                 accommodation_equipment: this.getQueryNameArrayOf(this.selectedAccommodationEquipment),
                 city: this.city,
                 days: this.selectedDays,
-                moods: this.getQueryNameArrayOf(this.selectedAccommodationEquipment),
+                moods: this.getQueryNameArrayOf(this.selectedMood),
                 start_date: this.toIsoDate(this.start_date),
                 end_date: this.toIsoDate(this.end_date),
                 persons: this.selectedPersons
