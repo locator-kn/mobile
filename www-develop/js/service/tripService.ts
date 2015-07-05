@@ -54,9 +54,11 @@ module Service {
 
         setLocations(locations){
             this.locations = locations;
-            debugger;
         }
 
+        getLocations(){
+            this.locations;
+        }
         static serviceId:string = "TripService";
     }
 }
