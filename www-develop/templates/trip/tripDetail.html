@@ -35,7 +35,7 @@
             <li class="item">
                 <label>
                     <label ng-if="tc.trip.days" class="text-bold">{{tc.trip.days}} </label>
-                    <label>ng-if="tc.trip.days" {{tc.trip.days === 1 ? 'Tag' : 'Tage'}}</label>
+                    <label ng-if="tc.trip.days"> {{tc.trip.days === 1 ? 'Tag' : 'Tage'}}</label>
                     <label ng-if="tc.trip.days && tc.trip.persons" class="text-bold">|</label>
                     <label ng-if="tc.trip.persons" class="text-bold">{{tc.trip.persons}} </label>
                     <label ng-if="tc.trip.persons">{{tc.trip.persons === 1 ? 'Person' : 'Personen'}}</label>
