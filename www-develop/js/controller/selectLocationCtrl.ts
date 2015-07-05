@@ -6,6 +6,7 @@ module Controller {
         cityId:string;
 
         myLocations:boolean = true;
+        selectedLocations:number = 0;
 
         constructor(private LocationService, private $stateParams, private webPath, private $rootScope) {
             this.cityId = $stateParams.cityId;
@@ -24,6 +25,11 @@ module Controller {
         }
 
         toogleSelect(location) {
+            if(!location.selected){
+                this.selectedLocations++;
+            } else {
+                this.selectedLocations--;
+            }
             var newStatus = !location.selected;
             // if element public
             if (location.public) {

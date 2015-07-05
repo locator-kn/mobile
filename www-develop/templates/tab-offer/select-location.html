@@ -1,4 +1,4 @@
-<ion-view view-title="Locations hinzufügen" class=" insert-trip" ng-controller="SelectLocationCtrl as slc">
+<ion-view view-title="Locations hinzufügen" class=" insert-trip pageWithButton" ng-controller="SelectLocationCtrl as slc">
     <ion-content class="background-color-grey locations">
         <div class="header">
             <div class="center">
@@ -62,6 +62,10 @@
                 </li>
             </ul>
         </div>
-
     </ion-content>
+    <button ng-if="authenticated" ng-click="slc.tripPreview()" ng-disabled="slc.selectedLocations < 1 ? true : false"
+            class="button-bottom button button-full background-coral bottom item-icon-right">
+        Trip Vorschau
+        <i class="icon ion-chevron-right icon-accessory"></i>
+    </button>
 </ion-view>
