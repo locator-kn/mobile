@@ -21,56 +21,58 @@
                 <label>von </label>
                 <label class="text-bold">{{tpc.user.name || 'anonym'}}</label>
             </li>
+            <form novalidate name="ilc.form" id="insertTripForm">
 
-            <li class="item item-input">
-                <input type="text" ng-model="ilc.trip.title" name="TripTitle"
-                       placeholder="Gib deinem Trip einen Titel" required>
-            </li>
-            <li class="item item-input">
+                <li class="item item-input" ng-class="{'error' : (tpc.error) && tpc.form.tripTitle.$error.required}">
+                    <input type="text" ng-model="ilc.trip.title" name="tripTitle"
+                           placeholder="Gib deinem Trip einen Titel *" required>
+                </li>
+                <li class="item item-input" ng-class="{'error' : (tpc.error) && tpc.form.tripDescription.$error.required}">
                 <textarea ng-model="ilc.trip.description" rows="4" type="input"
                           name="tripDescription"
                           placeholder="Beschreibe deinen Trip" required></textarea>
-            </li>
-            <li class="item" ng-if="tpc.trip.start_date && tpc.trip.end_date">
-                <label>von</label>
-                <label class="text-bold">{{tpc.trip.start_date}}</label>
-                <label>bis</label>
-                <label class="text-bold">{{tpc.trip.end_date}}</label>
-            </li>
-            <li class="item" ng-if="tpc.trip.days || tpc.trip.persons">
-                <label>
-                    <label ng-if="tpc.trip.days" class="text-bold">{{tpc.trip.days}} </label>
-                    <label ng-if="tpc.trip.days"> {{tpc.trip.days === 1 ? 'Tag' : 'Tage'}}</label>
-                    <label ng-if="tpc.trip.days && tpc.trip.persons" class="text-bold">|</label>
-                    <label ng-if="tpc.trip.persons" class="text-bold">{{tpc.trip.persons}} </label>
-                    <label ng-if="tpc.trip.persons">{{tpc.trip.persons === 1 ? 'Person' : 'Personen'}}</label>
-                </label>
-            </li>
-            <li class="item" ng-if="tpc.trip.locations">
-                <label class="text-bold">{{tpc.numberOfElelementsIn(tpc.trip.locations)}}</label>
-                <label ng-if="tpc.trip.locations">
-                    {{tpc.numberOfElelementsIn(tpc.trip.locations) === 1 ? 'Location' : 'Locations'}}
-                </label>
-            </li>
-            <li class="item mood-container" ng-if="tpc.trip.moods">
-                <img class="result-mood" ng-src="./images/icons/{{tpc.trip.moods.icon}}">
-                <label class="mood-title">{{tpc.trip.moods.title}}</label>
-            </li>
-            <li>
-                <div ng-hide="tpc.trip.accommodation == false">
-                    <h5 class="text-bold">Unterkunft</h5>
+                </li>
+                <li class="item" ng-if="tpc.trip.start_date && tpc.trip.end_date">
+                    <label>von</label>
+                    <label class="text-bold">{{tpc.trip.start_date}}</label>
+                    <label>bis</label>
+                    <label class="text-bold">{{tpc.trip.end_date}}</label>
+                </li>
+                <li class="item" ng-if="tpc.trip.days || tpc.trip.persons">
+                    <label>
+                        <label ng-if="tpc.trip.days" class="text-bold">{{tpc.trip.days}} </label>
+                        <label ng-if="tpc.trip.days"> {{tpc.trip.days === 1 ? 'Tag' : 'Tage'}}</label>
+                        <label ng-if="tpc.trip.days && tpc.trip.persons" class="text-bold">|</label>
+                        <label ng-if="tpc.trip.persons" class="text-bold">{{tpc.trip.persons}} </label>
+                        <label ng-if="tpc.trip.persons">{{tpc.trip.persons === 1 ? 'Person' : 'Personen'}}</label>
+                    </label>
+                </li>
+                <li class="item" ng-if="tpc.trip.locations">
+                    <label class="text-bold">{{tpc.numberOfElelementsIn(tpc.trip.locations)}}</label>
+                    <label ng-if="tpc.trip.locations">
+                        {{tpc.numberOfElelementsIn(tpc.trip.locations) === 1 ? 'Location' : 'Locations'}}
+                    </label>
+                </li>
+                <li class="item mood-container" ng-if="tpc.trip.moods">
+                    <img class="result-mood" ng-src="./images/icons/{{tpc.trip.moods.icon}}">
+                    <label class="mood-title">{{tpc.trip.moods.title}}</label>
+                </li>
+                <li ng-if="tpc.trip.accommodation">
+                    <div ng-hide="tpc.trip.accommodation == false">
+                        <h5 class="text-bold">Unterkunft</h5>
 
-                    <div class="accommodation-equipment">
-                        <acc-equ-chooser accommodation-equipment-selectable="false"
-                                         accommodation-equipment="tpc.trip.accommodation_equipment"></acc-equ-chooser>
-                        <label>{{tpc.trip.accommodation.title}}</label>
+                        <div class="accommodation-equipment">
+                            <acc-equ-chooser accommodation-equipment-selectable="false"
+                                             accommodation-equipment="tpc.trip.accommodation_equipment"></acc-equ-chooser>
+                            <label>{{tpc.trip.accommodation.title}}</label>
+                        </div>
                     </div>
-                </div>
-            </li>
+                </li>
+                <button ng-if="authenticated" ng-click="tpc.createTrip()" ng-disabled=""
+                        class="button-bottom button button-full background-coral bottom">
+                    Trip Erstellen
+                </button>
+            </form>
         </ul>
     </ion-content>
-    <button ng-if="authenticated" ng-click="tpc.saveTrip()" ng-disabled=""
-            class="button-bottom button button-full background-coral bottom">
-        Trip Erstellen
-    </button>
 </ion-view>

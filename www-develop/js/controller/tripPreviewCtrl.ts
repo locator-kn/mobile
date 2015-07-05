@@ -5,6 +5,8 @@ module Controller {
         user:any = {};
         moods:any = [];
 
+        error:boolean;
+
         constructor(private TripService, private $ionicSlideBoxDelegate, private $scope, private UserService,
                     private DataService, private $ionicLoading, private webPath) {
             this.trip = TripService.getPreTrip();
@@ -35,6 +37,17 @@ module Controller {
 
         numberOfElelementsIn(obj) {
             return Object.keys(obj).length;
+        }
+
+        createTrip() {
+            // check required fields
+            if (!this.trip.title
+                || !this.trip.description) {
+                this.error = true;
+                return;
+            }
+
+
         }
 
         static controllerId:string = "TripPreviewCtrl";
