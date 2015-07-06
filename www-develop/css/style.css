@@ -100,3 +100,7 @@
     bottom: 38px;
     position: absolute;
 }
+
+.mood span.ng-binding {
+    line-height: 34px;
+}
