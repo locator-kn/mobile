@@ -7,8 +7,8 @@ module Controller {
 
         error:boolean;
 
-        constructor(private TripService, private $ionicSlideBoxDelegate, private $scope, private UserService,
-                    private DataService, private $ionicLoading, private webPath) {
+        constructor(private TripService, private $ionicSlideBoxDelegate, private $state, private UserService,
+                    private DataService, private $ionicLoading, private webPath, private $ionicPopup, private $window) {
             this.trip = TripService.getPreTrip();
             debugger;
             this.trip.locations = TripService.getLocations();
@@ -56,10 +56,23 @@ module Controller {
             }
 
             this.TripService.createTrip(this.trip).then((data) => {
-                console.log(data + ' - Trip erfolgreich erstellt!')
+                this.clearData();
+                var alertPopup = this.$ionicPopup.alert({title: 'Herzlichen Glückwunsch, dein FETT GEILER TRIP wurde erstellt. Dieser Text wird durch einen Screen ersetzt und erscheint bald nicht mehr...'});
+                alertPopup.then((res) => {
+                    this.$state.go('tab.offer', {}, {reload: true});
+                    this.$window.location.reload(true);
+                });
             }).catch((err)=> {
                 console.log(err);
             })
+        }
+
+        clearData() {
+            this.trip = {};
+            this.user = {};
+            this.moods = [];
+            this.error = false;
+            this.TripService.clearData();
         }
 
         static controllerId:string = "TripPreviewCtrl";
