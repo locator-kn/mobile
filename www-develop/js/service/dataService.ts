@@ -146,7 +146,7 @@ module Service {
                                     description: ""
                                 }, {
                                     query_name: "sturm_der_liebe",
-                                    title: "strum der liebe",
+                                    title: "sturm der liebe",
                                     icon: "sturm_der_liebe.png",
                                     icon_grey: "sturm_der_liebe_grey.png",
                                     description: ""
