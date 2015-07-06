@@ -7,14 +7,14 @@
                 <ion-slide ng-repeat="location in tc.trip.locations">
                     <img class="tmpImageWidth" ng-src="{{tc.webPath}}{{location.picture  + '?size=mobile'}}">
                     <img class="user-picture" ui-sref="tab.search-user({userId:tc.trip.userid})"
-                         ng-src="{{tc.user.picture.picture}}">
+                         ng-src="{{tc.user.picture}}">
                 </ion-slide>
             </ion-slide-box>
             <div ng-if="tc.trip.locations && tc.numberOfElelementsIn(tc.trip.locations) === 1">
                 <div ng-repeat="location in tc.trip.locations">
                     <img class="tmpImageWidth" ng-src="{{tc.webPath}}{{location.pictures + '?size=mobile'}}">
                     <img class="user-picture" ui-sref="tab.search-user({userId:tc.trip.userid})"
-                         ng-src="{{tc.user.picture.picture}}">
+                         ng-src="{{tc.user.picture}}">
                 </div>
             </div>
 
@@ -23,7 +23,7 @@
                 <label class="text-bold">{{tc.user.name || 'anonym'}}</label>
             </li>
 
-            <li class="item description">
+            <li class="item description" ng-if="tc.trip.description">
                 <label>{{tc.trip.description}}</label>
             </li>
             <li class="item" ng-if="tc.trip.start_date && tc.trip.end_date">
@@ -32,7 +32,7 @@
                 <label>bis</label>
                 <label class="text-bold">{{tc.trip.end_date}}</label>
             </li>
-            <li class="item">
+            <li class="item" ng-if="tc.trip.days || tc.trip.persons">
                 <label>
                     <label ng-if="tc.trip.days" class="text-bold">{{tc.trip.days}} </label>
                     <label ng-if="tc.trip.days"> {{tc.trip.days === 1 ? 'Tag' : 'Tage'}}</label>
@@ -57,7 +57,7 @@
                     </div>
                 </div>
             </li>
-            <li>
+            <li ng-if="tc.trip.accommodation">
                 <div ng-hide="tc.trip.accommodation == false">
                     <h5 class="text-bold">Unterkunft</h5>
 
