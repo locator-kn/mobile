@@ -10,24 +10,24 @@
 }
 
 .tabs .tab-item .icon.locate {
-    background-image: url('../images/icons/white/locate.png');
+    background-image: url('../images/icons/neue_location_weiss.png');
 }
 
 .tabs .tab-item .icon.chat {
-    background-image: url('../images/icons/white/messenger.png');
+    background-image: url('../images/icons/messenger_weiss.png');
 }
 
 .tabs .tab-item .icon.offer {
-    background-image: url('../images/icons/white/biete.png');
+    background-image: url('../images/icons/biete.png');
 }
 
 .tabs .tab-item .icon.search {
 
-    background-image: url('../images/icons/white/suche.png');
+    background-image: url('../images/icons/suche_weiss.png');
 }
 
 .tabs .tab-item .icon.profile {
-    background-image: url('../images/icons/white/profil.png');
+    background-image: url('../images/icons/profil.png');
 }
 
 .tab-nav.tabs {
