@@ -32,7 +32,7 @@ module Controller {
             return this.MessengerService.getConversationById(conversationId)
                 .then(result => {
                     this.conversation = result.data;
-                    debugger;
+                    console.log(result)
                     if (!this.conversation[this.$rootScope.userID + '_read']) {
                         this.emitAck(this.conversation.opponent._id, conversationId)
                     }
