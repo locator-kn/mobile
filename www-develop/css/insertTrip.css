@@ -104,3 +104,15 @@
     margin-right: 10px;
     margin-top: 5px;
 }
+
+.insert-trip .error {
+    border-color: rgb(241, 100, 73);
+    border-width: 2px;
+    margin: 1px;
+}
+
+textarea.ng-pristine.ng-untouched.ng-invalid.ng-invalid-required,
+textarea.ng-dirty.ng-valid-parse.ng-touched.ng-invalid.ng-invalid-required{
+    background-color: transparent;
+    color: white;
+}

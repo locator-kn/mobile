@@ -1,5 +1,5 @@
 <!--cache view false needed for slider -->
-<ion-view class="trip pageWithButton" cache-view="false" view-title="Vorschau"
+<ion-view class="trip insert-trip pageWithButton" cache-view="false" view-title="Vorschau"
           ng-controller="TripPreviewCtrl as tpc">
     <ion-content>
         <ul>
@@ -21,7 +21,7 @@
                 <label>von </label>
                 <label class="text-bold">{{tpc.user.name || 'anonym'}}</label>
             </li>
-            <form novalidate name="ilc.form" id="insertTripForm">
+            <form novalidate name="tpc.form" id="insertTripForm">
 
                 <li class="item item-input" ng-class="{'error' : (tpc.error) && tpc.form.tripTitle.$error.required}">
                     <input type="text" ng-model="ilc.trip.title" name="tripTitle"
@@ -68,7 +68,7 @@
                         </div>
                     </div>
                 </li>
-                <button ng-if="authenticated" ng-click="tpc.createTrip()" ng-disabled=""
+                <button ng-if="authenticated" ng-click="tpc.createTrip()"
                         class="button-bottom button button-full background-coral bottom">
                     Trip Erstellen
                 </button>
