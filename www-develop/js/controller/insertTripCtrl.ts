@@ -35,6 +35,10 @@ module Controller {
                 this.moodAvailable = true;
             });
 
+            $rootScope.$on('deleteInsertTripData', () => {
+                this.deleteData();
+            });
+
             this.DataService.getAvailableDays().then((result)=> {
                 this.availableDays = result.data;
             });
@@ -84,6 +88,18 @@ module Controller {
                 cityId: this.city.place_id
             });
         };
+
+        deleteData =() => {
+            // trip
+            this.city = {};
+            this.start_date = '';
+            this.end_date = '';
+            this.selectedDays=0;
+            this.selectedPersons=0;
+            this.accommodation = false;
+            this.selectedAccommodationEquipment = [];
+            this.selectedMood = {};
+        }
 
         static controllerId:string = "InsertTripCtrl";
     }
