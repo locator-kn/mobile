@@ -64,6 +64,14 @@ module Service {
             return this.locations;
         }
 
+        clearData() {
+            this.preTrip = {};
+            this.locations = [];
+            this.city = {};
+            this.accommodationEquipment = [];
+            this.mood = [];
+        }
+
         static serviceId:string = "TripService";
     }
 }
