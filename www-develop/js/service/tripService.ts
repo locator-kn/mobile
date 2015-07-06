@@ -7,9 +7,13 @@ module Service {
         // create trip
         city:any = {};
         accommodationEquipment:any = [];
-        mood:any = {};
+        mood:any = [];
 
         constructor(private $http, private basePath, private $ionicLoading, private $rootScope) {
+        }
+
+        createTrip(trip) {
+            return this.$http.post(this.basePath + '/trips', trip);
         }
 
         getTripsByUser(userid) {
@@ -32,7 +36,7 @@ module Service {
         }
 
         getAccommodationEquipment() {
-           return this.accommodationEquipment;
+            return this.accommodationEquipment;
         }
 
         setMood(mood) {
@@ -44,21 +48,22 @@ module Service {
             return this.mood;
         }
 
-        setPreTrip(trip){
+        setPreTrip(trip) {
             this.preTrip = trip;
         }
 
-        getPreTrip(){
+        getPreTrip() {
             return this.preTrip;
         }
 
-        setLocations(locations){
+        setLocations(locations) {
             this.locations = locations;
         }
 
-        getLocations(){
+        getLocations() {
             return this.locations;
         }
+
         static serviceId:string = "TripService";
     }
 }
