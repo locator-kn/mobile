@@ -6,11 +6,11 @@
         <div ng-if="authenticated">
             <ul class="list">
                 <li class="item item-icon-right" ui-sref="tab.offer-city">
-                    {{itc.city.title || "Wohin geht der Trip? *"}}&nbsp;
+                    {{itc.city.title || "Wohin geht der Trip?"}}&nbsp;
                     <i class="icon ion-chevron-right icon-accessory"></i>
                 </li>
                 <li class="item item-icon-right" ui-sref="tab.offer-moods">
-                    <span ng-if="!itc.moodAvailable">Wie fühlt sich der Trip an? *</span>
+                    <span ng-if="!itc.moodAvailable">Wie fühlt sich der Trip an?</span>
                     <i class="icon ion-chevron-right icon-accessory"></i>
 
                     <div ng-if="itc.moodAvailable">
@@ -19,7 +19,7 @@
                     </div>
                 </li>
                 <li class="item">
-                    Tage *
+                    Tage
                     <div class="select-elements">
                         <div class="circle" ng-repeat="day in itc.availableDays"
                              ng-click="itc.selectedDays=day.value"
@@ -61,8 +61,6 @@
                    Angaben zur Unterkunft
                     <i class="icon ion-chevron-right icon-accessory"></i>
                 </li>
-                <li>
-                    <span class="required-text">* Pflichtfeld</span>
                 </li>
             </ul>
         </div>
