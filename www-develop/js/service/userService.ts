@@ -30,7 +30,6 @@ module Service {
                         reject(err);
                     });
             });
-
         }
 
         decorateUserImage = (data) => {
