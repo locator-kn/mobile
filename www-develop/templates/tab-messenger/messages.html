@@ -5,7 +5,7 @@
                 <div class="content">
                     <div ng-class="{'out' : message.from === userID}" class="message"
                          ng-repeat="message in mc.messages">
-                        <p><span class="message-content">{{message.message}}</span>
+                        <p><span ng-bind-html="message.message | emoji" class="message-content"></span>
                             <!--<span class="since">{{mc.since(message.create_date)}}</span></span>-->
                             <span class="bubble"></span>
                         </p>
