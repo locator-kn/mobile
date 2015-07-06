@@ -10,8 +10,16 @@ module Controller {
         constructor(private TripService, private $ionicSlideBoxDelegate, private $scope, private UserService,
                     private DataService, private $ionicLoading, private webPath) {
             this.trip = TripService.getPreTrip();
+            debugger;
             this.trip.locations = TripService.getLocations();
-            this.trip.moods = TripService.getMood();
+
+            var mood = TripService.getMood();
+            this.trip.moods = [];
+            this.trip.moods.push(mood.query_name);
+
+
+            // fixes
+            delete this.trip.city.total;
 
             if (this.trip.start_date && this.trip.end_date) {
                 // date format
@@ -47,7 +55,11 @@ module Controller {
                 return;
             }
 
-
+            this.TripService.createTrip(this.trip).then((data) => {
+                console.log(data + ' - Trip erfolgreich erstellt!')
+            }).catch((err)=> {
+                console.log(err);
+            })
         }
 
         static controllerId:string = "TripPreviewCtrl";
