@@ -24,11 +24,11 @@
             <form novalidate name="tpc.form" id="insertTripForm">
 
                 <li class="item item-input" ng-class="{'error' : (tpc.error) && tpc.form.tripTitle.$error.required}">
-                    <input type="text" ng-model="ilc.trip.title" name="tripTitle"
+                    <input type="text" ng-model="tpc.trip.title" name="tripTitle"
                            placeholder="Gib deinem Trip einen Titel *" required>
                 </li>
                 <li class="item item-input" ng-class="{'error' : (tpc.error) && tpc.form.tripDescription.$error.required}">
-                <textarea ng-model="ilc.trip.description" rows="4" type="input"
+                <textarea ng-model="tpc.trip.description" rows="4" type="input"
                           name="tripDescription"
                           placeholder="Beschreibe deinen Trip" required></textarea>
                 </li>
