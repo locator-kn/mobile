@@ -140,7 +140,7 @@ module Controller {
 
         showNewImage(data) {
             this.imageHasBeenUploaded = true;
-            this.headerImagePath = data.imageLocation.thumbnail;
+            this.headerImagePath = data.imageLocation.picture  + '?size=mobile' ;
         }
 
         // sample
