@@ -1,5 +1,6 @@
 .insert-location .placeholder-image {
     width: 100%;
+    float: left;
 }
 
 .insert-location a.choose-image {
@@ -28,6 +29,8 @@
 
 .insert-location .location-image {
     position: relative;
+    float:  left;
+    width: 100%;
 }
 
 .insert-location .google-map {
