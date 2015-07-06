@@ -3,6 +3,7 @@ module Controller {
 
         messages = [];
         messagesIdCache;
+        conversation:any = {};
 
         conversationId:string;
         opponentId:string;
@@ -12,19 +13,41 @@ module Controller {
             this.opponentId = this.$state.params.opponentId;
 
             this.getConversation(this.conversationId);
+            this.getMessages(this.conversationId);
             this.registerSocketEvent();
         }
 
 
-        // one single conversation
-        getConversation(conversationId) {
-            return this.MessengerService.getConversation(conversationId)
+        // get messages of a single conversation
+        getMessages(conversationId) {
+            return this.MessengerService.getMessages(conversationId)
                 .then(result => {
                     debugger;
                     this.messages = result.data;
                     this.$ionicScrollDelegate.scrollBottom(true);
                 });
         }
+
+        getConversation(conversationId) {
+            return this.MessengerService.getConversationById(conversationId)
+                .then(result => {
+                    this.conversation = result.data;
+                    debugger;
+                    if (!this.conversation[this.$rootScope.userID + '_read']) {
+                        this.emitAck(this.conversation.opponent._id, conversationId)
+                    }
+                    this.$ionicScrollDelegate.scrollBottom(true);
+                });
+        }
+
+        emitAck(from, conversation_id) {
+            console.log('send ack for received message', {from: this.$rootScope.userID, opponent: from, conversation_id: conversation_id});
+            setTimeout(() => {
+                this.SocketService.emit('message_ack', {from: this.$rootScope.userID, opponent: from, conversation_id: conversation_id});
+            }, 10);
+            this.conversation[this.$rootScope.userID + '_read'] = true;
+        }
+
 
 
         registerSocketEvent =() =>  {
@@ -53,8 +76,6 @@ module Controller {
 
                 .then(result => {
                     var date = new Date();
-                    this.messages.push({message: message, from: this.$rootScope.userID, create_date: date.toISOString()});
-                    console.info("Msg Success");
                     this.$ionicScrollDelegate.scrollBottom(true);
                     this.MessengerService.clearMessageCacheById(this.conversationId);
                 })
