@@ -53,7 +53,8 @@ var deps = [
     'ngProgressLite',
     'btford.socket-io',
     'uiGmapgoogle-maps',
-    'ngCordova'
+    'ngCordova',
+    'emoji'
 ];
 
 angular.module('starter', deps)
