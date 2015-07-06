@@ -8,12 +8,14 @@
                         <ion-slide-box ng-if="toc.numberOfElelementsIn(result.locations) !== 1"
                                        on-slide-changed="slideHasChanged($index)">
                             <ion-slide ng-repeat="location in result.locations">
-                                <img class="tmpImageWidth" ng-src="{{toc.webPath}}{{location.thumbnail}}">
+                                <img class="tmpImageWidth"
+                                     ng-src="{{toc.webPath}}{{location.picture + '?size=mobile'}}">
                             </ion-slide>
                         </ion-slide-box>
                         <div ng-if="toc.numberOfElelementsIn(result.locations) === 1">
                             <div ng-repeat="location in result.locations">
-                                <img class="tmpImageWidth" ng-src="{{toc.webPath}}{{location.thumbnail}}">
+                                <img class="tmpImageWidth"
+                                     ng-src="{{toc.webPath}}{{location.picture + '?size=mobile'}}">
                             </div>
                         </div>
                     </div>
@@ -23,7 +25,6 @@
                                 <div class="text-bold">{{result.title}}</div>
                                 <label>von </label>
                                 <label class="text-bold">{{result.username || 'anonym'}}</label>
-
                             </li>
                             <li class="item" ng-if="result.start_date && result.end_date">
                                 <label class="text-bold">{{toc.formatDate(result.start_date)}}</label>
