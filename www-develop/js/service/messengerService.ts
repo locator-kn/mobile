@@ -11,7 +11,11 @@ module Service {
             return this.$http.get(this.basePathRealtime + '/my/conversations');
         }
 
-        getConversation(id) {
+        getConversationById(conversationId){
+            return this.$http.get(this.basePathRealtime + '/conversations/' + conversationId)
+        }
+
+        getMessages(id) {
             return this.$http.get(this.basePathRealtime + '/messages/' + id, {cache: this.messagesIdCache});
         }
 
