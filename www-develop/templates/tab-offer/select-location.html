@@ -19,7 +19,7 @@
                     <div class="image-container" ui-sref='tab.offer-locations-detail({ locationId: location._id})'>
                         <!-- images -->
                         <img ng-if="location.images.picture" class="picture"
-                             ng-src="{{slc.webPath}}{{location.images.thumbnail}}">
+                             ng-src="{{slc.webPath}}{{location.images.pictures + '?size=mobile'}}">
                         <img ng-if="!location.images.picture" class="googlemap"
                              ng-src="{{location.images.googlemap}}&size=200x200">
                     </div>
@@ -44,7 +44,7 @@
                     <div class="image-container" ui-sref='tab.offer-locations-detail({ locationId: location._id})'>
                         <!-- images -->
                         <img ng-if="location.images.picture" class="picture"
-                             ng-src="{{slc.webPath}}{{location.images.thumbnail}}">
+                             ng-src="{{slc.webPath}}{{location.images.pictures + '?size=mobile'}}">
                         <img ng-if="!location.images.picture" class="googlemap"
                              ng-src="{{location.images.googlemap}}&size=200x200">
                     </div>
