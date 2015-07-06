@@ -17,6 +17,7 @@
     "jr-crop-locator": "~1.1.0",
     "ngCordova": "~0.1.17-alpha",
     "angular": "~1.4.1",
-    "ngprogress-lite": "~1.0.7"
+    "ngprogress-lite": "~1.0.7",
+    "angular-emoji-filter": "~0.0.2"
   }
 }
