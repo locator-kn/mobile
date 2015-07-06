@@ -18,7 +18,7 @@ module Service {
 
                 this.$http.get(this.basePath + '/users/' + _Id, {cache: this.usersIdCache})
                     .then(data => {
-                        if(data.data.birthdate === '') {
+                        if (data.data.birthdate === '') {
                             delete data.data.birthdate;
                         }
                         return this.decorateUserImage(data);
@@ -36,15 +36,9 @@ module Service {
         decorateUserImage = (data) => {
             return this.$q((resolve, reject) => {
                 if (!data.data.picture) {
-                    data.data.picture = {
-                        picture: './images/profile.png',
-                        thumbnail: './images/profile.png'
-                    }
+                    data.data.picture = './images/profile.png';
                 } else {
-                    data.data.picture = {
-                        picture: this.webPath + data.data.picture.picture,
-                        thumbnail: this.webPath + data.data.picture.thumbnail
-                    }
+                    data.data.picture = this.webPath + data.data.picture;
                 }
                 resolve(data);
             });
