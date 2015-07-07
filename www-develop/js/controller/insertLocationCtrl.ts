@@ -236,9 +236,14 @@ module Controller {
 
             this.GeolocationService.saveLocation(formValues, this.documentId).
                 then((result) => {
+                    if (this.headerImagePath) {
+                        var pic = this.headerImagePath + '?size=mobile';
+                    } else {
+                        var pic = '/images/header-image-placeholder.png';
+                    }
                     var info = {
                         tripId: result.data.id,
-                        picture: this.headerImagePath || '/images/header-image-placeholder.png'
+                        picture: pic
                     };
                     this.GeolocationService.setResultInfoObject(info);
                     this.$state.go('tab.locate-options');
