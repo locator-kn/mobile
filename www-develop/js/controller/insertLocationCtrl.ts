@@ -39,7 +39,7 @@ module Controller {
         error:boolean = false;
 
         constructor(private CameraService, private $scope, private basePath, private GeolocationService, private UserService,
-                    private PictureUploadService, private webPath, private $ionicLoading, private $ionicPopup, private ngProgressLite) {
+                    private PictureUploadService, private webPath, private $ionicLoading, private $ionicPopup, private ngProgressLite, private $ionicScrollDelegate) {
 
             this.UserService.getMe().then(user => {
                 this.me = user.data;
@@ -69,6 +69,7 @@ module Controller {
                 tilesloaded: () => {
                     this.mapIsReady = true;
                     this.getCurrentPosition();
+                    this.$ionicScrollDelegate.scrollBottom(true);
                     // TODO: get current location
                     this.$ionicLoading.hide();
 
@@ -177,6 +178,8 @@ module Controller {
                     }
 
                 })
+            } else {
+                this.toggleMap();
             }
         };
 
