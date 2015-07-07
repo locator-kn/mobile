@@ -1,7 +1,8 @@
 <!--cache view false needed for slider -->
-<ion-view class="trip insert-trip " ng-class="!tpc.tripCreated ? 'pageWithButton' : ''"  cache-view="false" view-title="Vorschau"
+<ion-view class="trip insert-trip " ng-class="!tpc.tripCreated ? 'pageWithButton' : ''" cache-view="false"
+          view-title="Vorschau"
           ng-controller="TripPreviewCtrl as tpc">
-    <form novalidate name="tpc.form" id="insertTripForm" ng-if="!tpc.tripCreated">
+    <form novalidate name="tpc.form" id="insertTripForm">
         <ion-content>
             <ul>
                 <ion-slide-box ng-if="tpc.trip.locations && tpc.numberOfElelementsIn(tpc.trip.locations) !== 1"
@@ -27,15 +28,16 @@
                     <label class="text-bold">{{tpc.user.name || 'anonym'}}</label>
                 </li>
 
-                <li class="item item-input" ng-class="{'error' : (tpc.error) && tpc.form.tripTitle.$error.required}">
+                <li class="item item-input"
+                    ng-class="{'error' : (tpc.error) && tpc.form.tripTitle.$error.required}">
                     <input type="text" ng-model="tpc.trip.title" name="tripTitle"
                            placeholder="Gib deinem Trip einen Titel *" required>
                 </li>
                 <li class="item item-input"
                     ng-class="{'error' : (tpc.error) && tpc.form.tripDescription.$error.required}">
-                <textarea ng-model="tpc.trip.description" rows="4" type="input"
-                          name="tripDescription"
-                          placeholder="Beschreibe deinen Trip" required></textarea>
+                            <textarea ng-model="tpc.trip.description" rows="4" type="input"
+                                      name="tripDescription"
+                                      placeholder="Beschreibe deinen Trip" required></textarea>
                 </li>
                 <li class="item" ng-if="tpc.trip.start_date && tpc.trip.end_date">
                     <label>von</label>
@@ -81,42 +83,4 @@
             Trip Erstellen
         </button>
     </form>
-    <ion-content>
-        <ul>
-            <div ng-if="tpc.trip.locations">
-                <div ng-repeat="location in tpc.trip.locations|limitTo:1">
-                    <div class="image-container-full"
-                         style="background-image: url({{tpc.webPath}}{{location.picture + '?size=mobile'}});background-size: cover">
-                    </div>
-                </div>
-            </div>
-        </ul>
-        <li class="item item-icon-right item-option">
-            <img class="list-icon" ng-src="./images/icons/ansehen.png">
-            <label class="option-label">Trip ansehen</label>
-            <i class="icon ion-chevron-right icon-accessory"></i>
-        </li>
-        <li class="item item-icon-right item-option">
-            <img class="list-icon" ng-src="./images/icons/alle_trips.png">
-            <label class="option-label">Deine Trips ansehen</label>
-            <i class="icon ion-chevron-right icon-accessory"></i>
-        </li>
-        <li class="item item-icon-right item-option">
-            <img class="list-icon" ng-src="./images/icons/trip_erstellen.png">
-            <label class="option-label">Weiteren Trip erstellen</label>
-            <i class="icon ion-chevron-right icon-accessory"></i>
-        </li>
-        <li class="item item-icon-right item-option">
-            <img class="list-icon" ng-src="./images/icons/alle_locations.png">
-            <label class="option-label">Deine Locations ansehen</label>
-            <i class="icon ion-chevron-right icon-accessory"></i>
-        </li>
-        <li class="item item-icon-right item-option">
-            <img class="list-icon" ng-src="./images/icons/location_hinzufuegen.png">
-            <label class="option-label">Location erstellen</label>
-            <i class="icon ion-chevron-right icon-accessory"></i>
-        </li>
-
-
-    </ion-content>
 </ion-view>
