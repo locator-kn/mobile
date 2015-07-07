@@ -2,6 +2,8 @@ module Service {
     export class GeolocationService {
 
 
+        resultInfoObject:any = {};
+
         constructor(private $q, private $ionicLoading, private $ionicPopup, private $http, private basePath) {
         }
 
@@ -31,6 +33,14 @@ module Service {
                 return this.$http.put(this.basePath + '/users/my/locations/' + id, location);
             }
             return this.$http.post(this.basePath + '/users/my/locations', location)
+        }
+
+        setResultInfoObject(obj){
+            this.resultInfoObject = obj;
+        }
+
+        getResultInfoObject(){
+            return this.resultInfoObject;
         }
 
         static serviceId:string = "GeolocationService";
