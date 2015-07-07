@@ -239,7 +239,7 @@ module Controller {
                     if (this.headerImagePath) {
                         var pic = this.headerImagePath + '?size=mobile';
                     } else {
-                        var pic = '/images/header-image-placeholder.png';
+                        var pic = 'images/header-image-placeholder.png';
                     }
                     var info = {
                         tripId: result.data.id,
