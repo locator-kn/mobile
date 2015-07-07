@@ -4,6 +4,7 @@ module Controller {
         trip:any = {};
         user:any = {};
         moods:any = [];
+        selectedMood:any = {};
 
         error:boolean;
 
@@ -15,7 +16,7 @@ module Controller {
             var mood = TripService.getMood();
             this.trip.moods = [];
             this.trip.moods.push(mood.query_name);
-
+            this.selectedMood = mood;
 
             // fixes
             delete this.trip.city.total;

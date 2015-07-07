@@ -59,9 +59,9 @@
                         {{tpc.numberOfElelementsIn(tpc.trip.locations) === 1 ? 'Location' : 'Locations'}}
                     </label>
                 </li>
-                <li class="item mood-container" ng-if="tpc.trip.moods">
-                    <img class="result-mood" ng-src="./images/icons/{{tpc.trip.moods.icon}}">
-                    <label class="mood-title">{{tpc.trip.moods.title}}</label>
+                <li class="item mood-container" ng-if="tpc.selectedMood">
+                    <img class="result-mood" ng-src="./images/icons/{{tpc.selectedMood.icon}}">
+                    <label class="mood-title">{{tpc.selectedMood.title}}</label>
                 </li>
                 <li ng-if="tpc.trip.accommodation">
                     <div ng-hide="tpc.trip.accommodation == false">
