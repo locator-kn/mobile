@@ -7,10 +7,9 @@ module Controller {
         selectedMood:any = {};
 
         error:boolean;
-        tripCreated:boolean = true;
 
         constructor(private TripService, private $ionicSlideBoxDelegate, private $state, private UserService,
-                    private DataService, private $ionicLoading, private webPath, private $ionicPopup, private $window) {
+                    private DataService, private $ionicLoading, private webPath) {
             this.trip = TripService.getPreTrip();
             this.trip.locations = TripService.getLocations();
 
@@ -43,7 +42,6 @@ module Controller {
             });
         }
 
-
         numberOfElelementsIn(obj) {
             return Object.keys(obj).length;
         }
@@ -56,14 +54,13 @@ module Controller {
                 return;
             }
 
-            this.TripService.createTrip(this.trip).then((data) => {
-                this.clearData();
-                this.tripCreated = true;
-                var alertPopup = this.$ionicPopup.alert({title: 'Herzlichen Glückwunsch, dein FETT GEILER TRIP wurde erstellt. Dieser Text wird durch einen Screen ersetzt und erscheint bald nicht mehr...'});
-                alertPopup.then((res) => {
-                    this.$state.go('tab.offer', {}, {reload: true});
-                    this.$window.location.reload(true);
-                });
+            this.TripService.createTrip(this.trip).then((result) => {
+                var info = {
+                    tripId: result.data.id,
+                    locations: this.trip.locations
+                };
+                this.TripService.setResultInfoObject(info);
+                this.$state.go('tab.offer-options');
             }).catch((err)=> {
                 console.log(err);
             })
