@@ -10,7 +10,6 @@ module Controller {
         constructor(private TripService, private $ionicSlideBoxDelegate, private $state, private UserService,
                     private DataService, private $ionicLoading, private webPath, private $ionicPopup, private $window) {
             this.trip = TripService.getPreTrip();
-            debugger;
             this.trip.locations = TripService.getLocations();
 
             var mood = TripService.getMood();
