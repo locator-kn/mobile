@@ -70,11 +70,16 @@
                 </li>
 
             </div>
-            <div ng-if="!authenticated">
-                Um diese Funktionalität zu verwenden, musst du eingeloogt sein
+            <div ng-if="!authenticated" class="no-register">
+                <div class="image-container-full"
+                     style="background-image: url('images/svg/lorenz_frontansicht.svg')">
+                </div>
+                <span class="message">Melde dich an und tagge deine Lieblingslocations.</span>
+                <span class="message">Oder registriere dich und werde ein Teil von Locator.</span>
             </div>
         </ion-content>
-        <button class="button-bottom button background-green gps-button bottom button-full" type="submit" ng-click="ilc.saveLocation()">
+        <button ng-if="authenticated" class="button-bottom button background-green gps-button bottom button-full" type="submit"
+                ng-click="ilc.saveLocation()">
             Location erstellen
         </button>
     </form>
