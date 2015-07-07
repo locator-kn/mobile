@@ -8,6 +8,25 @@
     font-family: Signika;
 }
 
+.image-container {
+    width: 100%;
+    overflow: hidden;
+    float: left;
+    height: 300px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.image-container-thumb {
+    width: 100%;
+    overflow: hidden;
+    float: left;
+    height: 80px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
 .circle {
     border-radius: 50%;
     border: 1px solid #ddd;

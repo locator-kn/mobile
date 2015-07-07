@@ -1,11 +1,3 @@
-.location .image-container {
-    width: 100%;
-    overflow: hidden;
-    float: left;
-    height: 300px;
-    background-position: center;
-    background-repeat: no-repeat;
-}
 
 .tag-detail {
     float: left;
