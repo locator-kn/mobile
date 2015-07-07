@@ -35,6 +35,7 @@ module Controller {
         mapMarkerSet:boolean;
 
         googleMap:boolean = false;
+        mapIsReady:boolean = false;
         error:boolean = false;
 
         constructor(private CameraService, private $scope, private basePath, private GeolocationService, private UserService,
@@ -66,6 +67,9 @@ module Controller {
                     this.clickMapEvent(mapModel, eventName, originalEventArgs);
                 },
                 tilesloaded: () => {
+                    this.mapIsReady = true;
+                    this.getCurrentPosition();
+                    // TODO: get current location
                     this.$ionicLoading.hide();
 
                 }
@@ -139,33 +143,41 @@ module Controller {
 
         showNewImage(data) {
             this.imageHasBeenUploaded = true;
-            this.headerImagePath = data.imageLocation.picture  + '?size=mobile' ;
+            this.headerImagePath = data.imageLocation + '?size=mobile';
         }
 
         // sample
         getCurrentPosition = () => {
-            if (!this.googleMap) {
-                this.googleMap = true;
-                this.$ionicLoading.show({template: '<ion-spinner icon="spiral"></ion-spinner>'});
-            }
-
-            this.GeolocationService.getCurrentLocation().then((position) => {
-                this.lat = position.coords.latitude;
-                this.long = position.coords.longitude;
-
-                this.map.clickedMarker.latitude = this.lat;
-                this.map.clickedMarker.longitude = this.long;
-                this.map.zoom = 15;
-                this.map.center.latitude = this.lat;
-                this.map.center.longitude = this.long;
-
-                this.mapMarkerSet = true;
-                this.getCityFromMarker();
-                if (!this.$scope.$$phase) {
-                    this.$scope.$apply();
+            if (this.mapIsReady) {
+                // This is important, if google map will start loading the image upload will break.
+                if (this.isUploading) {
+                    this.$ionicPopup.alert({title: 'Bitte warte kurz bis das Bild fertig geladen wurde'});
+                    return;
                 }
 
-            })
+                if (!this.googleMap) {
+                    this.googleMap = true;
+                    this.$ionicLoading.show({template: '<ion-spinner icon="spiral"></ion-spinner>'});
+                }
+
+                this.GeolocationService.getCurrentLocation().then((position) => {
+                    this.lat = position.coords.latitude;
+                    this.long = position.coords.longitude;
+
+                    this.map.clickedMarker.latitude = this.lat;
+                    this.map.clickedMarker.longitude = this.long;
+                    this.map.zoom = 15;
+                    this.map.center.latitude = this.lat;
+                    this.map.center.longitude = this.long;
+
+                    this.mapMarkerSet = true;
+                    this.getCityFromMarker();
+                    if (!this.$scope.$$phase) {
+                        this.$scope.$apply();
+                    }
+
+                })
+            }
         };
 
         getCityFromMarker() {
