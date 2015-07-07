@@ -85,4 +85,6 @@
 
 .insert-location .locate-text {
     float: left;
+    font-family: Signika;
+    color: black;
 }

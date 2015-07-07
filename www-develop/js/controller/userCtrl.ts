@@ -63,9 +63,7 @@ module Controller {
                     if (result.data.description.length > (this.descriptionRows * this.lettersPerLine)) {
                         this.descriptionRows = Math.round(result.data.description.length / 25);
                     }
-
                     this.$ionicLoading.hide();
-
                 });
         };
 
@@ -100,7 +98,7 @@ module Controller {
                     this.$ionicPopup.alert({title: 'Datum muss in der Vergangenheit liegen!'});
                     return;
                 }
-                var date = new Date( this.user.birthdate);
+                var date = new Date(this.user.birthdate);
                 this.user.birthdate = date.toISOString();
             }
             this.$ionicLoading.show({template: '<ion-spinner icon="spiral"></ion-spinner>'});
@@ -122,7 +120,7 @@ module Controller {
                     console.info(this.user);
                     this.$ionicPopup.alert({title: 'Fehler beim speichern!'});
                 });
-        }
+        };
 
         editTrigger() {
             this.edit = !this.edit;
