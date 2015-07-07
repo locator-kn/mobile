@@ -38,7 +38,7 @@ module Controller {
         mapIsReady:boolean = false;
         error:boolean = false;
 
-        constructor(private CameraService, private $scope, private basePath, private GeolocationService, private UserService,
+        constructor(private CameraService, private $scope, private basePath, private GeolocationService, private UserService, private $state,
                     private PictureUploadService, private webPath, private $ionicLoading, private $ionicPopup, private ngProgressLite, private $ionicScrollDelegate) {
 
             this.UserService.getMe().then(user => {
@@ -236,9 +236,14 @@ module Controller {
 
             this.GeolocationService.saveLocation(formValues, this.documentId).
                 then((result) => {
-                    console.log('saved ' + result);
+                    var info = {
+                        tripId: result.data.id,
+                        picture: this.headerImagePath || '/images/header-image-placeholder.png'
+                    };
+                    this.GeolocationService.setResultInfoObject(info);
+                    this.$state.go('tab.locate-options');
+
                     this.documentWasCreated = true;
-                    this.$ionicPopup.alert({title: 'Herzlichen Glückwunsch, deine FETT GEILE Location wurde erstellt. Dieser Text wird durch einen Screen ersetzt und erscheint bald nicht mehr...'});
                     this.resetController();
 
                 }).catch((err) => {
