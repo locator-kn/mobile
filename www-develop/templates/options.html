@@ -1,9 +1,9 @@
 <ion-view view-title="Fertig" ng-controller="OptionCtrl as oc">
     <ion-content class="background-color-grey insert-trip">
         <ul class="list">
-            <div ng-if="oc.location">
+            <div ng-if="oc.result.picture">
                     <div class="image-container-full"
-                         style="background-image: url({{oc.webPath}}{{oc.location.picture + '?size=mobile'}});background-size: cover">
+                         style="background-image: url({{oc.webPath}}{{oc.result.picture + '?size=mobile'}});background-size: cover">
                     </div>
             </div>
         </ul>
