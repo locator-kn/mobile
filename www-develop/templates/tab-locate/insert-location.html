@@ -6,11 +6,13 @@
         <div ng-if="authenticated" ng-controller="InsertLocationCtrl as ilc">
             <form novalidate name="ilc.form" id="insertLocationForm">
                 <div class="location-image">
-                    <img ng-if="!ilc.headerImagePath" class="placeholder-image"
-                         src="images/header-image-placeholder.png">
-                    <img ng-if="ilc.headerImagePath" class="placeholder-image"
-                         ng-src="{{ilc.webPath}}{{ilc.headerImagePath}}">
+                    <div class="image-container" ng-if="!ilc.headerImagePath"
+                         style="background-image: url('images/header-image-placeholder.png');background-size: cover">
+                    </div>
 
+                    <div class="image-container" ng-if="ilc.headerImagePath"
+                         style="background-image: url({{ilc.webPath}}{{ilc.headerImagePath}});background-size: cover">
+                    </div>
                     <a class="choose-image" ng-click="ilc.showPictureActions()">
                         <img class="image" src="images/icons/camera.png">
                     </a>

@@ -11,8 +11,9 @@
                 ui-sref="{{loc.me ? 'tab.profile-locations-detail({ locationId: location._id})' : 'tab.search-result-location-detail({ locationId: location._id})'}}">
                 <div class="image-container">
                     <!-- images -->
-                    <img ng-if="location.images.picture" class="picture"
-                         ng-src="{{loc.webPath}}{{location.images.picture + '?size=mobile'}}">
+                    <div class="image-container" ng-if="location.images.picture"
+                         style="background-image: url({{loc.webPath}}{{location.images.picture + '?size=mobile'}});background-size: cover">
+                    </div>
                     <img ng-if="!location.images.picture" class="googlemap"
                          ng-src="{{location.images.googlemap}}&size=200x200">
                 </div>

@@ -8,14 +8,15 @@
                         <ion-slide-box ng-if="toc.numberOfElelementsIn(result.locations) !== 1"
                                        on-slide-changed="slideHasChanged($index)">
                             <ion-slide ng-repeat="location in result.locations">
-                                <img class="tmpImageWidth"
-                                     ng-src="{{toc.webPath}}{{location.picture + '?size=mobile'}}">
-                            </ion-slide>
+                                    <div class="image-container"
+                                         style="background-image: url({{toc.webPath}}{{location.picture + '?size=mobile'}});background-size: cover">
+                                    </div>
                         </ion-slide-box>
                         <div ng-if="toc.numberOfElelementsIn(result.locations) === 1">
                             <div ng-repeat="location in result.locations">
-                                <img class="tmpImageWidth"
-                                     ng-src="{{toc.webPath}}{{location.picture + '?size=mobile'}}">
+                                <div class="image-container"
+                                     style="background-image: url({{toc.webPath}}{{location.picture + '?size=mobile'}});background-size: cover">
+                                </div>
                             </div>
                         </div>
                     </div>

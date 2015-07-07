@@ -18,6 +18,9 @@
                     ng-class="location.selected ? 'selected-location' : ''">
                     <div class="image-container" ui-sref='tab.offer-locations-detail({ locationId: location._id})'>
                         <!-- images -->
+                        <div class="image-container-thumb"
+                             style="background-image: url({{slc.webPath}}{{location.images.picture + '?size=mobileThumb'}});background-size: cover">
+                        </div>
                         <img ng-if="location.images.picture" class="picture"
                              ng-src="{{slc.webPath}}{{location.images.picture + '?size=mobile'}}">
                         <img ng-if="!location.images.picture" class="googlemap"
