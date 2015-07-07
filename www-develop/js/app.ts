@@ -350,6 +350,14 @@ angular.module('starter', deps)
                     }
                 }
             })
+            .state('tab.locate-options', {
+                url: '/locate/options',
+                views: {
+                    'tab-locate': {
+                        templateUrl: 'templates/options.html'
+                    }
+                }
+            })
 
             .state('tab.profile', {
                 url: '/profile/:userId',
