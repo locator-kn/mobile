@@ -7,13 +7,19 @@ module Controller {
         state;
 
         isLocation:boolean;
+        path:string;
 
         constructor(private webPath, private TripService, private GeolocationService, private $ionicScrollDelegate, private $window, private $state) {
             this.state = this.$state.current.name;
+            this.path = this.webPath;
 
+            debugger;
             if (this.state === this.locateType) {
                 this.isLocation = true;
                 this.result = GeolocationService.getResultInfoObject();
+                if(this.result.picture === 'images/header-image-placeholder.png'){
+                    this.path = '';
+                }
             } else {
                 this.result = TripService.getResultInfoObject();
             }
