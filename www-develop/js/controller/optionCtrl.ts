@@ -1,15 +1,19 @@
 module Controller {
     export class OptionCtrl {
 
-        tripId:string;
-        location:any = {};
-        constructor(private webPath, private TripService, private $ionicScrollDelegate, private $window, private $state) {
-            // TODO check if location state or trip state
-            var result = TripService.getResultInfoObject();
-            this.tripId = result.tripId;
+        result:any = {};
 
-            for (var first in result.locations) break;
-            this.location = result.locations[first];
+        locateType = 'tab.locate-options';
+        state;
+
+        constructor(private webPath, private TripService, private GeolocationService, private $ionicScrollDelegate, private $window, private $state) {
+            this.state = this.$state.current.name;
+
+            if (this.state === this.locateType) {
+                this.result = GeolocationService.getResultInfoObject();
+            } else {
+                this.result = TripService.getResultInfoObject();
+            }
 
             this.$ionicScrollDelegate.scrollTop(true);
 
