@@ -9,6 +9,8 @@ module Service {
         accommodationEquipment:any = [];
         mood:any = [];
 
+        resultInfoObject:any = {};
+
         constructor(private $http, private basePath, private $ionicLoading, private $rootScope) {
         }
 
@@ -47,6 +49,13 @@ module Service {
             return this.mood;
         }
 
+        setResultInfoObject(obj){
+            this.resultInfoObject = obj;
+        }
+
+        getResultInfoObject(){
+            return this.resultInfoObject;
+        }
         setPreTrip(trip) {
             this.preTrip = trip;
         }
