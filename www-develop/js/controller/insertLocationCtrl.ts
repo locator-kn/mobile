@@ -73,7 +73,6 @@ module Controller {
         }
 
         clickMapEvent(mapModel, eventName, originalEventArgs) {
-            console.log(mapModel);
             var e = originalEventArgs[0];
             var lat = e.latLng.lat(),
                 lon = e.latLng.lng();
@@ -149,15 +148,12 @@ module Controller {
                 this.lat = position.coords.latitude;
                 this.long = position.coords.longitude;
 
-                this.map.clickedMarker = {
-                    id: 0,
-                    options: {
-                        labelClass: "marker-labels",
-                        labelAnchor: "50 0"
-                    },
-                    latitude: this.lat,
-                    longitude: this.long
-                };
+                this.map.clickedMarker.latitude = this.lat;
+                this.map.clickedMarker.longitude = this.long;
+                this.map.zoom = 15;
+                this.map.center.latitude = this.lat;
+                this.map.center.longitude = this.long;
+
                 this.mapMarkerSet = true;
                 this.getCityFromMarker();
                 if (!this.$scope.$$phase) {
@@ -200,6 +196,7 @@ module Controller {
                 || !this.locationFormDetails.title
                 || !this.locationFormDetails.description
                 || !this.locationFormDetails.tags) {
+                console.log('error - missing parameter')
                 this.error = true;
                 return;
             }
