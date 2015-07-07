@@ -3,7 +3,7 @@
         <ul class="list">
             <div ng-if="oc.result.picture">
                     <div class="image-container-full"
-                         style="background-image: url({{oc.webPath}}{{oc.result.picture + '?size=mobile'}});background-size: cover">
+                         style="background-image: url({{oc.webPath}}{{oc.result.picture}});background-size: cover">
                     </div>
             </div>
         </ul>
@@ -14,19 +14,31 @@
         <!--<label class="option-label">Trip ansehen</label>-->
         <!--<i class="icon ion-chevron-right icon-accessory"></i>-->
         <!--</li>-->
-        <li class="item item-icon-right item-option" ui-sref="tab.profile">
+        <li class="item item-icon-right item-option" ui-sref="tab.profile({userId: userID})">
             <img class="list-icon" ng-src="./images/icons/alle_trips.png">
             <label class="option-label">Zu deinen Trips/Locations</label>
             <i class="icon ion-chevron-right icon-accessory"></i>
         </li>
-        <li class="item item-icon-right item-option" ng-click="oc.restart()">
+
+        <li ng-if="!oc.isLocation" class="item item-icon-right item-option" ng-click="oc.restartTrip()">
             <img class="list-icon" ng-src="./images/icons/trip_erstellen.png">
             <label class="option-label">Weiteren Trip erstellen</label>
             <i class="icon ion-chevron-right icon-accessory"></i>
         </li>
-        <li class="item item-icon-right item-option" ui-sref="tab.locate">
+        <li ng-if="oc.isLocation" class="item item-icon-right item-option" ng-click="oc.restartLocation()">
+            <img class="list-icon" ng-src="./images/icons/location_hinzufuegen.png">
+            <label class="option-label">Weitere Location erstellen</label>
+            <i class="icon ion-chevron-right icon-accessory"></i>
+        </li>
+
+        <li ng-if="!oc.isLocation" class="item item-icon-right item-option" ui-sref="tab.locate">
             <img class="list-icon" ng-src="./images/icons/location_hinzufuegen.png">
             <label class="option-label">Location erstellen</label>
+            <i class="icon ion-chevron-right icon-accessory"></i>
+        </li>
+        <li ng-if="oc.isLocation" class="item item-icon-right item-option" ui-sref="tab.offer">
+            <img class="list-icon" ng-src="./images/icons/trip_erstellen.png">
+            <label class="option-label">Trip erstellen</label>
             <i class="icon ion-chevron-right icon-accessory"></i>
         </li>
     </ion-content>
