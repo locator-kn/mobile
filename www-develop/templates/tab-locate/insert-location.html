@@ -4,7 +4,7 @@
     </ion-nav-buttons>
     <form novalidate name="ilc.form" id="insertLocationForm">
         <ion-content>
-            <div ng-if="authenticated" ng-controller="InsertLocationCtrl as ilc">
+            <div ng-if="authenticated">
                 <div class="location-image">
                     <div class="image-container" ng-if="!ilc.headerImagePath"
                          style="background-image: url('images/header-image-placeholder.png');background-size: cover">
@@ -35,8 +35,11 @@
                 </li>
 
                 <button ng-class="{'error-button' : (ilc.error) && ilc.form.locationGps.$error.required}"
-                        class="button button-dark gps-button" ng-click="ilc.toggleMap()">
-                    Standort
+                        class="button button-dark gps-button" ng-click="ilc.getCurrentPosition()">
+                    <span class="locate-text">Standort bestimmen</span>
+                    <div class="flag-little"
+                         style="background-image: url('images/icons/flag_klein_360.png');background-size: cover">
+                    </div>
                 </button>
                 <div ng-if="ilc.googleMap" ng-class="{'error' : (ilc.error) && ilc.form.locationGps.$error.required}">
                     <ui-gmap-google-map class="google-map"
@@ -48,10 +51,6 @@
                                         options="ilc.map.clickedMarker.options">
                         </ui-gmap-marker>
                     </ui-gmap-google-map>
-                    <button ng-class="{'error-button' : (ilc.error) && ilc.form.locationGps.$error.required}"
-                            class="button button-dark gps-button" ng-click="ilc.getCurrentPosition()">
-                        Wo bin ich?
-                    </button>
                 </div>
 
                 <div ng-hide="true">

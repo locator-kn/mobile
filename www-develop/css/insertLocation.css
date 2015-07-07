@@ -18,18 +18,19 @@
     position: absolute;
 }
 
-.insert-location .choose-image img{
+.insert-location .choose-image img {
     width: 60px;
     height: 60px;
     padding: 15px;
 }
+
 .insert-location .gps-button {
     width: 100%;
 }
 
 .insert-location .location-image {
     position: relative;
-    float:  left;
+    float: left;
     width: 100%;
 }
 
@@ -37,13 +38,11 @@
     padding: 10px;
 }
 
-.insert-location .error-button {
-    background-color: red;
-}
-
-
+.insert-location .error-button,
 .insert-location .error {
-    background-color: rgb(255, 200, 200);
+    border-color: rgb(241, 100, 73);
+    border-width: 2px;
+    margin: 1px;
 }
 
 .insert-location textarea {
@@ -63,3 +62,27 @@
     height: 6px !important;
 }
 
+.insert-location .button:hover {
+    color: white;
+}
+
+.insert-location .button.button-dark {
+    border-color: #111;
+    background-color: transparent;
+    color: black;
+}
+
+.insert-location .flag-little {
+    background-image: url('images/icons/flag_klein_360.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    float: right;
+    vertical-align: middle;
+    margin-top: 6px;
+    height: 33px;
+    width: 22px;
+}
+
+.insert-location .locate-text {
+    float: left;
+}
