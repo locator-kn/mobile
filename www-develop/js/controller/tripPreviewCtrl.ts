@@ -55,8 +55,8 @@ module Controller {
             }
 
             this.TripService.createTrip(this.trip).then((result) => {
-                for (var first in result.locations) break;
-                var location = result.locations[first];
+                for (var first in this.trip.locations) break;
+                var location = this.trip.locations[first];
 
                 var info = {
                     tripId: result.data.id,
