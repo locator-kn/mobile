@@ -14,8 +14,7 @@ module Controller {
 
             var mood = TripService.getMood();
             this.trip.moods = [];
-            this.trip.moods.push(mood);
-            //this.trip.moods.push(mood.query_name);
+            this.trip.moods.push(mood.query_name);
 
 
             // fixes
