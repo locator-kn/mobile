@@ -57,17 +57,22 @@
                     </label>
                 </li>
                 <li ng-if="itc.accommodation" class="item item-icon-right" ui-sref="tab.offer-equipment">
-                   Angaben zur Unterkunft
+                    Angaben zur Unterkunft
                     <i class="icon ion-chevron-right icon-accessory"></i>
                 </li>
                 </li>
             </ul>
         </div>
-        <div ng-if="!authenticated">
-            Um diese Funktionalität zu verwenden, musst du eingeloogt sein
+        <div ng-if="!authenticated" class="no-register">
+            <div class="image-container-full"
+                 style="background-image: url('images/svg/lorenz.svg')">
+            </div>
+            <span class="message">Melde dich an und zeige anderen, was du an deiner Stadt liebst.</span>
+            <span class="message">Oder registriere dich und werde ein Teil von Locator</span>
         </div>
     </ion-content>
-    <button ng-if="authenticated" ng-click="itc.selectLocations()" ng-disabled="!(itc.city.title && itc.moodAvailable && itc.selectedDays)"
+    <button ng-if="authenticated" ng-click="itc.selectLocations()"
+            ng-disabled="!(itc.city.title && itc.moodAvailable && itc.selectedDays)"
             class="button-bottom button button-full background-coral bottom item-icon-right">
         Locations auswählen
         <i class="icon ion-chevron-right icon-accessory"></i>
