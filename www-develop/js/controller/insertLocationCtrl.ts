@@ -144,6 +144,11 @@ module Controller {
 
         // sample
         getCurrentPosition = () => {
+            if (!this.googleMap) {
+                this.googleMap = true;
+                this.$ionicLoading.show({template: '<ion-spinner icon="spiral"></ion-spinner>'});
+            }
+
             this.GeolocationService.getCurrentLocation().then((position) => {
                 this.lat = position.coords.latitude;
                 this.long = position.coords.longitude;
