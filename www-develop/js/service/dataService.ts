@@ -16,7 +16,6 @@ module Service {
         }
 
         getAvailableCities() {
-            this.$ionicLoading.show({template: '<ion-spinner icon="spiral"></ion-spinner>'});
             return this.$http.get(this.basePath + '/data/cities', {cache: this.dataCitiesCache});
         }
 
@@ -114,7 +113,6 @@ module Service {
         }
 
         getAvailableMoods() {
-            this.$ionicLoading.show({template: '<ion-spinner icon="spiral"></ion-spinner>'});
             return this.$q(function (resolve) {
                 setTimeout(function () {
                     resolve(

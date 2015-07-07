@@ -7,6 +7,8 @@ module Controller {
         constructor(private $rootScope, private $state, private ResultService, private $stateParams, private TripService,
                     private UserService, private DataService, private  $ionicLoading, private webPath) {
 
+            this.$ionicLoading.show({template: '<ion-spinner icon="spiral"></ion-spinner>'});
+
             // if no user id is committed -> controller used for search results
             if (!$stateParams.userId) {
                 this.searchView = true;
@@ -16,6 +18,7 @@ module Controller {
                     this.$ionicLoading.hide();
                     this.updateUserInfo();
                 });
+                this.$ionicLoading.hide();
             } else {
                 this.searchView = false;
                 // if user id is comitted as state param user id -> get all trips of user

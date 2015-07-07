@@ -8,7 +8,10 @@ module Controller {
         constructor(private UserService, private $scope, private $stateParams, private LocationService, private $ionicLoading, private webPath) {
             this.locationId = $stateParams.locationId;
 
+            this.$ionicLoading.show({template: '<ion-spinner icon="spiral"></ion-spinner>'});
+
             this.LocationService.getLocationById(this.locationId).then((result)=> {
+                this.$ionicLoading.hide();
                 this.result = result.data;
                 this.result.create_date = moment(new Date(this.result.create_date)).format('L');
 

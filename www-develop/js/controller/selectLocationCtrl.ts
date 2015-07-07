@@ -8,10 +8,12 @@ module Controller {
         myLocations:boolean = true;
         selectedLocations:number = 0;
 
-        constructor(private LocationService, private $stateParams, private webPath, private $state, private $rootScope, private TripService) {
+        constructor(private LocationService, private $stateParams, private webPath, private $state, private $rootScope, private TripService, private $ionicLoading) {
             this.cityId = $stateParams.cityId;
 
+            this.$ionicLoading.show({template: '<ion-spinner icon="spiral"></ion-spinner>'});
             this.LocationService.getMyLocationsByCity(this.cityId).then((result) => {
+                this.$ionicLoading.hide();
                 if (result.data.length === 0) {
                     // display all locations if no locationy by me available
                     this.myLocations = false;
@@ -20,6 +22,7 @@ module Controller {
             });
 
             this.LocationService.getLocationsByCity(this.cityId).then((result)=> {
+                this.$ionicLoading.hide();
                 this.locationsByCity = result.data
             })
         }

@@ -16,6 +16,7 @@ module Controller {
             this.state = this.$state.current.name;
 
             this.locationSourceId = $stateParams.locationSourceId;
+            this.$ionicLoading.show({template: '<ion-spinner icon="spiral"></ion-spinner>'});
 
             if (this.state === this.tripType) {
                 this.LocationService.getLocationsByTripId(this.locationSourceId).then((result) => {

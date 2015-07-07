@@ -5,6 +5,7 @@ module Controller {
         selectedAccommodationEquipment:any = [];
 
         constructor(private DataService, private TripService, private $ionicLoading, private $state) {
+            this.$ionicLoading.show({template: '<ion-spinner icon="spiral"></ion-spinner>'});
             // get all eqipment from data service
             this.DataService.getAvailableAccommodationEquipment().then((result) => {
                 this.$ionicLoading.hide();

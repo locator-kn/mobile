@@ -8,7 +8,7 @@ module Controller {
         conversationId:string;
         opponentId:string;
 
-        constructor(private MessengerService, private $rootScope, private $state, private SocketService, private $ionicScrollDelegate) {
+        constructor(private MessengerService, private $rootScope, private $state, private SocketService, private $ionicScrollDelegate, private $ionicLoading) {
             this.conversationId = this.$state.params.conversationId;
             this.opponentId = this.$state.params.opponentId;
 
@@ -20,9 +20,10 @@ module Controller {
 
         // get messages of a single conversation
         getMessages(conversationId) {
+            this.$ionicLoading.show({template: '<ion-spinner icon="spiral"></ion-spinner>'});
             return this.MessengerService.getMessages(conversationId)
                 .then(result => {
-                    debugger;
+                    this.$ionicLoading.hide();
                     this.messages = result.data;
                     this.$ionicScrollDelegate.scrollBottom(true);
                 });

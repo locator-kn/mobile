@@ -9,9 +9,6 @@ module Service {
 
 
         getTripsByQuery(searchQuery) {
-            // start loading screen
-            this.$ionicLoading.show({template: '<ion-spinner icon="spiral"></ion-spinner>'});
-
             // create a copy by value
             var sq = this.lodash.cloneDeep(searchQuery);
             var query = this.basePath + '/trips/search';
@@ -29,7 +26,6 @@ module Service {
 
 
         getTripById(tripId) {
-            this.$ionicLoading.show({template: '<ion-spinner icon="spiral"></ion-spinner>'});
             return this.$http.get(this.basePath + '/trips/' + tripId);
         }
 

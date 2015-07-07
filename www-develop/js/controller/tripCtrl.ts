@@ -10,6 +10,9 @@ module Controller {
 
         constructor(private $scope, private $element, private $stateParams, private SearchService, private DataService,
                     private $ionicSlideBoxDelegate, private UserService, private $ionicLoading, private webPath) {
+
+            this.$ionicLoading.show({template: '<ion-spinner icon="spiral"></ion-spinner>'});
+
             // get trip by id from state param
             SearchService.getTripById(this.$stateParams.tripId).then((result) => {
                 this.trip = result.data;
@@ -33,7 +36,6 @@ module Controller {
 
             this.DataService.getAvailableMoods().then((result) => {
                 this.moods = result.data;
-                this.$ionicLoading.hide();
             });
         }
 

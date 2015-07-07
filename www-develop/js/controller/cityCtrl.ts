@@ -11,6 +11,7 @@ module Controller {
 
         constructor(private DataService, private SearchService, private $ionicLoading, private $state, private TripService) {
             this.state = this.$state.current.name;
+            this.$ionicLoading.show({template: '<ion-spinner icon="spiral"></ion-spinner>'});
             this.DataService.getAvailableCities().then((result) => {
                 this.cities = result.data;
                 this.$ionicLoading.hide();

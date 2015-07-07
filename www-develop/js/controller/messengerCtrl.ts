@@ -4,7 +4,8 @@ module Controller {
         conversations;
         conversationsHash = {};
 
-        constructor(private MessengerService, private UserService, private webPath) {
+        constructor(private MessengerService, private UserService, private webPath, private $ionicLoading) {
+            this.$ionicLoading.show({template: '<ion-spinner icon="spiral"></ion-spinner>'});
             this.getConversations();
         }
 
@@ -21,6 +22,7 @@ module Controller {
                                 element['opponent'] = result.data;
                             });
                     });
+                    this.$ionicLoading.hide();
                 });
         }
 
