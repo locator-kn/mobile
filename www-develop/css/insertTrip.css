@@ -112,11 +112,26 @@
 }
 
 textarea.ng-pristine.ng-untouched.ng-invalid.ng-invalid-required,
-textarea.ng-dirty.ng-valid-parse.ng-touched.ng-invalid.ng-invalid-required{
+textarea.ng-dirty.ng-valid-parse.ng-touched.ng-invalid.ng-invalid-required {
     background-color: transparent;
     color: white;
 }
 
 .insert-trip .button:hover {
     color: white;
+}
+
+.insert-trip .list-icon {
+    float: left;
+    height: 42px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.insert-trip .item-option {
+    padding: 5px;
+}
+.insert-trip .option-label {
+    font-size: 16px;
+    line-height: 41px;
 }
