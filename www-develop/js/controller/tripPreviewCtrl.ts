@@ -7,6 +7,7 @@ module Controller {
         selectedMood:any = {};
 
         error:boolean;
+        tripCreated:boolean = true;
 
         constructor(private TripService, private $ionicSlideBoxDelegate, private $state, private UserService,
                     private DataService, private $ionicLoading, private webPath, private $ionicPopup, private $window) {
@@ -57,6 +58,7 @@ module Controller {
 
             this.TripService.createTrip(this.trip).then((data) => {
                 this.clearData();
+                this.tripCreated = true;
                 var alertPopup = this.$ionicPopup.alert({title: 'Herzlichen Glückwunsch, dein FETT GEILER TRIP wurde erstellt. Dieser Text wird durch einen Screen ersetzt und erscheint bald nicht mehr...'});
                 alertPopup.then((res) => {
                     this.$state.go('tab.offer', {}, {reload: true});
