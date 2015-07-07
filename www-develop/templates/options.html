@@ -1,0 +1,34 @@
+<ion-view view-title="Fertig" ng-controller="OptionCtrl as oc">
+    <ion-content class="background-color-grey insert-trip">
+        <ul class="list">
+            <div ng-if="oc.locations">
+                <div ng-repeat="location in oc.locations|limitTo:1">
+                    <div class="image-container-full"
+                         style="background-image: url({{oc.webPath}}{{location.picture + '?size=mobile'}});background-size: cover">
+                    </div>
+                </div>
+            </div>
+        </ul>
+        <li class="item item-icon-right item-option">
+            <!--ui-sref="tab.profile-trip({tripId: tpc.tripId, userId: userID})"-->
+            <img class="list-icon" ng-src="./images/icons/ansehen.png">
+            <label class="option-label">Trip ansehen</label>
+            <i class="icon ion-chevron-right icon-accessory"></i>
+        </li>
+        <li class="item item-icon-right item-option">
+            <img class="list-icon" ng-src="./images/icons/alle_trips.png">
+            <label class="option-label">Zu deinen Trips/Locations</label>
+            <i class="icon ion-chevron-right icon-accessory"></i>
+        </li>
+        <li class="item item-icon-right item-option" ng-click="tpc.restart()">
+            <img class="list-icon" ng-src="./images/icons/trip_erstellen.png">
+            <label class="option-label">Weiteren Trip erstellen</label>
+            <i class="icon ion-chevron-right icon-accessory"></i>
+        </li>
+        <li class="item item-icon-right item-option">
+            <img class="list-icon" ng-src="./images/icons/location_hinzufuegen.png">
+            <label class="option-label">Location erstellen</label>
+            <i class="icon ion-chevron-right icon-accessory"></i>
+        </li>
+    </ion-content>
+</ion-view>
