@@ -60,7 +60,7 @@ module Controller {
 
                 var info = {
                     tripId: result.data.id,
-                    picture: location.picture
+                    picture: location.picture + '?size=mobile'
                 };
                 this.TripService.setResultInfoObject(info);
                 this.$state.go('tab.offer-options');
