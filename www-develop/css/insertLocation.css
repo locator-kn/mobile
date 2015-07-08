@@ -91,3 +91,22 @@
 .insert-location .tag-input{
     padding-right: 16px;
 }
+
+.insert-location tags-input .tags .input {
+    border: 0;
+    outline: 0;
+    margin: 2px;
+    padding: 0;
+    padding-left: 5px;
+    float: left;
+    height: 26px;
+    font: 14px "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.insert-location tags-input .tags .tag-item {
+    background: #33c4b7 !important;
+    color: white;
+    border: none !important;
+    line-height: 26px !important;
+}
+}
