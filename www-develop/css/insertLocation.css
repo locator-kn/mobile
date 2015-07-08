@@ -83,14 +83,14 @@
 
 .insert-location tags-input .tags {
     border: 1px solid rgb(204, 204, 204) !important;
-    background-color: rgba(34, 34, 34, 0.1) !important;
     border-radius: 3px;
     padding: 4px;
 }
 
 .insert-location .tag-input{
-    padding: 0px;
     border: 0px;
+    padding: 0px;
+    width: 100%;
 }
 
 .insert-location tags-input .tags .input {
