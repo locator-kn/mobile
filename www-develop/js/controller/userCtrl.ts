@@ -11,6 +11,11 @@ module Controller {
         birthAvailable:boolean;
         modifyBirthday;
 
+        // password
+        newPassword:string;
+        newPasswordCheck:string;
+        error:boolean;
+
         // textarea
         descriptionRows:number = 3;
         //for description
@@ -23,6 +28,9 @@ module Controller {
 
         isUploading:boolean;
         uploadIsDone:boolean;
+
+        errormsg:string;
+        successmsg:string;
 
         constructor(private $rootScope, private $state, private UserService, private CameraService, private PictureUploadService,
                     private basePath, private $stateParams, private $ionicPopup, private $ionicLoading, private webPath, private ngProgressLite) {
@@ -188,6 +196,42 @@ module Controller {
         getFormattedDateof(date) {
             return moment(new Date(date)).format('L');
         }
+
+        updatePassword() {
+            if (!this.newPassword || !this.newPasswordCheck) {
+                console.log('error - missing parameter');
+                this.error = true;
+                return;
+            }
+
+            if (this.newPassword != this.newPasswordCheck) {
+                this.errormsg = 'Passwörter stimmen nicht überein.';
+                return;
+            } else if (this.newPassword.length == 0 || this.newPasswordCheck.length == 0) {
+                this.editTrigger();
+                this.errormsg = '';
+                return;
+
+            } else if (this.newPassword.length < 5) {
+                this.errormsg = 'Passwort muss länger als 4 Zeichen sein.';
+                return;
+            }
+
+
+            this.UserService.setNewPassword(this.newPassword)
+                .then(result => {
+                    console.info('updated password');
+                    this.errormsg = '';
+                    this.successmsg = 'Passwort erfolgreich geändert.';
+                    this.newPassword = '';
+                    this.newPasswordCheck = '';
+                })
+                .catch(result => {
+                    this.errormsg = 'Fehler';
+                    console.info('error');
+                });
+        }
+
 
         static controllerId:string = "UserCtrl";
     }
