@@ -53,7 +53,7 @@ span.since.ng-binding {
 }
 
 .messenger-container .content .message.out p {
-    background-color: #ff4637;
+    background-color: rgb(255, 70, 55);
     float: right;
 }
 .messenger-container .content .message p {

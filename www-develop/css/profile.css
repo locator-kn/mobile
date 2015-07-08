@@ -92,7 +92,7 @@
 }
 
 .password .error {
-    border-color: rgb(241, 100, 73);
+    border-color: red;
     border-width: 2px;
     margin: 1px;
 }

@@ -2,11 +2,11 @@
 .mood-checkbox .border-transparent:after,
 .insert-trip .circle-selected,
 .insert-trip .checkbox input:checked:before, .checkbox input:checked + .checkbox-icon:before {
-    background-color: rgb(241, 100, 73);
+    background-color: rgb(255, 70, 55);
 }
 
 .insert-trip .checkbox input:checked:before, .checkbox input:checked + .checkbox-icon:before {
-    border-color: rgb(241, 100, 73);
+    border-color: rgb(255, 70, 55);
 }
 
 .insert-trip .equipment span.ng-binding {
@@ -58,14 +58,14 @@
     width: 25%;
     margin-left: -3px;
     margin-right: -3px;
-    border-color: rgb(241, 100, 73);
-    color: rgb(241, 100, 73);
+    border-color: rgb(255, 70, 55);
+    color: rgb(255, 70, 55);
     min-height: 33px;
     line-height: 33px;
 }
 
 .insert-trip .selected {
-    background-color: rgb(241, 100, 73);
+    background-color: rgb(255, 70, 55);
     color: white;
 }
 
@@ -85,11 +85,11 @@
 
 .insert-trip i.icon.ion-minus-circled.icon-accessory {
     font-size: 23px;
-    color: rgb(241, 100, 73);
+    color: rgb(255, 70, 55);
 }
 
 .insert-trip .selected-location {
-    border-color: rgb(241, 100, 73);
+    border-color: rgb(255, 70, 55);
     border-width: 2px;
 }
 
@@ -106,7 +106,7 @@
 }
 
 .insert-trip .error {
-    border-color: rgb(241, 100, 73);
+    border-color: red;
     border-width: 2px;
     margin: 1px;
 }
