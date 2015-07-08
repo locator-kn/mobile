@@ -232,8 +232,11 @@ module Controller {
                 lat: this.map.clickedMarker.latitude
             };
 
-            formValues.tags = formValues.tags.split(" ");
-            console.log(formValues.tags);
+            var stringTags = [];
+            formValues.tags.forEach(item => {
+                stringTags.push(item.text);
+            });
+            formValues.tags = stringTags;
 
             this.GeolocationService.saveLocation(formValues, this.documentId).
                 then((result) => {
