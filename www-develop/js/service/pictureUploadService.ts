@@ -6,8 +6,6 @@ module Service {
 
 
         uploadImage = (filePath, destinationPath, opt)=> {
-            // TODO: check if png or jpeg
-            // TODO: implement processing
             var q = this.$q.defer();
 
             var options = {
