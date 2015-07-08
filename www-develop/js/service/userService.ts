@@ -141,6 +141,13 @@ module Service {
             return this.conversationUserId;
         };
 
+        setNewPassword(newPassword) {
+            return this.$http.put(this.basePath + '/users/my/password',
+                {
+                    "password": newPassword
+                });
+        }
+
         static serviceId:string = "UserService";
     }
 }
