@@ -87,3 +87,7 @@
     border-radius: 3px;
     padding: 4px;
 }
+
+.insert-location .tag-input{
+    padding-right: 16px;
+}
