@@ -39,7 +39,7 @@ label.last-message.ng-binding {
 
 span.since.ng-binding {
     font-size: 9px;
-    color: black;
+    color: rgb(34, 34, 34);;
     padding-left: 5px;
     margin-top: 5px;
     float: right;
@@ -53,11 +53,11 @@ span.since.ng-binding {
 }
 
 .messenger-container .content .message.out p {
-    background-color: #ff4637;
+    background-color: rgb(255, 70, 55);
     float: right;
 }
 .messenger-container .content .message p {
-    background-color: #33c4b7;
+    background-color: rgb(51, 196, 183);
     color: white;
     max-width: 80%;
     position: relative;
@@ -86,11 +86,11 @@ span.since.ng-binding {
 }
 /**/
 .messenger-container .conversations .item.active {
-    background-color: #33c4b7;
+    background-color: rgb(51, 196, 183);
 }
 /**/
 .messenger-container .conversations .item.unread {
-    background-color: #100e10;
+    background-color: rgb(34, 34, 34);;
 }
 /**/
 .messenger-container .conversations {
@@ -160,7 +160,7 @@ button#chat_submit {
 span.bubble {
     height: 20px;
     width: 30px;
-    background-color: #33C4B7;
+    background-color: rgb(51, 196, 183);
     float: left;
     position: absolute;
     bottom: -4px;

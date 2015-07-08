@@ -10,7 +10,7 @@
     text-align: center;
     display: block;
     font-weight: bold;
-    color: rgb(33, 205, 196);;
+    color: rgb(51, 196, 183);
 }
 
 .profile .config-button {
@@ -92,7 +92,7 @@
 }
 
 .password .error {
-    border-color: rgb(241, 100, 73);
+    border-color: red;
     border-width: 2px;
     margin: 1px;
 }
