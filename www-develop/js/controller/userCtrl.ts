@@ -21,8 +21,11 @@ module Controller {
         width:number = 200;
         height:number = 200;
 
+        isUploading:boolean;
+        uploadIsDone:boolean;
+
         constructor(private $rootScope, private $state, private UserService, private CameraService, private PictureUploadService,
-                    private basePath, private $stateParams, private $ionicPopup, private $ionicLoading, private webPath) {
+                    private basePath, private $stateParams, private $ionicPopup, private $ionicLoading, private webPath, private ngProgressLite) {
 
             this.getUser($stateParams.userId);
 
@@ -156,18 +159,27 @@ module Controller {
             };
 
             this.PictureUploadService.uploadImage(this.newImagePath, this.basePath + '/users/my/picture', formData).then((data) => {
-                console.log('update user: ' + data);
+                this.uploadIsDone = true;
+                this.isUploading = false;
+                this.ngProgressLite.done();
+
+                var dataObject = JSON.parse(data.response);
+                this.user.picture = dataObject.imageLocation;
+                console.log('update user: ' + dataObject);
                 // update user
                 this.$rootScope.$emit('userUpdate');
-            }).catch((err) => {
-                // TODO: show Error
+            }, (err) => {
                 console.log(err);
+                this.$ionicLoading.hide();
+                this.isUploading = false;
+                this.ngProgressLite.done();
+            }, (process) => {
+                var perc:number = process.loaded / process.total;
+                this.ngProgressLite.set(perc);
+                console.log('progress:', perc, '% ');
             });
-            //.progress((process) => {
-            // TODO implement processing
-            //});
-        };
 
+        };
 
         openConversationModal = () => {
             this.UserService.openConversationModal(this.user._id);
