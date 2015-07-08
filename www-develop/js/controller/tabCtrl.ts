@@ -2,6 +2,7 @@ module Controller {
     export class TabCtrl {
 
         constructor(private $rootScope, private $state, private UserService) {
+            this.$rootScope.badge = 0;
         }
 
 
