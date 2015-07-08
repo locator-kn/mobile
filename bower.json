@@ -18,6 +18,7 @@
     "ngCordova": "~0.1.17-alpha",
     "angular": "~1.4.1",
     "ngprogress-lite": "~1.0.7",
-    "angular-emoji-filter": "~0.0.2"
+    "angular-emoji-filter": "~0.0.2",
+    "ng-tags-input": "~2.3.0"
   }
 }
