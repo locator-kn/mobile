@@ -233,6 +233,7 @@ module Controller {
             };
 
             formValues.tags = formValues.tags.split(" ");
+            console.log(formValues.tags);
 
             this.GeolocationService.saveLocation(formValues, this.documentId).
                 then((result) => {
