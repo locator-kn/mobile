@@ -414,6 +414,14 @@ angular.module('starter', deps)
                         templateUrl: 'templates/tab-profile/settings.html'
                     }
                 }
+            })
+            .state('tab.profile-settings-password', {
+                url: '/profile/:userId/settings/password',
+                views: {
+                    'tab-profile': {
+                        templateUrl: 'templates/tab-profile/password.html'
+                    }
+                }
             });
 
         // for android to set tabs at bottom position
