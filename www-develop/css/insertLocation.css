@@ -53,18 +53,6 @@
     visibility: hidden;
 }
 
-.ngProgressLiteBar {
-    background: rgba(65, 191, 180, 1) !important;
-    position: fixed;
-    z-index: 99999;
-    top: 0;
-    left: 0;
-    height: 44px !important;
-}
-.ngProgressLite .ngProgressLiteBarShadow {
-    /* disable box shadow */
-    box-shadow: aliceblue;
-}
 
 .insert-location .button:hover {
     color: white;

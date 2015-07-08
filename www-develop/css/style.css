@@ -26,6 +26,18 @@
     background-repeat: no-repeat;
 }
 
+.ngProgressLiteBar {
+    background: rgba(65, 191, 180, 1) !important;
+    position: fixed;
+    z-index: 99999;
+    top: 0;
+    left: 0;
+    height: 44px !important;
+}
+.ngProgressLite .ngProgressLiteBarShadow {
+    /* disable box shadow */
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0), 0 0 5px rgba(255, 255, 255, 0);
+}
 
 .circle {
     border-radius: 50%;
