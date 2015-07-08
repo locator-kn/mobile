@@ -30,7 +30,7 @@
                 </li>
                 <li ng-class="{'error' : (ilc.error) && ilc.form.locationTags.$error.required}"
                     class="item item-input tag-input">
-                    <tags-input add-on-space="true" add-on-comma="true"
+                    <tags-input add-on-space="true" add-on-comma="true" style="width: 100%"
                                 ng-class="{'error' : ilc.error && ilc.locationFormDetails.tags.length < 1}"
                                 placeholder="Tag hinzufügen" ng-model="ilc.locationFormDetails.tags"></tags-input>
                 </li>
