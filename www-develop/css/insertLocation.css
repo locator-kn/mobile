@@ -59,7 +59,11 @@
     z-index: 99999;
     top: 0;
     left: 0;
-    height: 6px !important;
+    height: 44px !important;
+}
+.ngProgressLite .ngProgressLiteBarShadow {
+    /* disable box shadow */
+    box-shadow: aliceblue;
 }
 
 .insert-location .button:hover {
