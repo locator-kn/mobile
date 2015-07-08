@@ -13,7 +13,6 @@ module Controller {
             this.state = this.$state.current.name;
             this.path = this.webPath;
 
-            debugger;
             if (this.state === this.locateType) {
                 this.isLocation = true;
                 this.result = GeolocationService.getResultInfoObject();

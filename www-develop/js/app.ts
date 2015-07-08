@@ -433,6 +433,8 @@ angular.module('starter', deps)
         // if none of the above states are matched, use this as the fallback
         $urlRouterProvider.otherwise('/tab/welcome');
 
+        $ionicConfigProvider.backButton.text('Zurück').icon('ion-chevron-left');
+
         $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|local|data|file|blob|cdvfile|content):\//);
 
 
