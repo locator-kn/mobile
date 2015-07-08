@@ -4,9 +4,10 @@ module Controller {
         conversations;
         conversationsHash = {};
 
-        constructor(private MessengerService, private UserService, private webPath, private $ionicLoading) {
+        constructor(private MessengerService, private UserService, private webPath, private $ionicLoading, private SocketService, private $state, private $rootScope) {
             this.$ionicLoading.show({template: '<ion-spinner icon="spiral"></ion-spinner>'});
             this.getConversations();
+            this.registerSocketEvent();
         }
 
         // conversationlist
@@ -25,6 +26,19 @@ module Controller {
                     this.$ionicLoading.hide();
                 });
         }
+
+        registerSocketEvent = () => {
+            this.SocketService.offEvent('new_message');
+            this.SocketService.onEvent('new_message', (newMessage) => {
+                if (this.$state.current.name !== 'tab.messenger-messages'
+                    || this.$state.params.userId !== newMessage.opponent) {
+                    if (!this.conversationsHash[newMessage.conversation_id].badge) {
+                        this.$rootScope.badge += 1;
+                        this.conversationsHash[newMessage.conversation_id].badge = true;
+                    }
+                }
+            });
+        };
 
         static controllerId:string = "MessengerCtrl";
     }
