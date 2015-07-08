@@ -27,7 +27,7 @@
 }
 
 .ngProgressLiteBar {
-    background: rgba(65, 191, 180, 1) !important;
+    background: rgb(51, 196, 183) !important;
     position: fixed;
     z-index: 99999;
     top: 0;
@@ -54,7 +54,7 @@
 
 .circle-selected {
     color: white;
-    background-color: rgb(33, 205, 196);
+    background-color: rgb(51, 196, 183);
     border: transparent;
 }
 

@@ -104,7 +104,7 @@
 }
 
 .insert-location tags-input .tags .tag-item {
-    background: #33c4b7 !important;
+    background: rgb(51, 196, 183) !important;
     color: white;
     border: none !important;
     line-height: 26px !important;

@@ -45,7 +45,7 @@
 
 
 .toggle.toggle-dark input:checked + .track {
-    background-color: rgb(33, 205, 196);
+    background-color: rgb(51, 196, 183);
     border-color: transparent;
 }
 
@@ -54,13 +54,13 @@
 
 }
 .checkbox input:checked:before, .checkbox input:checked + .checkbox-icon:before{
-    background-color: rgb(33, 205, 196);
-    border-color: rgb(33, 205, 196);
+    background-color: rgb(51, 196, 183);
+    border-color: rgb(51, 196, 183);
 
 }
 
 
 .mood-checkbox .border-transparent:after {
-    background-color: rgb(33, 205, 196);
+    background-color: rgb(51, 196, 183);
 
 }

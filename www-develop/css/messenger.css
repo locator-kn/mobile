@@ -57,7 +57,7 @@ span.since.ng-binding {
     float: right;
 }
 .messenger-container .content .message p {
-    background-color: #33c4b7;
+    background-color: rgb(51, 196, 183);
     color: white;
     max-width: 80%;
     position: relative;
@@ -86,7 +86,7 @@ span.since.ng-binding {
 }
 /**/
 .messenger-container .conversations .item.active {
-    background-color: #33c4b7;
+    background-color: rgb(51, 196, 183);
 }
 /**/
 .messenger-container .conversations .item.unread {
@@ -160,7 +160,7 @@ button#chat_submit {
 span.bubble {
     height: 20px;
     width: 30px;
-    background-color: #33C4B7;
+    background-color: rgb(51, 196, 183);
     float: left;
     position: absolute;
     bottom: -4px;
