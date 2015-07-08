@@ -85,6 +85,7 @@
     border: 1px solid rgb(204, 204, 204) !important;
     border-radius: 3px;
     padding: 4px;
+    box-shadow: none;
 }
 
 .insert-location .tag-input{
@@ -97,10 +98,11 @@
     outline: 0;
     margin: 2px;
     padding: 0;
-    padding-left: 5px;
+    padding-left: 10px;
     float: left;
     height: 26px;
-    font: 14px "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family: "Helvetica Neue", "Roboto", "Segoe UI", sans-serif;
+    /*font: 14px "Helvetica Neue",Helvetica,Arial,sans-serif;*/
 }
 
 .insert-location tags-input .tags .tag-item {
