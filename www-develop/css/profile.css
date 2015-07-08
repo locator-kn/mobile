@@ -90,3 +90,9 @@
 .edit .item textarea{
     text-align: left;
 }
+
+.password .error {
+    border-color: rgb(241, 100, 73);
+    border-width: 2px;
+    margin: 1px;
+}
