@@ -89,7 +89,8 @@
 }
 
 .insert-location .tag-input{
-    padding-right: 16px;
+    padding: 0px;
+    border: 0px;
 }
 
 .insert-location tags-input .tags .input {
