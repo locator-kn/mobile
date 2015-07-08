@@ -29,7 +29,7 @@
                           placeholder="Beschreibe die Location" required></textarea>
                 </li>
                 <li ng-class="{'error' : (ilc.error) && ilc.form.locationTags.$error.required}"
-                    class="item item-input">
+                    class="item item-input tag-input">
                     <tags-input add-on-space="true" add-on-comma="true"
                                 ng-class="{'error' : ilc.error && ilc.locationFormDetails.tags.length < 1}"
                                 placeholder="Tag hinzufügen" ng-model="ilc.locationFormDetails.tags"></tags-input>
