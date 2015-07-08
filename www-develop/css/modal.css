@@ -58,13 +58,13 @@
 }
 
 .backdrop {
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgb(34, 34, 34);
 }
 
 .modal a.submit {
     width: 100%;
     background: white;
-    color: black;
+    color: rgb(34, 34, 34);
     float: left;
     border-radius: 3px;
     padding: 8px 13px;

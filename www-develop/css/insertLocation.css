@@ -59,9 +59,9 @@
 }
 
 .insert-location .button.button-dark {
-    border-color: #111;
+    border-color: rgb(34, 34, 34);;
     background-color: transparent;
-    color: black;
+    color: rgb(34, 34, 34);;
 }
 
 .insert-location .flag-little {
@@ -78,7 +78,7 @@
 .insert-location .locate-text {
     float: left;
     font-family: Signika;
-    color: black;
+    color: rgb(34, 34, 34);
 }
 
 .insert-location tags-input .tags {
