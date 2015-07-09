@@ -73,8 +73,7 @@ module Controller {
                     if (this.$state.current.name !== 'tab.messenger-messages'
                         || this.$state.params.userId !== newMessage.opponent) {
                         var read = this.MessengerService.badgeStatusOf(newMessage.conversation_id);
-                        if(read) {
-                            //this.conversationsHash[newMessage.conversation_id][this.$rootScope.userID + '_read'] = false;
+                        if (read) {
                             this.MessengerService.updateBadge(newMessage.conversation_id, false);
                         }
                     }
