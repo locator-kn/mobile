@@ -1,4 +1,5 @@
-<ion-view view-title="Trip einstellen" class="insert-trip pageWithButton background-color-coral" ng-controller="InsertTripCtrl as itc">
+<ion-view view-title="Trip einstellen" class="insert-trip pageWithButton background-color-coral"
+          ng-controller="InsertTripCtrl as itc">
     <ion-nav-buttons side="left ">
         <i class="icon ion-ios-arrow-back home-back-button" ui-sref="tab.welcome"></i>
     </ion-nav-buttons>
@@ -37,13 +38,12 @@
                     </div>
                 </li>
                 <label class="item item-input">
-                    <span class="input-label">Zeitraum</span>
-                    <input class="text-right" ng-model="itc.start_date" type="text" placeholder="Von"
-                           onfocus="(this.type='date')">
+                    <span class="input-label">Zeitraum von</span>
+                    <input class="text-right" type="date" ng-model="itc.start_date">
                 </label>
                 <label class="item item-input">
-                    <input class="text-right" ng-model="itc.end_date" type="text" placeholder="Bis"
-                           onfocus="(this.type='date')">
+                    <span class="input-label">bis</span>
+                    <input class="text-right" type="date" ng-model="itc.end_date">
                 </label>
                 <li class="item item-toggle">
                     Übernachtung
@@ -74,7 +74,7 @@
     <button ng-if="authenticated" ng-click="itc.selectLocations()"
             ng-disabled="!(itc.city.title && itc.moodAvailable && itc.selectedDays)"
             class="button-bottom button button-full background-coral bottom item-icon-right insert-trip-button">
-        Locations auswählen
+        LOCATION'S AUSWÄHLEN
         <i class="icon ion-chevron-right icon-accessory"></i>
     </button>
 </ion-view>
