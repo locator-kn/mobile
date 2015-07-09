@@ -127,6 +127,10 @@
     padding-bottom: 100px;
 }
 
+.pageWithBigButton .scroll {
+    padding-bottom: 100px;
+}
+
 .button-bottom {
     bottom: 38px;
     position: absolute;
