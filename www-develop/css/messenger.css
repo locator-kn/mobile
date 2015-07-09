@@ -16,8 +16,6 @@
     margin-bottom: 47px;
 }
 
-
-
 .messenger label.ng-binding {
     padding-top: 23px;
     float: left;
@@ -35,7 +33,7 @@ label.last-message.ng-binding {
     font-size: 10px;
     float: right;
     padding-right: 5px;
-    width: 90px;
+    width: 110px;
 }
 
 span.since.ng-binding {
@@ -46,9 +44,6 @@ span.since.ng-binding {
     float: right;
 }
 
-/*+++++++++++++++++++++++++++++++++++++++++++++++++++*/
-
-
 .messenger-container .content .message {
     min-width: 100%;
 }
@@ -57,6 +52,7 @@ span.since.ng-binding {
     background-color: rgb(255, 70, 55);
     float: right;
 }
+
 .messenger-container .content .message p {
     background-color: rgb(51, 196, 183);
     color: white;
@@ -69,36 +65,33 @@ span.since.ng-binding {
     border-radius: 5px;
 }
 
-
-/*##################################################### copy ################################################*/
-
 .messenger-container .conversations .item {
     padding: 10px;
     float: left;
     width: 100%;
 }
-/**/
+
 .messenger-container .conversations .item:nth-child(odd) {
     background: rgb(232, 232, 232);
 }
-/**/
+
 .messenger-container .conversations .item:nth-child(even) {
     background: whitesmoke;
 }
-/**/
+
 .messenger-container .conversations .item.active {
     background-color: rgb(51, 196, 183);
 }
-/**/
+
 .messenger-container .conversations .item.unread {
     background-color: rgb(34, 34, 34);;
 }
-/**/
+
 .messenger-container .conversations {
     max-height: calc(100vh - 60px);
     overflow-y: scroll;
 }
-/**/
+
 .md-avatar {
     width: 50px;
     height: 50px;
@@ -106,26 +99,18 @@ span.since.ng-binding {
     box-sizing: content-box;
     float: left;
 }
-/**/
+
 .messenger-container .header {
     float: left;
     width: 100%;
 }
-/**/
 
-/**/
-
-/**/
 .messenger-container .content .message {
     float: left;
     margin-bottom: 15px;
     margin-top: 15px;
 }
-/**/
 
-/**/
-
-/**/
 .messenger-button {
     width: 60px;
     height: 70px;
@@ -133,11 +118,11 @@ span.since.ng-binding {
     float: left;
     background: white;
 }
-/**/
+
 button#chat_submit {
     float: right;
 }
-/**/
+
 #chat_box {
     width: calc(100% - 60px);
     background: white;
@@ -146,7 +131,7 @@ button#chat_submit {
     padding: 11px;
     height: 70px;
 }
-/**/
+
 .chat-input {
     padding-top: 15px;
     float: left;
@@ -157,26 +142,28 @@ button#chat_submit {
     margin-top: 20px;
     border-radius: 3px;
 }
-/**/
+
 span.bubble {
-    height: 20px;
-    width: 30px;
-    background-color: rgb(51, 196, 183);
-    float: left;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 20px 20px 0 0;
+    border-color: #33c4b8 transparent transparent transparent;
     position: absolute;
-    bottom: -4px;
-    left: -16px;
-    transform: rotate(52deg);
+    left: 0;
+    bottom: -10px;
 }
-/**/
+
 .out span.bubble {
-    right: -13px;
-    background-color: #ff4637;
-    left: inherit;
-    bottom: -5px;
-    transform: rotate(35deg);
+    right: 0;
+    left: auto;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 20px 20px 0;
+    border-color: transparent #ff4837 transparent transparent;
 }
-/**/
+
 .emoji-overlay {
     position: absolute;
     background-color: white;
@@ -184,17 +171,17 @@ span.bubble {
     padding: 9px;
     right: 60px;
 }
-/**/
+
 .conversations {
     padding-top: 15px;
     float: left;
     width: 100%;
 }
-/**/
+
 .emoji-icon {
     height: 20px;
 }
-/**/
+
 .logged-out .messenger-popover {
     display: none;
 }
