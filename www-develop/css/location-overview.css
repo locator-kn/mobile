@@ -30,24 +30,28 @@
     padding-left: 5px;
     padding-right: 5px;
     font-size: 10px;
-    float: right;
+    float: left;
     color: white;
 }
 
 .location-overview .location-tags {
-    /*padding-right: 25px;*/
+    padding-top: 5px;
 }
 
 .location-overview .description {
-    margin-top: 23px;
+    padding-top: 5px;
     width: 241px;
-    height: 54px;
-    white-space: initial;
+    /*height: 54px;*/
     font-size: 12px;
     font-weight: bold;
     text-overflow: ellipsis;
+    overflow: hidden;
     padding-left: 5px;
     line-height: 18px;
+}
+
+.location-overview .location-tags .tag:first-child {
+    margin-left: 5px;
 }
 
 

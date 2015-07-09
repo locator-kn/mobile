@@ -22,10 +22,10 @@
                     <!-- title, tags and description-->
                     <label class="title">{{location.title}}</label>
 
+                    <div class="description">{{location.description}}</div>
                     <div class="location-tags tags">
                         <span ng-repeat="tag in location.tags | limitTo: 3" class="tag">{{tag}}</span>
                     </div>
-                    <p class="description">{{location.description}}</p>
                     <i class="icon ion-chevron-right icon-accessory"></i>
                 </div>
             </li>
