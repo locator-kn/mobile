@@ -67,6 +67,7 @@ module Controller {
                 console.log('newMessage');
                 if (this.conversationId === newMessage.conversation_id) {
                     this.messages.push(newMessage);
+                    this.$rootScope.$emit('updateConversation', newMessage.conversation_id, newMessage.create_date, true);
                     this.$ionicScrollDelegate.scrollBottom(true);
                 } else {
                     // if message not from current conversation
@@ -75,7 +76,7 @@ module Controller {
                         var read = this.MessengerService.badgeStatusOf(newMessage.conversation_id);
                         if (read) {
                             this.MessengerService.updateBadge(newMessage.conversation_id, false);
-                            this.$rootScope.$emit('updateConversation', newMessage.conversation_id, newMessage.create_date);
+                            this.$rootScope.$emit('updateConversation', newMessage.conversation_id, newMessage.create_date, false);
                         }
                     }
                 }
