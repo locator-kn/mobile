@@ -75,6 +75,7 @@ module Controller {
                         var read = this.MessengerService.badgeStatusOf(newMessage.conversation_id);
                         if (read) {
                             this.MessengerService.updateBadge(newMessage.conversation_id, false);
+                            this.$rootScope.$emit('updateConversation', newMessage.conversation_id, newMessage.create_date);
                         }
                     }
                 }

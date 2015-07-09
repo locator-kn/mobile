@@ -8,7 +8,21 @@ module Controller {
             this.$ionicLoading.show({template: '<ion-spinner icon="spiral"></ion-spinner>'});
             this.getConversations();
             this.registerSocketEvent();
+
+            $rootScope.$on("updateConversation", (event, conversationId, timestamp) => {
+                this.conversationsHash[conversationId].lastMessage  = moment(new Date(timestamp)).startOf('minutes').fromNow();
+            });
+
         }
+
+        updateConversationInfo = (conversationId)=> {
+            return this.MessengerService.getConversationById(conversationId)
+                .then(result => {
+                    var element = result.data;
+                    this.conversationsHash[conversationId] = element;
+
+                });
+        };
 
         // conversationlist
         getConversations() {
@@ -37,9 +51,10 @@ module Controller {
                 if (this.$state.current.name !== 'tab.messenger-messages'
                     || this.$state.params.userId !== newMessage.opponent) {
                     var read = this.MessengerService.badgeStatusOf(newMessage.conversation_id);
-                    if(read) {
+                    if (read) {
                         //this.conversationsHash[newMessage.conversation_id][this.$rootScope.userID + '_read'] = false;
                         this.MessengerService.updateBadge(newMessage.conversation_id, false);
+                        this.$rootScope.$emit('updateConversation', newMessage.conversation_id, newMessage.create_date);
                     }
                 }
             });
