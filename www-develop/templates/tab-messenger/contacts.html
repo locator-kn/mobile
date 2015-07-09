@@ -17,6 +17,9 @@
                         <img class="md-avatar" ng-src="{{conversation.opponent.picture}}"/>
                         <label>{{ conversation.opponent.name }}</label>
                         <label class="last-message">{{ conversation.lastMessage }}</label>
+                        <div class="message-icon" ng-if="!conversation[userID + '_read']"
+                             style="background-image: url('../../images/icons/chat/messenger_erhalten.png');background-size: cover">
+                        </div>
                     </li>
                 </ul>
             </div>
