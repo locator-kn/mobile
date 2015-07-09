@@ -35,6 +35,7 @@ label.last-message.ng-binding {
     font-size: 10px;
     float: right;
     padding-right: 5px;
+    width: 90px;
 }
 
 span.since.ng-binding {
@@ -196,4 +197,16 @@ span.bubble {
 /**/
 .logged-out .messenger-popover {
     display: none;
+}
+
+.messenger-container .conversations .item.unread {
+    background-image: url('images/icons/chat/messenger_erhalten.png');
+}
+
+.message-icon {
+    float: right;
+    height: 30px;
+    width: 30px;
+    margin-right: 20px;
+    margin-top: 10px;
 }
