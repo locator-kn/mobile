@@ -10,10 +10,10 @@ module Controller {
             this.registerSocketEvent();
 
             $rootScope.$on("updateConversation", (event, conversationId, timestamp, messageStatus) => {
-                this.conversationsHash[conversationId].lastMessage = moment(new Date(timestamp)).startOf('minutes').fromNow();
-                if (messageStatus) {
-                    this.conversationsHash[conversationId][this.$rootScope.userID + '_read'] = messageStatus;
+                if (timestamp) {
+                    this.conversationsHash[conversationId].lastMessage = moment(new Date(timestamp)).startOf('minutes').fromNow();
                 }
+                this.conversationsHash[conversationId][this.$rootScope.userID + '_read'] = messageStatus;
             });
 
         }
