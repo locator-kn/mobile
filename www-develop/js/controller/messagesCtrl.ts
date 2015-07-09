@@ -34,9 +34,11 @@ module Controller {
                 .then(result => {
                     this.conversation = result.data;
                     if (!this.conversation[this.$rootScope.userID + '_read']
-                        || (this.MessengerService.badgeStatusOf(conversationId) == false)) {
+                        || (!this.MessengerService.badgeStatusOf(conversationId))) {
                         this.emitAck(this.$rootScope.userID, conversationId);
                         this.MessengerService.updateBadge(conversationId, true);
+                        this.$rootScope.$emit('updateConversation', conversationId, null , true);
+
                     }
 
 
@@ -67,7 +69,14 @@ module Controller {
                 console.log('newMessage');
                 if (this.conversationId === newMessage.conversation_id) {
                     this.messages.push(newMessage);
-                    this.$rootScope.$emit('updateConversation', newMessage.conversation_id, newMessage.create_date, true);
+
+                    if (this.$state.current.name === 'tab.messenger-messages'
+                        && this.$state.params.userId === newMessage.opponent) {
+                        this.$rootScope.$emit('updateConversation', newMessage.conversation_id, newMessage.create_date, true);
+
+                    } else {
+                        this.$rootScope.$emit('updateConversation', newMessage.conversation_id, newMessage.create_date, false);
+                    }
                     this.$ionicScrollDelegate.scrollBottom(true);
                 } else {
                     // if message not from current conversation
