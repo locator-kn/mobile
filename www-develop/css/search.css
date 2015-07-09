@@ -118,3 +118,7 @@
 .background-color-cyan .text-right {
     padding-right: 0px;
 }
+
+.tab-item-active.search {
+    background-color: rgb(51, 196, 183);;
+}
