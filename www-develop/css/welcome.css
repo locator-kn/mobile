@@ -63,5 +63,9 @@
     bottom: 49px;
 }
 
+.welcome button:hover {
+     color: #fff;
+     text-decoration: none;
+}
 
 
