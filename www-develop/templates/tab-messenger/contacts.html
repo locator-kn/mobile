@@ -12,7 +12,7 @@
                                ng-model="mc.contact"/>
                     </label>
                     <!-- TODO: search in conversation.name instead of conversation -->
-                    <li class="item" ng-repeat="conversation in mc.conversations | filter: mc.contact"
+                    <li class="item" ng-repeat="conversation in mc.conversationsHash | filter: mc.contact"
                         ui-sref="tab.messenger-messages({ conversationId: conversation._id, opponentId: conversation.opponent._id})">
                         <img class="md-avatar" ng-src="{{conversation.opponent.picture}}"/>
                         <label>{{ conversation.opponent.name }}</label>
