@@ -15,14 +15,17 @@ module Controller {
             this.MessengerService.getConversations()
                 .then(result => {
                     this.conversations = result.data;
+                    var badgeHash = {};
                     this.conversations.forEach(element => {
                         element.lastMessage = moment(new Date(element.modified_date)).startOf('minutes').fromNow();
                         this.conversationsHash[element._id] = element;
+                        badgeHash[element._id] = this.conversationsHash[element._id][this.$rootScope.userID + '_read'];
                         this.UserService.getUser(element['opponent'])
                             .then(result => {
                                 element['opponent'] = result.data;
                             });
                     });
+                    this.MessengerService.setBadgeHash(badgeHash);
                     this.$ionicLoading.hide();
                 });
         }
@@ -30,11 +33,13 @@ module Controller {
         registerSocketEvent = () => {
             this.SocketService.offEvent('new_message');
             this.SocketService.onEvent('new_message', (newMessage) => {
+                // if message not from current conversation
                 if (this.$state.current.name !== 'tab.messenger-messages'
                     || this.$state.params.userId !== newMessage.opponent) {
-                    if (!this.conversationsHash[newMessage.conversation_id].badge) {
-                        this.$rootScope.badge += 1;
-                        this.conversationsHash[newMessage.conversation_id].badge = true;
+                    var read = this.MessengerService.badgeStatusOf(newMessage.conversation_id);
+                    if(read) {
+                        //this.conversationsHash[newMessage.conversation_id][this.$rootScope.userID + '_read'] = false;
+                        this.MessengerService.updateBadge(newMessage.conversation_id, false);
                     }
                 }
             });
