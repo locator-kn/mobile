@@ -135,3 +135,59 @@ textarea.ng-dirty.ng-valid-parse.ng-touched.ng-invalid.ng-invalid-required {
     font-size: 16px;
     line-height: 41px;
 }
+
+/********************* new design *******************/
+
+.background-color-coral,
+.background-color-coral li,
+.background-color-coral label,
+.background-color-coral span {
+    background: rgb(255, 70, 55);
+    color: #fff;
+    border-color: #ff7274
+}
+
+.background-color-coral .item-icon-right .icon-accessory {
+    color: #fff;
+}
+
+.background-color-coral .circle-selected {
+    background-color: #fff;
+    color: rgb(255, 70, 55);
+}
+
+.background-color-coral input[type="date"] {
+    color: #fff;
+}
+
+.background-color-coral span.input-label {
+    max-width: 100px;
+}
+
+.background-color-coral .toggle.toggle-dark input:checked + .track {
+    background-color: #fff;
+}
+
+.background-color-coral .toggle .track {
+    background-color: rgb(255, 70, 55);
+}
+
+.background-color-coral .circle {
+    /*border-color: #38d8ca ;*/
+    border-color: #fff;
+}
+
+.background-color-coral .insert-trip-button {
+    height: 80px;
+    font-weight: bold;
+    color: rgb(255, 70, 55);
+    background-color: #fff;
+}
+
+.background-color-coral .text-right {
+    padding-right: 0px;
+}
+
+.tab-item-active.offer {
+    background-color: rgb(255, 70, 55);
+}
