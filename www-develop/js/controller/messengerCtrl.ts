@@ -9,8 +9,11 @@ module Controller {
             this.getConversations();
             this.registerSocketEvent();
 
-            $rootScope.$on("updateConversation", (event, conversationId, timestamp) => {
-                this.conversationsHash[conversationId].lastMessage  = moment(new Date(timestamp)).startOf('minutes').fromNow();
+            $rootScope.$on("updateConversation", (event, conversationId, timestamp, messageStatus) => {
+                this.conversationsHash[conversationId].lastMessage = moment(new Date(timestamp)).startOf('minutes').fromNow();
+                if (messageStatus) {
+                    this.conversationsHash[conversationId][this.$rootScope.userID + '_read'] = messageStatus;
+                }
             });
 
         }
@@ -54,7 +57,7 @@ module Controller {
                     if (read) {
                         //this.conversationsHash[newMessage.conversation_id][this.$rootScope.userID + '_read'] = false;
                         this.MessengerService.updateBadge(newMessage.conversation_id, false);
-                        this.$rootScope.$emit('updateConversation', newMessage.conversation_id, newMessage.create_date);
+                        this.$rootScope.$emit('updateConversation', newMessage.conversation_id, newMessage.create_date, false);
                     }
                 }
             });
