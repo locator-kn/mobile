@@ -33,25 +33,35 @@ module Controller {
             return this.MessengerService.getConversationById(conversationId)
                 .then(result => {
                     this.conversation = result.data;
-                    console.log(result)
-                    if (!this.conversation[this.$rootScope.userID + '_read']) {
-                        this.emitAck(this.conversation.opponent._id, conversationId)
+                    if (!this.conversation[this.$rootScope.userID + '_read']
+                        || (this.MessengerService.badgeStatusOf(conversationId) == false)) {
+                        this.emitAck(this.$rootScope.userID, conversationId);
+                        this.MessengerService.updateBadge(conversationId, true);
                     }
+
+
                     this.$ionicScrollDelegate.scrollBottom(true);
                 });
         }
 
         emitAck(from, conversation_id) {
-            console.log('send ack for received message', {from: this.$rootScope.userID, opponent: from, conversation_id: conversation_id});
+            console.log('send ack for received message', {
+                from: this.$rootScope.userID,
+                opponent: from,
+                conversation_id: conversation_id
+            });
             setTimeout(() => {
-                this.SocketService.emit('message_ack', {from: this.$rootScope.userID, opponent: from, conversation_id: conversation_id});
+                this.SocketService.emit('message_ack', {
+                    from: this.$rootScope.userID,
+                    opponent: from,
+                    conversation_id: conversation_id
+                });
             }, 10);
             this.conversation[this.$rootScope.userID + '_read'] = true;
         }
 
 
-
-        registerSocketEvent =() =>  {
+        registerSocketEvent = () => {
             this.SocketService.offEvent('new_message');
             this.SocketService.onEvent('new_message', (newMessage) => {
                 console.log('newMessage');
@@ -59,6 +69,15 @@ module Controller {
                     this.messages.push(newMessage);
                     this.$ionicScrollDelegate.scrollBottom(true);
                 } else {
+                    // if message not from current conversation
+                    if (this.$state.current.name !== 'tab.messenger-messages'
+                        || this.$state.params.userId !== newMessage.opponent) {
+                        var read = this.MessengerService.badgeStatusOf(newMessage.conversation_id);
+                        if(read) {
+                            //this.conversationsHash[newMessage.conversation_id][this.$rootScope.userID + '_read'] = false;
+                            this.MessengerService.updateBadge(newMessage.conversation_id, false);
+                        }
+                    }
                 }
                 this.MessengerService.clearMessageCacheById(this.conversationId);
             });
