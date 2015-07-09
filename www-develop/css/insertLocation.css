@@ -191,7 +191,19 @@
     font-size: 16px;
 }
 
-
-.insert-location span.ng-binding{
+.insert-location span.ng-binding {
     font-size: 16px;
+}
+
+.insert-location .button-bottom {
+    bottom: 0;
+    position: relative;
+    padding: 0;
+    margin: 0;
+}
+
+.insert-location li.item.create{
+    margin: 0;
+    border: 0;
+    padding: 0;
 }
