@@ -61,10 +61,7 @@ module Controller {
         // sample
         getCurrentPosition = () => {
             if (this.mapIsReady) {
-                if (!this.googleMap) {
-                    this.googleMap = true;
-                    this.$ionicLoading.show({template: '<ion-spinner icon="spiral"></ion-spinner>'});
-                }
+                this.$ionicLoading.show({template: '<ion-spinner icon="spiral"></ion-spinner>'});
 
                 this.GeolocationService.getCurrentLocation().then((position) => {
                     this.lat = position.coords.latitude;
