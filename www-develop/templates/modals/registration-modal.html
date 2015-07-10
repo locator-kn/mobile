@@ -1,4 +1,8 @@
 <div class="moodal" ng-controller="LoginCtrl as lc">
+    <div class="btn-grp-white">
+        <a class="fb-login pointer" ng-click="mc.loginFacebook()">Login with Facebook</a>
+        <a class="gp-login pointer" ng-click="mc.loginGoogle()">Login with Google</a>
+    </div>
     <form autocomplete="off" name="form">
         <input required ng-model="lc.name" type="text" placeholder="Name" name="name" class="user-input">
         <input required ng-model="lc.mail" type="email" placeholder="E-Mail" name="inputMail" class="user-input">
