@@ -1,6 +1,14 @@
 <div class="moodal" ng-controller="LoginCtrl as lc">
     <div ng-if="!lc.forgotPassword" class="normallogin">
-
+        <div class="btn-grp-white">
+            <a class="fb-login" >Mit Facebook anmelden</a>
+            <hr>
+            <a class="gp-login" ng-click="lc.registerGoogle()">Mit Google anmelden</a>
+            <hr>
+        </div>
+        <div class="or-label">
+            <p>oder</p>
+        </div>
         <form name="loginform">
             <input class="user-input" required ng-model="lc.mail" type="email" placeholder="E-Mail" name="inputMail">
             <input class="user-input" required ng-model="lc.password" type="password" placeholder="Passwort"
