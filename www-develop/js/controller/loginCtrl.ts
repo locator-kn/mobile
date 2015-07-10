@@ -115,7 +115,7 @@ module Controller {
         }
 
         registerFacebook() {
-            console.log('facebook   ');
+            console.log('facebook');
         }
 
         registerGoogle() {
