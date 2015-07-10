@@ -33,7 +33,7 @@
 
 .insert-trip .description {
     padding-top: 5px;
-    width: 241px;
+    width: 220px;
     /*height: 54px;*/
     font-size: 12px;
     font-weight: bold;
@@ -130,6 +130,10 @@ textarea.ng-dirty.ng-valid-parse.ng-touched.ng-invalid.ng-invalid-required {
 
 .insert-trip .location-tags {
     padding-top: 5px;
+}
+
+.insert-trip .location-tags .tag:first-child {
+    margin-left: 5px;
 }
 
 .insert-trip .button:hover {
