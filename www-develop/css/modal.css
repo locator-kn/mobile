@@ -31,9 +31,9 @@
     margin-top: 50px;
     background-color: transparent;
     color: white;
-    width: 40%;
-    margin-left: 30%;
-    margin-right: 30%;
+    width: 50%;
+    margin-left: 25%;
+    margin-right: 25%;
     text-align: center;
 }
 
@@ -48,6 +48,20 @@
     padding-right: 12px;
     font-size: 14px;
     padding-top: 5px;
+}
+
+.moodal .gp-image {
+    background-repeat: no-repeat;
+    height: 25px;
+    width: 25px;
+    float: left;
+}
+
+.moodal .fb-image {
+    background-repeat: no-repeat;
+    height: 25px;
+    width: 25px;
+    float: left;
 }
 
 .moodal input::-webkit-input-placeholder {
@@ -101,9 +115,7 @@
 .moodal .btn-grp-white a {
     color: white;
     width: 100%;
-    float: left;
     text-align: left;
-    margin-bottom: 10px;
 }
 
 .moodal  .or-label {
