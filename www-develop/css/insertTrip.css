@@ -32,13 +32,13 @@
 }
 
 .insert-trip .description {
-    margin-top: 23px;
-    width: 241px;
-    height: 54px;
-    white-space: initial;
+    padding-top: 5px;
+    width: 220px;
+    /*height: 54px;*/
     font-size: 12px;
     font-weight: bold;
     text-overflow: ellipsis;
+    overflow: hidden;
     padding-left: 5px;
     line-height: 18px;
 }
@@ -115,6 +115,25 @@ textarea.ng-pristine.ng-untouched.ng-invalid.ng-invalid-required,
 textarea.ng-dirty.ng-valid-parse.ng-touched.ng-invalid.ng-invalid-required {
     background-color: transparent;
     color: white;
+}
+
+.insert-trip .location-tags .tag {
+    background: rgb(49, 47, 48);
+    border-radius: 10px;
+    margin-right: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: 10px;
+    float: left;
+    color: white;
+}
+
+.insert-trip .location-tags {
+    padding-top: 5px;
+}
+
+.insert-trip .location-tags .tag:first-child {
+    margin-left: 5px;
 }
 
 .insert-trip .button:hover {
