@@ -96,3 +96,10 @@
     margin: 3px 0;
     max-height: 60px;
 }
+
+.moodal .btn-grp-white a {
+    color: white;
+    width: 100%;
+    float: left;
+    text-align: left;
+}
