@@ -28,10 +28,13 @@
 }
 
 .moodal .backbutton {
-    margin-top: 77px;
+    margin-top: 50px;
     background-color: transparent;
     color: white;
-    width: auto;
+    width: 40%;
+    margin-left: 30%;
+    margin-right: 30%;
+    text-align: center;
 }
 
 .moodal .password-forgotten {
@@ -105,7 +108,12 @@
     margin-bottom: 10px;
 }
 
-.modal .or-label {
+.moodal  .or-label {
     width: 100%;
     text-align: center;
+}
+
+.moodal .forgot-password {
+    margin-top: 5px;
+    float: left;
 }
