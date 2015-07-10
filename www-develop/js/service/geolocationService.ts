@@ -3,10 +3,10 @@ module Service {
 
 
         resultInfoObject:any = {};
+        geoPosition:any = {};
 
-        constructor(private $q, private $ionicLoading, private $ionicPopup, private $http, private basePath) {
+        constructor(private $q, private $ionicLoading, private $ionicPopup, private $http, private basePath, private $rootScope) {
         }
-
 
         getCurrentLocation() {
             var q = this.$q.defer();
@@ -41,6 +41,17 @@ module Service {
 
         getResultInfoObject(){
             return this.resultInfoObject;
+        }
+
+        getGeoPosition() {
+            delete this.geoPosition.events;
+            return this.geoPosition;
+        }
+
+        setGeoPosition(geoPosition){
+            this.geoPosition = geoPosition;
+            this.$rootScope.$emit('newGeoPosition');
+
         }
 
         static serviceId:string = "GeolocationService";

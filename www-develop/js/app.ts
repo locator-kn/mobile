@@ -24,6 +24,7 @@
 /// <reference path="controller/accommodationEqipmentCtrl.ts" />
 /// <reference path="controller/tripPreviewCtrl.ts" />
 /// <reference path="controller/optionCtrl.ts" />
+/// <reference path="controller/googleMapCtrl.ts" />
 
 /// <reference path="./service/dataService.ts" />
 /// <reference path="./service/searchService.ts" />
@@ -104,6 +105,7 @@ angular.module('starter', deps)
     .controller(Controller.AccommodationEquipmentCtrl.controllerId, Controller.AccommodationEquipmentCtrl)
     .controller(Controller.TripPreviewCtrl.controllerId, Controller.TripPreviewCtrl)
     .controller(Controller.OptionCtrl.controllerId, Controller.OptionCtrl)
+    .controller(Controller.GoogleMapCtrl.controllerId, Controller.GoogleMapCtrl)
 
     // services
     .service(Service.DataService.serviceId, Service.DataService)
