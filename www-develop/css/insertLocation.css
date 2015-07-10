@@ -203,14 +203,28 @@
     margin: 0;
 }
 
-.insert-location li.item.create{
+.insert-location li.item.create {
     margin: 0;
     border: 0;
     padding: 0;
 }
 
-
 .location-finish {
     font-weight: bold;
     padding: 7px;
+}
+
+.insert-location .no-register {
+    background-color: #fff;
+    color: rgb(34, 34, 34);
+}
+
+.insert-location .message {
+    font-size: 23px;
+    font-weight: bold;
+    line-height: 29px;
+    float: left;
+    text-align: center;
+    background-color: #fff;
+    color: rgb(34, 34, 34);
 }
