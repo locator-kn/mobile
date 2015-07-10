@@ -4,7 +4,7 @@
         <i class="icon ion-ios-arrow-back home-back-button" ui-sref="tab.welcome"></i>
     </ion-nav-buttons>
     <form novalidate name="ilc.form" id="insertLocationForm">
-        <ion-content>
+        <ion-content ng-class="!authenticated ? 'not-auth-background' : ''">
             <div ng-if="authenticated">
                 <div class="location-image">
                     <div class="image-container" ng-if="!ilc.headerImagePath"
@@ -69,7 +69,7 @@
                 <div class="image-container-full"
                      style="background-image: url('images/svg/lorenz_frontansicht.svg')">
                 </div>
-                <span class="message">Melde dich an und tagge deine Lieblingslocations.</span>
+                <span class="message">Melde dich an und tagge deine Lieblingslocations.</span></br>
                 <span class="message">Oder registriere dich und werde ein Teil von Locator.</span>
             </div>
         </ion-content>
