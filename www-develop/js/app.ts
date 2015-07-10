@@ -55,7 +55,7 @@ var deps = [
     'btford.socket-io',
     'uiGmapgoogle-maps',
     'ngTagsInput',
-    //'facebook',
+    //  'facebook',
     'ngCordova',
     'emoji'
 ];
