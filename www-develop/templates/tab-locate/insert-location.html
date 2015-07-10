@@ -42,28 +42,6 @@
                     <i class="icon ion-chevron-right icon-accessory"></i>
                 </li>
 
-                <!--<button ng-class="{'error-button' : (ilc.error) && ilc.form.locationGps.$error.required}"-->
-                <!--class="button gps-button" ng-click="ilc.getCurrentPosition()">-->
-                <!--<span class="locate-text">Standort bestimmen</span>-->
-                <!--<div class="flag-little"-->
-                <!--style="background-image: url('images/icons/flag_klein_360.png');background-size: cover">-->
-                <!--</div>-->
-                <!--</button>-->
-                <!--<div ng-if="ilc.googleMap" ng-class="{'error' : (ilc.error) && ilc.form.locationGps.$error.required}">-->
-                <!--<ui-gmap-google-map class="google-map"-->
-                <!--center='ilc.map.center'-->
-                <!--zoom='ilc.map.zoom'-->
-                <!--events="ilc.map.events">-->
-                <!--<ui-gmap-marker coords="ilc.map.clickedMarker"-->
-                <!--idKey="ilc.map.clickedMarker.id"-->
-                <!--options="ilc.map.clickedMarker.options">-->
-                <!--</ui-gmap-marker>-->
-                <!--</ui-gmap-google-map>-->
-                <!--</div>-->
-                <!---->
-                <!--<div ng-hide="true">-->
-                <!--<input type="checkbox" ng-model="ilc.mapMarkerSet" name="locationGps" required>-->
-                <!--</div>-->
                 <li class="item item-toggle">
                     Location öffentlich
                     <label class="toggle toggle-dark toggle-assertive"
@@ -78,7 +56,7 @@
                 </li>
                 <li class="item create">
                     <button ng-if="authenticated"
-                            class="button-bottom button button-insert-location gps-button bottom button-full"
+                            class="button-bottom button button-insert-location gps-button bottom button-full fixed-button-bottom"
                             type="submit"
                             ng-click="ilc.saveLocation()"
                             ng-disabled="!(ilc.locationFormDetails.title && ilc.locationFormDetails.description && ilc.locationFormDetails.tags.length > 0 && ilc.mapMarkerSet)">
