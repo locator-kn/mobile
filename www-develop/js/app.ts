@@ -359,6 +359,14 @@ angular.module('starter', deps)
                     }
                 }
             })
+            .state('tab.locate-position', {
+                url: '/locate/position',
+                views: {
+                    'tab-locate': {
+                        templateUrl: 'templates/tab-locate/google-maps.html'
+                    }
+                }
+            })
 
             .state('tab.profile', {
                 url: '/profile/:userId',
