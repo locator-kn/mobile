@@ -1,12 +1,17 @@
 <div class="moodal" ng-controller="LoginCtrl as lc">
     <div ng-if="!lc.forgotPassword" class="normallogin">
         <div class="btn-grp-white">
-            <div class="fb-image"></div>
-            <a class="fb-login" >Mit Facebook anmelden</a>
-            <hr>
-            <div class="gp-image"></div>
-            <a class="gp-login" ng-click="lc.registerGoogle()">Mit Google anmelden</a>
-            <hr>
+            <div class="fb">
+                <div class="fb-image" style="background-image: url('./images/svg/fb_logo_white.svg')" ></div>
+                <a class="fb-login">Mit Facebook anmelden</a>
+                <hr>
+            </div>
+
+            <div class="gp">
+                <div class="gp-image" style="background-image: url('./images/svg/gp_logo_white.svg')" ></div>
+                <a class="gp-login" ng-click="lc.registerGoogle()">Mit Google anmelden</a>
+                <hr>
+            </div>
         </div>
         <div class="or-label">
             <p>oder</p>
