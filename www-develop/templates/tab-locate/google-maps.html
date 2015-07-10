@@ -1,5 +1,8 @@
 <ion-view view-title="Locate" class="insert-location pageWithBigButton background-color-dark"
           ng-controller="InsertLocationCtrl as ilc">
+    <ion-nav-buttons side="right" >
+        <p class="location-finish">Fertig</p>
+    </ion-nav-buttons>
     <ion-content>
         <ul>
             </button>
@@ -20,15 +23,16 @@
             </div>
 
             <li class="item create">
-                <button ng-if="authenticated"
-                        class="button-bottom button button-insert-location gps-button bottom button-full"
-                        type="submit"
-                        ng-click="ilc.getCurrentPosition()">
-                    STANDORT BESTIMMEN
-                    <div class="flag-little"
-                         style="background-image: url('images/icons/flag_klein_360.png');background-size: cover"></div>
-                </button>
+
             </li>
         </ul>
     </ion-content>
+    <button ng-if="authenticated"
+            class="button-bottom button button-insert-location bottom button-full"
+            type="submit"
+            ng-click="ilc.getCurrentPosition()">
+        AKUTELLEN STANDORT ERMITTELN
+        <div class="flag-little"
+             style="background-image: url('images/icons/flag_klein_360.png');background-size: cover"></div>
+    </button>
 </ion-view>
