@@ -8,7 +8,7 @@ module Controller {
         conversationId:string;
         opponentId:string;
 
-        constructor(private MessengerService, private $rootScope, private $state, private SocketService, private $ionicScrollDelegate, private $ionicLoading) {
+        constructor(private MessengerService, private $rootScope, private $state, private SocketService, private $ionicScrollDelegate, private $ionicLoading, private $scope) {
             this.conversationId = this.$state.params.conversationId;
             this.opponentId = this.$state.params.opponentId;
 
@@ -106,6 +106,7 @@ module Controller {
                     var date = new Date();
                     this.$ionicScrollDelegate.scrollBottom(true);
                     this.MessengerService.clearMessageCacheById(this.conversationId);
+                    this.$scope.message = '';
                 })
                 .catch(result => {
                     console.info("Error");
