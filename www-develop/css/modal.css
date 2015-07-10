@@ -102,4 +102,10 @@
     width: 100%;
     float: left;
     text-align: left;
+    margin-bottom: 10px;
+}
+
+.modal .or-label {
+    width: 100%;
+    text-align: center;
 }
