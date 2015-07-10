@@ -35,12 +35,14 @@
 }
 
 .location-overview .location-tags {
-    padding-top: 5px;
+    position: absolute;
+    bottom: 5px;
+    left: 90px;
 }
 
 .location-overview .description {
     padding-top: 5px;
-    width: 241px;
+    width: 170px;
     /*height: 54px;*/
     font-size: 12px;
     font-weight: bold;
@@ -48,10 +50,6 @@
     overflow: hidden;
     padding-left: 5px;
     line-height: 18px;
-}
-
-.location-overview .location-tags .tag:first-child {
-    margin-left: 5px;
 }
 
 
