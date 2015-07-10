@@ -53,7 +53,6 @@
     visibility: hidden;
 }
 
-
 .insert-location .button:hover {
     color: white;
 }
@@ -73,6 +72,7 @@
     margin-top: 6px;
     height: 33px;
     width: 22px;
+    margin-right: 10px;
 }
 
 .insert-location .locate-text {
@@ -88,7 +88,7 @@
     box-shadow: none;
 }
 
-.insert-location .tag-input{
+.insert-location .tag-input {
     border: 0px;
     padding: 0px;
 }
@@ -101,13 +101,130 @@
     padding-left: 10px;
     float: left;
     height: 26px;
-    font-family: "Helvetica Neue", "Roboto", "Segoe UI", sans-serif;
-    /*font: 14px "Helvetica Neue",Helvetica,Arial,sans-serif;*/
+}
+
+/********************** new design ***************/
+
+.background-color-dark,
+.background-color-dark li,
+.background-color-dark label,
+    /*.background-color-dark span,*/
+.insert-location tags-input .tags,
+.background-color-dark textarea,
+.background-color-dark input {
+    background: rgb(34, 34, 34);
+    color: #fff;
+    border-color: #4f4f4d;
+    font-family: Signika;
+    font-size: 16px;
+}
+
+.insert-location tags-input .tags {
+    border-radius: 0px;
+    min-height: 47px;
+    font-size: 16px;
+}
+
+.background-color-dark tags-input .host {
+    margin: 0;
+}
+
+.background-color-dark tags-input .tags .input {
+    font-family: Signika;
+    font-size: 16px;
+}
+
+.background-color-dark .item-icon-right .icon-accessory {
+    color: #fff;
+}
+
+.background-color-dark .circle-selected {
+    background-color: #fff;
+    color: rgb(34, 34, 34);
+}
+
+.background-color-dark input[type="date"] {
+    color: #fff;
+}
+
+.background-color-dark span.input-label {
+    max-width: 100px;
+}
+
+.background-color-dark .toggle.toggle-dark input:checked + .track {
+    background-color: #fff;
+}
+
+.background-color-dark .toggle .track {
+    background-color: rgb(34, 34, 34);
+}
+
+.background-color-dark.circle {
+    /*border-color: #38d8ca ;*/
+    border-color: #fff;
+}
+
+.background-color-dark .button-insert-location {
+    height: 80px;
+    font-weight: bold;
+    color: rgb(34, 34, 34);
+    background-color: #fff;
+}
+
+.background-color-dark .text-right {
+    padding-right: 0px;
+}
+
+.tab-item-active.locate {
+    background-color: rgb(34, 34, 34);
+}
+
+.background-color-dark .location-image .image-container {
+    background-color: #fff;
 }
 
 .insert-location tags-input .tags .tag-item {
-    background: rgb(51, 196, 183) !important;
-    color: white;
+    background: #fff;
+    color: rgb(34, 34, 34);
     border: none !important;
     line-height: 26px !important;
+    font-family: Signika;
+    font-size: 16px;
+}
+
+.insert-location span.ng-binding {
+    font-size: 16px;
+}
+
+.insert-location .button-bottom.fixed-button-bottom {
+    bottom: 0;
+    position: relative;
+    padding: 0;
+    margin: 0;
+}
+
+.insert-location li.item.create {
+    margin: 0;
+    border: 0;
+    padding: 0;
+}
+
+.location-finish {
+    font-weight: bold;
+    padding: 7px;
+}
+
+.insert-location .no-register {
+    background-color: #fff;
+    color: rgb(34, 34, 34);
+}
+
+.insert-location .message {
+    font-size: 23px;
+    font-weight: bold;
+    line-height: 29px;
+    float: left;
+    text-align: center;
+    background-color: #fff;
+    color: rgb(34, 34, 34);
 }

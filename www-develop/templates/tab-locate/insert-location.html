@@ -1,9 +1,10 @@
-<ion-view view-title="Locate" class="insert-location pageWithButton" ng-controller="InsertLocationCtrl as ilc">
+<ion-view view-title="Locate" class="insert-location pageWithBigButton background-color-dark"
+          ng-controller="InsertLocationCtrl as ilc">
     <ion-nav-buttons side="left ">
         <i class="icon ion-ios-arrow-back home-back-button" ui-sref="tab.welcome"></i>
     </ion-nav-buttons>
     <form novalidate name="ilc.form" id="insertLocationForm">
-        <ion-content>
+        <ion-content ng-class="!authenticated ? 'not-auth-background' : ''">
             <div ng-if="authenticated">
                 <div class="location-image">
                     <div class="image-container" ng-if="!ilc.headerImagePath"
@@ -32,31 +33,15 @@
                     class="item item-input tag-input">
                     <tags-input add-on-space="true" add-on-comma="true" style="width: 100%"
                                 ng-class="{'error' : ilc.error && ilc.locationFormDetails.tags.length < 1}"
-                                placeholder="Tag hinzufügen" ng-model="ilc.locationFormDetails.tags"></tags-input>
+                                placeholder="Füge aussagekräftige Tags hinzu"
+                                ng-model="ilc.locationFormDetails.tags"></tags-input>
                 </li>
 
-                <button ng-class="{'error-button' : (ilc.error) && ilc.form.locationGps.$error.required}"
-                        class="button gps-button" ng-click="ilc.getCurrentPosition()">
-                    <span class="locate-text">Standort bestimmen</span>
-                    <div class="flag-little"
-                         style="background-image: url('images/icons/flag_klein_360.png');background-size: cover">
-                    </div>
-                </button>
-                <div ng-if="ilc.googleMap" ng-class="{'error' : (ilc.error) && ilc.form.locationGps.$error.required}">
-                    <ui-gmap-google-map class="google-map"
-                                        center='ilc.map.center'
-                                        zoom='ilc.map.zoom'
-                                        events="ilc.map.events">
-                        <ui-gmap-marker coords="ilc.map.clickedMarker"
-                                        idKey="ilc.map.clickedMarker.id"
-                                        options="ilc.map.clickedMarker.options">
-                        </ui-gmap-marker>
-                    </ui-gmap-google-map>
-                </div>
+                <li class="item item-icon-right" ui-sref="tab.locate-position">
+                    Wo befindet sich die Location?
+                    <i class="icon ion-chevron-right icon-accessory"></i>
+                </li>
 
-                <div ng-hide="true">
-                    <input type="checkbox" ng-model="ilc.mapMarkerSet" name="locationGps" required>
-                </div>
                 <li class="item item-toggle">
                     Location öffentlich
                     <label class="toggle toggle-dark toggle-assertive"
@@ -69,19 +54,27 @@
                         </div>
                     </label>
                 </li>
+                <li class="item create">
+                    <button ng-if="authenticated"
+                            class="button-bottom button button-insert-location gps-button bottom button-full fixed-button-bottom"
+                            type="submit"
+                            ng-click="ilc.saveLocation()"
+                            ng-disabled="!(ilc.locationFormDetails.title && ilc.locationFormDetails.description && ilc.locationFormDetails.tags.length > 0 && ilc.mapMarkerSet)">
+                        LOCATION ERSTELLEN
+                    </button>
+                </li>
 
             </div>
             <div ng-if="!authenticated" class="no-register">
-                <div class="image-container-full"
-                     style="background-image: url('images/svg/lorenz_frontansicht.svg')">
+                <div class="not-auth-container">
+                    <div class="image-container-full"
+                         style="background-image: url('images/svg/lorenz_frontansicht.svg')">
+                    </div>
+                    <span class="message">Melde dich an und tagge deine Lieblingslocations.</span></br>
+                    <span class="message">Oder registriere dich und werde ein Teil von Locator.</span>
                 </div>
-                <span class="message">Melde dich an und tagge deine Lieblingslocations.</span>
-                <span class="message">Oder registriere dich und werde ein Teil von Locator.</span>
             </div>
         </ion-content>
-        <button ng-if="authenticated" class="button-bottom button background-green gps-button bottom button-full" type="submit"
-                ng-click="ilc.saveLocation()" ng-disabled="!(ilc.locationFormDetails.title && ilc.locationFormDetails.description && ilc.locationFormDetails.tags.length > 0 && ilc.mapMarkerSet)">
-            Location erstellen
-        </button>
+
     </form>
 </ion-view>

@@ -139,3 +139,11 @@
 .mood span.ng-binding {
     line-height: 34px;
 }
+
+.not-auth-background {
+    background-color: #fff;
+}
+
+.not-auth-container {
+    margin: 20px 70px;
+}
