@@ -114,6 +114,16 @@ module Controller {
                 });
         }
 
+        registerFacebook() {
+            console.log('facebook   ');
+        }
+
+        registerGoogle() {
+            console.log('google');
+        }
+
+
+
         static controllerId:string = "LoginCtrl";
     }
 }
