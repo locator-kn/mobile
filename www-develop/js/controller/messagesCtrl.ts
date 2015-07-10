@@ -100,8 +100,6 @@ module Controller {
         sendMessage = (message) => {
             message = message.replace(/<\/?[^>]+(>|$)/g, "");
 
-            debugger;
-
             this.MessengerService.sendMessage(message, this.conversationId, this.opponentId, this.$rootScope.userID)
 
                 .then(result => {
