@@ -3,6 +3,9 @@
         <ul class="list">
             <div ng-repeat="result in toc.results">
                 <li>
+
+                    <div class="item">{{result.title}}</div>
+                    <div>Locations</div>
                     <div ng-click="toc.showTripDetail(result._id, result.userid)">
                         <!-- for each pictures-->
                         <ion-slide-box ng-if="toc.numberOfElelementsIn(result.locations) !== 1"
