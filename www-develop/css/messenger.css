@@ -197,3 +197,15 @@ span.bubble {
     margin-right: 20px;
     margin-top: 10px;
 }
+
+.messenger-container .item-input {
+    float: left;
+    width: 80%;
+}
+
+.messenger-container .button {
+    width: 20%;
+    font-size: 13px;
+    color: white;
+    background-color: rgb(51, 196, 183)
+}
