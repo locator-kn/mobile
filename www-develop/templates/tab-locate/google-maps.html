@@ -1,0 +1,34 @@
+<ion-view view-title="Locate" class="insert-location pageWithBigButton background-color-dark"
+          ng-controller="InsertLocationCtrl as ilc">
+    <ion-content>
+        <ul>
+            </button>
+            <div ng-class="{'error' : (ilc.error) && ilc.form.locationGps.$error.required}">
+                <ui-gmap-google-map class="google-map"
+                                    center='ilc.map.center'
+                                    zoom='ilc.map.zoom'
+                                    events="ilc.map.events">
+                    <ui-gmap-marker coords="ilc.map.clickedMarker"
+                                    idKey="ilc.map.clickedMarker.id"
+                                    options="ilc.map.clickedMarker.options">
+                    </ui-gmap-marker>
+                </ui-gmap-google-map>
+            </div>
+
+            <div ng-hide="true">
+                <input type="checkbox" ng-model="ilc.mapMarkerSet" name="locationGps" required>
+            </div>
+
+            <li class="item create">
+                <button ng-if="authenticated"
+                        class="button-bottom button button-insert-location gps-button bottom button-full"
+                        type="submit"
+                        ng-click="ilc.getCurrentPosition()">
+                    STANDORT BESTIMMEN
+                    <div class="flag-little"
+                         style="background-image: url('images/icons/flag_klein_360.png');background-size: cover"></div>
+                </button>
+            </li>
+        </ul>
+    </ion-content>
+</ion-view>
