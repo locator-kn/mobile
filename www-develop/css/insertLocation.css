@@ -53,10 +53,6 @@
     visibility: hidden;
 }
 
-.insert-location .button:hover {
-    color: white;
-}
-
 .insert-location .button.button-dark {
     border-color: rgb(34, 34, 34);;
     background-color: transparent;
