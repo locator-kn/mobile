@@ -10,8 +10,6 @@ module Controller {
         locationTitle:string = '';
         revision:string;
         geotag:any = {};
-        lat:string;
-        long:string;
         locationFormDetails:any = {
             tags: '',
             title: '',
@@ -34,65 +32,21 @@ module Controller {
         imageHasBeenUploaded:boolean;
         mapMarkerSet:boolean;
 
-        googleMap:boolean = false;
-        mapIsReady:boolean = false;
         error:boolean = false;
 
         constructor(private CameraService, private $scope, private basePath, private GeolocationService, private UserService, private $state,
-                    private PictureUploadService, private webPath, private $ionicLoading, private $ionicPopup, private ngProgressLite, private $ionicScrollDelegate) {
+                    private PictureUploadService, private webPath, private $rootScope, private $ionicLoading, private $ionicPopup, private ngProgressLite, private $ionicScrollDelegate) {
 
             this.UserService.getMe().then(user => {
                 this.me = user.data;
             });
 
-            this.map = {
-                center: {
-                    // kn fh
-                    latitude: 47.668403,
-                    longitude: 9.170499
-                },
-                zoom: 12,
-                clickedMarker: {
-                    id: 0,
-                    latitude: null,
-                    longitude: null
-                },
-                events: this.getEvents()
-            };
-        }
+            $rootScope.$on('newGeoPosition', () => {
+                this.map = this.GeolocationService.getGeoPosition();
+                this.mapMarkerSet = true;
+                this.getCityFromMarker();
 
-        getEvents() {
-            return {
-                mousedown: (mapModel, eventName, originalEventArgs) => {
-                    this.clickMapEvent(mapModel, eventName, originalEventArgs);
-                },
-                tilesloaded: () => {
-                    this.mapIsReady = true;
-                    this.getCurrentPosition();
-                    this.$ionicScrollDelegate.scrollBottom(true);
-                    // TODO: get current location
-                    this.$ionicLoading.hide();
-
-                }
-            }
-        }
-
-        clickMapEvent(mapModel, eventName, originalEventArgs) {
-            var e = originalEventArgs[0];
-            var lat = e.latLng.lat(),
-                lon = e.latLng.lng();
-            this.map.clickedMarker = {
-                id: 0,
-                options: {
-                    labelClass: "marker-labels",
-                    labelAnchor: "50 0"
-                },
-                latitude: lat,
-                longitude: lon
-            };
-            this.mapMarkerSet = true;
-            this.getCityFromMarker();
-
+            });
         }
 
         uploadImage(image) {
@@ -146,42 +100,6 @@ module Controller {
             this.imageHasBeenUploaded = true;
             this.headerImagePath = data.imageLocation + '?size=mobile';
         }
-
-        // sample
-        getCurrentPosition = () => {
-            if (this.mapIsReady) {
-                // This is important, if google map will start loading the image upload will break.
-                if (this.isUploading) {
-                    this.$ionicPopup.alert({title: 'Bitte warte kurz bis das Bild fertig geladen wurde'});
-                    return;
-                }
-
-                if (!this.googleMap) {
-                    this.googleMap = true;
-                    this.$ionicLoading.show({template: '<ion-spinner icon="spiral"></ion-spinner>'});
-                }
-
-                this.GeolocationService.getCurrentLocation().then((position) => {
-                    this.lat = position.coords.latitude;
-                    this.long = position.coords.longitude;
-
-                    this.map.clickedMarker.latitude = this.lat;
-                    this.map.clickedMarker.longitude = this.long;
-                    this.map.zoom = 15;
-                    this.map.center.latitude = this.lat;
-                    this.map.center.longitude = this.long;
-
-                    this.mapMarkerSet = true;
-                    this.getCityFromMarker();
-                    if (!this.$scope.$$phase) {
-                        this.$scope.$apply();
-                    }
-
-                })
-            } else {
-                this.toggleMap();
-            }
-        };
 
         getCityFromMarker() {
             this.GeolocationService.getCityByCoords(this.map.clickedMarker.latitude, this.map.clickedMarker.longitude)
@@ -270,8 +188,6 @@ module Controller {
             this.locationTitle = '';
             this.revision = '';
             this.geotag = {};
-            this.lat = '';
-            this.long = '';
             this.locationFormDetails = {
                 tags: '',
                 title: '',
@@ -287,17 +203,17 @@ module Controller {
             this.documentWasCreated = false;
             this.imageHasBeenUploaded = false;
             this.mapMarkerSet = false;
-            this.googleMap = false;
             this.error = false;
         }
 
-        toggleMap = ()=> {
-            this.googleMap = !this.googleMap;
-            if (this.googleMap) {
-                this.$ionicLoading.show({template: '<ion-spinner icon="spiral"></ion-spinner>'});
+        goToMap() {
+            if (this.isUploading) {
+                this.$ionicPopup.alert({title: 'Bitte warte kurz bis das Bild fertig geladen wurde'});
+                return;
             }
-        };
-
+            this.$ionicLoading.show({template: '<ion-spinner icon="spiral"></ion-spinner>'});
+            this.$state.go('tab.locate-position');
+        }
 
         static controllerId:string = "InsertLocationCtrl";
     }
