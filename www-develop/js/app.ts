@@ -56,6 +56,7 @@ var deps = [
     'btford.socket-io',
     'uiGmapgoogle-maps',
     'ngTagsInput',
+    //  'facebook',
     'ngCordova',
     'emoji'
 ];
@@ -122,6 +123,10 @@ angular.module('starter', deps)
     .config(function (CacheFactoryProvider) {
         angular.extend(CacheFactoryProvider.defaults, {maxAge: 15 * 60 * 1000});
     })
+
+    /*.config(function (FacebookProvider) {
+        FacebookProvider.init('YOUR_APP_ID');
+    })*/
 
     .filter('startsWith', function () {
         return function (array, search) {

@@ -1,4 +1,13 @@
 <div class="moodal" ng-controller="LoginCtrl as lc">
+    <div class="btn-grp-white">
+        <a class="fb-login" ng-click="lc.registerFacebook()">Mit Facebook registrieren</a>
+        <hr>
+        <a class="gp-login" ng-click="lc.registerGoogle()">Mit Google registrieren</a>
+        <hr>
+    </div>
+    <div class="or-label">
+        <p>oder</p>
+    </div>
     <form autocomplete="off" name="form">
         <input required ng-model="lc.name" type="text" placeholder="Name" name="name" class="user-input">
         <input required ng-model="lc.mail" type="email" placeholder="E-Mail" name="inputMail" class="user-input">
@@ -9,7 +18,9 @@
         <input ng-click="lc.register(form)" class="pointer register submit button" value="Registrieren"
                type="submit">
     </form>
-    <input ng-click="lc.closeLoginModal()" class="backbutton button" value="Abbrechen" type="submit">
-
+    <a class="forgot-password">Passwort vergessen?</a>
+    <div class="submit-button">
+        <input ng-click="lc.closeLoginModal()" class="backbutton button" value="Abbrechen" type="submit">
+    </div>
 
 </div>
