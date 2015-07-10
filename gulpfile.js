@@ -14,6 +14,8 @@ var shell = require('gulp-shell');
 var template = require('gulp-template');
 var url = require('url');
 
+var intervalMS = 500;
+
 var typescript15 = require('typescript');
 
 
@@ -95,11 +97,11 @@ gulp.task('img', function () {
 });
 
 gulp.task('watch', ['ts', 'html', 'css', 'fonts', 'lib', 'locale', 'img'], function () {
-    gulp.watch('./www-develop/**/*.ts', ['ts']);
-    gulp.watch('./www-develop/**/*.css', ['css']);
-    gulp.watch('./www-develop/**/*.fonts', ['fonts']);
-    gulp.watch('./www-develop/**/*.html', ['html']);
-    gulp.watch('./www-develop/locale/**/*', ['locale']);
+    gulp.watch('./www-develop/**/*.ts', {interval: intervalMS}, ['ts']);
+    gulp.watch('./www-develop/**/*.css', {interval: intervalMS}, ['css']);
+    gulp.watch('./www-develop/**/*.fonts', {interval: intervalMS}, ['fonts']);
+    gulp.watch('./www-develop/**/*.html', {interval: intervalMS}, ['html']);
+    gulp.watch('./www-develop/locale/**/*', {interval: intervalMS}, ['locale']);
 
     gulp.run('ionicserve');
 });
