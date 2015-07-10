@@ -33,7 +33,7 @@
                         <div class="location-tags tags">
                             <span ng-repeat="tag in location.tags | limitTo: 3" class="tag">{{tag}}</span>
                         </div>
-                        <p class="description">{{location.description}}</p>
+                        <div class="description">{{location.description}}</div>
                         <i ng-if="!location.selected" class="icon ion-plus-circled icon-accessory"></i>
                         <i ng-if="location.selected" class="icon ion-minus-circled icon-accessory"></i>
                     </div>
