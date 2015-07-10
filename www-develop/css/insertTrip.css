@@ -117,6 +117,21 @@ textarea.ng-dirty.ng-valid-parse.ng-touched.ng-invalid.ng-invalid-required {
     color: white;
 }
 
+.insert-trip .location-tags .tag {
+    background: rgb(49, 47, 48);
+    border-radius: 10px;
+    margin-right: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: 10px;
+    float: left;
+    color: white;
+}
+
+.insert-trip .location-tags {
+    padding-top: 5px;
+}
+
 .insert-trip .button:hover {
     color: white;
 }
