@@ -11,7 +11,7 @@ module Controller {
         errormsg:string = '';
         successmsg:string = '';
 
-        constructor(private $rootScope, private UserService, private $timeout) {
+        constructor(private $rootScope, private UserService, private $timeout, private Facebook) {
         }
 
 
@@ -115,7 +115,9 @@ module Controller {
         }
 
         registerFacebook() {
-            console.log('facebook');
+            this.Facebook.login(function(response) {
+                console.log(response);
+            });
         }
 
         registerGoogle() {
