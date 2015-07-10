@@ -32,13 +32,13 @@
 }
 
 .insert-trip .description {
-    margin-top: 23px;
+    padding-top: 5px;
     width: 241px;
-    height: 54px;
-    white-space: initial;
+    /*height: 54px;*/
     font-size: 12px;
     font-weight: bold;
     text-overflow: ellipsis;
+    overflow: hidden;
     padding-left: 5px;
     line-height: 18px;
 }
