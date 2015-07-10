@@ -1,7 +1,12 @@
 <div class="moodal" ng-controller="LoginCtrl as lc">
     <div class="btn-grp-white">
-        <a class="fb-login pointer" ng-click="mc.loginFacebook()">Login with Facebook</a>
-        <a class="gp-login pointer" ng-click="mc.loginGoogle()">Login with Google</a>
+        <a class="fb-login pointer" ng-click="mc.loginFacebook()">Mit Facebook registrieren</a>
+        <hr>
+        <a class="gp-login pointer" ng-click="mc.loginGoogle()">Mit Google registrieren</a>
+        <hr>
+    </div>
+    <div class="or-label">
+        <p>oder</p>
     </div>
     <form autocomplete="off" name="form">
         <input required ng-model="lc.name" type="text" placeholder="Name" name="name" class="user-input">
@@ -13,6 +18,7 @@
         <input ng-click="lc.register(form)" class="pointer register submit button" value="Registrieren"
                type="submit">
     </form>
+    <a class="forgot-password">Passwort vergessen?</a>
     <input ng-click="lc.closeLoginModal()" class="backbutton button" value="Abbrechen" type="submit">
 
 
