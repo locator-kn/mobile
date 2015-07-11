@@ -75,6 +75,8 @@ module Controller {
             this.SearchService.getTripsByQuery(query).then(result => {
                 this.ResultService.setResults(result.data);
             });
+
+            this.ResultService.setQueryParams(query);
             this.$state.go('tab.search-result');
 
         }
