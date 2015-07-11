@@ -44,7 +44,6 @@ module Service {
         }
 
         getGeoPosition() {
-            delete this.geoPosition.events;
             return this.geoPosition;
         }
 

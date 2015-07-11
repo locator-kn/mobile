@@ -1,12 +1,11 @@
 <ion-view view-title="Locate" class="insert-location pageWithBigButton background-color-dark"
           ng-controller="GoogleMapCtrl as gmc">
-    <ion-nav-buttons side="right" >
+    <ion-nav-buttons side="right">
         <p class="location-finish" ng-click="$ionicGoBack()">Fertig</p>
     </ion-nav-buttons>
     <ion-content>
         <ul>
-            </button>
-            <div ng-class="{'error' : (ilc.error) && gmc.form.locationGps.$error.required}">
+            <div>
                 <ui-gmap-google-map class="google-map"
                                     center='gmc.map.center'
                                     zoom='gmc.map.zoom'

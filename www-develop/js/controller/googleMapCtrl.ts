@@ -33,8 +33,11 @@ module Controller {
                     this.clickMapEvent(mapModel, eventName, originalEventArgs);
                 },
                 tilesloaded: () => {
+                    // only for first call, we need to get current position after map is loaded
+                    if(!this.mapIsReady) {
+                        this.getCurrentPosition();
+                    }
                     this.mapIsReady = true;
-                    this.getCurrentPosition();
                     this.$ionicLoading.hide();
 
                 }
@@ -55,6 +58,9 @@ module Controller {
                 longitude: lon
             };
             this.mapMarkerSet = true;
+            if (!this.$scope.$$phase) {
+                this.$scope.$apply();
+            }
             this.GeolocationService.setGeoPosition(this.map);
         }
 
@@ -78,6 +84,7 @@ module Controller {
                     if (!this.$scope.$$phase) {
                         this.$scope.$apply();
                     }
+                    this.$ionicLoading.hide();
 
                 })
             }

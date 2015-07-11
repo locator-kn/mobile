@@ -47,3 +47,29 @@ label.dekotext {
 .last-trip-element {
     border-bottom: 3px solid rgb(34, 34, 34);;
 }
+
+.item.trip-title-in-results {
+    background-color: rgb(51, 196, 183);
+    color: #fff;
+    border: 0;
+}
+
+.trip-text-location {
+    background-color: rgb(51, 196, 183);
+    color: #fff;
+    width: 100%;
+    text-align: right;
+    border: 0;
+    opacity: 0.4;
+    line-height: 28px;
+    padding-right: 20px;
+    margin-bottom: -28px;
+}
+
+.image-all-locations {
+    height: 20px;
+    width: auto;
+    vertical-align: middle;
+    padding-left: 6px;
+    padding-right: 20px;
+}

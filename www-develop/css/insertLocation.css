@@ -78,7 +78,6 @@
 }
 
 .insert-location tags-input .tags {
-    border: 1px solid rgb(204, 204, 204) !important;
     border-radius: 3px;
     padding: 4px;
     box-shadow: none;
@@ -87,6 +86,7 @@
 .insert-location .tag-input {
     border: 0px;
     padding: 0px;
+    width: 100% !important;
 }
 
 .insert-location tags-input .tags .input {
@@ -223,4 +223,9 @@
     text-align: center;
     background-color: #fff;
     color: rgb(34, 34, 34);
+}
+
+.insert-location tags-input .tags {
+    -moz-appearance: none !important;
+    -webkit-appearance: none !important;;
 }

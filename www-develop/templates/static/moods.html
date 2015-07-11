@@ -2,7 +2,7 @@
     <ion-content class="background-color-grey mood">
         <div>
             <ul class="list">
-                <li class="item" ng-repeat="mood in mc.moods"
+                <li class="item" collection-repeat="mood in mc.moods"
                     ng-click="mc.setMood(mood)">
                     <img class="result-mood" ng-src="./images/icons/{{mood.icon}}">
                     <span>{{mood.title}}</span>

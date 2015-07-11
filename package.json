@@ -30,13 +30,10 @@
   },
   "cordovaPlugins": [
     "com.ionic.keyboard",
-    {
-      "locator": "https://github.com/phonegap-build/PushPlugin",
-      "id": "com.phonegap.plugins.PushPlugin"
-    },
     "org.apache.cordova.file-transfer"
   ],
   "cordovaPlatforms": [
-    "ios"
+    "ios",
+    "android"
   ]
 }
