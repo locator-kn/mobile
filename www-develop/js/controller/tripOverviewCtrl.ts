@@ -3,6 +3,7 @@ module Controller {
         results:any;
         moods:any = [];
         searchView:boolean;
+        queryParams:any = {};
         filterModal:any;
 
         constructor(private $rootScope, private $scope, private $state, private $ionicModal, private ResultService, private $stateParams, private TripService,
@@ -14,6 +15,7 @@ module Controller {
             if (!$stateParams.userId) {
                 this.searchView = true;
                 this.results = ResultService.getResults();
+                this.queryParams = this.ResultService.getQueryParams();
                 $rootScope.$on('newSearchResults', () => {
                     this.results = ResultService.getResults();
                     this.$ionicLoading.hide();
@@ -74,6 +76,11 @@ module Controller {
 
         numberOfElelementsIn(obj) {
             return Object.keys(obj).length;
+        }
+
+        filterModalShow() {
+
+            this.filterModal.show();
         }
 
         static controllerId:string = "TripOverviewCtrl";
