@@ -3,6 +3,7 @@ module Service {
 
         results:any;
         queryParams: any;
+        filterSearchValues:any = {};
 
         constructor(private $rootScope) {
         }
@@ -23,6 +24,14 @@ module Service {
 
         getQueryParams() {
             return this.queryParams;
+        }
+
+        setFilterSearchValues(filterSearchValues) {
+            this.filterSearchValues = filterSearchValues;
+        }
+
+        getFilterSearchValues() {
+            return this.filterSearchValues;
         }
 
         static serviceId:string = "ResultService";
