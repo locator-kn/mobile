@@ -3,7 +3,7 @@ module Controller {
         results:any;
         moods:any = [];
         searchView:boolean;
-        queryParams:any = {};
+        filterValues:any = {};
         filterModal:any;
 
         constructor(private $rootScope, private $scope, private $state, private $ionicModal, private ResultService, private $stateParams, private TripService,
@@ -15,7 +15,7 @@ module Controller {
             if (!$stateParams.userId) {
                 this.searchView = true;
                 this.results = ResultService.getResults();
-                this.queryParams = this.ResultService.getQueryParams();
+                this.filterValues = ResultService.getFilterSearchValues();
                 $rootScope.$on('newSearchResults', () => {
                     this.results = ResultService.getResults();
                     this.$ionicLoading.hide();
