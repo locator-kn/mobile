@@ -73,3 +73,11 @@ label.dekotext {
     padding-left: 6px;
     padding-right: 20px;
 }
+
+.search-result ion-item.item {
+    padding: 16px 0;
+}
+
+.search-result .hack-for-first-element {
+    margin-bottom: -17px;
+}
