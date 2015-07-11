@@ -19,7 +19,7 @@ module Controller {
         tripCities:any = [];
         city:any = {};
 
-        constructor(private $rootScope, private DataService, private $state, private SearchService, private ResultService, private $ionicPopup, private $ionicLoading) {
+        constructor(private $rootScope, private DataService, private $state, private SearchService, private $ionicPopup, private $ionicLoading) {
             this.DataService.getAvailableDays().then((result)=> {
                 this.availableDays = result.data;
             });
