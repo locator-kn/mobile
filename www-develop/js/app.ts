@@ -29,7 +29,6 @@
 /// <reference path="./service/dataService.ts" />
 /// <reference path="./service/searchService.ts" />
 /// <reference path="./service/userService.ts" />
-/// <reference path="./service/resultService.ts" />
 /// <reference path="./service/cameraService.ts" />
 /// <reference path="./service/geolocationService.ts" />
 /// <reference path="./service/tripService.ts" />
@@ -109,7 +108,6 @@ angular.module('starter', deps)
     // services
     .service(Service.DataService.serviceId, Service.DataService)
     .service(Service.SearchService.serviceId, Service.SearchService)
-    .service(Service.ResultService.serviceId, Service.ResultService)
     .service(Service.CameraService.serviceId, Service.CameraService)
     .service(Service.GeolocationService.serviceId, Service.GeolocationService)
     .service(Service.UserService.serviceId, Service.UserService)
