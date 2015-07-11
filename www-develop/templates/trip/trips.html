@@ -1,11 +1,12 @@
 <ion-view view-title="Suchergebnisse" ng-controller="TripOverviewCtrl as toc">
     <ion-content class="background-color-grey">
         <ul class="list">
-            <div collection-repeat="result in toc.results">
+            <div ng-repeat="result in toc.results">
                 <li>
-
                     <div class="item trip-title-in-results">{{result.title}}</div>
-                    <div class="trip-text-location">Locations
+                    <div class="trip-text-location"
+                         ui-sref="tab.search-result-locations({locationSourceId:result._id})">
+                        Locations
                         <img class="image-all-locations" src="/images/icons/alle_locations_weiss.png">
                     </div>
                     <div ng-click="toc.showTripDetail(result._id, result.userid)">
@@ -16,6 +17,7 @@
                                 <div class="image-container"
                                      style="background-image: url({{toc.webPath}}{{location.picture + '?size=mobile'}});background-size: cover">
                                 </div>
+                            </ion-slide>
                         </ion-slide-box>
                         <div ng-if="toc.numberOfElelementsIn(result.locations) === 1">
                             <div ng-repeat="location in result.locations">
