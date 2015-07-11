@@ -3,7 +3,7 @@ module Controller {
         results:any;
         moods:any = [];
         searchView:boolean;
-        modal:any;
+        filterModal:any;
 
         constructor(private $rootScope, private $scope, private $state, private $ionicModal, private ResultService, private $stateParams, private TripService,
                     private UserService, private DataService, private  $ionicLoading, private webPath) {
@@ -40,7 +40,7 @@ module Controller {
             this.$ionicModal.fromTemplateUrl('templates/modals/search-filter-modal.html', {
                 scope: this.$scope
             }).then((modal) => {
-                this.modal = modal;
+                this.filterModal = modal;
             });
         }
 
