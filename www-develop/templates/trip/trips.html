@@ -1,7 +1,7 @@
 <ion-view view-title="Suchergebnisse" ng-controller="TripOverviewCtrl as toc">
     <ion-nav-buttons side="right">
         <!--<p class="location-finish" ng-click="$ionicGoBack()">Suchergebnis</p>-->
-        <button class="button button-icon ion-compose" ng-click="toc.modal.show()"></button>
+        <button class="button button-icon ion-compose" ng-click="toc.filterModal.show()"></button>
     </ion-nav-buttons>
     <ion-content class="background-color-grey">
         <ion-list class="list">
@@ -100,7 +100,7 @@
         <ion-modal-view>
             <ion-header-bar class="bar bar-header bar-positive">
                 <h1 class="title">New Contact</h1>
-                <button class="button button-clear button-primary" ng-click="toc.modal.hide()">Cancel</button>
+                <button class="button button-clear button-primary" ng-click="toc.filterModal.hide()">Cancel</button>
             </ion-header-bar>
             <ion-content class="padding">
                 <div class="list">
