@@ -67,25 +67,25 @@ module Controller {
 
         loadMore() {
             this.page++;
-            debugger;
-            this.SearchService.getNextTripsFromQuery(this.page).then((result) => {
-                // TODO: fore each element
-                // push to array
-                var arrayLength = result.data.length;
-                for (var i = 0; i < arrayLength; i++) {
-                    this.results.push(result.data[i]);
-                    //Do something
-                }
-                if(arrayLength < 2) {
-                    this.noMoreItemsAvailable = true;
-                }
-                //this.results.push(result.data);
-                this.$ionicLoading.hide();
-                this.updateUserInfo();
-                this.$scope.$broadcast('scroll.infiniteScrollComplete');
-            }).catch((err)=> {
-                this.$ionicLoading.hide();
-            });
+            if(this.searchView) {
+                this.SearchService.getNextTripsFromQuery(this.page).then((result) => {
+                    // push to array
+                    var arrayLength = result.data.length;
+                    for (var i = 0; i < arrayLength; i++) {
+                        this.results.push(result.data[i]);
+                        //Do something
+                    }
+                    if(arrayLength < 2) {
+                        this.noMoreItemsAvailable = true;
+                    }
+                    this.updateUserInfo();
+                    this.$ionicLoading.hide();
+                    this.$scope.$broadcast('scroll.infiniteScrollComplete');
+                }).catch((err)=> {
+                    this.$ionicLoading.hide();
+                });
+            }
+
 
         }
 
