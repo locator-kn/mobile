@@ -3,17 +3,19 @@
         <ul class="list">
             <div ng-repeat="result in toc.results">
                 <li>
+                    <div>
                     <div class="item trip-title-in-results">{{result.title}}</div>
-                    <div class="trip-text-location"
-                         ui-sref="tab.search-result-locations({locationSourceId:result._id})">
-                        Locations
-                        <img class="image-all-locations" src="/images/icons/alle_locations_weiss.png">
-                    </div>
+
                     <div ng-click="toc.showTripDetail(result._id, result.userid)">
                         <!-- for each pictures-->
                         <ion-slide-box ng-if="toc.numberOfElelementsIn(result.locations) !== 1"
                                        on-slide-changed="slideHasChanged($index)">
                             <ion-slide ng-repeat="location in result.locations">
+                                <div class="trip-text-location"
+                                     ui-sref="tab.search-result-locations({locationSourceId:result._id})">
+                                    Location
+                                    <img class="image-all-locations" src="/images/icons/alle_locations_weiss.png">
+                                </div>
                                 <div class="image-container"
                                      style="background-image: url({{toc.webPath}}{{location.picture + '?size=mobile'}});background-size: cover">
                                 </div>
@@ -21,6 +23,11 @@
                         </ion-slide-box>
                         <div ng-if="toc.numberOfElelementsIn(result.locations) === 1">
                             <div ng-repeat="location in result.locations">
+                                <div class="trip-text-location"
+                                     ui-sref="tab.search-result-locations({locationSourceId:result._id})">
+                                    Location
+                                    <img class="image-all-locations" src="/images/icons/alle_locations_weiss.png">
+                                </div>
                                 <div class="image-container"
                                      style="background-image: url({{toc.webPath}}{{location.picture + '?size=mobile'}});background-size: cover">
                                 </div>
