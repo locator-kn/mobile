@@ -146,9 +146,15 @@
                         </label>
                         <li class="item item-toggle">
                             Übernachtung
-                            <label class="toggle toggle-dark toggle-assertive"
+                            <label class="toggle toggle-dark toggle-assertive" ng-model="toc.filterValues.accommodation"
                                    ng-click="toc.filterValues.accommodation = ! toc.filterValues.sc.accommodation">
-                                <input type="checkbox">
+                                <input ng-if="toc.filterValues.accommodation" id="accomodation-selection" checked
+                                       type="checkbox">
+                                <input ng-if="!toc.filterValues.accommodation" id="accomodation-selection"
+                                       type="checkbox">
+
+
+
 
                                 <div class="track">
                                     <div class="handle"></div>
