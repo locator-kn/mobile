@@ -11,8 +11,11 @@ module Controller {
         locationSourceId:string;
 
         me:boolean = false;
+        elementWidth:number;
 
-        constructor(private $state, private $stateParams, private LocationService, private $ionicLoading, private webPath) {
+        constructor(private $state, private $stateParams, private LocationService, private $ionicLoading, private webPath, private $window) {
+            this.elementWidth = this.$window.innerWidth  - (80 + 32 + 10);
+
             this.state = this.$state.current.name;
 
             this.locationSourceId = $stateParams.locationSourceId;
