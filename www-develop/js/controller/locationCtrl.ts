@@ -15,6 +15,9 @@ module Controller {
                 this.result = result.data;
                 this.result.create_date = moment(new Date(this.result.create_date)).format('L');
 
+                // workaround, because title do not update in tripDetail.html
+                $scope.navTitle = this.result.title;
+
                 this.UserService.getUser(this.result.userid)
                     .then(result => {
                         this.user = result.data;
