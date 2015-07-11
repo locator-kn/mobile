@@ -1,7 +1,7 @@
 <ion-view view-title="Suchergebnisse" class="search-result" ng-controller="TripOverviewCtrl as toc">
     <ion-nav-buttons side="right">
         <p class="location-finish slide-left-right" ng-click="$ionicGoBack()"><img class="image-all-locations"
-                                                                                   src="/images/icons/edit.png"></p>
+                                                                                   src="images/icons/edit.png"></p>
     </ion-nav-buttons>
     <ion-content class="background-color-grey">
         <ion-list class="list">
@@ -17,8 +17,8 @@
                             <ion-slide ng-repeat="location in result.locations">
                                 <div class="trip-text-location"
                                      ui-sref="tab.search-result-locations({locationSourceId:result._id})">
-                                    Location
-                                    <img class="image-all-locations" src="/images/icons/alle_locations_weiss.png">
+                                    Locations
+                                    <img class="image-all-locations" src="images/icons/alle_locations_weiss.png">
                                 </div>
 
                                 <div class="image-container"
@@ -30,7 +30,7 @@
                             <div ng-repeat="location in result.locations">
                                 <div class="trip-text-location"
                                      ui-sref="tab.search-result-locations({locationSourceId:result._id})">
-                                    Location
+                                    Locations
                                     <img class="image-all-locations" src="/images/icons/alle_locations_weiss.png">
                                 </div>
                                 <div class="image-container"
