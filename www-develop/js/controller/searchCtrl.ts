@@ -57,8 +57,8 @@ module Controller {
                 days: this.selectedDays,
                 persons: this.selectedPersons,
                 moods: this.selectedMood,
-                start_date: '',
-                end_date: ''
+                start_date: this.start_date,
+                end_date: this.end_date
             };
 
             // check if start & end date is committed
@@ -72,9 +72,7 @@ module Controller {
             }
 
 
-            this.SearchService.getTripsByQuery(query).then(result => {
-                this.ResultService.setResults(result.data);
-            });
+            this.SearchService.setQuery(query);
             this.$state.go('tab.search-result');
 
         }
