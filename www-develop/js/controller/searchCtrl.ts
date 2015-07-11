@@ -76,7 +76,17 @@ module Controller {
                 this.ResultService.setResults(result.data);
             });
 
-            this.ResultService.setQueryParams(query);
+            var filterSearchValues = {
+                queryParams: query,
+                availableDays: this.availableDays,
+                availablePersons: this.availablePersons,
+                availableMoods: this.availableMoods,
+                moodAvailable: this.moodAvailable,
+                accommodation: this.accommodation
+            };
+
+            this.ResultService.setFilterSearchValues(filterSearchValues);
+
             this.$state.go('tab.search-result');
 
         }
