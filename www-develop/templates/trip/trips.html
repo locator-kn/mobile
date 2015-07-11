@@ -1,7 +1,7 @@
 <ion-view view-title="Suchergebnisse" ng-controller="TripOverviewCtrl as toc">
     <ion-content class="background-color-grey">
         <ul class="list">
-            <div ng-repeat="result in toc.results">
+            <div collection-repeat="result in toc.results">
                 <li>
 
                     <div class="item trip-title-in-results">{{result.title}}</div>
@@ -75,8 +75,6 @@
                                 <label class="dekotext">erstellt von </label>
                                 <label class="name">{{result.username || 'anonym'}}</label>
                             </label>
-                        </li>
-                        <li class="item last-trip-element">
                         </li>
                     </ul>
                 </li>
