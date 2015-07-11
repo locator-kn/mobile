@@ -122,8 +122,8 @@
                             Tage
                             <div class="select-elements">
                                 <div class="circle" ng-repeat="day in toc.filterValues.availableDays"
-                                     ng-click="toc.filterValues.queryParams.selectedDays=day.value"
-                                     ng-class="{'circle-selected': toc.filterValues.queryParams.selectedDays == day.value}">{{day.title}}
+                                     ng-click="toc.filterValues.queryParams.days=day.value"
+                                     ng-class="{'circle-selected': toc.filterValues.queryParams.days == day.value}">{{day.title}}
                                 </div>
                             </div>
                         </li>
