@@ -127,15 +127,15 @@
                                 </div>
                             </div>
                         </li>
-                        <!--<li class="item">-->
-                            <!--Personen-->
-                            <!--<div class="select-elements">-->
-                                <!--<div class="circle" ng-repeat="person in sc.availablePersons"-->
-                                     <!--ng-click="sc.selectedPersons=person.value"-->
-                                     <!--ng-class="{'circle-selected': sc.selectedPersons == person.value}">{{person.title}}-->
-                                <!--</div>-->
-                            <!--</div>-->
-                        <!--</li>-->
+                        <li class="item">
+                            Personen
+                            <div class="select-elements">
+                                <div class="circle" ng-repeat="person in toc.filterValues.availablePersons"
+                                     ng-click="toc.filterValues.queryParams.persons=person.value"
+                                     ng-class="{'circle-selected': toc.filterValues.queryParams.persons == person.value}">{{person.title}}
+                                </div>
+                            </div>
+                        </li>
                         <!--<label class="item item-input">-->
                             <!--<span class="input-label">Zeitraum von</span>-->
                             <!--<input  class="text-right"  type="date" ng-model="sc.start_date">-->
