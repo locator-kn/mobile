@@ -2,7 +2,6 @@ module Service {
     export class ResultService {
 
         results:any;
-        queryParams: any;
         filterSearchValues:any = {};
 
         constructor(private $rootScope) {
@@ -16,14 +15,6 @@ module Service {
 
         getResults() {
             return this.results;
-        }
-
-        setQueryParams(queryParams) {
-            this.queryParams = queryParams;
-        }
-
-        getQueryParams() {
-            return this.queryParams;
         }
 
         setFilterSearchValues(filterSearchValues) {
