@@ -60,10 +60,11 @@ label.dekotext {
     width: 100%;
     text-align: right;
     border: 0;
-    opacity: 0.4;
+    opacity: 0.6;
     line-height: 28px;
     padding-right: 20px;
     margin-bottom: -28px;
+    font-weight: bold;
 }
 
 .image-all-locations {
