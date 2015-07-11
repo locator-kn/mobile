@@ -122,10 +122,3 @@
 .tab-item-active.search {
     background-color: rgb(51, 196, 183);;
 }
-
-.image-all-locations {
-    height: 20px;
-    width: auto;
-    vertical-align: middle;
-    padding-left: 6px;
-}
