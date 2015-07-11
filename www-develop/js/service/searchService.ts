@@ -15,6 +15,10 @@ module Service {
             // delete city from query since it is part of the path
             var cityid = sq.city.id;
             delete sq.city;
+            // fix for moods -> currently one mood in array
+            var moodArray = [];
+            moodArray.push(sq.moods.query_name);
+            sq.moods = moodArray;
 
             // returning a promise inside a promise will make the outside promise resolving if inside is resolved.
             return this.$http({
