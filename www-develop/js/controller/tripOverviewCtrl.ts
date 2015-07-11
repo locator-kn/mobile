@@ -3,8 +3,9 @@ module Controller {
         results:any;
         moods:any = [];
         searchView:boolean;
+        modal:any;
 
-        constructor(private $rootScope, private $state, private ResultService, private $stateParams, private TripService,
+        constructor(private $rootScope, private $scope, private $state, private $ionicModal, private ResultService, private $stateParams, private TripService,
                     private UserService, private DataService, private  $ionicLoading, private webPath) {
 
             this.$ionicLoading.show({template: '<ion-spinner icon="spiral"></ion-spinner>'});
@@ -36,6 +37,11 @@ module Controller {
                 this.$ionicLoading.hide();
             });
 
+            this.$ionicModal.fromTemplateUrl('templates/modals/search-filter-modal.html', {
+                scope: this.$scope
+            }).then((modal) => {
+                this.modal = modal;
+            });
         }
 
         /**
