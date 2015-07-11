@@ -435,6 +435,11 @@ angular.module('starter', deps)
                 }
             });
 
+        // force native scroll
+        var configProvider:any = $ionicConfigProvider;
+        configProvider.scrolling.jsScrolling(false);
+
+
         // for android to set tabs at bottom position
         $ionicConfigProvider.tabs.position('bottom');
         // set navbar Title to center
