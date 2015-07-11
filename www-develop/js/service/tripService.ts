@@ -18,6 +18,23 @@ module Service {
             return this.$http.post(this.basePath + '/trips', trip);
         }
 
+        getNextTripsFromUser(userId, pageNumber?, pageSize?) {
+            if(pageNumber && pageSize) {
+                // returning a promise inside a promise will make the outside promise resolving if inside is resolved.
+                return this.$http({
+                    url: this.basePath + '/users/' + userId + '/trips',
+                    params: {
+                        page: (pageNumber || ''),
+                        page_size: (pageSize || '')
+                    },
+                    method: 'GET'
+                });
+            } else {
+                return this.$http.get(this.basePath + '/users/' + userId + '/trips');
+            }
+
+        }
+        // @deprecated
         getTripsByUser(userid) {
             return this.$http.get(this.basePath + '/users/' + userid + '/trips');
         }
