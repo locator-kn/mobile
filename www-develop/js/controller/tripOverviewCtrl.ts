@@ -3,34 +3,30 @@ module Controller {
         results:any = [];
         moods:any = [];
         searchView:boolean;
+        userId:string;
         page:number = 0;
         noMoreItemsAvailable:boolean;
+
+        itemsProPage:number = 5;
 
         constructor(private $rootScope, private $state, private $stateParams, private TripService, private $scope,
                     private UserService, private DataService, private  $ionicLoading, private webPath, private SearchService) {
 
             this.$ionicLoading.show({template: '<ion-spinner icon="spiral"></ion-spinner>'});
 
-            // if no user id is committed -> controller used for search results
-            if (!$stateParams.userId) {
-                this.searchView = true;
-            } else {
-                this.searchView = false;
+            if ($stateParams.userId) {
                 // if user id is comitted as state param user id -> get all trips of user
-                this.TripService.getTripsByUser($stateParams.userId)
-                    .then(result => {
-                        this.results = result.data;
-                        this.updateUserInfo();
-                    });
-                this.$ionicLoading.hide();
-
+                this.searchView = false;
+                this.userId = $stateParams.userId;
+            } else {
+                // if no user id is committed -> controller used for search results
+                this.searchView = true;
             }
 
             this.DataService.getAvailableMoods().then((result) => {
                 this.moods = result.data;
                 this.$ionicLoading.hide();
             });
-
         }
 
         /**
@@ -67,15 +63,15 @@ module Controller {
 
         loadMore() {
             this.page++;
-            if(this.searchView) {
-                this.SearchService.getNextTripsFromQuery(this.page).then((result) => {
+            if (this.searchView) {
+                this.SearchService.getNextTripsFromQuery(this.page, this.itemsProPage).then((result) => {
                     // push to array
                     var arrayLength = result.data.length;
                     for (var i = 0; i < arrayLength; i++) {
                         this.results.push(result.data[i]);
                         //Do something
                     }
-                    if(arrayLength < 2) {
+                    if (arrayLength < this.itemsProPage) {
                         this.noMoreItemsAvailable = true;
                     }
                     this.updateUserInfo();
@@ -84,6 +80,26 @@ module Controller {
                 }).catch((err)=> {
                     this.$ionicLoading.hide();
                 });
+            } else {
+
+                // TODO: if pagination in backend implemented, change the outcomment lines
+                //this.TripService.getNextTripsFromUser(this.userId, this.page, this.itemsProPage).then(result => {
+                this.TripService.getNextTripsFromUser(this.userId).then(result => {
+                    // push to array
+                    var arrayLength = result.data.length;
+                    for (var i = 0; i < arrayLength; i++) {
+                        this.results.push(result.data[i]);
+                    }
+                    // TODO: change this too
+                    //if (arrayLength < this.itemsProPage) {
+                    this.noMoreItemsAvailable = true;
+                    //}
+                    this.updateUserInfo();
+                }).catch((err) => {
+                    this.$ionicLoading.hide();
+                });
+
+
             }
 
 
