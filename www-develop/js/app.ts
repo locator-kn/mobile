@@ -125,8 +125,8 @@ angular.module('starter', deps)
     })
 
     /*.config(function (FacebookProvider) {
-        FacebookProvider.init('YOUR_APP_ID');
-    })*/
+     FacebookProvider.init('YOUR_APP_ID');
+     })*/
 
     .filter('startsWith', function () {
         return function (array, search) {
@@ -441,7 +441,7 @@ angular.module('starter', deps)
             });
 
         // force native scroll
-        var configProvider: any = $ionicConfigProvider;
+        var configProvider:any = $ionicConfigProvider;
         configProvider.scrolling.jsScrolling(false);
 
 
