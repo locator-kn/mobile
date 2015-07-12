@@ -1,10 +1,10 @@
-<ion-view view-title="Messenger" class="messages messenger-container" ng-controller="MessagesCtrl as mc">
+<ion-view view-title="Messenger" class="messages messenger-container" ng-controller="MessagesCtrl as msc">
     <ion-content class="background-color-grey">
         <div ng-if="authenticated">
             <div>
                 <div class="content">
                     <div ng-class="{'out' : message.from === userID}" class="message"
-                         ng-repeat="message in mc.messages">
+                         ng-repeat="message in msc.messages">
                         <p><span ng-bind-html="message.message | emoji" class="message-content"></span>
                             <!--<span class="since">{{mc.since(message.create_date)}}</span></span>-->
                             <span class="bubble"></span>
@@ -19,11 +19,11 @@
         </div>
     </ion-content>
     <div class="list list-inset bottom">
-        <label class="item item-input">
-            <input id="my-message" class="my-message" type="text" ng-enter="mc.sendMessage(message)" ng-model="message" placeholder="Schreib etwas...">
-            <button class="messenger-button" ng-click="" type="button" id="emoji"><img class="emoji-icon" src="./images/icons/face.png"></button>
-        </label>
-        <button class="button" ng-click="mc.sendMessage(message)">
+        <div class="item item-input">
+            <input id="my-message" class="my-message" type="text" ng-enter="msc.sendMessage(message)" ng-model="message" placeholder="Schreib etwas...">
+            <button class="messenger-button" ng-click="msc.showEmojis()" type="button" id="emoji"><img class="emoji-icon" src="./images/icons/face.png"></button>
+        </div>
+        <button class="button" ng-click="msc.sendMessage(message)">
             Senden
         </button>
     </div>
