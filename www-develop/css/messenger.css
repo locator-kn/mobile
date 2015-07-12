@@ -120,7 +120,7 @@ span.since.ng-binding {
 }
 
 .messenger-container .my-message {
-    padding-right: 0;
+    padding-right: 0px !important;
 }
 
 button#chat_submit {
