@@ -138,7 +138,7 @@ module Controller {
                 'approvalprompt': 'force',
                 'scope': 'https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/plus.profile.emails.read'
             };
-            gapi.auth.signIn(myParams);
+            //gapi.auth.signIn(myParams);
 
             function loginCallback(result) {
                 if (result['status']['signed_in']) {
