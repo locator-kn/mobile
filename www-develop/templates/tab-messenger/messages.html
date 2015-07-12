@@ -32,7 +32,7 @@
             <input id="my-message" class="my-message" type="text" ng-enter="mc.sendMessage(mc.textbox)" ng-model="mc.textbox" placeholder="Schreib etwas...">
             <button class="messenger-button" ng-click="mc.showEmojis = !mc.showEmojis" type="button" id="emoji"><img class="emoji-icon" src="./images/icons/face.png"></button>
         </div>
-        <button ng-disabled="!mc.message" class="button" ng-click="mc.sendMessage(mc.textbox)">
+        <button ng-disabled="!mc.textbox" class="button" ng-click="mc.sendMessage(mc.textbox)">
             Senden
         </button>
     </div>
