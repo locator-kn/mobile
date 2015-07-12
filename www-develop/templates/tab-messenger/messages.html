@@ -18,13 +18,13 @@
             Bitte zuerst Registrieren!
         </div>
     </ion-content>
+    <div class="emoji-overlay" ng-if="msc.showEmojis">
+        <span ng-click="msc.selectEmoji(item)" ng-bind-html="msc.toTrusted(item)" ng-repeat="item in msc.emojis"></span>
+    </div>
     <div class="list list-inset bottom">
         <div class="item item-input">
             <input id="my-message" class="my-message" type="text" ng-enter="msc.sendMessage(msc.textbox)" ng-model="msc.textbox" placeholder="Schreib etwas...">
             <button class="messenger-button" ng-click="msc.showEmojis = !msc.showEmojis" type="button" id="emoji"><img class="emoji-icon" src="./images/icons/face.png"></button>
-            <div class="emoji-overlay" ng-if="msc.showEmojis">
-                <span ng-click="msc.selectEmoji(item)" ng-bind-html="msc.toTrusted(item)" ng-repeat="item in msc.emojis"></span>
-            </div>
         </div>
         <button class="button" ng-click="msc.sendMessage(msc.textbox)">
             Senden
