@@ -8,7 +8,7 @@ module Controller {
         conversationId:string;
         opponentId:string;
 
-        constructor(private MessengerService, private $rootScope, private $state, private SocketService, private $ionicScrollDelegate, private $ionicLoading, private $scope) {
+        constructor(private MessengerService, private $rootScope, private $state, private SocketService, private $ionicScrollDelegate, private $ionicLoading, private $scope, private $ionicActionSheet) {
             this.conversationId = this.$state.params.conversationId;
             this.opponentId = this.$state.params.opponentId;
 
@@ -62,6 +62,25 @@ module Controller {
             this.conversation[this.$rootScope.userID + '_read'] = true;
         }
 
+        showEmojis() {
+            debugger;
+            var hideSheet = this.$ionicActionSheet.show({
+                buttons: [
+                    {text: '<b>Share</b> This'},
+                    {text: 'Move'}
+                ],
+                destructiveText: 'Delete',
+                titleText: 'Modify your album',
+                cancelText: 'Cancel',
+                cancel: function () {
+                    // add cancel code..
+                },
+                buttonClicked: function (index) {
+                    return true;
+                }
+            });
+        }
+
 
         registerSocketEvent = () => {
             this.SocketService.offEvent('new_message');
@@ -113,6 +132,8 @@ module Controller {
                     console.info("Error");
                 });
         };
+
+
 
         static controllerId:string = "MessagesCtrl";
     }
