@@ -8,6 +8,10 @@ module Controller {
         conversationId:string;
         opponentId:string;
 
+        page:number = -1;
+        itemsProPage:number = 10;
+        noMoreItemsAvailable:boolean;
+
         showEmojis:boolean;
         emojis = [":smile:", ":blush:", ":kissing_heart:", ":hear_no_evil:", ":speak_no_evil:", ":see_no_evil:"];
         textbox:any  = '';
@@ -19,7 +23,7 @@ module Controller {
             this.opponentId = this.$state.params.opponentId;
 
             this.getConversation(this.conversationId);
-            this.getMessages(this.conversationId);
+            this.loadMore();
             this.registerSocketEvent();
         }
 
@@ -124,6 +128,30 @@ module Controller {
                 .catch(result => {
                     console.info("Error");
                 });
+        };
+
+        loadMore = () => {
+            this.page++;
+
+            this.MessengerService.getNextMessagesFromConversation(this.conversationId, this.page, this.itemsProPage).then((result) => {
+                // push to array
+                debugger;
+                var arrayLength = result.data.length;
+                for (var i = 0; i < arrayLength; i++) {
+                    this.messages.push(result.data[i]);
+                    //Do something
+                }
+                if (arrayLength < this.itemsProPage) {
+                    this.noMoreItemsAvailable = true;
+                }
+                this.$scope.$broadcast('scroll.refreshComplete');
+                if (this.page === 0) {
+                    this.$ionicScrollDelegate.scrollBottom(true);
+                }
+                this.$ionicLoading.hide();
+            }).catch((err)=> {
+                this.$ionicLoading.hide();
+            });
         };
 
         static controllerId:string = "MessagesCtrl";

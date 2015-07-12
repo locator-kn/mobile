@@ -1,16 +1,22 @@
 <ion-view view-title="Messenger" class="messages messenger-container" ng-controller="MessagesCtrl as mc">
     <ion-content class="background-color-grey">
+        <ion-refresher
+            pulling-text="Pull to refresh..."
+            on-refresh="mc.loadMore()">
+        </ion-refresher>
         <div ng-if="authenticated">
             <div>
                 <div class="content">
-                    <div ng-class="{'out' : message.from === userID}" class="message"
-                         ng-repeat="message in mc.messages">
-                        <p><span ng-bind-html="message.message | emoji" class="message-content"></span>
-                            <!--<span class="since">{{mc.since(message.create_date)}}</span></span>-->
-                            <span class="bubble"></span>
-                        </p>
 
-                    </div>
+                    <ion-list>
+                        <div ng-class="{'out' : message.from === userID}" class="message"
+                             ng-repeat="message in mc.messages">
+                            <p><span ng-bind-html="message.message | emoji" class="message-content"></span>
+                                <!--<span class="since">{{mc.since(message.create_date)}}</span></span>-->
+                                <span class="bubble"></span>
+                            </p>
+                        </div>
+                    </ion-list>
                 </div>
             </div>
         </div>
@@ -25,6 +31,7 @@
         <label class="item item-input">
             <input type="text" ng-enter="mc.sendMessage(message)" ng-model="message" placeholder="Schreib etwas...">
         </label>
+        <button class="button" ng-click="mc.sendMessage(message)" ng-disabled="!message">
         <button class="button" ng-click="mc.sendMessage(message)" ng-disabled="!message" >
         <div class="item item-input">
             <input id="my-message" class="my-message" type="text" ng-enter="mc.sendMessage(mc.textbox)" ng-model="mc.textbox" placeholder="Schreib etwas...">

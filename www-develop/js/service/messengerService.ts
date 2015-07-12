@@ -83,13 +83,31 @@ module Service {
 
         getInitMessage(userOwner, trip, participator) {
             var tripUsername = userOwner.name;
-            return 'Ahoi '+tripUsername+'! '+
-                participator.name+' hat deinen Trip "'+
-                trip.title+'" gefunden und möchte gerne teilnehmen. '+
-                'Ihr wollt bestimmt noch ein paar Details des Trips besprechen. '+
+            return 'Ahoi ' + tripUsername + '! ' +
+                participator.name + ' hat deinen Trip "' +
+                trip.title + '" gefunden und möchte gerne teilnehmen. ' +
+                'Ihr wollt bestimmt noch ein paar Details des Trips besprechen. ' +
                 'Viel Spaß wünscht euer Locator Team.';
 
         }
+
+        getNextMessagesFromConversation(id, pageNumber?, pageSize?) {
+            debugger;
+            if ((pageNumber >= 0) && (pageSize > 0)) {
+                // returning a promise inside a promise will make the outside promise resolving if inside is resolved.
+                return this.$http({
+                    url: this.basePathRealtime + '/messages/' + id,
+                    params: {
+                        page: pageNumber,
+                        elements: pageSize
+                    },
+                    method: 'GET'
+                });
+            } else {
+                return this.$http.get(this.basePathRealtime + '/messages/' + id);
+            }
+        }
+
 
         static serviceId:string = "MessengerService";
     }
