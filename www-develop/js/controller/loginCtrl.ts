@@ -129,7 +129,25 @@ module Controller {
         }
 
         loginGoogle() {
-            console.log('google');
+            debugger;
+            var myParams = {
+                // Replace client id with yours
+                'clientid': '795291637713-qllq8c3nevves29ovicpu246be03m2t6.apps.googleusercontent.com',
+                'cookiepolicy': 'single_host_origin',
+                'callback': loginCallback,
+                'approvalprompt': 'force',
+                'scope': 'https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/plus.profile.emails.read'
+            };
+            gapi.auth.signIn(myParams);
+
+            function loginCallback(result) {
+                console.log('Good work Dennis!');
+            }
+            //loginCallback().then(result => {
+            //    if (result['status']['signed_in']) {
+            //
+            //    }
+            //});
         }
 
 
