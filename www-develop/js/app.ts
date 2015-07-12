@@ -153,6 +153,23 @@ angular.module('starter', deps)
         };
     })
 
+    .directive('ngKeypress', function () {
+        return function (scope, element, attrs) {
+            element.bind("keydown keypress", function (event) {
+                if (event.which === 32) {
+                    scope.$apply(function () {
+                        event.target.blur();
+                        event.target.focus();
+                        //scope.$eval(attrs.ngEnter);
+                        //element.val('');
+                    });
+
+                    event.preventDefault();
+                }
+            });
+        };
+    })
+
     .directive('resultdate', function () {
         return {
             scope: {date: '='},
