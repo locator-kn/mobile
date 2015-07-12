@@ -50,7 +50,7 @@ body {
     z-index: 99999;
     top: 0;
     left: 0;
-    height: 44px !important;
+    height: 15px !important;
 }
 
 .ngProgressLite .ngProgressLiteBarShadow {
