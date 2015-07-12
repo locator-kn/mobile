@@ -141,13 +141,10 @@ module Controller {
             gapi.auth.signIn(myParams);
 
             function loginCallback(result) {
-                console.log('Good work Dennis!');
+                if (result['status']['signed_in']) {
+                    console.log('Google login success!');
+                }
             }
-            //loginCallback().then(result => {
-            //    if (result['status']['signed_in']) {
-            //
-            //    }
-            //});
         }
 
 
