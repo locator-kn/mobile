@@ -5,10 +5,11 @@ module Controller {
 
         user:any = {};
 
-        constructor(private UserService, private $scope, private $stateParams, private LocationService, private $ionicLoading, private webPath) {
+        constructor(private UserService, private $scope, private $stateParams, private LocationService,
+                    private $ionicLoading, private webPath, maxSpinningDuration) {
             this.locationId = $stateParams.locationId;
 
-            this.$ionicLoading.show({template: '<ion-spinner icon="spiral"></ion-spinner>'});
+            this.$ionicLoading.show({templateUrl: 'templates/static/loading.html', duration: maxSpinningDuration});
 
             this.LocationService.getLocationById(this.locationId).then((result)=> {
                 this.$ionicLoading.hide();

@@ -34,8 +34,10 @@ module Controller {
 
         error:boolean = false;
 
-        constructor(private CameraService, private $scope, private basePath, private GeolocationService, private UserService, private $state,
-                    private PictureUploadService, private webPath, private $rootScope, private $ionicLoading, private $ionicPopup, private ngProgressLite, private $ionicScrollDelegate) {
+        constructor(private CameraService, private $scope, private basePath, private GeolocationService,
+                    private UserService, private $state, private PictureUploadService, private webPath,
+                    private $rootScope, private $ionicLoading, private $ionicPopup, private ngProgressLite,
+                    private $ionicScrollDelegate, private maxSpinningDuration) {
 
             this.UserService.getMe().then(user => {
                 this.me = user.data;
@@ -211,7 +213,7 @@ module Controller {
                 this.$ionicPopup.alert({title: 'Bitte warte kurz bis das Bild fertig geladen wurde'});
                 return;
             }
-            this.$ionicLoading.show({template: '<ion-spinner icon="spiral"></ion-spinner>'});
+            this.$ionicLoading.show({templateUrl: 'templates/static/loading.html', duration: this.maxSpinningDuration});
             this.$state.go('tab.locate-position');
         }
 
