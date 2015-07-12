@@ -51,6 +51,26 @@
     <script src="lib/components/ngCordova/dist/ng-cordova.js"></script>
 
 
+    <script>
+        // Google OAuth Init
+        (function () {
+            var po = document.createElement('script');
+            po.type = 'text/javascript';
+            po.async = true;
+            po.src = 'https://apis.google.com/js/client.js?onload=onLoadCallback';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(po, s);
+        })();
+
+        function onLoadCallback() {
+            gapi.client.setApiKey('AIzaSyDqzzB8CCJf7M6aJqRbz3reClfVcvBpQ0k');
+            gapi.client.load('plus', 'v1', function () {
+            });
+        }
+    </script>
+
+
+
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
 
