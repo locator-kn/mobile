@@ -1,6 +1,6 @@
 <ion-view view-title="Suchergebnisse" class="search-result" ng-controller="TripOverviewCtrl as toc">
     <ion-nav-buttons side="right">
-            <img class="image-filter" ng-click="$ionicGoBack()" src="images/icons/edit.png">
+        <img class="image-filter" ng-click="$ionicGoBack()" src="images/icons/edit.png">
     </ion-nav-buttons>
     <ion-content class="background-color-grey">
         <ion-list class="list">
@@ -82,7 +82,9 @@
                                  ng-click="toc.showTripDetail(result._id, result.userid)">
                             <img class="icon" ng-src="./images/icons/alle_locations_weiss.png"
                                  ui-sref="tab.search-result-locations({locationSourceId:result._id})">
-                            <img class="icon" ng-src="./images/icons/messenger_weiss.png">
+                            <img class="icon" ng-src="./images/icons/messenger_weiss.png"
+                                 ng-if="!(result.userid === userID)"
+                                 ng-click="toc.startConversation(result.user, result)">
 
                             <label class="user">
                                 <label class="dekotext">erstellt von </label>
