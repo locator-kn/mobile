@@ -19,7 +19,6 @@ module Controller {
 
             this.getConversation(this.conversationId);
             this.loadMore();
-            //this.getMessages(this.conversationId);
             this.registerSocketEvent();
         }
 
