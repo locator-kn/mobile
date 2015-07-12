@@ -113,7 +113,7 @@ span.since.ng-binding {
 
 .messenger-button {
     width: 60px;
-    height: 70px;
+    height: auto;
     border: none;
     float: left;
     background: white;
