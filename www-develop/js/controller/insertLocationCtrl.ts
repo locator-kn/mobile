@@ -75,7 +75,7 @@ module Controller {
             }
             this.ngProgressLite.start();
             this.$ionicPopup.alert({title: 'Das Bild wird im Hintergrund hochgeladen. Beschreibe doch deine Location solange du wartest.'});
-            this.PictureUploadService.uploadImage(file, this.basePath + '/users/my/locations/picture', formData)
+            this.PictureUploadService.uploadImage(file, this.basePath + '/users/my/locations/picture/mobile', formData)
                 .then((data) => {
                     this.$ionicLoading.hide();
                     var dataObject = JSON.parse(data.response);
