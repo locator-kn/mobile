@@ -85,6 +85,7 @@ label.dekotext {
 
 .search-result ion-item.item {
     padding: 16px 0;
+    border: 0px;
 }
 
 .search-result .hack-for-first-element {
