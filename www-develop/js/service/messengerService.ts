@@ -40,6 +40,16 @@ module Service {
             )
         }
 
+        startInitConversation(msg:string, userId:string, tripId?:string) {
+            var newCon:any = {
+                user_id: userId,
+                message: msg
+            };
+            newCon.trip = tripId;
+
+            return this.$http.post(this.basePathRealtime + '/conversations', newCon);
+        }
+
         clearMessageCacheById(messageId) {
             this.messagesIdCache.remove(this.basePathRealtime + '/messages/' + messageId);
         }
@@ -69,6 +79,16 @@ module Service {
                 }
             }
             this.badgeBash[conversationId] = newMessage;
+        }
+
+        getInitMessage(userOwner, trip, participator) {
+            var tripUsername = userOwner.name;
+            return 'Ahoi '+tripUsername+'! '+
+                participator.name+' hat deinen Trip "'+
+                trip.title+'" gefunden und möchte gerne teilnehmen. '+
+                'Ihr wollt bestimmt noch ein paar Details des Trips besprechen. '+
+                'Viel Spaß wünscht euer Locator Team.';
+
         }
 
         static serviceId:string = "MessengerService";
