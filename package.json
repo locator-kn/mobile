@@ -30,7 +30,9 @@
   },
   "cordovaPlugins": [
     "com.ionic.keyboard",
-    "org.apache.cordova.file-transfer"
+    "org.apache.cordova.file-transfer",
+    "cordova-plugin-camera",
+    "org.apache.cordova.camera"
   ],
   "cordovaPlatforms": [
     "ios",
