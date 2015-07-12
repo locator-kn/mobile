@@ -11,7 +11,7 @@ module Controller {
         errormsg:string = '';
         successmsg:string = '';
 
-        constructor(private $rootScope, private UserService, private $scope, private $timeout, private ngFB) {
+        constructor(private $rootScope, private UserService, private $scope, private $timeout) {
         }
 
 
@@ -116,35 +116,36 @@ module Controller {
                 });
         }
 
-        loginFacebook() {
-            this.ngFB.login({scope: 'email,read_stream,publish_actions'}).then(
-                 response => {
-                    if (response.status === 'connected') {
-                        console.log('Facebook login succeeded');
-                        //this.$scope.closeLogin();
-                    } else {
-                        alert('Facebook login failed');
-                    }
-                });
-        }
 
-        loginGoogle() {
-            var myParams = {
-                // Replace client id with yours
-                'clientid': '795291637713-qllq8c3nevves29ovicpu246be03m2t6.apps.googleusercontent.com',
-                'cookiepolicy': 'single_host_origin',
-                'callback': loginCallback,
-                'approvalprompt': 'force',
-                'scope': 'https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/plus.profile.emails.read'
-            };
+        //loginFacebook() {
+        //    this.ngFB.login({scope: 'email,read_stream,publish_actions'}).then(
+        //         response => {
+        //            if (response.status === 'connected') {
+        //                console.log('Facebook login succeeded');
+        //                this.$scope.closeLogin();
+                    //} else {
+                    //    alert('Facebook login failed');
+                    //}
+                //});
+        //}
+
+        //loginGoogle() {
+        //    var myParams = {
+        //         Replace client id with yours
+                //'clientid': '795291637713-qllq8c3nevves29ovicpu246be03m2t6.apps.googleusercontent.com',
+                //'cookiepolicy': 'single_host_origin',
+                //'callback': loginCallback,
+                //'approvalprompt': 'force',
+                //'scope': 'https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/plus.profile.emails.read'
+            //};
             //gapi.auth.signIn(myParams);
 
-            function loginCallback(result) {
-                if (result['status']['signed_in']) {
-                    console.log('Google login success!');
-                }
-            }
-        }
+            //function loginCallback(result) {
+            //    if (result['status']['signed_in']) {
+            //        console.log('Google login success!');
+            //    }
+            //}
+        //}
 
 
 
