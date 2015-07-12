@@ -20,7 +20,7 @@
     </ion-content>
     <div class="list list-inset bottom">
         <label class="item item-input">
-            <input type="text" ng-enter="mc.sendMessage(message)" ng-model="message" placeholder="Schreib etwas...">
+            <input id="my-message" type="text" ng-enter="mc.sendMessage(message)" ng-model="message" placeholder="Schreib etwas...">
         </label>
         <button class="button" ng-click="mc.sendMessage(message)">
             Senden
