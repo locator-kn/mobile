@@ -30,12 +30,12 @@
 
                 <li class="item item-input"
                     ng-class="{'error' : (tpc.error) && tpc.form.tripTitle.$error.required}">
-                    <input type="text" ng-model="tpc.trip.title" name="tripTitle"
+                    <input type="text" maxlength="40" ng-model="tpc.trip.title" name="tripTitle"
                            placeholder="Gib deinem Trip einen Titel" required>
                 </li>
                 <li class="item item-input"
                     ng-class="{'error' : (tpc.error) && tpc.form.tripDescription.$error.required}">
-                            <textarea ng-model="tpc.trip.description" rows="4" type="input"
+                            <textarea maxlength="300" ng-model="tpc.trip.description" rows="4" type="input"
                                       name="tripDescription"
                                       placeholder="Beschreibe deinen Trip" required></textarea>
                 </li>
