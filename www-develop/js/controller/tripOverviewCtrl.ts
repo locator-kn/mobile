@@ -3,17 +3,33 @@ module Controller {
         results:any = [];
         moods:any = [];
         searchView:boolean;
-        userId:string;
-        page:number = 0;
-        noMoreItemsAvailable:boolean;
 
-        itemsProPage:number = 5;
+        constructor(private $rootScope, private $state, private ResultService, private $stateParams, private TripService,
+                    private UserService, private DataService, private  $ionicLoading, private webPath) {
 
         constructor(private $rootScope, private $state, private $stateParams, private TripService, private $scope,
                     private UserService, private DataService, private MessengerService, private $ionicLoading,
                     private webPath, private SearchService, maxSpinningDuration) {
 
-            this.$ionicLoading.show({templateUrl: 'templates/static/loading.html', duration: maxSpinningDuration});
+            // if no user id is committed -> controller used for search results
+            if (!$stateParams.userId) {
+                this.searchView = true;
+                this.results = ResultService.getResults();
+                $rootScope.$on('newSearchResults', () => {
+                    this.results = ResultService.getResults();
+                    this.$ionicLoading.hide();
+                    this.updateUserInfo();
+                });
+                this.$ionicLoading.hide();
+            } else {
+                this.searchView = false;
+                // if user id is comitted as state param user id -> get all trips of user
+                this.TripService.getTripsByUser($stateParams.userId)
+                    .then(result => {
+                        this.results = result.data;
+                        this.updateUserInfo();
+                    });
+                this.$ionicLoading.hide();
 
 
             if ($stateParams.userId) {
@@ -29,6 +45,7 @@ module Controller {
                 this.moods = result.data;
                 this.$ionicLoading.hide();
             });
+
         }
 
         /**
@@ -79,46 +96,6 @@ module Controller {
 
         numberOfElelementsIn(obj) {
             return Object.keys(obj).length;
-        }
-
-        loadMore() {
-            this.page++;
-            if (this.searchView) {
-                this.SearchService.getNextTripsFromQuery(this.page, this.itemsProPage).then((result) => {
-                    // push to array
-                    var arrayLength = result.data.length;
-                    for (var i = 0; i < arrayLength; i++) {
-                        this.results.push(result.data[i]);
-                        //Do something
-                    }
-                    if (arrayLength < this.itemsProPage) {
-                        this.noMoreItemsAvailable = true;
-                    }
-                    this.updateUserInfo();
-                    this.$ionicLoading.hide();
-                    this.$scope.$broadcast('scroll.infiniteScrollComplete');
-                }).catch((err)=> {
-                    this.$ionicLoading.hide();
-                });
-            } else {
-
-                // TODO: if pagination in backend implemented, change the outcomment lines
-                //this.TripService.getNextTripsFromUser(this.userId, this.page, this.itemsProPage).then(result => {
-                this.TripService.getNextTripsFromUser(this.userId).then(result => {
-                    // push to array
-                    var arrayLength = result.data.length;
-                    for (var i = 0; i < arrayLength; i++) {
-                        this.results.push(result.data[i]);
-                    }
-                    // TODO: change this too
-                    //if (arrayLength < this.itemsProPage) {
-                    this.noMoreItemsAvailable = true;
-                    //}
-                    this.updateUserInfo();
-                }).catch((err) => {
-                    this.$ionicLoading.hide();
-                });
-            }
         }
 
         static controllerId:string = "TripOverviewCtrl";

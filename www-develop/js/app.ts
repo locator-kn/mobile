@@ -55,13 +55,15 @@ var deps = [
     'btford.socket-io',
     'uiGmapgoogle-maps',
     'ngTagsInput',
+    //'ngOpenFB',
     'ngCordova',
     'emoji'
 ];
 
 angular.module('starter', deps)
 
-    .run(function ($ionicPlatform) {
+    .run(function ($ionicPlatform) {// ngFB) {
+        //ngFB.init({appId: '383834701823910'});
         $ionicPlatform.ready(function () {
             // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
             // for form inputs)
