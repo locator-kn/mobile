@@ -8,6 +8,9 @@ module Controller {
         conversationId:string;
         opponentId:string;
 
+        showEmojis:boolean;
+        emojis = [":smile:", ":blush:", ":kissing_heart:", ":hear_no_evil:", ":speak_no_evil:", ":see_no_evil:"];
+
         constructor(private MessengerService, private $rootScope, private $state, private SocketService, private $ionicScrollDelegate, private $ionicLoading, private $scope, private $ionicActionSheet) {
             this.conversationId = this.$state.params.conversationId;
             this.opponentId = this.$state.params.opponentId;
@@ -61,26 +64,6 @@ module Controller {
             }, 10);
             this.conversation[this.$rootScope.userID + '_read'] = true;
         }
-
-        showEmojis() {
-            debugger;
-            var hideSheet = this.$ionicActionSheet.show({
-                buttons: [
-                    {text: '<b>Share</b> This'},
-                    {text: 'Move'}
-                ],
-                destructiveText: 'Delete',
-                titleText: 'Modify your album',
-                cancelText: 'Cancel',
-                cancel: function () {
-                    // add cancel code..
-                },
-                buttonClicked: function (index) {
-                    return true;
-                }
-            });
-        }
-
 
         registerSocketEvent = () => {
             this.SocketService.offEvent('new_message');
