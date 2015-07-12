@@ -129,7 +129,6 @@ module Controller {
         }
 
         loginGoogle() {
-            debugger;
             var myParams = {
                 // Replace client id with yours
                 'clientid': '795291637713-qllq8c3nevves29ovicpu246be03m2t6.apps.googleusercontent.com',
