@@ -2,7 +2,7 @@ module Controller {
     export class TripOverviewCtrl {
         results:any = [];
         moods:any = [];
-        searchView:boolean;
+        searchView:boolean = true;
         userId:string;
         page:number = 0;
         noMoreItemsAvailable:boolean;
