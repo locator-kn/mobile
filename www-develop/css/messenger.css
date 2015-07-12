@@ -119,6 +119,10 @@ span.since.ng-binding {
     background: white;
 }
 
+.messenger-container .my-message {
+    padding-right: 0;
+}
+
 button#chat_submit {
     float: right;
 }
