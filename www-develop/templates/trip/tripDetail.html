@@ -1,5 +1,6 @@
 <!--cache view false needed for slider -->
-<ion-view class="trip pageWithButton" cache-view="false" view-title="{{tc.trip.title}}" ng-controller="TripCtrl as tc">
+<ion-view class="trip" ng-class="tc.trip.userid !== userID ? 'pageWithButton' : ''" cache-view="false"
+          view-title="{{tc.trip.title}}" ng-controller="TripCtrl as tc">
     <ion-content>
         <ul>
             <ion-slide-box ng-if="tc.trip.locations && tc.numberOfElelementsIn(tc.trip.locations) !== 1"
@@ -24,7 +25,7 @@
 
             <li class="item first-element">
                 <label>von </label>
-                <label class="text-bold">{{tc.user.name || 'anonym'}}</label>
+                <label class="text-bold"> {{tc.user.name || 'anonym'}}</label>
             </li>
 
             <li class="item description" ng-if="tc.trip.description">
@@ -74,7 +75,7 @@
             </li>
         </ul>
     </ion-content>
-    <button ng-click="tc.openConversationModal()"
+    <button ng-if="!(userID === tc.trip.userid)" ng-click="tc.openConversationModal()"
             class="button-bottom button button-full background-green bottom">
         Anschreiben
     </button>
