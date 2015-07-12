@@ -32,8 +32,9 @@ module Controller {
         errormsg:string;
         successmsg:string;
 
-        constructor(private $rootScope, private $state, private UserService, private CameraService, private PictureUploadService,
-                    private basePath, private $stateParams, private $ionicPopup, private $ionicLoading, private webPath, private ngProgressLite) {
+        constructor(private $rootScope, private $state, private UserService, private CameraService,
+                    private PictureUploadService, private basePath, private $stateParams, private $ionicPopup,
+                    private $ionicLoading, private webPath, private ngProgressLite, private maxSpinningDuration) {
 
             this.getUser($stateParams.userId);
 
@@ -112,7 +113,7 @@ module Controller {
                 var date = new Date(this.user.birthdate);
                 this.user.birthdate = date.toISOString();
             }
-            this.$ionicLoading.show({template: '<ion-spinner icon="spiral"></ion-spinner>'});
+            this.$ionicLoading.show({templateUrl: 'templates/static/loading.html', duration: this.maxSpinningDuration});
 
             this.UserService.updateProfile(this.user)
                 .then(result => {
@@ -138,11 +139,6 @@ module Controller {
         }
 
         updateSettings = () => {
-            // TODO
-            this.$ionicPopup.alert({title: 'Noch nicht implementiert'});
-        };
-
-        startConversation = () => {
             // TODO
             this.$ionicPopup.alert({title: 'Noch nicht implementiert'});
         };
