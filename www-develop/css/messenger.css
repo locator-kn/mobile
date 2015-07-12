@@ -168,14 +168,6 @@ span.bubble {
     border-color: transparent #ff4837 transparent transparent;
 }
 
-.emoji-overlay {
-    position: absolute;
-    background-color: white;
-    padding: 15px;
-    padding: 9px;
-    right: 60px;
-}
-
 .conversations {
     padding-top: 15px;
     float: left;
@@ -219,5 +211,7 @@ span.bubble {
     background-color: white;
     padding: 15px;
     padding: 9px;
-    right: 60px;
+    right: 25%;
+    bottom: 55px;
+    margin: 0 0 45px 0;
 }
