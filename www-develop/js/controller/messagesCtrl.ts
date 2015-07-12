@@ -10,14 +10,25 @@ module Controller {
 
         showEmojis:boolean;
         emojis = [":smile:", ":blush:", ":kissing_heart:", ":hear_no_evil:", ":speak_no_evil:", ":see_no_evil:"];
+        textbox:any  = '';
 
-        constructor(private MessengerService, private $rootScope, private $state, private SocketService, private $ionicScrollDelegate, private $ionicLoading, private $scope, private $ionicActionSheet) {
+        constructor(private MessengerService, private $rootScope, private $state, private SocketService, private $ionicScrollDelegate, private $ionicLoading, private $scope, private $sce, private $filter) {
             this.conversationId = this.$state.params.conversationId;
             this.opponentId = this.$state.params.opponentId;
 
             this.getConversation(this.conversationId);
             this.getMessages(this.conversationId);
             this.registerSocketEvent();
+        }
+
+        toTrusted(html_code) {
+            return this.$sce.trustAsHtml(this.$filter('emoji')(html_code));
+        }
+
+        selectEmoji(item) {
+            this.textbox = this.textbox + ' ' + item + ' ';
+            this.showEmojis = false;
+            angular.element('#my-message').focus();
         }
 
 
@@ -108,8 +119,8 @@ module Controller {
                     var date = new Date();
                     this.$ionicScrollDelegate.scrollBottom(true);
                     this.MessengerService.clearMessageCacheById(this.conversationId);
-                    this.$scope.message = '';
-                    document.getElementById("my-message").focus();
+                    this.textbox = '';
+                    angular.element('#my-message').focus();
                 })
                 .catch(result => {
                     console.info("Error");
