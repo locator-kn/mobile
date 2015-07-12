@@ -122,3 +122,9 @@
 .tab-item-active.search {
     background-color: rgb(51, 196, 183);;
 }
+
+button.button-bottom.button.button-full.background-green.bottom.search-button:hover {
+    color: rgb(51, 196, 183);
+    text-decoration: none;
+    background-color: #ddd;
+}
