@@ -20,25 +20,25 @@
                 </div>
                 <li ng-class="{'error' : (ilc.error) && ilc.form.locationTitle.$error.required}"
                     class="item item-input">
-                    <input type="text" ng-model="ilc.locationFormDetails.title" name="locationTitle"
+                    <input maxlength="40" type="text" ng-model="ilc.locationFormDetails.title" name="locationTitle"
                            placeholder="Gib der Location einen Titel" required>
                 </li>
                 <li ng-class="{'error' : (ilc.error) && ilc.form.locationDescription.$error.required}"
                     class="item item-input">
-                <textarea ng-model="ilc.locationFormDetails.description" rows="4" type="input"
+                <textarea maxlength="300" ng-model="ilc.locationFormDetails.description" rows="4" type="input"
                           name="locationDescription"
                           placeholder="Beschreibe die Location" required></textarea>
                 </li>
                 <li ng-class="{'error' : (ilc.error) && ilc.form.locationTags.$error.required}"
                     class="item item-input tag-input">
-                    <tags-input add-on-space="true" add-on-comma="true" style="width: 100%"
+                    <tags-input ngKeypress maxlength="300" add-on-space="true" add-on-comma="true" style="width: 100%"
                                 ng-class="{'error' : ilc.error && ilc.locationFormDetails.tags.length < 1}"
                                 placeholder="+ Füge aussagekräftige Tags hinzu"
                                 ng-model="ilc.locationFormDetails.tags"></tags-input>
                 </li>
 
                 <li class="item item-icon-right" ng-click="ilc.goToMap()">
-                    Wo befindet sich die Location?
+                    {{!ilc.mapMarkerSet ? 'Wo befindet sich die Location?' : 'Position ändern'}}
                     <i class="icon ion-chevron-right icon-accessory"></i>
                 </li>
 
