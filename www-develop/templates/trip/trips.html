@@ -1,5 +1,5 @@
 <ion-view view-title="Suchergebnisse" class="search-result" ng-controller="TripOverviewCtrl as toc">
-    <ion-nav-buttons side="right">
+    <ion-nav-buttons ng-if="toc.searchView" side="right">
         <img class="image-filter" ng-click="$ionicGoBack()" src="./images/icons/edit.png">
     </ion-nav-buttons>
     <ion-content class="background-color-grey">
