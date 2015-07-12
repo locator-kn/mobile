@@ -12,6 +12,19 @@ body {
     font-family: Signika !important;
 }
 
+.signika button,
+.signika label,
+.signika span,
+.signika div,
+.signika textarea,
+.signika text,
+.signika input
+.signika ion-content {
+    font-family: Signika !important;
+}
+
+
+
 .image-container-full,
 .image-container {
     width: 100%;
