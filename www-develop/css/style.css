@@ -131,12 +131,14 @@ body {
     padding-left: 25px;
 }
 
-.pageWithButton .scroll {
-    padding-bottom: 100px;
+.pageWithButton ion-content {
+    margin-bottom: 50px;
 }
 
-.pageWithBigButton .scroll {
-    padding-bottom: 100px;
+/*.pageWithBigButton .scroll {*/
+.pageWithBigButton ion-content {
+    margin-bottom: 80px;
+    /*padding-bottom: 100px;*/
 }
 
 .button-bottom {
