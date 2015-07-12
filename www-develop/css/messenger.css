@@ -213,3 +213,11 @@ span.bubble {
     color: white;
     background-color: rgb(51, 196, 183)
 }
+
+.messenger-container .emoji-overlay {
+    position: absolute;
+    background-color: white;
+    padding: 15px;
+    padding: 9px;
+    right: 60px;
+}
