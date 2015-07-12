@@ -9,9 +9,11 @@ module Controller {
         moods:any = [];
 
         constructor(private $scope, private $element, private $stateParams, private SearchService, private DataService,
-                    private $ionicSlideBoxDelegate, private UserService, private $ionicLoading, private webPath) {
+                    private $ionicSlideBoxDelegate, private UserService, private $ionicLoading, private webPath,
+                    maxSpinningDuration) {
 
-            this.$ionicLoading.show({template: '<ion-spinner icon="spiral"></ion-spinner>'});
+            this.$ionicLoading.show({templateUrl: 'templates/static/loading.html', duration: maxSpinningDuration});
+
 
             // get trip by id from state param
             SearchService.getTripById(this.$stateParams.tripId).then((result) => {

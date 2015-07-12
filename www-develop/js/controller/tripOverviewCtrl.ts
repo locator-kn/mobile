@@ -11,9 +11,10 @@ module Controller {
 
         constructor(private $rootScope, private $state, private $stateParams, private TripService, private $scope,
                     private UserService, private DataService, private MessengerService, private $ionicLoading,
-                    private webPath, private SearchService) {
+                    private webPath, private SearchService, maxSpinningDuration) {
 
-            this.$ionicLoading.show({template: '<ion-spinner icon="spiral"></ion-spinner>'});
+            this.$ionicLoading.show({templateUrl: 'templates/static/loading.html', duration: maxSpinningDuration});
+
 
             if ($stateParams.userId) {
                 // if user id is comitted as state param user id -> get all trips of user
@@ -117,11 +118,7 @@ module Controller {
                 }).catch((err) => {
                     this.$ionicLoading.hide();
                 });
-
-
             }
-
-
         }
 
         static controllerId:string = "TripOverviewCtrl";
