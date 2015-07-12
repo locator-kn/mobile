@@ -130,7 +130,9 @@ module Controller {
                     this.noMoreItemsAvailable = true;
                 }
                 this.$scope.$broadcast('scroll.refreshComplete');
-                this.$ionicScrollDelegate.scrollBottom(true);
+                if (this.page === 0) {
+                    this.$ionicScrollDelegate.scrollBottom(true);
+                }
                 this.$ionicLoading.hide();
             }).catch((err)=> {
                 this.$ionicLoading.hide();
