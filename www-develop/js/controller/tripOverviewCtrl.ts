@@ -10,7 +10,8 @@ module Controller {
         itemsProPage:number = 5;
 
         constructor(private $rootScope, private $state, private $stateParams, private TripService, private $scope,
-                    private UserService, private DataService, private  $ionicLoading, private webPath, private SearchService) {
+                    private UserService, private DataService, private MessengerService, private $ionicLoading,
+                    private webPath, private SearchService) {
 
             this.$ionicLoading.show({template: '<ion-spinner icon="spiral"></ion-spinner>'});
 
@@ -36,6 +37,7 @@ module Controller {
             this.results.forEach((currentValue) => {
                 this.UserService.getUser(currentValue.userid).then((result) => {
                     currentValue.username = result.data.name + ' ' + result.data.surname;
+                    currentValue.user = result.data;
                 })
             })
         };
@@ -56,6 +58,23 @@ module Controller {
                 userId: userId
             });
         };
+
+
+        startConversation(user, trip) {
+            if (!this.$rootScope.authenticated) {
+                return this.UserService.openLoginModal();
+            }
+
+            this.UserService.getMe().then(me => {
+                var participant = me.data;
+                var msg = this.MessengerService.getInitMessage(user, trip, participant);
+                this.MessengerService.startInitConversation(msg, user.id || user._id, trip._id || trip.id).then((result:any) => {
+                    var conId = result.data.id;
+                    this.$state.go('tab.messenger-messages', {opponentId: user._id, conversationId: conId});
+                    //this.$rootScope.$broadcast('new_conversation');
+                });
+            });
+        }
 
         numberOfElelementsIn(obj) {
             return Object.keys(obj).length;
