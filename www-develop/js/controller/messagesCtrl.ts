@@ -138,7 +138,7 @@ module Controller {
                 debugger;
                 var arrayLength = result.data.length;
                 for (var i = 0; i < arrayLength; i++) {
-                    this.messages.push(result.data[i]);
+                    this.messages.unshift(result.data[i]);
                     //Do something
                 }
                 if (arrayLength < this.itemsProPage) {
