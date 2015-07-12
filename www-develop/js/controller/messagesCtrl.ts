@@ -107,6 +107,7 @@ module Controller {
                     this.$ionicScrollDelegate.scrollBottom(true);
                     this.MessengerService.clearMessageCacheById(this.conversationId);
                     this.$scope.message = '';
+                    document.getElementById("my-message").focus();
                 })
                 .catch(result => {
                     console.info("Error");
