@@ -118,7 +118,7 @@ module Controller {
 
         registerFacebook() {
             this.ngFB.login({scope: 'email,read_stream,publish_actions'}).then(
-                function (response) {
+                 response => {
                     if (response.status === 'connected') {
                         console.log('Facebook login succeeded');
                         //this.$scope.closeLogin();
