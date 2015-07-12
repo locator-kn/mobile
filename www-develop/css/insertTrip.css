@@ -219,3 +219,8 @@ textarea.ng-dirty.ng-valid-parse.ng-touched.ng-invalid.ng-invalid-required {
     background-color: #fff;
     color: rgb(255,70,55);
 }
+
+.insert-trip .button:hover {
+    color: rgb(255, 70, 55);
+    background-color: #ddd;
+}
