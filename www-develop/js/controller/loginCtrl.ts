@@ -116,7 +116,7 @@ module Controller {
                 });
         }
 
-        registerFacebook() {
+        loginFacebook() {
             this.ngFB.login({scope: 'email,read_stream,publish_actions'}).then(
                  response => {
                     if (response.status === 'connected') {
@@ -128,7 +128,7 @@ module Controller {
                 });
         }
 
-        registerGoogle() {
+        loginGoogle() {
             console.log('google');
         }
 
