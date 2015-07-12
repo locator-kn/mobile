@@ -10,7 +10,7 @@ module Controller {
 
         constructor(private $scope, private $element, private $stateParams, private SearchService, private DataService,
                     private $ionicSlideBoxDelegate, private UserService, private $ionicLoading, private webPath,
-                    maxSpinningDuration) {
+                    maxSpinningDuration, private $rootScope, private MessengerService, private $state) {
 
             this.$ionicLoading.show({templateUrl: 'templates/static/loading.html', duration: maxSpinningDuration});
 
@@ -48,6 +48,23 @@ module Controller {
         numberOfElelementsIn(obj) {
             return Object.keys(obj).length;
         }
+
+        startConversation(user, trip) {
+            if (!this.$rootScope.authenticated) {
+                return this.UserService.openLoginModal();
+            }
+
+            this.UserService.getMe().then(me => {
+                var participant = me.data;
+                var msg = this.MessengerService.getInitMessage(user, trip, participant);
+                this.MessengerService.startInitConversation(msg, user.id || user._id, trip._id || trip.id).then((result:any) => {
+                    var conId = result.data.id;
+                    this.$state.go('tab.messenger-messages', {opponentId: user._id, conversationId: conId});
+                    //this.$rootScope.$broadcast('new_conversation');
+                });
+            });
+        }
+
 
         static controllerId:string = "TripCtrl";
     }
