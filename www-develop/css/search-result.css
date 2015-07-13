@@ -15,19 +15,17 @@
 }
 
 li.item.trip-options {
-    background-color: #343434;
-    color: white;
+    background-color: #F8F8F8;
+    color: rgb(68, 68, 68);
+    border-bottom: none;
 }
 
 li.item.trip-options .icon {
-    width: 31px;
+    width: 35px;
     vertical-align: middle;
     margin-right: 10px;
-}
+    margin-top: -8px;
 
-li.item.trip-options .icon-small {
-    margin-top: 5px;
-    margin-bottom: 5px;
 }
 
 li.item.trip-options .user {
@@ -90,4 +88,16 @@ label.dekotext {
 
 .search-result .hack-for-first-element {
     margin-bottom: -17px;
+}
+
+.search-result .result-mood {
+    margin-left: 7px;
+}
+
+.search-result label  {
+    font-size: 16px;
+}
+
+.search-result .line {
+    padding: 5px;
 }
