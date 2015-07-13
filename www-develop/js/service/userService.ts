@@ -62,7 +62,7 @@ module Service {
             return this.$http.get(this.basePath + '/logout');
         }
 
-        getMe = () => {
+        getMe() {
             return this.$q((resolve, reject) => {
 
                 if (!this.usersIdCache) {
@@ -106,13 +106,13 @@ module Service {
             )
         }
 
-        openLoginModal = () => {
+        openLoginModal() {
             this.$ionicLoading.show({templateUrl: 'templates/modals/login-modal.html'}, {
                 animation: 'slide-in-up'
             })
-        };
+        }
 
-        openConversationModal = (userId) => {
+        openConversationModal(userId) {
             if (this.$rootScope.authenticated) {
                 this.conversationUserId = userId;
                 this.$ionicLoading.show({templateUrl: 'templates/modals/start-conversation-modal.html'}, {
@@ -124,14 +124,14 @@ module Service {
 
         };
 
-        openRegistrationModal = () => {
+        openRegistrationModal() {
             this.$ionicLoading.hide();
             this.$ionicLoading.show({templateUrl: 'templates/modals/registration-modal.html'}, {
                 animation: 'slide-in-up'
             })
         };
 
-        closeLoginModal = ()=> {
+        closeLoginModal() {
             this.$ionicLoading.hide();
         };
 
@@ -143,7 +143,7 @@ module Service {
             return this.$http.get(this.basePath + '/forgot/' + mail);
         }
 
-        getConversationUserId = () => {
+        getConversationUserId() {
             return this.conversationUserId;
         };
 
