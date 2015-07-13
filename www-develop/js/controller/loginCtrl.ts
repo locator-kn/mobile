@@ -11,7 +11,7 @@ module Controller {
         errormsg:string = '';
         successmsg:string = '';
 
-        constructor(private $rootScope, private UserService, private $scope, private $timeout) {
+        constructor(private $rootScope, private UserService, private $scope, private $timeout, private ngFB) {
         }
 
 
@@ -117,17 +117,17 @@ module Controller {
         }
 
 
-        //loginFacebook() {
-        //    this.ngFB.login({scope: 'email,read_stream,publish_actions'}).then(
-        //         response => {
-        //            if (response.status === 'connected') {
-        //                console.log('Facebook login succeeded');
-        //                this.$scope.closeLogin();
-                    //} else {
-                    //    alert('Facebook login failed');
-                    //}
-                //});
-        //}
+        loginFacebook() {
+            this.ngFB.login({scope: 'email,read_stream,publish_actions'}).then(
+                 response => {
+                    if (response.status === 'connected') {
+                        console.log('Facebook login succeeded');
+                        this.$scope.closeLogin();
+                    } else {
+                        alert('Facebook login failed');
+                    }
+                });
+        }
 
         //loginGoogle() {
         //    var myParams = {
