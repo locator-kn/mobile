@@ -14,7 +14,6 @@ module Controller {
             tags: '',
             title: '',
             description: '',
-            budget: '',
             city: {},
             public: true
         };
