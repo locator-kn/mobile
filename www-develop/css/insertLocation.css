@@ -5,11 +5,8 @@
 
 .insert-location a.choose-image {
     width: auto;
-    margin-top: -54px;
-    margin-left: -36px;
-    background-color: rgb(34, 34, 34);
-    border-radius: 50%;
-    border: 2px solid white;
+    margin-top: -60px;
+    margin-left: -50px;
 }
 
 .insert-location a.choose-image {
@@ -19,8 +16,8 @@
 }
 
 .insert-location .choose-image img {
-    width: 60px;
-    height: 60px;
+    width: 100px;
+    height: 100px;
     padding: 15px;
 }
 
