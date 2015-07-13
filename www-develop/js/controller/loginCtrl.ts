@@ -120,6 +120,7 @@ module Controller {
                      debugger;
                     if (response.status === 'connected') {
                         console.log('Facebook login succeeded');
+                        this.closeLoginModal();
                         //this.$scope.closeLogin();
                     } else {
                         alert('Facebook login failed');
