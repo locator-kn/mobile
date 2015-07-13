@@ -1,75 +1,75 @@
-/*Accommodation services*/
-.equi-ico {
-    width:35px;
-    height:35px;
-    display: inline-block;
-    margin-left: 8px;
-    margin-top: 20px;
-    cursor:pointer;
-    background-repeat: no-repeat;
-    background-size: 35px;
-}
+/*/!*Accommodation services*!/*/
+/*.equi-ico {*/
+    /*width:35px;*/
+    /*height:35px;*/
+    /*display: inline-block;*/
+    /*margin-left: 8px;*/
+    /*margin-top: 20px;*/
+    /*cursor:pointer;*/
+    /*background-repeat: no-repeat;*/
+    /*background-size: 35px;*/
+/*}*/
 
-.wifi {
-    background-image: url("../images/icons/accommodationEquipment/wifi.png");
-}
+/*.wifi {*/
+    /*background-image: url("../images/icons/accommodationEquipment/wifi.png");*/
+/*}*/
 
-.wifiGrey {
-    background-image: url("../images/icons/accommodationEquipment/wifi_grey.png");
-}
+/*.wifiGrey {*/
+    /*background-image: url("../images/icons/accommodationEquipment/wifi_grey.png");*/
+/*}*/
 
-.tv {
-    background-image: url("../images/icons/accommodationEquipment/tv.png");
-}
+/*.tv {*/
+    /*background-image: url("../images/icons/accommodationEquipment/tv.png");*/
+/*}*/
 
-.tvGrey {
-    background-image: url("../images/icons/accommodationEquipment/tv_grey.png");
-}
+/*.tvGrey {*/
+    /*background-image: url("../images/icons/accommodationEquipment/tv_grey.png");*/
+/*}*/
 
-.shower {
-    background-image: url("../images/icons/accommodationEquipment/shower.png");
-}
+/*.shower {*/
+    /*background-image: url("../images/icons/accommodationEquipment/shower.png");*/
+/*}*/
 
-.showerGrey {
-    background-image: url("../images/icons/accommodationEquipment/shower_grey.png");
-}
+/*.showerGrey {*/
+    /*background-image: url("../images/icons/accommodationEquipment/shower_grey.png");*/
+/*}*/
 
-.meal {
-    background-image: url("../images/icons/accommodationEquipment/kitchen.png");
-}
+/*.meal {*/
+    /*background-image: url("../images/icons/accommodationEquipment/kitchen.png");*/
+/*}*/
 
-.mealGrey {
-    background-image: url("../images/icons/accommodationEquipment/kitchen_grey.png");
-}
+/*.mealGrey {*/
+    /*background-image: url("../images/icons/accommodationEquipment/kitchen_grey.png");*/
+/*}*/
 
-.breakfast {
-    background-image: url("../images/icons/accommodationEquipment/breakfast.png");
-}
+/*.breakfast {*/
+    /*background-image: url("../images/icons/accommodationEquipment/breakfast.png");*/
+/*}*/
 
-.breakfastGrey {
-    background-image: url("../images/icons/accommodationEquipment/breakfast_grey.png");
-}
+/*.breakfastGrey {*/
+    /*background-image: url("../images/icons/accommodationEquipment/breakfast_grey.png");*/
+/*}*/
 
-.smoker {
-    background-image: url("../images/icons/accommodationEquipment/smoking.png");
-}
+/*.smoker {*/
+    /*background-image: url("../images/icons/accommodationEquipment/smoking.png");*/
+/*}*/
 
-.smokerGrey {
-    background-image: url("../images/icons/accommodationEquipment/smoking_grey.png");
-}
+/*.smokerGrey {*/
+    /*background-image: url("../images/icons/accommodationEquipment/smoking_grey.png");*/
+/*}*/
 
-.parking {
-    background-image: url("../images/icons/accommodationEquipment/parking.png");
-}
+/*.parking {*/
+    /*background-image: url("../images/icons/accommodationEquipment/parking.png");*/
+/*}*/
 
-.parkingGrey {
-    background-image: url("../images/icons/accommodationEquipment/parking_grey.png");
-}
+/*.parkingGrey {*/
+    /*background-image: url("../images/icons/accommodationEquipment/parking_grey.png");*/
+/*}*/
 
-.handicapped {
-    background-image: url("../images/icons/accommodationEquipment/wheelchair.png");
-}
+/*.handicapped {*/
+    /*background-image: url("../images/icons/accommodationEquipment/wheelchair.png");*/
+/*}*/
 
-.handicappedGrey {
-    background-image: url("../images/icons/accommodationEquipment/wheelchair_grey.png");
-}
+/*.handicappedGrey {*/
+    /*background-image: url("../images/icons/accommodationEquipment/wheelchair_grey.png");*/
+/*}*/
