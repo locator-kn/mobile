@@ -89,9 +89,8 @@
 }
 
 .insert-trip .selected-location {
-    border-color: #f47c7e;
-    border-width: 2px;
-}
+
+    border: 1px solid rgb(255, 70, 55);
 
 .insert-trip .mood-title {
     font-size: 16px;
@@ -101,13 +100,11 @@
 
 .insert-trip .required-text {
     float: right;
-    margin-right: 10px;
-    margin-top: 5px;
+    margin: 5px 10px 0 0;
 }
 
 .insert-trip .error {
-    border-color: red;
-    border-width: 2px;
+    border: 1px solid rgb(255, 70, 55);
     margin: 1px;
 }
 
