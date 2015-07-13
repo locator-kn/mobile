@@ -3,9 +3,7 @@
         "source": {
             "type": "registry",
             "id": "com.ionic.keyboard"
-        },
-        "is_top_level": true,
-        "variables": {}
+        }
     },
     "org.apache.cordova.camera": {
         "source": {
@@ -17,9 +15,8 @@
     },
     "cordova-plugin-geolocation": {
         "source": {
-            "type": "git",
-            "url": "https://github.com/apache/cordova-plugin-geolocation.git",
-            "subdir": "."
+            "type": "registry",
+            "id": "cordova-plugin-geolocation"
         },
         "is_top_level": true,
         "variables": {}
@@ -42,17 +39,8 @@
     },
     "cordova-plugin-whitelist": {
         "source": {
-            "type": "git",
-            "url": "https://github.com/apache/cordova-plugin-whitelist.git",
-            "subdir": "."
-        },
-        "is_top_level": true,
-        "variables": {}
-    },
-    "cordova-plugin-camera": {
-        "source": {
             "type": "registry",
-            "id": "cordova-plugin-camera"
+            "id": "cordova-plugin-whitelist"
         },
         "is_top_level": true,
         "variables": {}
