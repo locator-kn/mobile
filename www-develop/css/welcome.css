@@ -19,20 +19,19 @@
     padding-left: 30px;
 }
 
-.welcome .height-3,
-.welcome .height-3 img {
+.welcome .height-3 {
     vertical-align: middle;
     height: 33.4%
 
 }
 
 .background-coral {
-    background: rgb(255, 70, 55);
+    background: #f05346;
     color: #fff;
 }
 
 .background-green {
-    background: rgb(51, 196, 183);
+    background: #3eb9ad;
     color: #fff;
 }
 
@@ -42,9 +41,9 @@
 }
 
 .logo {
-    /* TODO use other picture and remove this css option*/
-    height: 50px;
-    left: 50%;
+    height: 60px;
+    left: 60%;
+    margin-top: -5px;
 }
 
 .welcome .tab-icon {
@@ -55,7 +54,7 @@
 
 .welcome .tab-title {
     float: left;
-    margin-top: 3%;
+    margin-top: 6%;
     display: table-cell;
 }
 
@@ -64,8 +63,10 @@
 }
 
 .welcome button:hover {
-     color: #fff;
-     text-decoration: none;
+    color: #fff;
+    text-decoration: none;
 }
 
-
+.welcome .new-height {
+    height: 80px
+}
