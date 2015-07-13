@@ -78,11 +78,11 @@
                             </li>
                         </div>
                         <li class="item trip-options">
-                            <img class="icon icon-small" ng-src="./images/icons/ansehen_weiss.png"
+                            <img class="icon icon-small" ng-src="./images/svg/ansehen_weiss.svg"
                                  ng-click="toc.showTripDetail(result._id, result.userid)">
-                            <img class="icon" ng-src="./images/icons/alle_locations_weiss.png"
+                            <img class="icon" ng-src="./images/svg/alle_locations.svg"
                                  ui-sref="tab.search-result-locations({locationSourceId:result._id})">
-                            <img class="icon" ng-src="./images/icons/messenger_weiss.png"
+                            <img class="icon" ng-src="./images/svg/messenger_weiss.svg"
                                  ng-if="!(result.userid === userID)"
                                  ng-click="toc.startConversation(result.user, result)">
 
