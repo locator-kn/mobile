@@ -13,7 +13,7 @@ module Controller {
 
         constructor(private $rootScope, private UserService, private $scope, private $timeout, private ngFB) {
         }
-        
+
         closeLoginModal() {
             this.UserService.closeLoginModal();
         }
@@ -115,11 +115,12 @@ module Controller {
 
 
         loginFacebook() {
-            this.ngFB.login({scope: 'email,read_stream,publish_actions'}).then(
+            this.ngFB.login({scope: 'email'}).then(
                  response => {
+                     debugger;
                     if (response.status === 'connected') {
                         console.log('Facebook login succeeded');
-                        this.$scope.closeLogin();
+                        //this.$scope.closeLogin();
                     } else {
                         alert('Facebook login failed');
                     }
