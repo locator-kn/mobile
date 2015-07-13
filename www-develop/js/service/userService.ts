@@ -53,16 +53,16 @@ module Service {
 
         loginFacebook(at) {
             return this.$http.post(this.basePath + '/mobile/loginFacebook', {
-                accessToken: at;
+                accessToken: at
             });
         }
 
-        logout = () => {
+        logout() {
             this.CacheFactory.clearAll();
             return this.$http.get(this.basePath + '/logout');
-        };
+        }
 
-        getMe() {
+        getMe = () => {
             return this.$q((resolve, reject) => {
 
                 if (!this.usersIdCache) {
