@@ -40,30 +40,29 @@
                     </div>
                     <ul>
                         <div ng-click="toc.showTripDetail(result._id, result.userid)">
-                            <li class="item">
-                                <label>von </label>
-                                <label class="text-bold">{{result.username || 'anonym'}}</label>
-                            </li>
-                            <li class="item" ng-if="result.start_date && result.end_date">
-                                <label class="text-bold">{{toc.formatDate(result.start_date)}}</label>
-                                <label>bis</label>
-                                <label class="text-bold">{{toc.formatDate(result.end_date)}}</label>
-                            </li>
-                            <li class="item">
+
+
+                            <li class="item item-icon-right">
                                 <label>
                                     <label ng-if="result.days" class="text-bold">{{result.days}}</label>
                                     <label>{{result.days === 1 ? 'Tag' : 'Tage'}}</label>
-                                    <label ng-if="result.days && result.persons" class="text-bold">|</label>
+                                    <label ng-if="result.days && result.persons" class="text-bold line">|</label>
                                     <label class="text-bold">{{result.persons}} </label>
                                     <label ng-if="result.persons">{{result.persons === 1 ? 'Person' :
                                         'Personen'}}</label>
-                                    <label ng-if="result.persons || result.locations" class="text-bold">|</label>
+                                    <label ng-if="result.persons || result.locations" class="text-bold line">|</label>
                                     <label class="text-bold">{{toc.numberOfElelementsIn(result.locations)}}</label>
                                     <label ng-if="result.locations">
                                         {{toc.numberOfElelementsIn(result.locations) === 1 ? 'Location' :
                                         'Locations'}}
                                     </label>
+                                    <i class="icon ion-chevron-right icon-accessory"></i>
                                 </label>
+                            </li>
+                            <li class="item" ng-if="result.start_date && result.end_date">
+                                <label class="text-bold">{{toc.formatDate(result.start_date)}}</label>
+                                <label>bis</label>
+                                <label class="text-bold">{{toc.formatDate(result.end_date)}}</label>
                             </li>
                             <li class="item mood-container" ng-if="result.moods">
                                 <div ng-repeat="mood in result.moods">
