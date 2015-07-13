@@ -21,7 +21,8 @@ module Controller {
         moodAvailable:boolean;
         selectLocationState:string = 'tab.offer-locations';
 
-        constructor(private $rootScope, private TripService, private DataService, private $state) {
+        constructor(private $rootScope, private TripService, private DataService, private $state,
+                    private $ionicScrollDelegate) {
             $rootScope.$on('newInsertTripCity', () => {
                 this.city = this.TripService.getCity();
             });
@@ -99,6 +100,13 @@ module Controller {
             this.accommodation = false;
             this.selectedAccommodationEquipment = [];
             this.selectedMood = {};
+        };
+
+        triggerAccomodation() {
+            this.accommodation = !this.accommodation;
+            if(this.accommodation){
+                this.$ionicScrollDelegate.scrollBottom(true);
+            }
         }
 
         static controllerId:string = "InsertTripCtrl";
