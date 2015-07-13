@@ -2,7 +2,6 @@ var gulp = require('gulp');
 var gutil = require('gulp-util');
 var bower = require('bower');
 var concat = require('gulp-concat');
-var minifyCss = require('gulp-minify-css');
 var rename = require('gulp-rename');
 var sh = require('shelljs');
 var ts = require('gulp-typescript');
@@ -13,6 +12,12 @@ var merge = require('merge2');
 var shell = require('gulp-shell');
 var template = require('gulp-template');
 var url = require('url');
+var autoprefixer = require('gulp-autoprefixer');
+var minifyCss = require('gulp-minify-css');
+var inject = require('gulp-inject');
+var concat = require('gulp-concat');
+var Cachebuster = require('gulp-cachebust');
+var cachebust = new Cachebuster();
 
 var intervalMS = 500;
 
@@ -116,6 +121,23 @@ gulp.task('install', ['git-check'], function () {
             gutil.log('bower', gutil.colors.cyan(data.id), data.message);
         });
 });
+
+gulp.task('miniCss', function() {
+    var target = gulp.src('./www-develop/index.html');
+    var sources1 = gulp.src(['./www-develop/css/**/*.css', '!./www-develop/css/response.css'])
+        .pipe(concat('css/all.css'))
+        .pipe(autoprefixer({
+            browsers: ['last 2 versions'],
+            cascade: false
+        }))
+        .pipe(minifyCss({compatibility: 'ie8'}))
+        .pipe(cachebust.resources())
+        .pipe(gulp.dest('./www'));
+
+    return target.pipe(inject(sources1,  {ignorePath: 'www', addRootSlash: false})).pipe(gulp.dest('./www'));
+});
+
+gulp.task('compile', ['ts', 'html', 'lib', 'fonts', 'img', 'locale', 'miniCss']);
 
 
 gulp.task('git-check', function (done) {
