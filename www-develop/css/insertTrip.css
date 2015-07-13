@@ -89,9 +89,8 @@
 }
 
 .insert-trip .selected-location {
-    border: 1px solid #f47c7e;
 
-}
+    border: 1px solid rgb(255, 70, 55);
 
 .insert-trip .mood-title {
     font-size: 16px;
