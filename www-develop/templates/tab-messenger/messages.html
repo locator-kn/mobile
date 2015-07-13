@@ -1,7 +1,7 @@
 <ion-view view-title="Messenger" class="messages messenger-container" ng-controller="MessagesCtrl as mc">
     <ion-content class="background-color-grey">
         <ion-refresher
-            pulling-text="Pull to refresh..."
+            pulling-text="Nachrichten laden..."
             on-refresh="mc.loadMore()">
         </ion-refresher>
         <div ng-if="authenticated">
