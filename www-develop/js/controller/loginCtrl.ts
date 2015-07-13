@@ -122,6 +122,7 @@ module Controller {
                         this.closeLoginModal();
                         this.UserService.loginFacebook(response.authResponse.accessToken).then((userResponse) => {
                             console.log(userResponse.data);
+                            this.getMe();
                         });
                     } else {
                         alert('Facebook login failed');
