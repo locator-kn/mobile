@@ -116,12 +116,13 @@ module Controller {
 
         loginFacebook() {
             this.ngFB.login({scope: 'email'}).then(
-                 response => {
-                     debugger;
+                (response:any) => {
                     if (response.status === 'connected') {
                         console.log('Facebook login succeeded');
                         this.closeLoginModal();
-                        //this.$scope.closeLogin();
+                        this.UserService.loginFacebook(response.authResponse.accessToken).then((userResponse) => {
+                            console.log(userResponse.data);
+                        });
                     } else {
                         alert('Facebook login failed');
                     }
