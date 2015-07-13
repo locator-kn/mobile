@@ -2,7 +2,7 @@
  * Copyright 2014 Drifty Co.
  * http://drifty.com/
  *
- * Ionic, v1.0.1
+ * Ionic, v1.0.0
  * A powerful HTML5 mobile app framework.
  * http://ionicframework.com/
  *
@@ -645,7 +645,7 @@ function($rootScope, $state, $location, $window, $timeout, $ionicViewSwitcher, $
   var DIRECTION_NONE = 'none';
 
   var stateChangeCounter = 0;
-  var lastStateId, nextViewOptions, deregisterStateChangeListener, nextViewExpireTimer, forcedNav;
+  var lastStateId, nextViewOptions, nextViewExpireTimer, forcedNav;
 
   var viewHistory = {
     histories: { root: { historyId: 'root', parentHistoryId: null, stack: [], cursor: -1 } },
@@ -970,7 +970,6 @@ function($rootScope, $state, $location, $window, $timeout, $ionicViewSwitcher, $
         hist.stack.push(viewHistory.views[viewId]);
       }
 
-      deregisterStateChangeListener && deregisterStateChangeListener();
       $timeout.cancel(nextViewExpireTimer);
       if (nextViewOptions) {
         if (nextViewOptions.disableAnimate) direction = DIRECTION_NONE;
@@ -1286,7 +1285,6 @@ function($rootScope, $state, $location, $window, $timeout, $ionicViewSwitcher, $
      * ```
      */
     nextViewOptions: function(opts) {
-      deregisterStateChangeListener && deregisterStateChangeListener();
       if (arguments.length) {
         $timeout.cancel(nextViewExpireTimer);
         if (opts === null) {
@@ -1295,11 +1293,9 @@ function($rootScope, $state, $location, $window, $timeout, $ionicViewSwitcher, $
           nextViewOptions = nextViewOptions || {};
           extend(nextViewOptions, opts);
           if (nextViewOptions.expire) {
-              deregisterStateChangeListener = $rootScope.$on('$stateChangeSuccess', function() {
-                nextViewExpireTimer = $timeout(function() {
-                  nextViewOptions = null;
-                  }, nextViewOptions.expire);
-              });
+            nextViewExpireTimer = $timeout(function() {
+              nextViewOptions = null;
+            }, nextViewOptions.expire);
           }
         }
       }
@@ -1593,15 +1589,6 @@ function($rootScope, $state, $location, $document, $ionicPlatform, $ionicHistory
 
 /**
  * @ngdoc method
- * @name $ionicConfigProvider#spinner.icon
- * @description Default spinner icon to use.
- * @param {string} value Can be: `android`, `ios`, `ios-small`, `bubbles`, `circles`, `crescent`,
- * `dots`, `lines`, `ripple`, or `spiral`.
- * @returns {string}
- */
-
-/**
- * @ngdoc method
  * @name $ionicConfigProvider#tabs.style
  * @description Tab style. Android defaults to `striped` and iOS defaults to `standard`.
  * @param {string} value Available values include `striped` and `standard`.
@@ -1715,9 +1702,6 @@ IonicModule
     scrolling: {
       jsScrolling: PLATFORM
     },
-    spinner: {
-      icon: PLATFORM
-    },
     tabs: {
       style: PLATFORM,
       position: PLATFORM
@@ -1765,10 +1749,6 @@ IonicModule
       jsScrolling: true
     },
 
-    spinner: {
-      icon: 'ios'
-    },
-
     tabs: {
       style: 'standard',
       position: 'bottom'
@@ -1814,10 +1794,6 @@ IonicModule
       toggle: 'small'
     },
 
-    spinner: {
-      icon: 'android'
-    },
-
     tabs: {
       style: 'striped',
       position: 'top'
@@ -1831,9 +1807,6 @@ IonicModule
     //scrolling: {
     //  jsScrolling: false
     //}
-    spinner: {
-      icon: 'android'
-    }
   });
 
 
@@ -2105,7 +2078,7 @@ IonicModule
 // running-cordova-apps-on-windows-and-windows-phone-8-1-using-ionic-angularjs-and-other-frameworks.aspx
 .config(['$compileProvider', function($compileProvider) {
   $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|tel|ftp|mailto|file|ghttps?|ms-appx|x-wmapp0):/);
-  $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|ftp|file|content|blob|ms-appx|x-wmapp0):|data:image\//);
+  $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|tel|ftp|file|blob|ms-appx|x-wmapp0):|data:image\//);
 }]);
 
 
@@ -2481,7 +2454,6 @@ function($rootScope, $ionicBody, $compile, $timeout, $ionicPlatform, $ionicTempl
       // on iOS, clicks will sometimes bleed through/ghost click on underlying
       // elements
       $ionicClickBlock.show(600);
-      stack.add(self);
 
       var modalEl = jqLite(self.modalEl);
 
@@ -2535,7 +2507,7 @@ function($rootScope, $ionicBody, $compile, $timeout, $ionicPlatform, $ionicTempl
         if (!self._isShown) return;
         //After animating in, allow hide on backdrop click
         self.$el.on('click', function(e) {
-          if (self.backdropClickToClose && e.target === self.el && stack.isHighest(self)) {
+          if (self.backdropClickToClose && e.target === self.el) {
             self.hide();
           }
         });
@@ -2555,7 +2527,6 @@ function($rootScope, $ionicBody, $compile, $timeout, $ionicPlatform, $ionicTempl
       // on iOS, clicks will sometimes bleed through/ghost click on underlying
       // elements
       $ionicClickBlock.show(600);
-      stack.remove(self);
 
       self.el.classList.remove('active');
       modalEl.addClass('ng-leave');
@@ -2644,23 +2615,6 @@ function($rootScope, $ionicBody, $compile, $timeout, $ionicPlatform, $ionicTempl
     return modal;
   };
 
-  var modalStack = [];
-  var stack = {
-    add: function(modal) {
-      modalStack.push(modal);
-    },
-    remove: function(modal) {
-      var index = modalStack.indexOf(modal);
-      if (index > -1 && index < modalStack.length) {
-        modalStack.splice(index, 1);
-      }
-    },
-    isHighest: function(modal) {
-      var index = modalStack.indexOf(modal);
-      return (index > -1 && index === modalStack.length - 1);
-    }
-  };
-
   return {
     /**
      * @ngdoc method
@@ -2696,9 +2650,7 @@ function($rootScope, $ionicBody, $compile, $timeout, $ionicPlatform, $ionicTempl
         cb && cb(modal);
         return modal;
       });
-    },
-
-    stack: stack
+    }
   };
 }]);
 
@@ -3300,9 +3252,8 @@ IonicModule
   '$ionicBody',
   '$compile',
   '$ionicPlatform',
-  '$ionicModal',
   'IONIC_BACK_PRIORITY',
-function($ionicTemplateLoader, $ionicBackdrop, $q, $timeout, $rootScope, $ionicBody, $compile, $ionicPlatform, $ionicModal, IONIC_BACK_PRIORITY) {
+function($ionicTemplateLoader, $ionicBackdrop, $q, $timeout, $rootScope, $ionicBody, $compile, $ionicPlatform, IONIC_BACK_PRIORITY) {
   //TODO allow this to be configured
   var config = {
     stackPushDelay: 75
@@ -3509,7 +3460,6 @@ function($ionicTemplateLoader, $ionicBackdrop, $q, $timeout, $rootScope, $ionicB
     self.show = function() {
       if (self.isShown || self.removed) return;
 
-      $ionicModal.stack.add(self);
       self.isShown = true;
       ionic.requestAnimationFrame(function() {
         //if hidden while waiting for raf, don't show
@@ -3525,7 +3475,6 @@ function($ionicTemplateLoader, $ionicBackdrop, $q, $timeout, $rootScope, $ionicB
       callback = callback || noop;
       if (!self.isShown) return callback();
 
-      $ionicModal.stack.remove(self);
       self.isShown = false;
       self.element.removeClass('active');
       self.element.addClass('popup-hidden');
@@ -3533,7 +3482,7 @@ function($ionicTemplateLoader, $ionicBackdrop, $q, $timeout, $rootScope, $ionicB
     };
 
     self.remove = function() {
-      if (self.removed || !$ionicModal.stack.isHighest(self)) return;
+      if (self.removed) return;
 
       self.hide(function() {
         self.element.remove();
@@ -4756,31 +4705,28 @@ function($timeout, $document, $q, $ionicClickBlock, $ionicConfig, $ionicNavBarDe
         },
 
         emit: function(step, enteringData, leavingData) {
-          var enteringScope = enteringEle.scope(),
-            leavingScope = leavingEle && leavingEle.scope();
-
-          if (step == 'after') {
-            if (enteringScope) {
-              enteringScope.$emit('$ionicView.enter', enteringData);
-            }
-
-            if (leavingScope) {
-              leavingScope.$emit('$ionicView.leave', leavingData);
-
-            } else if (enteringScope && leavingData && leavingData.viewId) {
-              enteringScope.$emit('$ionicNavView.leave', leavingData);
+          var scope = enteringEle.scope();
+          if (scope) {
+            scope.$emit('$ionicView.' + step + 'Enter', enteringData);
+            if (step == 'after') {
+              scope.$emit('$ionicView.enter', enteringData);
             }
           }
 
-          if (enteringScope) {
-            enteringScope.$emit('$ionicView.' + step + 'Enter', enteringData);
-          }
+          if (leavingEle) {
+            scope = leavingEle.scope();
+            if (scope) {
+              scope.$emit('$ionicView.' + step + 'Leave', leavingData);
+              if (step == 'after') {
+                scope.$emit('$ionicView.leave', leavingData);
+              }
+            }
 
-          if (leavingScope) {
-            leavingScope.$emit('$ionicView.' + step + 'Leave', leavingData);
-
-          } else if (enteringScope && leavingData && leavingData.viewId) {
-            enteringScope.$emit('$ionicNavView.' + step + 'Leave', leavingData);
+          } else if (scope && leavingData && leavingData.viewId) {
+            scope.$emit('$ionicNavView.' + step + 'Leave', leavingData);
+            if (step == 'after') {
+              scope.$emit('$ionicNavView.leave', leavingData);
+            }
           }
         },
 
@@ -7149,8 +7095,7 @@ IonicModule
   '$ionicHistory',
   '$ionicScrollDelegate',
   'IONIC_BACK_PRIORITY',
-  '$rootScope',
-function($scope, $attrs, $ionicSideMenuDelegate, $ionicPlatform, $ionicBody, $ionicHistory, $ionicScrollDelegate, IONIC_BACK_PRIORITY, $rootScope) {
+function($scope, $attrs, $ionicSideMenuDelegate, $ionicPlatform, $ionicBody, $ionicHistory, $ionicScrollDelegate, IONIC_BACK_PRIORITY) {
   var self = this;
   var rightShowing, leftShowing, isDragging;
   var startX, lastX, offsetX, isAsideExposed;
@@ -7205,10 +7150,8 @@ function($scope, $attrs, $ionicSideMenuDelegate, $ionicPlatform, $ionicBody, $io
     self.content.enableAnimation();
     if (!shouldOpen) {
       self.openPercentage(0);
-      $rootScope.$emit('$ionicSideMenuClose', 'left');
     } else {
       self.openPercentage(100);
-      $rootScope.$emit('$ionicSideMenuOpen', 'left');
     }
   };
 
@@ -7224,10 +7167,8 @@ function($scope, $attrs, $ionicSideMenuDelegate, $ionicPlatform, $ionicBody, $io
     self.content.enableAnimation();
     if (!shouldOpen) {
       self.openPercentage(0);
-      $rootScope.$emit('$ionicSideMenuClose', 'right');
     } else {
       self.openPercentage(-100);
-      $rootScope.$emit('$ionicSideMenuOpen', 'right');
     }
   };
 
@@ -7244,8 +7185,6 @@ function($scope, $attrs, $ionicSideMenuDelegate, $ionicPlatform, $ionicBody, $io
    */
   self.close = function() {
     self.openPercentage(0);
-    $rootScope.$emit('$ionicSideMenuClose', 'left');
-    $rootScope.$emit('$ionicSideMenuClose', 'right');
   };
 
   /**
@@ -7988,12 +7927,20 @@ function($scope, $attrs, $ionicSideMenuDelegate, $ionicPlatform, $ionicBody, $io
   .controller('$ionicSpinner', [
     '$element',
     '$attrs',
-    '$ionicConfig',
-  function($element, $attrs, $ionicConfig) {
-    var spinnerName;
+  function($element, $attrs) {
+    var spinnerName, spinner;
 
     this.init = function() {
-      spinnerName = $attrs.icon || $ionicConfig.spinner.icon();
+      var override = null;
+      if (ionic.Platform.platform() === 'windowsphone') {
+        override = 'android';
+      }
+      spinnerName = $attrs.icon || override || ionic.Platform.platform();
+      spinner = spinners[spinnerName];
+      if (!spinner) {
+        spinnerName = 'ios';
+        spinner = spinners.ios;
+      }
 
       var container = document.createElement('div');
       createSvgElement('svg', {
@@ -9653,7 +9600,7 @@ IonicModule.directive('exposeAsideWhen', ['$window', function($window) {
 }]);
 
 
-var GESTURE_DIRECTIVES = 'onHold onTap onDoubleTap onTouch onRelease onDragStart onDrag onDragEnd onDragUp onDragRight onDragDown onDragLeft onSwipe onSwipeUp onSwipeRight onSwipeDown onSwipeLeft'.split(' ');
+var GESTURE_DIRECTIVES = 'onHold onTap onDoubleTap onTouch onRelease onDrag onDragUp onDragRight onDragDown onDragLeft onSwipe onSwipeUp onSwipeRight onSwipeDown onSwipeLeft'.split(' ');
 
 GESTURE_DIRECTIVES.forEach(function(name) {
   IonicModule.directive(name, gestureDirective(name));
@@ -9741,21 +9688,6 @@ GESTURE_DIRECTIVES.forEach(function(name) {
  * ```
  */
 
-/**
- * @ngdoc directive
- * @name onDragStart
- * @module ionic
- * @restrict A
- *
- * @description
- * Called when a drag gesture has started.
- *
- * @usage
- * ```html
- * <button on-drag-start="onDragStart()" class="button">Test</button>
- * ```
- */
-
 
 /**
  * @ngdoc directive
@@ -9774,20 +9706,6 @@ GESTURE_DIRECTIVES.forEach(function(name) {
  * ```
  */
 
-/**
- * @ngdoc directive
- * @name onDragEnd
- * @module ionic
- * @restrict A
- *
- * @description
- * Called when a drag gesture has ended.
- *
- * @usage
- * ```html
- * <button on-drag-end="onDragEnd()" class="button">Test</button>
- * ```
- */
 
 /**
  * @ngdoc directive
@@ -10445,7 +10363,6 @@ var ITEM_TPL_OPTION_BUTTONS =
 * @parent ionic.directive:ionItem
 * @module ionic
 * @restrict E
-* @description
 * Creates an option button inside a list item, that is visible when the item is swiped
 * to the left by the user.  Swiped open option buttons can be hidden with
 * {@link ionic.service:$ionicListDelegate#closeOptionButtons $ionicListDelegate#closeOptionButtons}.
@@ -10918,12 +10835,7 @@ IonicModule
  * ```html
  * <ion-nav-bar>
  *   <ion-nav-buttons side="left">
- *    <!-- Toggle left side menu -->
  *    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
- *   </ion-nav-buttons>
- *   <ion-nav-buttons side="right">
- *    <!-- Toggle right side menu -->
- *    <button menu-toggle="right" class="button button-icon icon ion-navicon"></button>
  *   </ion-nav-buttons>
  * </ion-nav-bar>
  * ```
