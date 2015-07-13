@@ -148,10 +148,9 @@ body {
     margin-bottom: 50px;
 }
 
-/*.pageWithBigButton .scroll {*/
 .pageWithBigButton ion-content {
     margin-bottom: 80px;
-    /*padding-bottom: 100px;*/
+
 }
 
 .button-bottom {
