@@ -200,6 +200,7 @@ textarea.ng-dirty.ng-valid-parse.ng-touched.ng-invalid.ng-invalid-required {
     font-weight: bold;
     color: #f05346;
     background-color: #fff;
+    font-size: 20px;
 }
 
 .background-color-coral .text-right {
