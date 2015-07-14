@@ -456,8 +456,8 @@ angular.module('starter', deps)
         // force native scroll
         // !!! TODO: bug with native scroll and focus on textfields in Ionic version 1.0.0 !!!
         // As soon this bug is fixed, enable native scrolling
-        //var configProvider:any = $ionicConfigProvider;
-        //configProvider.scrolling.jsScrolling(false);
+        var configProvider:any = $ionicConfigProvider;
+        configProvider.scrolling.jsScrolling(false);
 
 
         // for android to set tabs at bottom position
