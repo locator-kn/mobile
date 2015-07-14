@@ -126,7 +126,7 @@ module Controller {
                             this.getMe();
                         });
                     } else {
-                        alert('Facebook login failed');
+                        alert('Facebook-Login ging schief!');
                     }
                 });
         }
@@ -144,11 +144,11 @@ module Controller {
             function loginCallback(result) {
                 if (result['status']['signed_in']) {
                     console.log('Google login success!');
+                } else {
+                    alert('Google-Login ging schief!');
                 }
             }
         }
-
-
 
         static controllerId:string = "LoginCtrl";
     }
