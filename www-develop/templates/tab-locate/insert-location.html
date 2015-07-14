@@ -31,10 +31,11 @@
                 </li>
                 <li ng-class="{'error' : (ilc.error) && ilc.form.locationTags.$error.required}"
                     class="item item-input tag-input">
-                    <tags-input ngKeypress maxlength="300" add-on-space="true" add-on-comma="true" style="width: 100%"
-                                ng-class="{'error' : ilc.error && ilc.locationFormDetails.tags.length < 1}"
-                                placeholder="+ Füge aussagekräftige Tags hinzu"
-                                ng-model="ilc.locationFormDetails.tags"></tags-input>
+                    <!--<tags-input ngKeypress maxlength="300" add-on-space="true" add-on-comma="true" style="width: 100%"-->
+                                <!--ng-class="{'error' : ilc.error && ilc.locationFormDetails.tags.length < 1}"-->
+                                <!--placeholder="+ Füge aussagekräftige Tags hinzu"-->
+                                <!--ng-model="ilc.locationFormDetails.tags"></tags-input>-->
+                    <textarea maxlength="300" type="input" placeholder="Füge Tags (z.B. Bar, schön) hinzu und trenne sie mit Leerzeichen" rows="4" required></textarea>
                 </li>
 
                 <li class="item item-icon-right" ng-click="ilc.goToMap()">
