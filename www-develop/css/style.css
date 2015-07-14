@@ -18,7 +18,7 @@ body {
 .signika div,
 .signika textarea,
 .signika text,
-.signika input
+.signika input,
 .signika ion-content {
     font-family: Signika !important;
 }
