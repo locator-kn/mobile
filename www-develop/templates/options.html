@@ -5,7 +5,8 @@
                     <div class="image-container-full"
                          style="background-image: url({{oc.path}}{{oc.result.picture}});background-size: cover">
                         <div class="success-overlay">
-                            <h4>Dein Trip wurde hinzugefügt</h4>
+                            <h4 ng-if="!oc.isLocation">Dein Trip wurde hinzugefügt</h4>
+                            <h4 ng-if="oc.isLocation">Deine Location wurde hinzugefügt</h4>
                         </div>
                     </div>
             </div>
