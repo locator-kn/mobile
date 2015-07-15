@@ -17,6 +17,8 @@ module Controller {
         availableAccommodationEquipment:any = [];
         availableMoods:any = {};
 
+        undef;
+
         // info
         moodAvailable:boolean;
         selectLocationState:string = 'tab.offer-locations';
@@ -36,8 +38,8 @@ module Controller {
                 this.moodAvailable = true;
             });
 
-            $rootScope.$on('deleteInsertTripData', () => {
-                this.deleteData();
+            $rootScope.$on('resetTripData', () => {
+                this.resetData();
             });
 
             this.DataService.getAvailableDays().then((result)=> {
@@ -63,6 +65,7 @@ module Controller {
         }
 
         toIsoDate(dateString) {
+            debugger;
             if (dateString !== undefined) {
                 var date = new Date(dateString);
                 return date.toISOString();
@@ -78,10 +81,18 @@ module Controller {
                 city: this.city,
                 days: this.selectedDays,
                 moods: this.getQueryNameArrayOf(this.selectedMood),
-                start_date: this.toIsoDate(this.start_date),
-                end_date: this.toIsoDate(this.end_date),
-                persons: this.selectedPersons
+                start_date: this.undef,
+                end_date: this.undef,
+                persons: this.undef
             };
+            if(this.start_date && this.end_date && !(this.start_date === '' || this.end_date === '')){
+                trip.start_date = this.toIsoDate(this.start_date);
+                trip.end_date = this.toIsoDate(this.end_date)
+            }
+
+            if(this.selectedPersons > 0) {
+                trip.persons = this.selectedPersons;
+            }
 
             this.TripService.setPreTrip(trip);
 
@@ -90,7 +101,7 @@ module Controller {
             });
         };
 
-        deleteData = () => {
+        resetData = () => {
             // trip
             this.city = {};
             this.start_date = '';
@@ -104,7 +115,7 @@ module Controller {
 
         triggerAccomodation() {
             this.accommodation = !this.accommodation;
-            if(this.accommodation){
+            if (this.accommodation) {
                 this.$ionicScrollDelegate.scrollBottom(true);
             }
         }
