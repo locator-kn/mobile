@@ -174,3 +174,19 @@ body {
 .float-right {
     float: right;
 }
+
+.bar .button.button-clear .icon:before, .bar .button.button-clear.icon:before, .bar .button.button-clear.icon-left:before, .bar .button.button-clear.icon-right:before {
+    font-size: 23px;
+    line-height: 31px;
+}
+
+.bar .button.button-icon:before, .bar .button .icon:before, .bar .button.icon:before, .bar .button.icon-left:before, .bar .button.icon-right:before {
+    padding-right: 2px;
+    padding-left: 0px;
+    font-size: 20px;
+    line-height: 31px;
+}
+
+.ion-ios-arrow-back:before {
+    font-size: 32px;
+}

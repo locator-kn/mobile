@@ -1,4 +1,5 @@
 module Controller {
+    declare var gapi:any;
     export class LoginCtrl {
 
         mail:string;
@@ -125,29 +126,29 @@ module Controller {
                             this.getMe();
                         });
                     } else {
-                        alert('Facebook login failed');
+                        alert('Facebook-Login ging schief!');
                     }
                 });
         }
 
         loginGoogle() {
             var myParams = {
-                'clientid': '795291637713-qllq8c3nevves29ovicpu246be03m2t6.apps.googleusercontent.com',
+                'clientid': '749476331872-e4dvhbqn70gbbaliepfn8rjp5if7ta4q.apps.googleusercontent.com',
                 'cookiepolicy': 'single_host_origin',
                 'callback': loginCallback,
                 'approvalprompt': 'force',
-                'scope': 'https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/plus.profile.emails.read'
+                'scope': 'https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/plus.login'
             };
-            //gapi.auth.signIn(myParams);
+            gapi.auth.signIn(myParams);
 
             function loginCallback(result) {
                 if (result['status']['signed_in']) {
                     console.log('Google login success!');
+                } else {
+                    alert('Google-Login ging schief!');
                 }
             }
         }
-
-
 
         static controllerId:string = "LoginCtrl";
     }
