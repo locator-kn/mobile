@@ -67,6 +67,13 @@ module Controller {
                     this.$ionicPopup.alert({title: 'Startdatum muss vor dem Enddatum liegen.'});
                     return;
                 }
+                var currentDate = new Date();
+
+                if(currentDate > this.start_date || currentDate > this.end_date){
+                    this.$ionicPopup.alert({title: 'Datum liegt in der Vergangenheit.'});
+                    return;
+                }
+
                 query.start_date = new Date(this.start_date).toISOString();
                 query.end_date = new Date(this.end_date).toISOString();
             }
