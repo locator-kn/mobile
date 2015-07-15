@@ -74,7 +74,7 @@
         </div>
     </ion-content>
     <button ng-if="authenticated" ng-click="itc.selectLocations()"
-            ng-disabled="!(itc.city.title && itc.moodAvailable && itc.selectedDays)"
+            ng-disabled="!(itc.city.title && itc.moodAvailable && (itc.selectedDays > 0))"
             class="button-bottom button button-full background-coral bottom item-icon-right insert-trip-button">
         LOCATION'S HINZUFÜGEN
         <i class="icon ion-chevron-right icon-accessory"></i>
