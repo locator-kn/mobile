@@ -14,6 +14,16 @@ module Service {
         resultInfoObject:any = {};
 
         constructor(private $http, private basePath, private $ionicLoading, private $rootScope) {
+
+            $rootScope.$on('resetTripData', () => {
+                this.preTrip = {};
+                this.locations = [];
+                this.city = {};
+                this.accommodationEquipment = [];
+                this.mood = [];
+                this.sq = {};
+            });
+
         }
 
         createTrip(trip) {
@@ -66,13 +76,14 @@ module Service {
             return this.mood;
         }
 
-        setResultInfoObject(obj){
+        setResultInfoObject(obj) {
             this.resultInfoObject = obj;
         }
 
-        getResultInfoObject(){
+        getResultInfoObject() {
             return this.resultInfoObject;
         }
+
         setPreTrip(trip) {
             this.preTrip = trip;
         }
