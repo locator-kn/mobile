@@ -37,7 +37,10 @@ module Service {
                 if (!data.data.picture) {
                     data.data.picture = './images/profile.png';
                 } else {
-                    data.data.picture = this.webPath + data.data.picture;
+                    if (!(data.data.picture.indexOf("http") > -1)) {
+                        data.data.picture = this.webPath + data.data.picture;
+                    }
+                    // else -> if a google or facebook profile picture -> do not add webPath
                 }
                 resolve(data);
             });
