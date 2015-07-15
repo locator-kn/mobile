@@ -1,5 +1,6 @@
 <!--cache view false needed for slider -->
-<ion-view class="trip pageWithBigButton insert-trip " ng-class="!tpc.tripCreated ? 'pageWithButton' : ''" cache-view="false"
+<ion-view class="trip pageWithBigButton insert-trip " ng-class="!tpc.tripCreated ? 'pageWithButton' : ''"
+          cache-view="false"
           view-title="Vorschau"
           ng-controller="TripPreviewCtrl as tpc">
     <form novalidate name="tpc.form" id="insertTripForm">
@@ -39,7 +40,8 @@
                                       name="tripDescription"
                                       placeholder="Beschreibe deinen Trip" required></textarea>
                 </li>
-                <li class="item" ng-if="tpc.trip.start_date && tpc.trip.end_date">
+                <li class="item"
+                    ng-if="(tpc.start_date && tpc.end_date !== '') && (tpc.end_date && tpc.end_date !== '')">
                     <label>von</label>
                     <label class="text-bold">{{tpc.trip.start_date}}</label>
                     <label>bis</label>
