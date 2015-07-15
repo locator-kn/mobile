@@ -27,7 +27,6 @@ module Controller {
 
             this.DataService.getAvailableMoods().then((result) => {
                 this.moods = result.data;
-                this.$ionicLoading.hide();
             });
         }
 
@@ -104,7 +103,7 @@ module Controller {
 
                 // TODO: if pagination in backend implemented, change the outcomment lines
                 //this.TripService.getNextTripsFromUser(this.userId, this.page, this.itemsProPage).then(result => {
-                this.TripService.getNextTripsFromUser(this.userId).then(result => {
+                this.TripService.getNextTripsFromUser(this.userId, this.page, this.itemsProPage).then(result => {
                     // push to array
                     var arrayLength = result.data.length;
                     for (var i = 0; i < arrayLength; i++) {
