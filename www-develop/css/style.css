@@ -162,6 +162,10 @@ body {
     line-height: 34px;
 }
 
+.mood .ion-plus-circled:before {
+    line-height: 34px;
+}
+
 .not-auth-background {
     background-color: #fff;
 }
