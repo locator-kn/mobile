@@ -122,18 +122,18 @@ module Service {
                 this.openLoginModal();
             }
 
-        };
+        }
 
         openRegistrationModal() {
             this.$ionicLoading.hide();
             this.$ionicLoading.show({templateUrl: 'templates/modals/registration-modal.html'}, {
                 animation: 'slide-in-up'
             })
-        };
+        }
 
         closeLoginModal() {
             this.$ionicLoading.hide();
-        };
+        }
 
         clearMyProfileCache() {
             this.usersMeCache.remove(this.basePath + '/users/my/profile');
@@ -145,7 +145,7 @@ module Service {
 
         getConversationUserId() {
             return this.conversationUserId;
-        };
+        }
 
         setNewPassword(newPassword) {
             return this.$http.put(this.basePath + '/users/my/password',
