@@ -62,7 +62,7 @@
 
 
 .mood-checkbox .border-transparent:after {
-    background-color: #3eb9ad;
+    background-color: #44ccc0;
 
 }
 
@@ -75,7 +75,7 @@
 .background-color-cyan span {
     background: #3eb9ad;
     color: #fff;
-    border-color: #38d8ca
+    border-color: #44ccc0
 }
 
 .background-color-cyan .item-icon-right .icon-accessory {
@@ -105,7 +105,7 @@
 
 .background-color-cyan .circle {
     /*border-color: #38d8ca ;*/
-    border-color: #fff;
+    border-color: #44ccc0;
 }
 
 .background-color-cyan .search-button {
@@ -130,4 +130,7 @@ button.button-bottom.button.button-full.background-green.bottom.search-button:ho
     background-color: #ddd;
 }
 
-/* new border color #44ccc0*/
+.date-input {
+    text-align: right;
+    padding-right: 0;
+}
