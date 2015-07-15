@@ -30,3 +30,11 @@
 .trip span.slider-pager-page {
     margin-top: 17px;
 }
+
+.trip .button-trip-preview {
+    height: 80px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #f05346;
+    font-size: 20px;
+}
