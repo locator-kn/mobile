@@ -92,7 +92,6 @@ module Service {
         }
 
         getNextMessagesFromConversation(id, pageNumber?, pageSize?) {
-            debugger;
             if ((pageNumber >= 0) && (pageSize > 0)) {
                 // returning a promise inside a promise will make the outside promise resolving if inside is resolved.
                 return this.$http({
