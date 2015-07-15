@@ -100,10 +100,9 @@ module Controller {
                     this.$ionicLoading.hide();
                 });
             } else {
-
                 // TODO: if pagination in backend implemented, change the outcomment lines
                 //this.TripService.getNextTripsFromUser(this.userId, this.page, this.itemsProPage).then(result => {
-                this.TripService.getNextTripsFromUser(this.userId, this.page, this.itemsProPage).then(result => {
+                this.TripService.getTripsByUser(this.userId).then(result => {
                     // push to array
                     var arrayLength = result.data.length;
                     for (var i = 0; i < arrayLength; i++) {
