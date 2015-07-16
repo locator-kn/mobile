@@ -24,7 +24,7 @@ module Controller {
         selectLocationState:string = 'tab.offer-locations';
 
         constructor(private $rootScope, private TripService, private DataService, private $state,
-                    private $ionicScrollDelegate) {
+                    private $ionicScrollDelegate, private $ionicPopup) {
             $rootScope.$on('newInsertTripCity', () => {
                 this.city = this.TripService.getCity();
             });
@@ -74,6 +74,19 @@ module Controller {
         }
 
         selectLocations = () => {
+            // check if start & end date is committed
+            if (this.start_date && this.end_date) {
+                if (this.end_date < this.start_date) {
+                    this.$ionicPopup.alert({title: 'Startdatum muss vor dem Enddatum liegen.'});
+                    return;
+                }
+                var currentDate = new Date();
+                if(currentDate > this.start_date || currentDate > this.end_date){
+                    this.$ionicPopup.alert({title: 'Datum liegt in der Vergangenheit.'});
+                    return;
+                }
+            }
+
             var trip = {
                 title: '',
                 accommodation: this.accommodation,
@@ -85,6 +98,7 @@ module Controller {
                 end_date: this.undef,
                 persons: this.undef
             };
+
             if(this.start_date && this.end_date && !(this.start_date === '' || this.end_date === '')){
                 trip.start_date = this.toIsoDate(this.start_date);
                 trip.end_date = this.toIsoDate(this.end_date)
