@@ -144,8 +144,6 @@ module Controller {
                 'scope': 'https://www.googleapis.com/auth/plus.profile.emails.read'
             };
             gapi.auth.signIn(myParams);
-
-
         }
 
         loginGoogleCallback = (response) => {
