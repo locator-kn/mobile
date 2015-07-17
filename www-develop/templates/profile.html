@@ -1,4 +1,4 @@
-<ion-view class="profile" ng-class="!uc.me ? 'pageWithButton' : ''" view-title="Beschreibung"
+<ion-view class="profile" ng-class="!uc.me ? 'pageWithBigButton' : ''" view-title="Beschreibung"
           ng-controller="UserCtrl as uc">
     <ion-nav-buttons side="right">
         <img ng-src="images/icons/icons_stuff/pencil.png" ng-if="uc.me && !uc.edit" class="edit-pencil" ng-click="uc.editTrigger()">
@@ -55,7 +55,7 @@
         </ul>
     </ion-content>
     <button ng-if="!uc.me" ng-click="uc.openConversationModal()"
-            class="button-bottom button button-full background-green bottom">
-        Anschreiben
+            class="button-contact button-bottom button button-full background-green bottom">
+        ANSCHREIBEN
     </button>
 </ion-view>
