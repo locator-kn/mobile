@@ -41,3 +41,10 @@
     background-size: 100%!important;
     background-repeat: no-repeat;
 }
+
+.trip .button-join-trip {
+    height: 80px;
+    font-weight: bold;
+    color: white;
+    font-size: 20px;
+}
