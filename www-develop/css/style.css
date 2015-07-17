@@ -194,3 +194,7 @@ body {
 .ion-ios-arrow-back:before {
     font-size: 32px;
 }
+
+.bar.bar-stable {
+    padding: 5px 14px;
+}
