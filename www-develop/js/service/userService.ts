@@ -51,8 +51,15 @@ module Service {
                 })
         }
 
-        loginFacebook(at) {
+        /*loginFacebook(at) {
             return this.$http.post(this.basePath + '/mobile/loginFacebook', {
+                accessToken: at
+            });
+        }*/
+
+        loginOAuth (strategy, at) {
+            return this.$http.post(this.basePath + '/mobile/loginOAuth', {
+                strategy: strategy,
                 accessToken: at
             });
         }
