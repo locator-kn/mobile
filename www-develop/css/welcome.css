@@ -54,6 +54,7 @@
 .welcome .tab-title {
     width: 100%;
     text-align: center;
+    margin-top: 5px;
 }
 
 .my-has-tabs {
