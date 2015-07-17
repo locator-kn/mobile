@@ -26,7 +26,10 @@ module Service {
 
         }
 
-        createTrip(trip) {
+        saveTrip(trip, id) {
+            if(id){
+                return this.$http.put(this.basePath + '/trips/' + id, trip)
+            }
             return this.$http.post(this.basePath + '/trips', trip);
         }
 
