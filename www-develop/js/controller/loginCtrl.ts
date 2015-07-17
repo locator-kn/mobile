@@ -122,7 +122,8 @@ module Controller {
                         console.log('Facebook login succeeded');
                         this.closeLoginModal();
                         this.UserService.loginOAuth('facebook', response.authResponse.accessToken).then((userResponse) => {
-
+                            console.log(userResponse.data);
+                            this.getMe();
                         });
                         /*this.UserService.loginFacebook(response.authResponse.accessToken).then((userResponse) => {
                             console.log(userResponse.data);
@@ -144,9 +145,14 @@ module Controller {
             };
             gapi.auth.signIn(myParams);
 
-            function loginCallback(result) {
-                if (result['status']['signed_in']) {
+            function loginCallback(response) {
+                if (response['status']['signed_in']) {
+                    debugger;
                     console.log('Google login success!');
+                    /*this.UserService.loginOAuth('facebook', response.authResponse.accessToken).then((userResponse) => {
+                        console.log(userResponse.data);
+                        this.getMe();
+                    });*/
                 } else {
                     alert('Google-Login ging schief!');
                 }
