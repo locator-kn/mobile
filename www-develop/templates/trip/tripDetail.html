@@ -1,5 +1,5 @@
 <!--cache view false needed for slider -->
-<ion-view class="trip" ng-class="tc.trip.userid !== userID ? 'pageWithButton' : ''" cache-view="false"
+<ion-view class="trip" ng-class="tc.trip.userid !== userID ? 'pageWithBigButton' : ''" cache-view="false"
           view-title="{{tc.trip.title}}" ng-controller="TripCtrl as tc">
     <ion-content>
         <ul>
@@ -75,7 +75,7 @@
     </ion-content>
     <button ng-if="!(userID === tc.trip.userid)" ng-if="!(result.userid === userID)"
             ng-click="tc.startConversation(tc.user, tc.trip)"
-            class="button-bottom button button-full background-green bottom">
-        Teilnehmen
+            class="button-join-trip button-bottom button button-full background-green bottom">
+        TEILNEHMEN
     </button>
 </ion-view>
