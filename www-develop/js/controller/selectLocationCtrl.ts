@@ -8,9 +8,21 @@ module Controller {
         myLocations:boolean = true;
         selectedLocations:number = 0;
 
+        edit:boolean;
+        userId:string;
+        tripId:string;
+
         constructor(private LocationService, private $stateParams, private webPath, private $state, private $rootScope,
                     private TripService, private $ionicLoading, maxSpinningDuration) {
             this.cityId = $stateParams.cityId;
+
+            // check if in edit mode
+            if (this.$state.current.name.indexOf('edit') > -1) {
+                this.edit = true;
+
+                this.userId = $stateParams.userId;
+                this.tripId = $stateParams.tripId;
+            }
 
             this.$ionicLoading.show({templateUrl: 'templates/static/loading.html', duration: maxSpinningDuration});
             this.LocationService.getMyLocationsByCity(this.cityId).then((result) => {
@@ -29,10 +41,13 @@ module Controller {
 
             $rootScope.$on('resetTripData', () => {
                 this.myLocationsByCity = {};
-                this.locationsByCity= {};
+                this.locationsByCity = {};
                 this.cityId = '';
                 this.myLocations = true;
                 this.selectedLocations = 0;
+                this.edit = false;
+                this.userId = '';
+                this.tripId = '';
             });
         }
 
@@ -89,7 +104,14 @@ module Controller {
 
         tripPreview() {
             this.TripService.setLocations(this.getSelectedLocations());
-            this.$state.go('tab.offer-preview');
+            if(!this.edit) {
+                this.$state.go('tab.offer-preview');
+            } else {
+                this.$state.go('tab.profile-trip-edit-preview', {
+                    userId: this.userId,
+                    tripId: this.tripId
+                });
+            }
         }
 
         static controllerId:string = "SelectLocationCtrl";
