@@ -122,6 +122,7 @@ module Controller {
                         console.log('Facebook login succeeded');
                         this.closeLoginModal();
                         this.UserService.loginOAuth('facebook', response.authResponse.accessToken).then((userResponse) => {
+                            debugger;
                             console.log(userResponse.data);
                             this.getMe();
                         });
@@ -147,9 +148,9 @@ module Controller {
 
             function loginCallback(response) {
                 if (response['status']['signed_in']) {
-                    debugger;
                     console.log('Google login success!');
                     this.UserService.loginOAuth('google', response['access token']).then((userResponse) => {
+                        debugger;
                         console.log(userResponse.data);
                         this.getMe();
                     });
