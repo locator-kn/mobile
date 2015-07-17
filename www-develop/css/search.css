@@ -104,8 +104,7 @@
 }
 
 .background-color-cyan .circle {
-    /*border-color: #38d8ca ;*/
-    border-color: #44ccc0;
+    border-color: #fff;
 }
 
 .background-color-cyan .search-button {

@@ -37,7 +37,10 @@ module Service {
                 if (!data.data.picture) {
                     data.data.picture = './images/profile.png';
                 } else {
-                    data.data.picture = this.webPath + data.data.picture;
+                    if (!(data.data.picture.indexOf("http") > -1)) {
+                        data.data.picture = this.webPath + data.data.picture;
+                    }
+                    // else -> if a google or facebook profile picture -> do not add webPath
                 }
                 resolve(data);
             });
@@ -129,18 +132,18 @@ module Service {
                 this.openLoginModal();
             }
 
-        };
+        }
 
         openRegistrationModal() {
             this.$ionicLoading.hide();
             this.$ionicLoading.show({templateUrl: 'templates/modals/registration-modal.html'}, {
                 animation: 'slide-in-up'
             })
-        };
+        }
 
         closeLoginModal() {
             this.$ionicLoading.hide();
-        };
+        }
 
         clearMyProfileCache() {
             this.usersMeCache.remove(this.basePath + '/users/my/profile');
@@ -152,7 +155,7 @@ module Service {
 
         getConversationUserId() {
             return this.conversationUserId;
-        };
+        }
 
         setNewPassword(newPassword) {
             return this.$http.put(this.basePath + '/users/my/password',

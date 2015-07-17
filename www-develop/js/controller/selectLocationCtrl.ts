@@ -25,7 +25,15 @@ module Controller {
             this.LocationService.getLocationsByCity(this.cityId).then((result)=> {
                 this.$ionicLoading.hide();
                 this.locationsByCity = result.data
-            })
+            });
+
+            $rootScope.$on('resetTripData', () => {
+                this.myLocationsByCity = {};
+                this.locationsByCity= {};
+                this.cityId = '';
+                this.myLocations = true;
+                this.selectedLocations = 0;
+            });
         }
 
         toogleSelect(location) {
