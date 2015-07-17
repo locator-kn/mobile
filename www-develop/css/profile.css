@@ -106,3 +106,10 @@
     margin-top: -5px;
     margin-right: 5px;
 }
+
+.button-contact {
+    height: 80px;
+    font-weight: bold;
+    color: white;
+    font-size: 20px;
+}
