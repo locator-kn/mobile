@@ -14,7 +14,6 @@ module Controller {
                     private DataService, private $ionicLoading, private webPath, private $rootScope) {
             this.trip = TripService.getPreTrip();
             this.trip.locations = TripService.getLocations();
-
             var mood = TripService.getMood();
             this.trip.moods = [];
             this.trip.moods.push(mood.query_name);
@@ -60,7 +59,6 @@ module Controller {
             this.TripService.createTrip(this.trip).then((result) => {
                 for (var first in this.trip.locations) break;
                 var location = this.trip.locations[first];
-
                 var info = {
                     tripId: result.data.id,
                     picture: location.picture + '?size=mobile'
