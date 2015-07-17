@@ -53,9 +53,8 @@
 }
 
 .welcome .tab-title {
-    float: left;
-    margin-top: 6%;
-    display: table-cell;
+    width: 100%;
+    text-align: center;
 }
 
 .my-has-tabs {
