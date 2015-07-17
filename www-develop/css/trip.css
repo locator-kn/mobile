@@ -22,11 +22,6 @@
 }
 
 
-.trip .equi-ico {
-    margin-top: 0px
-}
-
-
 .trip span.slider-pager-page {
     margin-top: 17px;
 }
@@ -37,4 +32,12 @@
     color: #fff;
     background-color: #f05346;
     font-size: 20px;
+}
+
+.trip .equi-ico.pointer {
+    margin: 0;
+    width: 12%;
+    height: 44px;
+    background-size: 100%!important;
+    background-repeat: no-repeat;
 }
