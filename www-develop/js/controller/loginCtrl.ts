@@ -121,10 +121,13 @@ module Controller {
                     if (response.status === 'connected') {
                         console.log('Facebook login succeeded');
                         this.closeLoginModal();
-                        this.UserService.loginFacebook(response.authResponse.accessToken).then((userResponse) => {
+                        this.UserService.loginOAuth('facebook', response.authResponse.accessToken).then((userResponse) => {
+
+                        });
+                        /*this.UserService.loginFacebook(response.authResponse.accessToken).then((userResponse) => {
                             console.log(userResponse.data);
                             this.getMe();
-                        });
+                        });*/
                     } else {
                         alert('Facebook-Login ging schief!');
                     }
