@@ -149,10 +149,10 @@ module Controller {
                 if (response['status']['signed_in']) {
                     debugger;
                     console.log('Google login success!');
-                    /*this.UserService.loginOAuth('facebook', response.authResponse.accessToken).then((userResponse) => {
+                    this.UserService.loginOAuth('google', response['access token']).then((userResponse) => {
                         console.log(userResponse.data);
                         this.getMe();
-                    });*/
+                    });
                 } else {
                     alert('Google-Login ging schief!');
                 }
