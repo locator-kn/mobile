@@ -18,13 +18,40 @@ module Controller {
         availableMoods:any = {};
 
         undef;
+        edit:boolean;
 
         // info
         moodAvailable:boolean;
         selectLocationState:string = 'tab.offer-locations';
 
+        tripId:string;
+        userId:string;
+
         constructor(private $rootScope, private TripService, private DataService, private $state,
-                    private $ionicScrollDelegate, private $ionicPopup) {
+                    private $ionicScrollDelegate, private $ionicPopup, private SearchService, private $stateParams) {
+
+            // check if in edit mode
+            if (this.$state.current.name.indexOf('edit') > -1) {
+                this.edit = true;
+
+                this.userId = $stateParams.userId;
+                this.tripId = $stateParams.tripId;
+
+                this.SearchService.getTripById($stateParams.tripId).then((result) => {
+                    this.city = result.data.city;
+                    this.start_date = result.data.start_date;
+                    this.end_date = result.data.end_date;
+                    this.selectedDays = result.data.days;
+                    this.selectedPersons = result.data.persons;
+                    this.accommodation = result.data.accommodation;
+                    // TODO: get objects form query_name
+                    //this.selectedAccommodationEquipment:any = [];
+                    //this.selectedMood:any = {};
+                    // this._id
+                    // this._rev
+                });
+            }
+
             $rootScope.$on('newInsertTripCity', () => {
                 this.city = this.TripService.getCity();
             });
@@ -83,7 +110,7 @@ module Controller {
                 var currentDate = new Date();
                 var start_date = new Date(this.start_date);
                 var end_date = new Date(this.end_date);
-                if(currentDate > start_date || currentDate > end_date){
+                if (currentDate > start_date || currentDate > end_date) {
                     this.$ionicPopup.alert({title: 'Datum liegt in der Vergangenheit.'});
                     return;
                 }
@@ -101,20 +128,31 @@ module Controller {
                 persons: this.undef
             };
 
-            if(this.start_date && this.end_date && !(this.start_date === '' || this.end_date === '')){
+            if (this.start_date && this.end_date && !(this.start_date === '' || this.end_date === '')) {
                 trip.start_date = this.toIsoDate(this.start_date);
                 trip.end_date = this.toIsoDate(this.end_date)
             }
 
-            if(this.selectedPersons > 0) {
+            if (this.selectedPersons > 0) {
                 trip.persons = this.selectedPersons;
             }
 
+            // TODO add _id and _rev to document
+
             this.TripService.setPreTrip(trip);
 
-            this.$state.go('tab.offer-locations', {
-                cityId: this.city.place_id
-            });
+            if(!this.edit) {
+                this.$state.go('tab.offer-locations', {
+                    cityId: this.city.place_id
+                });
+            } else {
+                this.$state.go('tab.profile-trip-edit-locations', {
+                    cityId: this.city.place_id,
+                    tripId: this.tripId,
+                    userId: this.userId
+                });
+            }
+
         };
 
         resetData = () => {
@@ -127,12 +165,35 @@ module Controller {
             this.accommodation = false;
             this.selectedAccommodationEquipment = [];
             this.selectedMood = {};
+            this.edit = false;
         };
 
         triggerAccomodation() {
             this.accommodation = !this.accommodation;
             if (this.accommodation) {
                 this.$ionicScrollDelegate.scrollBottom(true);
+            }
+        }
+
+        selectCity() {
+            if (!this.edit) {
+                this.$state.go('tab.offer-city');
+            } else {
+                this.$state.go('tab.profile-trip-edit-city', {
+                    tripId: this.tripId,
+                    userId: this.userId
+                })
+            }
+        }
+
+        selectMood() {
+            if (!this.edit) {
+                this.$state.go('tab.offer-moods');
+            } else {
+                this.$state.go('tab.profile-trip-edit-moods', {
+                    tripId: this.tripId,
+                    userId: this.userId
+                })
             }
         }
 
