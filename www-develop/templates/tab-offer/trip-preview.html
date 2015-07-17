@@ -9,8 +9,17 @@
                 <ion-slide-box ng-if="tpc.trip.locations && tpc.numberOfElelementsIn(tpc.trip.locations) !== 1"
                                class=" parallax-card" on-slide-changed="slideHasChanged($index)">
                     <ion-slide ng-repeat="location in tpc.trip.locations">
-                        <div class="image-container-full"
-                             style="background-image: url({{tpc.webPath}}{{location.picture + '?size=mobile'}});background-size: cover">
+                        <!--<div class="image-container-full"-->
+                             <!--style="background-image: url({{tpc.webPath}}{{location.picture + '?size=mobile'}});background-size: cover">-->
+                        <!--</div>-->
+
+                        <div class="image-container-full">
+                            <div ng-if="location.images.picture" class="image-container-thumb"
+                                 style="background-image: url({{tpc.webPath}}{{location.images.picture + '?size=mobileThumb'}});background-size: cover">
+                            </div>
+                            <div ng-if="!location.images.picture" class="image-container-thumb"
+                                 style="background-image: url({{location.images.googlemap + '&size=mobileThumb'}});background-size: cover">
+                            </div>
                         </div>
                         <img class="user-picture" ng-src="{{tpc.user.picture}}">
                     </ion-slide>
