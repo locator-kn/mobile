@@ -29,7 +29,7 @@
     </div>
     <div class="list list-inset bottom">
         <div class="item item-input">
-            <input id="my-message" class="my-message" type="text" ng-enter="mc.sendMessage(mc.textbox)" ng-model="mc.textbox" placeholder="Schreib etwas...">
+            <input id="my-message" class="my-message" type="text" ng-enter="mc.sendMessage(mc.textbox)" ng-model="mc.textbox" placeholder="Schreib etwas..." ng-click="mc.showEmojis = false">
             <button class="messenger-button" ng-click="mc.showEmojis = !mc.showEmojis" type="button" id="emoji"><img class="emoji-icon" src="./images/icons/face.png"></button>
         </div>
         <button ng-disabled="!mc.textbox" class="button" ng-click="mc.sendMessage(mc.textbox)">
