@@ -9,9 +9,21 @@ module Service {
         accommodationEquipment:any = [];
         mood:any = [];
 
+        sq:any = {};
+
         resultInfoObject:any = {};
 
         constructor(private $http, private basePath, private $ionicLoading, private $rootScope) {
+
+            $rootScope.$on('resetTripData', () => {
+                this.preTrip = {};
+                this.locations = [];
+                this.city = {};
+                this.accommodationEquipment = [];
+                this.mood = [];
+                this.sq = {};
+            });
+
         }
 
         createTrip(trip) {
@@ -19,21 +31,19 @@ module Service {
         }
 
         getNextTripsFromUser(userId, pageNumber?, pageSize?) {
-            if(pageNumber && pageSize) {
-                // returning a promise inside a promise will make the outside promise resolving if inside is resolved.
-                return this.$http({
-                    url: this.basePath + '/users/' + userId + '/trips',
-                    params: {
-                        page: (pageNumber || ''),
-                        page_size: (pageSize || '')
-                    },
-                    method: 'GET'
-                });
-            } else {
-                return this.$http.get(this.basePath + '/users/' + userId + '/trips');
+            if (pageNumber >= 0) {
+                this.sq.page = pageNumber;
+                if (pageSize) {
+                    this.sq.page_size = pageSize;
+                }
             }
-
+            return this.$http({
+                url: this.basePath + '/users/' + userId + '/trips',
+                params: this.sq,
+                method: 'GET'
+            });
         }
+
         // @deprecated
         getTripsByUser(userid) {
             return this.$http.get(this.basePath + '/users/' + userid + '/trips');
@@ -66,13 +76,14 @@ module Service {
             return this.mood;
         }
 
-        setResultInfoObject(obj){
+        setResultInfoObject(obj) {
             this.resultInfoObject = obj;
         }
 
-        getResultInfoObject(){
+        getResultInfoObject() {
             return this.resultInfoObject;
         }
+
         setPreTrip(trip) {
             this.preTrip = trip;
         }

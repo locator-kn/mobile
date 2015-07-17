@@ -162,6 +162,10 @@ body {
     line-height: 34px;
 }
 
+.mood .ion-plus-circled:before {
+    line-height: 34px;
+}
+
 .not-auth-background {
     background-color: #fff;
 }
@@ -189,4 +193,8 @@ body {
 
 .ion-ios-arrow-back:before {
     font-size: 32px;
+}
+
+.bar.bar-stable {
+    padding: 5px 14px;
 }

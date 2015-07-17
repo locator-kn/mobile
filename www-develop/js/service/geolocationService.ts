@@ -19,7 +19,7 @@ module Service {
                 timeout = 3000;
                 this.geoTry++;
             }
-            var posOptions = {maximumAge: 60000, timeout: 3000, enableHighAccuracy: true};
+            var posOptions = {maximumAge: 60000, timeout: timeout, enableHighAccuracy: true};
             navigator.geolocation.getCurrentPosition((result) => {
                 this.$ionicLoading.hide();
                 q.resolve(result);

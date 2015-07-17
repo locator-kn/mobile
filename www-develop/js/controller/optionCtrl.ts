@@ -29,12 +29,10 @@ module Controller {
 
         restartTrip() {
             this.$state.go('tab.offer');
-            this.$window.location.reload(true);
         }
 
         restartLocation() {
             this.$state.go('tab.locate');
-            this.$window.location.reload(true);
         }
 
         static controllerId:string = "OptionCtrl";
