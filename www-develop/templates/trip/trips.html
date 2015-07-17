@@ -73,6 +73,9 @@
                             <img class="icon" ng-src="./images/svg/messenger_weiss.svg"
                                  ng-if="!(result.userid === userID)"
                                  ng-click="toc.startConversation(result.user, result)">
+                            <img class="icon" ng-src="./images/svg/TODO.svg"
+                                 ng-if="((result.userid === userID) && !toc.searchView)"
+                                 ng-click="toc.editTrip(result._id, result.userid)">
 
                             <label class="user">
                                 <label class="dekotext">erstellt von </label>
