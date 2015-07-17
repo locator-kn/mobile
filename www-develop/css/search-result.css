@@ -1,7 +1,7 @@
 .result-mood {
     float: left;
-    height: 34px;
-    padding-right: 10px;
+    height: 30px;
+    padding-right: 16px;
 }
 
 .mood-container {
@@ -15,19 +15,17 @@
 }
 
 li.item.trip-options {
-    background-color: #343434;
-    color: white;
+    background-color: #F8F8F8;
+    color: rgb(68, 68, 68);
+    border-bottom: none;
 }
 
 li.item.trip-options .icon {
-    width: 31px;
+    width: 35px;
     vertical-align: middle;
     margin-right: 10px;
-}
+    margin-top: -8px;
 
-li.item.trip-options .icon-small {
-    margin-top: 5px;
-    margin-bottom: 5px;
 }
 
 li.item.trip-options .user {
@@ -40,7 +38,7 @@ label.name.ng-binding {
     font-size: 12px;
 }
 
-label.dekotext {
+.search-result label.dekotext {
     font-size: 11px;
 }
 
@@ -60,10 +58,11 @@ label.dekotext {
     width: 100%;
     text-align: right;
     border: 0;
-    opacity: 0.4;
+    opacity: 0.6;
     line-height: 28px;
     padding-right: 20px;
     margin-bottom: -28px;
+    font-weight: bold;
 }
 
 .image-all-locations {
@@ -72,4 +71,33 @@ label.dekotext {
     vertical-align: middle;
     padding-left: 6px;
     padding-right: 20px;
+}
+
+.image-filter {
+    height: 35px;
+    width: auto;
+    vertical-align: middle;
+    padding-left: 6px;
+    padding-right: 15px;
+}
+
+.search-result ion-item.item {
+    padding: 16px 0;
+    border: 0px;
+}
+
+.search-result .hack-for-first-element {
+    margin-bottom: -17px;
+}
+
+.search-result .result-mood {
+    margin-left: 7px;
+}
+
+.search-result label  {
+    font-size: 16px;
+}
+
+.search-result .line {
+    padding: 5px;
 }

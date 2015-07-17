@@ -51,6 +51,7 @@ span.since.ng-binding {
 .messenger-container .content .message.out p {
     background-color: rgb(255, 70, 55);
     float: right;
+    margin-right: 10px;
 }
 
 .messenger-container .content .message p {
@@ -63,6 +64,8 @@ span.since.ng-binding {
     padding: 10px;
     word-wrap: break-word;
     border-radius: 5px;
+    margin-bottom: -10px;
+    margin-left: 10px;
 }
 
 .messenger-container .conversations .item {
@@ -98,6 +101,7 @@ span.since.ng-binding {
     border-radius: 50%;
     box-sizing: content-box;
     float: left;
+    margin-left: 12px;
 }
 
 .messenger-container .header {
@@ -113,10 +117,14 @@ span.since.ng-binding {
 
 .messenger-button {
     width: 60px;
-    height: 70px;
+    height: auto;
     border: none;
     float: left;
     background: white;
+}
+
+.messenger-container .my-message {
+    padding-right: 0px;
 }
 
 button#chat_submit {
@@ -164,14 +172,6 @@ span.bubble {
     border-color: transparent #ff4837 transparent transparent;
 }
 
-.emoji-overlay {
-    position: absolute;
-    background-color: white;
-    padding: 15px;
-    padding: 9px;
-    right: 60px;
-}
-
 .conversations {
     padding-top: 15px;
     float: left;
@@ -192,10 +192,10 @@ span.bubble {
 
 .message-icon {
     float: right;
-    height: 30px;
-    width: 30px;
-    margin-right: 20px;
-    margin-top: 10px;
+    height: 20px;
+    width: 20px;
+    margin-right: 21px;
+    margin-top: 14px;
 }
 
 .messenger-container .item-input {
@@ -209,3 +209,16 @@ span.bubble {
     color: white;
     background-color: rgb(51, 196, 183)
 }
+
+.messenger-container .emoji-overlay {
+    position: absolute;
+    background-color: white;
+    padding: 15px;
+    padding: 9px;
+    right: 25%;
+    bottom: 55px;
+    margin: 0 0 45px 0;
+}
+
+
+/*    background-color: rgba(51, 196, 183, 1);  -> new message */

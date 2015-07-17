@@ -40,6 +40,16 @@ module Service {
             )
         }
 
+        startInitConversation(msg:string, userId:string, tripId?:string) {
+            var newCon:any = {
+                user_id: userId,
+                message: msg
+            };
+            newCon.trip = tripId;
+
+            return this.$http.post(this.basePathRealtime + '/conversations', newCon);
+        }
+
         clearMessageCacheById(messageId) {
             this.messagesIdCache.remove(this.basePathRealtime + '/messages/' + messageId);
         }
@@ -70,6 +80,33 @@ module Service {
             }
             this.badgeBash[conversationId] = newMessage;
         }
+
+        getInitMessage(userOwner, trip, participator) {
+            var tripUsername = userOwner.name;
+            return 'Ahoi ' + tripUsername + '! ' +
+                participator.name + ' hat deinen Trip "' +
+                trip.title + '" gefunden und möchte gerne teilnehmen. ' +
+                'Ihr wollt bestimmt noch ein paar Details des Trips besprechen. ' +
+                'Viel Spaß wünscht euer Locator Team.';
+
+        }
+
+        getNextMessagesFromConversation(id, pageNumber?, pageSize?) {
+            if ((pageNumber >= 0) && (pageSize > 0)) {
+                // returning a promise inside a promise will make the outside promise resolving if inside is resolved.
+                return this.$http({
+                    url: this.basePathRealtime + '/messages/' + id,
+                    params: {
+                        page: pageNumber,
+                        elements: pageSize
+                    },
+                    method: 'GET'
+                });
+            } else {
+                return this.$http.get(this.basePathRealtime + '/messages/' + id);
+            }
+        }
+
 
         static serviceId:string = "MessengerService";
     }

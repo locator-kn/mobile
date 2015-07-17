@@ -12,6 +12,19 @@ body {
     font-family: Signika !important;
 }
 
+.signika button,
+.signika label,
+.signika span,
+.signika div,
+.signika textarea,
+.signika text,
+.signika input,
+.signika ion-content {
+    font-family: Signika !important;
+}
+
+
+
 .image-container-full,
 .image-container {
     width: 100%;
@@ -37,7 +50,7 @@ body {
     z-index: 99999;
     top: 0;
     left: 0;
-    height: 44px !important;
+    height: 15px !important;
 }
 
 .ngProgressLite .ngProgressLiteBarShadow {
@@ -131,12 +144,13 @@ body {
     padding-left: 25px;
 }
 
-.pageWithButton .scroll {
-    padding-bottom: 100px;
+.pageWithButton ion-content {
+    margin-bottom: 50px;
 }
 
-.pageWithBigButton .scroll {
-    padding-bottom: 100px;
+.pageWithBigButton ion-content {
+    margin-bottom: 80px;
+
 }
 
 .button-bottom {
@@ -148,10 +162,35 @@ body {
     line-height: 34px;
 }
 
+.mood .ion-plus-circled:before {
+    line-height: 34px;
+}
+
 .not-auth-background {
     background-color: #fff;
 }
 
 .not-auth-container {
-    margin: 20px 70px;
+    margin: -10px 75px;
+}
+
+/* hahahaha :-D */
+.float-right {
+    float: right;
+}
+
+.bar .button.button-clear .icon:before, .bar .button.button-clear.icon:before, .bar .button.button-clear.icon-left:before, .bar .button.button-clear.icon-right:before {
+    font-size: 23px;
+    line-height: 31px;
+}
+
+.bar .button.button-icon:before, .bar .button .icon:before, .bar .button.icon:before, .bar .button.icon-left:before, .bar .button.icon-right:before {
+    padding-right: 2px;
+    padding-left: 0px;
+    font-size: 20px;
+    line-height: 31px;
+}
+
+.ion-ios-arrow-back:before {
+    font-size: 32px;
 }

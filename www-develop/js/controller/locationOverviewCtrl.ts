@@ -13,13 +13,15 @@ module Controller {
         me:boolean = false;
         elementWidth:number;
 
-        constructor(private $state, private $stateParams, private LocationService, private $ionicLoading, private webPath, private $window) {
+        constructor(private $state, private $stateParams, private LocationService, private $ionicLoading,
+                    private webPath, private $window, maxSpinningDuration) {
+
             this.elementWidth = this.$window.innerWidth  - (80 + 32 + 10);
 
             this.state = this.$state.current.name;
 
             this.locationSourceId = $stateParams.locationSourceId;
-            this.$ionicLoading.show({template: '<ion-spinner icon="spiral"></ion-spinner>'});
+            this.$ionicLoading.show({templateUrl: 'templates/static/loading.html', duration: maxSpinningDuration});
 
             if (this.state === this.tripType) {
                 this.LocationService.getLocationsByTripId(this.locationSourceId).then((result) => {

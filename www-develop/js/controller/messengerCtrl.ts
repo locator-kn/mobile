@@ -4,8 +4,9 @@ module Controller {
         conversations;
         conversationsHash = {};
 
-        constructor(private MessengerService, private UserService, private webPath, private $ionicLoading, private SocketService, private $state, private $rootScope) {
-            this.$ionicLoading.show({template: '<ion-spinner icon="spiral"></ion-spinner>'});
+        constructor(private MessengerService, private UserService, private webPath, private $ionicLoading,
+                    private SocketService, private $state, private $rootScope, maxSpinningDuration) {
+            this.$ionicLoading.show({templateUrl: 'templates/static/loading.html', duration: maxSpinningDuration});
             this.getConversations();
             this.registerSocketEvent();
 

@@ -114,16 +114,26 @@
 
 .moodal .btn-grp-white a {
     color: white;
-    width: 100%;
-    text-align: left;
+    float: left;
+    margin-left: 10px;
+    margin-top: 3px;
 }
 
-.moodal  .or-label {
-    width: 100%;
+.moodal .or {
+    color: white;
     text-align: center;
+}
+
+.moodal .no-margin-left {
+    margin-left: 0;
 }
 
 .moodal .forgot-password {
     margin-top: 5px;
     float: left;
 }
+
+.moodal hr {
+    margin-top: 5px;
+}
+

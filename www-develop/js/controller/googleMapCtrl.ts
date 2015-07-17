@@ -10,7 +10,7 @@ module Controller {
         lat:string;
         long:string;
 
-        constructor(private $ionicLoading, private GeolocationService, private $scope) {
+        constructor(private $ionicLoading, private GeolocationService, private $scope, private maxSpinningDuration) {
             this.map = {
                 center: {
                     // kn fh
@@ -67,7 +67,7 @@ module Controller {
         // sample
         getCurrentPosition = () => {
             if (this.mapIsReady) {
-                this.$ionicLoading.show({template: '<ion-spinner icon="spiral"></ion-spinner>'});
+                this.$ionicLoading.show({templateUrl: 'templates/static/loading.html', duration: this.maxSpinningDuration});
 
                 this.GeolocationService.getCurrentLocation().then((position) => {
                     this.lat = position.coords.latitude;

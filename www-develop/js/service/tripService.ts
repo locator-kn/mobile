@@ -9,15 +9,42 @@ module Service {
         accommodationEquipment:any = [];
         mood:any = [];
 
+        sq:any = {};
+
         resultInfoObject:any = {};
 
         constructor(private $http, private basePath, private $ionicLoading, private $rootScope) {
+
+            $rootScope.$on('resetTripData', () => {
+                this.preTrip = {};
+                this.locations = [];
+                this.city = {};
+                this.accommodationEquipment = [];
+                this.mood = [];
+                this.sq = {};
+            });
+
         }
 
         createTrip(trip) {
             return this.$http.post(this.basePath + '/trips', trip);
         }
 
+        getNextTripsFromUser(userId, pageNumber?, pageSize?) {
+            if (pageNumber >= 0) {
+                this.sq.page = pageNumber;
+                if (pageSize) {
+                    this.sq.page_size = pageSize;
+                }
+            }
+            return this.$http({
+                url: this.basePath + '/users/' + userId + '/trips',
+                params: this.sq,
+                method: 'GET'
+            });
+        }
+
+        // @deprecated
         getTripsByUser(userid) {
             return this.$http.get(this.basePath + '/users/' + userid + '/trips');
         }
@@ -49,13 +76,14 @@ module Service {
             return this.mood;
         }
 
-        setResultInfoObject(obj){
+        setResultInfoObject(obj) {
             this.resultInfoObject = obj;
         }
 
-        getResultInfoObject(){
+        getResultInfoObject() {
             return this.resultInfoObject;
         }
+
         setPreTrip(trip) {
             this.preTrip = trip;
         }

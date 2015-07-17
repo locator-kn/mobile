@@ -1,5 +1,6 @@
 <!--cache view false needed for slider -->
-<ion-view class="trip pageWithButton" cache-view="false" view-title="{{tc.trip.title}}" ng-controller="TripCtrl as tc">
+<ion-view class="trip" ng-class="tc.trip.userid !== userID ? 'pageWithButton' : ''" cache-view="false"
+          view-title="{{tc.trip.title}}" ng-controller="TripCtrl as tc">
     <ion-content>
         <ul>
             <ion-slide-box ng-if="tc.trip.locations && tc.numberOfElelementsIn(tc.trip.locations) !== 1"
@@ -8,8 +9,7 @@
                     <div class="image-container"
                          style="background-image: url({{tc.webPath}}{{location.picture + '?size=mobile'}});background-size: cover">
                     </div>
-                    <img class="user-picture" ui-sref="tab.search-user({userId:tc.trip.userid})"
-                         ng-src="{{tc.user.picture}}">
+
                 </ion-slide>
             </ion-slide-box>
             <div ng-if="tc.trip.locations && tc.numberOfElelementsIn(tc.trip.locations) === 1">
@@ -17,14 +17,13 @@
                     <div class="image-container"
                          style="background-image: url({{tc.webPath}}{{location.picture + '?size=mobile'}});background-size: cover">
                     </div>
-                    <img class="user-picture" ui-sref="tab.search-user({userId:tc.trip.userid})"
-                         ng-src="{{tc.user.picture}}">
                 </div>
             </div>
-
+            <img class="user-picture" ui-sref="tab.search-user({userId:tc.trip.userid})"
+                 ng-src="{{tc.user.picture}}">
             <li class="item first-element">
                 <label>von </label>
-                <label class="text-bold">{{tc.user.name || 'anonym'}}</label>
+                <label class="text-bold"> {{tc.user.name || 'anonym'}}</label>
             </li>
 
             <li class="item description" ng-if="tc.trip.description">
@@ -66,7 +65,7 @@
                     <h5 class="text-bold">Unterkunft</h5>
 
                     <div class="accommodation-equipment">
-                        <acc-equ-chooser accommodation-equipment-selectable="false"
+                        <acc-equ-chooser accommodation-equipment-selectable="false" just-show-selected="true"
                                          accommodation-equipment="tc.trip.accommodation_equipment"></acc-equ-chooser>
                         <label>{{tc.trip.accommodation.title}}</label>
                     </div>
@@ -74,8 +73,9 @@
             </li>
         </ul>
     </ion-content>
-    <button ng-click="tc.openConversationModal()"
+    <button ng-if="!(userID === tc.trip.userid)" ng-if="!(result.userid === userID)"
+            ng-click="tc.startConversation(tc.user, tc.trip)"
             class="button-bottom button button-full background-green bottom">
-        Anschreiben
+        Teilnehmen
     </button>
 </ion-view>

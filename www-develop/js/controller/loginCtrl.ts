@@ -1,4 +1,5 @@
 module Controller {
+    declare var gapi:any;
     export class LoginCtrl {
 
         mail:string;
@@ -11,11 +12,8 @@ module Controller {
         errormsg:string = '';
         successmsg:string = '';
 
-        constructor(private $rootScope, private UserService, private $timeout) {
+        constructor(private $rootScope, private UserService, private $scope, private $timeout, private ngFB) {
         }
-
-
-
 
         closeLoginModal() {
             this.UserService.closeLoginModal();
@@ -116,15 +114,41 @@ module Controller {
                 });
         }
 
-        registerFacebook() {
-            console.log('google');
+
+        loginFacebook() {
+            this.ngFB.login({scope: 'email'}).then(
+                (response:any) => {
+                    if (response.status === 'connected') {
+                        console.log('Facebook login succeeded');
+                        this.closeLoginModal();
+                        this.UserService.loginFacebook(response.authResponse.accessToken).then((userResponse) => {
+                            console.log(userResponse.data);
+                            this.getMe();
+                        });
+                    } else {
+                        alert('Facebook-Login ging schief!');
+                    }
+                });
         }
 
-        registerGoogle() {
-            console.log('google');
+        loginGoogle() {
+            var myParams = {
+                'clientid': '749476331872-e4dvhbqn70gbbaliepfn8rjp5if7ta4q.apps.googleusercontent.com',
+                'cookiepolicy': 'single_host_origin',
+                'callback': loginCallback,
+                'approvalprompt': 'force',
+                'scope': 'https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/plus.login'
+            };
+            gapi.auth.signIn(myParams);
+
+            function loginCallback(result) {
+                if (result['status']['signed_in']) {
+                    console.log('Google login success!');
+                } else {
+                    alert('Google-Login ging schief!');
+                }
+            }
         }
-
-
 
         static controllerId:string = "LoginCtrl";
     }

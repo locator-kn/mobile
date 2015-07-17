@@ -46,7 +46,7 @@
 
 
 .toggle.toggle-dark input:checked + .track {
-    background-color: rgb(51, 196, 183);
+    background-color: #3eb9ad;
     border-color: transparent;
 }
 
@@ -55,14 +55,14 @@
 
 }
 .checkbox input:checked:before, .checkbox input:checked + .checkbox-icon:before{
-    background-color: rgb(51, 196, 183);
-    border-color: rgb(51, 196, 183);
+    background-color: #3eb9ad;
+    border-color: #3eb9ad;
 
 }
 
 
 .mood-checkbox .border-transparent:after {
-    background-color: rgb(51, 196, 183);
+    background-color: #44ccc0;
 
 }
 
@@ -73,9 +73,9 @@
 .background-color-cyan li,
 .background-color-cyan label,
 .background-color-cyan span {
-    background: rgb(51, 196, 183);
+    background: #3eb9ad;
     color: #fff;
-    border-color: #38d8ca
+    border-color: #44ccc0
 }
 
 .background-color-cyan .item-icon-right .icon-accessory {
@@ -84,7 +84,7 @@
 
 .background-color-cyan .circle-selected {
     background-color: #fff;
-    color: rgb(51, 196, 183);
+    color: #3eb9ad;
 }
 
 .background-color-cyan input[type="date"] {
@@ -100,19 +100,19 @@
 }
 
 .background-color-cyan .toggle .track {
-    background-color: rgb(51, 196, 183);
+    background-color: #3eb9ad;
 }
 
 .background-color-cyan .circle {
-    /*border-color: #38d8ca ;*/
     border-color: #fff;
 }
 
 .background-color-cyan .search-button {
     height: 80px;
     font-weight: bold;
-    color: rgb(51, 196, 183);
+    color: #3eb9ad;
     background-color: #fff;
+    font-size: 20px;
 }
 
 .background-color-cyan .text-right {
@@ -120,5 +120,16 @@
 }
 
 .tab-item-active.search {
-    background-color: rgb(51, 196, 183);;
+    background-color: #3eb9ad;;
+}
+
+button.button-bottom.button.button-full.background-green.bottom.search-button:hover {
+    color: #3eb9ad;
+    text-decoration: none;
+    background-color: #ddd;
+}
+
+.date-input {
+    text-align: right;
+    padding-right: 0;
 }

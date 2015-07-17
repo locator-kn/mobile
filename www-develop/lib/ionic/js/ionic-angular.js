@@ -3761,7 +3761,10 @@ IonicModule
       return {
         width: boundingClientRect.width || element.prop('offsetWidth'),
         height: boundingClientRect.height || element.prop('offsetHeight'),
-        top: boundingClientRect.top + ($window.pageYOffset || $document[0].documentElement.scrollTop),
+        top: boundingClientRect.top + ($window.pageYOffset || $document[0].documentElement.
+
+
+            Top),
         left: boundingClientRect.left + ($window.pageXOffset || $document[0].documentElement.scrollLeft)
       };
     }
@@ -4979,7 +4982,7 @@ function($provide) {
     //found nearest to body's scrollTop is set to scroll to an element
     //with that ID.
     $location.hash = function(value) {
-      if (isDefined(value)) {
+      if (isDefined(value) && value.length > 0) {
         $timeout(function() {
           var scroll = document.querySelector('.scroll-content');
           if (scroll) {

@@ -29,7 +29,6 @@
 /// <reference path="./service/dataService.ts" />
 /// <reference path="./service/searchService.ts" />
 /// <reference path="./service/userService.ts" />
-/// <reference path="./service/resultService.ts" />
 /// <reference path="./service/cameraService.ts" />
 /// <reference path="./service/geolocationService.ts" />
 /// <reference path="./service/tripService.ts" />
@@ -57,13 +56,15 @@ var deps = [
     'uiGmapgoogle-maps',
     'ngTagsInput',
     'ngCordova',
+    'ngOpenFB',
     'emoji'
 ];
 
 angular.module('starter', deps)
 
-    .run(function ($ionicPlatform) {
+    .run(function ($ionicPlatform, ngFB) {
         $ionicPlatform.ready(function () {
+            ngFB.init({appId: '383834701823910'});
             // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
             // for form inputs)
             if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
@@ -81,6 +82,7 @@ angular.module('starter', deps)
     .constant('basePath', '<%= basePath %>')
     .constant('basePathRealtime', '<%= basePathRealtime %>')
     .constant('webPath', '<%= webPath %>')
+    .constant('maxSpinningDuration', 6000)
 
 
     // controler
@@ -109,7 +111,6 @@ angular.module('starter', deps)
     // services
     .service(Service.DataService.serviceId, Service.DataService)
     .service(Service.SearchService.serviceId, Service.SearchService)
-    .service(Service.ResultService.serviceId, Service.ResultService)
     .service(Service.CameraService.serviceId, Service.CameraService)
     .service(Service.GeolocationService.serviceId, Service.GeolocationService)
     .service(Service.UserService.serviceId, Service.UserService)
@@ -147,6 +148,23 @@ angular.module('starter', deps)
                     scope.$apply(function () {
                         scope.$eval(attrs.ngEnter);
                         element.val('');
+                    });
+
+                    event.preventDefault();
+                }
+            });
+        };
+    })
+
+    .directive('ngKeypress', function () {
+        return function (scope, element, attrs) {
+            element.bind("keydown keypress", function (event) {
+                if (event.which === 32) {
+                    scope.$apply(function () {
+                        event.target.blur();
+                        event.target.focus();
+                        //scope.$eval(attrs.ngEnter);
+                        //element.val('');
                     });
 
                     event.preventDefault();
@@ -436,6 +454,8 @@ angular.module('starter', deps)
             });
 
         // force native scroll
+        // !!! TODO: bug with native scroll and focus on textfields in Ionic version 1.0.0 !!!
+        // As soon this bug is fixed, enable native scrolling
         var configProvider:any = $ionicConfigProvider;
         configProvider.scrolling.jsScrolling(false);
 

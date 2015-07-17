@@ -19,7 +19,7 @@ module Controller {
         tripCities:any = [];
         city:any = {};
 
-        constructor(private $rootScope, private DataService, private $state, private SearchService, private ResultService, private $ionicPopup, private $ionicLoading) {
+        constructor(private $rootScope, private DataService, private $state, private SearchService, private $ionicPopup, private $ionicLoading) {
             this.DataService.getAvailableDays().then((result)=> {
                 this.availableDays = result.data;
             });
@@ -57,8 +57,8 @@ module Controller {
                 days: this.selectedDays,
                 persons: this.selectedPersons,
                 moods: this.selectedMood,
-                start_date: '',
-                end_date: ''
+                start_date: this.start_date,
+                end_date: this.end_date
             };
 
             // check if start & end date is committed
@@ -67,14 +67,20 @@ module Controller {
                     this.$ionicPopup.alert({title: 'Startdatum muss vor dem Enddatum liegen.'});
                     return;
                 }
-                query.start_date = new Date(this.start_date).toISOString();
-                query.end_date = new Date(this.end_date).toISOString();
+                var currentDate = new Date();
+                var start_date = new Date(this.start_date);
+                var end_date = new Date(this.end_date);
+                if(currentDate > start_date|| currentDate > end_date){
+                    this.$ionicPopup.alert({title: 'Datum liegt in der Vergangenheit.'});
+                    return;
+                }
+
+                query.start_date = start_date.toISOString();
+                query.end_date = end_date.toISOString();
             }
 
 
-            this.SearchService.getTripsByQuery(query).then(result => {
-                this.ResultService.setResults(result.data);
-            });
+            this.SearchService.setQuery(query);
             this.$state.go('tab.search-result');
 
         }

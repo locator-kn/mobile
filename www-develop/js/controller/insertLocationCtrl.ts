@@ -14,7 +14,6 @@ module Controller {
             tags: '',
             title: '',
             description: '',
-            budget: '',
             city: {},
             public: true
         };
@@ -34,8 +33,10 @@ module Controller {
 
         error:boolean = false;
 
-        constructor(private CameraService, private $scope, private basePath, private GeolocationService, private UserService, private $state,
-                    private PictureUploadService, private webPath, private $rootScope, private $ionicLoading, private $ionicPopup, private ngProgressLite, private $ionicScrollDelegate) {
+        constructor(private CameraService, private $scope, private basePath, private GeolocationService,
+                    private UserService, private $state, private PictureUploadService, private webPath,
+                    private $rootScope, private $ionicLoading, private $ionicPopup, private ngProgressLite,
+                    private $ionicScrollDelegate, private maxSpinningDuration) {
 
             this.UserService.getMe().then(user => {
                 this.me = user.data;
@@ -73,7 +74,7 @@ module Controller {
             }
             this.ngProgressLite.start();
             this.$ionicPopup.alert({title: 'Das Bild wird im Hintergrund hochgeladen. Beschreibe doch deine Location solange du wartest.'});
-            this.PictureUploadService.uploadImage(file, this.basePath + '/users/my/locations/picture', formData)
+            this.PictureUploadService.uploadImage(file, this.basePath + '/users/my/locations/picture/mobile', formData)
                 .then((data) => {
                     this.$ionicLoading.hide();
                     var dataObject = JSON.parse(data.response);
@@ -150,11 +151,13 @@ module Controller {
                 lat: this.map.clickedMarker.latitude
             };
 
-            var stringTags = [];
+            debugger;
+            formValues.tags = formValues.tags.split(" ");
+            /*var stringTags = [];
             formValues.tags.forEach(item => {
                 stringTags.push(item.text);
             });
-            formValues.tags = stringTags;
+            formValues.tags = stringTags;*/
 
             this.GeolocationService.saveLocation(formValues, this.documentId).
                 then((result) => {
@@ -192,7 +195,6 @@ module Controller {
                 tags: '',
                 title: '',
                 description: '',
-                budget: '',
                 city: {},
                 public: true
             };
@@ -211,7 +213,7 @@ module Controller {
                 this.$ionicPopup.alert({title: 'Bitte warte kurz bis das Bild fertig geladen wurde'});
                 return;
             }
-            this.$ionicLoading.show({template: '<ion-spinner icon="spiral"></ion-spinner>'});
+            this.$ionicLoading.show({templateUrl: 'templates/static/loading.html', duration: this.maxSpinningDuration});
             this.$state.go('tab.locate-position');
         }
 

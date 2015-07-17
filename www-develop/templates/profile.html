@@ -1,21 +1,16 @@
 <ion-view class="profile" ng-class="!uc.me ? 'pageWithButton' : ''" view-title="Beschreibung"
           ng-controller="UserCtrl as uc">
+    <ion-nav-buttons side="right">
+        <img ng-src="images/icons/icons_stuff/pencil.png" ng-if="uc.me && !uc.edit" class="edit-pencil" ng-click="uc.editTrigger()">
+        <img ng-src="images/icons/icons_stuff/haken.png" ng-if="uc.me && uc.edit" class="edit-pencil" ng-click="uc.updateProfile()">
+        <img ng-src="images/icons/icons_stuff/cross.png" ng-if="uc.me && uc.edit" class="edit-pencil" ng-click="uc.editTrigger()">
+    </ion-nav-buttons>
     <ion-content class="background-color-grey">
-        <div>
-            <button class="button button-dark config-button" ng-if="uc.me && !uc.edit" ng-click="uc.editTrigger()">
-                Bearbeiten
-            </button>
-            <button class="button  button-balanced save-button" ng-if="uc.me && uc.edit" ng-click="uc.updateProfile()">
-                Speichern
-            </button>
-            <button class="button button-assertive abort-button" ng-if="uc.me && uc.edit" ng-click="uc.editTrigger()">
-                Abbrechen
-            </button>
-        </div>
         <ul class="list" ng-if="!uc.edit">
             <li class="item">
                 <img class="profile-image" ng-src="{{uc.user.picture}}">
-                <span class="username">{{uc.user.name}} <span class="birthdate" ng-if="uc.birthdate">({{uc.birthdate}})</span></span>
+                <span class="username">{{uc.user.name}} <span class="birthdate"
+                                                              ng-if="uc.birthdate">({{uc.birthdate}})</span></span>
             </li>
             <li class="item" ng-if="uc.user.birthdate">
                 <h5 class="text-color-red">Geburtsdatum</h5>
@@ -30,8 +25,8 @@
                 <span class="description">{{uc.user.description}}</span>
             </li>
             <li class="item item-icon-right" ui-sref="tab.search-user-locations({locationSourceId:uc.user._id})">
-                <label>Locations von</label>
-                <label>{{uc.user.name}}</label>
+                <h5 class="text-color-red">Locations</h5>
+                <span>von {{uc.user.name}}</span>
                 <i class="icon ion-chevron-right icon-accessory"></i>
             </li>
         </ul>

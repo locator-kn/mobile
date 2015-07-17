@@ -9,7 +9,7 @@
     "angular-cache": "~4.2.0",
     "moment": "~2.10.2",
     "ng-lodash": "~0.2.3",
-    "angular-accommodation-equipment-chooser": "~0.2.3",
+    "angular-accommodation-equipment-chooser": "~0.5.0",
     "cropme": "~0.3.2",
     "angular-socket-io": "~0.7.0",
     "angular-google-maps": "~2.1.5",
@@ -20,6 +20,7 @@
     "ngprogress-lite": "~1.0.7",
     "angular-emoji-filter": "~0.0.2",
     "ng-tags-input": "~2.3.0",
-    "angular-facebook": "~0.2.3"
+    "angular-facebook": "~0.2.3",
+    "openfb": "~0.5.0"
   }
 }

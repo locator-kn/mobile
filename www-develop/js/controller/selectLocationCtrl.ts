@@ -8,10 +8,11 @@ module Controller {
         myLocations:boolean = true;
         selectedLocations:number = 0;
 
-        constructor(private LocationService, private $stateParams, private webPath, private $state, private $rootScope, private TripService, private $ionicLoading) {
+        constructor(private LocationService, private $stateParams, private webPath, private $state, private $rootScope,
+                    private TripService, private $ionicLoading, maxSpinningDuration) {
             this.cityId = $stateParams.cityId;
 
-            this.$ionicLoading.show({template: '<ion-spinner icon="spiral"></ion-spinner>'});
+            this.$ionicLoading.show({templateUrl: 'templates/static/loading.html', duration: maxSpinningDuration});
             this.LocationService.getMyLocationsByCity(this.cityId).then((result) => {
                 this.$ionicLoading.hide();
                 if (result.data.length === 0) {
@@ -24,7 +25,15 @@ module Controller {
             this.LocationService.getLocationsByCity(this.cityId).then((result)=> {
                 this.$ionicLoading.hide();
                 this.locationsByCity = result.data
-            })
+            });
+
+            $rootScope.$on('resetTripData', () => {
+                this.myLocationsByCity = {};
+                this.locationsByCity= {};
+                this.cityId = '';
+                this.myLocations = true;
+                this.selectedLocations = 0;
+            });
         }
 
         toogleSelect(location) {

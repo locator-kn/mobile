@@ -5,11 +5,13 @@ module Controller {
         user:any = {};
         moods:any = [];
         selectedMood:any = {};
+        start_date;
+        end_date;
 
         error:boolean;
 
         constructor(private TripService, private $ionicSlideBoxDelegate, private $state, private UserService,
-                    private DataService, private $ionicLoading, private webPath) {
+                    private DataService, private $ionicLoading, private webPath, private $rootScope) {
             this.trip = TripService.getPreTrip();
             this.trip.locations = TripService.getLocations();
 
@@ -23,8 +25,8 @@ module Controller {
 
             if (this.trip.start_date && this.trip.end_date) {
                 // date format
-                this.trip.start_date = moment(new Date(this.trip.start_date)).format('L');
-                this.trip.end_date = moment(new Date(this.trip.end_date)).format('L');
+                this.start_date = moment(new Date(this.trip.start_date)).format('L');
+                this.end_date = moment(new Date(this.trip.end_date)).format('L')
             }
 
             // important for ion-slide!
@@ -40,6 +42,7 @@ module Controller {
                 this.moods = result.data;
                 this.$ionicLoading.hide();
             });
+
         }
 
         numberOfElelementsIn(obj) {
@@ -64,17 +67,21 @@ module Controller {
                 };
                 this.TripService.setResultInfoObject(info);
                 this.$state.go('tab.offer-options');
+                this.$rootScope.$emit('resetTripData');
+                this.resetData();
             }).catch((err)=> {
                 console.log(err);
             })
         }
 
-        clearData() {
+        resetData() {
             this.trip = {};
             this.user = {};
             this.moods = [];
+            this.selectedMood = {};
             this.error = false;
-            this.TripService.clearData();
+            this.start_date = '';
+            this.start_date = '';
         }
 
         static controllerId:string = "TripPreviewCtrl";

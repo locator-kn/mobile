@@ -1,5 +1,5 @@
 <ion-view view-title="Stadt" ng-controller="CityCtrl as cc">
-    <ion-content class="background-color-grey">
+    <ion-content class="background-color-grey city">
         <ul class="list">
             <!-- display only of more then 8 cities available -->
             <label class="item item-input" ng-if="cc.cities.length>8">
@@ -10,7 +10,7 @@
             </label>
             <!--starts with filter -> if empty show all-->
             <li class="item" ng-repeat="city in cc.cities | startsWith: cc.city"
-                ng-click="cc.setCity(city)">{{city.title}}
+                ng-click="cc.setCity(city)">{{city.title}}<i class="float-right icon ion-plus-circled icon-accessory"></i>
             </li>
 
         </ul>

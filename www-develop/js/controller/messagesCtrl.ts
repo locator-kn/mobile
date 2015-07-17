@@ -8,19 +8,39 @@ module Controller {
         conversationId:string;
         opponentId:string;
 
-        constructor(private MessengerService, private $rootScope, private $state, private SocketService, private $ionicScrollDelegate, private $ionicLoading, private $scope) {
+        page:number = -1;
+        itemsProPage:number = 10;
+        noMoreItemsAvailable:boolean;
+
+        showEmojis:boolean;
+        emojis = [":smile:", ":blush:", ":kissing_heart:", ":hear_no_evil:", ":speak_no_evil:", ":see_no_evil:"];
+        textbox:any  = '';
+
+        constructor(private MessengerService, private $rootScope, private $state, private SocketService,
+                    private $ionicScrollDelegate, private $ionicLoading, private $scope, private $sce,
+                    private $filter, private maxSpinningDuration) {
             this.conversationId = this.$state.params.conversationId;
             this.opponentId = this.$state.params.opponentId;
 
             this.getConversation(this.conversationId);
-            this.getMessages(this.conversationId);
+            this.loadMore();
             this.registerSocketEvent();
+        }
+
+        toTrusted(html_code) {
+            return this.$sce.trustAsHtml(this.$filter('emoji')(html_code));
+        }
+
+        selectEmoji(item) {
+            this.textbox = this.textbox + ' ' + item + ' ';
+            this.showEmojis = false;
+            angular.element('#my-message').focus();
         }
 
 
         // get messages of a single conversation
         getMessages(conversationId) {
-            this.$ionicLoading.show({template: '<ion-spinner icon="spiral"></ion-spinner>'});
+            this.$ionicLoading.show({templateUrl: 'templates/static/loading.html', duration: this.maxSpinningDuration});
             return this.MessengerService.getMessages(conversationId)
                 .then(result => {
                     this.$ionicLoading.hide();
@@ -37,11 +57,8 @@ module Controller {
                         || (!this.MessengerService.badgeStatusOf(conversationId))) {
                         this.emitAck(this.$rootScope.userID, conversationId);
                         this.MessengerService.updateBadge(conversationId, true);
-                        this.$rootScope.$emit('updateConversation', conversationId, null , true);
-
+                        this.$rootScope.$emit('updateConversation', conversationId, null, true);
                     }
-
-
                     this.$ionicScrollDelegate.scrollBottom(true);
                 });
         }
@@ -61,7 +78,6 @@ module Controller {
             }, 10);
             this.conversation[this.$rootScope.userID + '_read'] = true;
         }
-
 
         registerSocketEvent = () => {
             this.SocketService.offEvent('new_message');
@@ -106,11 +122,36 @@ module Controller {
                     var date = new Date();
                     this.$ionicScrollDelegate.scrollBottom(true);
                     this.MessengerService.clearMessageCacheById(this.conversationId);
-                    this.$scope.message = '';
+                    this.textbox = '';
+                    angular.element('#my-message').focus();
                 })
                 .catch(result => {
                     console.info("Error");
                 });
+        };
+
+        loadMore = () => {
+            this.page++;
+
+            this.MessengerService.getNextMessagesFromConversation(this.conversationId, this.page, this.itemsProPage).then((result) => {
+                // push to array
+                debugger;
+                var arrayLength = result.data.length;
+                for (var i = 0; i < arrayLength; i++) {
+                    this.messages.unshift(result.data[i]);
+                    //Do something
+                }
+                if (arrayLength < this.itemsProPage) {
+                    this.noMoreItemsAvailable = true;
+                }
+                this.$scope.$broadcast('scroll.refreshComplete');
+                if (this.page === 0) {
+                    this.$ionicScrollDelegate.scrollBottom(true);
+                }
+                this.$ionicLoading.hide();
+            }).catch((err)=> {
+                this.$ionicLoading.hide();
+            });
         };
 
         static controllerId:string = "MessagesCtrl";

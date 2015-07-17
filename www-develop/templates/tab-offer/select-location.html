@@ -1,4 +1,5 @@
-<ion-view view-title="Locations hinzufügen" class=" insert-trip pageWithButton" ng-controller="SelectLocationCtrl as slc">
+<ion-view view-title="Locations hinzufügen" class=" insert-trip pageWithBigButton"
+          ng-controller="SelectLocationCtrl as slc">
     <ion-content class="background-color-grey locations">
         <div class="header">
             <div class="center">
@@ -18,18 +19,18 @@
                     ng-class="location.selected ? 'selected-location' : ''">
                     <div class="image-container" ui-sref='tab.offer-locations-detail({ locationId: location._id})'>
                         <!-- images -->
-                        <div class="image-container-thumb"
+                        <div ng-if="location.images.picture" class="image-container-thumb"
                              style="background-image: url({{slc.webPath}}{{location.images.picture + '?size=mobileThumb'}});background-size: cover">
                         </div>
-                        <img ng-if="location.images.picture" class="picture"
-                             ng-src="{{slc.webPath}}{{location.images.picture + '?size=mobile'}}">
-                        <img ng-if="!location.images.picture" class="googlemap"
-                             ng-src="{{location.images.googlemap}}&size=200x200">
+                        <div ng-if="!location.images.picture" class="image-container-thumb"
+                             style="background-image: url({{location.images.googlemap + '&size=80x80'}});background-size: cover">
+                        </div>
                     </div>
                     <div ng-click="slc.toogleSelect(location)">
                         <!-- title, tags and description-->
                         <label class="title">{{location.title}}</label>
                         <br>
+
                         <div class="description">{{location.description}}</div>
                         <div class="location-tags tags">
                             <span ng-repeat="tag in location.tags | limitTo: 3" class="tag">{{tag}}</span>
@@ -46,15 +47,18 @@
                     ng-class="location.selected ? 'selected-location' : ''">
                     <div class="image-container" ui-sref='tab.offer-locations-detail({ locationId: location._id})'>
                         <!-- images -->
-                        <img ng-if="location.images.picture" class="picture"
-                             ng-src="{{slc.webPath}}{{location.images.picture + '?size=mobile'}}">
-                        <img ng-if="!location.images.picture" class="googlemap"
-                             ng-src="{{location.images.googlemap}}&size=200x200">
+                        <div ng-if="location.images.picture" class="image-container-thumb"
+                             style="background-image: url({{slc.webPath}}{{location.images.picture + '?size=mobileThumb'}});background-size: cover">
+                        </div>
+                        <div ng-if="!location.images.picture" class="image-container-thumb"
+                             style="background-image: url({{location.images.googlemap + '&size=80x80'}});background-size: cover">
+                        </div>
                     </div>
                     <div ng-click="slc.toogleSelect(location)">
                         <!-- title, tags and description-->
                         <label class="title">{{location.title}}</label>
                         <br>
+
                         <div class="description">{{location.description}}</div>
                         <div class="location-tags tags">
                             <span ng-repeat="tag in location.tags | limitTo: 3" class="tag">{{tag}}</span>
@@ -68,7 +72,7 @@
         </div>
     </ion-content>
     <button ng-if="authenticated" ng-click="slc.tripPreview()" ng-disabled="slc.selectedLocations < 1 ? true : false"
-            class="button-bottom button button-full background-coral bottom item-icon-right">
+            class="button-bottom button button-full background-coral button-select-locations bottom item-icon-right">
         Trip Vorschau
         <i class="icon ion-chevron-right icon-accessory"></i>
     </button>

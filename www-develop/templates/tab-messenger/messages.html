@@ -1,16 +1,25 @@
-<ion-view view-title="Messenger" class="messages messenger-container" ng-controller="MessagesCtrl as mc">
+<ion-view view-title="Messenger" class="messages messenger-container" hide-back-button="true" ng-controller="MessagesCtrl as mc">
+    <ion-nav-buttons side="left ">
+        <i class="icon ion-ios-arrow-back home-back-button" ui-sref="tab.messenger"></i>
+    </ion-nav-buttons>
     <ion-content class="background-color-grey">
+        <ion-refresher
+            pulling-text="Nachrichten laden..."
+            on-refresh="mc.loadMore()">
+        </ion-refresher>
         <div ng-if="authenticated">
             <div>
                 <div class="content">
-                    <div ng-class="{'out' : message.from === userID}" class="message"
-                         ng-repeat="message in mc.messages">
-                        <p><span ng-bind-html="message.message | emoji" class="message-content"></span>
-                            <!--<span class="since">{{mc.since(message.create_date)}}</span></span>-->
-                            <span class="bubble"></span>
-                        </p>
 
-                    </div>
+                    <ion-list>
+                        <div ng-class="{'out' : message.from === userID}" class="message"
+                             ng-repeat="message in mc.messages">
+                            <p><span ng-bind-html="message.message | emoji" class="message-content"></span>
+                                <!--<span class="since">{{mc.since(message.create_date)}}</span></span>-->
+                                <span class="bubble"></span>
+                            </p>
+                        </div>
+                    </ion-list>
                 </div>
             </div>
         </div>
@@ -18,11 +27,15 @@
             Bitte zuerst Registrieren!
         </div>
     </ion-content>
+    <div class="emoji-overlay" ng-if="mc.showEmojis">
+        <span ng-click="mc.selectEmoji(item)" ng-bind-html="mc.toTrusted(item)" ng-repeat="item in mc.emojis"></span>
+    </div>
     <div class="list list-inset bottom">
-        <label class="item item-input">
-            <input type="text" ng-enter="mc.sendMessage(message)" ng-model="message" placeholder="Schreib etwas...">
-        </label>
-        <button class="button" ng-click="mc.sendMessage(message)">
+        <div class="item item-input">
+            <input id="my-message" class="my-message" type="text" ng-enter="mc.sendMessage(mc.textbox)" ng-model="mc.textbox" placeholder="Schreib etwas...">
+            <button class="messenger-button" ng-click="mc.showEmojis = !mc.showEmojis" type="button" id="emoji"><img class="emoji-icon" src="./images/icons/face.png"></button>
+        </div>
+        <button ng-disabled="!mc.textbox" class="button" ng-click="mc.sendMessage(mc.textbox)">
             Senden
         </button>
     </div>

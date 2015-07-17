@@ -5,11 +5,8 @@
 
 .insert-location a.choose-image {
     width: auto;
-    margin-top: -54px;
-    margin-left: -36px;
-    background-color: rgb(34, 34, 34);
-    border-radius: 50%;
-    border: 2px solid white;
+    margin-top: -60px;
+    margin-left: -50px;
 }
 
 .insert-location a.choose-image {
@@ -19,8 +16,8 @@
 }
 
 .insert-location .choose-image img {
-    width: 60px;
-    height: 60px;
+    width: 100px;
+    height: 100px;
     padding: 15px;
 }
 
@@ -165,7 +162,18 @@
     font-weight: bold;
     color: rgb(34, 34, 34);
     background-color: #fff;
+    font-size: 20px;
 }
+
+.insert-trip .button-select-locations {
+    height: 80px;
+    font-weight: bold;
+    background: #f05346;
+    color: #fff;
+    font-size: 20px;
+}
+
+
 
 .background-color-dark .text-right {
     padding-right: 0px;
@@ -192,13 +200,6 @@
     font-size: 16px;
 }
 
-.insert-location .button-bottom.fixed-button-bottom {
-    bottom: 0;
-    position: relative;
-    padding: 0;
-    margin: 0;
-}
-
 .insert-location li.item.create {
     margin: 0;
     border: 0;
@@ -216,7 +217,7 @@
 }
 
 .insert-location .message {
-    font-size: 23px;
+    font-size: 18px;
     font-weight: bold;
     line-height: 29px;
     float: left;
@@ -228,4 +229,8 @@
 .insert-location tags-input .tags {
     -moz-appearance: none !important;
     -webkit-appearance: none !important;;
+}
+
+.insert-location .tag-input {
+    line-height: 20px;
 }
