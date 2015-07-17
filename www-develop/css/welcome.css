@@ -64,8 +64,21 @@
 }
 
 .welcome button:hover {
-     color: #fff;
-     text-decoration: none;
+    color: #fff;
+    text-decoration: none;
 }
+
+.gradient-red {
+    background: linear-gradient(#ff6557, #de4d40);
+}
+
+.gradient-blue {
+    background: linear-gradient(#46cfc1, #37a398);
+}
+
+.gradient-black {
+    background: linear-gradient(#303030, #222222);
+}
+
 
 
