@@ -9,32 +9,27 @@
                 <ion-slide-box ng-if="tpc.trip.locations && tpc.numberOfElelementsIn(tpc.trip.locations) !== 1"
                                class=" parallax-card" on-slide-changed="slideHasChanged($index)">
                     <ion-slide ng-repeat="location in tpc.trip.locations">
-                        <!--<div class="image-container-full"-->
-                             <!--style="background-image: url({{tpc.webPath}}{{location.picture + '?size=mobile'}});background-size: cover">-->
-                        <!--</div>-->
-
-                        <div class="image-container-full">
-                            <div ng-if="location.images.picture" class="image-container-thumb"
-                                 style="background-image: url({{tpc.webPath}}{{location.images.picture + '?size=mobileThumb'}});background-size: cover">
-                            </div>
-                            <div ng-if="!location.images.picture" class="image-container-thumb"
-                                 style="background-image: url({{location.images.googlemap + '&size=mobileThumb'}});background-size: cover">
-                            </div>
+                        <div class="image-container-full" ng-if="location.picture"
+                             style="background-image: url({{tpc.webPath}}{{location.picture + '?size=mobile'}});background-size: cover">
                         </div>
-                        <img class="user-picture" ng-src="{{tpc.user.picture}}">
+                        <div ng-if="!location.picture" class="image-container-full"
+                        style="background-image: url({{location.googlemap + '&size=400x400'}});background-size: cover">
+                        </div>
                     </ion-slide>
                 </ion-slide-box>
                 <div ng-if="tpc.trip.locations && tpc.numberOfElelementsIn(tpc.trip.locations) === 1">
                     <div ng-repeat="location in tpc.trip.locations">
-                        <div class="image-container-full"
+                        <div class="image-container-full" ng-if="location.picture"
                              style="background-image: url({{tpc.webPath}}{{location.picture + '?size=mobile'}});background-size: cover">
                         </div>
-                        <img class="user-picture" ng-src="{{tpc.user.picture}}">
+                        <div ng-if="!location.picture" class="image-container-full"
+                             style="background-image: url({{location.googlemap + '&size=400x400'}});background-size: cover">
+                        </div>
                     </div>
                 </div>
-
+                <img class="user-picture" ng-src="{{tpc.user.picture}}">
                 <li class="item first-element">
-                    <label>von </label>
+                    <label>von</label>
                     <label class="text-bold">{{tpc.user.name || 'anonym'}}</label>
                 </li>
 
