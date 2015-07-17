@@ -119,6 +119,13 @@ module Controller {
             }
         }
 
+        editTrip(tripId, userId) {
+            this.$state.go('tab.profile-trip-edit', {
+                tripId: tripId,
+                userId: userId
+            });
+        }
+
         static controllerId:string = "TripOverviewCtrl";
     }
 }
