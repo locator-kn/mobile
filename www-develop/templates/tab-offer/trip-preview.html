@@ -47,9 +47,11 @@
                 <li class="item"
                     ng-if="(tpc.start_date && tpc.end_date !== '') && (tpc.end_date && tpc.end_date !== '')">
                     <label>von</label>
-                    <label class="text-bold">{{tpc.trip.start_date}}</label>
+                    <resultdate date="tpc.trip.start_date"></resultdate>
+                    <!--<label class="text-bold">{{tpc.trip.start_date}}</label>-->
                     <label>bis</label>
-                    <label class="text-bold">{{tpc.trip.end_date}}</label>
+                    <resultdate date="tpc.trip.end_date"></resultdate>
+                    <!--<label class="text-bold">{{tpc.trip.end_date}}</label>-->
                 </li>
                 <li class="item" ng-if="tpc.trip.days || tpc.trip.persons">
                     <label>
