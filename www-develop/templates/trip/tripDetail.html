@@ -17,7 +17,7 @@
             </ion-slide-box>
             <div ng-if="tc.trip.locations && tc.numberOfElelementsIn(tc.trip.locations) === 1">
                 <div ng-repeat="location in tc.trip.locations">
-                    <div class="image-container"
+                    <div class="image-container" ng-if="location.picture"
                          style="background-image: url({{tc.webPath}}{{location.picture + '?size=mobile'}});background-size: cover">
                     </div>
                     <div class="image-container" ng-if="!location.picture"
