@@ -132,6 +132,8 @@ module Controller {
                     } else {
                         alert('Facebook-Login ging schief!');
                     }
+                }).catch((err)=> {
+                    console.log(err);
                 });
         }
 
