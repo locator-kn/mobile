@@ -73,7 +73,7 @@
 .background-color-cyan li,
 .background-color-cyan label,
 .background-color-cyan span {
-    background: #3eb9ad;
+    background: transparent;
     color: #fff;
     border-color: #44ccc0
 }
