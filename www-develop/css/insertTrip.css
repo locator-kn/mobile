@@ -136,6 +136,8 @@ textarea.ng-dirty.ng-valid-parse.ng-touched.ng-invalid.ng-invalid-required {
     bottom: 5px;
     left: 90px;
     width: 170px;
+    height: 25px;
+    overflow: hidden;
 }
 
 
