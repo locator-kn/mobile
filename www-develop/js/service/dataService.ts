@@ -90,7 +90,7 @@ module Service {
                                 },
                                 {
                                     query_name: 'smoker',
-                                    title: "Raucher",
+                                    title: "Rauchen erlaubt",
                                     icon: "smoking.png",
                                     icon_grey: "smoking_grey.png"
                                 },
