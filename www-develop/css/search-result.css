@@ -29,8 +29,9 @@ li.item.trip-options .icon {
 }
 
 li.item.trip-options .user {
-    float: right;
     padding-right: 10px;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 label.name.ng-binding {
