@@ -198,3 +198,7 @@ body {
 .bar.bar-stable {
     padding: 5px 14px;
 }
+
+.select-elements .circle.circle-selected {
+    line-height: 35px;
+}
