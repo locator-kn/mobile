@@ -1,7 +1,7 @@
 <!--cache view false needed for slider -->
 <ion-view class="trip" ng-class="tc.trip.userid !== userID ? 'pageWithBigButton' : ''" cache-view="false"
           view-title="{{tc.trip.title}}" ng-controller="TripCtrl as tc">
-    <ion-content>
+    <ion-content class="my-has-tabs">
         <ul>
             <ion-slide-box ng-if="tc.trip.locations && tc.numberOfElelementsIn(tc.trip.locations) !== 1"
                            class=" parallax-card" on-slide-changed="slideHasChanged($index)">
