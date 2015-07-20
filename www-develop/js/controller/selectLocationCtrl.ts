@@ -12,7 +12,7 @@ module Controller {
 
         constructor(private LocationService, private $stateParams, private webPath, private $state, private $rootScope,
                     private TripService, private $ionicLoading, maxSpinningDuration, private $window) {
-            this.elementWidth = this.$window.innerWidth  - (80 + 32 + 10);
+            this.elementWidth = this.$window.innerWidth  - (80 + 32 + 10 + 20);
             this.cityId = $stateParams.cityId;
 
             this.$ionicLoading.show({templateUrl: 'templates/static/loading.html', duration: maxSpinningDuration});
