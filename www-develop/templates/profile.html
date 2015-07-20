@@ -1,4 +1,4 @@
-<ion-view class="profile" ng-class="!uc.me ? 'pageWithButton' : ''" view-title="Beschreibung"
+<ion-view class="profile" ng-class="!uc.me ? 'pageWithBigButton' : ''" view-title="Beschreibung"
           ng-controller="UserCtrl as uc">
     <ion-nav-buttons side="right">
         <img ng-src="images/icons/icons_stuff/pencil.png" ng-if="uc.me && !uc.edit" class="edit-pencil" ng-click="uc.editTrigger()">
@@ -14,7 +14,7 @@
             </li>
             <li class="item" ng-if="uc.user.birthdate">
                 <h5 class="text-color-red">Geburtsdatum</h5>
-                <label>{{uc.user.birthdate}}</label>
+                <span class="date-of-birth">{{uc.user.birthdate}}</span>
             </li>
             <li class="item" ng-if="uc.user.residence">
                 <h5 class="text-color-red">Wohnort</h5>
@@ -25,8 +25,7 @@
                 <span class="description">{{uc.user.description}}</span>
             </li>
             <li class="item item-icon-right" ui-sref="tab.search-user-locations({locationSourceId:uc.user._id})">
-                <h5 class="text-color-red">Locations</h5>
-                <span>von {{uc.user.name}}</span>
+                <span>Locations von {{uc.user.name}}</span>
                 <i class="icon ion-chevron-right icon-accessory"></i>
             </li>
         </ul>
@@ -55,7 +54,7 @@
         </ul>
     </ion-content>
     <button ng-if="!uc.me" ng-click="uc.openConversationModal()"
-            class="button-bottom button button-full background-green bottom">
-        Anschreiben
+            class="button-contact button-bottom button button-full background-green bottom">
+        ANSCHREIBEN
     </button>
 </ion-view>

@@ -121,13 +121,19 @@ module Controller {
                     if (response.status === 'connected') {
                         console.log('Facebook login succeeded');
                         this.closeLoginModal();
-                        this.UserService.loginFacebook(response.authResponse.accessToken).then((userResponse) => {
+                        this.UserService.loginOAuth('facebook', response.authResponse.accessToken).then((userResponse) => {
                             console.log(userResponse.data);
                             this.getMe();
                         });
+                        /*this.UserService.loginFacebook(response.authResponse.accessToken).then((userResponse) => {
+                            console.log(userResponse.data);
+                            this.getMe();
+                        });*/
                     } else {
                         alert('Facebook-Login ging schief!');
                     }
+                }).catch((err)=> {
+                    console.log(err);
                 });
         }
 
@@ -135,18 +141,23 @@ module Controller {
             var myParams = {
                 'clientid': '749476331872-e4dvhbqn70gbbaliepfn8rjp5if7ta4q.apps.googleusercontent.com',
                 'cookiepolicy': 'single_host_origin',
-                'callback': loginCallback,
+                'callback': this.loginGoogleCallback,
                 'approvalprompt': 'force',
-                'scope': 'https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/plus.login'
+                'scope': 'https://www.googleapis.com/auth/plus.profile.emails.read'
             };
             gapi.auth.signIn(myParams);
+        }
 
-            function loginCallback(result) {
-                if (result['status']['signed_in']) {
-                    console.log('Google login success!');
-                } else {
-                    alert('Google-Login ging schief!');
-                }
+        loginGoogleCallback = (response) => {
+            if (response['status']['signed_in']) {
+                debugger;
+                console.log('Google login success!');
+                this.UserService.loginOAuth('google', response['access_token']).then((userResponse) => {
+                    console.log(userResponse.data);
+                    this.getMe();
+                });
+            } else {
+                alert('Google-Login ging schief!');
             }
         }
 

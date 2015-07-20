@@ -1,5 +1,5 @@
 <ion-view view-title="Locations" class="location-overview" ng-controller="LocationOverviewCtrl as loc">
-    <ion-content class="background-color-grey">
+    <ion-content class="background-color-grey my-has-tabs">
         <ul class="list">
             <label class="item item-input" ng-if="loc.results.length>8">
                 <i class="icon ion-search placeholder-icon"></i>
@@ -15,9 +15,8 @@
                          style="background-image: url({{loc.webPath}}{{location.images.picture + '?size=mobile'}});background-size: cover">
                     </div>
                     <img ng-if="!location.images.picture" class="googlemap"
-                         ng-src="{{location.images.googlemap}}&size=200x200">
+                         ng-src="{{location.images.googlemap}}&size=200x200&key=AIzaSyCveLtBw4QozQIkMstvefLSTd3_opSvHS4">
                 </div>
-
                 <div class="content-container">
                     <!-- title, tags and description-->
                     <label class="title" ng-style="{width: loc.elementWidth + 'px'}" >{{location.title}}</label>

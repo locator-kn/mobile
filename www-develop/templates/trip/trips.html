@@ -2,7 +2,7 @@
     <ion-nav-buttons side="right">
         <img ng-if="toc.searchView" class="image-filter" ng-click="$ionicGoBack()" src="./images/icons/edit.png">
     </ion-nav-buttons>
-    <ion-content class="background-color-grey">
+    <ion-content class="background-color-grey my-has-tabs">
         <ion-list class="list">
             <div class="hack-for-first-element"></div>
             <ion-item ng-repeat="result in toc.results">
@@ -14,15 +14,21 @@
                         <ion-slide-box ng-if="toc.numberOfElelementsIn(result.locations) !== 1"
                                        on-slide-changed="slideHasChanged($index)">
                             <ion-slide ng-repeat="location in result.locations">
-                                <div class="image-container"
+                                <div class="image-container" ng-if="location.picture"
                                      style="background-image: url({{toc.webPath}}{{location.picture + '?size=mobile'}});background-size: cover">
+                                </div>
+                                <div ng-if="!location.picture" class="image-container"
+                                     style="background-image: url({{location.googlemap + '&size=400x400&key=AIzaSyCveLtBw4QozQIkMstvefLSTd3_opSvHS4'}});background-size: cover">
                                 </div>
                             </ion-slide>
                         </ion-slide-box>
                         <div ng-if="toc.numberOfElelementsIn(result.locations) === 1">
                             <div ng-repeat="location in result.locations">
-                                <div class="image-container"
+                                <div class="image-container" ng-if="location.picture"
                                      style="background-image: url({{toc.webPath}}{{location.picture + '?size=mobile'}});background-size: cover">
+                                </div>
+                                <div ng-if="!location.picture" class="image-container"
+                                     style="background-image: url({{location.googlemap + '&size=400x400&key=AIzaSyCveLtBw4QozQIkMstvefLSTd3_opSvHS4'}});background-size: cover">
                                 </div>
                             </div>
                         </div>

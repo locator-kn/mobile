@@ -16,7 +16,6 @@
     font-size: 28px;
     font-weight: 500;
     text-align: left;
-    padding-left: 30px;
 }
 
 .welcome .height-3 {
@@ -48,14 +47,14 @@
 
 .welcome .tab-icon {
     height: 50%;
-    float: right;
+    /*float: right;*/
     margin-right: 15px;
 }
 
 .welcome .tab-title {
-    float: left;
-    margin-top: 6%;
-    display: table-cell;
+    width: 100%;
+    text-align: center;
+    margin-top: 5px;
 }
 
 .my-has-tabs {
@@ -80,5 +79,8 @@
 }
 
 .welcome .new-height {
-    height: 80px
+    height: 60px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }

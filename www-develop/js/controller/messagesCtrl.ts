@@ -128,6 +128,7 @@ module Controller {
                 .catch(result => {
                     console.info("Error");
                 });
+            this.showEmojis = false;
         };
 
         loadMore = () => {
