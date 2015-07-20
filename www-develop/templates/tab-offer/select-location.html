@@ -15,7 +15,12 @@
         </div>
         <div ng-if="slc.myLocations">
             <ul class="list">
-                <li class="item item-icon-right" ng-repeat="location in slc.myLocationsByCity"
+                <label class="item item-input search-location" ng-if="slc.myLocationsByCity.length>8">
+                    <i class="icon ion-search placeholder-icon"></i>
+                    <input class="city" type="search" placeholder="Suchen" ng-change-options='{ debounce: 1000 }'
+                           ng-model="slc.myLocation"/>
+                </label>
+                <li class="item item-icon-right" ng-repeat="location in slc.myLocationsByCity | filter: slc.myLocation"
                     ng-class="location.selected ? 'selected-location' : ''">
                     <div class="image-container" ui-sref='tab.offer-locations-detail({ locationId: location._id})'>
                         <!-- images -->
