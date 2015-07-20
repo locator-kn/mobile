@@ -32,9 +32,16 @@ module Controller {
         errormsg:string;
         successmsg:string;
 
+        profileState:boolean;
+
         constructor(private $rootScope, private $state, private UserService, private CameraService,
                     private PictureUploadService, private basePath, private $stateParams, private $ionicPopup,
                     private $ionicLoading, private webPath, private ngProgressLite, private maxSpinningDuration) {
+
+            debugger;
+            if (this.$state.current.name.indexOf('tab.profile') >= -1) {
+                this.profileState = true;
+            }
 
             this.getUser($stateParams.userId);
 

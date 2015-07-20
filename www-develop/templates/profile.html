@@ -1,9 +1,12 @@
 <ion-view class="profile" ng-class="!uc.me ? 'pageWithBigButton' : ''" view-title="Beschreibung"
           ng-controller="UserCtrl as uc">
     <ion-nav-buttons side="right">
-        <img ng-src="images/icons/icons_stuff/pencil.png" ng-if="uc.me && !uc.edit" class="edit-pencil" ng-click="uc.editTrigger()">
-        <img ng-src="images/icons/icons_stuff/haken.png" ng-if="uc.me && uc.edit" class="edit-pencil" ng-click="uc.updateProfile()">
-        <img ng-src="images/icons/icons_stuff/cross.png" ng-if="uc.me && uc.edit" class="edit-pencil" ng-click="uc.editTrigger()">
+        <img ng-src="images/icons/icons_stuff/pencil.png" ng-if="uc.me && !uc.edit" class="edit-pencil"
+             ng-click="uc.editTrigger()">
+        <img ng-src="images/icons/icons_stuff/haken.png" ng-if="uc.me && uc.edit" class="edit-pencil"
+             ng-click="uc.updateProfile()">
+        <img ng-src="images/icons/icons_stuff/cross.png" ng-if="uc.me && uc.edit" class="edit-pencil"
+             ng-click="uc.editTrigger()">
     </ion-nav-buttons>
     <ion-content class="background-color-grey">
         <ul class="list" ng-if="!uc.edit">
@@ -24,7 +27,13 @@
                 <h5 class="text-color-red">Beschreibung</h5>
                 <span class="description">{{uc.user.description}}</span>
             </li>
-            <li class="item item-icon-right" ui-sref="tab.search-user-locations({locationSourceId:uc.user._id})">
+            <li class="item item-icon-right" ng-if="!uc.profileState"
+                ui-sref="tab.search-user-locations({locationSourceId:uc.user._id})">
+                <span>Locations von {{uc.user.name}}</span>
+                <i class="icon ion-chevron-right icon-accessory"></i>
+            </li>
+            <li class="item item-icon-right" ng-if="uc.profileState"
+                ui-sref="tab.profile-locations({locationSourceId:uc.user._id})">
                 <span>Locations von {{uc.user.name}}</span>
                 <i class="icon ion-chevron-right icon-accessory"></i>
             </li>
