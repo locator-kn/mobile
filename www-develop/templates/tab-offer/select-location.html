@@ -23,7 +23,7 @@
                              style="background-image: url({{slc.webPath}}{{location.images.picture + '?size=mobileThumb'}});background-size: cover">
                         </div>
                         <div ng-if="!location.images.picture" class="image-container-thumb"
-                             style="background-image: url({{location.images.googlemap + '&size=80x80&key=AIzaSyCveLtBw4QozQIkMstvefLSTd3_opSvHS4'}});background-size: cover">
+                             style="background-image: url({{location.images.googlemap + '&size=80x80'}});background-size: cover">
                         </div>
                     </div>
                     <div ng-click="slc.toogleSelect(location)">
@@ -43,31 +43,32 @@
         </div>
         <div ng-if="!slc.myLocations">
             <ul class="list">
-                <li class="item item-icon-right" ng-repeat="location in slc.locationsByCity"
-                    ng-class="location.selected ? 'selected-location' : ''">
-                    <div class="image-container" ui-sref='tab.offer-locations-detail({ locationId: location._id})'>
-                        <!-- images -->
-                        <div ng-if="location.images.picture" class="image-container-thumb"
-                             style="background-image: url({{slc.webPath}}{{location.images.picture + '?size=mobileThumb'}});background-size: cover">
+                <ion-item collection-repeat="location in slc.locationsByCity" class="ion-item-insert-style">
+                    <li class="item item-icon-right" ng-class="location.selected ? 'selected-location' : ''">
+                        <div class="image-container" ui-sref='tab.offer-locations-detail({ locationId: location._id})'>
+                            <!-- images -->
+                            <div ng-if="location.images.picture" class="image-container-thumb"
+                                 style="background-image: url({{slc.webPath}}{{location.images.picture + '?size=mobileThumb'}});background-size: cover">
+                            </div>
+                            <div ng-if="!location.images.picture" class="image-container-thumb"
+                                 style="background-image: url({{location.images.googlemap + '&size=80x80'}});background-size: cover">
+                            </div>
                         </div>
-                        <div ng-if="!location.images.picture" class="image-container-thumb"
-                             style="background-image: url({{location.images.googlemap + '&size=80x80&key=AIzaSyCveLtBw4QozQIkMstvefLSTd3_opSvHS4'}});background-size: cover">
-                        </div>
-                    </div>
-                    <div ng-click="slc.toogleSelect(location)">
-                        <!-- title, tags and description-->
-                        <label class="title">{{location.title}}</label>
-                        <br>
+                        <div ng-click="slc.toogleSelect(location)">
+                            <!-- title, tags and description-->
+                            <label class="title">{{location.title}}</label>
+                            <br>
 
-                        <div class="description">{{location.description}}</div>
-                        <div class="location-tags tags">
-                            <span ng-repeat="tag in location.tags | limitTo: 3" class="tag">{{tag}}</span>
-                        </div>
+                            <div class="description">{{location.description}}</div>
+                            <div class="location-tags tags">
+                                <span ng-repeat="tag in location.tags | limitTo: 3" class="tag">{{tag}}</span>
+                            </div>
 
-                        <i ng-if="!location.selected" class="icon ion-plus-circled icon-accessory"></i>
-                        <i ng-if="location.selected" class="icon ion-minus-circled icon-accessory"></i>
-                    </div>
-                </li>
+                            <i ng-if="!location.selected" class="icon ion-plus-circled icon-accessory"></i>
+                            <i ng-if="location.selected" class="icon ion-minus-circled icon-accessory"></i>
+                        </div>
+                    </li>
+                </ion-item>
             </ul>
         </div>
     </ion-content>
