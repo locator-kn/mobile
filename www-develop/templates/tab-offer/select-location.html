@@ -43,7 +43,13 @@
         </div>
         <div ng-if="!slc.myLocations">
             <ul class="list">
-                <ion-item collection-repeat="location in slc.locationsByCity" class="ion-item-insert-style">
+                <label class="item item-input search-location" ng-if="slc.locationsByCity.length>8">
+                    <i class="icon ion-search placeholder-icon"></i>
+                    <!--call update cities if anyone use 'back' -> no static data anymore-->
+                    <input class="city" type="search" placeholder="Suchen" ng-change-options='{ debounce: 1000 }'
+                           ng-model="slc.location"/>
+                </label>
+                <ion-item collection-repeat="location in slc.locationsByCity | filter: slc.location" class="ion-item-insert-style">
                     <li class="item item-icon-right" ng-class="location.selected ? 'selected-location' : ''">
                         <div class="image-container" ui-sref='tab.offer-locations-detail({ locationId: location._id})'>
                             <!-- images -->
