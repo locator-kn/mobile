@@ -16,6 +16,7 @@
 .insert-trip .locations li.item.item-icon-right {
     padding: 5px;
     margin: 5px 10px;
+    border-radius: 5px;
 }
 
 .insert-trip .image-container {
@@ -269,4 +270,9 @@ textarea.ng-dirty.ng-valid-parse.ng-touched.ng-invalid.ng-invalid-required {
     height: 80px;
     font-weight: bold;
     font-size: 20px;
+}
+
+.insert-trip .search-location {
+    border-radius: 5px;
+    margin: 0 9px 5px 9px
 }
