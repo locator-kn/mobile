@@ -3,7 +3,7 @@
     <ion-nav-buttons side="left ">
         <i class="icon ion-ios-arrow-back ion-chevron-left" ui-sref="tab.welcome"></i>
     </ion-nav-buttons>
-    <ion-content ng-class="!authenticated ? 'not-auth-background' : ''">
+    <ion-content class="gradient-red" ng-class="!authenticated ? 'not-auth-background' : ''">
         <div ng-if="authenticated">
             <ul class="list">
                 <li class="item item-icon-right" ui-sref="tab.offer-city">
