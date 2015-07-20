@@ -262,3 +262,11 @@ textarea.ng-dirty.ng-valid-parse.ng-touched.ng-invalid.ng-invalid-required {
     padding: 0;
     border: 0;
 }
+
+.insert-trip .button-finish {
+    background: #f05346;
+    color: #fff;
+    height: 80px;
+    font-weight: bold;
+    font-size: 20px;
+}
