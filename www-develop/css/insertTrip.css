@@ -91,7 +91,7 @@
 
 .insert-trip .selected-location {
     border-color: #f47c7e;
-    border-width: 2px;
+    border-width: 1px;
 }
 
 .insert-trip .mood-title {
