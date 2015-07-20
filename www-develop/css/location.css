@@ -1,4 +1,3 @@
-
 .tag-detail {
     float: left;
 }
@@ -7,8 +6,20 @@
     width: 100%;
 }
 
+ui-gmap-google-map.google-map.angular-google-map {
+    float: left;
+    width: 100%;
+    height: 294px;
+}
+
 .angular-google-map-container {
-    height: 280px;
+    width: 100%;
+    height: 100%;
+}
+
+.angular-google-map {
+    width: 100%;
+    height: 100%;
 }
 
 .location .description {
