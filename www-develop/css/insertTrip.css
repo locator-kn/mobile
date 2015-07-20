@@ -31,13 +31,12 @@
     float: left;
     text-overflow: ellipsis;
     overflow: hidden;
-    width: 170px;
 }
 
 .insert-trip .description {
     padding-top: 5px;
     width: 170px;
-    /*height: 54px;*/
+    /* height: 54px; */
     font-size: 12px;
     font-weight: bold;
     text-overflow: ellipsis;
