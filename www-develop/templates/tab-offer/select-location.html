@@ -28,10 +28,10 @@
                     </div>
                     <div ng-click="slc.toogleSelect(location)">
                         <!-- title, tags and description-->
-                        <label class="title">{{location.title}}</label>
+                        <label class="title" ng-style="{width: slc.elementWidth + 'px'}">{{location.title}}</label>
                         <br>
 
-                        <div class="description">{{location.description}}</div>
+                        <div class="description" ng-style="{width: slc.elementWidth + 'px'}">{{location.description}}</div>
                         <div class="location-tags tags">
                             <span ng-repeat="tag in location.tags | limitTo: 3" class="tag">{{tag}}</span>
                         </div>
