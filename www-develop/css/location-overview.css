@@ -41,6 +41,8 @@
     position: absolute;
     bottom: 5px;
     left: 90px;
+    height: 25px;
+    overflow: hidden;
 }
 
 .location-overview .description {
