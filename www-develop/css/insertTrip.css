@@ -258,4 +258,7 @@ textarea.ng-dirty.ng-valid-parse.ng-touched.ng-invalid.ng-invalid-required {
     border: none;
 }
 
-
+.insert-trip .ion-item-insert-style {
+    padding: 0;
+    border: 0;
+}
