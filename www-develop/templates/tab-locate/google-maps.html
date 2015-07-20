@@ -4,27 +4,18 @@
         <p class="location-finish" ng-click="$ionicGoBack()">Fertig</p>
     </ion-nav-buttons>
     <ion-content>
-        <ul>
-            <div>
-                <ui-gmap-google-map class="google-map"
-                                    center='gmc.map.center'
-                                    zoom='gmc.map.zoom'
-                                    events="gmc.map.events">
-                    <ui-gmap-marker coords="gmc.map.clickedMarker"
-                                    idKey="gmc.map.clickedMarker.id"
-                                    options="gmc.map.clickedMarker.options">
-                    </ui-gmap-marker>
-                </ui-gmap-google-map>
-            </div>
-
-            <div ng-hide="true">
-                <input type="checkbox" ng-model="gmc.mapMarkerSet" name="locationGps" required>
-            </div>
-
-            <li class="item create">
-
-            </li>
-        </ul>
+        <ui-gmap-google-map ng-style="{height: gmc.heigth + 'px'}" class="google-map"
+                            center='gmc.map.center'
+                            zoom='gmc.map.zoom'
+                            events="gmc.map.events">
+            <ui-gmap-marker coords="gmc.map.clickedMarker"
+                            idKey="gmc.map.clickedMarker.id"
+                            options="gmc.map.clickedMarker.options">
+            </ui-gmap-marker>
+        </ui-gmap-google-map>
+        <div ng-hide="true">
+            <input type="checkbox" ng-model="gmc.mapMarkerSet" name="locationGps" required>
+        </div>
     </ion-content>
     <button ng-if="authenticated"
             class="button-bottom button button-insert-location bottom button-full"
