@@ -16,6 +16,7 @@
 .insert-trip .locations li.item.item-icon-right {
     padding: 5px;
     margin: 5px 10px;
+    border-radius: 5px;
 }
 
 .insert-trip .image-container {
@@ -93,7 +94,7 @@
 
 .insert-trip .selected-location {
     border-color: #f47c7e;
-    border-width: 2px;
+    border-width: 1px;
 }
 
 .insert-trip .mood-title {
@@ -166,7 +167,7 @@ textarea.ng-dirty.ng-valid-parse.ng-touched.ng-invalid.ng-invalid-required {
 .background-color-coral li,
 .background-color-coral label,
 .background-color-coral span {
-    background: #f05346;
+    background: transparent;
     color: #fff;
     border-color: #ff7274
 }
@@ -260,4 +261,24 @@ textarea.ng-dirty.ng-valid-parse.ng-touched.ng-invalid.ng-invalid-required {
     background-repeat: no-repeat;
 }
 
+.background-color-coral .insert-trip-button {
+    border: none;
+}
 
+.insert-trip .ion-item-insert-style {
+    padding: 0;
+    border: 0;
+}
+
+.insert-trip .button-finish {
+    background: #f05346;
+    color: #fff;
+    height: 80px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.insert-trip .search-location {
+    border-radius: 5px;
+    margin: 0 9px 5px 9px
+}

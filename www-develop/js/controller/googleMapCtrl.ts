@@ -27,10 +27,12 @@ module Controller {
             events: null
         };
 
-        constructor(private $ionicLoading, private GeolocationService, private $scope, private maxSpinningDuration) {
-            var oldResultObject = this.GeolocationService.getGeoPosition();
+        heigth;
 
-            debugger;
+        constructor(private $ionicLoading, private GeolocationService, private $scope, private maxSpinningDuration) {
+            this.heigth = window.innerHeight - 173;
+
+            var oldResultObject = this.GeolocationService.getGeoPosition();
 
             if (oldResultObject.center) {
                 this.mapMarkerSet = true;

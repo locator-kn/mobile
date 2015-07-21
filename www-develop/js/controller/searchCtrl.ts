@@ -33,6 +33,13 @@ module Controller {
                 this.availableMoods = result.data;
             });
 
+            // if only one city available -> select city as default city
+            this.DataService.getAvailableCities().then((result) => {
+                if(result.data.length === 1) {
+                    this.city = result.data[0];
+                }
+            });
+
             $rootScope.$on('newSearchCity', () => {
                 this.city = this.SearchService.getCity();
             });

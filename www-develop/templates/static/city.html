@@ -10,7 +10,7 @@
             </label>
             <!--starts with filter -> if empty show all-->
             <li class="item" ng-repeat="city in cc.cities | startsWith: cc.city"
-                ng-click="cc.setCity(city)">{{city.title}}<i class="float-right icon ion-plus-circled icon-accessory"></i>
+                ng-click="cc.setCity(city)">{{city.title}}
             </li>
 
         </ul>

@@ -149,7 +149,7 @@ body {
 }
 
 .pageWithBigButton ion-content {
-    margin-bottom: 80px;
+    margin-bottom: 79px;
 
 }
 
@@ -197,4 +197,21 @@ body {
 
 .bar.bar-stable {
     padding: 5px 14px;
+    background-color: white;
+}
+
+.select-elements .circle.circle-selected {
+    line-height: 35px;
+}
+
+.bar .title + .button:last-child, .bar > .button + .button:last-child, .bar > .button.pull-right, .bar .buttons.pull-right, .bar .title + .buttons {
+    right: 9px;
+}
+
+ion-nav-view.view-container.tab-content {
+    background-color: white;
+}
+
+.toggle .track {
+    border-color: white;
 }
