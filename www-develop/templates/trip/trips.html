@@ -42,9 +42,16 @@
                             </label>
                         </li>
                         <li class="item" ng-if="result.start_date && result.end_date">
-                            <label class="text-bold">{{toc.formatDate(result.start_date)}}</label>
-                            <label>bis</label>
-                            <label class="text-bold">{{toc.formatDate(result.end_date)}}</label>
+                            <div ng-if="result.start_date !== result.end_date">
+                                <label>vom</label>
+                                <label class="text-bold">{{toc.formatDate(result.start_date)}}</label>
+                                <label>bis</label>
+                                <label class="text-bold">{{toc.formatDate(result.end_date)}}</label>
+                            </div>
+                            <div ng-if="result.start_date === result.end_date">
+                                <label>am</label>
+                                <label class="text-bold">{{toc.formatDate(result.start_date)}}</label>
+                            </div>
                         </li>
                         <li class="item mood-container" ng-if="result.moods">
                             <div ng-repeat="mood in result.moods">
