@@ -15,6 +15,7 @@ module Controller {
         showEmojis:boolean;
         emojis = [":smile:", ":blush:", ":kissing_heart:", ":hear_no_evil:", ":speak_no_evil:", ":see_no_evil:"];
         textbox:any = '';
+        emptyConversation:boolean;
 
         constructor(private MessengerService, private $rootScope, private $state, private SocketService,
                     private $ionicScrollDelegate, private $ionicLoading, private $scope, private $sce,
@@ -22,8 +23,13 @@ module Controller {
             this.conversationId = this.$state.params.conversationId;
             this.opponentId = this.$state.params.opponentId;
 
-            this.getConversation(this.conversationId);
-            this.loadMore();
+            debugger;
+            if (this.conversationId === '') {
+                this.emptyConversation = true;
+            } else {
+                this.getConversation(this.conversationId);
+                this.loadMore();
+            }
             this.registerSocketEvent();
             this.$ionicScrollDelegate.scrollBottom(true);
         }
@@ -150,6 +156,33 @@ module Controller {
                 this.$ionicLoading.hide();
             }).catch((err)=> {
                 this.$ionicLoading.hide();
+            });
+        };
+
+        startConversation = (message) => {
+            this.MessengerService.startConversation(this.opponentId, message).then((result) => {
+                this.$state.go('tab.messenger-messages', {
+                    conversationId: result.data.id,
+                    opponentId: this.opponentId
+                });
+            }).catch((result) => {
+                if (result.status === 409) {
+                    var fromUser = this.$rootScope.userID;
+                    var toUser;
+                    if (result.data.data.user_1 === this.$rootScope.userID) {
+                        toUser = result.data.data.user_2;
+                    } else {
+                        toUser = result.data.data.user_1;
+                    }
+                    this.MessengerService.sendMessage(message, result.data.data._id, toUser, fromUser).then(data => {
+                        this.$state.go('tab.messenger-messages', {
+                            conversationId: result.data.data._id,
+                            opponentId: toUser
+                        })
+                    });
+                } else {
+                    // TODO: show error
+                }
             });
         };
 
