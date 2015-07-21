@@ -56,6 +56,7 @@ module Service {
 
         setBadgeHash(badgeHash) {
             this.badgeBash = badgeHash;
+            this.$rootScope.badge = 0;
             for (var element in this.badgeBash) {
                 if (!this.badgeBash[element]) {
                     this.$rootScope.badge += 1;
