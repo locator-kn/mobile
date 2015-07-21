@@ -38,7 +38,7 @@ module Controller {
                     private PictureUploadService, private basePath, private $stateParams, private $ionicPopup,
                     private $ionicLoading, private webPath, private ngProgressLite, private maxSpinningDuration) {
 
-            if (this.$state.current.name.indexOf('tab.profile') >= -1) {
+            if (this.$state.current.name.indexOf('tab.profile') > -1) {
                 this.profileState = true;
             }
 
