@@ -30,8 +30,7 @@ module Service {
             )
         }
 
-        startConversation(msg) {
-            var userId = this.UserService.getConversationUserId();
+        startConversation(userId, msg) {
             return this.$http.post(this.basePathRealtime + '/conversations',
                 {
                     "message": msg,
