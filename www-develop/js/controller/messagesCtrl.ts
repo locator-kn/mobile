@@ -136,7 +136,6 @@ module Controller {
 
             this.MessengerService.getNextMessagesFromConversation(this.conversationId, this.page, this.itemsProPage).then((result) => {
                 // push to array
-                debugger;
                 var arrayLength = result.data.length;
                 for (var i = 0; i < arrayLength; i++) {
                     this.messages.unshift(result.data[i]);

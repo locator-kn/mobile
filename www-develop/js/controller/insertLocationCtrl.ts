@@ -151,7 +151,6 @@ module Controller {
                 lat: this.map.clickedMarker.latitude
             };
 
-            debugger;
             formValues.tags = formValues.tags.split(" ");
             /*var stringTags = [];
             formValues.tags.forEach(item => {

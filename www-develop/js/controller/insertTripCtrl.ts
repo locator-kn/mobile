@@ -84,7 +84,6 @@ module Controller {
         }
 
         toIsoDate(dateString) {
-            debugger;
             if (dateString !== undefined) {
                 var date = new Date(dateString);
                 return date.toISOString();
