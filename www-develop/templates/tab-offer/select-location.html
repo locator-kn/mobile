@@ -65,14 +65,10 @@
                                  style="background-image: url({{location.images.googlemap + '&size=80x80'}});background-size: cover">
                             </div>
                         </div>
-                        <div ng-if="!location.images.picture" class="image-container-thumb"
-                             style="background-image: url({{location.images.googlemap + '&size=80x80&key=AIzaSyCveLtBw4QozQIkMstvefLSTd3_opSvHS4'}});background-size: cover">
-                        </div>
-                    </div>
-                    <div ng-click="slc.toogleSelect(location)">
-                        <!-- title, tags and description-->
-                        <label class="title" ng-style="{width: slc.elementWidth + 'px'}">{{location.title}}</label>
-                        <br>
+                        <div ng-click="slc.toogleSelect(location)">
+                            <!-- title, tags and description-->
+                            <label class="title" ng-style="{width: slc.elementWidth + 'px'}">{{location.title}}</label>
+                            <br>
 
                         <div class="description" ng-style="{width: slc.elementWidth + 'px'}">{{location.description}}</div>
                         <div class="location-tags tags" ng-style="{width: slc.elementWidth + 'px'}">
