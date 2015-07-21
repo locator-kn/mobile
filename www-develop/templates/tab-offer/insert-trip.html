@@ -1,4 +1,5 @@
-<ion-view view-title="Trip einstellen" hide-back-button="true" class="insert-trip pageWithBigButton background-color-coral"
+<ion-view view-title="Trip einstellen" hide-back-button="true"
+          class="insert-trip pageWithBigButton background-color-coral"
           ng-controller="InsertTripCtrl as itc">
     <ion-nav-buttons side="left ">
         <i class="icon ion-ios-arrow-back ion-chevron-left" ui-sref="tab.welcome"></i>
@@ -6,7 +7,12 @@
     <ion-content class="gradient-red" ng-class="!authenticated ? 'not-auth-background' : ''">
         <div ng-if="authenticated">
             <ul class="list">
-                <li class="item item-icon-right" ui-sref="tab.offer-city">
+                <!-- if only 1 city available-->
+                <li ng-if="itc.onlyOneCity" class="item item-icon-right">
+                    {{itc.city.title || "Wo willst du hin?"}}&nbsp;
+                </li>
+                <!-- if more then 1 city available-->
+                <li ng-if="!itc.onlyOneCity" class="item item-icon-right" ui-sref="tab.offer-city">
                     {{itc.city.title || "Wohin geht der Trip?"}}&nbsp;
                     <i class="icon ion-chevron-right icon-accessory"></i>
                 </li>

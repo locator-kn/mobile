@@ -22,6 +22,7 @@ module Controller {
         // info
         moodAvailable:boolean;
         selectLocationState:string = 'tab.offer-locations';
+        onlyOneCity:boolean;
 
         constructor(private $rootScope, private TripService, private DataService, private $state,
                     private $ionicScrollDelegate, private $ionicPopup) {
@@ -40,6 +41,14 @@ module Controller {
 
             $rootScope.$on('resetTripData', () => {
                 this.resetData();
+            });
+
+            // if only one city available -> select city as default city
+            this.DataService.getAvailableCities().then((result) => {
+                if(result.data.length === 1) {
+                    this.city = result.data[0];
+                    this.onlyOneCity = true;
+                }
             });
 
             this.DataService.getAvailableDays().then((result)=> {
