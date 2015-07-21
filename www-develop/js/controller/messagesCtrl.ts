@@ -14,7 +14,7 @@ module Controller {
 
         showEmojis:boolean;
         emojis = [":smile:", ":blush:", ":kissing_heart:", ":hear_no_evil:", ":speak_no_evil:", ":see_no_evil:"];
-        textbox:any  = '';
+        textbox:any = '';
 
         constructor(private MessengerService, private $rootScope, private $state, private SocketService,
                     private $ionicScrollDelegate, private $ionicLoading, private $scope, private $sce,
@@ -25,6 +25,7 @@ module Controller {
             this.getConversation(this.conversationId);
             this.loadMore();
             this.registerSocketEvent();
+            this.$ionicScrollDelegate.scrollBottom(true);
         }
 
         toTrusted(html_code) {
@@ -82,22 +83,21 @@ module Controller {
         registerSocketEvent = () => {
             this.SocketService.offEvent('new_message');
             this.SocketService.onEvent('new_message', (newMessage) => {
-                console.log('newMessage');
                 if (this.conversationId === newMessage.conversation_id) {
                     this.messages.push(newMessage);
-
                     if (this.$state.current.name === 'tab.messenger-messages'
-                        && this.$state.params.userId === newMessage.opponent) {
+                        && (this.$state.params.opponentId === newMessage.opponent || this.$rootScope.userID === newMessage.opponent)) {
                         this.$rootScope.$emit('updateConversation', newMessage.conversation_id, newMessage.create_date, true);
-
+                        this.MessengerService.clearMessageCacheById(this.conversationId);
                     } else {
                         this.$rootScope.$emit('updateConversation', newMessage.conversation_id, newMessage.create_date, false);
+                        this.MessengerService.updateBadge(newMessage.conversation_id, false);
                     }
                     this.$ionicScrollDelegate.scrollBottom(true);
                 } else {
                     // if message not from current conversation
                     if (this.$state.current.name !== 'tab.messenger-messages'
-                        || this.$state.params.userId !== newMessage.opponent) {
+                        || this.$state.params.opponentId !== newMessage.opponent) {
                         var read = this.MessengerService.badgeStatusOf(newMessage.conversation_id);
                         if (read) {
                             this.MessengerService.updateBadge(newMessage.conversation_id, false);
@@ -105,7 +105,6 @@ module Controller {
                         }
                     }
                 }
-                this.MessengerService.clearMessageCacheById(this.conversationId);
             });
         };
 
