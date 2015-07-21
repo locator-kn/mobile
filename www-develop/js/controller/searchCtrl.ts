@@ -18,6 +18,7 @@ module Controller {
 
         tripCities:any = [];
         city:any = {};
+        onlyOneCity:boolean;
 
         constructor(private $rootScope, private DataService, private $state, private SearchService, private $ionicPopup, private $ionicLoading) {
             this.DataService.getAvailableDays().then((result)=> {
@@ -37,6 +38,7 @@ module Controller {
             this.DataService.getAvailableCities().then((result) => {
                 if(result.data.length === 1) {
                     this.city = result.data[0];
+                    this.onlyOneCity = true;
                 }
             });
 
