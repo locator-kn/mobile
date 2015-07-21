@@ -30,6 +30,10 @@ li.item.trip-options .icon {
 
 li.item.trip-options .user {
     float: right;
+    width: calc(100% - (16px + (3*45px)));
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: right;
 }
 
 label.name.ng-binding {
