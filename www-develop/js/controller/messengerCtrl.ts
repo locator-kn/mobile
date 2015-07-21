@@ -53,7 +53,7 @@ module Controller {
             this.SocketService.onEvent('new_message', (newMessage) => {
                 // if message not from current conversation
                 if (this.$state.current.name !== 'tab.messenger-messages'
-                    || this.$state.params.userId !== newMessage.opponent) {
+                    || (this.$state.params.opponentId !== newMessage.from && this.$state.params.opponentId !== newMessage.to)) {
                     var read = this.MessengerService.badgeStatusOf(newMessage.conversation_id);
                     if (read) {
                         //this.conversationsHash[newMessage.conversation_id][this.$rootScope.userID + '_read'] = false;
