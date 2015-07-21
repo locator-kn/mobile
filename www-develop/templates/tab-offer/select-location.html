@@ -15,7 +15,12 @@
         </div>
         <div ng-if="slc.myLocations">
             <ul class="list">
-                <li class="item item-icon-right" ng-repeat="location in slc.myLocationsByCity"
+                <label class="item item-input search-location" ng-if="slc.myLocationsByCity.length>8">
+                    <i class="icon ion-search placeholder-icon"></i>
+                    <input class="city" type="search" placeholder="Suchen" ng-change-options='{ debounce: 1000 }'
+                           ng-model="slc.myLocation"/>
+                </label>
+                <li class="item item-icon-right" ng-repeat="location in slc.myLocationsByCity | filter: slc.myLocation"
                     ng-class="location.selected ? 'selected-location' : ''">
                     <div class="image-container" ui-sref='tab.offer-locations-detail({ locationId: location._id})'>
                         <!-- images -->
@@ -23,16 +28,16 @@
                              style="background-image: url({{slc.webPath}}{{location.images.picture + '?size=mobileThumb'}});background-size: cover">
                         </div>
                         <div ng-if="!location.images.picture" class="image-container-thumb"
-                             style="background-image: url({{location.images.googlemap + '&size=80x80'}});background-size: cover">
+                             style="background-image: url({{location.images.googlemap + '&size=80x80&key=AIzaSyCveLtBw4QozQIkMstvefLSTd3_opSvHS4'}});background-size: cover">
                         </div>
                     </div>
                     <div ng-click="slc.toogleSelect(location)">
                         <!-- title, tags and description-->
-                        <label class="title">{{location.title}}</label>
+                        <label class="title" ng-style="{width: slc.elementWidth + 'px'}">{{location.title}}</label>
                         <br>
 
-                        <div class="description">{{location.description}}</div>
-                        <div class="location-tags tags">
+                        <div class="description" ng-style="{width: slc.elementWidth + 'px'}">{{location.description}}</div>
+                        <div class="location-tags tags" ng-style="{width: slc.elementWidth + 'px'}">
                             <span ng-repeat="tag in location.tags | limitTo: 3" class="tag">{{tag}}</span>
                         </div>
                         <i ng-if="!location.selected" class="icon ion-plus-circled icon-accessory"></i>
@@ -43,31 +48,38 @@
         </div>
         <div ng-if="!slc.myLocations">
             <ul class="list">
-                <li class="item item-icon-right" ng-repeat="location in slc.locationsByCity"
-                    ng-class="location.selected ? 'selected-location' : ''">
-                    <div class="image-container" ui-sref='tab.offer-locations-detail({ locationId: location._id})'>
-                        <!-- images -->
-                        <div ng-if="location.images.picture" class="image-container-thumb"
-                             style="background-image: url({{slc.webPath}}{{location.images.picture + '?size=mobileThumb'}});background-size: cover">
+                <label class="item item-input search-location" ng-if="slc.locationsByCity.length>8">
+                    <i class="icon ion-search placeholder-icon"></i>
+                    <!--call update cities if anyone use 'back' -> no static data anymore-->
+                    <input class="city" type="search" placeholder="Suchen" ng-change-options='{ debounce: 1000 }'
+                           ng-model="slc.location"/>
+                </label>
+                <ion-item collection-repeat="location in slc.locationsByCity | filter: slc.location" class="ion-item-insert-style">
+                    <li class="item item-icon-right" ng-class="location.selected ? 'selected-location' : ''">
+                        <div class="image-container" ui-sref='tab.offer-locations-detail({ locationId: location._id})'>
+                            <!-- images -->
+                            <div ng-if="location.images.picture" class="image-container-thumb"
+                                 style="background-image: url({{slc.webPath}}{{location.images.picture + '?size=mobileThumb'}});background-size: cover">
+                            </div>
+                            <div ng-if="!location.images.picture" class="image-container-thumb"
+                                 style="background-image: url({{location.images.googlemap + '&size=80x80'}});background-size: cover">
+                            </div>
                         </div>
-                        <div ng-if="!location.images.picture" class="image-container-thumb"
-                             style="background-image: url({{location.images.googlemap + '&size=80x80'}});background-size: cover">
-                        </div>
-                    </div>
-                    <div ng-click="slc.toogleSelect(location)">
-                        <!-- title, tags and description-->
-                        <label class="title">{{location.title}}</label>
-                        <br>
+                        <div ng-click="slc.toogleSelect(location)">
+                            <!-- title, tags and description-->
+                            <label class="title" ng-style="{width: slc.elementWidth + 'px'}">{{location.title}}</label>
+                            <br>
 
-                        <div class="description">{{location.description}}</div>
-                        <div class="location-tags tags">
+                        <div class="description" ng-style="{width: slc.elementWidth + 'px'}">{{location.description}}</div>
+                        <div class="location-tags tags" ng-style="{width: slc.elementWidth + 'px'}">
                             <span ng-repeat="tag in location.tags | limitTo: 3" class="tag">{{tag}}</span>
                         </div>
 
-                        <i ng-if="!location.selected" class="icon ion-plus-circled icon-accessory"></i>
-                        <i ng-if="location.selected" class="icon ion-minus-circled icon-accessory"></i>
-                    </div>
-                </li>
+                            <i ng-if="!location.selected" class="icon ion-plus-circled icon-accessory"></i>
+                            <i ng-if="location.selected" class="icon ion-minus-circled icon-accessory"></i>
+                        </div>
+                    </li>
+                </ion-item>
             </ul>
         </div>
     </ion-content>

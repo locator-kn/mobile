@@ -1,21 +1,27 @@
 <!--cache view false needed for slider -->
-<ion-view class="trip" ng-class="tc.trip.userid !== userID ? 'pageWithButton' : ''" cache-view="false"
+<ion-view class="trip" ng-class="tc.trip.userid !== userID ? 'pageWithBigButton' : ''" cache-view="false"
           view-title="{{tc.trip.title}}" ng-controller="TripCtrl as tc">
-    <ion-content>
+    <ion-content class="my-has-tabs">
         <ul>
             <ion-slide-box ng-if="tc.trip.locations && tc.numberOfElelementsIn(tc.trip.locations) !== 1"
                            class=" parallax-card" on-slide-changed="slideHasChanged($index)">
                 <ion-slide ng-repeat="location in tc.trip.locations">
-                    <div class="image-container"
+                    <div class="image-container" ng-if="location.picture"
                          style="background-image: url({{tc.webPath}}{{location.picture + '?size=mobile'}});background-size: cover">
+                    </div>
+                    <div class="image-container" ng-if="!location.picture"
+                         style="background-image: url({{location.googlemap + '&size=400x400&key=AIzaSyCveLtBw4QozQIkMstvefLSTd3_opSvHS4'}});background-size: cover">
                     </div>
 
                 </ion-slide>
             </ion-slide-box>
             <div ng-if="tc.trip.locations && tc.numberOfElelementsIn(tc.trip.locations) === 1">
                 <div ng-repeat="location in tc.trip.locations">
-                    <div class="image-container"
+                    <div class="image-container" ng-if="location.picture"
                          style="background-image: url({{tc.webPath}}{{location.picture + '?size=mobile'}});background-size: cover">
+                    </div>
+                    <div class="image-container" ng-if="!location.picture"
+                         style="background-image: url({{location.googlemap + '&size=400x400&key=AIzaSyCveLtBw4QozQIkMstvefLSTd3_opSvHS4'}});background-size: cover">
                     </div>
                 </div>
             </div>
@@ -30,10 +36,16 @@
                 <label>{{tc.trip.description}}</label>
             </li>
             <li class="item" ng-if="tc.trip.start_date && tc.trip.end_date">
-                <label>von</label>
-                <label class="text-bold">{{tc.trip.start_date}}</label>
-                <label>bis</label>
-                <label class="text-bold">{{tc.trip.end_date}}</label>
+                <div ng-if="tc.trip.start_date !== tc.trip.end_date">
+                    <label>vom</label>
+                    <label class="text-bold">{{tc.trip.start_date}}</label>
+                    <label>bis</label>
+                    <label class="text-bold">{{tc.trip.end_date}}</label>
+                </div>
+                <div ng-if="tc.trip.start_date === tc.trip.end_date">
+                    <label>am</label>
+                    <label class="text-bold">{{tc.trip.start_date}}</label>
+                </div>
             </li>
             <li class="item" ng-if="tc.trip.days || tc.trip.persons">
                 <label>
@@ -75,7 +87,7 @@
     </ion-content>
     <button ng-if="!(userID === tc.trip.userid)" ng-if="!(result.userid === userID)"
             ng-click="tc.startConversation(tc.user, tc.trip)"
-            class="button-bottom button button-full background-green bottom">
-        Teilnehmen
+            class="button-join-trip button-bottom button button-full background-green bottom">
+        TEILNEHMEN
     </button>
 </ion-view>

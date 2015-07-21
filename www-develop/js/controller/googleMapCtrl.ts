@@ -1,30 +1,48 @@
 module Controller {
     export class GoogleMapCtrl {
 
-        map:any = {};
+        //map:any = {};
 
         googleMap:boolean = false;
         mapIsReady:boolean = false;
         mapMarkerSet:boolean;
 
-        lat:string;
-        long:string;
+        lat;
+        long;
+
+        oldResultObject:any = {};
+
+        map = {
+            center: {
+                // kn fh
+                latitude: 47.668403,
+                longitude: 9.170499
+            },
+            zoom: 12,
+            clickedMarker: {
+                id: 0,
+                latitude: null,
+                longitude: null
+            },
+            events: null
+        };
+
+        heigth;
 
         constructor(private $ionicLoading, private GeolocationService, private $scope, private maxSpinningDuration) {
-            this.map = {
-                center: {
-                    // kn fh
-                    latitude: 47.668403,
-                    longitude: 9.170499
-                },
-                zoom: 12,
-                clickedMarker: {
-                    id: 0,
-                    latitude: null,
-                    longitude: null
-                },
-                events: this.getEvents()
-            };
+            this.heigth = window.innerHeight - 173;
+
+            var oldResultObject = this.GeolocationService.getGeoPosition();
+
+            if (oldResultObject.center) {
+                this.mapMarkerSet = true;
+                this.map.center = oldResultObject.center;
+                this.map.clickedMarker = oldResultObject.clickedMarker;
+                if (!this.$scope.$$phase) {
+                    this.$scope.$apply();
+                }
+            }
+            this.map.events = this.getEvents();
         }
 
         getEvents() {
@@ -34,10 +52,12 @@ module Controller {
                 },
                 tilesloaded: () => {
                     // only for first call, we need to get current position after map is loaded
-                    if(!this.mapIsReady) {
-                        this.getCurrentPosition();
+                    if (!this.mapIsReady) {
+                        this.mapIsReady = true;
+                        if(!this.mapMarkerSet){
+                            this.getCurrentPosition();
+                        }
                     }
-                    this.mapIsReady = true;
                     this.$ionicLoading.hide();
 
                 }
@@ -67,7 +87,10 @@ module Controller {
         // sample
         getCurrentPosition = () => {
             if (this.mapIsReady) {
-                this.$ionicLoading.show({templateUrl: 'templates/static/loading.html', duration: this.maxSpinningDuration});
+                this.$ionicLoading.show({
+                    templateUrl: 'templates/static/loading.html',
+                    duration: this.maxSpinningDuration
+                });
 
                 this.GeolocationService.getCurrentLocation().then((position) => {
                     this.lat = position.coords.latitude;

@@ -31,6 +31,8 @@ li.item.trip-options .icon {
 li.item.trip-options .user {
     float: right;
     padding-right: 10px;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 label.name.ng-binding {
@@ -38,7 +40,7 @@ label.name.ng-binding {
     font-size: 12px;
 }
 
-label.dekotext {
+.search-result label.dekotext {
     font-size: 11px;
 }
 
@@ -78,7 +80,6 @@ label.dekotext {
     width: auto;
     vertical-align: middle;
     padding-left: 6px;
-    padding-right: 15px;
 }
 
 .search-result ion-item.item {

@@ -23,6 +23,7 @@ module Controller {
         // info
         moodAvailable:boolean;
         selectLocationState:string = 'tab.offer-locations';
+        onlyOneCity:boolean;
 
         tripId:string;
         userId:string;
@@ -71,6 +72,10 @@ module Controller {
 
             this.DataService.getAvailableDays().then((result)=> {
                 this.availableDays = result.data;
+                // random selection
+                var day = result.data[Math.floor(Math.random() * result.data.length)];
+                this.selectedDays = day.value;
+
             });
 
             this.DataService.getAvailablePersons().then((result) => {
@@ -80,6 +85,20 @@ module Controller {
             this.DataService.getAvailableAccommodationEquipment().then((result) => {
                 this.availableAccommodationEquipment = result.data;
             });
+
+            // if only one city available -> select city as default city
+            this.DataService.getAvailableCities().then((result) => {
+                if (result.data.length === 1) {
+                    this.city = result.data[0];
+                    this.onlyOneCity = true;
+                }
+            });
+
+            // random mood selection
+            this.DataService.getAvailableMoods().then((result) => {
+                var mood = result.data[Math.floor(Math.random() * result.data.length)];
+                this.TripService.setMood(mood);
+            })
         }
 
         getQueryNameArrayOf(array) {
@@ -92,7 +111,6 @@ module Controller {
         }
 
         toIsoDate(dateString) {
-            debugger;
             if (dateString !== undefined) {
                 var date = new Date(dateString);
                 return date.toISOString();

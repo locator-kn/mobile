@@ -35,7 +35,7 @@ module Service {
         decorateUserImage = (data) => {
             return this.$q((resolve, reject) => {
                 if (!data.data.picture) {
-                    data.data.picture = './images/profile.png';
+                    data.data.picture = './images/svg/lorenz_profile_default.svg';
                 } else {
                     if (!(data.data.picture.indexOf("http") > -1)) {
                         data.data.picture = this.webPath + data.data.picture;
@@ -54,8 +54,15 @@ module Service {
                 })
         }
 
-        loginFacebook(at) {
+        /*loginFacebook(at) {
             return this.$http.post(this.basePath + '/mobile/loginFacebook', {
+                accessToken: at
+            });
+        }*/
+
+        loginOAuth (strategy, at) {
+            return this.$http.post(this.basePath + '/mobile/loginOAuth', {
+                strategy: strategy,
                 accessToken: at
             });
         }

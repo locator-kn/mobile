@@ -73,7 +73,7 @@
 .background-color-cyan li,
 .background-color-cyan label,
 .background-color-cyan span {
-    background: #3eb9ad;
+    background: transparent;
     color: #fff;
     border-color: #44ccc0
 }
@@ -101,6 +101,7 @@
 
 .background-color-cyan .toggle .track {
     background-color: #3eb9ad;
+    border-color: white;
 }
 
 .background-color-cyan .circle {
@@ -113,6 +114,7 @@
     color: #3eb9ad;
     background-color: #fff;
     font-size: 20px;
+    border: none;
 }
 
 .background-color-cyan .text-right {

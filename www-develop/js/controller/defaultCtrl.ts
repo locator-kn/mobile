@@ -5,7 +5,7 @@ module Controller {
         errormsg:string;
         successmsg:string;
 
-        constructor(private $rootScope, private MessengerService, private $ionicLoading) {
+        constructor(private $rootScope, private MessengerService, private $ionicLoading, private $state) {
         }
 
         startConversation(form) {
@@ -27,9 +27,13 @@ module Controller {
                     } else {
                         toUser = result.data.data.user_1;
                     }
-                    this.MessengerService.sendMessage(this.message, result.data.data._id, toUser, fromUser).then(result => {
+                    this.MessengerService.sendMessage(this.message, result.data.data._id, toUser, fromUser).then(data => {
                         this.successmsg = 'Nachricht erfolgreich versendet';
                         this.message = '';
+                        this.$state.go('tab.messenger-messages', {
+                            conversationId: result.data.data._id,
+                            opponentId: toUser
+                        })
                     });
                 } else {
                     this.errormsg = 'Nachricht konnte nicht versendet werden';

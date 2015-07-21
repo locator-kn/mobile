@@ -30,8 +30,7 @@ module Service {
             )
         }
 
-        startConversation(msg) {
-            var userId = this.UserService.getConversationUserId();
+        startConversation(userId, msg) {
             return this.$http.post(this.basePathRealtime + '/conversations',
                 {
                     "message": msg,
@@ -56,6 +55,7 @@ module Service {
 
         setBadgeHash(badgeHash) {
             this.badgeBash = badgeHash;
+            this.$rootScope.badge = 0;
             for (var element in this.badgeBash) {
                 if (!this.badgeBash[element]) {
                     this.$rootScope.badge += 1;

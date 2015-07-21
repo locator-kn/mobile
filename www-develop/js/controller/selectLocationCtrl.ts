@@ -7,13 +7,16 @@ module Controller {
 
         myLocations:boolean = true;
         selectedLocations:number = 0;
+        elementWidth:number;
+
 
         edit:boolean;
         userId:string;
         tripId:string;
 
         constructor(private LocationService, private $stateParams, private webPath, private $state, private $rootScope,
-                    private TripService, private $ionicLoading, maxSpinningDuration) {
+                    private TripService, private $ionicLoading, maxSpinningDuration, private $window) {
+            this.elementWidth = this.$window.innerWidth  - (80 + 32 + 10 + 20);
             this.cityId = $stateParams.cityId;
 
             // check if in edit mode

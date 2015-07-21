@@ -1,4 +1,7 @@
-<ion-view view-title="Messenger" class="messages messenger-container" ng-controller="MessagesCtrl as mc">
+<ion-view view-title="Messenger" class="messages messenger-container" hide-back-button="true" cache-view="false" ng-controller="MessagesCtrl as mc">
+    <ion-nav-buttons side="left ">
+        <i class="icon ion-ios-arrow-back home-back-button" ui-sref="tab.messenger"></i>
+    </ion-nav-buttons>
     <ion-content class="background-color-grey">
         <ion-refresher
             pulling-text="Nachrichten laden..."
@@ -29,10 +32,13 @@
     </div>
     <div class="list list-inset bottom">
         <div class="item item-input">
-            <input id="my-message" class="my-message" type="text" ng-enter="mc.sendMessage(mc.textbox)" ng-model="mc.textbox" placeholder="Schreib etwas...">
+            <input id="my-message" class="my-message" type="text" ng-enter="mc.sendMessage(mc.textbox)" ng-model="mc.textbox" placeholder="Schreib etwas..." ng-click="mc.showEmojis = false">
             <button class="messenger-button" ng-click="mc.showEmojis = !mc.showEmojis" type="button" id="emoji"><img class="emoji-icon" src="./images/icons/face.png"></button>
         </div>
-        <button ng-disabled="!mc.textbox" class="button" ng-click="mc.sendMessage(mc.textbox)">
+        <button ng-disabled="!mc.textbox" class="button" ng-if="!mc.emptyConversation" ng-click="mc.sendMessage(mc.textbox)">
+            Senden
+        </button>
+        <button ng-disabled="!mc.textbox" class="button" ng-if="mc.emptyConversation" ng-click="mc.startConversation(mc.textbox)">
             Senden
         </button>
     </div>
