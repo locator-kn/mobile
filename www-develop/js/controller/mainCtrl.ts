@@ -43,7 +43,6 @@ module Controller {
         initBadge() {
             this.MessengerService.getConversations()
                 .then(result => {
-                    debugger;
                     var badgeHash = {};
                     result.data.forEach(element => {
                         badgeHash[element._id] = element[this.$rootScope.userID + '_read'];
