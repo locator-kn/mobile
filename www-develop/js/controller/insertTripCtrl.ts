@@ -43,16 +43,12 @@ module Controller {
                 this.resetData();
             });
 
-            // if only one city available -> select city as default city
-            this.DataService.getAvailableCities().then((result) => {
-                if(result.data.length === 1) {
-                    this.city = result.data[0];
-                    this.onlyOneCity = true;
-                }
-            });
-
             this.DataService.getAvailableDays().then((result)=> {
                 this.availableDays = result.data;
+                // random selection
+                var day = result.data[Math.floor(Math.random() * result.data.length)];
+                this.selectedDays = day.value;
+
             });
 
             this.DataService.getAvailablePersons().then((result) => {
@@ -62,6 +58,20 @@ module Controller {
             this.DataService.getAvailableAccommodationEquipment().then((result) => {
                 this.availableAccommodationEquipment = result.data;
             });
+
+            // if only one city available -> select city as default city
+            this.DataService.getAvailableCities().then((result) => {
+                if (result.data.length === 1) {
+                    this.city = result.data[0];
+                    this.onlyOneCity = true;
+                }
+            });
+
+            // random mood selection
+            this.DataService.getAvailableMoods().then((result) => {
+                var mood = result.data[Math.floor(Math.random() * result.data.length)];
+                this.TripService.setMood(mood);
+            })
         }
 
         getQueryNameArrayOf(array) {
@@ -92,7 +102,7 @@ module Controller {
                 var currentDate = new Date();
                 var start_date = new Date(this.start_date);
                 var end_date = new Date(this.end_date);
-                if(currentDate > start_date || currentDate > end_date){
+                if (currentDate > start_date || currentDate > end_date) {
                     this.$ionicPopup.alert({title: 'Datum liegt in der Vergangenheit.'});
                     return;
                 }
@@ -110,12 +120,12 @@ module Controller {
                 persons: this.undef
             };
 
-            if(this.start_date && this.end_date && !(this.start_date === '' || this.end_date === '')){
+            if (this.start_date && this.end_date && !(this.start_date === '' || this.end_date === '')) {
                 trip.start_date = this.toIsoDate(this.start_date);
                 trip.end_date = this.toIsoDate(this.end_date)
             }
 
-            if(this.selectedPersons > 0) {
+            if (this.selectedPersons > 0) {
                 trip.persons = this.selectedPersons;
             }
 
