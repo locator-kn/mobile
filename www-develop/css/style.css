@@ -30,9 +30,10 @@ body {
     width: 100%;
     overflow: hidden;
     float: left;
-    height: 300px;
+    height: 225px;
     background-position: center;
     background-repeat: no-repeat;
+    margin-bottom: 25px;
 }
 
 .image-container-thumb {
@@ -166,12 +167,14 @@ body {
     line-height: 34px;
 }
 
-.not-auth-background {
-    background-color: #fff;
+
+.insert-trip .not-auth-background,
+.insert-location .not-auth-background {
+    background: #fff;
 }
 
 .not-auth-container {
-    margin: -10px 75px;
+    margin: 0 50px;
 }
 
 /* hahahaha :-D */
