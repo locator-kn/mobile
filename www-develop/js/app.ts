@@ -460,6 +460,14 @@ angular.module('starter', deps)
                     }
                 }
             })
+            .state('tab.profile-trip-edit-equipment', {
+                url: '//profile/:userId/trips/:tripId/edit/equipment',
+                views: {
+                    'tab-profile': {
+                        templateUrl: 'templates/tab-offer/accommodationEquipment.html'
+                    }
+                }
+            })
             .state('tab.profile-locations', {
                 url: '/profile/my/locations',
                 views: {
