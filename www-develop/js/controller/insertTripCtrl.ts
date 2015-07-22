@@ -74,10 +74,11 @@ module Controller {
 
             this.DataService.getAvailableDays().then((result)=> {
                 this.availableDays = result.data;
-                // random selection
-                var day = result.data[Math.floor(Math.random() * result.data.length)];
-                this.selectedDays = day.value;
-
+                // if not in edit mode -> select random city
+                if(!this.edit){
+                    var day = result.data[Math.floor(Math.random() * result.data.length)];
+                    this.selectedDays = day.value;
+                }
             });
 
             this.DataService.getAvailablePersons().then((result) => {
@@ -91,16 +92,22 @@ module Controller {
             // if only one city available -> select city as default city
             this.DataService.getAvailableCities().then((result) => {
                 if (result.data.length === 1) {
-                    this.city = result.data[0];
                     this.onlyOneCity = true;
+                    // not needed, but u never know..
+                    if(!this.edit){
+                        this.city = result.data[0];
+                    }
                 }
             });
 
-            // random mood selection
-            this.DataService.getAvailableMoods().then((result) => {
-                var mood = result.data[Math.floor(Math.random() * result.data.length)];
-                this.TripService.setMood(mood);
-            })
+            if(!this.edit) {
+                // random mood selection
+                this.DataService.getAvailableMoods().then((result) => {
+                    var mood = result.data[Math.floor(Math.random() * result.data.length)];
+                    this.TripService.setMood(mood);
+                })
+            }
+
         }
 
         getQueryNameArrayOf(array) {
