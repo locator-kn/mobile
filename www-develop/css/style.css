@@ -217,3 +217,8 @@ ion-nav-view.view-container.tab-content {
 .toggle .track {
     border-color: white;
 }
+
+
+.emoji {
+    vertical-align: middle;
+}
