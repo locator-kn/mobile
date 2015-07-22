@@ -105,16 +105,49 @@ module Controller {
         getCityFromMarker() {
             this.GeolocationService.getCityByCoords(this.map.clickedMarker.latitude, this.map.clickedMarker.longitude)
                 .then(result => {
+
+
                     var locality;
-                    result.data.results.forEach(item => {
-                        if (item.types[0] == 'locality') {
+                    result.forEach((item:any) => {
+                        if (item.types[0] === 'locality') {
                             locality = item;
                         }
                     });
 
-                    this.locationFormDetails.city.title = locality.formatted_address;
-                    this.locationFormDetails.city.place_id = locality.place_id;
-                    this.locationFormDetails.city.id = locality.place_id;
+                    if (locality) {
+
+                        this.insertLocality(locality);
+                        console.info('First Case');
+                        return;
+
+                    } else {
+
+                        var cityname;
+                        result[0].address_components.forEach((item:any) => {
+                            if (item.types[0] === 'locality') {
+                                cityname = item.long_name;
+                            }
+                        });
+
+                        if (cityname) {
+
+                            this.GeolocationService.getPlaceIdByAddress(cityname)
+                                .then(nestedResult => {
+
+                                    locality = {};
+                                    locality.place_id = nestedResult[0].place_id;
+                                    locality.formatted_address = nestedResult[0].formatted_address;
+                                    this.insertLocality(locality);
+                                    console.info('second');
+                                    return;
+
+                                })
+                                .catch(error => {
+                                    console.log(error);
+                                });
+                        }
+                    }
+
                 });
         }
 
@@ -214,6 +247,12 @@ module Controller {
             }
             this.$ionicLoading.show({templateUrl: 'templates/static/loading.html', duration: this.maxSpinningDuration});
             this.$state.go('tab.locate-position');
+        }
+
+        insertLocality(locality) {
+            this.locationFormDetails.city.title = locality.formatted_address;
+            this.locationFormDetails.city.place_id = locality.place_id;
+            this.locationFormDetails.city.id = locality.place_id;
         }
 
         static controllerId:string = "InsertLocationCtrl";

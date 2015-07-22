@@ -1,3 +1,5 @@
+declare var google;
+
 module Service {
     export class GeolocationService {
 
@@ -34,7 +36,50 @@ module Service {
 
         // by michaelknoch
         getCityByCoords(lat, long) {
-            return this.$http.get('http://maps.googleapis.com/maps/api/geocode/json?latlng=' + lat + ',' + long + '&sensor=true');
+            return this.$q((resolve, reject) => {
+
+                var latlng = new google.maps.LatLng(lat, long);
+                var geocoder = new google.maps.Geocoder();
+
+                var geocoderRequestObject = {
+                    location: latlng
+                };
+
+                geocoder.geocode(geocoderRequestObject, (result, status) => {
+
+                    if (!status === google.maps.GeocoderStatus.OK) {
+                        return reject();
+                    }
+
+                    return resolve(result);
+                });
+
+            });
+        }
+
+        getPlaceIdByAddress(address:string) {
+
+            return this.$q((resolve, reject) => {
+
+                var geocoder = new google.maps.Geocoder();
+
+                var geocoderRequestObject = {
+                    address: address
+                };
+
+                geocoder.geocode(geocoderRequestObject, (result, status) => {
+
+                    if (!status === google.maps.GeocoderStatus.OK) {
+                        return reject();
+                    }
+
+                    return resolve(result);
+                });
+
+            });
+
+
+            //return this.$http.get('http://maps.googleapis.com/maps/api/geocode/json?latlng=' + lat + ',' + lon + '&sensor=true');
         }
 
         saveLocation(location, id?:string) {
