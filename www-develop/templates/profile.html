@@ -38,7 +38,6 @@
                 <i class="icon ion-chevron-right icon-accessory"></i>
             </li>
         </ul>
-
         <ul class="list edit" ng-if="uc.edit" ng-model-options="{ getterSetter: true }">
             <img class="profile-image" ng-src="{{uc.user.picture}}" ng-click="uc.updatePicture()">
             <span class="image-description">Bild berühren um es zu ändern.</span>
@@ -48,7 +47,8 @@
             </li>
             <li>
                 <span class="text-color-red title">Geburtsdatum</span>
-                <input class="item item-input background-color-edit birthdate" type="date" ng-model="uc.user.birthdate"
+                <input class="item item-input background-color-edit birthdate" type="date"
+                       ng-model="uc.user.birthdate"
                        value="{{uc.modifyBirthday}}">
             </li>
             <li>
@@ -61,6 +61,7 @@
                           ng-model="uc.user.description"></textarea>
             </li>
         </ul>
+
     </ion-content>
     <button ng-if="!uc.me" ng-click="uc.startConversation(uc.user._id)"
             class="button-contact button-bottom button button-full background-green bottom">
