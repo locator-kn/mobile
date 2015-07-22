@@ -12,9 +12,10 @@
             <li class="item">
                 <div class="text-bold">{{lc.result.title}}</div>
                 <label>von </label>
-                <label class="text-bold">{{lc.user.name || 'anonym'}}</label>
+                <label class="text-bold" ui-sref="tab.search-user({userId:lc.user._id})">{{lc.user.name || 'anonym'}}</label>
                 <label>am </label>
                 <label class="text-bold">{{lc.result.create_date}}</label>
+                <label>erstellt</label>
             </li>
             <li class="item description">
                 <label>{{lc.result.description}}</label>

@@ -36,10 +36,16 @@
                 <label>{{tc.trip.description}}</label>
             </li>
             <li class="item" ng-if="tc.trip.start_date && tc.trip.end_date">
-                <label>von</label>
-                <label class="text-bold">{{tc.trip.start_date}}</label>
-                <label>bis</label>
-                <label class="text-bold">{{tc.trip.end_date}}</label>
+                <div ng-if="tc.trip.start_date !== tc.trip.end_date">
+                    <label>vom</label>
+                    <label class="text-bold">{{tc.trip.start_date}}</label>
+                    <label>bis</label>
+                    <label class="text-bold">{{tc.trip.end_date}}</label>
+                </div>
+                <div ng-if="tc.trip.start_date === tc.trip.end_date">
+                    <label>am</label>
+                    <label class="text-bold">{{tc.trip.start_date}}</label>
+                </div>
             </li>
             <li class="item" ng-if="tc.trip.days || tc.trip.persons">
                 <label>

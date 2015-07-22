@@ -4,7 +4,7 @@ module Controller {
         availableAccommodationEquipment:any = [];
         selectedAccommodationEquipment:any = [];
 
-        constructor(private DataService, private TripService, private $ionicLoading, private $state, maxSpinningDuration) {
+        constructor(private DataService, private TripService, private $ionicLoading, private $state, maxSpinningDuration, private $ionicHistory) {
             this.$ionicLoading.show({templateUrl: 'templates/static/loading.html', duration: maxSpinningDuration});
 
             // get all eqipment from data service
@@ -42,7 +42,7 @@ module Controller {
 
         setAccommodationEquipment() {
             this.TripService.setAccommodationEquipment(this.selectedAccommodationEquipment);
-            this.$state.go('tab.offer');
+            this.$ionicHistory.goBack();
         }
 
         static controllerId:string = "AccommodationEquipmentCtrl";

@@ -420,6 +420,54 @@ angular.module('starter', deps)
                     }
                 }
             })
+            .state('tab.profile-trip-edit', {
+                url: '/profile/:userId/trips/:tripId/edit',
+                views: {
+                    'tab-profile': {
+                        templateUrl: 'templates/tab-offer/insert-trip.html'
+                    }
+                }
+            })
+            .state('tab.profile-trip-edit-city', {
+                url: '/profile/:userId/trips/:tripId/edit/city',
+                views: {
+                    'tab-profile': {
+                        templateUrl: 'templates/static/city.html'
+                    }
+                }
+            })
+            .state('tab.profile-trip-edit-moods', {
+                url: '/profile/:userId/trips/:tripId/edit/moods',
+                views: {
+                    'tab-profile': {
+                        templateUrl: 'templates/static/moods.html'
+                    }
+                }
+            })
+            .state('tab.profile-trip-edit-locations', {
+                url: '/profile/:userId/trips/:tripId/edit/locations/:cityId',
+                views: {
+                    'tab-profile': {
+                        templateUrl: 'templates/tab-offer/select-location.html'
+                    }
+                }
+            })
+            .state('tab.profile-trip-edit-preview', {
+                url: '/profile/:userId/trips/:tripId/edit/preview',
+                views: {
+                    'tab-profile': {
+                        templateUrl: 'templates/tab-offer/trip-preview.html'
+                    }
+                }
+            })
+            .state('tab.profile-trip-edit-equipment', {
+                url: '//profile/:userId/trips/:tripId/edit/equipment',
+                views: {
+                    'tab-profile': {
+                        templateUrl: 'templates/tab-offer/accommodationEquipment.html'
+                    }
+                }
+            })
             .state('tab.profile-locations', {
                 url: '/profile/my/locations',
                 views: {

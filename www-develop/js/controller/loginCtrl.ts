@@ -150,7 +150,6 @@ module Controller {
 
         loginGoogleCallback = (response) => {
             if (response['status']['signed_in']) {
-                debugger;
                 console.log('Google login success!');
                 this.UserService.loginOAuth('google', response['access_token']).then((userResponse) => {
                     console.log(userResponse.data);

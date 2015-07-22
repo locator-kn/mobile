@@ -14,7 +14,8 @@ module Controller {
 
         showEmojis:boolean;
         emojis = [":smile:", ":blush:", ":kissing_heart:", ":hear_no_evil:", ":speak_no_evil:", ":see_no_evil:"];
-        textbox:any  = '';
+        textbox:any = '';
+        emptyConversation:boolean;
 
         constructor(private MessengerService, private $rootScope, private $state, private SocketService,
                     private $ionicScrollDelegate, private $ionicLoading, private $scope, private $sce,
@@ -22,9 +23,15 @@ module Controller {
             this.conversationId = this.$state.params.conversationId;
             this.opponentId = this.$state.params.opponentId;
 
-            this.getConversation(this.conversationId);
-            this.loadMore();
+            debugger;
+            if (this.conversationId === '') {
+                this.emptyConversation = true;
+            } else {
+                this.getConversation(this.conversationId);
+                this.loadMore();
+            }
             this.registerSocketEvent();
+            this.$ionicScrollDelegate.scrollBottom(true);
         }
 
         toTrusted(html_code) {
@@ -82,22 +89,21 @@ module Controller {
         registerSocketEvent = () => {
             this.SocketService.offEvent('new_message');
             this.SocketService.onEvent('new_message', (newMessage) => {
-                console.log('newMessage');
                 if (this.conversationId === newMessage.conversation_id) {
                     this.messages.push(newMessage);
-
                     if (this.$state.current.name === 'tab.messenger-messages'
-                        && this.$state.params.userId === newMessage.opponent) {
+                        && (this.$state.params.opponentId === newMessage.opponent || this.$rootScope.userID === newMessage.opponent)) {
                         this.$rootScope.$emit('updateConversation', newMessage.conversation_id, newMessage.create_date, true);
-
+                        this.MessengerService.clearMessageCacheById(this.conversationId);
                     } else {
                         this.$rootScope.$emit('updateConversation', newMessage.conversation_id, newMessage.create_date, false);
+                        this.MessengerService.updateBadge(newMessage.conversation_id, false);
                     }
                     this.$ionicScrollDelegate.scrollBottom(true);
                 } else {
                     // if message not from current conversation
                     if (this.$state.current.name !== 'tab.messenger-messages'
-                        || this.$state.params.userId !== newMessage.opponent) {
+                        || this.$state.params.opponentId !== newMessage.opponent) {
                         var read = this.MessengerService.badgeStatusOf(newMessage.conversation_id);
                         if (read) {
                             this.MessengerService.updateBadge(newMessage.conversation_id, false);
@@ -105,7 +111,6 @@ module Controller {
                         }
                     }
                 }
-                this.MessengerService.clearMessageCacheById(this.conversationId);
             });
         };
 
@@ -136,7 +141,6 @@ module Controller {
 
             this.MessengerService.getNextMessagesFromConversation(this.conversationId, this.page, this.itemsProPage).then((result) => {
                 // push to array
-                debugger;
                 var arrayLength = result.data.length;
                 for (var i = 0; i < arrayLength; i++) {
                     this.messages.unshift(result.data[i]);
@@ -152,6 +156,33 @@ module Controller {
                 this.$ionicLoading.hide();
             }).catch((err)=> {
                 this.$ionicLoading.hide();
+            });
+        };
+
+        startConversation = (message) => {
+            this.MessengerService.startConversation(this.opponentId, message).then((result) => {
+                this.$state.go('tab.messenger-messages', {
+                    conversationId: result.data.id,
+                    opponentId: this.opponentId
+                });
+            }).catch((result) => {
+                if (result.status === 409) {
+                    var fromUser = this.$rootScope.userID;
+                    var toUser;
+                    if (result.data.data.user_1 === this.$rootScope.userID) {
+                        toUser = result.data.data.user_2;
+                    } else {
+                        toUser = result.data.data.user_1;
+                    }
+                    this.MessengerService.sendMessage(message, result.data.data._id, toUser, fromUser).then(data => {
+                        this.$state.go('tab.messenger-messages', {
+                            conversationId: result.data.data._id,
+                            opponentId: toUser
+                        })
+                    });
+                } else {
+                    // TODO: show error
+                }
             });
         };
 

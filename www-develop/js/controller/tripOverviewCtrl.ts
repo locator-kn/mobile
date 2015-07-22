@@ -6,14 +6,16 @@ module Controller {
         userId:string;
         page:number = 0;
         noMoreItemsAvailable:boolean;
+        elementWidth:number;
 
         itemsProPage:number = 5;
 
         constructor(private $rootScope, private $state, private $stateParams, private TripService, private $scope,
                     private UserService, private DataService, private MessengerService, private $ionicLoading,
-                    private webPath, private SearchService, maxSpinningDuration) {
+                    private webPath, private SearchService, maxSpinningDuration, private $window) {
 
             this.$ionicLoading.show({templateUrl: 'templates/static/loading.html', duration: maxSpinningDuration});
+            this.elementWidth = this.$window.innerWidth  - (177);
 
 
             if ($stateParams.userId) {
@@ -113,10 +115,18 @@ module Controller {
                     this.noMoreItemsAvailable = true;
                     //}
                     this.updateUserInfo();
+                    this.$ionicLoading.hide();
                 }).catch((err) => {
                     this.$ionicLoading.hide();
                 });
             }
+        }
+
+        editTrip(tripId, userId) {
+            this.$state.go('tab.profile-trip-edit', {
+                tripId: tripId,
+                userId: userId
+            });
         }
 
         static controllerId:string = "TripOverviewCtrl";
