@@ -115,6 +115,7 @@ module Controller {
                     this.noMoreItemsAvailable = true;
                     //}
                     this.updateUserInfo();
+                    this.$ionicLoading.hide();
                 }).catch((err) => {
                     this.$ionicLoading.hide();
                 });
