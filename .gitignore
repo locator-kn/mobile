@@ -17,9 +17,3 @@ platforms/android
 *.zip
 
 .cordova
-plugins/com.ionic.keyboard/
-plugins/cordova-plugin-geolocation/
-plugins/cordova-plugin-whitelist/
-plugins/org.apache.cordova.file-transfer/
-plugins/org.apache.cordova.file/
-plugins/org.apache.cordova.camera/
