@@ -20,7 +20,7 @@ module Controller {
         availableMoods:any = {};
 
         undef;
-        edit:boolean;
+        edit:boolean = false;
 
         // info
         moodAvailable:boolean;
@@ -47,12 +47,12 @@ module Controller {
                     this.city = result.data.city;
                     if (result.data.start_date && result.data.end_date) {
                         this.start_date = new Date(result.data.start_date);
+                        this.end_date = new Date(result.data.end_date);
                     }
 
                     this._id = result.data._id;
                     this._rev = result.data._rev;
 
-                    this.end_date = new Date(result.data.end_date);
                     this.selectedDays = result.data.days;
                     this.selectedPersons = result.data.persons;
 
@@ -177,8 +177,6 @@ module Controller {
             }
 
             var trip = {
-                _id: this._id,
-                _rev: this._rev,
                 title: this.title,
                 description: this.description,
                 accommodation: this.accommodation,
@@ -198,11 +196,6 @@ module Controller {
 
             if (this.selectedPersons > 0) {
                 trip.persons = this.selectedPersons;
-            }
-
-            if(this.edit) {
-                delete trip._id;
-                delete trip._rev;
             }
 
             this.TripService.setPreTrip(trip);
