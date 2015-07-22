@@ -68,7 +68,6 @@ module Controller {
                     if(this.accommodation) {
                         this.DataService.getAvailableAccommodationEquipment().then((equipment) => {
                             var selectedAcEq = [];
-                            debugger;
                             equipment.data.forEach((entry)=> {
                                 result.data.accommodation_equipment.forEach((selected) => {
                                     if (entry.query_name === selected) {
@@ -77,6 +76,7 @@ module Controller {
                                 });
 
                             });
+                            this.TripService.setAccommodationEquipment(selectedAcEq);
                         });
                     }
                 });
