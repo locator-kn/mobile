@@ -10,8 +10,19 @@ module Controller {
 
         error:boolean;
 
+        edit:boolean;
+        tripId:string;
+        userId:string;
+
         constructor(private TripService, private $ionicSlideBoxDelegate, private $state, private UserService,
-                    private DataService, private $ionicLoading, private webPath, private $rootScope) {
+                    private DataService, private $ionicLoading, private webPath, private $rootScope, private $stateParams, private $ionicPopup) {
+
+            if (this.$state.current.name.indexOf('edit') > -1) {
+                this.edit = true;
+
+                this.userId = $stateParams.userId;
+                this.tripId = $stateParams.tripId;
+            }
             this.trip = TripService.getPreTrip();
             this.trip.locations = TripService.getLocations();
             var mood = TripService.getMood();
@@ -24,8 +35,8 @@ module Controller {
 
             if (this.trip.start_date && this.trip.end_date) {
                 // date format
-                this.start_date = moment(new Date(this.trip.start_date)).format('L');
-                this.end_date = moment(new Date(this.trip.end_date)).format('L')
+                this.start_date = this.trip.start_date;
+                this.end_date = this.trip.end_date;
             }
 
             // important for ion-slide!
@@ -56,7 +67,13 @@ module Controller {
                 return;
             }
 
-            this.TripService.createTrip(this.trip).then((result) => {
+            // check if update state
+            if(this.edit) {
+                this.updateTrip();
+                return;
+            }
+
+            this.TripService.saveTrip(this.trip).then((result) => {
                 for (var first in this.trip.locations) break;
                 var location = this.trip.locations[first];
                 var info = {
@@ -71,6 +88,17 @@ module Controller {
                 console.log(err);
             })
         }
+
+        updateTrip = () => {
+            this.TripService.saveTrip(this.trip, this.tripId).then((result) => {
+                this.$rootScope.$emit('resetTripData');
+                this.$ionicPopup.alert({title: 'Trip erfolgreich aktualisiert.'});
+                this.resetData();
+                this.$state.go('tab.profile', {
+                    userId: this.userId
+                });
+            });
+        };
 
         resetData() {
             this.trip = {};

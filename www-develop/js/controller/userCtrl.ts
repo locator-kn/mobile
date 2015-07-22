@@ -36,7 +36,7 @@ module Controller {
 
         constructor(private $rootScope, private $state, private UserService, private CameraService,
                     private PictureUploadService, private basePath, private $stateParams, private $ionicPopup,
-                    private $ionicLoading, private webPath, private ngProgressLite, private maxSpinningDuration) {
+                    private $ionicLoading, private webPath, private ngProgressLite, private maxSpinningDuration, private MessengerService) {
 
             if (this.$state.current.name.indexOf('tab.profile') > -1) {
                 this.profileState = true;
@@ -234,6 +234,22 @@ module Controller {
                 });
         }
 
+        startConversation(opponentId) {
+            this.MessengerService.getConversations().then((result) => {
+                var conversationId;
+                var index;
+                for (index = 0; index < result.data.length; ++index) {
+                    if (result.data[index].opponent === opponentId) {
+                        conversationId = result.data[index]._id;
+                    }
+                }
+
+                this.$state.go('tab.messenger-messages', {
+                    conversationId: conversationId,
+                    opponentId: opponentId
+                })
+            })
+        }
 
         static controllerId:string = "UserCtrl";
     }

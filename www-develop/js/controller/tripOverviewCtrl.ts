@@ -115,10 +115,18 @@ module Controller {
                     this.noMoreItemsAvailable = true;
                     //}
                     this.updateUserInfo();
+                    this.$ionicLoading.hide();
                 }).catch((err) => {
                     this.$ionicLoading.hide();
                 });
             }
+        }
+
+        editTrip(tripId, userId) {
+            this.$state.go('tab.profile-trip-edit', {
+                tripId: tripId,
+                userId: userId
+            });
         }
 
         static controllerId:string = "TripOverviewCtrl";

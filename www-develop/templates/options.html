@@ -11,13 +11,6 @@
                     </div>
             </div>
         </ul>
-        <!-- TODO add state for trip / locations-->
-        <!--<li class="item item-icon-right item-option">-->
-        <!--ui-sref="tab.profile-trip({tripId: tpc.tripId, userId: userID})"-->
-        <!--<img class="list-icon" ng-src="./images/icons/ansehen.png">-->
-        <!--<label class="option-label">Trip ansehen</label>-->
-        <!--<i class="icon ion-chevron-right icon-accessory"></i>-->
-        <!--</li>-->
         <li class="item item-icon-right item-option" ui-sref="tab.profile({userId: userID})">
             <img class="list-icon" ng-src="./images/icons/alle_trips.png">
             <label class="option-label">Zu deinen Trips/Locations</label>
@@ -41,7 +34,7 @@
             <i class="icon ion-chevron-right icon-accessory"></i>
         </li>
         <li ng-if="oc.isLocation" class="item item-icon-right item-option" ui-sref="tab.offer">
-            <img class="list-icon" ng-src="./images/icons/trip_erstellen.png">
+            <img class="list-icon" ng-src="./images/svg/insert_test.svg">
             <label class="option-label">Trip erstellen</label>
             <i class="icon ion-chevron-right icon-accessory"></i>
         </li>

@@ -10,10 +10,22 @@ module Controller {
         elementWidth:number;
 
 
+        edit:boolean;
+        userId:string;
+        tripId:string;
+
         constructor(private LocationService, private $stateParams, private webPath, private $state, private $rootScope,
                     private TripService, private $ionicLoading, maxSpinningDuration, private $window) {
             this.elementWidth = this.$window.innerWidth  - (80 + 32 + 10 + 20);
             this.cityId = $stateParams.cityId;
+
+            // check if in edit mode
+            if (this.$state.current.name.indexOf('edit') > -1) {
+                this.edit = true;
+
+                this.userId = $stateParams.userId;
+                this.tripId = $stateParams.tripId;
+            }
 
             this.$ionicLoading.show({templateUrl: 'templates/static/loading.html', duration: maxSpinningDuration});
             this.LocationService.getMyLocationsByCity(this.cityId).then((result) => {
@@ -27,17 +39,33 @@ module Controller {
 
             this.LocationService.getLocationsByCity(this.cityId).then((result)=> {
                 this.$ionicLoading.hide();
-                this.locationsByCity = result.data
+                this.locationsByCity = result.data;
+                // TODO: add promise to call function after get of my locations and locationy by city
+                this.updateSelection();
             });
 
             $rootScope.$on('resetTripData', () => {
                 this.myLocationsByCity = {};
-                this.locationsByCity= {};
+                this.locationsByCity = {};
                 this.cityId = '';
                 this.myLocations = true;
                 this.selectedLocations = 0;
+                this.edit = false;
+                this.userId = '';
+                this.tripId = '';
             });
         }
+
+
+        updateSelection() {
+            var locations = this.TripService.getLocations();
+            for(var id in locations) {
+                this.LocationService.getLocationById(id).then((result) => {
+                    this.toogleSelect(result.data);
+                })
+            }
+        }
+
 
         toogleSelect(location) {
             if (!location.selected) {
@@ -92,7 +120,14 @@ module Controller {
 
         tripPreview() {
             this.TripService.setLocations(this.getSelectedLocations());
-            this.$state.go('tab.offer-preview');
+            if(!this.edit) {
+                this.$state.go('tab.offer-preview');
+            } else {
+                this.$state.go('tab.profile-trip-edit-preview', {
+                    userId: this.userId,
+                    tripId: this.tripId
+                });
+            }
         }
 
         static controllerId:string = "SelectLocationCtrl";
