@@ -174,7 +174,7 @@ module Controller {
                 this.ngProgressLite.done();
 
                 var dataObject = JSON.parse(data.response);
-                this.user.picture = this.webPath + dataObject.imageLocation + '&c=' + Date.now();
+                this.user.picture = this.webPath + dataObject.imageLocation + '?' + Date.now();
                 console.log('update user: ' + dataObject);
 
             }, (err) => {
