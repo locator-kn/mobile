@@ -176,8 +176,7 @@ module Controller {
                 var dataObject = JSON.parse(data.response);
                 this.user.picture = dataObject.imageLocation + '&c=' + Date.now();
                 console.log('update user: ' + dataObject);
-                // update user
-                this.$rootScope.$emit('userUpdate');
+
             }, (err) => {
                 console.log(err);
                 this.$ionicLoading.hide();
