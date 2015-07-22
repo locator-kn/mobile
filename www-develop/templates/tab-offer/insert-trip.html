@@ -55,7 +55,7 @@
                     Übernachtung
                     <label class="toggle toggle-dark toggle-assertive"
                            ng-click="itc.triggerAccomodation()">
-                        <input type="checkbox">
+                        <input type="checkbox" ng-model="itc.accommodation">
 
                         <div class="track">
                             <div class="handle"></div>
@@ -65,7 +65,6 @@
                 <li ng-if="itc.accommodation" class="item item-icon-right" ng-click="itc.selectAccomodationEquipment()">
                     Angaben zur Unterkunft
                     <i class="icon ion-chevron-right icon-accessory"></i>
-                </li>
                 </li>
             </ul>
         </div>

@@ -65,7 +65,7 @@ module Controller {
 
                     this.accommodation = result.data.accommodation;
 
-                    if(this.accommodation) {
+                    if (this.accommodation) {
                         this.DataService.getAvailableAccommodationEquipment().then((equipment) => {
                             var selectedAcEq = [];
                             equipment.data.forEach((entry)=> {
@@ -223,10 +223,7 @@ module Controller {
         };
 
         triggerAccomodation() {
-            this.accommodation = !this.accommodation;
-            if (this.accommodation) {
-                this.$ionicScrollDelegate.scrollBottom(true);
-            }
+            this.$ionicScrollDelegate.scrollBottom(true);
         }
 
         selectCity() {
