@@ -35,8 +35,8 @@ module Controller {
 
             if (this.trip.start_date && this.trip.end_date) {
                 // date format
-                this.start_date = moment(new Date(this.trip.start_date)).format('L');
-                this.end_date = moment(new Date(this.trip.end_date)).format('L')
+                this.start_date = this.trip.start_date;
+                this.end_date = this.trip.end_date;
             }
 
             // important for ion-slide!
