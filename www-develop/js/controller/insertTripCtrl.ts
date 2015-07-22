@@ -79,6 +79,7 @@ module Controller {
                             this.TripService.setAccommodationEquipment(selectedAcEq);
                         });
                     }
+                    this.TripService.setLocations(result.data.locations);
                 });
             }
 
@@ -171,6 +172,8 @@ module Controller {
             }
 
             var trip = {
+                _id: this._id,
+                _rev: this._rev,
                 title: '',
                 accommodation: this.accommodation,
                 accommodation_equipment: this.getQueryNameArrayOf(this.selectedAccommodationEquipment),
@@ -191,7 +194,10 @@ module Controller {
                 trip.persons = this.selectedPersons;
             }
 
-            // TODO add _id and _rev to document
+            if(this.edit) {
+                delete trip._id;
+                delete trip._rev;
+            }
 
             this.TripService.setPreTrip(trip);
 
