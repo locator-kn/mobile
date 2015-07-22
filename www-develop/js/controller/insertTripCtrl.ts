@@ -40,8 +40,10 @@ module Controller {
 
                 this.SearchService.getTripById($stateParams.tripId).then((result) => {
                     this.city = result.data.city;
-                    this.start_date = result.data.start_date;
-                    this.end_date = result.data.end_date;
+                    if(result.data.start_date && result.data.end_date) {
+                        this.start_date = new Date(result.data.start_date);
+                    }
+                    this.end_date = new Date(result.data.end_date);
                     this.selectedDays = result.data.days;
                     this.selectedPersons = result.data.persons;
                     this.accommodation = result.data.accommodation;
