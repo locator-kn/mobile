@@ -1,8 +1,8 @@
-<ion-view view-title="Trip einstellen" hide-back-button="true" cache-view="false"
+<ion-view view-title="Trip einstellen" cache-view="false"
           class="insert-trip pageWithBigButton background-color-coral"
           ng-controller="InsertTripCtrl as itc">
-    <ion-nav-buttons side="left"^ng-if="!edit">
-        <i  class="icon ion-ios-arrow-back ion-chevron-left" ui-sref="tab.welcome"></i>
+    <ion-nav-buttons side="left">
+        <i   ng-if="!itc.edit" class="icon ion-ios-arrow-back ion-chevron-left" ui-sref="tab.welcome"></i>
     </ion-nav-buttons>
     <ion-content class="gradient-red" ng-class="!authenticated ? 'not-auth-background' : ''">
         <div ng-if="authenticated">
