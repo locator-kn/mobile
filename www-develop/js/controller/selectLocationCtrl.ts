@@ -39,7 +39,9 @@ module Controller {
 
             this.LocationService.getLocationsByCity(this.cityId).then((result)=> {
                 this.$ionicLoading.hide();
-                this.locationsByCity = result.data
+                this.locationsByCity = result.data;
+                // TODO: add promise to call function after get of my locations and locationy by city
+                this.updateSelection();
             });
 
             $rootScope.$on('resetTripData', () => {
@@ -53,6 +55,17 @@ module Controller {
                 this.tripId = '';
             });
         }
+
+
+        updateSelection() {
+            var locations = this.TripService.getLocations();
+            for(var id in locations) {
+                this.LocationService.getLocationById(id).then((result) => {
+                    this.toogleSelect(result.data);
+                })
+            }
+        }
+
 
         toogleSelect(location) {
             if (!location.selected) {
