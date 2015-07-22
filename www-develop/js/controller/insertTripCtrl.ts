@@ -28,6 +28,9 @@ module Controller {
         tripId:string;
         userId:string;
 
+        _id:string;
+        _rev:string;
+
         constructor(private $rootScope, private TripService, private DataService, private $state,
                     private $ionicScrollDelegate, private $ionicPopup, private SearchService, private $stateParams) {
 
@@ -43,10 +46,13 @@ module Controller {
                     if (result.data.start_date && result.data.end_date) {
                         this.start_date = new Date(result.data.start_date);
                     }
+
+                    this._id = result.data._id;
+                    this._rev = result.data._rev;
+
                     this.end_date = new Date(result.data.end_date);
                     this.selectedDays = result.data.days;
                     this.selectedPersons = result.data.persons;
-                    this.accommodation = result.data.accommodation;
 
                     // init mood
                     this.DataService.getAvailableMoods().then((moods) => {
@@ -56,11 +62,23 @@ module Controller {
                             }
                         });
                     });
-                    // TODO: get objects form query_name
-                    //this.selectedAccommodationEquipment:any = [];
-                    //this.selectedMood:any = {};
-                    // this._id
-                    // this._rev
+
+                    this.accommodation = result.data.accommodation;
+
+                    if(this.accommodation) {
+                        this.DataService.getAvailableAccommodationEquipment().then((equipment) => {
+                            var selectedAcEq = [];
+                            debugger;
+                            equipment.data.forEach((entry)=> {
+                                result.data.accommodation_equipment.forEach((selected) => {
+                                    if (entry.query_name === selected) {
+                                        selectedAcEq.push(entry)
+                                    }
+                                });
+
+                            });
+                        });
+                    }
                 });
             }
 
