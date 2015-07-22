@@ -1,5 +1,5 @@
 <ion-view view-title="Trip einstellen" cache-view="false"
-          class="insert-trip pageWithBigButton background-color-coral"
+          class="insert-trip background-color-coral" ng-class="authenticated ? 'pageWithBigButton' : ''"
           ng-controller="InsertTripCtrl as itc">
     <ion-nav-buttons side="left">
         <i   ng-if="!itc.edit" class="icon ion-ios-arrow-back ion-chevron-left" ui-sref="tab.welcome"></i>
