@@ -251,6 +251,17 @@ module Controller {
             }
         }
 
+        selectAccomodationEquipment() {
+            if (!this.edit) {
+                this.$state.go('tab.offer-equipment');
+            } else {
+                this.$state.go('tab.profile-trip-edit-equipment', {
+                    tripId: this.tripId,
+                    userId: this.userId
+                })
+            }
+        }
+
         static controllerId:string = "InsertTripCtrl";
     }
 }
