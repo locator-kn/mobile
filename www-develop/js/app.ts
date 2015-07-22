@@ -57,7 +57,7 @@ var deps = [
     'ngTagsInput',
     'ngCordova',
     'ngOpenFB',
-    'emoji'
+    'dbaq.emoji'
 ];
 
 angular.module('starter', deps)
