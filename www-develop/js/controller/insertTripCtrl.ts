@@ -3,6 +3,8 @@ module Controller {
 
         // trip
         city:any = {};
+        title:string;
+        description:string;
         start_date;
         end_date;
         selectedDays:number;
@@ -53,6 +55,9 @@ module Controller {
                     this.end_date = new Date(result.data.end_date);
                     this.selectedDays = result.data.days;
                     this.selectedPersons = result.data.persons;
+
+                    this.title = result.data.title;
+                    this.description = result.data.description;
 
                     // init mood
                     this.DataService.getAvailableMoods().then((moods) => {
@@ -174,7 +179,8 @@ module Controller {
             var trip = {
                 _id: this._id,
                 _rev: this._rev,
-                title: '',
+                title: this.title,
+                description: this.description,
                 accommodation: this.accommodation,
                 accommodation_equipment: this.getQueryNameArrayOf(this.selectedAccommodationEquipment),
                 city: this.city,
