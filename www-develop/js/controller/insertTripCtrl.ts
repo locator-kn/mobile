@@ -40,13 +40,22 @@ module Controller {
 
                 this.SearchService.getTripById($stateParams.tripId).then((result) => {
                     this.city = result.data.city;
-                    if(result.data.start_date && result.data.end_date) {
+                    if (result.data.start_date && result.data.end_date) {
                         this.start_date = new Date(result.data.start_date);
                     }
                     this.end_date = new Date(result.data.end_date);
                     this.selectedDays = result.data.days;
                     this.selectedPersons = result.data.persons;
                     this.accommodation = result.data.accommodation;
+
+                    // init mood
+                    this.DataService.getAvailableMoods().then((moods) => {
+                        moods.data.forEach((entry)=> {
+                            if (entry.query_name === result.data.moods[0]) {
+                                this.TripService.setMood(entry);
+                            }
+                        });
+                    });
                     // TODO: get objects form query_name
                     //this.selectedAccommodationEquipment:any = [];
                     //this.selectedMood:any = {};
@@ -75,7 +84,7 @@ module Controller {
             this.DataService.getAvailableDays().then((result)=> {
                 this.availableDays = result.data;
                 // if not in edit mode -> select random city
-                if(!this.edit){
+                if (!this.edit) {
                     var day = result.data[Math.floor(Math.random() * result.data.length)];
                     this.selectedDays = day.value;
                 }
@@ -94,13 +103,13 @@ module Controller {
                 if (result.data.length === 1) {
                     this.onlyOneCity = true;
                     // not needed, but u never know..
-                    if(!this.edit){
+                    if (!this.edit) {
                         this.city = result.data[0];
                     }
                 }
             });
 
-            if(!this.edit) {
+            if (!this.edit) {
                 // random mood selection
                 this.DataService.getAvailableMoods().then((result) => {
                     var mood = result.data[Math.floor(Math.random() * result.data.length)];
@@ -168,7 +177,7 @@ module Controller {
 
             this.TripService.setPreTrip(trip);
 
-            if(!this.edit) {
+            if (!this.edit) {
                 this.$state.go('tab.offer-locations', {
                     cityId: this.city.place_id
                 });
