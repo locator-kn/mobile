@@ -86,7 +86,7 @@
         </ion-content>
         <button ng-if="authenticated" ng-click="tpc.createTrip()"
                 class="button-bottom button button-full button-trip-preview background-coral bottom">
-            Trip Erstellen
+            {{tpc.edit ? 'Trip Aktualisieren' : 'Trip Erstellen'}}
         </button>
     </form>
 </ion-view>
