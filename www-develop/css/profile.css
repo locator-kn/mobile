@@ -43,12 +43,15 @@
 
 .profile .background-color-edit {
     background-color: rgb(227, 227, 227);
+    border-radius: 3px;
+    margin-top: 3px;
 }
 
 .profile .image-description {
     text-align: center;
     width: 100%;
     display: inline-block;
+    padding-bottom: 30px;
 }
 
 .profile .item .birthday input {
@@ -112,4 +115,13 @@
     font-weight: bold;
     color: white;
     font-size: 20px;
+}
+
+.profile .list.edit {
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.profile .list.edit textarea {
+    max-width: 100%;
 }
