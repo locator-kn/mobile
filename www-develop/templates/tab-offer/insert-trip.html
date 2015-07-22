@@ -12,9 +12,8 @@
                     {{itc.city.title || "Wo willst du hin?"}}&nbsp;
                 </li>
                 <!-- if more then 1 city available-->
-                <li ng-if="!itc.onlyOneCity" class="item item-icon-right" ui-sref="tab.offer-city">
-                <li class="item item-icon-right" ng-click="itc.selectCity()">
-                    {{itc.city.title || "Wohin geht der Trip?"}}&nbsp;
+                <li ng-if="!itc.onlyOneCity" class="item item-icon-right"  ng-click="itc.selectCity()">
+                    {{itc.city.title || "Wo willst du hin?" }}&nbsp;
                     <i class="icon ion-chevron-right icon-accessory"></i>
                 </li>
                 <li class="item item-icon-right" ng-click="itc.selectMood()">
