@@ -41,7 +41,6 @@ module Controller {
         selectEmoji(item) {
             this.textbox = this.textbox + ' ' + item + ' ';
             this.showEmojis = false;
-            angular.element('#my-message').focus();
         }
 
 
@@ -128,7 +127,7 @@ module Controller {
                     this.$ionicScrollDelegate.scrollBottom(true);
                     this.MessengerService.clearMessageCacheById(this.conversationId);
                     this.textbox = '';
-                    angular.element('#my-message').focus();
+                    //angular.element('#my-message').focus();
                 })
                 .catch(result => {
                     console.info("Error");
