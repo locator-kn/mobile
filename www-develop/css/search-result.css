@@ -1,8 +1,8 @@
 .result-mood {
     float: left;
-    height: 30px;
+    height: 40px;
     padding-right: 16px;
-    margin-top: 3px;
+    margin-top: -3px;
 }
 
 .mood-container {
@@ -11,8 +11,9 @@
 
 .mood-title {
     float: left;
-    line-height: 21px;
+    line-height: 19px;
     font-size: 16px;
+    margin-left: -2px;
 }
 
 li.item.trip-options {
@@ -93,14 +94,14 @@ label.name.ng-binding {
     margin-bottom: -17px;
 }
 
-.search-result .result-mood {
-    margin-left: 7px;
-}
-
 .search-result label  {
     font-size: 16px;
 }
 
 .search-result .line {
     padding: 5px;
+}
+
+.search-result label.mood-title.ng-binding {
+    line-height: 35px;
 }

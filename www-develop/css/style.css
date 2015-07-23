@@ -172,7 +172,7 @@ body {
 }
 
 .mood span.ng-binding {
-    line-height: 34px;
+    line-height: 38px;
 }
 
 .mood .ion-plus-circled:before {
@@ -239,5 +239,14 @@ ion-nav-view.view-container.tab-content {
 }
 
 .chosen-mood {
-    margin-top: -5px !important;
+    margin-top: -11px !important;
+    margin-left: -6px;
+}
+
+.moods .item{
+    padding: 10px;
+}
+
+.moods .mood img.result-mood {
+    margin-top: -1px;
 }
