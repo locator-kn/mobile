@@ -32,11 +32,33 @@ module Controller {
         mapMarkerSet:boolean;
 
         error:boolean = false;
+        edit:boolean = false;
 
         constructor(private CameraService, private $scope, private basePath, private GeolocationService,
                     private UserService, private $state, private PictureUploadService, private webPath,
                     private $rootScope, private $ionicLoading, private $ionicPopup, private ngProgressLite,
-                    private $ionicScrollDelegate, private maxSpinningDuration) {
+                    private $ionicScrollDelegate, private maxSpinningDuration, private LocationService, private $stateParams) {
+
+            if (this.$state.current.name.indexOf('edit') > -1) {
+                this.edit = true;
+                this.LocationService.getLocationById($stateParams.locationId).then((result) => {
+                    this.result = result.data;
+                    if(result.data.images.picture) {
+                        this.headerImagePath = this.basePath + result.data.images.picture;
+                    } else {
+                        this.headerImagePath = result.data.images.googlemap;
+                    }
+                    this.documentId = result.data._id;
+                    this.locationFormDetails.title = result.data.title;
+                    var tags = result.data.tags.toString();
+                    this.locationFormDetails.tags =tags.replace(/,/g , " ");
+                    this.locationFormDetails.description = result.data.description;
+                    this.locationFormDetails.city = result.data.city;
+                    this.locationFormDetails.public = result.data.public;
+
+                    debugger;
+                })
+            }
 
             this.UserService.getMe().then(user => {
                 this.me = user.data;
