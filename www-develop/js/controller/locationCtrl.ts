@@ -11,7 +11,7 @@ module Controller {
         publicLocation:boolean;
 
         constructor(private UserService, private $scope, private $stateParams, private LocationService,
-                    private $ionicLoading, private webPath, maxSpinningDuration, private $state) {
+                    private $ionicLoading, private webPath, maxSpinningDuration, private $state, private $ionicPopup) {
             this.locationId = $stateParams.locationId;
             this.state = this.$state.current.name;
 
@@ -41,6 +41,38 @@ module Controller {
 
         togglePublic() {
             this.LocationService.togglePublicLocation(this.result._id);
+        }
+
+        deleteLocation() {
+            var confirmPopup = this.$ionicPopup.confirm({
+                title: 'Location löschen',
+                template: 'Bist du dir sicher, dass du deine Location löschen möchtest?',
+                buttons: [{ // Array[Object] (optional). Buttons to place in the popup footer.
+                    text: 'Abbrechen',
+                    type: 'button-default',
+                    onTap: function (e) {
+                        // e.preventDefault() will stop the popup from closing when tapped.
+                        //e.preventDefault();
+                    }
+                }, {
+                    text: 'OK',
+                    type: 'button-positive',
+                    onTap: function (e) {
+                        // Returning a value will cause the promise to resolve with the given value.
+                        return true;
+                    }
+                }]
+            });
+            confirmPopup.then(function (res) {
+                if (res) {
+                    // TODO: delete location
+
+                    //// TODO: show popup with info that location is deleted
+                    console.log('delete location');
+                } else {
+                    // do nothing
+                }
+            });
         }
 
         static controllerId:string = "LocationCtrl";
