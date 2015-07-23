@@ -27,7 +27,7 @@
 }
 
 .trip .button-trip-preview {
-    height: 80px;
+    height: 60px;
     font-weight: bold;
     color: #fff;
     background-color: #f05346;
@@ -43,7 +43,7 @@
 }
 
 .trip .button-join-trip {
-    height: 80px;
+    height: 60px;
     font-weight: bold;
     color: white;
     font-size: 20px;

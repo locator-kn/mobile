@@ -154,7 +154,7 @@
 }
 
 .background-color-dark .button-insert-location {
-    height: 80px;
+    height: 60px;
     font-weight: bold;
     color: rgb(34, 34, 34);
     background-color: #fff;
@@ -162,7 +162,7 @@
 }
 
 .insert-trip .button-select-locations {
-    height: 80px;
+    height: 60px;
     font-weight: bold;
     background: #f05346;
     color: #fff;
