@@ -1,7 +1,7 @@
 <ion-view view-title="Locations" class="location" ng-controller="LocationCtrl as lc">
     <ion-content class="background-color-grey my-has-tabs">
         <ul class="list">
-            <li class="item config" ng-if="lc.user._id === userID ">
+            <li class="item config" ng-if="lc.user._id === userID && lc.onProfile ">
                 <label class="toggle toggle-dark my-toggle"
                        ng-click="sc.accommodation = ! sc.accommodation">
                     <input type="checkbox">
