@@ -38,7 +38,10 @@
     "org.apache.cordova.file-transfer",
     "cordova-plugin-camera",
     "org.apache.cordova.camera",
-    "org.apache.cordova.file"
+    "org.apache.cordova.file",
+    "cordova-plugin-crosswalk-webview",
+    "cordova-plugin-whitelist",
+    "cordova-plugin-splashscreen"
   ],
   "cordovaPlatforms": [
     "ios",
