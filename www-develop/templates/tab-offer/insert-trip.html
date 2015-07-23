@@ -16,7 +16,7 @@
                     {{itc.city.title || "Wo willst du hin?" }}&nbsp;
                     <i class="icon ion-chevron-right icon-accessory"></i>
                 </li>
-                <li class="item item-icon-right" ng-click="itc.selectMood()">
+                <li class="item item-icon-right fix-item-height" ng-click="itc.selectMood()">
                     <span ng-if="!itc.moodAvailable">Wie fühlt sich der Trip an?</span>
                     <i class="icon ion-chevron-right icon-accessory"></i>
 
@@ -43,11 +43,11 @@
                         </div>
                     </div>
                 </li>
-                <li class="item item-input">
+                <li class="item item-input fix-item-height">
                     <span class="input-label">Zeitraum von</span>
                     <input type="date" class="date-input" ng-model="itc.start_date">
                 </li>
-                <li class="item item-input">
+                <li class="item item-input fix-item-height">
                     <span class="input-label">bis</span>
                     <input type="date" class="date-input" ng-model="itc.end_date">
                 </li>
