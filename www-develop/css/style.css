@@ -1,7 +1,19 @@
 @font-face {
     font-family: 'Signika';
-    src: url('../fonts/Signika-Regular.ttf') format('truetype'),
-    url('../fonts/Signika-Bold.ttf') format('truetype');
+    src: url('../fonts/Signika-Regular.ttf') format('truetype');
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'Signika';
+    src: url('../fonts/Signika-Bold.ttf') format('truetype');
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: 'Signika';
+    src: url('../fonts/Signika-Light.ttf') format('truetype');
+    font-weight: 200;
 }
 
 * {
@@ -166,7 +178,6 @@ body {
     line-height: 34px;
 }
 
-
 .insert-trip .not-auth-background,
 .insert-location .not-auth-background {
     background: #fff;
@@ -218,11 +229,9 @@ ion-nav-view.view-container.tab-content {
     border-color: white;
 }
 
-
 .emoji {
     vertical-align: middle;
 }
-
 
 .fix-item-height {
     height: 54px;
