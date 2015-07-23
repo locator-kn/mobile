@@ -45,10 +45,8 @@
 
                 <li class="item item-toggle">
                     Location öffentlich
-                    <label class="toggle toggle-dark toggle-assertive"
-                           ng-click="ilc.locationFormDetails.public = ! ilc.locationFormDetails.public">
-
-                        <input type="checkbox">
+                    <label class="toggle toggle-dark toggle-assertive">
+                        <input type="checkbox" ng-model="ilc.locationFormDetails.public">
 
                         <div class="track">
                             <div class="handle"></div>
