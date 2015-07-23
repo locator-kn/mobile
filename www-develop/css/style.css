@@ -222,3 +222,8 @@ ion-nav-view.view-container.tab-content {
 .emoji {
     vertical-align: middle;
 }
+
+
+.fix-item-height {
+    height: 54px;
+}
