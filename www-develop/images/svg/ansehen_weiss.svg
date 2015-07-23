@@ -4,18 +4,16 @@
 <svg version="1.1" id="Ebene_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
 <style type="text/css">
-	.st0{fill:none;stroke:#1E1E1E;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
-	.st1{fill:none;stroke:#1D1D1D;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
-	.st2{fill:none;stroke:#222222;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
-	.st3{fill:none;stroke:#222222;stroke-miterlimit:10;}
+	.st0{fill:none;stroke:#212121;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st1{fill:none;stroke:#212121;stroke-width:1.5;stroke-linejoin:round;stroke-miterlimit:10;}
 </style>
 <g>
-	<path class="st2" d="M49.3,25C45.1,34,35.7,39.9,25,39.9C14.2,39.9,5,34,0.6,25C4.9,16,14.3,10.1,25,10.1
-		C35.8,10.1,45.2,16,49.3,25z"/>
+	<path class="st0" d="M49.2,25C44.9,33.9,35.6,39.8,25,39.8C14.3,39.8,5.2,33.9,0.8,25C5.1,16.1,14.4,10.2,25,10.2
+		C35.7,10.2,45,16.1,49.2,25z"/>
 	<g>
-		<circle class="st3" cx="25" cy="25" r="5.8"/>
-		<path class="st2" d="M10.1,24.9c0-8.1,6.7-14.8,14.9-14.8c8.4,0,14.9,6.7,14.9,14.9c0,8.4-6.7,14.9-14.9,14.9
-			C16.6,39.8,10.1,33.1,10.1,24.9z"/>
+		<circle class="st1" cx="25" cy="25" r="5.8"/>
+		<path class="st0" d="M10.2,24.9c0-8.1,6.6-14.7,14.8-14.7c8.3,0,14.8,6.6,14.8,14.8c0,8.3-6.6,14.8-14.8,14.8
+			C16.7,39.7,10.2,33.1,10.2,24.9z"/>
 	</g>
 </g>
 </svg>

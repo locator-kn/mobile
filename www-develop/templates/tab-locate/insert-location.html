@@ -19,7 +19,7 @@
                     </a>
                 </div>
                 <li ng-class="{'error' : (ilc.error) && ilc.form.locationTitle.$error.required}"
-                    class="item item-input">
+                    class="item item-input fix-item-height">
                     <input maxlength="40" type="text" ng-model="ilc.locationFormDetails.title" name="locationTitle"
                            placeholder="Gib der Location einen Titel" required>
                 </li>
@@ -35,7 +35,7 @@
                                 <!--ng-class="{'error' : ilc.error && ilc.locationFormDetails.tags.length < 1}"-->
                                 <!--placeholder="+ Füge aussagekräftige Tags hinzu"-->
                                 <!--ng-model="ilc.locationFormDetails.tags"></tags-input>-->
-                    <textarea ng-model="ilc.locationFormDetails.tags" class="tag-input" maxlength="300" type="input" placeholder="Füge Tags hinzu - z.B. Bar günstig Strand&#10;(durch Leerzeichen getrennt)" rows="3" required></textarea>
+                    <textarea ng-model="ilc.locationFormDetails.tags" class="tag-input" maxlength="300" type="input" placeholder="Füge Tags hinzu - z.B. Bar günstig Strand &#10;(durch Leerzeichen getrennt)" rows="3" required></textarea>
                 </li>
 
                 <li class="item item-icon-right" ng-click="ilc.goToMap()">

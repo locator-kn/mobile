@@ -121,74 +121,74 @@ module Service {
                                 {
                                     query_name: "buddytrip",
                                     title: "buddytrip",
-                                    icon: "buddytrip.png",
-                                    icon_white: "buddytrip_weiss.png",
+                                    icon: "buddytrip.svg",
+                                    icon_white: "buddytrip.svg",
                                     description: ''
                                 }, {
                                     query_name: "girls_on_tour",
                                     title: "girls on tour",
-                                    icon: "girls_on_tour.png",
-                                    icon_white: "girls_on_tour_weiss.png",
+                                    icon: "girls_on_tour.svg",
+                                    icon_white: "girls_on_tour.svg",
                                     description: ""
                                 }, {
                                     query_name: "halligalli_drecksau",
                                     title: "halligalli drecksau",
-                                    icon: "halligalli_drecksau.png",
-                                    icon_white: "halligalli_drecksau_weiss.png",
+                                    icon: "halligalli_drecksau.svg",
+                                    icon_white: "halligalli_drecksau.svg",
                                     description: ""
                                 }, {
                                     query_name: "muskelkater",
                                     title: "muskelkater",
-                                    icon: "muskelkater.png",
-                                    icon_white: "muskelkater_weiss.png",
+                                    icon: "muskelkater.svg",
+                                    icon_white: "muskelkater.svg",
                                     description: ""
                                 }, {
                                     query_name: "sturm_der_liebe",
                                     title: "sturm der liebe",
-                                    icon: "sturm_der_liebe.png",
-                                    icon_white: "sturm_der_liebe_weiss.png",
+                                    icon: "sturm_der_liebe.svg",
+                                    icon_white: "sturm_der_liebe.svg",
                                     description: ""
                                 }, {
                                     query_name: "gruener_gehts_nicht",
                                     title: "gruener gehts nicht",
-                                    icon: "gruener_gehts_nicht.png",
-                                    icon_white: "gruener_gehts_nicht_weiss.png",
+                                    icon: "gruener_gehts_nicht.svg",
+                                    icon_white: "gruener_gehts_nicht.svg",
                                     description: ""
                                 }, {
                                     query_name: "haste_nicht_gesehen",
                                     title: "haste nicht gesehen",
-                                    icon: "haste_nicht_gesehen.png",
-                                    icon_white: "haste_nicht_gesehen_weiss.png",
+                                    icon: "haste_nicht_gesehen.svg",
+                                    icon_white: "haste_nicht_gesehen.svg",
                                     description: ""
                                 }, {
                                     query_name: "singles_unter_sich",
                                     title: "singles unter sich",
-                                    icon: "singles_unter_sich.png",
-                                    icon_white: "singles_unter_sich_weiss.png",
+                                    icon: "singles_unter_sich.svg",
+                                    icon_white: "singles_unter_sich.svg",
                                     description: ""
                                 }, {
                                     query_name: "family_fun",
                                     title: "family fun",
-                                    icon: "family_fun.png",
-                                    icon_white: "family_fun_weiss.png",
+                                    icon: "family_fun.svg",
+                                    icon_white: "family_fun.svg",
                                     description: ""
                                 }, {
                                     query_name: "kultur_und_sightseeing",
                                     title: "kultur und sightseeing",
-                                    icon: "kultur_und_sightseeing.png",
-                                    icon_white: "kultur_und_sightseeing_weiss.png",
+                                    icon: "kultur_und_sightseeing.svg",
+                                    icon_white: "kultur_und_sightseeing.svg",
                                     description: ""
                                 }, {
                                     query_name: 'leckermaeulchen',
                                     title: 'leckermaeulchen',
-                                    icon: 'leckermaeulchen.png',
-                                    icon_white: 'leckermaeulchen_weiss.png',
+                                    icon: 'leckermaeulchen.svg',
+                                    icon_white: 'leckermaeulchen.svg',
                                     description: ''
                                 }, {
                                     query_name: "entspannung_pur",
                                     title: "entspannnung pur",
-                                    icon: "entspannung_pur.png",
-                                    icon_white: "entspannung_pur_weiss.png",
+                                    icon: "entspannung_pur.svg",
+                                    icon_white: "entspannung_pur.svg",
                                     description: ""
                                 }
                             ]

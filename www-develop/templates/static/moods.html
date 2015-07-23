@@ -1,10 +1,10 @@
 <ion-view view-title="Moods" ng-controller="MoodCtrl as mc">
-    <ion-content class="background-color-grey mood">
+    <ion-content class="background-color-grey mood moods">
         <div>
             <ul class="list">
-                <li class="item" collection-repeat="mood in mc.moods"
+                <li class="item mood" collection-repeat="mood in mc.moods"
                     ng-click="mc.setMood(mood)">
-                    <img class="result-mood" ng-src="./images/icons/{{mood.icon}}">
+                    <img class="result-mood" ng-src="./images/svg/moods/black/{{mood.icon}}">
                     <span>{{mood.title}}</span>
                 </li>
             </ul>

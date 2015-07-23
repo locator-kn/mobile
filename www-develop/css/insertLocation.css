@@ -231,3 +231,7 @@
 .insert-location .tag-input {
     line-height: 20px;
 }
+
+.insert-location textarea.ng-pristine.ng-untouched.ng-invalid.ng-invalid-required.ng-valid-maxlength {
+    padding-top: 6px;
+}
