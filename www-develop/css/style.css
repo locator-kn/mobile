@@ -162,8 +162,10 @@ body {
 }
 
 .pageWithBigButton ion-content {
-    margin-bottom: 59px;
-
+    margin-bottom: 0;
+}
+.pageWithBigButton.fixed-button ion-content {
+    margin-bottom: 62px;
 }
 
 .button-bottom {
@@ -249,4 +251,30 @@ ion-nav-view.view-container.tab-content {
 
 .moods .mood img.result-mood {
     margin-top: -1px;
+}
+
+.min-height-with-button .scroll {
+    min-height: calc(100vh - 92px)
+}
+.min-height-with-button .button-bottom {
+    position: inherit;
+    bottom: 0;
+    margin:0;
+}
+.min-height-with-button ul {
+    min-height: calc(100vh - 151px);
+}
+.min-height-with-button .list {
+    padding:0;
+    margin: 0;
+}
+.button:after {
+    display: none;
+}
+.tabs {
+    padding-top: 0;
+    background-size: 100% 0;
+}
+.tabs .tab-item .icon {
+    margin-top: 7px;
 }

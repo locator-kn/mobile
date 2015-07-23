@@ -25,3 +25,13 @@ ui-gmap-google-map.google-map.angular-google-map {
 .location .description {
     white-space: initial;
 }
+
+.item-input textarea {
+    height: 40px;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-out;
+}
+
+.item-input textarea:focus {
+    height: 100px;
+}

@@ -160,6 +160,10 @@ module Controller {
             })
         };
 
+        updateMeCache(newUserData) {
+            this.UserService.updateMeCache(newUserData);
+        }
+
         uploadImage = (result) => {
             var formData = {
                 width: Math.round(result.width),
@@ -174,10 +178,11 @@ module Controller {
                 this.ngProgressLite.done();
 
                 var dataObject = JSON.parse(data.response);
-                this.user.picture = dataObject.imageLocation;
+                this.user.picture = this.webPath + dataObject.imageLocation + '?' + Date.now();
                 console.log('update user: ' + dataObject);
-                // update user
-                this.$rootScope.$emit('userUpdate');
+                // update cache with the new busted imagePath
+                this.updateMeCache(this.user);
+
             }, (err) => {
                 console.log(err);
                 this.$ionicLoading.hide();
