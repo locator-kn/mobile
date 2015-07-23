@@ -55,7 +55,8 @@ module Controller {
                     this.locationFormDetails.description = result.data.description;
                     this.locationFormDetails.city = result.data.city;
                     this.locationFormDetails.public = result.data.public;
-
+                    // always true by edit location because it is required to create one
+                    this.mapMarkerSet = true;
                     debugger;
                 })
             }
