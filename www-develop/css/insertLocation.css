@@ -203,8 +203,9 @@
 }
 
 .location-finish {
-    font-weight: bold;
     padding: 7px;
+    font-size: 17px;
+    font-weight: 500;
 }
 
 .insert-location .no-register {
