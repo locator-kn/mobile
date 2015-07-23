@@ -160,6 +160,10 @@ module Controller {
             })
         };
 
+        updateMeCache(newUserData) {
+            this.UserService.updateMeCache(newUserData);
+        }
+
         uploadImage = (result) => {
             var formData = {
                 width: Math.round(result.width),
@@ -176,6 +180,8 @@ module Controller {
                 var dataObject = JSON.parse(data.response);
                 this.user.picture = this.webPath + dataObject.imageLocation + '?' + Date.now();
                 console.log('update user: ' + dataObject);
+                // update cache with the new busted imagePath
+                this.updateMeCache(this.user);
 
             }, (err) => {
                 console.log(err);
