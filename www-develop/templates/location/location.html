@@ -3,8 +3,8 @@
         <ul class="list">
             <li class="item config" ng-if="lc.user._id === userID && lc.onProfile ">
                 <label class="toggle toggle-dark my-toggle"
-                       ng-click="sc.accommodation = ! sc.accommodation">
-                    <input type="checkbox">
+                       ng-click="lc.togglePublic()">
+                    <input type="checkbox" ng-model="lc.publicLocation">
 
                     <div class="track">
                         <div class="handle"></div>
