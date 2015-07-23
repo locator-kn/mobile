@@ -44,25 +44,8 @@ module Controller {
         }
 
         deleteLocation() {
-            var confirmPopup = this.$ionicPopup.confirm({
-                title: 'Location löschen',
-                template: 'Bist du dir sicher, dass du deine Location löschen möchtest?',
-                buttons: [{ // Array[Object] (optional). Buttons to place in the popup footer.
-                    text: 'Abbrechen',
-                    type: 'button-default',
-                    onTap: function (e) {
-                        // e.preventDefault() will stop the popup from closing when tapped.
-                        //e.preventDefault();
-                    }
-                }, {
-                    text: 'OK',
-                    type: 'button-positive',
-                    onTap: function (e) {
-                        // Returning a value will cause the promise to resolve with the given value.
-                        return true;
-                    }
-                }]
-            });
+            var confirmPopup = this.getConfirmPopup('Location löschen',
+                'Bist du dir sicher, dass du deine Location löschen möchtest?', 'Abbrechen', 'OK');
             confirmPopup.then(function (res) {
                 if (res) {
 
@@ -72,25 +55,8 @@ module Controller {
                         })
                         .catch(result => {
                             //location is used in trip
-                            var confirmPopup = this.$ionicPopup.confirm({
-                                title: 'Location löschen',
-                                template: 'Die Location wird in einem Trip verwendet. Trotzdem löschen?',
-                                buttons: [{ // Array[Object] (optional). Buttons to place in the popup footer.
-                                    text: 'Abbrechen',
-                                    type: 'button-default',
-                                    onTap: function (e) {
-                                        // e.preventDefault() will stop the popup from closing when tapped.
-                                        //e.preventDefault();
-                                    }
-                                }, {
-                                    text: 'OK',
-                                    type: 'button-positive',
-                                    onTap: function (e) {
-                                        // Returning a value will cause the promise to resolve with the given value.
-                                        return true;
-                                    }
-                                }]
-                            });
+                            var confirmPopup = this.getConfirmPopup('Location löschen',
+                                'Die Location wird in einem Trip verwendet. Wirklich löschen?', 'Nein', 'Ja');
                             confirmPopup.then(function (res) {
                                 if (res) {
                                     this.LocationService.deleteLocationForce(this.result._id)
@@ -104,9 +70,6 @@ module Controller {
                             })
 
                         });
-                    //Die Location wird in einem Trip verwendet. Wirklich löschen?
-                    //// TODO: show popup with info that location is deleted
-                    console.log('delete location');
                 } else {
                     // do nothing
                 }
@@ -114,7 +77,29 @@ module Controller {
         }
 
         showSuccessPopup() {
+            //// TODO: show popup with info that location is deleted
+        }
 
+        getConfirmPopup(title, textMsg, textNo, textYes) {
+            return this.$ionicPopup.confirm({
+                title: title,
+                template: textMsg,
+                buttons: [{ // Array[Object] (optional). Buttons to place in the popup footer.
+                    text: textNo,
+                    type: 'button-default',
+                    onTap: function (e) {
+                        // e.preventDefault() will stop the popup from closing when tapped.
+                        //e.preventDefault();
+                    }
+                }, {
+                    text: textYes,
+                    type: 'button-positive',
+                    onTap: function (e) {
+                        // Returning a value will cause the promise to resolve with the given value.
+                        return true;
+                    }
+                }]
+            });
         }
 
         static controllerId:string = "LocationCtrl";
