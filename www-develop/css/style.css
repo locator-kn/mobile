@@ -163,7 +163,9 @@ body {
 
 .pageWithBigButton ion-content {
     margin-bottom: 0;
-
+}
+.pageWithBigButton.fixed-button ion-content {
+    margin-bottom: 62px;
 }
 
 .button-bottom {
