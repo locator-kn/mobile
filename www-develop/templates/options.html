@@ -12,24 +12,24 @@
             </div>
         </ul>
         <li class="item item-icon-right item-option" ui-sref="tab.profile({userId: userID})">
-            <img class="list-icon" ng-src="./images/icons/alle_trips.png">
+            <img class="list-icon" ng-src="./images/svg/meine_locations_trips.svg">
             <label class="option-label">Zu deinen Trips/Locations</label>
             <i class="icon ion-chevron-right icon-accessory"></i>
         </li>
 
         <li ng-if="!oc.isLocation" class="item item-icon-right item-option" ng-click="oc.restartTrip()">
-            <img class="list-icon" ng-src="./images/icons/trip_erstellen.png">
+            <img class="list-icon" ng-src="./images/svg/create_trip.svg">
             <label class="option-label">Weiteren Trip erstellen</label>
             <i class="icon ion-chevron-right icon-accessory"></i>
         </li>
         <li ng-if="oc.isLocation" class="item item-icon-right item-option" ng-click="oc.restartLocation()">
-            <img class="list-icon" ng-src="./images/icons/location_hinzufuegen.png">
+            <img class="list-icon" ng-src="./images/svg/locate.svg">
             <label class="option-label">Weitere Location erstellen</label>
             <i class="icon ion-chevron-right icon-accessory"></i>
         </li>
 
         <li ng-if="!oc.isLocation" class="item item-icon-right item-option" ui-sref="tab.locate">
-            <img class="list-icon" ng-src="./images/icons/location_hinzufuegen.png">
+            <img class="list-icon" ng-src="./images/svg/locate.svg">
             <label class="option-label">Location erstellen</label>
             <i class="icon ion-chevron-right icon-accessory"></i>
         </li>

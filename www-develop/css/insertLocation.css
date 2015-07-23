@@ -154,7 +154,7 @@
 }
 
 .background-color-dark .button-insert-location {
-    height: 80px;
+    height: 60px;
     font-weight: bold;
     color: rgb(34, 34, 34);
     background-color: #fff;
@@ -162,7 +162,7 @@
 }
 
 .insert-trip .button-select-locations {
-    height: 80px;
+    height: 60px;
     font-weight: bold;
     background: #f05346;
     color: #fff;
@@ -203,8 +203,9 @@
 }
 
 .location-finish {
-    font-weight: bold;
     padding: 7px;
+    font-size: 17px;
+    font-weight: 500;
 }
 
 .insert-location .no-register {
@@ -229,4 +230,8 @@
 
 .insert-location .tag-input {
     line-height: 20px;
+}
+
+.insert-location textarea.ng-pristine.ng-untouched.ng-invalid.ng-invalid-required.ng-valid-maxlength {
+    padding-top: 6px;
 }

@@ -19,6 +19,10 @@
     border-radius: 5px;
 }
 
+.insert-trip .locationsByCity li.item.item-icon-right {
+    margin: 3px 10px;
+}
+
 .insert-trip .image-container {
     width: 80px;
     height: 80px;
@@ -38,9 +42,7 @@
 .insert-trip .description {
     padding-top: 5px;
     width: 170px;
-    /* height: 54px; */
     font-size: 12px;
-    font-weight: bold;
     text-overflow: ellipsis;
     overflow: hidden;
     padding-left: 5px;
@@ -99,8 +101,7 @@
 
 .insert-trip .mood-title {
     font-size: 16px;
-    line-height: 31px;
-    font-weight: normal;
+    line-height: 21px;
 }
 
 .insert-trip .required-text {
@@ -141,7 +142,6 @@ textarea.ng-dirty.ng-valid-parse.ng-touched.ng-invalid.ng-invalid-required {
     overflow: hidden;
 }
 
-
 .insert-trip .button:hover {
     color: white;
 }
@@ -156,6 +156,7 @@ textarea.ng-dirty.ng-valid-parse.ng-touched.ng-invalid.ng-invalid-required {
 .insert-trip .item-option {
     padding: 5px;
 }
+
 .insert-trip .option-label {
     font-size: 16px;
     line-height: 41px;
@@ -203,7 +204,7 @@ textarea.ng-dirty.ng-valid-parse.ng-touched.ng-invalid.ng-invalid-required {
 }
 
 .background-color-coral .insert-trip-button {
-    height: 80px;
+    height: 60px;
     font-weight: bold;
     color: #f05346;
     background-color: #fff;
@@ -225,7 +226,7 @@ textarea.ng-dirty.ng-valid-parse.ng-touched.ng-invalid.ng-invalid-required {
     float: left;
     text-align: center;
     background-color: #fff;
-    color: rgb(255,70,55);
+    color: rgb(255, 70, 55);
 }
 
 .insert-trip .button:hover {
@@ -240,7 +241,7 @@ textarea.ng-dirty.ng-valid-parse.ng-touched.ng-invalid.ng-invalid-required {
     width: 100%;
     height: 100%;
     text-align: center;
-    background-color: rgba(34,34,34,.6);
+    background-color: rgba(34, 34, 34, .6);
     padding-top: 300px;
     color: #fff;
     border-top-left-radius: 3px;
@@ -257,7 +258,7 @@ textarea.ng-dirty.ng-valid-parse.ng-touched.ng-invalid.ng-invalid-required {
     margin: 0;
     width: 12%;
     height: 44px;
-    background-size: 100%!important;
+    background-size: 100% !important;
     background-repeat: no-repeat;
 }
 
@@ -273,12 +274,21 @@ textarea.ng-dirty.ng-valid-parse.ng-touched.ng-invalid.ng-invalid-required {
 .insert-trip .button-finish {
     background: #f05346;
     color: #fff;
-    height: 80px;
+    height: 60px;
     font-weight: bold;
     font-size: 20px;
 }
 
 .insert-trip .search-location {
     border-radius: 5px;
-    margin: 0 9px 5px 9px
+    margin: 0 9px 3px 9px
+}
+
+ion-item.ion-item-insert-style.item {
+    margin: 0;
+}
+
+.insert-trip ul.list {
+    float: left;
+    width: 100%;
 }

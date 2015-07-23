@@ -7,7 +7,7 @@
             <div class="hack-for-first-element"></div>
             <ion-item ng-repeat="result in toc.results">
                 <div>
-                    <div class="item trip-title-in-results">{{result.title}}</div>
+                    <div class="item trip-title-in-results text-bold">{{result.title}}</div>
 
                     <div ng-click="toc.showTripDetail(result._id, result.userid)">
                         <!-- use ng-ig index becaus limitBy:X doesn't work-->
@@ -56,7 +56,7 @@
                         <li class="item mood-container" ng-if="result.moods">
                             <div ng-repeat="mood in result.moods">
                                 <div ng-repeat="availableMood in toc.moods |filter:mood">
-                                    <img class="result-mood" ng-src="./images/icons/{{availableMood.icon}}">
+                                    <img class="result-mood" ng-src="./images/svg/moods/black/{{availableMood.icon}}">
                                     <label class="mood-title">{{availableMood.title}}</label>
                                 </div>
                             </div>

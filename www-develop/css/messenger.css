@@ -1,6 +1,7 @@
 .list.list-inset.bottom {
-    bottom: 38px;
+    bottom: 49px;
     position: absolute;
+    margin: 0;
 }
 
 .out span.since.ng-binding {
@@ -9,7 +10,6 @@
 
 .list.list-inset.bottom {
     width: 100%;
-    margin: 0px 0px 11px 0px;
 }
 
 .messages ion-content.background-color-grey.scroll-content.ionic-scroll.has-header.has-tabs {
@@ -116,11 +116,12 @@ span.since.ng-binding {
 }
 
 .messenger-button {
-    width: 60px;
+    width: 50px;
     height: auto;
     border: none;
     float: left;
     background: white;
+    margin-top: 7px;
 }
 
 .messenger-container .my-message {
@@ -201,13 +202,15 @@ span.bubble {
 .messenger-container .item-input {
     float: left;
     width: 75%;
+    border: none;
 }
 
 .messenger-container .button {
     width: 25%;
     font-size: 12px;
     color: white;
-    background-color: rgb(51, 196, 183)
+    background-color: rgb(51, 196, 183);
+    border: none;
 }
 
 .messenger-container .emoji-overlay {
@@ -218,6 +221,11 @@ span.bubble {
     right: 25%;
     bottom: 55px;
     margin: 0 0 45px 0;
+}
+
+.messenger-container .list {
+    float: left;
+    width: 100%;
 }
 
 
