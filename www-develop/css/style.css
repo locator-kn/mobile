@@ -262,6 +262,17 @@ ion-nav-view.view-container.tab-content {
 .min-height-with-button ul {
     min-height: calc(100vh - 151px);
 }
+.min-height-with-button .list {
+    padding:0;
+    margin: 0;
+}
 .button:after {
     display: none;
+}
+.tabs {
+    padding-top: 0;
+    background-size: 100% 0;
+}
+.tabs .tab-item .icon {
+    margin-top: 7px;
 }
