@@ -1,4 +1,4 @@
-<ion-view view-title="Locations hinzufügen" class=" insert-trip pageWithBigButton"
+<ion-view view-title="Locations hinzufügen" class=" insert-trip pageWithBigButton fixed-button"
           ng-controller="SelectLocationCtrl as slc">
     <ion-content class="background-color-grey locations">
         <div class="header">
@@ -14,12 +14,14 @@
             </div>
         </div>
         <div ng-if="slc.myLocations">
-            <ul class="list">
-                <label class="item item-input search-location" ng-if="slc.myLocationsByCity.length>8">
-                    <i class="icon ion-search placeholder-icon"></i>
-                    <input class="city" type="search" placeholder="Suchen" ng-change-options='{ debounce: 1000 }'
-                           ng-model="slc.myLocation"/>
-                </label>
+
+            <label class="item item-input search-location" ng-if="slc.myLocationsByCity.length>8">
+                <i class="icon ion-search placeholder-icon"></i>
+                <input class="city" type="search" placeholder="Suchen" ng-change-options='{ debounce: 1000 }'
+                       ng-model="slc.myLocation"/>
+            </label>
+            <ul class="">
+
                 <li class="item item-icon-right" ng-repeat="location in slc.myLocationsByCity | filter: slc.myLocation"
                     ng-class="location.selected ? 'selected-location' : ''">
                     <div class="image-container" ui-sref='tab.offer-locations-detail({ locationId: location._id})'>
@@ -46,7 +48,7 @@
                 </li>
             </ul>
         </div>
-        <div ng-if="!slc.myLocations">
+        <div ng-if="!slc.myLocations" style="margin: -3px 0 0; float:left; width: 100%">
 
             <label class="item item-input search-location" ng-if="slc.locationsByCity.length>8">
                 <i class="icon ion-search placeholder-icon"></i>
@@ -57,7 +59,7 @@
 
 
 
-            <ul class="list locationsByCity">
+            <ul class="locationsByCity">
 
 
                 <ion-item collection-repeat="location in slc.locationsByCity | filter: slc.location" class="ion-item-insert-style">
