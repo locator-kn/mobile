@@ -1,7 +1,7 @@
-<ion-view view-title="Locate" hide-back-button="true" class="insert-location background-color-dark"
+<ion-view view-title="Locate" class="insert-location background-color-dark"
           ng-controller="InsertLocationCtrl as ilc" ng-class="authenticated ? 'pageWithBigButton' : ''">
     <ion-nav-buttons side="left ">
-        <i class="icon ion-ios-arrow-back ion-chevron-left" ui-sref="tab.welcome"></i>
+        <i class="icon ion-ios-arrow-back ion-chevron-left" ui-sref="tab.welcome" ng-if="!ilc.edit"></i>
     </ion-nav-buttons>
     <form novalidate name="ilc.form" id="insertLocationForm">
         <ion-content class="my-has-tabs" ng-class="!authenticated ? 'not-auth-background' : ''">
