@@ -1,4 +1,4 @@
-<ion-view class="profile" view-title="Profile" hide-back-button="true" ng-controller="UserCtrl as uc">
+<ion-view class="profile" view-title="Übersicht" hide-back-button="true" ng-controller="UserCtrl as uc">
     <ion-nav-buttons side="left ">
         <i class="icon ion-ios-arrow-back ion-chevron-left" ui-sref="tab.welcome"></i>
     </ion-nav-buttons>
@@ -11,7 +11,7 @@
                         <span class="username">{{uc.user.name}}</span>
                     </li>
                     <li class="item item-icon-right" ui-sref="tab.profile-description({userId:userID})">
-                        Beschreibung
+                        Mein Profil
                         <i class="icon ion-chevron-right icon-accessory"></i>
                     </li>
                     <li class="item item-icon-right" ui-sref="tab.profile-trips({userId:userID})">

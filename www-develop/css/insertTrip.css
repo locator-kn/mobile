@@ -207,7 +207,7 @@ textarea.ng-dirty.ng-valid-parse.ng-touched.ng-invalid.ng-invalid-required {
 }
 
 .background-color-coral .insert-trip-button {
-    height: 80px;
+    height: 60px;
     font-weight: bold;
     color: #f05346;
     background-color: #fff;
@@ -277,7 +277,7 @@ textarea.ng-dirty.ng-valid-parse.ng-touched.ng-invalid.ng-invalid-required {
 .insert-trip .button-finish {
     background: #f05346;
     color: #fff;
-    height: 80px;
+    height: 60px;
     font-weight: bold;
     font-size: 20px;
 }
