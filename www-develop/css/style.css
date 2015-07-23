@@ -162,7 +162,7 @@ body {
 }
 
 .pageWithBigButton ion-content {
-    margin-bottom: 59px;
+    margin-bottom: 0;
 
 }
 
@@ -252,7 +252,7 @@ ion-nav-view.view-container.tab-content {
 }
 
 .min-height-with-button .scroll {
-    min-height: calc(100vh - 91px)
+    min-height: calc(100vh - 92px)
 }
 .min-height-with-button .button-bottom {
     position: inherit;
@@ -260,5 +260,8 @@ ion-nav-view.view-container.tab-content {
     margin:0;
 }
 .min-height-with-button ul {
-    min-height: calc(100vh - 171px);
+    min-height: calc(100vh - 151px);
+}
+.button:after {
+    display: none;
 }
