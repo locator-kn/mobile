@@ -149,7 +149,7 @@ body {
 }
 
 .pageWithBigButton ion-content {
-    margin-bottom: 60px;
+    margin-bottom: 59px;
 
 }
 
@@ -221,4 +221,9 @@ ion-nav-view.view-container.tab-content {
 
 .emoji {
     vertical-align: middle;
+}
+
+
+.fix-item-height {
+    height: 54px;
 }
