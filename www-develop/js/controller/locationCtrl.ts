@@ -46,9 +46,8 @@ module Controller {
         deleteLocation() {
             var confirmPopup = this.getConfirmPopup('Location löschen',
                 'Bist du dir sicher, dass du deine Location löschen möchtest?', 'Abbrechen', 'OK');
-            confirmPopup.then(function (res) {
+            confirmPopup.then((res) => {
                 if (res) {
-
                     this.LocationService.deleteLocation(this.result._id)
                         .then(result => {
                             this.showSuccessPopup()
@@ -57,7 +56,7 @@ module Controller {
                             //location is used in trip
                             var confirmPopup = this.getConfirmPopup('Location löschen',
                                 'Die Location wird in einem Trip verwendet. Wirklich löschen?', 'Nein', 'Ja');
-                            confirmPopup.then(function (res) {
+                            confirmPopup.then((res) => {
                                 if (res) {
                                     this.LocationService.deleteLocationForce(this.result._id)
                                         .then(result => {
@@ -70,14 +69,14 @@ module Controller {
                             })
 
                         });
-                } else {
-                    // do nothing
                 }
             });
         }
 
         showSuccessPopup() {
-            //// TODO: show popup with info that location is deleted
+            var alertPopup = this.$ionicPopup.alert({
+                template: 'Location erfolgreich gelöscht'
+            });
         }
 
         getConfirmPopup(title, textMsg, textNo, textYes) {
