@@ -149,8 +149,7 @@ body {
 }
 
 .pageWithBigButton ion-content {
-    margin-bottom: 79px;
-
+    margin-bottom: 0;
 }
 
 .button-bottom {
@@ -216,4 +215,16 @@ ion-nav-view.view-container.tab-content {
 
 .toggle .track {
     border-color: white;
+}
+
+.min-height-with-button .scroll {
+    min-height: calc(100vh - 91px)
+}
+.min-height-with-button .button-bottom {
+    position: inherit;
+    bottom: 0;
+    margin:0;
+}
+.min-height-with-button ul {
+    min-height: calc(100vh - 171px);
 }
