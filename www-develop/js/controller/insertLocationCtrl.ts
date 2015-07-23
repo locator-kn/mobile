@@ -44,7 +44,7 @@ module Controller {
                 this.LocationService.getLocationById($stateParams.locationId).then((result) => {
                     this.result = result.data;
                     if(result.data.images.picture) {
-                        this.headerImagePath = this.basePath + result.data.images.picture;
+                        this.headerImagePath = result.data.images.picture;
                     } else {
                         this.headerImagePath = result.data.images.googlemap;
                     }
