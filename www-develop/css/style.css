@@ -33,6 +33,7 @@ body {
 .signika input,
 .signika ion-content {
     font-family: Signika !important;
+    font-weight: 200;
 }
 
 
@@ -104,7 +105,7 @@ body {
 }
 
 .text-bold {
-    font-weight: bold;
+    font-weight: normal !important;
 }
 
 .background-color-grey {
