@@ -65,14 +65,56 @@ module Controller {
             });
             confirmPopup.then(function (res) {
                 if (res) {
-                    // TODO: delete location
 
+                    this.LocationService.deleteLocation(this.result._id)
+                        .then(result => {
+                            this.showSuccessPopup()
+                        })
+                        .catch(result => {
+                            //location is used in trip
+                            var confirmPopup = this.$ionicPopup.confirm({
+                                title: 'Location löschen',
+                                template: 'Die Location wird in einem Trip verwendet. Trotzdem löschen?',
+                                buttons: [{ // Array[Object] (optional). Buttons to place in the popup footer.
+                                    text: 'Abbrechen',
+                                    type: 'button-default',
+                                    onTap: function (e) {
+                                        // e.preventDefault() will stop the popup from closing when tapped.
+                                        //e.preventDefault();
+                                    }
+                                }, {
+                                    text: 'OK',
+                                    type: 'button-positive',
+                                    onTap: function (e) {
+                                        // Returning a value will cause the promise to resolve with the given value.
+                                        return true;
+                                    }
+                                }]
+                            });
+                            confirmPopup.then(function (res) {
+                                if (res) {
+                                    this.LocationService.deleteLocationForce(this.result._id)
+                                        .then(result => {
+                                            this.showSuccessPopup()
+                                        })
+                                        .catch((err) => {
+                                            console.log(err);
+                                        })
+                                }
+                            })
+
+                        });
+                    //Die Location wird in einem Trip verwendet. Wirklich löschen?
                     //// TODO: show popup with info that location is deleted
                     console.log('delete location');
                 } else {
                     // do nothing
                 }
             });
+        }
+
+        showSuccessPopup() {
+
         }
 
         static controllerId:string = "LocationCtrl";
