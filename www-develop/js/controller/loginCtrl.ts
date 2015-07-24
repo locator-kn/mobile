@@ -12,7 +12,7 @@ module Controller {
         errormsg:string = '';
         successmsg:string = '';
 
-        constructor(private $rootScope, private UserService, private $scope, private $timeout, private ngFB) {
+        constructor(private $rootScope, private UserService, private $scope, private $timeout, private $cordovaOauth) {
         }
 
         closeLoginModal() {
@@ -116,39 +116,50 @@ module Controller {
 
 
         loginFacebook() {
-            this.ngFB.login({scope: 'email'}).then(
+            this.$cordovaOauth.facebook('383834701823910', ['email']).then(
                 (response:any) => {
-                    if (response.status === 'connected') {
-                        console.log('Facebook login succeeded');
-                        this.closeLoginModal();
-                        this.UserService.loginOAuth('facebook', response.authResponse.accessToken).then((userResponse) => {
-                            console.log(userResponse.data);
-                            this.getMe();
-                        });
-                        /*this.UserService.loginFacebook(response.authResponse.accessToken).then((userResponse) => {
-                            console.log(userResponse.data);
-                            this.getMe();
-                        });*/
-                    } else {
-                        alert('Facebook-Login ging schief!');
-                    }
+                    this.closeLoginModal();
+                    this.UserService.loginOAuth('facebook', response.access_token).then((userResponse) => {
+                        console.log(userResponse.data);
+                        this.getMe();
+                    });
                 }).catch((err)=> {
                     console.log(err);
                 });
         }
 
         loginGoogle() {
-            var myParams = {
+            this.$cordovaOauth.google("749476331872-e4dvhbqn70gbbaliepfn8rjp5if7ta4q.apps.googleusercontent.com", ["email"]).then(
+                (response:any) => {
+
+                    if (response.status === 'connected') {
+                        console.log('Facebook login succeeded');
+                        this.closeLoginModal();
+                        this.UserService.loginOAuth('google', response.authResponse.accessToken).then((userResponse) => {
+                            console.log(userResponse.data);
+                            this.getMe();
+                        });
+                        /*this.UserService.loginFacebook(response.authResponse.accessToken).then((userResponse) => {
+                         console.log(userResponse.data);
+                         this.getMe();
+                         });*/
+                    } else {
+                        alert('Facebook-Login ging schief!');
+                    }
+                }).catch((err)=> {
+                    console.log(err);
+                });
+            /*var myParams = {
                 'clientid': '749476331872-e4dvhbqn70gbbaliepfn8rjp5if7ta4q.apps.googleusercontent.com',
                 'cookiepolicy': 'single_host_origin',
                 'callback': this.loginGoogleCallback,
                 'approvalprompt': 'force',
                 'scope': 'https://www.googleapis.com/auth/plus.profile.emails.read'
             };
-            gapi.auth.signIn(myParams);
+            gapi.auth.signIn(myParams);*/
         }
 
-        loginGoogleCallback = (response) => {
+        /*loginGoogleCallback = (response) => {
             if (response['status']['signed_in']) {
                 console.log('Google login success!');
                 this.UserService.loginOAuth('google', response['access_token']).then((userResponse) => {
@@ -158,7 +169,7 @@ module Controller {
             } else {
                 alert('Google-Login ging schief!');
             }
-        }
+        }*/
 
         static controllerId:string = "LoginCtrl";
     }
