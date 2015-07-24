@@ -14,7 +14,7 @@
                 </div>
                 <label class="public">öffentlich</label>
                 <img class="icon" ng-src="images/icons/icons_stuff/cross.png" ng-click="lc.deleteLocation()">
-                <img class="icon" ng-src="images/icons/icons_stuff/pencil.png"
+                <img class="icon edit" ng-src="images/icons/icons_stuff/pencil.png"
                      ui-sref="tab.profile-locations-detail-edit({locationId:lc.result._id})">
             </li>
             <div class="image-container" ng-if="lc.result.images.picture"
