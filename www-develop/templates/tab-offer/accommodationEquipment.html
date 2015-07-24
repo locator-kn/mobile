@@ -1,7 +1,7 @@
 <ion-view view-title="Wohnung" class="pageWithBigButton insert-trip" ng-controller="AccommodationEquipmentCtrl as aec">
     <ion-content class="background-color-grey equipment min-height-with-button">
         <div>
-            <ul class="list">
+            <ul class="list" ng-style="settings.minHeighWithBtnUl">
                 <li class="item" ng-repeat="equipment in aec.availableAccommodationEquipment">
                     <img class="result-mood" ng-src="./images/icons/{{equipment.icon}}">
                     <span>{{equipment.title}}</span>

@@ -18,7 +18,7 @@
                         <img class="image" src="images/svg/upload_kamera_icon.svg">
                     </a>
                 </div>
-                <ul>
+                <ul ng-style="settings.minHeighWithBtnUl">
                 <li ng-class="{'error' : (ilc.error) && ilc.form.locationTitle.$error.required}"
                     class="item item-input fix-item-height">
                     <input maxlength="40" type="text" ng-model="ilc.locationFormDetails.title" name="locationTitle"

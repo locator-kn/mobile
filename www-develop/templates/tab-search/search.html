@@ -4,7 +4,7 @@
         <i class="icon ion-ios-arrow-back ion-chevron-left" ui-sref="tab.welcome"></i>
     </ion-nav-buttons>
     <ion-content class="my-has-tabs gradient-blue min-height-with-button">
-        <ul>
+        <ul ng-style="settings.minHeighWithBtnUl">
         <!-- if more then 1 city available-->
         <li ng-if="!sc.onlyOneCity" class="item item-icon-right" ui-sref="tab.search-city">
             {{sc.city.title || "Wo willst du hin?"}}&nbsp;

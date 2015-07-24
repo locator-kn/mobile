@@ -2,11 +2,11 @@
           class="insert-trip background-color-coral" ng-class="authenticated ? 'pageWithBigButton' : ''"
           ng-controller="InsertTripCtrl as itc">
     <ion-nav-buttons side="left">
-        <i   ng-if="!itc.edit" class="icon ion-ios-arrow-back ion-chevron-left" ui-sref="tab.welcome"></i>
+        <i   ng-if="!itc.edit" class="icon ion-ios-arrow-back ion-chevron-left " ui-sref="tab.welcome"></i>
     </ion-nav-buttons>
     <ion-content class="gradient-red min-height-with-button" ng-class="!authenticated ? 'not-auth-background' : ''">
         <div ng-if="authenticated">
-            <ul>
+            <ul ng-style="settings.minHeighWithBtnUl">
             <!--<ul class="list">-->
                 <!-- if only 1 city available-->
                 <li ng-if="itc.onlyOneCity" class="item item-icon-right">
