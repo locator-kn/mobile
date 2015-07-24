@@ -28,6 +28,27 @@ ui-gmap-google-map.google-map.angular-google-map {
 
 .location-overview .item-complex .item-content {
     padding: 0;
+    background: none;
+}
+
+.location-overview .item {
+    margin: 3px 10px;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.location-overview .ion-item-insert-style {
+    padding: 0;
+    border: 0;
+}
+
+.location-wrapper {
+    border-radius: 5px;
+    padding: 5px;
+    margin: 3px 10px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid black;
 }
 
 .location .toggle .track {
@@ -51,4 +72,12 @@ ui-gmap-google-map.google-map.angular-google-map {
 .location .icon {
     width: 33px;
     float: right;
+}
+
+.location ul.list {
+    padding-top: 0;
+}
+
+.location .image-container:nth-child(2) {
+    height: auto;
 }
