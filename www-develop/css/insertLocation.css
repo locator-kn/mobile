@@ -158,7 +158,7 @@
 
 .background-color-dark .button-insert-location {
     height: 60px;
-    font-weight: bold;
+    font-weight: 500;
     color: rgb(34, 34, 34);
     background-color: #fff;
     font-size: 20px;
@@ -237,4 +237,8 @@
 
 .insert-location textarea.ng-pristine.ng-untouched.ng-invalid.ng-invalid-required.ng-valid-maxlength {
     padding-top: 6px;
+}
+
+.location-overview ion-content {
+    padding-top: 15px;
 }

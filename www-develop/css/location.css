@@ -26,6 +26,31 @@ ui-gmap-google-map.google-map.angular-google-map {
     white-space: initial;
 }
 
+.location-overview .item-complex .item-content {
+    padding: 0;
+    background: none;
+}
+
+.location-overview .item {
+    margin: 3px 10px;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.location-overview .ion-item-insert-style {
+    padding: 0;
+    border: 0;
+}
+
+.location-wrapper {
+    border-radius: 5px;
+    padding: 5px;
+    margin: 3px 10px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
 .location .toggle .track {
     border-color: #444;
 }
@@ -55,4 +80,12 @@ ui-gmap-google-map.google-map.angular-google-map {
 
 .location .icon.edit {
     margin-right: 8px;
+}
+
+.location ul.list {
+    padding-top: 0;
+}
+
+.location .image-container:nth-child(2) {
+    height: auto;
 }
