@@ -149,6 +149,7 @@
 
 .background-color-dark .toggle.toggle-dark input:checked + .track {
     background-color: #fff;
+    border-color: #fff;
 }
 
 .background-color-dark .toggle .track {
@@ -166,6 +167,7 @@
     color: rgb(34, 34, 34);
     background-color: #fff;
     font-size: 20px;
+    border: 0;
 }
 
 .insert-trip .button-select-locations {
