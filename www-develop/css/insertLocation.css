@@ -162,6 +162,7 @@
     color: rgb(34, 34, 34);
     background-color: #fff;
     font-size: 20px;
+    border: 0;
 }
 
 .insert-trip .button-select-locations {
