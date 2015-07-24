@@ -175,6 +175,8 @@ body {
     bottom: 38px;
     position: absolute;
     border: none;
+    font-size: 18px;
+    font-weight: 600 !important;
 }
 
 .mood span.ng-binding {
