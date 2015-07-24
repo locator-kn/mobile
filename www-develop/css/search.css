@@ -45,7 +45,7 @@
 }
 
 
-.toggle.toggle-dark input:checked + .track {
+.search .toggle.toggle-dark input:checked + .track {
     background-color: #3eb9ad;
     border-color: transparent;
 }

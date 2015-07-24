@@ -484,6 +484,22 @@ angular.module('starter', deps)
                     }
                 }
             })
+            .state('tab.profile-locations-detail-edit', {
+                url: '/profile/my/locations/:locationId/edit',
+                views: {
+                    'tab-profile': {
+                        templateUrl: 'templates/tab-locate/insert-location.html'
+                    }
+                }
+            })
+            .state('tab.profile-locations-detail-edit-position', {
+                url: '/profile/my/locations/:locationId/edit/position',
+                views: {
+                    'tab-profile': {
+                        templateUrl: 'templates/tab-locate/google-maps.html'
+                    }
+                }
+            })
             .state('tab.profile-settings', {
                 url: '/profile/:userId/settings',
                 views: {
