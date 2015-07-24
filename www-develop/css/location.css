@@ -26,12 +26,67 @@ ui-gmap-google-map.google-map.angular-google-map {
     white-space: initial;
 }
 
-.item-input textarea {
-    height: 40px;
-    transition-duration: 0.3s;
-    transition-timing-function: ease-out;
+.location-overview .item-complex .item-content {
+    padding: 0;
+    background: none;
 }
 
-.item-input textarea:focus {
-    height: 100px;
+.location-overview .item {
+    margin: 3px 10px;
+    padding: 5px;
+    border-radius: 5px;
 }
+
+.location-overview .ion-item-insert-style {
+    padding: 0;
+    border: 0;
+}
+
+.location-wrapper {
+    border-radius: 5px;
+    padding: 5px;
+    margin: 3px 10px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
+.location .toggle .track {
+    border-color: #444;
+}
+
+.location .config {
+    padding: 7px 13px 5px 13px;
+}
+
+.location .my-toggle {
+    float: left;
+}
+
+.location .public {
+    float: left;
+    margin-left: 10px;
+    margin-top: 6px;
+}
+
+.location .icon {
+    width: 33px;
+    float: right;
+}
+
+.location .the-toggle {
+    padding-top: 3px;
+}
+
+.location .icon.edit {
+    margin-right: 8px;
+}
+
+.location ul.list {
+    padding-top: 0;
+}
+
+.location .image-container:nth-child(2) {
+    height: auto;
+}
+

@@ -1,14 +1,13 @@
-<ion-view view-title="Locate" hide-back-button="true" class="insert-location background-color-dark"
+<ion-view view-title="Locate" class="insert-location"
           ng-controller="InsertLocationCtrl as ilc" ng-class="authenticated ? 'pageWithBigButton' : ''">
     <ion-nav-buttons side="left ">
-        <i class="icon ion-ios-arrow-back ion-chevron-left" ui-sref="tab.welcome"></i>
+        <i class="icon ion-ios-arrow-back ion-chevron-left" ui-sref="tab.welcome" ng-if="!ilc.edit"></i>
     </ion-nav-buttons>
     <form novalidate name="ilc.form" id="insertLocationForm">
-        <ion-content class="my-has-tabs min-height-with-button" ng-class="!authenticated ? 'not-auth-background' : ''">
+        <ion-content class="white my-has-tabs" ng-class="!authenticated ? 'not-auth-background' : ''">
             <div ng-if="authenticated">
                 <div class="location-image">
-                    <div class="image-container" ng-if="!ilc.headerImagePath"
-                         style="background-image: url('images/header-image-placeholder.png');background-size: cover">
+                    <div class="image-container" ng-if="!ilc.headerImagePath">
                     </div>
 
                     <div class="image-container" ng-if="ilc.headerImagePath"
@@ -18,54 +17,45 @@
                         <img class="image" src="images/svg/upload_kamera_icon.svg">
                     </a>
                 </div>
-                <ul>
-                    <li ng-class="{'error' : (ilc.error) && ilc.form.locationTitle.$error.required}"
-                        class="item item-input fix-item-height">
-                        <input maxlength="40" type="text" ng-model="ilc.locationFormDetails.title" name="locationTitle"
-                               placeholder="Gib der Location einen Titel" required>
-                    </li>
-                    <li ng-class="{'error' : (ilc.error) && ilc.form.locationDescription.$error.required}"
-                        class="item item-input">
-                    <textarea maxlength="300" ng-model="ilc.locationFormDetails.description" rows="4" type="input"
-                              name="locationDescription"
-                              placeholder="Beschreibe die Location" required></textarea>
-                    </li>
-                    <li ng-class="{'error' : (ilc.error) && ilc.form.locationTags.$error.required}"
-                        class="item item-input">
-                        <!--<tags-input ngKeypress maxlength="300" add-on-space="true" add-on-comma="true" style="width: 100%"-->
-                                    <!--ng-class="{'error' : ilc.error && ilc.locationFormDetails.tags.length < 1}"-->
-                                    <!--placeholder="+ Füge aussagekräftige Tags hinzu"-->
-                                    <!--ng-model="ilc.locationFormDetails.tags"></tags-input>-->
-                        <textarea ng-model="ilc.locationFormDetails.tags" class="tag-input" maxlength="300" type="input" placeholder="Füge Tags hinzu - z.B. Bar günstig Strand &#10;(durch Leerzeichen getrennt)" rows="3" required></textarea>
-                    </li>
+                <li ng-class="{'error' : (ilc.error) && ilc.form.locationTitle.$error.required}"
+                    class="item item-input fix-item-height">
+                    <input maxlength="40" type="text" ng-model="ilc.locationFormDetails.title" name="locationTitle"
+                           placeholder="Gib der Location einen Titel" required>
+                </li>
 
-                    <li class="item item-icon-right" ng-click="ilc.goToMap()">
-                        {{!ilc.mapMarkerSet ? 'Wo befindet sich die Location?' : 'Position ändern'}}
-                        <i class="icon ion-chevron-right icon-accessory"></i>
-                    </li>
 
-                    <li class="item item-toggle">
-                        Location öffentlich
-                        <label class="toggle toggle-dark toggle-assertive"
-                               ng-click="ilc.locationFormDetails.public = ! ilc.locationFormDetails.public">
+                <li class="item item-icon-right" ng-click="ilc.goToMap()">
+                    {{!ilc.mapMarkerSet ? 'Wo befindet sich die Location?' : 'Position ändern'}}
+                    <i class="icon ion-chevron-right icon-accessory"></i>
+                </li>
 
-                            <input type="checkbox">
+                <li class="item item-toggle">
+                    Location öffentlich
+                    <label class="toggle toggle-dark toggle-assertive">
+                        <input type="checkbox" ng-model="ilc.locationFormDetails.public">
 
-                            <div class="track">
-                                <div class="handle"></div>
-                            </div>
-                        </label>
-                    </li>
-                </ul>
-                <button ng-if="authenticated"
-                        class="button-bottom button button-insert-location gps-button bottom button-full button-bottom fixed-button-bottom"
-                        type="submit"
-                        ng-click="ilc.saveLocation()"
-                        ng-disabled="!(ilc.locationFormDetails.title && ilc.locationFormDetails.description && ilc.locationFormDetails.tags.length > 0 && ilc.mapMarkerSet)">
-                    LOCATION ERSTELLEN
-                </button>
+                        <div class="track">
+                            <div class="handle"></div>
+                        </div>
+                    </label>
+                </li>
+
+                <li ng-class="{'error' : (ilc.error) && ilc.form.locationDescription.$error.required}"
+                    class="item item-input">
+                <textarea maxlength="300" ng-model="ilc.locationFormDetails.description" rows="4" type="input"
+                          name="locationDescription" class="description"
+                          placeholder="Beschreibe die Location" required></textarea>
+                </li>
+                <li ng-class="{'error' : (ilc.error) && ilc.form.locationTags.$error.required}"
+                    class="item item-input">
+                    <!--<tags-input ngKeypress maxlength="300" add-on-space="true" add-on-comma="true" style="width: 100%"-->
+                    <!--ng-class="{'error' : ilc.error && ilc.locationFormDetails.tags.length < 1}"-->
+                    <!--placeholder="+ Füge aussagekräftige Tags hinzu"-->
+                    <!--ng-model="ilc.locationFormDetails.tags"></tags-input>-->
+                    <textarea ng-model="ilc.locationFormDetails.tags" class="tag-input" maxlength="300" type="input" placeholder="Füge Tags hinzu - z.B. Bar günstig Strand &#10;(durch Leerzeichen getrennt)" rows="3" required></textarea>
+                </li>
+
             </div>
-
             <div ng-if="!authenticated" class="no-register">
                 <div class="not-auth-container">
                     <div class="image-container-full"
@@ -77,7 +67,13 @@
             </div>
         </ion-content>
         <!--<li class="item create">-->
-
+            <button ng-if="authenticated"
+                    class="button-bottom button button-insert-location gps-button bottom button-full button-bottom fixed-button-bottom"
+                    type="submit"
+                    ng-click="ilc.saveLocation()"
+                    ng-disabled="!(ilc.locationFormDetails.title && ilc.locationFormDetails.description && ilc.locationFormDetails.tags.length > 0 && ilc.mapMarkerSet)">
+                {{!ilc.edit ? 'LOCATION ERSTELLEN' : 'LOCATION AKTUALISIEREN'}}
+            </button>
         <!--</li>-->
     </form>
 </ion-view>

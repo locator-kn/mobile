@@ -3,7 +3,7 @@
     height: 125px;
     display: block;
     border-radius: 50%;
-    margin: 10px auto 30px;
+    margin: 10px auto 20px;
 }
 
 .profile .username {
@@ -11,6 +11,7 @@
     display: block;
     font-weight: bold;
     color: rgb(51, 196, 183);
+    margin-bottom: 20px;
 }
 
 .profile .config-button {

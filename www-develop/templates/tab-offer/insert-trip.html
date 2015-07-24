@@ -1,19 +1,18 @@
-<ion-view view-title="Trip einstellen" cache-view="false"
+<ion-view view-title="Trip einstellen"
           class="insert-trip background-color-coral" ng-class="authenticated ? 'pageWithBigButton' : ''"
           ng-controller="InsertTripCtrl as itc">
     <ion-nav-buttons side="left">
-        <i   ng-if="!itc.edit" class="icon ion-ios-arrow-back ion-chevron-left" ui-sref="tab.welcome"></i>
+        <i ng-if="!itc.edit" class="icon ion-ios-arrow-back ion-chevron-left" ui-sref="tab.welcome"></i>
     </ion-nav-buttons>
-    <ion-content class="gradient-red min-height-with-button" ng-class="!authenticated ? 'not-auth-background' : ''">
+    <ion-content class="gradient-red" ng-class="!authenticated ? 'not-auth-background' : ''">
         <div ng-if="authenticated">
-            <ul>
-            <!--<ul class="list">-->
+            <ul class="list">
                 <!-- if only 1 city available-->
                 <li ng-if="itc.onlyOneCity" class="item item-icon-right">
                     {{itc.city.title || "Wo willst du hin?"}}&nbsp;
                 </li>
                 <!-- if more then 1 city available-->
-                <li ng-if="!itc.onlyOneCity" class="item item-icon-right"  ng-click="itc.selectCity()">
+                <li ng-if="!itc.onlyOneCity" class="item item-icon-right" ng-click="itc.selectCity()">
                     {{itc.city.title || "Wo willst du hin?" }}&nbsp;
                     <i class="icon ion-chevron-right icon-accessory"></i>
                 </li>
@@ -22,7 +21,8 @@
                     <i class="icon ion-chevron-right icon-accessory"></i>
 
                     <div ng-if="itc.moodAvailable">
-                        <img class="result-mood chosen-mood" ng-src="./images/svg/moods/white/{{itc.selectedMood.icon_white}}">
+                        <img class="result-mood chosen-mood"
+                             ng-src="./images/svg/moods/white/{{itc.selectedMood.icon_white}}">
                         <label class="mood-title">{{itc.selectedMood.title}}</label>
                     </div>
                 </li>
@@ -68,12 +68,6 @@
                     <i class="icon ion-chevron-right icon-accessory"></i>
                 </li>
             </ul>
-            <button ng-if="authenticated" ng-click="itc.selectLocations()"
-                    ng-disabled="!(itc.city.title && itc.moodAvailable && (itc.selectedDays > 0))"
-                    class="button-bottom button button-full background-coral bottom item-icon-right insert-trip-button">
-                LOCATION'S HINZUFÜGEN
-                <i class="icon ion-chevron-right icon-accessory"></i>
-            </button>
         </div>
         <div ng-if="!authenticated" class="no-register">
             <div class="not-auth-container">
@@ -85,5 +79,10 @@
             </div>
         </div>
     </ion-content>
-
+    <button ng-if="authenticated" ng-click="itc.selectLocations()"
+            ng-disabled="!(itc.city.title && itc.moodAvailable && (itc.selectedDays > 0))"
+            class="button-bottom button button-full background-coral bottom item-icon-right insert-trip-button">
+        LOCATIONS HINZUFÜGEN
+        <i class="icon ion-chevron-right icon-accessory"></i>
+    </button>
 </ion-view>
