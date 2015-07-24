@@ -70,7 +70,7 @@
                     type="submit"
                     ng-click="ilc.saveLocation()"
                     ng-disabled="!(ilc.locationFormDetails.title && ilc.locationFormDetails.description && ilc.locationFormDetails.tags.length > 0 && ilc.mapMarkerSet)">
-                LOCATION ERSTELLEN
+                {{!ilc.edit ? 'LOCATION ERSTELLEN' : 'LOCATION AKTUALISIEREN'}}
             </button>
         <!--</li>-->
     </form>
