@@ -129,23 +129,13 @@ module Controller {
         }
 
         loginGoogle() {
-            this.$cordovaOauth.google("749476331872-e4dvhbqn70gbbaliepfn8rjp5if7ta4q.apps.googleusercontent.com", ["email"]).then(
+            this.$cordovaOauth.google('749476331872-e4dvhbqn70gbbaliepfn8rjp5if7ta4q.apps.googleusercontent.com', ['email']).then(
                 (response:any) => {
-
-                    if (response.status === 'connected') {
-                        console.log('Facebook login succeeded');
-                        this.closeLoginModal();
-                        this.UserService.loginOAuth('google', response.authResponse.accessToken).then((userResponse) => {
-                            console.log(userResponse.data);
-                            this.getMe();
-                        });
-                        /*this.UserService.loginFacebook(response.authResponse.accessToken).then((userResponse) => {
-                         console.log(userResponse.data);
-                         this.getMe();
-                         });*/
-                    } else {
-                        alert('Facebook-Login ging schief!');
-                    }
+                    this.closeLoginModal();
+                    this.UserService.loginOAuth('google', response.access_token).then((userResponse) => {
+                        console.log(userResponse.data);
+                        this.getMe();
+                    });
                 }).catch((err)=> {
                     console.log(err);
                 });
