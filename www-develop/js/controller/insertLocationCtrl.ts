@@ -43,7 +43,7 @@ module Controller {
                 this.edit = true;
                 this.LocationService.getLocationById($stateParams.locationId).then((result) => {
                     this.result = result.data;
-                    if(result.data.images.picture) {
+                    if (result.data.images.picture) {
                         this.headerImagePath = result.data.images.picture;
                     } else {
                         this.headerImagePath = result.data.images.googlemap;
@@ -51,7 +51,7 @@ module Controller {
                     this.documentId = result.data._id;
                     this.locationFormDetails.title = result.data.title;
                     var tags = result.data.tags.toString();
-                    this.locationFormDetails.tags =tags.replace(/,/g , " ");
+                    this.locationFormDetails.tags = tags.replace(/,/g, " ");
                     this.locationFormDetails.description = result.data.description;
                     this.locationFormDetails.city = result.data.city;
                     this.locationFormDetails.public = result.data.public;
@@ -223,26 +223,36 @@ module Controller {
 
             formValues.tags = formValues.tags.split(" ");
             /*var stringTags = [];
-            formValues.tags.forEach(item => {
-                stringTags.push(item.text);
-            });
-            formValues.tags = stringTags;*/
+             formValues.tags.forEach(item => {
+             stringTags.push(item.text);
+             });
+             formValues.tags = stringTags;*/
 
             this.GeolocationService.saveLocation(formValues, this.documentId).
                 then((result) => {
-                    if (this.headerImagePath) {
-                        var pic = this.headerImagePath + '?size=mobile';
-                    } else {
-                        var pic = 'images/header-image-placeholder.png';
-                    }
-                    var info = {
-                        tripId: result.data.id,
-                        picture: pic
-                    };
-                    this.GeolocationService.setResultInfoObject(info);
-                    this.$state.go('tab.locate-options');
+                    if (!this.edit) {
+                        if (this.headerImagePath) {
+                            var pic = this.headerImagePath + '?size=mobile';
+                        } else {
+                            var pic = 'images/header-image-placeholder.png';
+                        }
+                        var info = {
+                            tripId: result.data.id,
+                            picture: pic
+                        };
+                        this.GeolocationService.setResultInfoObject(info);
+                        this.$state.go('tab.locate-options');
 
-                    this.documentWasCreated = true;
+                        this.documentWasCreated = true;
+                    } else {
+                        var alertPopup = this.$ionicPopup.alert({
+                            template: 'Location erfolgreich aktualisiert'
+                        });
+
+                        this.$state.go('tab.profile', {
+                            userId: this.me._id
+                        });
+                    }
                     this.resetController();
 
                 }).catch((err) => {
@@ -283,7 +293,7 @@ module Controller {
                 return;
             }
             this.$ionicLoading.show({templateUrl: 'templates/static/loading.html', duration: this.maxSpinningDuration});
-            if(!this.edit){
+            if (!this.edit) {
                 this.$state.go('tab.locate-position');
             } else {
                 this.$state.go('tab.profile-locations-detail-edit-position', {
