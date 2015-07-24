@@ -241,3 +241,7 @@
 .location-overview ion-content {
     padding-top: 15px;
 }
+
+.gradient-black .item {
+    background: none;
+}
