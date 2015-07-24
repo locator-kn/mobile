@@ -29,3 +29,26 @@ ui-gmap-google-map.google-map.angular-google-map {
 .location-overview .item-complex .item-content {
     padding: 0;
 }
+
+.location .toggle .track {
+    border-color: #444;
+}
+
+.location .config {
+    padding: 7px 13px;
+}
+
+.location .my-toggle {
+    float: left;
+}
+
+.location .public {
+    float: left;
+    margin-left: 10px;
+    margin-top: 6px;
+}
+
+.location .icon {
+    width: 33px;
+    float: right;
+}

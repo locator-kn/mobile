@@ -1,7 +1,19 @@
 @font-face {
     font-family: 'Signika';
-    src: url('../fonts/Signika-Regular.ttf') format('truetype'),
-    url('../fonts/Signika-Bold.ttf') format('truetype');
+    src: url('../fonts/Signika-Regular.ttf') format('truetype');
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'Signika';
+    src: url('../fonts/Signika-Bold.ttf') format('truetype');
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: 'Signika';
+    src: url('../fonts/Signika-Light.ttf') format('truetype');
+    font-weight: 200;
 }
 
 * {
@@ -21,6 +33,7 @@ body {
 .signika input,
 .signika ion-content {
     font-family: Signika !important;
+    font-weight: 200;
 }
 
 
@@ -92,7 +105,7 @@ body {
 }
 
 .text-bold {
-    font-weight: bold;
+    font-weight: normal !important;
 }
 
 .background-color-grey {
@@ -159,13 +172,12 @@ body {
 }
 
 .mood span.ng-binding {
-    line-height: 34px;
+    line-height: 38px;
 }
 
 .mood .ion-plus-circled:before {
     line-height: 34px;
 }
-
 
 .insert-trip .not-auth-background,
 .insert-location .not-auth-background {
@@ -218,12 +230,23 @@ ion-nav-view.view-container.tab-content {
     border-color: white;
 }
 
-
 .emoji {
     vertical-align: middle;
 }
 
-
 .fix-item-height {
     height: 54px;
+}
+
+.chosen-mood {
+    margin-top: -11px !important;
+    margin-left: -6px;
+}
+
+.moods .item{
+    padding: 10px;
+}
+
+.moods .mood img.result-mood {
+    margin-top: -1px;
 }

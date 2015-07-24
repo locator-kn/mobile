@@ -40,6 +40,8 @@
 
 .insert-location textarea {
     background-color: transparent;
+    padding-right: 5px;
+
 }
 
 .insert-location .invisible {

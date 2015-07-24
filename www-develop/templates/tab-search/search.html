@@ -1,4 +1,4 @@
-<ion-view class="welcome pageWithBigButton background-color-cyan" hide-back-button="true" view-title="Suche"
+<ion-view class="welcome pageWithBigButton background-color-cyan search" hide-back-button="true" view-title="Suche"
           ng-controller="SearchCtrl as sc">
     <ion-nav-buttons side="left ">
         <i class="icon ion-ios-arrow-back ion-chevron-left" ui-sref="tab.welcome"></i>
@@ -18,7 +18,7 @@
             <i class="icon ion-chevron-right icon-accessory"></i>
 
             <div ng-if="sc.moodAvailable">
-                <img class="result-mood" ng-src="./images/icons/white/{{sc.selectedMood.icon_white}}">
+                <img class="result-mood chosen-mood" ng-src="./images/svg/moods/white/{{sc.selectedMood.icon_white}}">
                 <label class="mood-title">{{sc.selectedMood.title}}</label>
             </div>
         </li>

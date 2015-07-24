@@ -42,9 +42,7 @@
 .insert-trip .description {
     padding-top: 5px;
     width: 170px;
-    /* height: 54px; */
     font-size: 12px;
-    font-weight: bold;
     text-overflow: ellipsis;
     overflow: hidden;
     padding-left: 5px;
@@ -104,7 +102,6 @@
 .insert-trip .mood-title {
     font-size: 16px;
     line-height: 21px;
-    font-weight: normal;
 }
 
 .insert-trip .required-text {

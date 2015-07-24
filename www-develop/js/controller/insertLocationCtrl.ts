@@ -32,11 +32,48 @@ module Controller {
         mapMarkerSet:boolean;
 
         error:boolean = false;
+        edit:boolean = false;
 
         constructor(private CameraService, private $scope, private basePath, private GeolocationService,
                     private UserService, private $state, private PictureUploadService, private webPath,
                     private $rootScope, private $ionicLoading, private $ionicPopup, private ngProgressLite,
-                    private $ionicScrollDelegate, private maxSpinningDuration) {
+                    private $ionicScrollDelegate, private maxSpinningDuration, private LocationService, private $stateParams) {
+
+            if (this.$state.current.name.indexOf('edit') > -1) {
+                this.edit = true;
+                this.LocationService.getLocationById($stateParams.locationId).then((result) => {
+                    this.result = result.data;
+                    if (result.data.images.picture) {
+                        this.headerImagePath = result.data.images.picture;
+                    } else {
+                        this.headerImagePath = result.data.images.googlemap;
+                    }
+                    this.documentId = result.data._id;
+                    this.locationFormDetails.title = result.data.title;
+                    var tags = result.data.tags.toString();
+                    this.locationFormDetails.tags = tags.replace(/,/g, " ");
+                    this.locationFormDetails.description = result.data.description;
+                    this.locationFormDetails.city = result.data.city;
+                    this.locationFormDetails.public = result.data.public;
+                    // always true by edit location because it is required to create one
+                    this.mapMarkerSet = true;
+
+                    var map = {
+                        center: {
+                            // kn fh
+                            latitude: result.data.geotag.lat,
+                            longitude: result.data.geotag.long
+                        },
+                        zoom: 12,
+                        clickedMarker: {
+                            id: 0,
+                            latitude: result.data.geotag.lat,
+                            longitude: result.data.geotag.long
+                        }
+                    };
+                    this.GeolocationService.setGeoPosition(map);
+                })
+            }
 
             this.UserService.getMe().then(user => {
                 this.me = user.data;
@@ -186,26 +223,36 @@ module Controller {
 
             formValues.tags = formValues.tags.split(" ");
             /*var stringTags = [];
-            formValues.tags.forEach(item => {
-                stringTags.push(item.text);
-            });
-            formValues.tags = stringTags;*/
+             formValues.tags.forEach(item => {
+             stringTags.push(item.text);
+             });
+             formValues.tags = stringTags;*/
 
             this.GeolocationService.saveLocation(formValues, this.documentId).
                 then((result) => {
-                    if (this.headerImagePath) {
-                        var pic = this.headerImagePath + '?size=mobile';
-                    } else {
-                        var pic = 'images/header-image-placeholder.png';
-                    }
-                    var info = {
-                        tripId: result.data.id,
-                        picture: pic
-                    };
-                    this.GeolocationService.setResultInfoObject(info);
-                    this.$state.go('tab.locate-options');
+                    if (!this.edit) {
+                        if (this.headerImagePath) {
+                            var pic = this.headerImagePath + '?size=mobile';
+                        } else {
+                            var pic = 'images/header-image-placeholder.png';
+                        }
+                        var info = {
+                            tripId: result.data.id,
+                            picture: pic
+                        };
+                        this.GeolocationService.setResultInfoObject(info);
+                        this.$state.go('tab.locate-options');
 
-                    this.documentWasCreated = true;
+                        this.documentWasCreated = true;
+                    } else {
+                        var alertPopup = this.$ionicPopup.alert({
+                            template: 'Location erfolgreich aktualisiert'
+                        });
+
+                        this.$state.go('tab.profile', {
+                            userId: this.me._id
+                        });
+                    }
                     this.resetController();
 
                 }).catch((err) => {
@@ -246,7 +293,13 @@ module Controller {
                 return;
             }
             this.$ionicLoading.show({templateUrl: 'templates/static/loading.html', duration: this.maxSpinningDuration});
-            this.$state.go('tab.locate-position');
+            if (!this.edit) {
+                this.$state.go('tab.locate-position');
+            } else {
+                this.$state.go('tab.profile-locations-detail-edit-position', {
+                    locationId: this.result._id
+                });
+            }
         }
 
         insertLocality(locality) {
