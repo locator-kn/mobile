@@ -13,6 +13,10 @@
                             "count": 1
                         },
                         {
+                            "xml": "<feature name=\"SplashScreen\"><param name=\"android-package\" value=\"org.apache.cordova.splashscreen.SplashScreen\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
+                        },
+                        {
                             "xml": "<feature name=\"Whitelist\"><param name=\"android-package\" value=\"org.apache.cordova.whitelist.WhitelistPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
                             "count": 1
                         },
@@ -26,14 +30,6 @@
                         },
                         {
                             "xml": "<feature name=\"FileTransfer\"><param name=\"android-package\" value=\"org.apache.cordova.filetransfer.FileTransfer\" /></feature>",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<preference name=\"webView\" value=\"org.crosswalk.engine.XWalkWebViewEngine\" />",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<feature name=\"SplashScreen\"><param name=\"android-package\" value=\"org.apache.cordova.splashscreen.SplashScreen\" /><param name=\"onload\" value=\"true\" /></feature>",
                             "count": 1
                         }
                     ]
@@ -66,6 +62,9 @@
         "cordova-plugin-geolocation": {
             "PACKAGE_NAME": "com.ionicframework.locator164612"
         },
+        "cordova-plugin-splashscreen": {
+            "PACKAGE_NAME": "com.ionicframework.locator164612"
+        },
         "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "com.ionicframework.locator164612"
         },
@@ -76,12 +75,6 @@
             "PACKAGE_NAME": "com.ionicframework.locator164612"
         },
         "org.apache.cordova.file-transfer": {
-            "PACKAGE_NAME": "com.ionicframework.locator164612"
-        },
-        "cordova-plugin-crosswalk-webview": {
-            "PACKAGE_NAME": "com.ionicframework.locator164612"
-        },
-        "cordova-plugin-splashscreen": {
             "PACKAGE_NAME": "com.ionicframework.locator164612"
         }
     },
