@@ -253,17 +253,12 @@ ion-nav-view.view-container.tab-content {
     margin-top: -1px;
 }
 
-.min-height-with-button .scroll {
-    min-height: calc(100vh - 92px)
-}
 .min-height-with-button .button-bottom {
     position: inherit;
     bottom: 0;
     margin:0;
 }
-.min-height-with-button ul {
-    min-height: calc(100vh - 151px);
-}
+
 .min-height-with-button .list {
     padding:0;
     margin: 0;
