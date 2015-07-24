@@ -56,16 +56,16 @@ var deps = [
     'uiGmapgoogle-maps',
     'ngTagsInput',
     'ngCordova',
-    'ngOpenFB',
+    //'ngOpenFB',
     'ngCordovaOauth',
     'dbaq.emoji'
 ];
 
 angular.module('starter', deps)
 
-    .run(function ($ionicPlatform, ngFB) {
+    .run(function ($ionicPlatform) {
         $ionicPlatform.ready(function () {
-            ngFB.init({appId: '383834701823910'});
+            //ngFB.init({appId: '383834701823910'});
             // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
             // for form inputs)
             if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
