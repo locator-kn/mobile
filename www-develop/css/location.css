@@ -25,3 +25,7 @@ ui-gmap-google-map.google-map.angular-google-map {
 .location .description {
     white-space: initial;
 }
+
+.location-overview .item-complex .item-content {
+    padding: 0;
+}
