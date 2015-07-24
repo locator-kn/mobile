@@ -237,3 +237,7 @@
 .insert-location textarea.ng-pristine.ng-untouched.ng-invalid.ng-invalid-required.ng-valid-maxlength {
     padding-top: 6px;
 }
+
+.location-overview ion-content {
+    padding-top: 15px;
+}
