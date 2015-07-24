@@ -57,7 +57,21 @@ module Controller {
                     this.locationFormDetails.public = result.data.public;
                     // always true by edit location because it is required to create one
                     this.mapMarkerSet = true;
-                    debugger;
+
+                    var map = {
+                        center: {
+                            // kn fh
+                            latitude: result.data.geotag.lat,
+                            longitude: result.data.geotag.long
+                        },
+                        zoom: 12,
+                        clickedMarker: {
+                            id: 0,
+                            latitude: result.data.geotag.lat,
+                            longitude: result.data.geotag.long
+                        }
+                    };
+                    this.GeolocationService.setGeoPosition(map);
                 })
             }
 
@@ -269,7 +283,13 @@ module Controller {
                 return;
             }
             this.$ionicLoading.show({templateUrl: 'templates/static/loading.html', duration: this.maxSpinningDuration});
-            this.$state.go('tab.locate-position');
+            if(!this.edit){
+                this.$state.go('tab.locate-position');
+            } else {
+                this.$state.go('tab.profile-locations-detail-edit-position', {
+                    locationId: this.result._id
+                });
+            }
         }
 
         insertLocality(locality) {
