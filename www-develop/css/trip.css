@@ -48,3 +48,8 @@
     color: white;
     font-size: 20px;
 }
+
+
+.trip .mood-title {
+    line-height: 34px;
+}

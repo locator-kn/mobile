@@ -1,4 +1,4 @@
-<ion-view class="profile" ng-class="!uc.me ? 'pageWithBigButton' : ''" view-title="Beschreibung"
+<ion-view class="profile" ng-class="!uc.me ? 'pageWithBigButton' : ''" view-title="Profil"
           ng-controller="UserCtrl as uc">
     <ion-nav-buttons side="right">
         <img ng-src="images/icons/icons_stuff/pencil.png" ng-if="uc.me && !uc.edit" class="edit-pencil"
@@ -16,15 +16,15 @@
                                                               ng-if="uc.birthdate">({{uc.birthdate}})</span></span>
             </li>
             <li class="item" ng-if="uc.user.birthdate">
-                <h5 class="text-color-red">Geburtsdatum</h5>
+                <h5 class="text-color-grey">Geburtsdatum</h5>
                 <span class="date-of-birth">{{uc.user.birthdate}}</span>
             </li>
             <li class="item" ng-if="uc.user.residence">
-                <h5 class="text-color-red">Wohnort</h5>
+                <h5 class="text-color-grey">Wohnort</h5>
                 <span class="residence">{{uc.user.residence}}</span>
             </li>
             <li class="item item-text-wrap" ng-if="uc.user.description">
-                <h5 class="text-color-red">Beschreibung</h5>
+                <h5 class="text-color-grey">Beschreibung</h5>
                 <span class="description">{{uc.user.description}}</span>
             </li>
             <li class="item item-icon-right" ng-if="!uc.profileState"
@@ -42,21 +42,21 @@
             <img class="profile-image" ng-src="{{uc.user.picture}}" ng-click="uc.updatePicture()">
             <span class="image-description">Bild berühren um es zu ändern.</span>
             <li>
-                <span class="title text-color-red">Name</span>
+                <span class="title text-color-grey">Name</span>
                 <input class="item item-input background-color-edit" type="input" ng-model="uc.user.name"/>
             </li>
             <li>
-                <span class="text-color-red title">Geburtsdatum</span>
+                <span class="text-color-grey title">Geburtsdatum</span>
                 <input class="item item-input background-color-edit birthdate" type="date"
                        ng-model="uc.user.birthdate"
                        value="{{uc.modifyBirthday}}">
             </li>
             <li>
-                <span class="text-color-red title">Wohnort</span>
+                <span class="text-color-grey title">Wohnort</span>
                 <input class="item item-input background-color-edit" type="input" ng-model="uc.user.residence">
             </li>
             <li>
-                <span class="text-color-red title description">Beschreibung</span>
+                <span class="text-color-grey title description">Beschreibung</span>
                 <textarea class="background-color-edit" rows="{{uc.descriptionRows}}" type="input"
                           ng-model="uc.user.description"></textarea>
             </li>
