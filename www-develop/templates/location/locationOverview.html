@@ -1,33 +1,35 @@
 <ion-view view-title="Locations" class="location-overview" ng-controller="LocationOverviewCtrl as loc">
     <ion-content class="background-color-grey my-has-tabs">
-        <ul class="list">
-            <label class="item item-input" ng-if="loc.results.length>8">
-                <i class="icon ion-search placeholder-icon"></i>
-                <input type="search" placeholder="Suche" ng-change-options='{ debounce: 1000 }'
-                       ng-model="loc.location"/>
-            </label>
-            <!-- check if current sate on profile oder on search tab -->
-            <li class="item item-icon-right" ng-repeat="location in loc.results | filter: loc.location"
-                ui-sref="{{loc.me ? 'tab.profile-locations-detail({ locationId: location._id})' : 'tab.search-result-location-detail({ locationId: location._id})'}}">
-                <div class="image-container">
-                    <!-- images -->
-                    <div class="image-container" ng-if="location.images.picture"
-                         style="background-image: url({{loc.webPath}}{{location.images.picture + '?size=mobile'}});background-size: cover">
-                    </div>
-                    <img ng-if="!location.images.picture" class="googlemap"
-                         ng-src="{{location.images.googlemap}}&size=200x200&key=AIzaSyCveLtBw4QozQIkMstvefLSTd3_opSvHS4">
+
+        <label class="item item-input" ng-if="loc.results.length>8">
+            <i class="icon ion-search placeholder-icon"></i>
+            <input type="search" placeholder="Suche" ng-change-options='{ debounce: 1000 }'
+                   ng-model="loc.location"/>
+        </label>
+        <!-- check if current sate on profile oder on search tab -->
+        <ion-item class="item item-icon-right" collection-repeat="location in loc.results | filter:loc.location"
+                  ui-sref="{{loc.me ? 'tab.profile-locations-detail({ locationId: location._id})' : 'tab.search-result-location-detail({ locationId: location._id})'}}">
+
+            <div class="image-container">
+                <!-- images -->
+                <div class="image-container" ng-if="location.images.picture"
+                     style="background-image: url({{loc.webPath}}{{location.images.picture + '?size=mobile'}});background-size: cover">
                 </div>
-                <div class="content-container">
-                    <!-- title, tags and description-->
-                    <label class="title" ng-style="{width: loc.elementWidth + 'px'}" >{{location.title}}</label>
-                    <br>
-                    <div class="description" ng-style="{width: loc.elementWidth + 'px'}">{{location.description}}</div>
-                    <div class="location-tags tags">
-                        <span ng-repeat="tag in location.tags | limitTo: 3" class="tag">{{tag}}</span>
-                    </div>
-                    <i class="icon ion-chevron-right icon-accessory"></i>
+                <img ng-if="!location.images.picture" class="googlemap"
+                     ng-src="{{location.images.googlemap}}&size=200x200&key=AIzaSyCveLtBw4QozQIkMstvefLSTd3_opSvHS4">
+            </div>
+            <div class="content-container">
+                <!-- title, tags and description-->
+                <label class="title" ng-style="{width: loc.elementWidth + 'px'}">{{location.title}}</label>
+                <br>
+
+                <div class="description" ng-style="{width: loc.elementWidth + 'px'}">{{location.description}}</div>
+                <div class="location-tags tags">
+                    <span ng-repeat="tag in location.tags | limitTo: 3" class="tag">{{tag}}</span>
                 </div>
-            </li>
-        </ul>
+                <i class="icon ion-chevron-right icon-accessory"></i>
+            </div>
+
+        </ion-item>
     </ion-content>
 </ion-view>
