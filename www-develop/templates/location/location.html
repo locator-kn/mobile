@@ -2,17 +2,20 @@
     <ion-content class="background-color-grey my-has-tabs">
         <ul class="list">
             <li class="item config" ng-if="lc.user._id === userID && lc.onProfile ">
-                <label class="toggle toggle-dark my-toggle"
-                       ng-click="lc.togglePublic()">
-                    <input type="checkbox" ng-model="lc.publicLocation">
+                <div class="the-toggle">
+                    <label class="toggle toggle-dark my-toggle"
+                           ng-click="lc.togglePublic()">
+                        <input type="checkbox" ng-model="lc.publicLocation">
 
-                    <div class="track">
-                        <div class="handle"></div>
-                    </div>
-                </label>
+                        <div class="track">
+                            <div class="handle"></div>
+                        </div>
+                    </label>
+                </div>
                 <label class="public">öffentlich</label>
                 <img class="icon" ng-src="images/icons/icons_stuff/cross.png" ng-click="lc.deleteLocation()">
-                <img class="icon" ng-src="images/icons/icons_stuff/pencil.png" ui-sref="tab.profile-locations-detail-edit({locationId:lc.result._id})">
+                <img class="icon edit" ng-src="images/icons/icons_stuff/pencil.png"
+                     ui-sref="tab.profile-locations-detail-edit({locationId:lc.result._id})">
             </li>
             <div class="image-container" ng-if="lc.result.images.picture"
                  style="background-image: url({{lc.webPath}}{{lc.result.images.picture + '?size=mobile'}});background-size: cover">

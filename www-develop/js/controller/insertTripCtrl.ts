@@ -134,11 +134,14 @@ module Controller {
             });
 
             if (!this.edit) {
-                // random mood selection
-                this.DataService.getAvailableMoods().then((result) => {
-                    var mood = result.data[Math.floor(Math.random() * result.data.length)];
-                    this.TripService.setMood(mood);
-                })
+                var mood = this.TripService.getMood();
+                if(mood.length=== 0) {
+                    // random mood selection
+                    this.DataService.getAvailableMoods().then((result) => {
+                        var mood = result.data[Math.floor(Math.random() * result.data.length)];
+                        this.TripService.setMood(mood);
+                    })
+                }
             }
 
         }

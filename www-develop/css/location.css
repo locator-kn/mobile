@@ -56,7 +56,7 @@ ui-gmap-google-map.google-map.angular-google-map {
 }
 
 .location .config {
-    padding: 7px 13px;
+    padding: 7px 13px 5px 13px;
 }
 
 .location .my-toggle {
@@ -72,6 +72,14 @@ ui-gmap-google-map.google-map.angular-google-map {
 .location .icon {
     width: 33px;
     float: right;
+}
+
+.location .the-toggle {
+    padding-top: 3px;
+}
+
+.location .icon.edit {
+    margin-right: 8px;
 }
 
 .location ul.list {
