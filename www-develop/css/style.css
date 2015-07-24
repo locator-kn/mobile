@@ -250,3 +250,7 @@ ion-nav-view.view-container.tab-content {
 .moods .mood img.result-mood {
     margin-top: -1px;
 }
+
+.auto-height {
+    height: auto;
+}
