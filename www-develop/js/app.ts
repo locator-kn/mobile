@@ -57,6 +57,7 @@ var deps = [
     'ngTagsInput',
     'ngCordova',
     'ngOpenFB',
+    'ngCordovaOauth',
     'dbaq.emoji'
 ];
 
