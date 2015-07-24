@@ -139,27 +139,6 @@ module Controller {
                 }).catch((err)=> {
                     console.log(err);
                 });
-            /*var myParams = {
-                'clientid': '749476331872-e4dvhbqn70gbbaliepfn8rjp5if7ta4q.apps.googleusercontent.com',
-                'cookiepolicy': 'single_host_origin',
-                'callback': this.loginGoogleCallback,
-                'approvalprompt': 'force',
-                'scope': 'https://www.googleapis.com/auth/plus.profile.emails.read'
-            };
-            gapi.auth.signIn(myParams);*/
-        }
-
-        /*loginGoogleCallback = (response) => {
-            if (response['status']['signed_in']) {
-                console.log('Google login success!');
-                this.UserService.loginOAuth('google', response['access_token']).then((userResponse) => {
-                    console.log(userResponse.data);
-                    this.getMe();
-                });
-            } else {
-                alert('Google-Login ging schief!');
-            }
-        }*/
 
         static controllerId:string = "LoginCtrl";
     }
