@@ -145,6 +145,7 @@
 
 .background-color-dark .toggle.toggle-dark input:checked + .track {
     background-color: #fff;
+    border-color: #fff;
 }
 
 .background-color-dark .toggle .track {
