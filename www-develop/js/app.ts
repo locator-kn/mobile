@@ -62,6 +62,23 @@ var deps = [
 
 angular.module('starter', deps)
 
+    .run(($rootScope, $window) => {
+
+        $window.onresize = () => {
+            setupValues();
+            $rootScope.$apply();
+        };
+        var setupValues = () => {
+            var wHeight = $window.innerHeight;
+            $rootScope.settings = {
+                minHeighWithBtnUl: {
+                    'min-height': wHeight - 151
+                }
+            };
+        }
+        setupValues();
+    })
+
     .run(function ($ionicPlatform, ngFB) {
         $ionicPlatform.ready(function () {
             ngFB.init({appId: '383834701823910'});
