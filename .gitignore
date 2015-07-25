@@ -6,7 +6,7 @@ npm-debug.log
 bower_components/
 platforms
 typings/
-www/
+/www/
 resources/ios
 www-develop/lib/components/
 .tmp
