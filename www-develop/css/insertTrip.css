@@ -5,6 +5,10 @@
     background-color: #f05346;
 }
 
+.insert-trip .toggle.toggle-dark input:checked + .track {
+    border-color: white;
+}
+
 .insert-trip .checkbox input:checked:before, .checkbox input:checked + .checkbox-icon:before {
     border-color: #f47c7e;
 }

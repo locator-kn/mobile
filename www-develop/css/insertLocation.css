@@ -26,7 +26,7 @@
     height: 60px;
     font-weight: 600;
     color: white;
-    background-color: rgb(34,34,34);
+    background-color: rgb(34, 34, 34);
 }
 
 .insert-location .location-image {
@@ -152,8 +152,8 @@
     border-color: #fff;
 }
 
-.background-color-dark .toggle .track {
-    background-color: rgb(34, 34, 34);
+.toggle .track {
+    border-color: whitesmoke;
 }
 
 .background-color-dark.circle {
@@ -177,8 +177,6 @@
     color: #fff;
     font-size: 20px;
 }
-
-
 
 .background-color-dark .text-right {
     padding-right: 0px;
