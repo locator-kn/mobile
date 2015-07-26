@@ -262,3 +262,25 @@ ion-nav-view.view-container.tab-content {
 .auto-height {
     height: auto;
 }
+
+/** on keyboard open **/
+.keyboard-open ion-tabs .tab-nav.tabs {
+    display: none;
+}
+
+.keyboard-open .my-has-tabs,
+.keyboard-open .button-bottom {
+    bottom: 0;
+}
+
+.keyboard-open .pageWithBigButton ion-content {
+    margin-bottom: 0;
+}
+
+.keyboard-open .list.list-inset.bottom {
+    bottom: 0;
+}
+
+.keyboard-open .messages ion-content.background-color-grey.scroll-content.ionic-scroll.has-header.has-tabs {
+    margin-bottom: 0;
+}
