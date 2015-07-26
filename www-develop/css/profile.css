@@ -100,7 +100,7 @@
 
 .password .error {
     border-color: red;
-    border-width: 2px;
+    border-width: 1px;
     margin: 1px;
 }
 
@@ -126,4 +126,13 @@
 
 .profile .list.edit textarea {
     max-width: 100%;
+}
+
+form#passwordForm {
+    padding: 15px;
+}
+
+form#passwordForm .item-input {
+    border-radius: 3px;
+    margin-bottom: 5px;
 }

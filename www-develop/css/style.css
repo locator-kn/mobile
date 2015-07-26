@@ -41,8 +41,6 @@ body {
     font-weight: 200;
 }
 
-
-
 .image-container-full,
 .image-container {
     width: 100%;
@@ -251,7 +249,7 @@ ion-nav-view.view-container.tab-content {
     margin-left: -6px;
 }
 
-.moods .item{
+.moods .item {
     padding: 10px;
 }
 
@@ -297,4 +295,8 @@ ion-nav-view.view-container.tab-content {
 
 .popup {
     border-radius: 3px;
+}
+
+.button.button-full {
+    border: none;
 }
