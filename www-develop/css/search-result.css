@@ -55,6 +55,7 @@ label.name.ng-binding {
     background-color: rgb(51, 196, 183);
     color: #fff;
     border: 0;
+    font-size: 18px;
 }
 
 .trip-text-location {
@@ -86,8 +87,12 @@ label.name.ng-binding {
 }
 
 .search-result ion-item.item {
-    padding: 16px 0;
+    padding: 25px 0;
     border: 0px;
+}
+
+.search-result ion-item.item:first-child {
+    padding-top: 0;
 }
 
 .search-result .hack-for-first-element {
