@@ -6,7 +6,7 @@
     <form novalidate name="ilc.form" id="insertLocationForm">
         <ion-content class="white my-has-tabs" ng-class="!authenticated ? 'not-auth-background' : ''">
             <div ng-if="authenticated">
-                <div class="location-image">
+                <div class="location-image hide-on-keyboard-open">
                     <div class="image-container" ng-if="!ilc.headerImagePath">
                     </div>
 
@@ -68,7 +68,7 @@
         </ion-content>
         <!--<li class="item create">-->
             <button ng-if="authenticated"
-                    class="button-bottom button button-insert-location gps-button bottom button-full button-bottom fixed-button-bottom"
+                    class="button-bottom button button-insert-location gps-button bottom button-full button-bottom fixed-button-bottom hide-on-keyboard-open"
                     type="submit"
                     ng-click="ilc.saveLocation()"
                     ng-disabled="!(ilc.locationFormDetails.title && ilc.locationFormDetails.description && ilc.locationFormDetails.tags.length > 0 && ilc.mapMarkerSet)">
