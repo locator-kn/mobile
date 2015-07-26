@@ -536,5 +536,12 @@ angular.module('starter', deps)
 
         $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|local|data|file|blob|cdvfile|content):\//);
 
+        window.addEventListener('native.keyboardshow', function(){
+            document.body.classList.add('keyboard-open');
+        });
+
+        window.addEventListener('native.keyboardhide', function(){
+            document.body.classList.remove('keyboard-open');
+        });
 
     });
