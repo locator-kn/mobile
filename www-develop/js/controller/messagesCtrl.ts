@@ -23,7 +23,6 @@ module Controller {
             this.conversationId = this.$state.params.conversationId;
             this.opponentId = this.$state.params.opponentId;
 
-            debugger;
             if (this.conversationId === '') {
                 this.emptyConversation = true;
             } else {
