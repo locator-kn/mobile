@@ -36,6 +36,7 @@
 /// <reference path="./service/messengerService.ts" />
 /// <reference path="./service/socketService.ts" />
 /// <reference path="./service/locationService.ts" />
+/// <reference path="./service/utilityService.ts" />
 
 // Ionic Starter App
 
@@ -119,6 +120,8 @@ angular.module('starter', deps)
     .service(Service.MessengerService.serviceId, Service.MessengerService)
     .service(Service.SocketService.serviceId, Service.SocketService)
     .service(Service.LocationService.serviceId, Service.LocationService)
+    .service(Service.Utilityservice.serviceId, Service.Utilityservice)
+
 
     .config(function (CacheFactoryProvider) {
         angular.extend(CacheFactoryProvider.defaults, {maxAge: 15 * 60 * 1000});
