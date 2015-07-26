@@ -289,3 +289,12 @@ ion-nav-view.view-container.tab-content {
 .remove-margin-bottom {
     margin-bottom: 0;
 }
+
+.popup .button.button-positive {
+    background-color: rgb(51, 196, 183);
+    border-color: rgb(51, 196, 183);
+}
+
+.popup {
+    border-radius: 3px;
+}
