@@ -295,8 +295,32 @@ ion-nav-view.view-container.tab-content {
 
 .popup {
     border-radius: 3px;
+    background: #EAEDEE;
+}
+
+.popup-head {
+    border-bottom: 1px solid #eee;
+    text-align: center;
+    padding: 25px 10px;
+    background-color: #32C3B6;
+    color: white;
+}
+
+h3.popup-title {
+    color: white;
+    font-size: 16px;
 }
 
 .button.button-full {
     border: none;
+}
+
+.popup .button.button-positive, .popup-buttons {
+    color: #6B6B6B;
+    background-color: #F8F8F8;
+    border-color: #F8F8F8;
+}
+
+.popup-container.error .popup-head {
+    background-color: #f05346;
 }
