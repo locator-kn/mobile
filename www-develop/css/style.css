@@ -289,3 +289,7 @@ ion-nav-view.view-container.tab-content {
 .remove-margin-bottom {
     margin-bottom: 0;
 }
+
+.tabs-striped .tab-item.tab-item-active, .tabs-striped .tab-item.active, .tabs-striped .tab-item.activated {
+    border: 0;
+}
