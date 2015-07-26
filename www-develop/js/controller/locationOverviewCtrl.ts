@@ -16,7 +16,7 @@ module Controller {
         constructor(private $state, private $stateParams, private LocationService, private $ionicLoading,
                     private webPath, private $window, maxSpinningDuration) {
 
-            this.elementWidth = this.$window.innerWidth  - (80 + 32 + 10);
+            this.elementWidth = this.$window.innerWidth  - (80 + 32 + 10 + 15);
 
             this.state = this.$state.current.name;
 
