@@ -139,6 +139,7 @@ module Controller {
                 }).catch((err)=> {
                     console.log(err);
                 });
+        }
 
         static controllerId:string = "LoginCtrl";
     }
