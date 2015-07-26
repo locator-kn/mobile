@@ -10,7 +10,7 @@ module Controller {
 
         publicLocation:boolean;
 
-        constructor(private UserService, private $scope, private $stateParams, private LocationService,
+        constructor(private UtilityService, private UserService, private $scope, private $stateParams, private LocationService,
                     private $ionicLoading, private webPath, maxSpinningDuration, private $state, private $ionicPopup) {
             this.locationId = $stateParams.locationId;
             this.state = this.$state.current.name;
@@ -74,9 +74,8 @@ module Controller {
         }
 
         showSuccessPopup() {
-            var alertPopup = this.$ionicPopup.alert({
-                template: 'Location erfolgreich gelöscht'
-            });
+            this.UtilityService.showPopup('Location erfolgreich gelöscht');
+
         }
 
         getConfirmPopup(title, textMsg, textNo, textYes) {
