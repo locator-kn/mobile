@@ -92,6 +92,15 @@ module Service {
             });
         }
 
+        updateMeCache(newUserData) {
+            var getMeResponse = this.usersMeCache.get(this.basePath + '/users/me');
+            if(getMeResponse && getMeResponse.length) {
+                getMeResponse[1] = JSON.stringify(newUserData);
+                this.usersMeCache.put(this.basePath + '/users/me', getMeResponse);
+            }
+
+        }
+
         updateProfile(newUserData) {
             return this.$http.put(this.basePath + '/users/my/profile',
                 {
