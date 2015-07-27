@@ -39,7 +39,9 @@
     "cordova-plugin-camera",
     "org.apache.cordova.camera",
     "org.apache.cordova.file",
-    "org.apache.cordova.inappbrowser"
+    "org.apache.cordova.inappbrowser",
+    "cordova-plugin-crosswalk-webview",
+    "cordova-plugin-whitelist"
   ],
   "cordovaPlatforms": [
     "ios",
