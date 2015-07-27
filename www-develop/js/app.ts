@@ -552,12 +552,11 @@ angular.module('starter', deps)
         // set navbar Title to center
         $ionicConfigProvider.navBar.alignTitle('center');
 
-        $ionicConfigProvider.backButton.previousTitleText(false);
 
         // if none of the above states are matched, use this as the fallback
         $urlRouterProvider.otherwise('/tab/welcome');
 
-        $ionicConfigProvider.backButton.text('Zurück').icon('ion-chevron-left');
+        $ionicConfigProvider.backButton.text('').icon('ion-chevron-left');
 
         $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|local|data|file|blob|cdvfile|content):\//);
 
