@@ -55,11 +55,11 @@ module Controller {
                     this.conversations.forEach(element => {
                         if (element.modified_date) {
                             //element.lastMessage = this.getFormattedTimestamp(element.modified_date);
-                            element.lastMessage = moment(new Date(timestamp)).startOf('minutes').fromNow();
+                            element.lastMessage = moment(new Date(element.modified_date)).startOf('minutes').fromNow();
 
                         } else if (element.create_date) {
                             //element.lastMessage = this.getFormattedTimestamp(element.create_date);
-                            element.lastMessage = moment(new Date(timestamp)).startOf('minutes').fromNow();
+                            element.lastMessage = moment(new Date(element.create_date)).startOf('minutes').fromNow();
                         }
                         this.conversationsHash[element._id] = element;
                         badgeHash[element._id] = this.conversationsHash[element._id][this.$rootScope.userID + '_read'];
