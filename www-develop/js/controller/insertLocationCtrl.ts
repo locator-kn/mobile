@@ -34,7 +34,7 @@ module Controller {
         error:boolean = false;
         edit:boolean = false;
 
-        constructor(private Utilityservice, private CameraService, private $scope, private basePath, private GeolocationService,
+        constructor(private UtilityService, private CameraService, private $scope, private basePath, private GeolocationService,
                     private UserService, private $state, private PictureUploadService, private webPath,
                     private $rootScope, private $ionicLoading, private ngProgressLite,
                     private $ionicScrollDelegate, private maxSpinningDuration, private LocationService, private $stateParams) {
@@ -112,7 +112,7 @@ module Controller {
             }
             this.ngProgressLite.start();
 
-            this.Utilityservice.showPopup('Das Bild wird im Hintergrund hochgeladen. Beschreibe doch deine Location solange du wartest.');
+            this.UtilityService.showPopup('Das Bild wird im Hintergrund hochgeladen. Beschreibe doch deine Location solange du wartest.');
 
             this.PictureUploadService.uploadImage(file, this.basePath + '/users/my/locations/picture/mobile', formData)
                 .then((data) => {
@@ -214,7 +214,7 @@ module Controller {
             }
 
             if (this.isUploading) {
-                this.Utilityservice.showErrorPopup('Du kannst deine Location speichern, sobald dein Bild hochgeladen ist.');
+                this.UtilityService.showErrorPopup('Du kannst deine Location speichern, sobald dein Bild hochgeladen ist.');
 
 
                 return;
@@ -249,7 +249,7 @@ module Controller {
 
                         this.documentWasCreated = true;
                     } else {
-                        this.Utilityservice.showPopup('Location erfolgreich aktualisiert');
+                        this.UtilityService.showPopup('Location erfolgreich aktualisiert');
 
                         this.$state.go('tab.profile', {
                             userId: this.me._id
@@ -291,7 +291,7 @@ module Controller {
 
         goToMap() {
             if (this.isUploading) {
-                this.Utilityservice.showErrorPopup('Bitte warte kurz bis das Bild fertig geladen wurde');
+                this.UtilityService.showErrorPopup('Bitte warte kurz bis das Bild fertig geladen wurde');
 
                 return;
             }
