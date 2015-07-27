@@ -153,6 +153,7 @@ textarea.ng-dirty.ng-valid-parse.ng-touched.ng-invalid.ng-invalid-required {
 .insert-trip .list-icon {
     float: left;
     height: 42px;
+    width:  62px;
     padding-right: 10px;
     padding-left: 10px;
 }

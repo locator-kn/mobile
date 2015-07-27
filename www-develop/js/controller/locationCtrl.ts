@@ -11,7 +11,7 @@ module Controller {
         publicLocation:boolean;
 
         constructor(private UtilityService, private UserService, private $scope, private $stateParams, private LocationService,
-                    private $ionicLoading, private webPath, maxSpinningDuration, private $state, private $ionicPopup) {
+                    private $ionicLoading, private webPath, maxSpinningDuration, private $state, private $ionicPopup, private $rootScope) {
             this.locationId = $stateParams.locationId;
             this.state = this.$state.current.name;
 
@@ -50,7 +50,8 @@ module Controller {
                 if (res) {
                     this.LocationService.deleteLocation(this.result._id)
                         .then(result => {
-                            this.showSuccessPopup()
+                            this.showSuccessPopup();
+                            this.$state.go('tab.profile', {userId: this.$rootScope.userID});
                         })
                         .catch(result => {
                             //location is used in trip
@@ -60,7 +61,8 @@ module Controller {
                                 if (res) {
                                     this.LocationService.deleteLocationForce(this.result._id)
                                         .then(result => {
-                                            this.showSuccessPopup()
+                                            this.showSuccessPopup();
+                                            this.$state.go('tab.profile', {userId: this.$rootScope.userID});
                                         })
                                         .catch((err) => {
                                             console.log(err);

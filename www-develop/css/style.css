@@ -175,7 +175,6 @@ body {
     border: none;
     font-size: 18px !important;
     font-weight: 600 !important;
-    text-transform: uppercase;
 }
 
 .mood span.ng-binding {
@@ -335,4 +334,8 @@ h3.popup-title {
 .loading-container .loading .spinner svg {
     stroke: #32C3B6;
     fill: #32C3B6;
+}
+
+.tabs-striped .tab-item.tab-item-active, .tabs-striped .tab-item.active, .tabs-striped .tab-item.activated {
+    border: 0;
 }

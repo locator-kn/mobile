@@ -56,6 +56,10 @@ module Controller {
                 });
             });
 
+            $rootScope.$on('updateProfileImage', (scope, imageLocation) => {
+                this.user.picture = this.webPath + imageLocation + '?' + Date.now();
+            });
+
             if (this.$rootScope.authenticated) {
                 this.me = this.isItMe();
             }
@@ -160,6 +164,10 @@ module Controller {
             })
         };
 
+        updateMeCache(newUserData) {
+            this.UserService.updateMeCache(newUserData);
+        }
+
         uploadImage = (result) => {
             var formData = {
                 width: Math.round(result.width),
@@ -174,10 +182,11 @@ module Controller {
                 this.ngProgressLite.done();
 
                 var dataObject = JSON.parse(data.response);
-                this.user.picture = dataObject.imageLocation;
+                this.$rootScope.$emit('updateProfileImage',dataObject.imageLocation);
                 console.log('update user: ' + dataObject);
-                // update user
-                this.$rootScope.$emit('userUpdate');
+                // update cache with the new busted imagePath
+                this.updateMeCache(this.user);
+
             }, (err) => {
                 console.log(err);
                 this.$ionicLoading.hide();

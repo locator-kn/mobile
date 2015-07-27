@@ -15,7 +15,7 @@ module Controller {
                     private webPath, private SearchService, maxSpinningDuration, private $window) {
 
             this.$ionicLoading.show({templateUrl: 'templates/static/loading.html', duration: maxSpinningDuration});
-            this.elementWidth = this.$window.innerWidth  - (177);
+            this.elementWidth = this.$window.innerWidth - (177);
 
 
             if ($stateParams.userId) {
@@ -60,6 +60,14 @@ module Controller {
                 userId: userId
             });
         };
+
+        showLocations(locationSource) {
+            if (this.searchView) {
+                this.$state.go('tab.search-result-locations', {locationSourceId: locationSource});
+            } else {
+                this.$state.go('tab.profile-trip-locations', {locationSourceId: locationSource});
+            }
+        }
 
 
         startConversation(user, trip) {

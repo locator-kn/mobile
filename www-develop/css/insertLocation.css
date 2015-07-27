@@ -4,15 +4,13 @@
 }
 
 .insert-location a.choose-image {
-    width: auto;
-    margin-top: -60px;
-    margin-left: -50px;
-}
-
-.insert-location a.choose-image {
     top: 50%;
     left: 50%;
     position: absolute;
+    width: 100px;
+    height: 100px;
+    margin-top: -60px;
+    margin-left: -50px;
 }
 
 .insert-location .choose-image img {
@@ -77,34 +75,61 @@
 }
 
 .insert-location tags-input .tags {
-    border-radius: 3px;
-    padding: 4px;
+    /*border-radius: 0;*/
+    /*padding: 4px;*/
     box-shadow: none;
 }
 
 .insert-location .tag-input {
-    border: 0px;
+    /*border: 1px;*/
     padding: 0px;
     width: 100% !important;
 }
 
+.insert-location .fix-item-min-height {
+    min-height: 54px;
+}
+
+.insert-location tags-input .tags .tag-item {
+    background: rgb(49, 47, 48);
+    color: rgb(255, 255, 255);
+    border-radius: 10px;
+    border: none !important;
+    line-height: 26px !important;
+    font-family: Signika;
+    font-size: 16px;
+}
+
 .insert-location tags-input .tags .input {
-    border: 0;
+    font-family: Signika !important;
+    font-weight: 200;
+
     outline: 0;
+    border: 0;
     margin: 2px;
-    padding: 0;
-    padding-left: 10px;
+    padding: 0 0 0 10px;
     float: left;
     height: 26px;
 }
 
-/********************** new design ***************/
+tags-input.fix-item-min-height.ng-pristine.ng-valid.ng-valid-maxlength.ng-valid-max-tags.ng-valid-min-tags.ng-valid-leftover-text.ng-touched {
+    margin-left: 15px;
+}
+
+tags-input .tags.focused {
+    outline: none;
+    -webkit-box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    box-shadow: none !important;
+}
+
+/*.insert-location li.tag-item:first-child {*/
+/*margin-left: 15px;*/
+/*}*/
 
 .background-color-dark,
 .background-color-dark li,
 .background-color-dark label,
-    /*.background-color-dark span,*/
-.insert-location tags-input .tags,
 .background-color-dark textarea,
 .background-color-dark input {
     background: rgb(34, 34, 34);
@@ -113,21 +138,6 @@
     font-family: Signika;
     font-size: 16px;
     line-height: 19px;
-}
-
-.insert-location tags-input .tags {
-    border-radius: 0px;
-    min-height: 47px;
-    font-size: 16px;
-}
-
-.background-color-dark tags-input .host {
-    margin: 0;
-}
-
-.background-color-dark tags-input .tags .input {
-    font-family: Signika;
-    font-size: 16px;
 }
 
 .background-color-dark .item-icon-right .icon-accessory {
@@ -190,15 +200,6 @@
     background-color: whitesmoke;
 }
 
-.insert-location tags-input .tags .tag-item {
-    background: #fff;
-    color: rgb(34, 34, 34);
-    border: none !important;
-    line-height: 26px !important;
-    font-family: Signika;
-    font-size: 16px;
-}
-
 .insert-location span.ng-binding {
     font-size: 16px;
 }
@@ -237,6 +238,23 @@
 
 .insert-location .tag-input {
     line-height: 20px;
+}
+
+.insert-location tags-input .tags {
+    border-radius: 0;
+    min-height: 47px;
+    font-size: 16px;
+    padding: 0;
+    border: 0;
+}
+
+tags-input .host {
+    margin: 0;
+}
+
+tags-input .tags .input {
+    font-family: Signika;
+    font-size: 16px;
 }
 
 .insert-location textarea.ng-pristine.ng-untouched.ng-invalid.ng-invalid-required.ng-valid-maxlength {

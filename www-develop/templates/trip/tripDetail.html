@@ -57,7 +57,7 @@
                 </label>
             </li>
             <li class="item item-icon-right" ng-if="tc.trip.locations"
-                ui-sref="tab.search-result-locations({locationSourceId:tc.trip._id})">
+                ng-click="tc.displayLocations(tc.trip._id)">
                 <label class="text-bold">{{tc.numberOfElelementsIn(tc.trip.locations)}}</label>
                 <label ng-if="tc.trip.locations">
                     {{tc.numberOfElelementsIn(tc.trip.locations) === 1 ? 'Location' : 'Locations'}}
@@ -73,7 +73,7 @@
                 </div>
             </li>
             <li ng-if="tc.trip.accommodation">
-                <div ng-hide="tc.trip.accommodation == false">
+                <div ng-hide="tc.trip.accommodation == false" class="padding-left">
                     <h5 class="text-bold">Unterkunft</h5>
 
                     <div class="accommodation-equipment">

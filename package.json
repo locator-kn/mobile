@@ -38,7 +38,8 @@
     "org.apache.cordova.file-transfer",
     "cordova-plugin-camera",
     "org.apache.cordova.camera",
-    "org.apache.cordova.file"
+    "org.apache.cordova.file",
+    "org.apache.cordova.inappbrowser"
   ],
   "cordovaPlatforms": [
     "ios",
