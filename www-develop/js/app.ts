@@ -120,7 +120,7 @@ angular.module('starter', deps)
     .service(Service.MessengerService.serviceId, Service.MessengerService)
     .service(Service.SocketService.serviceId, Service.SocketService)
     .service(Service.LocationService.serviceId, Service.LocationService)
-    .service(Service.Utilityservice.serviceId, Service.Utilityservice)
+    .service(Service.UtilityService.serviceId, Service.UtilityService)
 
 
     .config(function (CacheFactoryProvider) {
