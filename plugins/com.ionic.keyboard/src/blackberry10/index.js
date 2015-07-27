@@ -1,3 +1,5 @@
+
+
 var keyboard,
 	resultObjs = {},
 	threadCallback = null,
@@ -18,17 +20,17 @@ module.exports = {
 	// communication through the JNEXT plugin to keyboard_js.cpp
 	startService: function (success, fail, args, env) {
 	var result = new PluginResult(args, env);
-
+		
 	result.ok(keyboard.getInstance().startService(), false);
 	},
 	show: function (success, fail, args, env) {
 		var result = new PluginResult(args, env);
-
+		
 		result.ok(keyboard.getInstance().showKeyboard(), false);
 	},
 	close: function (success, fail, args, env) {
 	var result = new PluginResult(args, env);
-
+		
 	result.ok(keyboard.getInstance().closeKeyboard(), false);
 	}
 };
@@ -36,12 +38,12 @@ module.exports = {
 keyboardShow = function(a){
 	_webview.executeJavascript("cordova.plugins.Keyboard.isVisible = true");
 	_webview.executeJavascript("cordova.fireDocumentEvent('native.keyboardshow',"+a+")");
-
+	 
 }
 keyboardHide = function(){
 	_webview.executeJavascript("cordova.plugins.Keyboard.isVisible = false");
 	_webview.executeJavascript("cordova.fireDocumentEvent('native.keyboardhide','')");
-
+	
 }
 onStart = function() {
 		_webview.executeJavascript("cordova.exec("+null+", "+null+", 'Keyboard', 'startService', '')");
@@ -98,9 +100,9 @@ JNEXT.Keyboard = function () {
 	if (strEventDesc === "native.keyboardshow") {
 		    	jsonData = arData.slice(1, arData.length).join(" ");
 		    	keyboardShow(jsonData);
-
+		    	
     }
-    else if (strEventDesc === "native.keyboardhide") {
+    else if (strEventDesc === "native.keyboardhide") {		 
 		    	keyboardHide();
     }
 
