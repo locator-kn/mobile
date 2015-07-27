@@ -37,11 +37,25 @@ module Service {
             if (pageNumber >= 0) {
                 this.sq.page = pageNumber;
                 if (pageSize) {
-                    this.sq.page_size = pageSize;
+                    this.sq.elements = pageSize;
                 }
             }
             return this.$http({
                 url: this.basePath + '/users/' + userId + '/trips',
+                params: this.sq,
+                method: 'GET'
+            });
+        }
+
+        getNextTripsFromMe(pageNumber?, pageSize?) {
+            if (pageNumber >= 0) {
+                this.sq.page = pageNumber;
+                if (pageSize) {
+                    this.sq.elements = pageSize;
+                }
+            }
+            return this.$http({
+                url: this.basePath + '/users/my/trips',
                 params: this.sq,
                 method: 'GET'
             });
