@@ -370,3 +370,7 @@ h3.popup-title {
     width: 100%;
     font-weight: 500;
 }
+
+.loading-container .loading .spinner svg path:first-child {
+    display: none;
+}
