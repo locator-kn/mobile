@@ -175,7 +175,7 @@ textarea.ng-dirty.ng-valid-parse.ng-touched.ng-invalid.ng-invalid-required {
 .background-color-coral span {
     background: transparent;
     color: #fff;
-    border-color: #ff7274
+    border-color: rgba(2,2,2,0.03);
 }
 
 .background-color-coral .item-icon-right .icon-accessory {
