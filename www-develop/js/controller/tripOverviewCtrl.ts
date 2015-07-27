@@ -3,6 +3,7 @@ module Controller {
         results:any = [];
         moods:any = [];
         searchView:boolean = true;
+        myTrips:boolean;
         userId:string;
         page:number = 0;
         noMoreItemsAvailable:boolean;
@@ -22,6 +23,9 @@ module Controller {
                 // if user id is comitted as state param user id -> get all trips of user
                 this.searchView = false;
                 this.userId = $stateParams.userId;
+                if(this.userId === this.$rootScope.userID) {
+                    this.myTrips = true;
+                }
             } else {
                 // if no user id is committed -> controller used for search results
                 this.searchView = true;
@@ -91,8 +95,8 @@ module Controller {
         }
 
         loadMore() {
-            this.page++;
             if (this.searchView) {
+                this.page++;
                 this.SearchService.getNextTripsFromQuery(this.page, this.itemsProPage).then((result) => {
                     // push to array
                     var arrayLength = result.data.length;
@@ -109,24 +113,43 @@ module Controller {
                 }).catch((err)=> {
                     this.$ionicLoading.hide();
                 });
-            } else {
-                // TODO: if pagination in backend implemented, change the outcomment lines
-                //this.TripService.getNextTripsFromUser(this.userId, this.page, this.itemsProPage).then(result => {
-                this.TripService.getTripsByUser(this.userId).then(result => {
+            } else if (this.myTrips) {
+                this.TripService.getNextTripsFromMe(this.page, this.itemsProPage).then(result => {
                     // push to array
                     var arrayLength = result.data.length;
                     for (var i = 0; i < arrayLength; i++) {
                         this.results.push(result.data[i]);
                     }
-                    // TODO: change this too
-                    //if (arrayLength < this.itemsProPage) {
-                    this.noMoreItemsAvailable = true;
-                    //}
+                    if (arrayLength < this.itemsProPage) {
+                        this.noMoreItemsAvailable = true;
+                        console.log(this.noMoreItemsAvailable);
+                    }
                     this.updateUserInfo();
                     this.$ionicLoading.hide();
+                    this.$scope.$broadcast('scroll.infiniteScrollComplete');
                 }).catch((err) => {
                     this.$ionicLoading.hide();
                 });
+                this.page++;
+            } else {
+                this.TripService.getNextTripsFromUser(this.userId, this.page, this.itemsProPage).then(result => {
+                    //this.TripService.getTripsByUser(this.userId).then(result => {
+                    // push to array
+                    var arrayLength = result.data.length;
+                    for (var i = 0; i < arrayLength; i++) {
+                        this.results.push(result.data[i]);
+                    }
+                    if (arrayLength < this.itemsProPage) {
+                        this.noMoreItemsAvailable = true;
+                        console.log(this.noMoreItemsAvailable);
+                    }
+                    this.updateUserInfo();
+                    this.$ionicLoading.hide();
+                    this.$scope.$broadcast('scroll.infiniteScrollComplete');
+                }).catch((err) => {
+                    this.$ionicLoading.hide();
+                });
+                this.page++;
             }
         }
 
