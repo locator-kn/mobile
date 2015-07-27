@@ -63,7 +63,7 @@ var deps = [
 
 angular.module('starter', deps)
 
-    .run(function ($ionicPlatform) {
+    .run(function ($ionicPlatform, $window, $rootScope) {
         $ionicPlatform.ready(function () {
             // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
             // for form inputs)
@@ -75,6 +75,21 @@ angular.module('starter', deps)
              // org.apache.cordova.statusbar required
              StatusBar.styleLightContent();
              }*/
+
+
+            $window.onresize = () => {
+                setupValues();
+                $rootScope.$apply();
+            };
+            var setupValues = () => {
+                var wHeight = $window.innerHeight;
+                $rootScope.settings = {
+                    minHeighWithBtnUl: {
+                        'min-height': wHeight - 152
+                    }
+                };
+            };
+            setupValues();
         });
     })
 
@@ -161,7 +176,7 @@ angular.module('starter', deps)
     .directive('ngKeypress', function () {
         return function (scope, element, attrs) {
             element.bind("keyup", function (event) {
-                if (event.originalEvent.target.value.lastIndexOf(' ') === (event.originalEvent.target.value.length -1)) {
+                if (event.originalEvent.target.value.lastIndexOf(' ') === (event.originalEvent.target.value.length - 1)) {
                     scope.$apply(function () {
                         event.target.blur();
                         event.target.focus();
@@ -544,11 +559,11 @@ angular.module('starter', deps)
 
         $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|local|data|file|blob|cdvfile|content):\//);
 
-        window.addEventListener('native.keyboardshow', function(){
+        window.addEventListener('native.keyboardshow', function () {
             document.body.classList.add('keyboard-open');
         });
 
-        window.addEventListener('native.keyboardhide', function(){
+        window.addEventListener('native.keyboardhide', function () {
             document.body.classList.remove('keyboard-open');
         });
 
