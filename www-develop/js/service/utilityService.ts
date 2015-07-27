@@ -1,5 +1,5 @@
 module Service {
-    export class Utilityservice {
+    export class UtilityService {
 
 
         constructor(private $ionicPopup) {
@@ -21,6 +21,6 @@ module Service {
         }
 
 
-        static serviceId:string = "Utilityservice";
+        static serviceId:string = "UtilityService";
     }
 }
