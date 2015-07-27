@@ -47,7 +47,6 @@
 // 'starter.controllers' is found in controllers.js
 
 var deps = [
-    'ionic',
     'ngLodash',
     'locator.accommodation-equipment-chooser',
     'angular-cache',
@@ -58,7 +57,8 @@ var deps = [
     'ngTagsInput',
     'ngCordova',
     'ngCordovaOauth',
-    'dbaq.emoji'
+    'dbaq.emoji',
+    'ionic'
 ];
 
 angular.module('starter', deps)
@@ -76,6 +76,8 @@ angular.module('starter', deps)
              StatusBar.styleLightContent();
              }*/
 
+            $rootScope.isAndroid = ionic.Platform.isAndroid();
+            $rootScope.isIOS = ionic.Platform.isIOS();
 
             $window.onresize = () => {
                 setupValues();
