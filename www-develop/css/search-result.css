@@ -1,6 +1,7 @@
 .result-mood {
     float: left;
     height: 40px;
+    width: 56px;
     padding-right: 16px;
     margin-top: -3px;
 }
@@ -23,6 +24,7 @@ li.item.trip-options {
 }
 
 li.item.trip-options .icon {
+    height: 35px;
     width: 35px;
     vertical-align: middle;
     margin-right: 10px;

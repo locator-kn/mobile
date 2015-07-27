@@ -4,15 +4,13 @@
 }
 
 .insert-location a.choose-image {
-    width: auto;
-    margin-top: -60px;
-    margin-left: -50px;
-}
-
-.insert-location a.choose-image {
     top: 50%;
     left: 50%;
     position: absolute;
+    width: 100px;
+    height: 100px;
+    margin-top: -60px;
+    margin-left: -50px;
 }
 
 .insert-location .choose-image img {
