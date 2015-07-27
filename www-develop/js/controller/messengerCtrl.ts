@@ -12,11 +12,28 @@ module Controller {
 
             $rootScope.$on("updateConversation", (event, conversationId, timestamp, messageStatus) => {
                 if (timestamp) {
-                    this.conversationsHash[conversationId].lastMessage = moment(new Date(timestamp)).startOf('minutes').fromNow();
+                    this.conversationsHash[conversationId].lastMessage = this.getFormattedTimestamp(timestamp)
                 }
                 this.conversationsHash[conversationId][this.$rootScope.userID + '_read'] = messageStatus;
             });
 
+        }
+
+        getFormattedTimestamp(timestamp) {
+            var yesterday = new Date(Date.now() - 1000 * 60 * 60 * 24);
+            yesterday.setHours(0, 0, 0, 0);
+
+            var formattedDate;
+            if (timestamp) {
+                var localdate = new Date(timestamp);
+                if (moment(localdate).isBefore(yesterday)) {
+                    var a = moment(localdate).day();
+                    formattedDate = moment.weekdays(a);
+                } else {
+                    formattedDate = moment(localdate).format('HH:mm');
+                }
+            }
+            return formattedDate;
         }
 
         updateConversationInfo = (conversationId)=> {
@@ -35,7 +52,11 @@ module Controller {
                     this.conversations = result.data;
                     var badgeHash = {};
                     this.conversations.forEach(element => {
-                        element.lastMessage = moment(new Date(element.modified_date)).startOf('minutes').fromNow();
+                        if(element.modified_date) {
+                            element.lastMessage = this.getFormattedTimestamp(element.modified_date);
+                        } else if(element.create_date) {
+                            element.lastMessage = this.getFormattedTimestamp(element.create_date);
+                        }
                         this.conversationsHash[element._id] = element;
                         badgeHash[element._id] = this.conversationsHash[element._id][this.$rootScope.userID + '_read'];
                         this.UserService.getUser(element['opponent'])
