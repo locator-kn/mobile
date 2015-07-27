@@ -20,7 +20,7 @@
                     <span ng-if="!itc.moodAvailable">Wie fühlt sich der Trip an?</span>
                     <i class="icon ion-chevron-right icon-accessory"></i>
 
-                    <div ng-if="itc.moodAvailable">
+                    <div class="float-width" ng-if="itc.moodAvailable">
                         <img class="result-mood chosen-mood"
                              ng-src="./images/svg/moods/white/{{itc.selectedMood.icon_white}}">
                         <label class="mood-title">{{itc.selectedMood.title}}</label>
