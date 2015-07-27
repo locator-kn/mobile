@@ -204,19 +204,28 @@ module Controller {
         };
 
         saveLocation = () => {
-            if (!this.mapMarkerSet
-                || !this.locationFormDetails.title
-                || !this.locationFormDetails.description
-                || !this.locationFormDetails.tags) {
-                console.log('error - missing parameter')
-                this.error = true;
+            if (!this.locationFormDetails.title) {
+                this.UtilityService.showPopup('Deine Location benötigt noch einen Titel.');
+                return;
+            }
+
+            if (!this.mapMarkerSet) {
+                this.UtilityService.showPopup('Bitte teile uns noch mit, wo sich deine Location befindet.');
+                return;
+            }
+
+            if (!this.locationFormDetails.description) {
+                this.UtilityService.showPopup('Deine Location benötigt noch eine Beschreibung.');
+                return;
+            }
+
+            if (!(this.locationFormDetails.tags.length > 0)) {
+                this.UtilityService.showPopup('Füge noch durch Leerzeichen getrennte Tags hinzu, mit der nach deiner Location gesucht werden kann. (z.B. Bodensee baden Natur)');
                 return;
             }
 
             if (this.isUploading) {
-                this.UtilityService.showErrorPopup('Du kannst deine Location speichern, sobald dein Bild hochgeladen ist.');
-
-
+                this.UtilityService.showPopup('Du kannst deine Location speichern, sobald dein Bild hochgeladen ist.');
                 return;
             }
             var formValues = angular.copy(this.locationFormDetails);
@@ -227,10 +236,10 @@ module Controller {
             };
 
             var stringTags = [];
-             formValues.tags.forEach(item => {
-             stringTags.push(item.text);
-             });
-             formValues.tags = stringTags;
+            formValues.tags.forEach(item => {
+                stringTags.push(item.text);
+            });
+            formValues.tags = stringTags;
 
             this.GeolocationService.saveLocation(formValues, this.documentId).
                 then((result) => {
