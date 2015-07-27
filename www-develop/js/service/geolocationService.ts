@@ -8,7 +8,7 @@ module Service {
         geoPosition:any = {};
         geoTry:number = 0;
 
-        constructor(private $q, private $ionicLoading, private $ionicPopup, private $http, private basePath, private $rootScope) {
+        constructor(private $q, private $ionicLoading, private UtilityService, private $http, private basePath, private $rootScope) {
         }
 
         getCurrentLocation() {
@@ -27,7 +27,7 @@ module Service {
                 q.resolve(result);
             }, (err) => {
                 this.$ionicLoading.hide();
-                this.$ionicPopup.alert({title: 'Überprüfe deine GPS Verbindung und versuche es erneut'});
+                this.UtilityService.showErrorPopup('Überprüfe deine GPS Verbindung und versuche es erneut');
                 q.reject(err)
             }, posOptions);
 
