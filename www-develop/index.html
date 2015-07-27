@@ -49,30 +49,9 @@
     <script src="lib/components/jr-crop-locator/dist/jr-crop.js"></script>
     <script src="lib/components/angular-emoji-filter-hd/dist/emoji.min.js"></script>
     <script src="lib/components/ng-tags-input/ng-tags-input.js"></script>
-    <script src="lib/components/openfb/openfb.js"></script>
-    <script src="lib/components/openfb/ngopenfb.js"></script>
-
+    <script src="lib/components/ng-cordova-oauth/dist/ng-cordova-oauth.min.js"></script>
 
     <script src="lib/components/ngCordova/dist/ng-cordova.js"></script>
-
-    <script>
-        // Google OAuth Init
-        (function () {
-            var po = document.createElement('script');
-            po.type = 'text/javascript';
-            po.async = true;
-            po.src = 'https://apis.google.com/js/client.js?onload=onLoadCallback';
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(po, s);
-        })();
-
-        function onLoadCallback() {
-            gapi.client.setApiKey('AIzaSyCveLtBw4QozQIkMstvefLSTd3_opSvHS4');
-            gapi.client.load('plus', 'v1', function () {
-            });
-        }
-    </script>
-
 
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>

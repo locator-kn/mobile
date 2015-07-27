@@ -6,6 +6,7 @@ npm-debug.log
 bower_components/
 platforms
 typings/
+env.json
 /www/
 resources/ios
 www-develop/lib/components/
