@@ -13,7 +13,9 @@ module Controller {
         noMoreItemsAvailable:boolean;
 
         showEmojis:boolean;
-        emojis = [":smile:", ":blush:", ":kissing_heart:", ":hear_no_evil:", ":speak_no_evil:", ":see_no_evil:"];
+        emojis = [":smile:", ":grin:", ":heart_eyes:", ":hushed:", ":weary:", ":sunglasses:", ":joy:", ":persevere:", ":cry:", ":innocent:", ":sob:", ":satisfied:", ":stuck_out_tongue_closed_eyes:", ":blush:", ":flushed:", ":expressionless:", ":rage:", ":kissing_heart:", ":hear_no_evil:", ":speak_no_evil:", ":see_no_evil:", ":clap:", ":wave:", ":hand:", ":ok_hand:", ":no_good:", ":information_desk_person:", ":person_with_pouting_face:", ":boom:", ":runner:", ":couple:", ":couplekiss:"];
+
+
         textbox:any = '';
         emptyConversation:boolean;
 
