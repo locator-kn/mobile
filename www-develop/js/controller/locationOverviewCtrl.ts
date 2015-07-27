@@ -3,6 +3,7 @@ module Controller {
         results:any;
 
         tripType = 'tab.search-result-locations';
+        tripUserType = 'tab.profile-trip-locations';
         userType = 'tab.search-user-locations';
         myType = 'tab.profile-locations';
 
@@ -23,7 +24,7 @@ module Controller {
             this.locationSourceId = $stateParams.locationSourceId;
             this.$ionicLoading.show({templateUrl: 'templates/static/loading.html', duration: maxSpinningDuration});
 
-            if (this.state === this.tripType) {
+            if (this.state === this.tripType || this.state === this.tripUserType) {
                 this.LocationService.getLocationsByTripId(this.locationSourceId).then((result) => {
                     this.results = result.data;
                     this.$ionicLoading.hide();
