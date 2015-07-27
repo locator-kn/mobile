@@ -67,10 +67,12 @@
 }
 
 .gradient-red {
+    background-color: #f05346;
     background: linear-gradient(#ff6557, #de4d40);
 }
 
 .gradient-blue {
+    background: rgb(51, 196, 183);
     background: linear-gradient(#46cfc1, #37a398);
 }
 

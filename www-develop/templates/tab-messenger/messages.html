@@ -27,7 +27,7 @@
             Bitte zuerst Registrieren!
         </div>
     </ion-content>
-    <div class="emoji-overlay" ng-if="mc.showEmojis">
+    <div class="emoji-overlay" ng-class="{'open': mc.showEmojis}">
         <span ng-click="mc.selectEmoji(item)" ng-bind-html="mc.toTrusted(item)" ng-repeat="item in mc.emojis"></span>
     </div>
     <div class="list list-inset bottom">

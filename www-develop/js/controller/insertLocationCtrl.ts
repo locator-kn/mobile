@@ -34,10 +34,11 @@ module Controller {
         error:boolean = false;
         edit:boolean = false;
 
-        constructor(private CameraService, private $scope, private basePath, private GeolocationService,
+        constructor(private Utilityservice, private CameraService, private $scope, private basePath, private GeolocationService,
                     private UserService, private $state, private PictureUploadService, private webPath,
-                    private $rootScope, private $ionicLoading, private $ionicPopup, private ngProgressLite,
+                    private $rootScope, private $ionicLoading, private ngProgressLite,
                     private $ionicScrollDelegate, private maxSpinningDuration, private LocationService, private $stateParams) {
+
 
             if (this.$state.current.name.indexOf('edit') > -1) {
                 this.edit = true;
@@ -110,7 +111,9 @@ module Controller {
                 delete formData._rev;
             }
             this.ngProgressLite.start();
-            this.$ionicPopup.alert({title: 'Das Bild wird im Hintergrund hochgeladen. Beschreibe doch deine Location solange du wartest.'});
+
+            this.Utilityservice.showPopup('Das Bild wird im Hintergrund hochgeladen. Beschreibe doch deine Location solange du wartest.');
+
             this.PictureUploadService.uploadImage(file, this.basePath + '/users/my/locations/picture/mobile', formData)
                 .then((data) => {
                     this.$ionicLoading.hide();
@@ -211,7 +214,9 @@ module Controller {
             }
 
             if (this.isUploading) {
-                this.$ionicPopup.alert({title: 'Du kannst deine Location speichern, sobald dein Bild hochgeladen ist.'});
+                this.Utilityservice.showErrorPopup('Du kannst deine Location speichern, sobald dein Bild hochgeladen ist.');
+
+
                 return;
             }
             var formValues = angular.copy(this.locationFormDetails);
@@ -244,9 +249,7 @@ module Controller {
 
                         this.documentWasCreated = true;
                     } else {
-                        var alertPopup = this.$ionicPopup.alert({
-                            template: 'Location erfolgreich aktualisiert'
-                        });
+                        this.Utilityservice.showPopup('Location erfolgreich aktualisiert');
 
                         this.$state.go('tab.profile', {
                             userId: this.me._id
@@ -288,7 +291,8 @@ module Controller {
 
         goToMap() {
             if (this.isUploading) {
-                this.$ionicPopup.alert({title: 'Bitte warte kurz bis das Bild fertig geladen wurde'});
+                this.Utilityservice.showErrorPopup('Bitte warte kurz bis das Bild fertig geladen wurde');
+
                 return;
             }
             this.$ionicLoading.show({templateUrl: 'templates/static/loading.html', duration: this.maxSpinningDuration});

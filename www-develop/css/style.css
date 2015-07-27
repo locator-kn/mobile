@@ -41,8 +41,6 @@ body {
     font-weight: 200;
 }
 
-
-
 .image-container-full,
 .image-container {
     width: 100%;
@@ -220,6 +218,7 @@ body {
 .bar.bar-stable {
     padding: 5px 14px;
     background-color: white;
+    border-color: white;
 }
 
 .select-elements .circle.circle-selected {
@@ -251,7 +250,7 @@ ion-nav-view.view-container.tab-content {
     margin-left: -6px;
 }
 
-.moods .item{
+.moods .item {
     padding: 10px;
 }
 
@@ -288,6 +287,44 @@ ion-nav-view.view-container.tab-content {
 /** style **/
 .remove-margin-bottom {
     margin-bottom: 0;
+}
+
+.popup .button.button-positive {
+    background-color: rgb(51, 196, 183);
+    border-color: rgb(51, 196, 183);
+}
+
+.popup {
+    border-radius: 3px;
+    overflow: hidden;
+    background: #EAEDEE;
+}
+
+.popup-head {
+    border-bottom: 1px solid #eee;
+    text-align: center;
+    padding: 25px 10px;
+    background-color: #32C3B6;
+    color: white;
+}
+
+h3.popup-title {
+    color: white;
+    font-size: 16px;
+}
+
+.button.button-full {
+    border: none;
+}
+
+.popup .button.button-positive, .popup-buttons {
+    color: #6B6B6B;
+    background-color: #F8F8F8;
+    border-color: #F8F8F8;
+}
+
+.popup-container.error .popup-head {
+    background-color: #f05346;
 }
 
 .tabs-striped .tab-item.tab-item-active, .tabs-striped .tab-item.active, .tabs-striped .tab-item.activated {
