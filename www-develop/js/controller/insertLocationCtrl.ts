@@ -221,12 +221,11 @@ module Controller {
                 lat: this.map.clickedMarker.latitude
             };
 
-            formValues.tags = formValues.tags.split(" ");
-            /*var stringTags = [];
+            var stringTags = [];
              formValues.tags.forEach(item => {
              stringTags.push(item.text);
              });
-             formValues.tags = stringTags;*/
+             formValues.tags = stringTags;
 
             this.GeolocationService.saveLocation(formValues, this.documentId).
                 then((result) => {
