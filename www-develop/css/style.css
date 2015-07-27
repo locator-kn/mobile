@@ -46,7 +46,6 @@ body {
     width: 100%;
     overflow: hidden;
     float: left;
-    height: 225px;
     background-position: center;
     background-repeat: no-repeat;
 }
@@ -188,10 +187,6 @@ body {
 .insert-trip .not-auth-background,
 .insert-location .not-auth-background {
     background: #fff;
-}
-
-.not-auth-container {
-    margin: 0 50px;
 }
 
 /* hahahaha :-D */
@@ -338,4 +333,40 @@ h3.popup-title {
 
 .tabs-striped .tab-item.tab-item-active, .tabs-striped .tab-item.active, .tabs-striped .tab-item.activated {
     border: 0;
+}
+
+.center {
+    text-align: center;
+}
+
+.not-auth-container {
+    float: left;
+    padding: 15px;
+    width: 100%;
+}
+
+.not-auth-container .image-container-full {
+    text-align: center;
+}
+
+.not-auth-container .image-container-full .lorenz {
+    display: inline-block;
+    background-color: white;
+    border-radius: 50%;
+    max-width: 200px;
+    margin-top: 50px;
+}
+
+.insert-trip .not-auth-container .message {
+    color: white;
+    background: none;
+    width: 100%;
+    font-weight: 500;
+}
+
+.insert-location .not-auth-container .message {
+    color: rgb(34,34,34);
+    background: white;
+    width: 100%;
+    font-weight: 500;
 }

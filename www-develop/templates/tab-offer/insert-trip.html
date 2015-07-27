@@ -4,7 +4,7 @@
     <ion-nav-buttons side="left">
         <i ng-if="!itc.edit" class="icon ion-ios-arrow-back ion-chevron-left" ui-sref="tab.welcome"></i>
     </ion-nav-buttons>
-    <ion-content class="gradient-red" ng-class="!authenticated ? 'not-auth-background' : ''">
+    <ion-content class="gradient-red">
         <div ng-if="authenticated">
             <ul class="list">
                 <!-- if only 1 city available-->
@@ -71,11 +71,10 @@
         </div>
         <div ng-if="!authenticated" class="no-register">
             <div class="not-auth-container">
-                <div class="image-container-full"
-                     style="background-image: url('images/svg/lorenz.svg')">
+                <div class="image-container-full">
+                    <img class="lorenz" ng-src="images/svg/lorenz.svg">
                 </div>
-                <span class="message">Melde dich an und zeige anderen, was du an deiner Stadt liebst.</span>
-                <span class="message">Oder registriere dich und werde ein Teil von Locator</span>
+                <p class="message center">Melde dich an und zeige anderen, was du an deiner Stadt liebst.</p>
             </div>
         </div>
     </ion-content>
