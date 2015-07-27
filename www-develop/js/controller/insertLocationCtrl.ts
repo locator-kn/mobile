@@ -159,7 +159,6 @@ module Controller {
 
                             this.insertLocality(locality);
                             console.info('First Case');
-                            debugger;
                             return resolve();
 
                         } else {
