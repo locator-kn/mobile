@@ -1,4 +1,4 @@
-<ion-view view-title="Locations" class="location" ng-controller="LocationCtrl as lc">
+<ion-view view-title="Locations" class="location pageWithBigButton" ng-controller="LocationCtrl as lc">
     <ion-content class="background-color-grey my-has-tabs">
         <ul class="list">
             <li class="item config" ng-if="lc.user._id === userID && lc.onProfile ">
@@ -20,7 +20,7 @@
             <div class="image-container" ng-if="lc.result.images.picture"
                  style="background-image: url({{lc.webPath}}{{lc.result.images.picture + '?size=mobile'}});background-size: cover">
             </div>
-            <div class="image-container" ng-if="!lc.result.images.picture">
+            <div class="image-container" ng-if="!lc.result.images.picture" ng-click="lc.openMaps()">
                 <img class="googlemap"
                      ng-src="{{lc.result.images.googlemap}}&size=400x400&key=AIzaSyCveLtBw4QozQIkMstvefLSTd3_opSvHS4">
             </div>
@@ -50,4 +50,8 @@
             </li>
         </ul>
     </ion-content>
+    <button ng-click="lc.openMaps()"
+            class="button-geo button-bottom button button-full background-green bottom">
+        WEGBESCHREIBUNG
+    </button>
 </ion-view>
