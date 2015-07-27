@@ -16,6 +16,12 @@
     margin-bottom: 47px;
 }
 
+.messages .content {
+    float: left;
+    width: 100%;
+    padding-bottom: 15px;
+}
+
 .messenger label.ng-binding {
     padding-top: 23px;
     float: left;
@@ -46,6 +52,7 @@ span.since.ng-binding {
 
 .messenger-container .content .message {
     min-width: 100%;
+    max-width: 100%;
 }
 
 .messenger-container .content .message.out p {

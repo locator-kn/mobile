@@ -10,11 +10,11 @@
 }
 
 .insert-trip .checkbox input:checked:before, .checkbox input:checked + .checkbox-icon:before {
-    border-color: #f47c7e;
+    border-color: #f05346;
 }
 
 .insert-trip .equipment span.ng-binding {
-    line-height: 34px;
+    line-height: 38px;
 }
 
 .insert-trip .locations li.item.item-icon-right {
