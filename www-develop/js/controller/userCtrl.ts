@@ -56,6 +56,10 @@ module Controller {
                 });
             });
 
+            $rootScope.$on('updateProfileImage', (scope, imageLocation) => {
+                this.user.picture = this.webPath + imageLocation + '?' + Date.now();
+            });
+
             if (this.$rootScope.authenticated) {
                 this.me = this.isItMe();
             }
@@ -178,7 +182,7 @@ module Controller {
                 this.ngProgressLite.done();
 
                 var dataObject = JSON.parse(data.response);
-                this.user.picture = this.webPath + dataObject.imageLocation + '?' + Date.now();
+                this.$rootScope.$emit('updateProfileImage',dataObject.imageLocation);
                 console.log('update user: ' + dataObject);
                 // update cache with the new busted imagePath
                 this.updateMeCache(this.user);
