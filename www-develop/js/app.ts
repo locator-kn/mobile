@@ -476,6 +476,14 @@ angular.module('starter', deps)
                     }
                 }
             })
+            .state('tab.profile-trip-locations', {
+                url: '/profile/my/trips/locations/:locationSourceId',
+                views: {
+                    'tab-profile': {
+                        templateUrl: 'templates/location/locationOverview.html'
+                    }
+                }
+            })
             .state('tab.profile-locations-detail', {
                 url: '/profile/my/locations/:locationId',
                 views: {
