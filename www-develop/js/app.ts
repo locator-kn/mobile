@@ -158,13 +158,11 @@ angular.module('starter', deps)
 
     .directive('ngKeypress', function () {
         return function (scope, element, attrs) {
-            element.bind("keydown keypress", function (event) {
-                if (event.which === 32) {
+            element.bind("keyup", function (event) {
+                if (event.originalEvent.target.value.lastIndexOf(' ') === (event.originalEvent.target.value.length -1)) {
                     scope.$apply(function () {
                         event.target.blur();
                         event.target.focus();
-                        //scope.$eval(attrs.ngEnter);
-                        //element.val('');
                     });
 
                     event.preventDefault();
