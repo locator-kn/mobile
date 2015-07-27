@@ -218,6 +218,7 @@ body {
 .bar.bar-stable {
     padding: 5px 14px;
     background-color: white;
+    border-color: white;
 }
 
 .select-elements .circle.circle-selected {
