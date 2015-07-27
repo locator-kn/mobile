@@ -34,7 +34,7 @@ module Controller {
         error:boolean = false;
         edit:boolean = false;
 
-        constructor(private UtilityService, private CameraService, private $scope, private basePath, private GeolocationService,
+        constructor(private $q, private UtilityService, private CameraService, private $scope, private basePath, private GeolocationService,
                     private UserService, private $state, private PictureUploadService, private webPath,
                     private $rootScope, private $ionicLoading, private ngProgressLite,
                     private $ionicScrollDelegate, private maxSpinningDuration, private LocationService, private $stateParams) {
@@ -83,7 +83,6 @@ module Controller {
             $rootScope.$on('newGeoPosition', () => {
                 this.map = this.GeolocationService.getGeoPosition();
                 this.mapMarkerSet = true;
-                this.getCityFromMarker();
 
             });
         }
@@ -143,52 +142,58 @@ module Controller {
         }
 
         getCityFromMarker() {
-            this.GeolocationService.getCityByCoords(this.map.clickedMarker.latitude, this.map.clickedMarker.longitude)
-                .then(result => {
+            return this.$q((resolve, reject) => {
+
+                this.GeolocationService.getCityByCoords(this.map.clickedMarker.latitude, this.map.clickedMarker.longitude)
+                    .then(result => {
 
 
-                    var locality;
-                    result.forEach((item:any) => {
-                        if (item.types[0] === 'locality') {
-                            locality = item;
-                        }
-                    });
-
-                    if (locality) {
-
-                        this.insertLocality(locality);
-                        console.info('First Case');
-                        return;
-
-                    } else {
-
-                        var cityname;
-                        result[0].address_components.forEach((item:any) => {
+                        var locality;
+                        result.forEach((item:any) => {
                             if (item.types[0] === 'locality') {
-                                cityname = item.long_name;
+                                locality = item;
                             }
                         });
 
-                        if (cityname) {
+                        if (locality) {
 
-                            this.GeolocationService.getPlaceIdByAddress(cityname)
-                                .then(nestedResult => {
+                            this.insertLocality(locality);
+                            console.info('First Case');
+                            debugger;
+                            return resolve();
 
-                                    locality = {};
-                                    locality.place_id = nestedResult[0].place_id;
-                                    locality.formatted_address = nestedResult[0].formatted_address;
-                                    this.insertLocality(locality);
-                                    console.info('second');
-                                    return;
+                        } else {
 
-                                })
-                                .catch(error => {
-                                    console.log(error);
-                                });
+                            var cityname;
+                            result[0].address_components.forEach((item:any) => {
+                                if (item.types[0] === 'locality') {
+                                    cityname = item.long_name;
+                                }
+                            });
+
+                            if (cityname) {
+
+                                this.GeolocationService.getPlaceIdByAddress(cityname)
+                                    .then(nestedResult => {
+
+                                        locality = {};
+                                        locality.place_id = nestedResult[0].place_id;
+                                        locality.formatted_address = nestedResult[0].formatted_address;
+                                        this.insertLocality(locality);
+                                        console.info('second');
+                                        return resolve();
+
+                                    })
+                                    .catch(error => {
+                                        return reject();
+                                        console.log(error);
+                                    });
+                            }
                         }
-                    }
 
-                });
+                    });
+
+            });
         }
 
         showPictureActions = () => {
@@ -210,7 +215,7 @@ module Controller {
             }
 
             if (!this.mapMarkerSet) {
-                this.UtilityService.showPopup('Bitte teile uns noch mit, wo sich deine Location befindet.');
+                this.UtilityService.showPopup('Wo befindet sich deine Location?');
                 return;
             }
 
@@ -228,47 +233,54 @@ module Controller {
                 this.UtilityService.showPopup('Du kannst deine Location speichern, sobald dein Bild hochgeladen ist.');
                 return;
             }
-            var formValues = angular.copy(this.locationFormDetails);
 
-            formValues.geotag = {
-                long: this.map.clickedMarker.longitude,
-                lat: this.map.clickedMarker.latitude
-            };
 
-            var stringTags = [];
-            formValues.tags.forEach(item => {
-                stringTags.push(item.text);
-            });
-            formValues.tags = stringTags;
+            this.getCityFromMarker().then(() => {
 
-            this.GeolocationService.saveLocation(formValues, this.documentId).
-                then((result) => {
-                    if (!this.edit) {
-                        if (this.headerImagePath) {
-                            var pic = this.headerImagePath + '?size=mobile';
+                var formValues = angular.copy(this.locationFormDetails);
+
+                formValues.geotag = {
+                    long: this.map.clickedMarker.longitude,
+                    lat: this.map.clickedMarker.latitude
+                };
+
+                var stringTags = [];
+                formValues.tags.forEach(item => {
+                    stringTags.push(item.text);
+                });
+                formValues.tags = stringTags;
+
+                this.GeolocationService.saveLocation(formValues, this.documentId).
+                    then((result) => {
+                        if (!this.edit) {
+                            if (this.headerImagePath) {
+                                var pic = this.headerImagePath + '?size=mobile';
+                            } else {
+                                var pic = 'images/header-image-placeholder.png';
+                            }
+                            var info = {
+                                tripId: result.data.id,
+                                picture: pic
+                            };
+                            this.GeolocationService.setResultInfoObject(info);
+                            this.$state.go('tab.locate-options');
+
+                            this.documentWasCreated = true;
                         } else {
-                            var pic = 'images/header-image-placeholder.png';
+                            this.UtilityService.showPopup('Location erfolgreich aktualisiert');
+
+                            this.$state.go('tab.profile', {
+                                userId: this.me._id
+                            });
                         }
-                        var info = {
-                            tripId: result.data.id,
-                            picture: pic
-                        };
-                        this.GeolocationService.setResultInfoObject(info);
-                        this.$state.go('tab.locate-options');
+                        this.resetController();
 
-                        this.documentWasCreated = true;
-                    } else {
-                        this.UtilityService.showPopup('Location erfolgreich aktualisiert');
+                    }).catch((err) => {
+                        console.log(err);
+                    })
 
-                        this.$state.go('tab.profile', {
-                            userId: this.me._id
-                        });
-                    }
-                    this.resetController();
+            });
 
-                }).catch((err) => {
-                    console.log(err);
-                })
         };
 
         resetController() {
