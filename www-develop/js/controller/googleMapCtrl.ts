@@ -27,11 +27,7 @@ module Controller {
             events: null
         };
 
-        heigth;
-
         constructor(private $ionicLoading, private GeolocationService, private $scope, private maxSpinningDuration) {
-            this.heigth = window.innerHeight - 152;
-
             var oldResultObject = this.GeolocationService.getGeoPosition();
 
             if (oldResultObject.center) {
