@@ -75,7 +75,7 @@
                                  ng-if="((result.userid === userID) && !toc.searchView)"
                                  ng-click="toc.editTrip(result._id, result.userid)">
 
-                            <label class="user">
+                            <label ui-sref="tab.search-user({userId: result.userid})" class="user">
                                 <label class="dekotext">erstellt von </label>
                                 <label class="name">{{result.username || 'anonym'}}</label>
                             </label>
