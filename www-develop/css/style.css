@@ -175,6 +175,7 @@ body {
     border: none;
     font-size: 18px !important;
     font-weight: 600 !important;
+    text-transform: uppercase;
 }
 
 .mood span.ng-binding {
