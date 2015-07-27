@@ -12,7 +12,8 @@ module Controller {
 
             $rootScope.$on("updateConversation", (event, conversationId, timestamp, messageStatus) => {
                 if (timestamp) {
-                    this.conversationsHash[conversationId].lastMessage = this.getFormattedTimestamp(timestamp)
+                    //this.conversationsHash[conversationId].lastMessage = this.getFormattedTimestamp(timestamp)
+                    this.conversationsHash[conversationId].lastMessage = moment(new Date(timestamp)).startOf('minutes').fromNow();
                 }
                 this.conversationsHash[conversationId][this.$rootScope.userID + '_read'] = messageStatus;
             });
@@ -52,10 +53,13 @@ module Controller {
                     this.conversations = result.data;
                     var badgeHash = {};
                     this.conversations.forEach(element => {
-                        if(element.modified_date) {
-                            element.lastMessage = this.getFormattedTimestamp(element.modified_date);
-                        } else if(element.create_date) {
-                            element.lastMessage = this.getFormattedTimestamp(element.create_date);
+                        if (element.modified_date) {
+                            //element.lastMessage = this.getFormattedTimestamp(element.modified_date);
+                            element.lastMessage = moment(new Date(timestamp)).startOf('minutes').fromNow();
+
+                        } else if (element.create_date) {
+                            //element.lastMessage = this.getFormattedTimestamp(element.create_date);
+                            element.lastMessage = moment(new Date(timestamp)).startOf('minutes').fromNow();
                         }
                         this.conversationsHash[element._id] = element;
                         badgeHash[element._id] = this.conversationsHash[element._id][this.$rootScope.userID + '_read'];
