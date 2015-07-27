@@ -379,3 +379,11 @@ h3.popup-title {
     width 100%;
     float: left;
 }
+
+.tabs-striped .tabs {
+    padding-top: 0;
+}
+
+.tabs-striped .tab-item.tab-item-active, .tabs-striped .tab-item.active, .tabs-striped .tab-item.activated {
+    margin-top: 0;
+}
