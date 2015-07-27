@@ -46,6 +46,7 @@ span.since.ng-binding {
 
 .messenger-container .content .message {
     min-width: 100%;
+    max-width: 100%;
 }
 
 .messenger-container .content .message.out p {
