@@ -81,8 +81,6 @@
 }
 
 .insert-location .tag-input {
-    /*border: 1px;*/
-    padding: 0px;
     width: 100% !important;
 }
 
@@ -112,9 +110,6 @@
     height: 26px;
 }
 
-tags-input.fix-item-min-height.ng-pristine.ng-valid.ng-valid-maxlength.ng-valid-max-tags.ng-valid-min-tags.ng-valid-leftover-text.ng-touched {
-    margin-left: 15px;
-}
 
 tags-input .tags.focused {
     outline: none;
