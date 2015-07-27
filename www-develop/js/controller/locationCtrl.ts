@@ -10,7 +10,7 @@ module Controller {
 
         publicLocation:boolean;
 
-        constructor(private UtilityService, private UserService, private $scope, private $stateParams, private LocationService,
+        constructor(private $window, private UtilityService, private UserService, private $scope, private $stateParams, private LocationService,
                     private $ionicLoading, private webPath, maxSpinningDuration, private $state, private $ionicPopup, private $rootScope) {
             this.locationId = $stateParams.locationId;
             this.state = this.$state.current.name;
@@ -100,6 +100,16 @@ module Controller {
                     }
                 }]
             });
+        }
+
+        openMaps() {
+            console.log('is android: ' + this.$rootScope.isAndroid);
+            console.log('is IOS: ' + this.$rootScope.isIOS);
+            if (this.$rootScope.isAndroid) {
+                this.$window.open('geo:' + this.result.geotag.lat + ',' + this.result.geotag.long + '?z=11&q=' + this.result.geotag.lat + ',' + this.result.geotag.long + '(Treasure)', '_system', 'location=yes')
+            } else if (this.$rootScope.isIOS) {
+                this.$window.open('http://maps.apple.com/?&saddr=' + this.result.geotag.lat + ',' + this.result.geotag.long);
+            }
         }
 
         static controllerId:string = "LocationCtrl";
