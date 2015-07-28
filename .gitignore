@@ -16,5 +16,6 @@ app/bower_components
 platforms/ios
 platforms/android
 *.zip
-
 .cordova
+plugins
+
