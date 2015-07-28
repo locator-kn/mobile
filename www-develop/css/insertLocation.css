@@ -274,6 +274,8 @@ tags-input .tags .input {
     background: white;
     border-color: whitesmoke;
     color: rgb(34,34,34);
+    border-right: 0;
+    border-left: 0;
 }
 
 .insert-location .item input, .insert-location .item textarea {
@@ -282,4 +284,12 @@ tags-input .tags .input {
 
 .insert-location .item input, .insert-location .item textarea {
     line-height: 19px;
+}
+
+.insert-location tags-input .tags .tag-item.selected {
+    background: #f05346;
+}
+
+tags-input .host {
+    float: left;
 }
