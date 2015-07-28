@@ -93,6 +93,10 @@ module Controller {
                 query.end_date = end_date.toISOString();
             }
 
+            // google analytics
+            if (typeof analytics !== undefined && typeof analytics !== 'undefined') {
+                analytics.trackEvent('Suchen', 'Suchen', 'Query', query);
+            }
 
             this.SearchService.setQuery(query);
             this.$state.go('tab.search-result');
