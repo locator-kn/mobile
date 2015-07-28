@@ -6,6 +6,11 @@ module Controller {
 
         constructor(private MessengerService, private UserService, private webPath, private $ionicLoading,
                     private SocketService, private $state, private $rootScope, maxSpinningDuration) {
+            // google analytics
+            if (typeof analytics !== undefined && typeof analytics !== 'undefined') {
+                analytics.trackView("Messenger Controller");
+            }
+
             this.$ionicLoading.show({templateUrl: 'templates/static/loading.html', duration: maxSpinningDuration});
             this.getConversations();
             this.registerSocketEvent();

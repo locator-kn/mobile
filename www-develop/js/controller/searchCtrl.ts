@@ -21,6 +21,11 @@ module Controller {
         onlyOneCity:boolean;
 
         constructor(private $rootScope, private DataService, private $state, private SearchService, private $ionicPopup, private $ionicLoading) {
+            // google analytics
+            if (typeof analytics !== undefined && typeof analytics !== 'undefined') {
+                analytics.trackView("Search Controller");
+            }
+
             this.DataService.getAvailableDays().then((result)=> {
                 this.availableDays = result.data;
             });
@@ -36,7 +41,7 @@ module Controller {
 
             // if only one city available -> select city as default city
             this.DataService.getAvailableCities().then((result) => {
-                if(result.data.length === 1) {
+                if (result.data.length === 1) {
                     this.city = result.data[0];
                     this.onlyOneCity = true;
                 }
@@ -79,7 +84,7 @@ module Controller {
                 var currentDate = new Date();
                 var start_date = new Date(this.start_date);
                 var end_date = new Date(this.end_date);
-                if(currentDate > start_date|| currentDate > end_date){
+                if (currentDate > start_date || currentDate > end_date) {
                     this.$ionicPopup.alert({title: 'Datum liegt in der Vergangenheit.'});
                     return;
                 }
