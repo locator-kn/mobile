@@ -32,6 +32,9 @@ module Controller {
                     console.log(err);
                     this.$ionicLoading.hide();
                 });
+                if(this.state === this.tripUserType){
+                    this.me = true;
+                }
             } else if (this.state === this.userType) {
                 // if location by user x
                 this.LocationService.getLocationsByUser(this.locationSourceId).then((result) => {
