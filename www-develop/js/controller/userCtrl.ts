@@ -268,6 +268,14 @@ module Controller {
             }
         }
 
+        showUserTrips(userId) {
+            if (this.profileState) {
+                this.$state.go('tab.profile-trips', {userId: this.user._id});
+            } else {
+                this.$state.go('tab.search-user-trips', {userId: this.user._id});
+            }
+        }
+
         static controllerId:string = "UserCtrl";
     }
 }
