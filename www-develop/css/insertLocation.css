@@ -43,7 +43,11 @@
 .insert-location textarea {
     background-color: transparent;
     padding-right: 5px;
+    min-height: 70px;
+}
 
+tags-input .tags .tag-list {
+    float: left;
 }
 
 .insert-location .invisible {
@@ -98,18 +102,24 @@
     font-size: 16px;
 }
 
+.insert-location tags-input .tags .tag-item:last-child {
+    margin-right: 10px;
+}
+
 .insert-location tags-input .tags .input {
     font-family: Signika !important;
     font-weight: 200;
+    padding-left: 0;
+    margin-left: 0;
 
     outline: 0;
     border: 0;
-    margin: 2px;
-    padding: 0 0 0 10px;
+
     float: left;
     height: 26px;
-}
 
+    font-size: 16px !important;
+}
 
 tags-input .tags.focused {
     outline: none;
@@ -252,7 +262,7 @@ tags-input .tags .input {
     font-size: 16px;
 }
 
-.insert-location textarea.ng-pristine.ng-untouched.ng-invalid.ng-invalid-required.ng-valid-maxlength {
+.insert-location textarea {
     padding-top: 6px;
 }
 
@@ -263,4 +273,13 @@ tags-input .tags .input {
 .insert-location .item {
     background: white;
     border-color: whitesmoke;
+    color: rgb(34,34,34);
+}
+
+.insert-location .item input, .insert-location .item textarea {
+    line-height: 21px;
+}
+
+.insert-location .item input, .insert-location .item textarea {
+    line-height: 19px;
 }

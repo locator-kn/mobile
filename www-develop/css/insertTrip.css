@@ -120,12 +120,6 @@
     margin: 1px;
 }
 
-textarea.ng-pristine.ng-untouched.ng-invalid.ng-invalid-required,
-textarea.ng-dirty.ng-valid-parse.ng-touched.ng-invalid.ng-invalid-required {
-    background-color: transparent;
-    color: white;
-}
-
 .insert-trip .location-tags .tag {
     background: rgb(49, 47, 48);
     border-radius: 10px;
@@ -146,9 +140,6 @@ textarea.ng-dirty.ng-valid-parse.ng-touched.ng-invalid.ng-invalid-required {
     overflow: hidden;
 }
 
-.insert-trip .button:hover {
-    color: white;
-}
 
 .insert-trip .list-icon {
     float: left;
@@ -234,10 +225,6 @@ textarea.ng-dirty.ng-valid-parse.ng-touched.ng-invalid.ng-invalid-required {
     color: rgb(255, 70, 55);
 }
 
-.insert-trip .button:hover {
-    color: #f05346;
-    background-color: #ddd;
-}
 
 .insert-trip .success-overlay {
     position: absolute;
