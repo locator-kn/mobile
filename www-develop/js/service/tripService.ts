@@ -66,6 +66,10 @@ module Service {
             return this.$http.get(this.basePath + '/users/' + userid + '/trips');
         }
 
+        togglePublicTrips(tripId) {
+            return this.$http.put(this.basePath + '/trips/' + tripId + '/togglePublic');
+        }
+
         setCity(city) {
             this.city = city;
             this.$rootScope.$emit('newInsertTripCity');

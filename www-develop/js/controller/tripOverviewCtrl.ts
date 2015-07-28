@@ -23,7 +23,7 @@ module Controller {
                 // if user id is comitted as state param user id -> get all trips of user
                 this.searchView = false;
                 this.userId = $stateParams.userId;
-                if(this.userId === this.$rootScope.userID) {
+                if (this.userId === this.$rootScope.userID) {
                     this.myTrips = true;
                 }
             } else {
@@ -158,6 +158,10 @@ module Controller {
                 tripId: tripId,
                 userId: userId
             });
+        }
+
+        togglePublic(tripId) {
+            this.TripService.togglePublicTrips(tripId);
         }
 
         static controllerId:string = "TripOverviewCtrl";
