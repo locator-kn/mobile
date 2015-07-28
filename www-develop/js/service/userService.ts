@@ -54,13 +54,7 @@ module Service {
                 })
         }
 
-        /*loginFacebook(at) {
-            return this.$http.post(this.basePath + '/mobile/loginFacebook', {
-                accessToken: at
-            });
-        }*/
-
-        loginOAuth (strategy, at) {
+        loginOAuth(strategy, at) {
             return this.$http.post(this.basePath + '/mobile/loginOAuth', {
                 strategy: strategy,
                 accessToken: at
@@ -80,8 +74,12 @@ module Service {
                 }
 
                 this.$http.get(this.basePath + '/users/me', {cache: this.usersIdCache})
-                    .then(data => {
-                        return this.decorateUserImage(data);
+                    .then(result => {
+                        // google analytics
+                        if (typeof analytics !== undefined && typeof analytics !== 'undefined') {
+                            analytics.setUserId(result.data._id);
+                        }
+                        return this.decorateUserImage(result);
                     })
                     .then(data => {
                         resolve(data)
@@ -94,7 +92,7 @@ module Service {
 
         updateMeCache(newUserData) {
             var getMeResponse = this.usersMeCache.get(this.basePath + '/users/me');
-            if(getMeResponse && getMeResponse.length) {
+            if (getMeResponse && getMeResponse.length) {
                 getMeResponse[1] = JSON.stringify(newUserData);
                 this.usersMeCache.put(this.basePath + '/users/me', getMeResponse);
             }
