@@ -27,13 +27,8 @@
                 <h5 class="text-color-grey">Beschreibung</h5>
                 <span class="description">{{uc.user.description}}</span>
             </li>
-            <li class="item item-icon-right" ng-if="!uc.profileState"
-                ui-sref="tab.search-user-locations({locationSourceId:uc.user._id})">
-                <span>Locations von {{uc.user.name}}</span>
-                <i class="icon ion-chevron-right icon-accessory"></i>
-            </li>
-            <li class="item item-icon-right" ng-if="uc.profileState"
-                ui-sref="tab.profile-locations({locationSourceId:uc.user._id})">
+            <li class="item item-icon-right"
+                ng-click="uc.showUserLocations(uc.user._id)">
                 <span>Locations von {{uc.user.name}}</span>
                 <i class="icon ion-chevron-right icon-accessory"></i>
             </li>
