@@ -5,7 +5,7 @@
              ng-click="uc.editTrigger()">
         <img ng-src="images/icons/icons_stuff/haken.png" ng-if="uc.me && uc.edit" class="edit-pencil"
              ng-click="uc.updateProfile()">
-        <img ng-src="images/icons/icons_stuff/cross.png" ng-if="uc.me && uc.edit" class="edit-pencil"
+        <img ng-src="images/svg/loeschen.svg" ng-if="uc.me && uc.edit" class="delete-icon"
              ng-click="uc.editTrigger()">
     </ion-nav-buttons>
     <ion-content class="background-color-grey">
@@ -27,14 +27,14 @@
                 <h5 class="text-color-grey">Beschreibung</h5>
                 <span class="description">{{uc.user.description}}</span>
             </li>
-            <li class="item item-icon-right" ng-if="!uc.profileState"
-                ui-sref="tab.search-user-locations({locationSourceId:uc.user._id})">
+            <li class="item item-icon-right"
+                ng-click="uc.showUserLocations(uc.user._id)">
                 <span>Locations von {{uc.user.name}}</span>
                 <i class="icon ion-chevron-right icon-accessory"></i>
             </li>
-            <li class="item item-icon-right" ng-if="uc.profileState"
-                ui-sref="tab.profile-locations({locationSourceId:uc.user._id})">
-                <span>Locations von {{uc.user.name}}</span>
+            <li class="item item-icon-right"
+                ng-click="uc.showUserTrips(uc.user._id)">
+                <span>Trips von {{uc.user.name}}</span>
                 <i class="icon ion-chevron-right icon-accessory"></i>
             </li>
         </ul>

@@ -367,7 +367,7 @@ h3.popup-title {
 }
 
 .insert-location .not-auth-container .message {
-    color: rgb(34,34,34);
+    color: rgb(34, 34, 34);
     background: white;
     width: 100%;
     font-weight: 500;
@@ -378,7 +378,7 @@ h3.popup-title {
 }
 
 .float-width {
-    width 100%;
+    width: 100%;
     float: left;
 }
 
@@ -388,4 +388,11 @@ h3.popup-title {
 
 .tabs-striped .tab-item.tab-item-active, .tabs-striped .tab-item.active, .tabs-striped .tab-item.activated {
     margin-top: 0;
+}
+
+.delete-icon {
+    width: 25px;
+    height: 25px;
+    margin-top: 3px;
+    margin-right: 5px;
 }

@@ -37,8 +37,7 @@ module Controller {
         constructor(private $q, private UtilityService, private CameraService, private $scope, private basePath, private GeolocationService,
                     private UserService, private $state, private PictureUploadService, private webPath,
                     private $rootScope, private $ionicLoading, private ngProgressLite,
-                    private $ionicScrollDelegate, private maxSpinningDuration, private LocationService, private $stateParams) {
-
+                    private maxSpinningDuration, private LocationService, private $stateParams) {
 
             if (this.$state.current.name.indexOf('edit') > -1) {
                 this.edit = true;
@@ -51,8 +50,7 @@ module Controller {
                     }
                     this.documentId = result.data._id;
                     this.locationFormDetails.title = result.data.title;
-                    var tags = result.data.tags.toString();
-                    this.locationFormDetails.tags = tags.replace(/,/g, " ");
+                    this.locationFormDetails.tags = result.data.tags;
                     this.locationFormDetails.description = result.data.description;
                     this.locationFormDetails.city = result.data.city;
                     this.locationFormDetails.public = result.data.public;
@@ -83,13 +81,11 @@ module Controller {
             $rootScope.$on('newGeoPosition', () => {
                 this.map = this.GeolocationService.getGeoPosition();
                 this.mapMarkerSet = true;
-
             });
         }
 
         uploadImage(image) {
             this.uploadIsDone = false;
-
             this.isUploading = true;
             var file = image.src;
             var formData = {
@@ -117,7 +113,6 @@ module Controller {
                 .then((data) => {
                     this.$ionicLoading.hide();
                     var dataObject = JSON.parse(data.response);
-
                     this.showNewImage(dataObject);
                     this.documentId = dataObject.id;
                     this.revision = dataObject.rev;
@@ -143,10 +138,8 @@ module Controller {
 
         getCityFromMarker() {
             return this.$q((resolve, reject) => {
-
                 this.GeolocationService.getCityByCoords(this.map.clickedMarker.latitude, this.map.clickedMarker.longitude)
                     .then(result => {
-
 
                         var locality;
                         result.forEach((item:any) => {
@@ -156,13 +149,10 @@ module Controller {
                         });
 
                         if (locality) {
-
                             this.insertLocality(locality);
                             console.info('First Case');
                             return resolve();
-
                         } else {
-
                             var cityname;
                             result[0].address_components.forEach((item:any) => {
                                 if (item.types[0] === 'locality') {
@@ -171,10 +161,8 @@ module Controller {
                             });
 
                             if (cityname) {
-
                                 this.GeolocationService.getPlaceIdByAddress(cityname)
                                     .then(nestedResult => {
-
                                         locality = {};
                                         locality.place_id = nestedResult[0].place_id;
                                         locality.formatted_address = nestedResult[0].formatted_address;
@@ -184,8 +172,8 @@ module Controller {
 
                                     })
                                     .catch(error => {
-                                        return reject();
                                         console.log(error);
+                                        return reject();
                                     });
                             }
                         }
@@ -273,13 +261,10 @@ module Controller {
                             });
                         }
                         this.resetController();
-
                     }).catch((err) => {
                         console.log(err);
                     })
-
             });
-
         };
 
         resetController() {
@@ -312,7 +297,6 @@ module Controller {
         goToMap() {
             if (this.isUploading) {
                 this.UtilityService.showErrorPopup('Bitte warte kurz bis das Bild fertig geladen wurde');
-
                 return;
             }
             this.$ionicLoading.show({templateUrl: 'templates/static/loading.html', duration: this.maxSpinningDuration});

@@ -46,8 +46,10 @@
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
 
+declare
+var ionic:any;
+
 var deps = [
-    'ionic',
     'ngLodash',
     'locator.accommodation-equipment-chooser',
     'angular-cache',
@@ -58,7 +60,8 @@ var deps = [
     'ngTagsInput',
     'ngCordova',
     'ngCordovaOauth',
-    'dbaq.emoji'
+    'dbaq.emoji',
+    'ionic'
 ];
 
 angular.module('starter', deps)
@@ -76,6 +79,8 @@ angular.module('starter', deps)
              StatusBar.styleLightContent();
              }*/
 
+            $rootScope.isAndroid = ionic.Platform.isAndroid();
+            $rootScope.isIOS = ionic.Platform.isIOS();
 
             $window.onresize = () => {
                 setupValues();
@@ -359,6 +364,14 @@ angular.module('starter', deps)
                 views: {
                     'tab-search': {
                         templateUrl: 'templates/profile.html'
+                    }
+                }
+            })
+            .state('tab.search-user-trips', {
+                url: '/search/:userId/trips',
+                views: {
+                    'tab-search': {
+                        templateUrl: 'templates/trip/trips.html'
                     }
                 }
             })

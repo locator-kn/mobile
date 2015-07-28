@@ -90,3 +90,8 @@ ui-gmap-google-map.google-map.angular-google-map {
     height: auto;
 }
 
+.location .button-geo {
+    height: 60px;
+
+}
+
