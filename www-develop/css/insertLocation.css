@@ -264,3 +264,7 @@ tags-input .tags .input {
     background: white;
     border-color: whitesmoke;
 }
+
+.insert-location .item input, .insert-location .item textarea {
+    line-height: 19px;
+}
