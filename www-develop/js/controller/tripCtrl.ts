@@ -10,6 +10,11 @@ module Controller {
                     private $ionicSlideBoxDelegate, private UserService, private $ionicLoading, private webPath,
                     maxSpinningDuration, private $rootScope, private MessengerService, private $state) {
 
+            // google analytics
+            if (typeof analytics !== undefined && typeof analytics !== 'undefined') {
+                analytics.trackEvent('Trip', 'Display-Single', 'TripId', this.$stateParams.tripId);
+            }
+
             this.$ionicLoading.show({templateUrl: 'templates/static/loading.html', duration: maxSpinningDuration});
 
             if (this.$state.current.name.indexOf('profile') > -1) {
