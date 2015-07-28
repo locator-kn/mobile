@@ -212,6 +212,10 @@ module Controller {
             }
 
             this.TripService.setPreTrip(trip);
+            // google analytics
+            if (typeof analytics !== undefined && typeof analytics !== 'undefined') {
+                analytics.trackEvent('Trip', 'Insert', 'PreTrip', trip);
+            }
 
             if (!this.edit) {
                 this.$state.go('tab.offer-locations', {
