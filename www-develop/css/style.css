@@ -378,7 +378,7 @@ h3.popup-title {
 }
 
 .float-width {
-    width 100%;
+    width: 100%;
     float: left;
 }
 
