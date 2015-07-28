@@ -48,9 +48,7 @@
                 </li>
                 <li ng-class="{'error' : (ilc.error) && ilc.form.locationTags.$error.required}"
                     class="item item-input tag-input fix-item-min-height">
-                    <tags-input maxlength="300" add-on-space="true" add-on-comma="true"
-                                placeholder="+ Füge Tags hinzu" class="fix-item-min-height"
-                                ng-model="ilc.locationFormDetails.tags"></tags-input>
+                    <input placeholder="Tags" type="text" ng-model="ilc.locationFormDetails.tags" ng-change="ilc.strip(ilc.locationFormDetails.tags)">
                 </li>
             </div>
             <div ng-if="!authenticated" class="no-register">

@@ -39,6 +39,7 @@ module Controller {
                     private $rootScope, private $ionicLoading, private ngProgressLite,
                     private maxSpinningDuration, private LocationService, private $stateParams) {
 
+
             if (this.$state.current.name.indexOf('edit') > -1) {
                 this.edit = true;
                 this.LocationService.getLocationById($stateParams.locationId).then((result) => {
@@ -224,6 +225,9 @@ module Controller {
 
             this.getCityFromMarker().then(() => {
 
+
+                this.locationFormDetails.tags = this.locationFormDetails.tags.split(' ');
+
                 var formValues = angular.copy(this.locationFormDetails);
 
                 formValues.geotag = {
@@ -231,11 +235,6 @@ module Controller {
                     lat: this.map.clickedMarker.latitude
                 };
 
-                var stringTags = [];
-                formValues.tags.forEach(item => {
-                    stringTags.push(item.text);
-                });
-                formValues.tags = stringTags;
 
                 this.GeolocationService.saveLocation(formValues, this.documentId).
                     then((result) => {
@@ -313,6 +312,10 @@ module Controller {
             this.locationFormDetails.city.title = locality.formatted_address;
             this.locationFormDetails.city.place_id = locality.place_id;
             this.locationFormDetails.city.id = locality.place_id;
+        }
+
+        strip(value) {
+            this.locationFormDetails.tags = value.replace(/,/g, ' ').replace(/\s+/g, ' ');
         }
 
         static controllerId:string = "InsertLocationCtrl";
