@@ -140,9 +140,6 @@
     overflow: hidden;
 }
 
-.insert-trip .button:hover {
-    color: white;
-}
 
 .insert-trip .list-icon {
     float: left;
@@ -228,10 +225,6 @@
     color: rgb(255, 70, 55);
 }
 
-.insert-trip .button:hover {
-    color: #f05346;
-    background-color: #ddd;
-}
 
 .insert-trip .success-overlay {
     position: absolute;
