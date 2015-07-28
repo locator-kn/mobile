@@ -51,7 +51,7 @@ module Controller {
                     }
                     this.documentId = result.data._id;
                     this.locationFormDetails.title = result.data.title;
-                    this.locationFormDetails.tags = result.data.tags;
+                    this.locationFormDetails.tags = result.data.tags.join(' ');
                     this.locationFormDetails.description = result.data.description;
                     this.locationFormDetails.city = result.data.city;
                     this.locationFormDetails.public = result.data.public;
