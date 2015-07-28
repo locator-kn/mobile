@@ -64,13 +64,19 @@
                             <label>mit Übernachtung</label>
                         </li>
                         <li class="item trip-options">
-                            <img class="icon icon-small" ng-src="./images/svg/ansehen_weiss.svg"
-                                 ng-click="toc.showTripDetail(result._id, result.userid)">
-                            <img class="icon" ng-src="./images/svg/alle_locations.svg"
-                                 ng-click="toc.showLocations(result._id)">
-                            <img class="icon" ng-src="./images/svg/messenger_weiss.svg"
-                                 ng-if="!(result.userid === userID)"
-                                 ng-click="toc.startConversation(result.user, result)">
+                            <div class="icon icon-small">
+                                <img ng-src="./images/svg/ansehen_weiss.svg"
+                                     ng-click="toc.showTripDetail(result._id, result.userid)">
+                            </div>
+                            <div class="icon">
+                                <img ng-src="./images/svg/alle_locations.svg"
+                                     ng-click="toc.showLocations(result._id)">
+                            </div>
+                            <div class="icon">
+                                <img ng-src="./images/svg/messenger_weiss.svg"
+                                     ng-if="!(result.userid === userID)"
+                                     ng-click="toc.startConversation(result.user, result)">
+                            </div>
                             <label ui-sref="tab.search-user({userId: result.userid})" class="user">
                                 <label class="dekotext">erstellt von </label>
                                 <label class="name">{{result.username || 'anonym'}}</label>
@@ -88,10 +94,14 @@
                                 </label>
                             </div>
                             <label class="public">öffentlich</label>
-                            <img class="icon delete-icon" ng-src="images/svg/loeschen.svg"
-                                 ng-click="toc.deleteTrip(result._id)">
-                            <img class="icon edit" ng-src="images/icons/icons_stuff/pencil.png"
-                                 ng-click="toc.editTrip(result._id, result.userid)">
+
+                            <div class="icon delete-icon">
+                                <img  class="delete-svg" ng-src="images/svg/loeschen.svg"
+                                     ng-click="toc.deleteTrip(result._id)">
+                            </div>
+                                <img class="icon edit" ng-src="images/icons/icons_stuff/pencil.png"
+                                     ng-click="toc.editTrip(result._id, result.userid)">
+
                         </li>
                     </ul>
                 </div>
