@@ -4,7 +4,7 @@
             <ul class="list">
                 <li class="item mood" collection-repeat="mood in mc.moods"
                     ng-click="mc.setMood(mood)">
-                    <img class="result-mood" ng-src="./images/svg/moods/black/{{mood.icon}}">
+                    <div class="result-mood"><img ng-src="./images/svg/moods/black/{{mood.icon}}"></div>
                     <span>{{mood.title}}</span>
                 </li>
             </ul>
