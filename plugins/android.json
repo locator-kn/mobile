@@ -31,6 +31,14 @@
                         {
                             "xml": "<feature name=\"InAppBrowser\"><param name=\"android-package\" value=\"org.apache.cordova.inappbrowser.InAppBrowser\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<preference name=\"webView\" value=\"org.crosswalk.engine.XWalkWebViewEngine\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"SplashScreen\"><param name=\"android-package\" value=\"org.apache.cordova.splashscreen.SplashScreen\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -75,6 +83,12 @@
             "PACKAGE_NAME": "com.ionicframework.locator164612"
         },
         "org.apache.cordova.inappbrowser": {
+            "PACKAGE_NAME": "com.ionicframework.locator164612"
+        },
+        "cordova-plugin-crosswalk-webview": {
+            "PACKAGE_NAME": "com.ionicframework.locator164612"
+        },
+        "cordova-plugin-splashscreen": {
             "PACKAGE_NAME": "com.ionicframework.locator164612"
         }
     },
