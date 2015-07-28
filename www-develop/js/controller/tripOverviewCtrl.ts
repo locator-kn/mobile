@@ -11,9 +11,9 @@ module Controller {
 
         itemsProPage:number = 5;
 
-        constructor(private $rootScope, private $state, private $stateParams, private TripService, private $scope,
+        constructor(private UtilityService, private $rootScope, private $state, private $stateParams, private TripService, private $scope,
                     private UserService, private DataService, private MessengerService, private $ionicLoading,
-                    private webPath, private SearchService, maxSpinningDuration, private $window) {
+                    private webPath, private SearchService, maxSpinningDuration, private $window, private $ionicPopup) {
 
             this.$ionicLoading.show({templateUrl: 'templates/static/loading.html', duration: maxSpinningDuration});
             this.elementWidth = this.$window.innerWidth - (177);
@@ -23,7 +23,7 @@ module Controller {
                 // if user id is comitted as state param user id -> get all trips of user
                 this.searchView = false;
                 this.userId = $stateParams.userId;
-                if(this.userId === this.$rootScope.userID) {
+                if (this.userId === this.$rootScope.userID) {
                     this.myTrips = true;
                 }
             } else {
@@ -157,6 +157,27 @@ module Controller {
             this.$state.go('tab.profile-trip-edit', {
                 tripId: tripId,
                 userId: userId
+            });
+        }
+
+        togglePublic(tripId) {
+            this.TripService.togglePublicTrips(tripId);
+        }
+
+        deleteTrip(tripId) {
+            var confirmPopup = this.UtilityService.getConfirmPopup('Trip löschen',
+                'Bist du dir sicher, dass du deinen Trip löschen möchtest?', 'Abbrechen', 'OK');
+            confirmPopup.then((res) => {
+                if (res) {
+                    this.TripService.deleteTrip(tripId)
+                        .then(result => {
+                            this.UtilityService.showPopup('Trip erfolgreich gelöscht');
+                            this.$state.go('tab.profile', {userId: this.$rootScope.userID});
+                        })
+                        .catch(err => {
+                            console.log(err);
+                        });
+                }
             });
         }
 

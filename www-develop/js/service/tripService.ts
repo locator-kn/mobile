@@ -61,9 +61,17 @@ module Service {
             });
         }
 
+        deleteTrip(_id) {
+            return this.$http.delete(this.basePath + '/trips/' + _id);
+        }
+
         // @deprecated
         getTripsByUser(userid) {
             return this.$http.get(this.basePath + '/users/' + userid + '/trips');
+        }
+
+        togglePublicTrips(tripId) {
+            return this.$http.put(this.basePath + '/trips/' + tripId + '/togglePublic');
         }
 
         setCity(city) {

@@ -182,7 +182,7 @@ module Controller {
                 this.ngProgressLite.done();
 
                 var dataObject = JSON.parse(data.response);
-                this.$rootScope.$emit('updateProfileImage',dataObject.imageLocation);
+                this.$rootScope.$emit('updateProfileImage', dataObject.imageLocation);
                 console.log('update user: ' + dataObject);
                 // update cache with the new busted imagePath
                 this.updateMeCache(this.user);
@@ -258,6 +258,22 @@ module Controller {
                     opponentId: opponentId
                 })
             })
+        }
+
+        showUserLocations(userId) {
+            if (this.profileState) {
+                this.$state.go('tab.profile-locations', {locationSourceId: this.user._id});
+            } else {
+                this.$state.go('tab.search-user-locations', {locationSourceId: this.user._id});
+            }
+        }
+
+        showUserTrips(userId) {
+            if (this.profileState) {
+                this.$state.go('tab.profile-trips', {userId: this.user._id});
+            } else {
+                this.$state.go('tab.search-user-trips', {userId: this.user._id});
+            }
         }
 
         static controllerId:string = "UserCtrl";
