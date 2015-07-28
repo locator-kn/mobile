@@ -35,13 +35,14 @@ module Controller {
 
         constructor(private $rootScope, private TripService, private DataService, private $state,
                     private $ionicScrollDelegate, private $ionicPopup, private SearchService, private $stateParams) {
-            // google analytics
-            if (typeof analytics !== undefined && typeof analytics !== 'undefined') {
-                analytics.trackView("InsertTrip Controller");
-            }
 
             // check if in edit mode
             if (this.$state.current.name.indexOf('edit') > -1) {
+                // google analytics
+                if (typeof analytics !== undefined && typeof analytics !== 'undefined') {
+                    analytics.trackView("EditTrip Controller (Insert-Trip)");
+                }
+
                 this.edit = true;
 
                 this.userId = $stateParams.userId;
@@ -90,6 +91,11 @@ module Controller {
                     }
                     this.TripService.setLocations(result.data.locations);
                 });
+            } else {
+                // google analytics
+                if (typeof analytics !== undefined && typeof analytics !== 'undefined') {
+                    analytics.trackView("InsertTrip Controller");
+                }
             }
 
             $rootScope.$on('newInsertTripCity', () => {
