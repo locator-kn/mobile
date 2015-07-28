@@ -367,6 +367,14 @@ angular.module('starter', deps)
                     }
                 }
             })
+            .state('tab.search-user-trips', {
+                url: '/search/:userId/trips',
+                views: {
+                    'tab-search': {
+                        templateUrl: 'templates/trip/trips.html'
+                    }
+                }
+            })
             .state('tab.messenger', {
                 url: '/messenger',
                 views: {
