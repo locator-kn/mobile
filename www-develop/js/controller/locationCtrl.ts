@@ -44,24 +44,24 @@ module Controller {
         }
 
         deleteLocation() {
-            var confirmPopup = this.getConfirmPopup('Location löschen',
+            var confirmPopup = this.UtilityService.getConfirmPopup('Location löschen',
                 'Bist du dir sicher, dass du deine Location löschen möchtest?', 'Abbrechen', 'OK');
             confirmPopup.then((res) => {
                 if (res) {
                     this.LocationService.deleteLocation(this.result._id)
                         .then(result => {
-                            this.showSuccessPopup();
+                            this.UtilityService.showPopup('Location erfolgreich gelöscht');
                             this.$state.go('tab.profile', {userId: this.$rootScope.userID});
                         })
                         .catch(result => {
                             //location is used in trip
-                            var confirmPopup = this.getConfirmPopup('Location löschen',
+                            var confirmPopup = this.UtilityService.getConfirmPopup('Location löschen',
                                 'Die Location wird in einem Trip verwendet. Wirklich löschen?', 'Nein', 'Ja');
                             confirmPopup.then((res) => {
                                 if (res) {
                                     this.LocationService.deleteLocationForce(this.result._id)
                                         .then(result => {
-                                            this.showSuccessPopup();
+                                            this.UtilityService.showPopup('Location erfolgreich gelöscht');
                                             this.$state.go('tab.profile', {userId: this.$rootScope.userID});
                                         })
                                         .catch((err) => {
@@ -72,33 +72,6 @@ module Controller {
 
                         });
                 }
-            });
-        }
-
-        showSuccessPopup() {
-            this.UtilityService.showPopup('Location erfolgreich gelöscht');
-
-        }
-
-        getConfirmPopup(title, textMsg, textNo, textYes) {
-            return this.$ionicPopup.confirm({
-                title: title,
-                template: textMsg,
-                buttons: [{ // Array[Object] (optional). Buttons to place in the popup footer.
-                    text: textNo,
-                    type: 'button-default',
-                    onTap: function (e) {
-                        // e.preventDefault() will stop the popup from closing when tapped.
-                        //e.preventDefault();
-                    }
-                }, {
-                    text: textYes,
-                    type: 'button-positive',
-                    onTap: function (e) {
-                        // Returning a value will cause the promise to resolve with the given value.
-                        return true;
-                    }
-                }]
             });
         }
 
