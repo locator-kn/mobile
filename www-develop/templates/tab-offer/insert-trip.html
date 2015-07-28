@@ -21,8 +21,9 @@
                     <i class="icon ion-chevron-right icon-accessory"></i>
 
                     <div class="float-width" ng-if="itc.moodAvailable">
-                        <img class="result-mood chosen-mood"
-                             ng-src="./images/svg/moods/white/{{itc.selectedMood.icon_white}}">
+                        <div class="result-mood chosen-mood">
+                            <img ng-src="./images/svg/moods/white/{{itc.selectedMood.icon_white}}">
+                        </div>
                         <label class="mood-title">{{itc.selectedMood.title}}</label>
                     </div>
                 </li>

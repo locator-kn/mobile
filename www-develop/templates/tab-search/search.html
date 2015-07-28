@@ -18,7 +18,9 @@
             <i class="icon ion-chevron-right icon-accessory"></i>
 
             <div ng-if="sc.moodAvailable">
-                <img class="result-mood chosen-mood" ng-src="./images/svg/moods/white/{{sc.selectedMood.icon_white}}">
+                <div class="result-mood chosen-mood">
+                    <img ng-src="./images/svg/moods/white/{{sc.selectedMood.icon_white}}">
+                </div>
                 <label class="mood-title">{{sc.selectedMood.title}}</label>
             </div>
         </li>
