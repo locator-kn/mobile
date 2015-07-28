@@ -396,3 +396,13 @@ h3.popup-title {
     margin-top: 3px;
     margin-right: 5px;
 }
+
+.bar .back-button, i.icon.ion-ios-arrow-back.ion-chevron-left {
+    padding-right: 30px !important;
+    padding-left: 10px !important;
+    margin-left: -10px !important;
+}
+
+.bar .back-button {
+    margin-left: -9px !important;
+}
