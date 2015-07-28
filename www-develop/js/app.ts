@@ -46,6 +46,9 @@
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
 
+declare
+var ionic:any;
+
 var deps = [
     'ngLodash',
     'locator.accommodation-equipment-chooser',
