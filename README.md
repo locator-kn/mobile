@@ -4,6 +4,7 @@
 - tsd reinstall (Version upgrade is required)
 - bower install
 - npm install
+- ionic platform add android
 
 
 ## run
