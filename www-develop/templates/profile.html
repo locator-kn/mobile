@@ -32,6 +32,11 @@
                 <span>Locations von {{uc.user.name}}</span>
                 <i class="icon ion-chevron-right icon-accessory"></i>
             </li>
+            <li class="item item-icon-right"
+                ng-click="uc.showUserTrips(uc.user._id)">
+                <span>Trips von {{uc.user.name}}</span>
+                <i class="icon ion-chevron-right icon-accessory"></i>
+            </li>
         </ul>
         <ul class="list edit" ng-if="uc.edit" ng-model-options="{ getterSetter: true }">
             <img class="profile-image" ng-src="{{uc.user.picture}}" ng-click="uc.updatePicture()">
