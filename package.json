@@ -41,10 +41,8 @@
     "org.apache.cordova.file",
     "org.apache.cordova.inappbrowser",
     "cordova-plugin-crosswalk-webview",
-    "cordova-plugin-whitelist"
+    "cordova-plugin-whitelist",
+    "cordova-plugin-splashscreen"
   ],
-  "cordovaPlatforms": [
-    "ios",
-    "android"
-  ]
+  "cordovaPlatforms": []
 }

@@ -80,7 +80,7 @@ module Controller {
             console.log('is IOS: ' + this.$rootScope.isIOS);
             if (this.$rootScope.isAndroid) {
                 this.$window.open('geo:' + this.result.geotag.lat + ',' + this.result.geotag.long + '?z=11&q=' + this.result.geotag.lat + ',' + this.result.geotag.long + '(Treasure)', '_system', 'location=yes')
-            } else if (this.$rootScope.isIOS) {
+            } else {
                 this.$window.open('http://maps.apple.com/?&saddr=' + this.result.geotag.lat + ',' + this.result.geotag.long);
             }
         }

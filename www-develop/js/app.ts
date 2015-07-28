@@ -46,8 +46,7 @@
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
 
-declare
-var ionic:any;
+declare var ionic:any;
 
 var deps = [
     'ngLodash',
@@ -180,14 +179,13 @@ angular.module('starter', deps)
 
     .directive('ngKeypress', function () {
         return function (scope, element, attrs) {
-            element.bind("keyup", function (event) {
-                if (event.originalEvent.target.value.lastIndexOf(' ') === (event.originalEvent.target.value.length - 1)) {
-                    scope.$apply(function () {
-                        event.target.blur();
-                        event.target.focus();
-                    });
 
-                    event.preventDefault();
+            console.info(angular.element('tags-input input'));
+
+            angular.element('tags-input input').bind("keyup", function (event) {
+
+                if (event.originalEvent.target.value.lastIndexOf(' ') === (event.originalEvent.target.value.length - 1)) {
+
                 }
             });
         };
