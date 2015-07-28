@@ -42,6 +42,11 @@ module Controller {
                 this.profileState = true;
             }
 
+            // google analytics
+            if (typeof analytics !== undefined && typeof analytics !== 'undefined') {
+                analytics.trackEvent('User', 'Display-User', 'UserId', $stateParams.userId);
+            }
+
             this.getUser($stateParams.userId);
 
             $rootScope.$on('userUpdate', () => {
