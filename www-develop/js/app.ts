@@ -74,7 +74,7 @@ angular.module('starter', deps)
                 cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
             }
 
-            if (typeof analytics !== undefined) {
+            if (typeof analytics !== undefined && typeof analytics !== 'undefined') {
                 console.log('start google-analytics')
                 analytics.startTrackerWithId("UA-65710424-1");
             } else {
