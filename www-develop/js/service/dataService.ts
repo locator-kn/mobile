@@ -7,7 +7,7 @@ module Service {
         dataMoodsCache;
         accommodationEquipmentCache;
 
-        constructor(private $http, private basePath, private CacheFactory, private $q, private $ionicLoading) {
+        constructor(private $http, private basePath, private CacheFactory, private $q) {
             this.dataCitiesCache = CacheFactory.createCache('dataCities');
             this.dataDaysCache = CacheFactory.createCache('dataDays');
             this.dataPersonsCache = CacheFactory.createCache('dataPersons');
