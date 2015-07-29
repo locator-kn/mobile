@@ -299,6 +299,7 @@ tags-input .host {
     width: 100%;
     min-height: 41px;
     padding-top: 9px;
+    padding-bottom: 9px;
 }
 
 .insert-location [contenteditable=true]:empty:before {
