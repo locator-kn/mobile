@@ -1,12 +1,4 @@
 {
-    "org.apache.cordova.file-transfer": {
-        "source": {
-            "type": "registry",
-            "id": "org.apache.cordova.file-transfer"
-        },
-        "is_top_level": true,
-        "variables": {}
-    },
     "org.apache.cordova.camera": {
         "source": {
             "type": "registry",
@@ -91,6 +83,15 @@
         "source": {
             "type": "registry",
             "id": "cordova-plugin-geolocation"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "org.apache.cordova.file-transfer": {
+        "source": {
+            "type": "git",
+            "url": "https://github.com/gaochun/cordova-plugin-file-transfer.git",
+            "subdir": "."
         },
         "is_top_level": true,
         "variables": {}
