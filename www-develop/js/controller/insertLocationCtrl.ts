@@ -39,7 +39,6 @@ module Controller {
                     private $rootScope, private $ionicLoading, private ngProgressLite,
                     private maxSpinningDuration, private LocationService, private $stateParams) {
 
-
             if (this.$state.current.name.indexOf('edit') > -1) {
                 this.edit = true;
                 this.LocationService.getLocationById($stateParams.locationId).then((result) => {

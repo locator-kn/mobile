@@ -63,10 +63,14 @@ body {
 .ngProgressLiteBar {
     background: rgb(51, 196, 183) !important;
     position: fixed;
-    z-index: 9;
+    z-index: 9 !important;
     top: 0;
     left: 0;
     height: 44px !important;
+}
+
+.platform-ios .ngProgressLiteBar {
+    margin-top: 20px;
 }
 
 .ngProgressLite .ngProgressLiteBarShadow {
@@ -415,3 +419,8 @@ h3.popup-title {
 span.back-text {
     display: none !important;
 }
+
+.platform-ios .backdrop {
+    margin-top: 20px;
+}
+
