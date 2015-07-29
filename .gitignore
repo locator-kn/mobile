@@ -17,7 +17,14 @@ platforms/ios
 platforms/android
 *.zip
 .cordova
-plugins
+plugins/com.ionic.keyboard
+plugins/cordova-plugin-crosswalk-webview
+plugins/cordova-plugin-geolocation
+plugins/cordova-plugin-splashscreen
+plugins/cordova-plugin-whitelist
+plugins/org.apache.cordova.camera
+plugins/org.apache.cordova.inappbrowser
+
 hooks
 resources/android/
 resources/ios/
