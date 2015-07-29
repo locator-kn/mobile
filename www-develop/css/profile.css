@@ -6,12 +6,12 @@
     margin: 10px auto 20px;
 }
 
-.profile .username {
-    text-align: center;
-    display: block;
+.profile .age {
+    margin-left: 5px;
+}
+
+.profile .age, .profile .username {
     font-weight: bold;
-    color: rgb(51, 196, 183);
-    margin-bottom: 20px;
 }
 
 .profile .config-button {
@@ -135,4 +135,13 @@ form#passwordForm {
 form#passwordForm .item-input {
     border-radius: 3px;
     margin-bottom: 5px;
+}
+
+.profile .name-and-age {
+    float: left;
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    color: rgb(51, 196, 183);
+    margin-bottom: 20px;
 }
