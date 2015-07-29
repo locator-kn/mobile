@@ -8,7 +8,9 @@
                 <ul>
                     <li class="item">
                         <img class="profile-image" ng-src="{{uc.user.picture}}">
-                        <span class="username">{{uc.user.name}}</span>
+
+                        <div class="name-and-age">
+                            <span class="username">{{uc.user.name}}</span><span ng-if="uc.age" class="age">({{uc.age}})</span></div>
                     </li>
                     <li class="item item-icon-right" ui-sref="tab.profile-description({userId:userID})">
                         Mein Profil

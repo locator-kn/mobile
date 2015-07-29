@@ -20,7 +20,10 @@ module Service {
                     .then(data => {
                         if (data.data.birthdate === '') {
                             delete data.data.birthdate;
+                        } else {
+                            data.data.birthdate = new Date(data.data.birthdate);
                         }
+
                         return this.decorateUserImage(data);
                     })
                     .then(data => {

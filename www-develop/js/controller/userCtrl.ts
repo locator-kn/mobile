@@ -10,6 +10,7 @@ module Controller {
         birthdate:any;
         birthAvailable:boolean;
         modifyBirthday;
+        age:any;
 
         // password
         newPassword:string;
@@ -52,13 +53,15 @@ module Controller {
             $rootScope.$on('userUpdate', () => {
                 // clear profile cache
                 this.UserService.clearMyProfileCache();
+
                 // update profile picture
-                this.UserService.getMe().then((user) => {
-                    this.user = user.data;
-                    if (user.data.birthdate) {
-                        this.formatBirthdate(user);
-                    }
-                });
+                /*this.UserService.getMe().then((result) => {
+                 this.user = result.data;
+                 this.user.birthdate = new Date(this.user.birthdate);
+                 this.age = this.getAge(this.user.birthdate);
+                 });*/
+
+                this.age = this.getAge(this.user.birthdate);
             });
 
             $rootScope.$on('updateProfileImage', (scope, imageLocation) => {
@@ -78,9 +81,7 @@ module Controller {
             this.UserService.getUser(_id)
                 .then(result => {
                     this.user = result.data;
-                    if (result.data.birthdate) {
-                        this.formatBirthdate(result);
-                    }
+                    this.age = this.getAge(result.data.birthdate);
 
                     if (isNaN(this.birthdate)) {
                         this.birthAvailable = false;
@@ -94,17 +95,6 @@ module Controller {
                 });
         };
 
-        formatBirthdate = (result)=> {
-            // for edit user birthday input field value
-            this.modifyBirthday = result.data.birthdate.substr(0, 10);
-            this.user.birthdate = new Date(result.data.birthdate);
-
-            var ageDifMs = Date.now() - new Date(result.data.birthdate).getTime() + 86400000;
-            var ageDate = new Date(ageDifMs); // miliseconds from epoch
-            this.birthdate = Math.abs(ageDate.getUTCFullYear() - 1970);
-
-            this.user.birthdate = moment(new Date(this.user.birthdate)).format('L');
-        };
 
         logout = () => {
             this.UserService.logout()
@@ -120,17 +110,18 @@ module Controller {
 
         updateProfile = ()=> {
 
+            var tmpUser = angular.copy(this.user);
+
             if (this.user.birthdate) {
                 if (this.user.birthdate > new Date()) {
                     this.$ionicPopup.alert({title: 'Datum muss in der Vergangenheit liegen!'});
                     return;
                 }
-                var date = new Date(this.user.birthdate);
-                this.user.birthdate = date.toISOString();
+                tmpUser.birthdate = tmpUser.birthdate.toISOString();
             }
             this.$ionicLoading.show({templateUrl: 'templates/static/loading.html', duration: this.maxSpinningDuration});
 
-            this.UserService.updateProfile(this.user)
+            this.UserService.updateProfile(tmpUser)
                 .then(result => {
                     this.$rootScope.$emit('userUpdate');
                     this.$ionicLoading.hide();
@@ -279,6 +270,12 @@ module Controller {
             } else {
                 this.$state.go('tab.search-user-trips', {userId: this.user._id});
             }
+        }
+
+        getAge(birthdate) {
+            var ageDifMs = Date.now() - new Date(birthdate).getTime() + 86400000;
+            var ageDate = new Date(ageDifMs); // miliseconds from epoch
+            return Math.abs(ageDate.getUTCFullYear() - 1970);
         }
 
         static controllerId:string = "UserCtrl";
