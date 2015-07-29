@@ -12,13 +12,16 @@
         <ul class="list" ng-if="!uc.edit">
             <li class="item">
                 <img class="profile-image" ng-src="{{uc.user.picture}}">
-                <span class="username">{{uc.user.name}} <span class="birthdate"
-                                                              ng-if="uc.birthdate">({{uc.birthdate}})</span></span>
+
+                <div class="name-and-age">
+                    <span class="username">{{uc.user.name}}</span><span ng-if="uc.age" class="age">({{uc.age}})</span>
+                </div>
+
             </li>
-            <li class="item" ng-if="uc.user.birthdate">
+            <!--<li class="item" ng-if="uc.user.birthdate">
                 <h5 class="text-color-grey">Geburtsdatum</h5>
                 <span class="date-of-birth">{{uc.user.birthdate}}</span>
-            </li>
+            </li>-->
             <li class="item" ng-if="uc.user.residence">
                 <h5 class="text-color-grey">Wohnort</h5>
                 <span class="residence">{{uc.user.residence}}</span>
@@ -48,8 +51,7 @@
             <li>
                 <span class="text-color-grey title">Geburtsdatum</span>
                 <input class="item item-input background-color-edit birthdate" type="date"
-                       ng-model="uc.user.birthdate"
-                       value="{{uc.modifyBirthday}}">
+                       ng-model="uc.user.birthdate">
             </li>
             <li>
                 <span class="text-color-grey title">Wohnort</span>
