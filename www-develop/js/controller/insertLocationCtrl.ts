@@ -315,7 +315,7 @@ module Controller {
         }
 
         strip(value) {
-            this.locationFormDetails.tags = value.replace(/,/g, ' ').replace(/\s+/g, ' ');
+            this.locationFormDetails.tags = value.replace(/,/g, ' ').replace(/\s\s+/g, ' ').replace(/\./g,' ');
         }
 
         static controllerId:string = "InsertLocationCtrl";
