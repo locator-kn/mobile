@@ -63,10 +63,10 @@ body {
 .ngProgressLiteBar {
     background: rgb(51, 196, 183) !important;
     position: fixed;
-    z-index: 99999;
+    z-index: 9;
     top: 0;
     left: 0;
-    height: 15px !important;
+    height: 44px !important;
 }
 
 .ngProgressLite .ngProgressLiteBarShadow {

@@ -19,4 +19,6 @@ platforms/android
 .cordova
 plugins
 hooks
+resources/android/
+resources/ios/
 
