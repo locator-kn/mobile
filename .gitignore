@@ -18,7 +18,7 @@ platforms/android
 *.zip
 .cordova
 plugins
-hooks
+hooks/*/
 resources/android/
 resources/ios/
 
