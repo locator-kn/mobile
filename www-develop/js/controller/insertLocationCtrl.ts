@@ -38,6 +38,10 @@ module Controller {
                     private UserService, private $state, private PictureUploadService, private webPath,
                     private $rootScope, private $ionicLoading, private ngProgressLite,
                     private maxSpinningDuration, private LocationService, private $stateParams) {
+            // google analytics
+            if (typeof analytics !== undefined && typeof analytics !== 'undefined') {
+                analytics.trackView("InsertLocation Controller");
+            }
 
             if (this.$state.current.name.indexOf('edit') > -1) {
                 this.edit = true;

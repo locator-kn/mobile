@@ -18,10 +18,14 @@ module Controller {
                     private webPath, private $window, maxSpinningDuration) {
 
             this.elementWidth = this.$window.innerWidth  - (80 + 32 + 10 + 15);
-
             this.state = this.$state.current.name;
-
             this.locationSourceId = $stateParams.locationSourceId;
+
+            // google analytics
+            if (typeof analytics !== undefined && typeof analytics !== 'undefined') {
+                analytics.trackEvent('Location', 'Display-Overview', 'SourceId', this.locationSourceId);
+            }
+
             this.$ionicLoading.show({templateUrl: 'templates/static/loading.html', duration: maxSpinningDuration});
 
             if (this.state === this.tripType || this.state === this.tripUserType) {

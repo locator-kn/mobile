@@ -46,8 +46,8 @@
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
 
-declare
-var ionic:any;
+declare var ionic:any;
+declare var analytics:any;
 
 var deps = [
     'ngLodash',
@@ -72,6 +72,13 @@ angular.module('starter', deps)
             // for form inputs)
             if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
                 cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+            }
+
+            if (typeof analytics !== undefined && typeof analytics !== 'undefined') {
+                console.log('start google-analytics')
+                analytics.startTrackerWithId("UA-65710424-1");
+            } else {
+                console.log("Google Analytics Unavailable");
             }
 
             /*if (window.StatusBar) {

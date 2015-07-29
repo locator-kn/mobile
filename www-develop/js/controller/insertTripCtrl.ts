@@ -38,6 +38,11 @@ module Controller {
 
             // check if in edit mode
             if (this.$state.current.name.indexOf('edit') > -1) {
+                // google analytics
+                if (typeof analytics !== undefined && typeof analytics !== 'undefined') {
+                    analytics.trackView("EditTrip Controller (Insert-Trip)");
+                }
+
                 this.edit = true;
 
                 this.userId = $stateParams.userId;
@@ -86,6 +91,11 @@ module Controller {
                     }
                     this.TripService.setLocations(result.data.locations);
                 });
+            } else {
+                // google analytics
+                if (typeof analytics !== undefined && typeof analytics !== 'undefined') {
+                    analytics.trackView("InsertTrip Controller");
+                }
             }
 
             $rootScope.$on('newInsertTripCity', () => {
@@ -202,6 +212,10 @@ module Controller {
             }
 
             this.TripService.setPreTrip(trip);
+            // google analytics
+            if (typeof analytics !== undefined && typeof analytics !== 'undefined') {
+                analytics.trackEvent('Trip', 'Insert', 'PreTrip', trip);
+            }
 
             if (!this.edit) {
                 this.$state.go('tab.offer-locations', {

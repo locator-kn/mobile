@@ -28,6 +28,11 @@ module Controller {
         };
 
         constructor(private $ionicLoading, private GeolocationService, private $scope, private maxSpinningDuration) {
+            // google analytics
+            if (typeof analytics !== undefined && typeof analytics !== 'undefined') {
+                analytics.trackView("GoogleMap Controller");
+            }
+
             var oldResultObject = this.GeolocationService.getGeoPosition();
 
             if (oldResultObject.center) {

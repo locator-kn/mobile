@@ -15,6 +15,11 @@ module Controller {
             this.locationId = $stateParams.locationId;
             this.state = this.$state.current.name;
 
+            // google analytics
+            if (typeof analytics !== undefined && typeof analytics !== 'undefined') {
+                analytics.trackEvent('Location', 'Display-Single', 'LocationId', this.locationId);
+            }
+
             if (this.$state.current.name.indexOf('profile') > -1) {
                 this.onProfile = true;
             }
