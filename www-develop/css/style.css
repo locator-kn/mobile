@@ -424,3 +424,12 @@ span.back-text {
     margin-top: 20px;
 }
 
+.buttons-right {
+    height: 100%;
+    top: 0 !important;
+    line-height: 44px;
+}
+
+.buttons-right p {
+    padding: 0;
+}
