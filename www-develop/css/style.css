@@ -411,3 +411,7 @@ h3.popup-title {
     background-color: rgba(255, 255, 255, .3);
     border-color: transparent;
 }
+
+span.back-text {
+    display: none !important;
+}
