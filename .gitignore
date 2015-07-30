@@ -18,13 +18,16 @@ platforms/android
 *.zip
 .cordova
 plugins/com.ionic.keyboard
+plugins/com.google.playservices
 plugins/cordova-plugin-crosswalk-webview
 plugins/cordova-plugin-geolocation
 plugins/cordova-plugin-splashscreen
+plugins/cordova-plugin-google-analytics
 plugins/cordova-plugin-whitelist
 plugins/org.apache.cordova.camera
 plugins/org.apache.cordova.inappbrowser
-
+plugins/android.json
+plugins/ios.json
 resources/android/
 resources/ios/
 
