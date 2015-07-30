@@ -87,3 +87,7 @@ li.item.config.trip-options {
     border-top-width: 2px;
     border-top-color: rgb(68, 68, 68);
 }
+
+.slider-pager {
+    bottom: 35px;
+}
