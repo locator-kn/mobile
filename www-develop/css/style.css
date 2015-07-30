@@ -435,4 +435,9 @@ span.back-text {
 
 .tabs {
     background-image: none;
+    padding-top: 0;
+}
+
+.tab-item {
+    line-height: 16px !important;
 }
