@@ -82,6 +82,7 @@
 .edit .birthdate {
     padding-left: 16px;
     margin-left: 0px;
+    font-size: 16px;
 }
 
 .edit textarea {

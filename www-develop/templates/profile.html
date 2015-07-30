@@ -45,8 +45,12 @@
             <img class="profile-image" ng-src="{{uc.user.picture}}" ng-click="uc.updatePicture()">
             <span class="image-description">Bild berühren um es zu ändern.</span>
             <li>
-                <span class="title text-color-grey">Name</span>
+                <span class="title text-color-grey">Vorname</span>
                 <input class="item item-input background-color-edit" type="input" ng-model="uc.user.name"/>
+            </li>
+            <li>
+                <span class="title text-color-grey">Nachname</span>
+                <input class="item item-input background-color-edit" type="input" ng-model="uc.user.surname"/>
             </li>
             <li>
                 <span class="text-color-grey title">Geburtsdatum</span>
