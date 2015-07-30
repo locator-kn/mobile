@@ -326,7 +326,7 @@ h3.popup-title {
     background-color: #f05346;
 }
 
-.item input, .item textarea {
+.item input, .item textarea, .item label{
     font-size: 16px;
 }
 
