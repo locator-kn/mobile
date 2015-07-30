@@ -28,7 +28,8 @@
             <img class="user-picture" ui-sref="tab.search-user({userId:tc.trip.userid})"
                  ng-src="{{tc.user.picture}}">
             <li class="item first-element">
-                <label>von </label>
+                <span class="text-bold">{{tc.trip.title}}</span>
+                <label> von </label>
                 <label class="text-bold"> {{tc.user.name || 'anonym'}}</label>
             </li>
 
