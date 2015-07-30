@@ -8,7 +8,7 @@
         <img ng-src="images/icons/icons_stuff/cross.png" ng-if="uc.me && uc.edit" class="edit-pencil"
              ng-click="uc.editTrigger()">
     </ion-nav-buttons>
-    <ion-content class="background-color-grey">
+    <ion-content class="background-color-grey my-has-tab">
         <ul class="list" ng-if="!uc.edit">
             <li class="item">
                 <img class="profile-image" ng-src="{{uc.user.picture}}">
@@ -45,8 +45,12 @@
             <img class="profile-image" ng-src="{{uc.user.picture}}" ng-click="uc.updatePicture()">
             <span class="image-description">Bild berühren um es zu ändern.</span>
             <li>
-                <span class="title text-color-grey">Name</span>
+                <span class="title text-color-grey">Vorname</span>
                 <input class="item item-input background-color-edit" type="input" ng-model="uc.user.name"/>
+            </li>
+            <li>
+                <span class="title text-color-grey">Nachname</span>
+                <input class="item item-input background-color-edit" type="input" ng-model="uc.user.surname"/>
             </li>
             <li>
                 <span class="text-color-grey title">Geburtsdatum</span>

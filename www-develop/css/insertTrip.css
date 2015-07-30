@@ -281,3 +281,11 @@ ion-item.ion-item-insert-style.item {
     float: left;
     width: 100%;
 }
+
+.insert-trip i.icon.ion-chevron-right.icon-accessory {
+    color: white;
+}
+
+.insert-trip .mood-title-fix {
+    padding-top: 8px;
+}

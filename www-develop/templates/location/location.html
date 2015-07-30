@@ -13,7 +13,11 @@
                     </label>
                 </div>
                 <label class="public">öffentlich</label>
-                <img class="icon" ng-src="images/icons/icons_stuff/cross.png" ng-click="lc.deleteLocation()">
+
+                <div class="icon delete-icon">
+                    <img class="delete-svg" ng-src="images/svg/loeschen.svg"
+                         ng-click="lc.deleteLocation()">
+                </div>
                 <img class="icon edit" ng-src="images/icons/icons_stuff/pencil.png"
                      ui-sref="tab.profile-locations-detail-edit({locationId:lc.result._id})">
             </li>
