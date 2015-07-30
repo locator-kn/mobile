@@ -111,6 +111,10 @@
     margin-right: 5px;
 }
 
+.profile .edit-pencil{
+    margin-top: 6px;
+}
+
 .button-contact {
     height: 60px;
     font-weight: bold;
