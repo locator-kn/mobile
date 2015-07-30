@@ -79,8 +79,6 @@ tags-input .tags .tag-list {
 }
 
 .insert-location tags-input .tags {
-    /*border-radius: 0;*/
-    /*padding: 4px;*/
     box-shadow: none;
 }
 
@@ -128,10 +126,6 @@ tags-input .tags.focused {
     box-shadow: none !important;
 }
 
-/*.insert-location li.tag-item:first-child {*/
-/*margin-left: 15px;*/
-/*}*/
-
 .background-color-dark,
 .background-color-dark li,
 .background-color-dark label,
@@ -172,7 +166,6 @@ tags-input .tags.focused {
 }
 
 .background-color-dark.circle {
-    /*border-color: #38d8ca ;*/
     border-color: #fff;
 }
 

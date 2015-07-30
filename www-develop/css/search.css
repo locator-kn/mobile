@@ -32,7 +32,7 @@
 
 .text-right {
     text-align: right;
-    padding-right: 0px;;
+    padding-right: 0;;
 }
 
 .mood-text {
@@ -43,7 +43,6 @@
 .mood-checkbox {
     float: right;
 }
-
 
 .search .toggle.toggle-dark input:checked + .track {
     background-color: #3eb9ad;
@@ -57,17 +56,12 @@
 .checkbox input:checked:before, .checkbox input:checked + .checkbox-icon:before{
     background-color: #3eb9ad;
     border-color: #3eb9ad;
-
 }
 
 
 .mood-checkbox .border-transparent:after {
     background-color: #44ccc0;
-
 }
-
-
-/********************** new design ***************/
 
 .background-color-cyan,
 .background-color-cyan li,

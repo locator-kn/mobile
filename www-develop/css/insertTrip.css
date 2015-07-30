@@ -158,8 +158,6 @@
     line-height: 41px;
 }
 
-/********************* new design *******************/
-
 .background-color-coral,
 .background-color-coral li,
 .background-color-coral label,
@@ -195,7 +193,6 @@
 }
 
 .background-color-coral .circle {
-    /*border-color: #38d8ca ;*/
     border-color: #fff;
 }
 
@@ -208,7 +205,7 @@
 }
 
 .background-color-coral .text-right {
-    padding-right: 0px;
+    padding-right: 0;
 }
 
 .tab-item-active.offer {

@@ -92,7 +92,7 @@ label.name.ng-binding {
 
 .search-result ion-item.item {
     padding: 25px 0;
-    border: 0px;
+    border: 0;
 }
 
 .search-result ion-item.item:first-child {

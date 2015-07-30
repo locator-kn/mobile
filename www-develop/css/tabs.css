@@ -1,5 +1,3 @@
-/* image tap icon */
-
 .tabs .tab-item .icon {
     background-repeat: no-repeat;
     background-position: 50%;
@@ -33,6 +31,6 @@
 .tab-nav.tabs {
     color: white;
     background-color: #343434;;
-    border-top-width: 0px;
-    border-bottom: 0px;
+    border-top-width: 0;
+    border-bottom: 0;
 }

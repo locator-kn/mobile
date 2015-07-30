@@ -83,9 +83,7 @@
     float: left;
     border-radius: 3px;
     padding: 8px 13px;
-
 }
-
 
 .error-msg {
     background-color: rgb(255, 70, 55);
@@ -99,7 +97,7 @@
     max-height: 0;
     transition: 0.35s linear all;
     overflow: hidden;
-    padding: 0px 12px;
+    padding: 0 12px;
 }
 
 .success-msg {
@@ -136,4 +134,3 @@
 .moodal hr {
     margin-top: 5px;
 }
-
