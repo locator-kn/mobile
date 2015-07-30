@@ -433,3 +433,7 @@ span.back-text {
 .buttons-right p {
     padding-top: 0;
 }
+
+.tabs {
+    background-image: none;
+}
