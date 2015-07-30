@@ -25,7 +25,6 @@ plugins/cordova-plugin-whitelist
 plugins/org.apache.cordova.camera
 plugins/org.apache.cordova.inappbrowser
 
-plugins
 resources/android/
 resources/ios/
 
