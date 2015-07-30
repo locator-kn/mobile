@@ -131,7 +131,6 @@ module Controller {
                 }, (process) => {
                     var perc:number = process.loaded / process.total;
                     this.ngProgressLite.set(perc);
-                    console.log('progress:', perc, '% ');
                 })
         }
 
