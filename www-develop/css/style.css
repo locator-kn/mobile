@@ -295,7 +295,7 @@ ion-nav-view.view-container.tab-content {
 }
 
 .popup {
-    border-radius: 3px;
+    border-radius: 3px !important;
     overflow: hidden;
     background: #EAEDEE;
 }
@@ -436,4 +436,9 @@ span.back-text {
 
 .tabs {
     background-image: none;
+    padding-top: 0;
+}
+
+.tab-item {
+    line-height: 16px !important;
 }
