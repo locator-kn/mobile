@@ -89,7 +89,7 @@
     padding-left: 16px;
     padding-right: 16px;
     font-size: 16px;
-    font-weight: normal;
+    font-weight: 200;
     line-height: 1.42857;
 }
 
@@ -107,13 +107,13 @@
 .edit-pencil {
     width: 30px;
     height: 30px;
-    margin-top: 1px;
+    margin-top: 6px;
     margin-right: 5px;
 }
 
-.profile .edit-pencil{
-    margin-top: 6px;
-}
+/*.profile .edit-pencil{*/
+    /*margin-top: 6px;*/
+/*}*/
 
 .button-contact {
     height: 60px;
