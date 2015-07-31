@@ -19,6 +19,7 @@ module Controller {
         tripCities:any = [];
         city:any = {};
         onlyOneCity:boolean;
+        valueAvailable:boolean = false;
 
         constructor(private $rootScope, private DataService, private $state, private SearchService, private $ionicPopup, private $ionicLoading) {
             // google analytics
@@ -55,6 +56,7 @@ module Controller {
             $rootScope.$on('newSearchMood', () => {
                 this.selectedMood = this.SearchService.getMood();
                 this.moodAvailable = true;
+                this.valueAvailable = true;
             });
 
         }
@@ -102,6 +104,17 @@ module Controller {
             this.SearchService.setQuery(query);
             this.$state.go('tab.search-result');
 
+        }
+
+        clearSearchValues() {
+            this.selectedDays = 0;
+            this.selectedPersons = 0;
+            this.selectedMood = {};
+            this.moodAvailable = false;
+            this.start_date = '';
+            this.end_date = '';
+
+            this.valueAvailable = false;
         }
 
         static isEmpty(myObject) {
