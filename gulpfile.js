@@ -54,6 +54,10 @@ gulp.task('ts', function () {
     var port = parseInt(realtimeUrl.port, 10) + 1;
     templateObject.basePathRealtime = templateObject.basePath + '/r';
 
+    var environment = {
+        env: 'test'
+    };
+
 
     var tsResult = gulp.src(['./www-develop/**/*.ts', '!./www-develop/lib/components/**/*.ts'])
         .pipe(template(templateObject))
