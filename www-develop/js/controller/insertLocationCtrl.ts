@@ -45,6 +45,7 @@ module Controller {
 
             if (this.$state.current.name.indexOf('edit') > -1) {
                 this.edit = true;
+                this.$ionicLoading.show({templateUrl: 'templates/static/loading.html', duration: this.maxSpinningDuration});
                 this.LocationService.getLocationById($stateParams.locationId).then((result) => {
                     this.result = result.data;
                     if (result.data.images.picture) {
@@ -75,6 +76,7 @@ module Controller {
                         }
                     };
                     this.GeolocationService.setGeoPosition(map);
+                    this.$ionicLoading.hide();
                 })
             }
 
