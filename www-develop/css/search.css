@@ -129,3 +129,7 @@ button.button-bottom.button.button-full.background-green.bottom.search-button:ho
     text-align: right;
     padding-right: 0;
 }
+
+.search-delete {
+    margin-top: 8px;
+}
