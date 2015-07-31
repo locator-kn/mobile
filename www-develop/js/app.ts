@@ -57,7 +57,6 @@ var deps = [
     'ngProgressLite',
     'btford.socket-io',
     'uiGmapgoogle-maps',
-    'ngTagsInput',
     'ngCordova',
     'ngCordovaOauth',
     'dbaq.emoji',
