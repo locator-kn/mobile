@@ -327,7 +327,7 @@ h3.popup-title {
     background-color: #f05346;
 }
 
-.item input, .item textarea, .item label{
+.item input, .item textarea, .item label {
     font-size: 16px;
 }
 
@@ -441,4 +441,8 @@ span.back-text {
 
 .tab-item {
     line-height: 16px !important;
+}
+
+.tabs .tab-item .icon {
+    margin-top: 6px;
 }
