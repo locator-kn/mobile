@@ -109,7 +109,7 @@ angular.module('starter', deps)
     .constant('basePath', '<%= basePath %>')
     .constant('basePathRealtime', '<%= basePathRealtime %>')
     .constant('webPath', '<%= webPath %>')
-    .constant('maxSpinningDuration', 6000)
+    .constant('maxSpinningDuration', 10000)
 
 
     // controler
