@@ -120,15 +120,12 @@ module Controller {
 
         sendMessage = (message) => {
             message = message.replace(/<\/?[^>]+(>|$)/g, "");
-
+            this.textbox = '';
             this.MessengerService.sendMessage(message, this.conversationId, this.opponentId, this.$rootScope.userID)
-
                 .then(result => {
                     var date = new Date();
                     this.$ionicScrollDelegate.scrollBottom(true);
                     this.MessengerService.clearMessageCacheById(this.conversationId);
-                    this.textbox = '';
-                    //angular.element('#my-message').focus();
                 })
                 .catch(result => {
                     console.info("Error");
