@@ -52,13 +52,6 @@ module Controller {
                     this.clickMapEvent(mapModel, eventName, originalEventArgs);
                 },
                 tilesloaded: () => {
-                    // only for first call, we need to get current position after map is loaded
-                    if (!this.mapIsReady) {
-                        this.mapIsReady = true;
-                        if(!this.mapMarkerSet){
-                            this.getCurrentPosition();
-                        }
-                    }
                     this.$ionicLoading.hide();
 
                 }
