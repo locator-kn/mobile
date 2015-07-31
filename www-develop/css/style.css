@@ -358,13 +358,12 @@ h3.popup-title {
 .not-auth-container .image-container-full .lorenz {
     display: inline-block;
     background-color: white;
-    border-radius: 50%;
     max-width: 200px;
     margin-top: 50px;
 }
 
 .insert-trip .not-auth-container .message {
-    color: white;
+    color: #f05346;
     background: none;
     width: 100%;
     font-weight: 500;
