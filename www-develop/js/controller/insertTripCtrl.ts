@@ -233,14 +233,11 @@ module Controller {
 
         resetData = () => {
             // trip
-            this.city = {};
             this.start_date = '';
             this.end_date = '';
-            this.selectedDays = 0;
             this.selectedPersons = 0;
             this.accommodation = false;
             this.selectedAccommodationEquipment = [];
-            this.selectedMood = {};
             this.edit = false;
         };
 
