@@ -53,6 +53,7 @@ module Service {
                         // take from gallery
                         return this.getPicture({
                             quality: 100,
+                            correctOrientation: true,
                             sourceType: Camera.PictureSourceType.PHOTOLIBRARY
                         }).then((url) => {
                             if (url.substring(0, 21) == "content://com.android") {
