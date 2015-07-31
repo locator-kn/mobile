@@ -12,7 +12,8 @@ module Controller {
         errormsg:string = '';
         successmsg:string = '';
 
-        constructor(private $rootScope, private UserService, private $scope, private $timeout, private $cordovaOauth) {
+        constructor(private $rootScope, private UserService, private $scope, private $timeout, private $cordovaOauth, private env) {
+            console.log(env);
         }
 
         closeLoginModal() {
