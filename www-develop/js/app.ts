@@ -82,7 +82,8 @@ angular.module('starter', deps)
     .constant('basePathRealtime', '<%= basePathRealtime %>')
     .constant('webPath', '<%= webPath %>')
     .constant('maxSpinningDuration', 6000)
-    .constant('env', '<%= env %>')
+    .constant('facebookApiKey', '<%= facebookApiKey %>')
+    .constant('googleApiKey', '<%= googleApiKey %>')
 
 
     // controler
