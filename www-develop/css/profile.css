@@ -6,12 +6,12 @@
     margin: 10px auto 20px;
 }
 
-.profile .username {
-    text-align: center;
-    display: block;
+.profile .age {
+    margin-left: 5px;
+}
+
+.profile .age, .profile .username {
     font-weight: bold;
-    color: rgb(51, 196, 183);
-    margin-bottom: 20px;
 }
 
 .profile .config-button {
@@ -82,6 +82,7 @@
 .edit .birthdate {
     padding-left: 16px;
     margin-left: 0px;
+    font-size: 16px;
 }
 
 .edit textarea {
@@ -89,7 +90,7 @@
     padding-left: 16px;
     padding-right: 16px;
     font-size: 16px;
-    font-weight: normal;
+    font-weight: 200;
     line-height: 1.42857;
 }
 
@@ -100,16 +101,20 @@
 
 .password .error {
     border-color: red;
-    border-width: 2px;
+    border-width: 1px;
     margin: 1px;
 }
 
 .edit-pencil {
-    width: auto;
+    width: 30px;
     height: 30px;
-    margin-top: 1px;
+    margin-top: 6px;
     margin-right: 5px;
 }
+
+/*.profile .edit-pencil{*/
+    /*margin-top: 6px;*/
+/*}*/
 
 .button-contact {
     height: 60px;
@@ -126,4 +131,22 @@
 
 .profile .list.edit textarea {
     max-width: 100%;
+}
+
+form#passwordForm {
+    padding: 15px;
+}
+
+form#passwordForm .item-input {
+    border-radius: 3px;
+    margin-bottom: 5px;
+}
+
+.profile .name-and-age {
+    float: left;
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    color: rgb(51, 196, 183);
+    margin-bottom: 20px;
 }

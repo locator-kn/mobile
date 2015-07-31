@@ -6,9 +6,8 @@ module Service {
 
         resultInfoObject:any = {};
         geoPosition:any = {};
-        geoTry:number = 0;
 
-        constructor(private $q, private $ionicLoading, private $ionicPopup, private $http, private basePath, private $rootScope) {
+        constructor(private $q, private $ionicLoading, private UtilityService, private $http, private basePath, private $rootScope) {
         }
 
         getCurrentLocation() {
@@ -16,18 +15,13 @@ module Service {
 
             var timeout = 5000;
 
-            if (!this.geoTry) {
-                // first time -> not so long, because user don't know that position will tracked if map starts
-                timeout = 3000;
-                this.geoTry++;
-            }
             var posOptions = {maximumAge: 60000, timeout: timeout, enableHighAccuracy: true};
             navigator.geolocation.getCurrentPosition((result) => {
                 this.$ionicLoading.hide();
                 q.resolve(result);
             }, (err) => {
                 this.$ionicLoading.hide();
-                this.$ionicPopup.alert({title: 'Überprüfe deine GPS Verbindung und versuche es erneut'});
+                this.UtilityService.showErrorPopup('Überprüfe deine GPS Verbindung und versuche es erneut');
                 q.reject(err)
             }, posOptions);
 

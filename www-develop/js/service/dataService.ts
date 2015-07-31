@@ -7,7 +7,7 @@ module Service {
         dataMoodsCache;
         accommodationEquipmentCache;
 
-        constructor(private $http, private basePath, private CacheFactory, private $q, private $ionicLoading) {
+        constructor(private $http, private basePath, private CacheFactory, private $q) {
             this.dataCitiesCache = CacheFactory.createCache('dataCities');
             this.dataDaysCache = CacheFactory.createCache('dataDays');
             this.dataPersonsCache = CacheFactory.createCache('dataPersons');
@@ -120,73 +120,73 @@ module Service {
                             data: [
                                 {
                                     query_name: "buddytrip",
-                                    title: "buddytrip",
+                                    title: "Buddytrip",
                                     icon: "buddytrip.svg",
                                     icon_white: "buddytrip.svg",
                                     description: ''
                                 }, {
                                     query_name: "girls_on_tour",
-                                    title: "girls on tour",
+                                    title: "Girls on Tour",
                                     icon: "girls_on_tour.svg",
                                     icon_white: "girls_on_tour.svg",
                                     description: ""
                                 }, {
                                     query_name: "halligalli_drecksau",
-                                    title: "halligalli drecksau",
+                                    title: "Halligalli Drecksau",
                                     icon: "halligalli_drecksau.svg",
                                     icon_white: "halligalli_drecksau.svg",
                                     description: ""
                                 }, {
                                     query_name: "muskelkater",
-                                    title: "muskelkater",
+                                    title: "Muskelkater",
                                     icon: "muskelkater.svg",
                                     icon_white: "muskelkater.svg",
                                     description: ""
                                 }, {
                                     query_name: "sturm_der_liebe",
-                                    title: "sturm der liebe",
+                                    title: "Sturm der Liebe",
                                     icon: "sturm_der_liebe.svg",
                                     icon_white: "sturm_der_liebe.svg",
                                     description: ""
                                 }, {
                                     query_name: "gruener_gehts_nicht",
-                                    title: "gruener gehts nicht",
+                                    title: "Grüner gehts nicht",
                                     icon: "gruener_gehts_nicht.svg",
                                     icon_white: "gruener_gehts_nicht.svg",
                                     description: ""
                                 }, {
                                     query_name: "haste_nicht_gesehen",
-                                    title: "haste nicht gesehen",
+                                    title: "Haste nicht gesehen",
                                     icon: "haste_nicht_gesehen.svg",
                                     icon_white: "haste_nicht_gesehen.svg",
                                     description: ""
                                 }, {
                                     query_name: "singles_unter_sich",
-                                    title: "singles unter sich",
+                                    title: "Singles unter sich",
                                     icon: "singles_unter_sich.svg",
                                     icon_white: "singles_unter_sich.svg",
                                     description: ""
                                 }, {
                                     query_name: "family_fun",
-                                    title: "family fun",
+                                    title: "Family Fun",
                                     icon: "family_fun.svg",
                                     icon_white: "family_fun.svg",
                                     description: ""
                                 }, {
                                     query_name: "kultur_und_sightseeing",
-                                    title: "kultur und sightseeing",
+                                    title: "Kultur und Sightseeing",
                                     icon: "kultur_und_sightseeing.svg",
                                     icon_white: "kultur_und_sightseeing.svg",
                                     description: ""
                                 }, {
                                     query_name: 'leckermaeulchen',
-                                    title: 'leckermaeulchen',
+                                    title: 'Leckermaeulchen',
                                     icon: 'leckermaeulchen.svg',
                                     icon_white: 'leckermaeulchen.svg',
                                     description: ''
                                 }, {
                                     query_name: "entspannung_pur",
-                                    title: "entspannnung pur",
+                                    title: "Entspannnung pur",
                                     icon: "entspannung_pur.svg",
                                     icon_white: "entspannung_pur.svg",
                                     description: ""

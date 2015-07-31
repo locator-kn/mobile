@@ -1,19 +1,25 @@
 module Controller {
     export class TripCtrl {
-
         trip:any = {};
         tripId:string;
-
         user:any = {};
-
         moods:any = [];
+        profile:boolean;
 
         constructor(private $scope, private $element, private $stateParams, private SearchService, private DataService,
                     private $ionicSlideBoxDelegate, private UserService, private $ionicLoading, private webPath,
                     maxSpinningDuration, private $rootScope, private MessengerService, private $state) {
 
+            // google analytics
+            if (typeof analytics !== undefined && typeof analytics !== 'undefined') {
+                analytics.trackEvent('Trip', 'Display-Single', 'TripId', this.$stateParams.tripId);
+            }
+
             this.$ionicLoading.show({templateUrl: 'templates/static/loading.html', duration: maxSpinningDuration});
 
+            if (this.$state.current.name.indexOf('profile') > -1) {
+                this.profile = true;
+            }
 
             // get trip by id from state param
             SearchService.getTripById(this.$stateParams.tripId).then((result) => {
@@ -65,6 +71,13 @@ module Controller {
             });
         }
 
+        displayLocations(locationSourceId) {
+            if (this.profile) {
+                this.$state.go('tab.profile-trip-locations', {locationSourceId: locationSourceId});
+            } else {
+                this.$state.go('tab.search-result-locations', {locationSourceId: locationSourceId});
+            }
+        }
 
         static controllerId:string = "TripCtrl";
     }

@@ -6,17 +6,40 @@ module Controller {
 
         constructor(private MessengerService, private UserService, private webPath, private $ionicLoading,
                     private SocketService, private $state, private $rootScope, maxSpinningDuration) {
+            // google analytics
+            if (typeof analytics !== undefined && typeof analytics !== 'undefined') {
+                analytics.trackView("Messenger Controller");
+            }
+
             this.$ionicLoading.show({templateUrl: 'templates/static/loading.html', duration: maxSpinningDuration});
             this.getConversations();
             this.registerSocketEvent();
 
             $rootScope.$on("updateConversation", (event, conversationId, timestamp, messageStatus) => {
                 if (timestamp) {
+                    //this.conversationsHash[conversationId].lastMessage = this.getFormattedTimestamp(timestamp)
                     this.conversationsHash[conversationId].lastMessage = moment(new Date(timestamp)).startOf('minutes').fromNow();
                 }
                 this.conversationsHash[conversationId][this.$rootScope.userID + '_read'] = messageStatus;
             });
 
+        }
+
+        getFormattedTimestamp(timestamp) {
+            var yesterday = new Date(Date.now() - 1000 * 60 * 60 * 24);
+            yesterday.setHours(0, 0, 0, 0);
+
+            var formattedDate;
+            if (timestamp) {
+                var localdate = new Date(timestamp);
+                if (moment(localdate).isBefore(yesterday)) {
+                    var a = moment(localdate).day();
+                    formattedDate = moment.weekdays(a);
+                } else {
+                    formattedDate = moment(localdate).format('HH:mm');
+                }
+            }
+            return formattedDate;
         }
 
         updateConversationInfo = (conversationId)=> {
@@ -35,7 +58,14 @@ module Controller {
                     this.conversations = result.data;
                     var badgeHash = {};
                     this.conversations.forEach(element => {
-                        element.lastMessage = moment(new Date(element.modified_date)).startOf('minutes').fromNow();
+                        if (element.modified_date) {
+                            //element.lastMessage = this.getFormattedTimestamp(element.modified_date);
+                            element.lastMessage = moment(new Date(element.modified_date)).startOf('minutes').fromNow();
+
+                        } else if (element.create_date) {
+                            //element.lastMessage = this.getFormattedTimestamp(element.create_date);
+                            element.lastMessage = moment(new Date(element.create_date)).startOf('minutes').fromNow();
+                        }
                         this.conversationsHash[element._id] = element;
                         badgeHash[element._id] = this.conversationsHash[element._id][this.$rootScope.userID + '_read'];
                         this.UserService.getUser(element['opponent'])

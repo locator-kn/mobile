@@ -1,4 +1,4 @@
-<ion-view view-title="Locations" class="location" ng-controller="LocationCtrl as lc">
+<ion-view view-title="Locations" class="location pageWithBigButton" ng-controller="LocationCtrl as lc">
     <ion-content class="background-color-grey my-has-tabs">
         <ul class="list">
             <li class="item config" ng-if="lc.user._id === userID && lc.onProfile ">
@@ -13,14 +13,18 @@
                     </label>
                 </div>
                 <label class="public">öffentlich</label>
-                <img class="icon" ng-src="images/icons/icons_stuff/cross.png" ng-click="lc.deleteLocation()">
+
+                <div class="delete-icon">
+                    <img class="delete-svg" ng-src="images/svg/loeschen.svg"
+                         ng-click="lc.deleteLocation()">
+                </div>
                 <img class="icon edit" ng-src="images/icons/icons_stuff/pencil.png"
                      ui-sref="tab.profile-locations-detail-edit({locationId:lc.result._id})">
             </li>
             <div class="image-container" ng-if="lc.result.images.picture"
                  style="background-image: url({{lc.webPath}}{{lc.result.images.picture + '?size=mobile'}});background-size: cover">
             </div>
-            <div class="image-container" ng-if="!lc.result.images.picture">
+            <div class="image-container" ng-if="!lc.result.images.picture" ng-click="lc.openMaps()">
                 <img class="googlemap"
                      ng-src="{{lc.result.images.googlemap}}&size=400x400&key=AIzaSyCveLtBw4QozQIkMstvefLSTd3_opSvHS4">
             </div>
@@ -42,7 +46,7 @@
                     <span ng-repeat="tag in lc.result.tags" class="tag">{{tag}}</span>
                 </div>
             </li>
-            <li>
+            <li ng-click="lc.openMaps()">
                 <div class="image-container auto-height" ng-if="lc.result.images.picture">
                     <img class="image"
                          ng-src="{{lc.result.images.googlemap}}&size=400x400&key=AIzaSyCveLtBw4QozQIkMstvefLSTd3_opSvHS4">
@@ -50,4 +54,8 @@
             </li>
         </ul>
     </ion-content>
+    <button ng-click="lc.openMaps()"
+            class="button-geo button-bottom button button-full background-green bottom">
+        WEGBESCHREIBUNG
+    </button>
 </ion-view>

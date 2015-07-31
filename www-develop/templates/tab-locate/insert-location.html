@@ -42,38 +42,34 @@
 
                 <li ng-class="{'error' : (ilc.error) && ilc.form.locationDescription.$error.required}"
                     class="item item-input">
-                <textarea maxlength="300" ng-model="ilc.locationFormDetails.description" rows="4" type="input"
-                          name="locationDescription" class="description"
-                          placeholder="Beschreibe die Location" required></textarea>
+                        <textarea maxlength="300" ng-model="ilc.locationFormDetails.description" rows="4" type="input"
+                                  name="locationDescription" class="description"
+                                  placeholder="Beschreibe die Location" required></textarea>
+
+
                 </li>
                 <li ng-class="{'error' : (ilc.error) && ilc.form.locationTags.$error.required}"
-                    class="item item-input">
-                    <!--<tags-input ngKeypress maxlength="300" add-on-space="true" add-on-comma="true" style="width: 100%"-->
-                    <!--ng-class="{'error' : ilc.error && ilc.locationFormDetails.tags.length < 1}"-->
-                    <!--placeholder="+ Füge aussagekräftige Tags hinzu"-->
-                    <!--ng-model="ilc.locationFormDetails.tags"></tags-input>-->
-                    <textarea ng-model="ilc.locationFormDetails.tags" class="tag-input" maxlength="300" type="input" placeholder="Füge Tags hinzu - z.B. Bar günstig Strand &#10;(durch Leerzeichen getrennt)" rows="3" required></textarea>
-                </li>
+                    class="item item-input tag-input fix-item-min-height">
 
+                    <input placeholder="Tags" type="text" ng-model="ilc.locationFormDetails.tags"
+                           ng-change="ilc.strip(ilc.locationFormDetails.tags)">
+                </li>
             </div>
             <div ng-if="!authenticated" class="no-register">
                 <div class="not-auth-container">
-                    <div class="image-container-full"
-                         style="background-image: url('images/svg/lorenz_frontansicht.svg')">
+                    <div class="image-container-full">
+                        <img class="lorenz" ng-src="images/svg/lorenz_frontansicht.svg">
                     </div>
-                    <span class="message">Melde dich an und tagge deine Lieblingslocations.</span></br>
-                    <span class="message">Oder registriere dich und werde ein Teil von Locator.</span>
+                    <p class="message">Melde dich an und tagge deine Lieblingslocations.</p>
+
                 </div>
             </div>
         </ion-content>
-        <!--<li class="item create">-->
-            <button ng-if="authenticated"
-                    class="button-bottom button button-insert-location gps-button bottom button-full button-bottom fixed-button-bottom"
-                    type="submit"
-                    ng-click="ilc.saveLocation()"
-                    ng-disabled="!(ilc.locationFormDetails.title && ilc.locationFormDetails.description && ilc.locationFormDetails.tags.length > 0 && ilc.mapMarkerSet)">
-                {{!ilc.edit ? 'LOCATION ERSTELLEN' : 'LOCATION AKTUALISIEREN'}}
-            </button>
-        <!--</li>-->
+        <button ng-if="authenticated"
+                class="button-bottom button button-insert-location gps-button bottom button-full button-bottom fixed-button-bottom hide-on-keyboard-open"
+                type="submit"
+                ng-click="ilc.saveLocation()">
+            {{!ilc.edit ? 'LOCATION ERSTELLEN' : 'LOCATION AKTUALISIEREN'}}
+        </button>
     </form>
 </ion-view>

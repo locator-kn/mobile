@@ -41,8 +41,6 @@ body {
     font-weight: 200;
 }
 
-
-
 .image-container-full,
 .image-container {
     width: 100%;
@@ -65,10 +63,14 @@ body {
 .ngProgressLiteBar {
     background: rgb(51, 196, 183) !important;
     position: fixed;
-    z-index: 99999;
+    z-index: 9 !important;
     top: 0;
     left: 0;
-    height: 15px !important;
+    height: 44px !important;
+}
+
+.platform-ios .ngProgressLiteBar {
+    margin-top: 20px;
 }
 
 .ngProgressLite .ngProgressLiteBarShadow {
@@ -100,7 +102,6 @@ body {
     float: left;
 }
 
-/*TODO refactor and remove */
 .tmpImageWidth {
     width: 100%;
 }
@@ -149,7 +150,7 @@ body {
     color: white;
     width: 100%;
     font-size: 15px;
-    border-width: 0px;
+    border-width: 0;
 }
 
 .button-not-authenticated.left {
@@ -192,10 +193,6 @@ body {
     background: #fff;
 }
 
-.not-auth-container {
-    margin: 0 50px;
-}
-
 /* hahahaha :-D */
 .float-right {
     float: right;
@@ -208,7 +205,7 @@ body {
 
 .bar .button.button-icon:before, .bar .button .icon:before, .bar .button.icon:before, .bar .button.icon-left:before, .bar .button.icon-right:before {
     padding-right: 2px;
-    padding-left: 0px;
+    padding-left: 0;
     font-size: 20px;
     line-height: 31px;
 }
@@ -220,6 +217,7 @@ body {
 .bar.bar-stable {
     padding: 5px 14px;
     background-color: white;
+    border-color: white;
 }
 
 .select-elements .circle.circle-selected {
@@ -251,7 +249,7 @@ ion-nav-view.view-container.tab-content {
     margin-left: -6px;
 }
 
-.moods .item{
+.moods .item {
     padding: 10px;
 }
 
@@ -261,4 +259,194 @@ ion-nav-view.view-container.tab-content {
 
 .auto-height {
     height: auto;
+}
+
+/** on keyboard open **/
+.keyboard-open ion-tabs .tab-nav.tabs {
+    display: none;
+}
+
+.keyboard-open .messages ion-content.background-color-grey.scroll-content.ionic-scroll.has-header.has-tabs {
+    margin-bottom: 49px;
+}
+
+.keyboard-open .my-has-tabs,
+.keyboard-open .has-tabs,
+.keyboard-open .button-bottom {
+    bottom: 0;
+}
+
+.keyboard-open .pageWithBigButton ion-content {
+    margin-bottom: 0;
+}
+
+.keyboard-open .list.list-inset.bottom {
+    bottom: 0;
+}
+
+.keyboard-open .messages ion-content.background-color-grey.scroll-content.ionic-scroll.has-header.has-tabs {
+    margin-bottom: 0;
+}
+
+/** style **/
+.remove-margin-bottom {
+    margin-bottom: 0;
+}
+
+.popup .button.button-positive {
+    background-color: rgb(51, 196, 183);
+    border-color: rgb(51, 196, 183);
+}
+
+.popup {
+    border-radius: 3px !important;
+    overflow: hidden;
+    background: #EAEDEE;
+}
+
+.popup-head {
+    border-bottom: 1px solid #eee;
+    text-align: center;
+    padding: 25px 10px;
+    background-color: #32C3B6;
+    color: white;
+}
+
+h3.popup-title {
+    color: white;
+    font-size: 16px;
+}
+
+.button.button-full {
+    border: none;
+}
+
+.popup .button.button-positive, .popup-buttons {
+    color: #6B6B6B;
+    background-color: #F8F8F8;
+    border-color: #F8F8F8;
+}
+
+.popup-container.error .popup-head {
+    background-color: #f05346;
+}
+
+.item input, .item textarea, .item label {
+    font-size: 16px;
+}
+
+.loading-container .loading .spinner svg {
+    stroke: #32C3B6;
+    fill: #32C3B6;
+}
+
+.tabs-striped .tab-item.tab-item-active, .tabs-striped .tab-item.active, .tabs-striped .tab-item.activated {
+    border: 0;
+}
+
+.center {
+    text-align: center;
+}
+
+.not-auth-container {
+    float: left;
+    padding: 15px;
+    width: 100%;
+}
+
+.not-auth-container .image-container-full, .not-auth-container .image-container {
+    text-align: center;
+    height: auto;
+}
+
+.not-auth-container .image-container-full .lorenz {
+    display: inline-block;
+    background-color: white;
+    max-width: 200px;
+    margin-top: 50px;
+}
+
+.insert-trip .not-auth-container .message {
+    color: #f05346;
+    background: none;
+    width: 100%;
+    font-weight: 500;
+}
+
+.insert-location .not-auth-container .message {
+    color: rgb(34, 34, 34);
+    background: white;
+    width: 100%;
+    font-weight: 500;
+}
+
+.loading-container .loading .spinner svg path:first-child {
+    display: none;
+}
+
+.float-width {
+    width: 100%;
+    float: left;
+}
+
+.tabs-striped .tabs {
+    padding-top: 0;
+}
+
+.tabs-striped .tab-item.tab-item-active, .tabs-striped .tab-item.active, .tabs-striped .tab-item.activated {
+    margin-top: 0;
+}
+
+.delete-icon {
+    width: 25px;
+    float: right;
+    height: 25px;
+    margin-top: 3px;
+    margin-right: 5px;
+}
+
+.bar .back-button, i.icon.ion-ios-arrow-back.ion-chevron-left {
+    padding-right: 30px !important;
+    padding-left: 10px !important;
+    margin-left: -10px !important;
+}
+
+.bar .back-button {
+    margin-left: -9px !important;
+}
+
+.item.activated {
+    background-color: rgba(255, 255, 255, .3);
+    border-color: transparent;
+}
+
+span.back-text {
+    display: none !important;
+}
+
+.platform-ios .backdrop {
+    margin-top: 20px;
+}
+
+.buttons-right {
+    height: 100%;
+    top: 0 !important;
+    line-height: 44px;
+}
+
+.buttons-right p {
+    padding-top: 0;
+}
+
+.tabs {
+    background-image: none;
+    padding-top: 0;
+}
+
+.tab-item {
+    line-height: 16px !important;
+}
+
+.tabs .tab-item .icon {
+    margin-top: 6px;
 }

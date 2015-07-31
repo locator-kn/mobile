@@ -1,7 +1,9 @@
 .result-mood {
     float: left;
     height: 40px;
+    width: 56px;
     padding-right: 16px;
+    margin-right: -9px;
     margin-top: -3px;
 }
 
@@ -23,10 +25,12 @@ li.item.trip-options {
 }
 
 li.item.trip-options .icon {
+    height: 35px;
     width: 35px;
     vertical-align: middle;
     margin-right: 10px;
     margin-top: -8px;
+    float: left;
 
 }
 
@@ -55,6 +59,7 @@ label.name.ng-binding {
     background-color: rgb(51, 196, 183);
     color: #fff;
     border: 0;
+    font-size: 18px;
 }
 
 .trip-text-location {
@@ -86,8 +91,12 @@ label.name.ng-binding {
 }
 
 .search-result ion-item.item {
-    padding: 16px 0;
-    border: 0px;
+    padding: 25px 0;
+    border: 0;
+}
+
+.search-result ion-item.item:first-child {
+    padding-top: 0;
 }
 
 .search-result .hack-for-first-element {

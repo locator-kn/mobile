@@ -4,7 +4,7 @@
     <ion-nav-buttons side="left">
         <i ng-if="!itc.edit" class="icon ion-ios-arrow-back ion-chevron-left" ui-sref="tab.welcome"></i>
     </ion-nav-buttons>
-    <ion-content class="gradient-red" ng-class="!authenticated ? 'not-auth-background' : ''">
+    <ion-content ng-class="authenticated ? 'gradient-red':''">
         <div ng-if="authenticated">
             <ul class="list">
                 <!-- if only 1 city available-->
@@ -20,9 +20,10 @@
                     <span ng-if="!itc.moodAvailable">Wie fühlt sich der Trip an?</span>
                     <i class="icon ion-chevron-right icon-accessory"></i>
 
-                    <div ng-if="itc.moodAvailable">
-                        <img class="result-mood chosen-mood"
-                             ng-src="./images/svg/moods/white/{{itc.selectedMood.icon_white}}">
+                    <div class="float-width" ng-if="itc.moodAvailable">
+                        <div class="result-mood chosen-mood">
+                            <img ng-src="./images/svg/moods/white/{{itc.selectedMood.icon_white}}">
+                        </div>
                         <label class="mood-title">{{itc.selectedMood.title}}</label>
                     </div>
                 </li>
@@ -71,11 +72,10 @@
         </div>
         <div ng-if="!authenticated" class="no-register">
             <div class="not-auth-container">
-                <div class="image-container-full"
-                     style="background-image: url('images/svg/lorenz.svg')">
+                <div class="image-container-full">
+                    <img class="lorenz" ng-src="images/svg/lorenz.svg">
                 </div>
-                <span class="message">Melde dich an und zeige anderen, was du an deiner Stadt liebst.</span>
-                <span class="message">Oder registriere dich und werde ein Teil von Locator</span>
+                <p class="message center">Melde dich an und zeige anderen, was du an deiner Stadt liebst.</p>
             </div>
         </div>
     </ion-content>
@@ -83,6 +83,6 @@
             ng-disabled="!(itc.city.title && itc.moodAvailable && (itc.selectedDays > 0))"
             class="button-bottom button button-full background-coral bottom item-icon-right insert-trip-button">
         LOCATIONS HINZUFÜGEN
-        <i class="icon ion-chevron-right icon-accessory"></i>
+        <i class="icon ion-chevron-right"></i>
     </button>
 </ion-view>

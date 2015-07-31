@@ -34,13 +34,18 @@ module Controller {
         error:boolean = false;
         edit:boolean = false;
 
-        constructor(private CameraService, private $scope, private basePath, private GeolocationService,
+        constructor(private $q, private UtilityService, private CameraService, private $scope, private basePath, private GeolocationService,
                     private UserService, private $state, private PictureUploadService, private webPath,
-                    private $rootScope, private $ionicLoading, private $ionicPopup, private ngProgressLite,
-                    private $ionicScrollDelegate, private maxSpinningDuration, private LocationService, private $stateParams) {
+                    private $rootScope, private $ionicLoading, private ngProgressLite,
+                    private maxSpinningDuration, private LocationService, private $stateParams) {
+            // google analytics
+            if (typeof analytics !== undefined && typeof analytics !== 'undefined') {
+                analytics.trackView("InsertLocation Controller");
+            }
 
             if (this.$state.current.name.indexOf('edit') > -1) {
                 this.edit = true;
+                this.$ionicLoading.show({templateUrl: 'templates/static/loading.html', duration: this.maxSpinningDuration});
                 this.LocationService.getLocationById($stateParams.locationId).then((result) => {
                     this.result = result.data;
                     if (result.data.images.picture) {
@@ -50,8 +55,7 @@ module Controller {
                     }
                     this.documentId = result.data._id;
                     this.locationFormDetails.title = result.data.title;
-                    var tags = result.data.tags.toString();
-                    this.locationFormDetails.tags = tags.replace(/,/g, " ");
+                    this.locationFormDetails.tags = result.data.tags.join(' ');
                     this.locationFormDetails.description = result.data.description;
                     this.locationFormDetails.city = result.data.city;
                     this.locationFormDetails.public = result.data.public;
@@ -72,6 +76,7 @@ module Controller {
                         }
                     };
                     this.GeolocationService.setGeoPosition(map);
+                    this.$ionicLoading.hide();
                 })
             }
 
@@ -82,14 +87,11 @@ module Controller {
             $rootScope.$on('newGeoPosition', () => {
                 this.map = this.GeolocationService.getGeoPosition();
                 this.mapMarkerSet = true;
-                this.getCityFromMarker();
-
             });
         }
 
         uploadImage(image) {
             this.uploadIsDone = false;
-
             this.isUploading = true;
             var file = image.src;
             var formData = {
@@ -110,12 +112,13 @@ module Controller {
                 delete formData._rev;
             }
             this.ngProgressLite.start();
-            this.$ionicPopup.alert({title: 'Das Bild wird im Hintergrund hochgeladen. Beschreibe doch deine Location solange du wartest.'});
+
+            this.UtilityService.showPopup('Das Bild wird im Hintergrund hochgeladen. Beschreibe doch deine Location solange du wartest.');
+
             this.PictureUploadService.uploadImage(file, this.basePath + '/users/my/locations/picture/mobile', formData)
                 .then((data) => {
                     this.$ionicLoading.hide();
                     var dataObject = JSON.parse(data.response);
-
                     this.showNewImage(dataObject);
                     this.documentId = dataObject.id;
                     this.revision = dataObject.rev;
@@ -130,7 +133,6 @@ module Controller {
                 }, (process) => {
                     var perc:number = process.loaded / process.total;
                     this.ngProgressLite.set(perc);
-                    console.log('progress:', perc, '% ');
                 })
         }
 
@@ -140,52 +142,50 @@ module Controller {
         }
 
         getCityFromMarker() {
-            this.GeolocationService.getCityByCoords(this.map.clickedMarker.latitude, this.map.clickedMarker.longitude)
-                .then(result => {
+            return this.$q((resolve, reject) => {
+                this.GeolocationService.getCityByCoords(this.map.clickedMarker.latitude, this.map.clickedMarker.longitude)
+                    .then(result => {
 
-
-                    var locality;
-                    result.forEach((item:any) => {
-                        if (item.types[0] === 'locality') {
-                            locality = item;
-                        }
-                    });
-
-                    if (locality) {
-
-                        this.insertLocality(locality);
-                        console.info('First Case');
-                        return;
-
-                    } else {
-
-                        var cityname;
-                        result[0].address_components.forEach((item:any) => {
+                        var locality;
+                        result.forEach((item:any) => {
                             if (item.types[0] === 'locality') {
-                                cityname = item.long_name;
+                                locality = item;
                             }
                         });
 
-                        if (cityname) {
+                        if (locality) {
+                            this.insertLocality(locality);
+                            console.info('First Case');
+                            return resolve();
+                        } else {
+                            var cityname;
+                            result[0].address_components.forEach((item:any) => {
+                                if (item.types[0] === 'locality') {
+                                    cityname = item.long_name;
+                                }
+                            });
 
-                            this.GeolocationService.getPlaceIdByAddress(cityname)
-                                .then(nestedResult => {
+                            if (cityname) {
+                                this.GeolocationService.getPlaceIdByAddress(cityname)
+                                    .then(nestedResult => {
+                                        locality = {};
+                                        locality.place_id = nestedResult[0].place_id;
+                                        locality.formatted_address = nestedResult[0].formatted_address;
+                                        this.insertLocality(locality);
+                                        console.info('second');
+                                        return resolve();
 
-                                    locality = {};
-                                    locality.place_id = nestedResult[0].place_id;
-                                    locality.formatted_address = nestedResult[0].formatted_address;
-                                    this.insertLocality(locality);
-                                    console.info('second');
-                                    return;
-
-                                })
-                                .catch(error => {
-                                    console.log(error);
-                                });
+                                    })
+                                    .catch(error => {
+                                        console.log(error);
+                                        return reject();
+                                    });
+                            }
                         }
-                    }
 
-                });
+                    });
+
+            });
         }
 
         showPictureActions = () => {
@@ -201,63 +201,73 @@ module Controller {
         };
 
         saveLocation = () => {
-            if (!this.mapMarkerSet
-                || !this.locationFormDetails.title
-                || !this.locationFormDetails.description
-                || !this.locationFormDetails.tags) {
-                console.log('error - missing parameter')
-                this.error = true;
+            if (!this.locationFormDetails.title) {
+                this.UtilityService.showPopup('Deine Location benötigt noch einen Titel.');
+                return;
+            }
+
+            if (!this.mapMarkerSet) {
+                this.UtilityService.showPopup('Wo befindet sich deine Location?');
+                return;
+            }
+
+            if (!this.locationFormDetails.description) {
+                this.UtilityService.showPopup('Deine Location benötigt noch eine Beschreibung.');
+                return;
+            }
+
+            if (!(this.locationFormDetails.tags.length > 0)) {
+                this.UtilityService.showPopup('Füge noch durch Leerzeichen getrennte Tags hinzu, mit der nach deiner Location gesucht werden kann. (z.B. Bodensee baden Natur)');
                 return;
             }
 
             if (this.isUploading) {
-                this.$ionicPopup.alert({title: 'Du kannst deine Location speichern, sobald dein Bild hochgeladen ist.'});
+                this.UtilityService.showPopup('Du kannst deine Location speichern, sobald dein Bild hochgeladen ist.');
                 return;
             }
-            var formValues = angular.copy(this.locationFormDetails);
 
-            formValues.geotag = {
-                long: this.map.clickedMarker.longitude,
-                lat: this.map.clickedMarker.latitude
-            };
 
-            formValues.tags = formValues.tags.split(" ");
-            /*var stringTags = [];
-             formValues.tags.forEach(item => {
-             stringTags.push(item.text);
-             });
-             formValues.tags = stringTags;*/
+            this.getCityFromMarker().then(() => {
 
-            this.GeolocationService.saveLocation(formValues, this.documentId).
-                then((result) => {
-                    if (!this.edit) {
-                        if (this.headerImagePath) {
-                            var pic = this.headerImagePath + '?size=mobile';
+
+                this.locationFormDetails.tags = this.locationFormDetails.tags.split(' ');
+
+                var formValues = angular.copy(this.locationFormDetails);
+
+                formValues.geotag = {
+                    long: this.map.clickedMarker.longitude,
+                    lat: this.map.clickedMarker.latitude
+                };
+
+
+                this.GeolocationService.saveLocation(formValues, this.documentId).
+                    then((result) => {
+                        if (!this.edit) {
+                            if (this.headerImagePath) {
+                                var pic = this.headerImagePath + '?size=mobile';
+                            } else {
+                                var pic = 'images/header-image-placeholder.png';
+                            }
+                            var info = {
+                                tripId: result.data.id,
+                                picture: pic
+                            };
+                            this.GeolocationService.setResultInfoObject(info);
+                            this.$state.go('tab.locate-options');
+
+                            this.documentWasCreated = true;
                         } else {
-                            var pic = 'images/header-image-placeholder.png';
+                            this.UtilityService.showPopup('Location erfolgreich aktualisiert');
+
+                            this.$state.go('tab.profile', {
+                                userId: this.me._id
+                            });
                         }
-                        var info = {
-                            tripId: result.data.id,
-                            picture: pic
-                        };
-                        this.GeolocationService.setResultInfoObject(info);
-                        this.$state.go('tab.locate-options');
-
-                        this.documentWasCreated = true;
-                    } else {
-                        var alertPopup = this.$ionicPopup.alert({
-                            template: 'Location erfolgreich aktualisiert'
-                        });
-
-                        this.$state.go('tab.profile', {
-                            userId: this.me._id
-                        });
-                    }
-                    this.resetController();
-
-                }).catch((err) => {
-                    console.log(err);
-                })
+                        this.resetController();
+                    }).catch((err) => {
+                        console.log(err);
+                    })
+            });
         };
 
         resetController() {
@@ -289,7 +299,7 @@ module Controller {
 
         goToMap() {
             if (this.isUploading) {
-                this.$ionicPopup.alert({title: 'Bitte warte kurz bis das Bild fertig geladen wurde'});
+                this.UtilityService.showErrorPopup('Bitte warte kurz bis das Bild fertig geladen wurde');
                 return;
             }
             this.$ionicLoading.show({templateUrl: 'templates/static/loading.html', duration: this.maxSpinningDuration});
@@ -306,6 +316,10 @@ module Controller {
             this.locationFormDetails.city.title = locality.formatted_address;
             this.locationFormDetails.city.place_id = locality.place_id;
             this.locationFormDetails.city.id = locality.place_id;
+        }
+
+        strip(value) {
+            this.locationFormDetails.tags = value.replace(/,/g, ' ').replace(/\s\s+/g, ' ').replace(/\./g,' ');
         }
 
         static controllerId:string = "InsertLocationCtrl";

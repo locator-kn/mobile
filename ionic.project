@@ -1,4 +1,11 @@
 {
   "name": "locator",
-  "app_id": "e78521cc"
+  "app_id": "e78521cc",
+  "browsers": [
+    {
+      "platform": "android",
+      "browser": "crosswalk",
+      "version": "12.41.296.5"
+    }
+  ]
 }

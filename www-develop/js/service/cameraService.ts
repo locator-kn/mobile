@@ -53,8 +53,13 @@ module Service {
                         // take from gallery
                         return this.getPicture({
                             quality: 100,
+                            correctOrientation: true,
                             sourceType: Camera.PictureSourceType.PHOTOLIBRARY
                         }).then((url) => {
+                            if (url.substring(0, 21) == "content://com.android") {
+                                var photo_split = url.split("%3A");
+                                url = "content://media/external/images/media/" + photo_split[1];
+                            }
                             this.cropImage(url, opts).then((data)=> {
                                 q.resolve(data);
                             }).catch((err)=> {

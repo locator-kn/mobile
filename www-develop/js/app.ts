@@ -36,6 +36,7 @@
 /// <reference path="./service/messengerService.ts" />
 /// <reference path="./service/socketService.ts" />
 /// <reference path="./service/locationService.ts" />
+/// <reference path="./service/utilityService.ts" />
 
 // Ionic Starter App
 
@@ -45,8 +46,10 @@
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
 
+declare var ionic:any;
+declare var analytics:any;
+
 var deps = [
-    'ionic',
     'ngLodash',
     'locator.accommodation-equipment-chooser',
     'angular-cache',
@@ -54,15 +57,15 @@ var deps = [
     'ngProgressLite',
     'btford.socket-io',
     'uiGmapgoogle-maps',
-    'ngTagsInput',
     'ngCordova',
     'ngCordovaOauth',
-    'dbaq.emoji'
+    'dbaq.emoji',
+    'ionic'
 ];
 
 angular.module('starter', deps)
 
-    .run(function ($ionicPlatform) {
+    .run(function ($ionicPlatform, $window, $rootScope) {
         $ionicPlatform.ready(function () {
             // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
             // for form inputs)
@@ -70,10 +73,34 @@ angular.module('starter', deps)
                 cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
             }
 
+            if (typeof analytics !== undefined && typeof analytics !== 'undefined') {
+                console.log('start google-analytics')
+                analytics.startTrackerWithId("UA-65710424-1");
+            } else {
+                console.log("Google Analytics Unavailable");
+            }
+
             /*if (window.StatusBar) {
              // org.apache.cordova.statusbar required
              StatusBar.styleLightContent();
              }*/
+
+            $rootScope.isAndroid = ionic.Platform.isAndroid();
+            $rootScope.isIOS = ionic.Platform.isIOS();
+
+            $window.onresize = () => {
+                setupValues();
+                $rootScope.$apply();
+            };
+            var setupValues = () => {
+                var wHeight = $window.innerHeight;
+                $rootScope.settings = {
+                    minHeighWithBtnUl: {
+                        'min-height': wHeight - 152
+                    }
+                };
+            };
+            setupValues();
         });
     })
 
@@ -81,9 +108,9 @@ angular.module('starter', deps)
     .constant('basePath', '<%= basePath %>')
     .constant('basePathRealtime', '<%= basePathRealtime %>')
     .constant('webPath', '<%= webPath %>')
-    .constant('maxSpinningDuration', 6000)
     .constant('facebookApiKey', '<%= facebookApiKey %>')
     .constant('googleApiKey', '<%= googleApiKey %>')
+    .constant('maxSpinningDuration', 10000)
 
 
     // controler
@@ -120,6 +147,7 @@ angular.module('starter', deps)
     .service(Service.MessengerService.serviceId, Service.MessengerService)
     .service(Service.SocketService.serviceId, Service.SocketService)
     .service(Service.LocationService.serviceId, Service.LocationService)
+    .service(Service.UtilityService.serviceId, Service.UtilityService)
 
     .config(function (CacheFactoryProvider) {
         angular.extend(CacheFactoryProvider.defaults, {maxAge: 15 * 60 * 1000});
@@ -159,13 +187,11 @@ angular.module('starter', deps)
 
     .directive('ngKeypress', function () {
         return function (scope, element, attrs) {
-            element.bind("keydown keypress", function (event) {
-                if (event.which === 32) {
+            element.bind("keyup", function (event) {
+                if (event.originalEvent.target.value.lastIndexOf(' ') === (event.originalEvent.target.value.length - 1)) {
                     scope.$apply(function () {
                         event.target.blur();
                         event.target.focus();
-                        //scope.$eval(attrs.ngEnter);
-                        //element.val('');
                     });
 
                     event.preventDefault();
@@ -348,6 +374,14 @@ angular.module('starter', deps)
                     }
                 }
             })
+            .state('tab.search-user-trips', {
+                url: '/search/:userId/trips',
+                views: {
+                    'tab-search': {
+                        templateUrl: 'templates/trip/trips.html'
+                    }
+                }
+            })
             .state('tab.messenger', {
                 url: '/messenger',
                 views: {
@@ -477,6 +511,14 @@ angular.module('starter', deps)
                     }
                 }
             })
+            .state('tab.profile-trip-locations', {
+                url: '/profile/my/trips/locations/:locationSourceId',
+                views: {
+                    'tab-profile': {
+                        templateUrl: 'templates/location/locationOverview.html'
+                    }
+                }
+            })
             .state('tab.profile-locations-detail', {
                 url: '/profile/my/locations/:locationId',
                 views: {
@@ -530,12 +572,20 @@ angular.module('starter', deps)
         // set navbar Title to center
         $ionicConfigProvider.navBar.alignTitle('center');
 
+
         // if none of the above states are matched, use this as the fallback
         $urlRouterProvider.otherwise('/tab/welcome');
 
-        $ionicConfigProvider.backButton.text('Zurück').icon('ion-chevron-left');
+        $ionicConfigProvider.backButton.text('').icon('ion-chevron-left');
 
         $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|local|data|file|blob|cdvfile|content):\//);
 
+        window.addEventListener('native.keyboardshow', function () {
+            document.body.classList.add('keyboard-open');
+        });
+
+        window.addEventListener('native.keyboardhide', function () {
+            document.body.classList.remove('keyboard-open');
+        });
 
     });

@@ -37,7 +37,7 @@ module Service {
             if (pageNumber >= 0) {
                 this.sq.page = pageNumber;
                 if (pageSize) {
-                    this.sq.page_size = pageSize;
+                    this.sq.elements = pageSize;
                 }
             }
             return this.$http({
@@ -47,9 +47,31 @@ module Service {
             });
         }
 
+        getNextTripsFromMe(pageNumber?, pageSize?) {
+            if (pageNumber >= 0) {
+                this.sq.page = pageNumber;
+                if (pageSize) {
+                    this.sq.elements = pageSize;
+                }
+            }
+            return this.$http({
+                url: this.basePath + '/users/my/trips',
+                params: this.sq,
+                method: 'GET'
+            });
+        }
+
+        deleteTrip(_id) {
+            return this.$http.delete(this.basePath + '/trips/' + _id);
+        }
+
         // @deprecated
         getTripsByUser(userid) {
             return this.$http.get(this.basePath + '/users/' + userid + '/trips');
+        }
+
+        togglePublicTrips(tripId) {
+            return this.$http.put(this.basePath + '/trips/' + tripId + '/togglePublic');
         }
 
         setCity(city) {

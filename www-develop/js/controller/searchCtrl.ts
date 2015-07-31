@@ -19,8 +19,14 @@ module Controller {
         tripCities:any = [];
         city:any = {};
         onlyOneCity:boolean;
+        valueAvailable:boolean = false;
 
         constructor(private $rootScope, private DataService, private $state, private SearchService, private $ionicPopup, private $ionicLoading) {
+            // google analytics
+            if (typeof analytics !== undefined && typeof analytics !== 'undefined') {
+                analytics.trackView("Search Controller");
+            }
+
             this.DataService.getAvailableDays().then((result)=> {
                 this.availableDays = result.data;
             });
@@ -36,7 +42,7 @@ module Controller {
 
             // if only one city available -> select city as default city
             this.DataService.getAvailableCities().then((result) => {
-                if(result.data.length === 1) {
+                if (result.data.length === 1) {
                     this.city = result.data[0];
                     this.onlyOneCity = true;
                 }
@@ -50,6 +56,7 @@ module Controller {
             $rootScope.$on('newSearchMood', () => {
                 this.selectedMood = this.SearchService.getMood();
                 this.moodAvailable = true;
+                this.valueAvailable = true;
             });
 
         }
@@ -79,7 +86,8 @@ module Controller {
                 var currentDate = new Date();
                 var start_date = new Date(this.start_date);
                 var end_date = new Date(this.end_date);
-                if(currentDate > start_date|| currentDate > end_date){
+                if (currentDate.toDateString() > start_date.toDateString() ||
+                    currentDate.toDateString() > end_date.toDateString()) {
                     this.$ionicPopup.alert({title: 'Datum liegt in der Vergangenheit.'});
                     return;
                 }
@@ -88,10 +96,25 @@ module Controller {
                 query.end_date = end_date.toISOString();
             }
 
+            // google analytics
+            if (typeof analytics !== undefined && typeof analytics !== 'undefined') {
+                analytics.trackEvent('Suchen', 'Suchen', 'Query', query);
+            }
 
             this.SearchService.setQuery(query);
             this.$state.go('tab.search-result');
 
+        }
+
+        clearSearchValues() {
+            this.selectedDays = 0;
+            this.selectedPersons = 0;
+            this.selectedMood = {};
+            this.moodAvailable = false;
+            this.start_date = '';
+            this.end_date = '';
+
+            this.valueAvailable = false;
         }
 
         static isEmpty(myObject) {

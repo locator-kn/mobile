@@ -8,17 +8,20 @@
         <img ng-src="images/icons/icons_stuff/cross.png" ng-if="uc.me && uc.edit" class="edit-pencil"
              ng-click="uc.editTrigger()">
     </ion-nav-buttons>
-    <ion-content class="background-color-grey">
+    <ion-content class="background-color-grey my-has-tab">
         <ul class="list" ng-if="!uc.edit">
             <li class="item">
                 <img class="profile-image" ng-src="{{uc.user.picture}}">
-                <span class="username">{{uc.user.name}} <span class="birthdate"
-                                                              ng-if="uc.birthdate">({{uc.birthdate}})</span></span>
+
+                <div class="name-and-age">
+                    <span class="username">{{uc.user.name}}</span><span ng-if="uc.age" class="age">({{uc.age}})</span>
+                </div>
+
             </li>
-            <li class="item" ng-if="uc.user.birthdate">
+            <!--<li class="item" ng-if="uc.user.birthdate">
                 <h5 class="text-color-grey">Geburtsdatum</h5>
                 <span class="date-of-birth">{{uc.user.birthdate}}</span>
-            </li>
+            </li>-->
             <li class="item" ng-if="uc.user.residence">
                 <h5 class="text-color-grey">Wohnort</h5>
                 <span class="residence">{{uc.user.residence}}</span>
@@ -27,14 +30,14 @@
                 <h5 class="text-color-grey">Beschreibung</h5>
                 <span class="description">{{uc.user.description}}</span>
             </li>
-            <li class="item item-icon-right" ng-if="!uc.profileState"
-                ui-sref="tab.search-user-locations({locationSourceId:uc.user._id})">
+            <li class="item item-icon-right"
+                ng-click="uc.showUserLocations(uc.user._id)">
                 <span>Locations von {{uc.user.name}}</span>
                 <i class="icon ion-chevron-right icon-accessory"></i>
             </li>
-            <li class="item item-icon-right" ng-if="uc.profileState"
-                ui-sref="tab.profile-locations({locationSourceId:uc.user._id})">
-                <span>Locations von {{uc.user.name}}</span>
+            <li class="item item-icon-right"
+                ng-click="uc.showUserTrips(uc.user._id)">
+                <span>Trips von {{uc.user.name}}</span>
                 <i class="icon ion-chevron-right icon-accessory"></i>
             </li>
         </ul>
@@ -42,14 +45,17 @@
             <img class="profile-image" ng-src="{{uc.user.picture}}" ng-click="uc.updatePicture()">
             <span class="image-description">Bild berühren um es zu ändern.</span>
             <li>
-                <span class="title text-color-grey">Name</span>
+                <span class="title text-color-grey">Vorname</span>
                 <input class="item item-input background-color-edit" type="input" ng-model="uc.user.name"/>
+            </li>
+            <li>
+                <span class="title text-color-grey">Nachname</span>
+                <input class="item item-input background-color-edit" type="input" ng-model="uc.user.surname"/>
             </li>
             <li>
                 <span class="text-color-grey title">Geburtsdatum</span>
                 <input class="item item-input background-color-edit birthdate" type="date"
-                       ng-model="uc.user.birthdate"
-                       value="{{uc.modifyBirthday}}">
+                       ng-model="uc.user.birthdate">
             </li>
             <li>
                 <span class="text-color-grey title">Wohnort</span>

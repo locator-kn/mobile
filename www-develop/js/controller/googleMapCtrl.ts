@@ -27,10 +27,11 @@ module Controller {
             events: null
         };
 
-        heigth;
-
-        constructor(private $ionicLoading, private GeolocationService, private $scope, private maxSpinningDuration) {
-            this.heigth = window.innerHeight - 152;
+        constructor(private $ionicLoading, private GeolocationService, private $scope) {
+            // google analytics
+            if (typeof analytics !== undefined && typeof analytics !== 'undefined') {
+                analytics.trackView("GoogleMap Controller");
+            }
 
             var oldResultObject = this.GeolocationService.getGeoPosition();
 
@@ -51,13 +52,7 @@ module Controller {
                     this.clickMapEvent(mapModel, eventName, originalEventArgs);
                 },
                 tilesloaded: () => {
-                    // only for first call, we need to get current position after map is loaded
-                    if (!this.mapIsReady) {
-                        this.mapIsReady = true;
-                        if(!this.mapMarkerSet){
-                            this.getCurrentPosition();
-                        }
-                    }
+                    this.mapIsReady = true;
                     this.$ionicLoading.hide();
 
                 }
@@ -89,7 +84,7 @@ module Controller {
             if (this.mapIsReady) {
                 this.$ionicLoading.show({
                     templateUrl: 'templates/static/loading.html',
-                    duration: this.maxSpinningDuration
+                    duration: 13000
                 });
 
                 this.GeolocationService.getCurrentLocation().then((position) => {

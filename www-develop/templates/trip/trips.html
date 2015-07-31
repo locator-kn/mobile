@@ -1,13 +1,9 @@
 <ion-view view-title="Suchergebnisse" class="search-result" ng-controller="TripOverviewCtrl as toc">
-    <!--<ion-nav-buttons side="right">-->
-        <!--<img ng-if="toc.searchView" class="image-filter" ng-click="$ionicGoBack()" src="./images/icons/edit.png">-->
-    <!--</ion-nav-buttons>-->
     <ion-content class="background-color-grey my-has-tabs">
         <ion-list class="list">
-            <div class="hack-for-first-element"></div>
             <ion-item ng-repeat="result in toc.results">
                 <div>
-                    <div class="item trip-title-in-results text-bold">{{result.title}}</div>
+                    <div ng-click="toc.showTripDetail(result._id, result.userid)" class="item trip-title-in-results text-bold">{{result.title}}</div>
 
                     <div ng-click="toc.showTripDetail(result._id, result.userid)">
                         <!-- use ng-ig index becaus limitBy:X doesn't work-->
@@ -65,21 +61,44 @@
                             <label>mit Übernachtung</label>
                         </li>
                         <li class="item trip-options">
-                            <img class="icon icon-small" ng-src="./images/svg/ansehen_weiss.svg"
-                                 ng-click="toc.showTripDetail(result._id, result.userid)">
-                            <img class="icon" ng-src="./images/svg/alle_locations.svg"
-                                 ui-sref="tab.search-result-locations({locationSourceId:result._id})">
-                            <img class="icon" ng-src="./images/svg/messenger_weiss.svg"
-                                 ng-if="!(result.userid === userID)"
-                                 ng-click="toc.startConversation(result.user, result)">
-                            <img class="icon" ng-src="./images/svg/edit.svg"
-                                 ng-if="((result.userid === userID) && !toc.searchView)"
-                                 ng-click="toc.editTrip(result._id, result.userid)">
-
-                            <label class="user">
+                            <div class="icon icon-small">
+                                <img ng-src="./images/svg/ansehen_weiss.svg"
+                                     ng-click="toc.showTripDetail(result._id, result.userid)">
+                            </div>
+                            <div class="icon">
+                                <img ng-src="./images/svg/alle_locations.svg"
+                                     ng-click="toc.showLocations(result._id)">
+                            </div>
+                            <div class="icon">
+                                <img ng-src="./images/svg/messenger_weiss.svg"
+                                     ng-if="!(result.userid === userID)"
+                                     ng-click="toc.startConversation(result.user, result)">
+                            </div>
+                            <label ui-sref="tab.search-user({userId: result.userid})" class="user">
                                 <label class="dekotext">erstellt von </label>
                                 <label class="name">{{result.username || 'anonym'}}</label>
                             </label>
+                        </li>
+                        <li class="item config trip-options" ng-if="toc.myTrips">
+                            <div class="the-toggle">
+                                <label class="toggle toggle-dark my-toggle"
+                                       ng-click="toc.togglePublic(result._id)">
+                                    <input type="checkbox" ng-model="result.public">
+
+                                    <div class="track">
+                                        <div class="handle"></div>
+                                    </div>
+                                </label>
+                            </div>
+                            <label class="public">öffentlich</label>
+
+                            <div class="delete-icon">
+                                <img  class="delete-svg" ng-src="images/svg/loeschen.svg"
+                                     ng-click="toc.deleteTrip(result._id)">
+                            </div>
+                                <img class="icon edit" ng-src="images/icons/icons_stuff/pencil.png"
+                                     ng-click="toc.editTrip(result._id, result.userid)">
+
                         </li>
                     </ul>
                 </div>

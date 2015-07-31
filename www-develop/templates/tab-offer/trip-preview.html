@@ -67,8 +67,8 @@
                     </label>
                 </li>
                 <li class="item mood-container" ng-if="tpc.selectedMood">
-                    <img class="result-mood" ng-src="./images/icons/{{tpc.selectedMood.icon}}">
-                    <label class="mood-title">{{tpc.selectedMood.title}}</label>
+                    <img class="result-mood" ng-src="./images/svg/moods/black/{{tpc.selectedMood.icon}}">
+                    <label class="mood-title mood-title-fix">{{tpc.selectedMood.title}}</label>
                 </li>
                 <li ng-if="tpc.trip.accommodation">
                     <div ng-hide="tpc.trip.accommodation == false">
@@ -86,7 +86,7 @@
         </ion-content>
         <button ng-if="authenticated" ng-click="tpc.createTrip()"
                 class="button-bottom button button-full button-trip-preview background-coral bottom">
-            {{tpc.edit ? 'Trip Aktualisieren' : 'Trip Erstellen'}}
+            {{tpc.edit ? 'TRIP AKTUALISIEREN' : 'TRIP ERSTELLEN'}}
         </button>
     </form>
 </ion-view>

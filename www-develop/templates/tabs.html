@@ -7,26 +7,26 @@ navigation history that also transitions its views in and out.
     <ion-tabs class="tabs-icon-top tab-nav" ng-class="{'tabs-item-hide': !authenticated}">
 
         <!-- Search Tab -->
-        <ion-tab hidden="true" href="#/tab/welcome">
+        <ion-tab hidden="true" ui-sref="tab.welcome">
             <ion-nav-view name="tab-welcome"></ion-nav-view>
         </ion-tab>
 
         <!-- Search Tab -->
-        <ion-tab title="Suche" icon-off="search" icon-on="search" href="#/tab/search" class="search">
+        <ion-tab title="Suche" icon-off="search" icon-on="search" ui-sref="tab.search" class="search">
             <ion-nav-view name="tab-search"></ion-nav-view>
         </ion-tab>
 
-        <ion-tab title="Biete" icon-off="offer" icon-on="offer" href="#/tab/offer" class="offer">
+        <ion-tab title="Biete" icon-off="offer" icon-on="offer" ui-sref="tab.offer" class="offer">
             <ion-nav-view name="tab-offer"></ion-nav-view>
         </ion-tab>
 
         <!-- Location Tab -->
-        <ion-tab title="Location" icon-off="locate" icon-on="locate" href="#/tab/locate" class="locate">
+        <ion-tab title="Location" icon-off="locate" icon-on="locate" ui-sref="tab.locate" class="locate">
             <ion-nav-view name="tab-locate"></ion-nav-view>
         </ion-tab>
 
         <!-- Chats Tab -->
-        <ion-tab title="Messenger" icon-off="chat" icon-on="chat" href="#/tab/messenger" badge="badge" badge-style="badge-assertive">
+        <ion-tab title="Messenger" icon-off="chat" icon-on="chat" ui-sref="tab.messenger" badge="badge" badge-style="badge-assertive">
             <ion-nav-view name="tab-messenger"></ion-nav-view>
         </ion-tab>
 

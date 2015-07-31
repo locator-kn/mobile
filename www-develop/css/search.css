@@ -32,7 +32,7 @@
 
 .text-right {
     text-align: right;
-    padding-right: 0px;;
+    padding-right: 0;;
 }
 
 .mood-text {
@@ -43,7 +43,6 @@
 .mood-checkbox {
     float: right;
 }
-
 
 .search .toggle.toggle-dark input:checked + .track {
     background-color: #3eb9ad;
@@ -57,17 +56,12 @@
 .checkbox input:checked:before, .checkbox input:checked + .checkbox-icon:before{
     background-color: #3eb9ad;
     border-color: #3eb9ad;
-
 }
 
 
 .mood-checkbox .border-transparent:after {
     background-color: #44ccc0;
-
 }
-
-
-/********************** new design ***************/
 
 .background-color-cyan,
 .background-color-cyan li,
@@ -75,7 +69,7 @@
 .background-color-cyan span {
     background: transparent;
     color: #fff;
-    border-color: #44ccc0
+    border-color: rgba(2,2,2,0.03);
 }
 
 .background-color-cyan .item-icon-right .icon-accessory {
@@ -134,4 +128,8 @@ button.button-bottom.button.button-full.background-green.bottom.search-button:ho
 .date-input {
     text-align: right;
     padding-right: 0;
+}
+
+.search-delete {
+    margin-top: 8px;
 }

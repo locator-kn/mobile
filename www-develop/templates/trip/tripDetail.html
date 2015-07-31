@@ -1,6 +1,6 @@
 <!--cache view false needed for slider -->
 <ion-view class="trip" ng-class="tc.trip.userid !== userID ? 'pageWithBigButton' : ''" cache-view="false"
-          view-title="{{tc.trip.title}}" ng-controller="TripCtrl as tc">
+          view-title="Trip" ng-controller="TripCtrl as tc">
     <ion-content class="my-has-tabs">
         <ul>
             <ion-slide-box ng-if="tc.trip.locations && tc.numberOfElelementsIn(tc.trip.locations) !== 1"
@@ -28,7 +28,8 @@
             <img class="user-picture" ui-sref="tab.search-user({userId:tc.trip.userid})"
                  ng-src="{{tc.user.picture}}">
             <li class="item first-element">
-                <label>von </label>
+                <span class="text-bold">{{tc.trip.title}}</span>
+                <label> von </label>
                 <label class="text-bold"> {{tc.user.name || 'anonym'}}</label>
             </li>
 
@@ -57,7 +58,7 @@
                 </label>
             </li>
             <li class="item item-icon-right" ng-if="tc.trip.locations"
-                ui-sref="tab.search-result-locations({locationSourceId:tc.trip._id})">
+                ng-click="tc.displayLocations(tc.trip._id)">
                 <label class="text-bold">{{tc.numberOfElelementsIn(tc.trip.locations)}}</label>
                 <label ng-if="tc.trip.locations">
                     {{tc.numberOfElelementsIn(tc.trip.locations) === 1 ? 'Location' : 'Locations'}}
@@ -67,13 +68,13 @@
             <li class="item mood-container" ng-if="tc.trip.moods">
                 <div ng-repeat="mood in tc.trip.moods">
                     <div ng-repeat="availableMood in tc.moods |filter:mood">
-                        <img class="result-mood" ng-src="./images/svg/moods/black/{{availableMood.icon}}">
+                        <div class="result-mood"><img ng-src="./images/svg/moods/black/{{availableMood.icon}}"></div>
                         <label class="mood-title">{{availableMood.title}}</label>
                     </div>
                 </div>
             </li>
             <li ng-if="tc.trip.accommodation">
-                <div ng-hide="tc.trip.accommodation == false">
+                <div ng-hide="tc.trip.accommodation == false" class="padding-left">
                     <h5 class="text-bold">Unterkunft</h5>
 
                     <div class="accommodation-equipment">

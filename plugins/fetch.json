@@ -1,12 +1,4 @@
 {
-    "com.ionic.keyboard": {
-        "source": {
-            "type": "registry",
-            "id": "com.ionic.keyboard"
-        },
-        "is_top_level": true,
-        "variables": {}
-    },
     "org.apache.cordova.camera": {
         "source": {
             "type": "registry",
@@ -15,26 +7,26 @@
         "is_top_level": true,
         "variables": {}
     },
-    "cordova-plugin-geolocation": {
+    "org.apache.cordova.inappbrowser": {
         "source": {
             "type": "registry",
-            "id": "cordova-plugin-geolocation"
+            "id": "org.apache.cordova.inappbrowser"
         },
         "is_top_level": true,
         "variables": {}
     },
-    "org.apache.cordova.file-transfer": {
+    "com.ionic.keyboard": {
         "source": {
             "type": "registry",
-            "id": "org.apache.cordova.file-transfer"
+            "id": "com.ionic.keyboard"
         },
         "is_top_level": true,
         "variables": {}
     },
-    "org.apache.cordova.file": {
+    "cordova-plugin-crosswalk-webview": {
         "source": {
             "type": "registry",
-            "id": "org.apache.cordova.file"
+            "id": "cordova-plugin-crosswalk-webview"
         },
         "is_top_level": true,
         "variables": {}
@@ -47,18 +39,51 @@
         "is_top_level": true,
         "variables": {}
     },
-    "cordova-plugin-camera": {
+    "org.apache.cordova.file": {
         "source": {
             "type": "registry",
-            "id": "cordova-plugin-camera"
+            "id": "org.apache.cordova.file"
         },
         "is_top_level": true,
         "variables": {}
     },
-    "org.apache.cordova.inappbrowser": {
+    "cordova-plugin-splashscreen": {
         "source": {
             "type": "registry",
-            "id": "org.apache.cordova.inappbrowser"
+            "id": "cordova-plugin-splashscreen"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-google-analytics": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-google-analytics@0.7.1"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "com.google.playservices": {
+        "source": {
+            "type": "registry",
+            "id": "com.google.playservices@19.0.0"
+        },
+        "is_top_level": false,
+        "variables": {}
+    },
+    "cordova-plugin-geolocation": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-geolocation"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "org.apache.cordova.file-transfer": {
+        "source": {
+            "type": "git",
+            "url": "https://github.com/gaochun/cordova-plugin-file-transfer.git",
+            "subdir": "."
         },
         "is_top_level": true,
         "variables": {}

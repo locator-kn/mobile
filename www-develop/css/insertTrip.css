@@ -5,12 +5,16 @@
     background-color: #f05346;
 }
 
+.insert-trip .toggle.toggle-dark input:checked + .track {
+    border-color: white;
+}
+
 .insert-trip .checkbox input:checked:before, .checkbox input:checked + .checkbox-icon:before {
-    border-color: #f47c7e;
+    border-color: #f05346;
 }
 
 .insert-trip .equipment span.ng-binding {
-    line-height: 34px;
+    line-height: 38px;
 }
 
 .insert-trip .locations li.item.item-icon-right {
@@ -116,12 +120,6 @@
     margin: 1px;
 }
 
-textarea.ng-pristine.ng-untouched.ng-invalid.ng-invalid-required,
-textarea.ng-dirty.ng-valid-parse.ng-touched.ng-invalid.ng-invalid-required {
-    background-color: transparent;
-    color: white;
-}
-
 .insert-trip .location-tags .tag {
     background: rgb(49, 47, 48);
     border-radius: 10px;
@@ -142,13 +140,11 @@ textarea.ng-dirty.ng-valid-parse.ng-touched.ng-invalid.ng-invalid-required {
     overflow: hidden;
 }
 
-.insert-trip .button:hover {
-    color: white;
-}
 
 .insert-trip .list-icon {
     float: left;
     height: 42px;
+    width:  62px;
     padding-right: 10px;
     padding-left: 10px;
 }
@@ -162,15 +158,13 @@ textarea.ng-dirty.ng-valid-parse.ng-touched.ng-invalid.ng-invalid-required {
     line-height: 41px;
 }
 
-/********************* new design *******************/
-
 .background-color-coral,
 .background-color-coral li,
 .background-color-coral label,
 .background-color-coral span {
     background: transparent;
     color: #fff;
-    border-color: #ff7274
+    border-color: rgba(2,2,2,0.03);
 }
 
 .background-color-coral .item-icon-right .icon-accessory {
@@ -199,7 +193,6 @@ textarea.ng-dirty.ng-valid-parse.ng-touched.ng-invalid.ng-invalid-required {
 }
 
 .background-color-coral .circle {
-    /*border-color: #38d8ca ;*/
     border-color: #fff;
 }
 
@@ -212,7 +205,7 @@ textarea.ng-dirty.ng-valid-parse.ng-touched.ng-invalid.ng-invalid-required {
 }
 
 .background-color-coral .text-right {
-    padding-right: 0px;
+    padding-right: 0;
 }
 
 .tab-item-active.offer {
@@ -229,10 +222,6 @@ textarea.ng-dirty.ng-valid-parse.ng-touched.ng-invalid.ng-invalid-required {
     color: rgb(255, 70, 55);
 }
 
-.insert-trip .button:hover {
-    color: #f05346;
-    background-color: #ddd;
-}
 
 .insert-trip .success-overlay {
     position: absolute;
@@ -242,7 +231,7 @@ textarea.ng-dirty.ng-valid-parse.ng-touched.ng-invalid.ng-invalid-required {
     height: 100%;
     text-align: center;
     background-color: rgba(34, 34, 34, .6);
-    padding-top: 300px;
+    padding-top: 225px;
     color: #fff;
     border-top-left-radius: 3px;
     border-bottom-left-radius: 3px;
@@ -291,4 +280,12 @@ ion-item.ion-item-insert-style.item {
 .insert-trip ul.list {
     float: left;
     width: 100%;
+}
+
+.insert-trip i.icon.ion-chevron-right.icon-accessory {
+    color: white;
+}
+
+.insert-trip .mood-title-fix {
+    padding-top: 8px;
 }

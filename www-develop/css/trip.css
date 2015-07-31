@@ -5,6 +5,7 @@
     z-index: 100;
     position: relative;
     margin-left: 10px;
+    background-color: white;
 }
 
 .trip .first-element {
@@ -15,12 +16,10 @@
     border: 1px solid #ddd;
 }
 
-
 .trip .description {
     padding: 16px;
     white-space: initial;
 }
-
 
 .trip span.slider-pager-page {
     margin-top: 17px;
@@ -38,7 +37,7 @@
     margin: 0;
     width: 12%;
     height: 44px;
-    background-size: 100%!important;
+    background-size: 100% !important;
     background-repeat: no-repeat;
 }
 
@@ -49,7 +48,47 @@
     font-size: 20px;
 }
 
-
 .trip .mood-title {
     line-height: 34px;
+}
+
+.trip .padding-left {
+    padding-left: 16px;
+}
+
+.trip-options .the-toggle {
+    float: left;
+}
+
+.trip-options .toggle .track {
+    border-color: #444;
+}
+
+.trip-options .public {
+    line-height: 31px;
+    margin-left: 10px;
+}
+
+li.item.trip-options .delete-icon {
+    width: 28px;
+    height: 27px;
+    float: right;
+    margin-top: 0;
+}
+
+.trip-options img.icon.edit {
+    float: right;
+    margin-right: 14px;
+    margin-top: -4px;
+    height: 37px;
+    width: 37px;
+}
+
+li.item.config.trip-options {
+    border-top-width: 2px;
+    border-top-color: rgb(68, 68, 68);
+}
+
+.slider-pager {
+    bottom: 35px;
 }

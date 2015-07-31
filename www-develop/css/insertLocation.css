@@ -4,15 +4,13 @@
 }
 
 .insert-location a.choose-image {
-    width: auto;
-    margin-top: -60px;
-    margin-left: -50px;
-}
-
-.insert-location a.choose-image {
     top: 50%;
     left: 50%;
     position: absolute;
+    width: 100px;
+    height: 100px;
+    margin-top: -60px;
+    margin-left: -50px;
 }
 
 .insert-location .choose-image img {
@@ -26,7 +24,7 @@
     height: 60px;
     font-weight: 600;
     color: white;
-    background-color: rgb(34,34,34);
+    background-color: rgb(34, 34, 34);
 }
 
 .insert-location .location-image {
@@ -45,7 +43,11 @@
 .insert-location textarea {
     background-color: transparent;
     padding-right: 5px;
+    min-height: 70px;
+}
 
+tags-input .tags .tag-list {
+    float: left;
 }
 
 .insert-location .invisible {
@@ -77,34 +79,56 @@
 }
 
 .insert-location tags-input .tags {
-    border-radius: 3px;
-    padding: 4px;
     box-shadow: none;
 }
 
 .insert-location .tag-input {
-    border: 0px;
-    padding: 0px;
     width: 100% !important;
 }
 
-.insert-location tags-input .tags .input {
-    border: 0;
-    outline: 0;
-    margin: 2px;
-    padding: 0;
-    padding-left: 10px;
-    float: left;
-    height: 26px;
+.insert-location .fix-item-min-height {
+    min-height: 54px;
 }
 
-/********************** new design ***************/
+.insert-location tags-input .tags .tag-item {
+    background: rgb(49, 47, 48);
+    color: rgb(255, 255, 255);
+    border-radius: 10px;
+    border: none !important;
+    line-height: 26px !important;
+    font-family: Signika;
+    font-size: 16px;
+}
+
+.insert-location tags-input .tags .tag-item:last-child {
+    margin-right: 10px;
+}
+
+.insert-location tags-input .tags .input {
+    font-family: Signika !important;
+    font-weight: 200;
+    padding-left: 0;
+    margin-left: 0;
+
+    outline: 0;
+    border: 0;
+
+    float: left;
+    height: 26px;
+
+    font-size: 16px !important;
+}
+
+tags-input .tags.focused {
+    outline: none;
+    -webkit-box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    box-shadow: none !important;
+}
 
 .background-color-dark,
 .background-color-dark li,
 .background-color-dark label,
-    /*.background-color-dark span,*/
-.insert-location tags-input .tags,
 .background-color-dark textarea,
 .background-color-dark input {
     background: rgb(34, 34, 34);
@@ -113,21 +137,6 @@
     font-family: Signika;
     font-size: 16px;
     line-height: 19px;
-}
-
-.insert-location tags-input .tags {
-    border-radius: 0px;
-    min-height: 47px;
-    font-size: 16px;
-}
-
-.background-color-dark tags-input .host {
-    margin: 0;
-}
-
-.background-color-dark tags-input .tags .input {
-    font-family: Signika;
-    font-size: 16px;
 }
 
 .background-color-dark .item-icon-right .icon-accessory {
@@ -152,12 +161,11 @@
     border-color: #fff;
 }
 
-.background-color-dark .toggle .track {
-    background-color: rgb(34, 34, 34);
+.toggle .track {
+    border-color: whitesmoke;
 }
 
 .background-color-dark.circle {
-    /*border-color: #38d8ca ;*/
     border-color: #fff;
 }
 
@@ -178,8 +186,6 @@
     font-size: 20px;
 }
 
-
-
 .background-color-dark .text-right {
     padding-right: 0px;
 }
@@ -190,15 +196,6 @@
 
 .insert-location .location-image .image-container {
     background-color: whitesmoke;
-}
-
-.insert-location tags-input .tags .tag-item {
-    background: #fff;
-    color: rgb(34, 34, 34);
-    border: none !important;
-    line-height: 26px !important;
-    font-family: Signika;
-    font-size: 16px;
 }
 
 .insert-location span.ng-binding {
@@ -241,7 +238,24 @@
     line-height: 20px;
 }
 
-.insert-location textarea.ng-pristine.ng-untouched.ng-invalid.ng-invalid-required.ng-valid-maxlength {
+.insert-location tags-input .tags {
+    border-radius: 0;
+    min-height: 47px;
+    font-size: 16px;
+    padding: 0;
+    border: 0;
+}
+
+tags-input .host {
+    margin: 0;
+}
+
+tags-input .tags .input {
+    font-family: Signika;
+    font-size: 16px;
+}
+
+.insert-location textarea {
     padding-top: 6px;
 }
 
@@ -252,4 +266,37 @@
 .insert-location .item {
     background: white;
     border-color: whitesmoke;
+    color: rgb(34, 34, 34);
+    border-right: 0;
+    border-left: 0;
+}
+
+.insert-location .item input, .insert-location .item textarea {
+    line-height: 21px;
+}
+
+.insert-location .item input, .insert-location .item textarea {
+    line-height: 19px;
+}
+
+.insert-location tags-input .tags .tag-item.selected {
+    background: #f05346;
+}
+
+tags-input .host {
+    float: left;
+}
+
+.insert-location .editable {
+    float: left;
+    width: 100%;
+    min-height: 41px;
+    padding-top: 9px;
+    padding-bottom: 9px;
+}
+
+.insert-location [contenteditable=true]:empty:before {
+    content: attr(placeholder);
+    color: #BFBFBF;
+    display: block;
 }

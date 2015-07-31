@@ -7,10 +7,10 @@
 .welcome .locate {
 
     width: 100%;
-    margin-top: 0px;
-    margin-bottom: 0px;
-    border-radius: 0px;
-    border-width: 0px;
+    margin-top: 0;
+    margin-bottom: 0;
+    border-radius: 0;
+    border-width: 0;
 
     /*text*/
     font-size: 28px;
@@ -47,7 +47,6 @@
 
 .welcome .tab-icon {
     height: 50%;
-    /*float: right;*/
     margin-right: 15px;
 }
 
@@ -67,10 +66,12 @@
 }
 
 .gradient-red {
+    background-color: #f05346;
     background: linear-gradient(#ff6557, #de4d40);
 }
 
 .gradient-blue {
+    background: rgb(51, 196, 183);
     background: linear-gradient(#46cfc1, #37a398);
 }
 
@@ -80,6 +81,7 @@
 
 .welcome .new-height {
     height: 60px;
+    width: 60px;
     display: block;
     margin-left: auto;
     margin-right: auto;

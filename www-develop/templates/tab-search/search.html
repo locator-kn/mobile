@@ -3,6 +3,15 @@
     <ion-nav-buttons side="left ">
         <i class="icon ion-ios-arrow-back ion-chevron-left" ui-sref="tab.welcome"></i>
     </ion-nav-buttons>
+
+    <ion-nav-buttons side="right">
+        <div class="delete-icon search-delete"
+             ng-if="sc.valueAvailable || sc.selectedDays || sc.selectedPersons ||sc.start_date || sc.end_date">
+            <img class="delete-svg" ng-src="images/svg/loeschen.svg"
+                 ng-click="sc.clearSearchValues()">
+        </div>
+    </ion-nav-buttons>
+
     <ion-content class="my-has-tabs gradient-blue">
         <!-- if more then 1 city available-->
         <li ng-if="!sc.onlyOneCity" class="item item-icon-right" ui-sref="tab.search-city">
@@ -18,7 +27,9 @@
             <i class="icon ion-chevron-right icon-accessory"></i>
 
             <div ng-if="sc.moodAvailable">
-                <img class="result-mood chosen-mood" ng-src="./images/svg/moods/white/{{sc.selectedMood.icon_white}}">
+                <div class="result-mood chosen-mood">
+                    <img ng-src="./images/svg/moods/white/{{sc.selectedMood.icon_white}}">
+                </div>
                 <label class="mood-title">{{sc.selectedMood.title}}</label>
             </div>
         </li>
