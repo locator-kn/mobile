@@ -47,16 +47,14 @@ gulp.task('ts', function () {
     var templateObject = {
         basePath: baseUrl || 'https://locator-app.com/api/v1',
         // TODO: refactor -> currently only for connection with online backend
-        webPath: 'https://locator-app.com'
+        webPath: 'https://locator-app.com',
+        facebookApiKey: 'ftest',
+        googleApiKey: 'gtest'
     };
 
     var realtimeUrl = url.parse(templateObject.basePath);
     var port = parseInt(realtimeUrl.port, 10) + 1;
     templateObject.basePathRealtime = templateObject.basePath + '/r';
-
-    var environment = {
-        env: 'test'
-    };
 
 
     var tsResult = gulp.src(['./www-develop/**/*.ts', '!./www-develop/lib/components/**/*.ts'])
