@@ -36,6 +36,7 @@
 .trip .equi-ico.pointer {
     margin: 0;
     width: 12%;
+    max-width: 44px;
     height: 44px;
     background-size: 100% !important;
     background-repeat: no-repeat;
