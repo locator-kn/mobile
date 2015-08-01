@@ -45,8 +45,6 @@ gulp.task('ts', function () {
         baseUrl = process.argv[baseIdx + 1];
     }
 
-    //var fb_api = fs.readFileSync("env.json", "utf8");
-    //var fb_client_id = fb_api['auth']['FACEBOOK_CLIENTID'];
     var fb_client_id = env_json.auth['FACEBOOK_CLIENTID'];
     var google_client_id = env_json.auth['GOOGLE_CLIENTID'];
 
