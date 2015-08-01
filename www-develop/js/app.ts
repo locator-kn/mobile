@@ -65,12 +65,23 @@ var deps = [
 
 angular.module('starter', deps)
 
-    .run(function ($ionicPlatform, $window, $rootScope) {
+    .run(function ($ionicPlatform, $window, $rootScope, $ionicPopup) {
         $ionicPlatform.ready(function () {
             // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
             // for form inputs)
             if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
                 cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+            }
+
+            // Check for network connection
+            if (window.Connection) {
+                if (navigator.connection.type == Connection.NONE) {
+                    $ionicPopup.alert({
+                        title: 'Keine Internetverbindung',
+                        content: 'Überprüfe deine Internetverbindung. Leider stehen dir dadurch nicht alle Funktionen zur Verfügung.',
+                        cssClass: 'error'
+                    })
+                }
             }
 
             if (navigator.splashscreen) {
@@ -80,7 +91,7 @@ angular.module('starter', deps)
             }
 
             if (typeof analytics !== undefined && typeof analytics !== 'undefined') {
-                console.log('start google-analytics')
+                console.log('start google-analytics');
                 analytics.startTrackerWithId("UA-65710424-1");
             } else {
                 console.log("Google Analytics Unavailable");
