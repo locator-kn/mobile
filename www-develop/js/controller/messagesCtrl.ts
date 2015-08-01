@@ -33,6 +33,14 @@ module Controller {
             }
             this.registerSocketEvent();
             this.$ionicScrollDelegate.scrollBottom(true);
+
+            var keyopen = $rootScope.$on('keyboard-open', () => {
+                console.info('received keyboard open event');
+                this.$ionicScrollDelegate.scrollBottom(true);
+            });
+
+            // destroy event when $scope will be destroyed
+            $scope.$on('$destroy', keyopen);
         }
 
         toTrusted(html_code) {
@@ -121,6 +129,7 @@ module Controller {
         sendMessage = (message) => {
             message = message.replace(/<\/?[^>]+(>|$)/g, "");
             this.textbox = '';
+            this.$ionicScrollDelegate.scrollBottom(true);
             this.MessengerService.sendMessage(message, this.conversationId, this.opponentId, this.$rootScope.userID)
                 .then(result => {
                     var date = new Date();
