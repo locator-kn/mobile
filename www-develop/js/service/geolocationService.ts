@@ -13,7 +13,7 @@ module Service {
         getCurrentLocation() {
             var q = this.$q.defer();
 
-            var timeout = 5000;
+            var timeout = 13000;
 
             var posOptions = {maximumAge: 60000, timeout: timeout, enableHighAccuracy: true};
             navigator.geolocation.getCurrentPosition((result) => {
