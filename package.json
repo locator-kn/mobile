@@ -43,7 +43,8 @@
     "cordova-plugin-whitelist",
     "cordova-plugin-geolocation",
     "cordova-plugin-splashscreen",
-    "cordova-plugin-file-transfer"
+    "cordova-plugin-file-transfer",
+    "org.apache.cordova.network-information"
   ],
   "cordovaPlatforms": [
     "ios",
