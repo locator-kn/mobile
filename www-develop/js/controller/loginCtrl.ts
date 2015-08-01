@@ -12,8 +12,8 @@ module Controller {
         errormsg:string = '';
         successmsg:string = '';
 
-        constructor(private $rootScope, private UserService, private $scope, private $timeout, private $cordovaOauth, private env) {
-            console.log(env);
+        constructor(private $rootScope, private UserService, private $scope, private $timeout, private $cordovaOauth, private facebookApiKey, private googleApiKey) {
+
         }
 
         closeLoginModal() {
@@ -117,7 +117,7 @@ module Controller {
 
 
         loginFacebook() {
-            this.$cordovaOauth.facebook('383834701823910', ['email']).then(
+            this.$cordovaOauth.facebook(this.facebookApiKey, ['email']).then(
                 (response:any) => {
                     this.closeLoginModal();
                     this.UserService.loginOAuth('facebook', response.access_token).then((userResponse) => {
@@ -130,7 +130,7 @@ module Controller {
         }
 
         loginGoogle() {
-            this.$cordovaOauth.google('749476331872-e4dvhbqn70gbbaliepfn8rjp5if7ta4q.apps.googleusercontent.com', ['email']).then(
+            this.$cordovaOauth.google(this.googleApiKey, ['email']).then(
                 (response:any) => {
                     this.closeLoginModal();
                     this.UserService.loginOAuth('google', response.access_token).then((userResponse) => {
