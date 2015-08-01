@@ -4,7 +4,7 @@ module Controller {
         conversations;
         conversationsHash = {};
 
-        constructor(private MessengerService, private UserService, private webPath, private $ionicLoading,
+        constructor(private MessengerService, private UserService, private webPath, private $ionicLoading, private UtilityService,
                     private SocketService, private $state, private $rootScope, maxSpinningDuration) {
             // google analytics
             if (typeof analytics !== undefined && typeof analytics !== 'undefined') {
@@ -75,6 +75,9 @@ module Controller {
                     });
                     this.MessengerService.setBadgeHash(badgeHash);
                     this.$ionicLoading.hide();
+                }).catch(()=> {
+                    this.$ionicLoading.hide();
+                    this.UtilityService.showErrorPopup('Keine Internetverbindung');
                 });
         }
 

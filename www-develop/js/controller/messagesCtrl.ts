@@ -20,7 +20,7 @@ module Controller {
         emptyConversation:boolean;
 
         constructor(private MessengerService, private $rootScope, private $state, private SocketService,
-                    private $ionicScrollDelegate, private $ionicLoading, private $scope, private $sce,
+                    private $ionicScrollDelegate, private $ionicLoading, private $scope, private $sce, private UtilityService,
                     private $filter, private maxSpinningDuration) {
             this.conversationId = this.$state.params.conversationId;
             this.opponentId = this.$state.params.opponentId;
@@ -75,6 +75,9 @@ module Controller {
                         this.$rootScope.$emit('updateConversation', conversationId, null, true);
                     }
                     this.$ionicScrollDelegate.scrollBottom(true);
+                }).catch(()=> {
+                    this.$ionicLoading.hide();
+                    this.UtilityService.showErrorPopup('Keine Internetverbindung');
                 });
         }
 

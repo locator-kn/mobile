@@ -33,7 +33,7 @@ module Controller {
         _id:string;
         _rev:string;
 
-        constructor(private $rootScope, private TripService, private DataService, private $state,
+        constructor(private $rootScope, private TripService, private $ionicLoading, private DataService, private $state, private UtilityService,
                     private $ionicScrollDelegate, private $ionicPopup, private SearchService, private $stateParams) {
 
             // check if in edit mode
@@ -90,6 +90,9 @@ module Controller {
                         });
                     }
                     this.TripService.setLocations(result.data.locations);
+                }).catch(()=> {
+                    this.$ionicLoading.hide();
+                    this.UtilityService.showErrorPopup('Keine Internetverbindung');
                 });
             } else {
                 // google analytics

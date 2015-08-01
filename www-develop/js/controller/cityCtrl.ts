@@ -12,12 +12,15 @@ module Controller {
 
 
         constructor(private DataService, private SearchService, private $ionicLoading, private $state,
-                    private TripService, maxSpinningDuration, private $stateParams) {
+                    private TripService, maxSpinningDuration, private $stateParams, private UtilityService) {
             this.state = this.$state.current.name;
             this.$ionicLoading.show({templateUrl: 'templates/static/loading.html', duration: maxSpinningDuration});
             this.DataService.getAvailableCities().then((result) => {
                 this.cities = result.data;
                 this.$ionicLoading.hide();
+            }).catch(()=> {
+                this.$ionicLoading.hide();
+                this.UtilityService.showErrorPopup('Keine Internetverbindung');
             });
         }
 

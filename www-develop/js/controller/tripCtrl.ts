@@ -8,7 +8,7 @@ module Controller {
 
         constructor(private $scope, private $element, private $stateParams, private SearchService, private DataService,
                     private $ionicSlideBoxDelegate, private UserService, private $ionicLoading, private webPath,
-                    maxSpinningDuration, private $rootScope, private MessengerService, private $state) {
+                    maxSpinningDuration, private $rootScope, private MessengerService, private $state, private UtilityService) {
 
             // google analytics
             if (typeof analytics !== undefined && typeof analytics !== 'undefined') {
@@ -39,6 +39,10 @@ module Controller {
                         this.user = result.data;
                         this.$ionicLoading.hide();
                     });
+            }).catch(()=> {
+                this.$ionicLoading.hide();
+                this.UtilityService.showErrorPopup('Keine Internetverbindung');
+
             });
 
 

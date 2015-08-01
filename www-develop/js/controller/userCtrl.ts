@@ -35,7 +35,7 @@ module Controller {
 
         profileState:boolean;
 
-        constructor(private $rootScope, private $state, private UserService, private CameraService,
+        constructor(private $rootScope, private $state, private UserService, private CameraService, private UtilityService,
                     private PictureUploadService, private basePath, private $stateParams, private $ionicPopup,
                     private $ionicLoading, private webPath, private ngProgressLite, private maxSpinningDuration, private MessengerService) {
 
@@ -92,6 +92,9 @@ module Controller {
                         this.descriptionRows = Math.round(result.data.description.length / 25);
                     }
                     this.$ionicLoading.hide();
+                }).catch(()=> {
+                    this.$ionicLoading.hide();
+                    this.UtilityService.showErrorPopup('Keine Internetverbindung');
                 });
         };
 

@@ -112,6 +112,7 @@ module Controller {
                     this.$scope.$broadcast('scroll.infiniteScrollComplete');
                 }).catch((err)=> {
                     this.$ionicLoading.hide();
+                    this.UtilityService.showErrorPopup('Keine Internetverbindung');
                 });
             } else if (this.myTrips) {
                 this.TripService.getNextTripsFromMe(this.page, this.itemsProPage).then(result => {
@@ -129,6 +130,7 @@ module Controller {
                     this.$scope.$broadcast('scroll.infiniteScrollComplete');
                 }).catch((err) => {
                     this.$ionicLoading.hide();
+                    this.UtilityService.showErrorPopup('Keine Internetverbindung');
                 });
                 this.page++;
             } else {
@@ -148,6 +150,7 @@ module Controller {
                     this.$scope.$broadcast('scroll.infiniteScrollComplete');
                 }).catch((err) => {
                     this.$ionicLoading.hide();
+                    this.UtilityService.showErrorPopup('Keine Internetverbindung');
                 });
                 this.page++;
             }

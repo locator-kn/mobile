@@ -15,9 +15,9 @@ module Controller {
         elementWidth:number;
 
         constructor(private $state, private $stateParams, private LocationService, private $ionicLoading,
-                    private webPath, private $window, maxSpinningDuration) {
+                    private webPath, private $window, maxSpinningDuration, private UtilityService) {
 
-            this.elementWidth = this.$window.innerWidth  - (80 + 32 + 10 + 15);
+            this.elementWidth = this.$window.innerWidth - (80 + 32 + 10 + 15);
             this.state = this.$state.current.name;
             this.locationSourceId = $stateParams.locationSourceId;
 
@@ -35,8 +35,10 @@ module Controller {
                 }).catch((err) => {
                     console.log(err);
                     this.$ionicLoading.hide();
+                    this.UtilityService.showErrorPopup('Keine Internetverbindung');
+
                 });
-                if(this.state === this.tripUserType){
+                if (this.state === this.tripUserType) {
                     this.me = true;
                 }
             } else if (this.state === this.userType) {
@@ -47,6 +49,7 @@ module Controller {
                 }).catch((err) => {
                     console.log(err);
                     this.$ionicLoading.hide();
+                    this.UtilityService.showErrorPopup('Keine Internetverbindung');
                 });
             } else if (this.state === this.myType) {
                 this.me = true;
@@ -56,6 +59,7 @@ module Controller {
                 }).catch((err) => {
                     console.log(err);
                     this.$ionicLoading.hide();
+                    this.UtilityService.showErrorPopup('Keine Internetverbindung');
                 });
             }
 

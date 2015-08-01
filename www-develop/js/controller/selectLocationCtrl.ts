@@ -15,7 +15,7 @@ module Controller {
         tripId:string;
 
         constructor(private LocationService, private $stateParams, private webPath, private $state, private $rootScope,
-                    private TripService, private $ionicLoading, maxSpinningDuration, private $window) {
+                    private TripService, private $ionicLoading, maxSpinningDuration, private $window, private UtilityService) {
             this.elementWidth = this.$window.innerWidth  - (80 + 32 + 10 + 20);
             this.cityId = $stateParams.cityId;
 
@@ -35,6 +35,9 @@ module Controller {
                     this.myLocations = false;
                 }
                 this.myLocationsByCity = result.data;
+            }).catch(()=> {
+                this.$ionicLoading.hide();
+                this.UtilityService.showErrorPopup('Keine Internetverbindung');
             });
 
             this.LocationService.getLocationsByCity(this.cityId).then((result)=> {

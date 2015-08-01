@@ -40,7 +40,10 @@ module Controller {
                         this.user = result.data;
                         this.$ionicLoading.hide();
                     });
-            })
+            }).catch(()=> {
+                this.$ionicLoading.hide();
+                this.UtilityService.showErrorPopup('Keine Internetverbindung');
+            });
         }
 
 

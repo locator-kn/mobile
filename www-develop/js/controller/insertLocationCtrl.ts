@@ -45,7 +45,10 @@ module Controller {
 
             if (this.$state.current.name.indexOf('edit') > -1) {
                 this.edit = true;
-                this.$ionicLoading.show({templateUrl: 'templates/static/loading.html', duration: this.maxSpinningDuration});
+                this.$ionicLoading.show({
+                    templateUrl: 'templates/static/loading.html',
+                    duration: this.maxSpinningDuration
+                });
                 this.LocationService.getLocationById($stateParams.locationId).then((result) => {
                     this.result = result.data;
                     if (result.data.images.picture) {
@@ -77,7 +80,10 @@ module Controller {
                     };
                     this.GeolocationService.setGeoPosition(map);
                     this.$ionicLoading.hide();
-                })
+                }).catch(()=> {
+                    this.$ionicLoading.hide();
+                    this.UtilityService.showErrorPopup('Keine Internetverbindung');
+                });
             }
 
             this.UserService.getMe().then(user => {
@@ -265,7 +271,8 @@ module Controller {
                         }
                         this.resetController();
                     }).catch((err) => {
-                        console.log(err);
+                        this.UtilityService.showErrorPopup('Location konnte nicht erstellt werden. Überprüfe deine Internetverbindung.');
+
                     })
             });
         };
