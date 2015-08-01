@@ -7,7 +7,7 @@ module Controller {
         socket:any;
         unreadMessages:number;
 
-        constructor(private $rootScope, private UserService, private SocketService, private MessengerService) {
+        constructor(private $scope, private $rootScope, private UserService, private SocketService, private MessengerService) {
 
             this.$rootScope.$on('login_success', () => {
                 this.registerWebsockets();
@@ -15,6 +15,14 @@ module Controller {
 
             this.getMe();
 
+            window.addEventListener('native.keyboardshow', () => {
+                document.body.classList.add('keyboard-open');
+                this.$rootScope.$emit('keyboard-open');
+            });
+
+            window.addEventListener('native.keyboardhide', () => {
+                document.body.classList.remove('keyboard-open');
+            });
         }
 
         registerWebsockets = () => {
