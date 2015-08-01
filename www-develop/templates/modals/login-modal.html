@@ -35,7 +35,7 @@
     </div>
     <div ng-if="lc.forgotPassword">
         <form name="forgetform">
-            <input required class="user-input" ng-model="hc.mail" type="email" placeholder="E-Mail" name="inputMail">
+            <input required class="user-input" ng-model="lc.mail" type="email" placeholder="E-Mail" name="inputMail">
 
             <div ng-class="{open: lc.errormsg}" class="msg error-msg">{{lc.errormsg}}</div>
             <div ng-class="{open: lc.successmsg}" class="msg success-msg">{{lc.successmsg}}</div>
