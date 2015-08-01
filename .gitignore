@@ -25,6 +25,7 @@ plugins/cordova-plugin-splashscreen
 plugins/cordova-plugin-google-analytics
 plugins/cordova-plugin-whitelist
 plugins/org.apache.cordova.camera
+plugins/org.apache.cordova.network-information
 plugins/org.apache.cordova.inappbrowser
 plugins/android.json
 plugins/ios.json
