@@ -73,6 +73,12 @@ angular.module('starter', deps)
                 cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
             }
 
+            if (navigator.splashscreen) {
+                console.warn('Hiding splash screen');
+                // We're done initializing, remove the splash screen
+                navigator.splashscreen.hide();
+            }
+
             if (typeof analytics !== undefined && typeof analytics !== 'undefined') {
                 console.log('start google-analytics')
                 analytics.startTrackerWithId("UA-65710424-1");
