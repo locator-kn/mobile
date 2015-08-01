@@ -18,6 +18,7 @@ var inject = require('gulp-inject');
 var concat = require('gulp-concat');
 var Cachebuster = require('gulp-cachebust');
 var cachebust = new Cachebuster();
+var env_json = require('./env.json')
 
 var intervalMS = 500;
 
@@ -44,12 +45,17 @@ gulp.task('ts', function () {
         baseUrl = process.argv[baseIdx + 1];
     }
 
+    //var fb_api = fs.readFileSync("env.json", "utf8");
+    //var fb_client_id = fb_api['auth']['FACEBOOK_CLIENTID'];
+    var fb_client_id = env_json.auth['FACEBOOK_CLIENTID'];
+    var google_client_id = env_json.auth['GOOGLE_CLIENTID'];
+
     var templateObject = {
         basePath: baseUrl || 'https://locator-app.com/api/v1',
         // TODO: refactor -> currently only for connection with online backend
         webPath: 'https://locator-app.com',
-        facebookApiKey: 'ftest',
-        googleApiKey: 'gtest'
+        facebookApiKey: fb_client_id,
+        googleApiKey: google_client_id
     };
 
     var realtimeUrl = url.parse(templateObject.basePath);
