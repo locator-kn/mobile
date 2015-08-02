@@ -12,7 +12,8 @@ module Controller {
         errormsg:string = '';
         successmsg:string = '';
 
-        constructor(private $rootScope, private UserService, private $scope, private $timeout, private $cordovaOauth, private facebookApiKey, private googleApiKey) {
+        constructor(private MessengerService, private $rootScope, private UserService, private $scope,
+                    private $timeout, private $cordovaOauth, private facebookApiKey, private googleApiKey) {
 
         }
 
@@ -53,8 +54,21 @@ module Controller {
                     this.$rootScope.userID = result.data._id;
                     console.info(result.data._id);
                     this.$rootScope.$emit('login_success');
+                    this.initBadge()
                 }).catch(() => {
                     this.$rootScope.authenticated = false;
+                });
+        }
+
+        // conversationlist
+        initBadge() {
+            this.MessengerService.getConversations()
+                .then(result => {
+                    var badgeHash = {};
+                    result.data.forEach(element => {
+                        badgeHash[element._id] = element[this.$rootScope.userID + '_read'];
+                    });
+                    this.MessengerService.setBadgeHash(badgeHash);
                 });
         }
 
