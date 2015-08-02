@@ -13,9 +13,9 @@ module Service {
         getCurrentLocation() {
             var q = this.$q.defer();
 
-            var timeout = 13000;
+            var timeout = 15000;
 
-            var posOptions = {maximumAge: 60000, timeout: timeout, enableHighAccuracy: true};
+            var posOptions = {maximumAge: 30000, timeout: timeout, enableHighAccuracy: true};
             navigator.geolocation.getCurrentPosition((result) => {
                 this.$ionicLoading.hide();
                 q.resolve(result);
