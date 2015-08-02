@@ -44,7 +44,8 @@
     "cordova-plugin-geolocation",
     "cordova-plugin-splashscreen",
     "cordova-plugin-file-transfer",
-    "org.apache.cordova.network-information"
+    "org.apache.cordova.network-information",
+    "cordova-plugin-google-analytics@0.7.1"
   ],
   "cordovaPlatforms": [
     "ios",
