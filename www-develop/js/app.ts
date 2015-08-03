@@ -121,7 +121,7 @@ angular.module('starter', deps)
 
             window.addEventListener('native.keyboardshow', () => {
                 document.body.classList.add('keyboard-open');
-                this.$rootScope.$emit('keyboard-open');
+                $rootScope.$emit('keyboard-open');
             });
 
             window.addEventListener('native.keyboardhide', () => {
