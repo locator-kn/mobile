@@ -75,6 +75,7 @@ module Controller {
 
 
         startConversation(user, trip) {
+
             if (!this.$rootScope.authenticated) {
                 return this.UserService.openLoginModal();
             }
@@ -84,7 +85,8 @@ module Controller {
                 var msg = this.MessengerService.getInitMessage(user, trip, participant);
                 this.MessengerService.startInitConversation(msg, user.id || user._id, trip._id || trip.id).then((result:any) => {
                     var conId = result.data.id;
-                    this.$state.go('tab.messenger-messages', {opponentId: user._id, conversationId: conId});
+
+                    this.$state.go('tab.messenger-messages', {opponentId: user._id, conversationId: conId, opponentName: user.name});
                     //this.$rootScope.$broadcast('new_conversation');
                 });
             });
