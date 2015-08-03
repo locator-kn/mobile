@@ -10,7 +10,6 @@
     </author>
     <content src="index.html"/>
     <access origin="*"/>
-    <access uri="*" subdomains="true" />
     <access origin="geo:*" launch-external="yes"/>
     <preference name="webviewbounce" value="false"/>
     <preference name="UIWebViewBounce" value="false"/>
