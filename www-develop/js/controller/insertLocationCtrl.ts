@@ -250,7 +250,7 @@ module Controller {
                     then((result) => {
                         if (!this.edit) {
                             if (this.headerImagePath) {
-                                var pic = this.headerImagePath;
+                                var pic = this.headerImagePath + '';
                             } else {
                                 var pic = 'images/header-image-placeholder.png';
                             }
