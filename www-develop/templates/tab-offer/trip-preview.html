@@ -72,9 +72,9 @@
                 </li>
                 <li ng-if="tpc.trip.accommodation">
                     <div ng-hide="tpc.trip.accommodation == false">
-                        <h5 class="text-bold">Unterkunft</h5>
+                        <h5 class="text-bold release-fix-acc">Unterkunft</h5>
 
-                        <div class="accommodation-equipment">
+                        <div class="accommodation-equipment release-fix-acc-icon">
                             <acc-equ-chooser accommodation-equipment-selectable="true"
                                              accommodation-equipment="tpc.trip.accommodation_equipment"></acc-equ-chooser>
                             <label>{{tpc.trip.accommodation.title}}</label>
