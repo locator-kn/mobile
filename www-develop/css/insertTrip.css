@@ -289,3 +289,12 @@ ion-item.ion-item-insert-style.item {
 .insert-trip .mood-title-fix {
     padding-top: 8px;
 }
+
+.insert-trip .release-fix-acc {
+    padding-left: 16px;
+    padding-top: 7px;
+}
+
+.insert-trip .release-fix-acc-icon {
+    padding-left: 13px;
+}
