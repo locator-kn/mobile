@@ -254,7 +254,8 @@ module Controller {
 
                 this.$state.go('tab.messenger-messages', {
                     conversationId: conversationId,
-                    opponentId: opponentId
+                    opponentId: opponentId,
+                    opponentName: this.user.name
                 })
             })
         }
