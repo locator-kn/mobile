@@ -48,7 +48,7 @@
     "cordova-plugin-google-analytics@0.7.1"
   ],
   "cordovaPlatforms": [
-    "ios",
-    "android"
+    "android",
+    "ios"
   ]
 }
