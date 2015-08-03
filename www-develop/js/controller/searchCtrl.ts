@@ -113,6 +113,7 @@ module Controller {
             this.moodAvailable = false;
             this.start_date = '';
             this.end_date = '';
+            this.accommodation = false;
 
             this.valueAvailable = false;
         }
