@@ -7,6 +7,7 @@ module Controller {
 
         conversationId:string;
         opponentId:string;
+        opponentName:string;
 
         page:number = -1;
         itemsProPage:number = 10;
@@ -24,6 +25,7 @@ module Controller {
                     private $filter, private maxSpinningDuration) {
             this.conversationId = this.$state.params.conversationId;
             this.opponentId = this.$state.params.opponentId;
+            this.opponentName = this.$state.params.opponentName;
 
             if (this.conversationId === '') {
                 this.emptyConversation = true;
