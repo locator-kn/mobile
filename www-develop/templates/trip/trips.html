@@ -23,10 +23,10 @@
                         </li>
                         <li class="item">
                             <label>
-                                <label ng-if="result.days" class="text-bold">{{result.days}}</label>
+                                <label ng-if="result.days" class="text-bold">{{result.days === 4 ? '3+' : result.days}}</label>
                                 <label>{{result.days === 1 ? 'Tag' : 'Tage'}}</label>
                                 <label ng-if="result.days && result.persons" class="text-bold line">|</label>
-                                <label class="text-bold">{{result.persons}} </label>
+                                <label class="text-bold">{{result.persons === 5 ? '4+' : result.persons}} </label>
                                 <label ng-if="result.persons">{{result.persons === 1 ? 'Person' :
                                     'Personen'}}</label>
                                 <label ng-if="result.persons || result.locations" class="text-bold line">|</label>
