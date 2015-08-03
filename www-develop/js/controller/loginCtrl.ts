@@ -33,8 +33,8 @@ module Controller {
                     console.info("Login Success");
                     this.errormsg = '';
 
-                    this.getMe();
                     this.$rootScope.authenticated = true;
+                    this.getMe();
                     this.closeLoginModal();
 
                 }).catch(resp => {
