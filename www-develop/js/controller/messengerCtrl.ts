@@ -77,7 +77,6 @@ module Controller {
                     this.$ionicLoading.hide();
                 }).catch(()=> {
                     this.$ionicLoading.hide();
-                    this.UtilityService.showErrorPopup('Keine Internetverbindung');
                 });
         }
 
