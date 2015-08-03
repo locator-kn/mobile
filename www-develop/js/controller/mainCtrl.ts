@@ -14,15 +14,6 @@ module Controller {
             });
 
             this.getMe();
-
-            window.addEventListener('native.keyboardshow', () => {
-                document.body.classList.add('keyboard-open');
-                this.$rootScope.$emit('keyboard-open');
-            });
-
-            window.addEventListener('native.keyboardhide', () => {
-                document.body.classList.remove('keyboard-open');
-            });
         }
 
         registerWebsockets = () => {
