@@ -5,7 +5,7 @@ module Controller {
         conversationsHash = {};
 
         constructor(private MessengerService, private UserService, private webPath, private $ionicLoading, private UtilityService,
-                    private SocketService, private $state, private $rootScope, maxSpinningDuration) {
+                    private SocketService, private $state, private $rootScope, maxSpinningDuration, private $scope) {
             // google analytics
             if (typeof analytics !== undefined && typeof analytics !== 'undefined') {
                 analytics.trackView("Messenger Controller");
@@ -96,6 +96,11 @@ module Controller {
                 }
             });
         };
+
+        update() {
+            this.getConversations();
+            this.$scope.$broadcast('scroll.refreshComplete');
+        }
 
         static controllerId:string = "MessengerCtrl";
     }

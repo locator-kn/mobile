@@ -1,10 +1,14 @@
-<ion-view view-title="Messenger" hide-back-button="true" class="messenger">
+<ion-view view-title="Messenger" hide-back-button="true" class="messenger" ng-controller="MessengerCtrl as mc">
     <ion-nav-buttons side="left ">
         <i class="icon ion-ios-arrow-back ion-chevron-left" ui-sref="tab.welcome"></i>
     </ion-nav-buttons>
     <ion-content class="background-color-grey">
+        <ion-refresher
+            pulling-text="Aktualisieren..."
+            on-refresh="mc.update()">
+        </ion-refresher>
         <div ng-if="authenticated">
-            <div ng-controller="MessengerCtrl as mc">
+            <div>
                 <ul class="list">
                    <!-- <label class="item item-input" ng-if="mc.conversations.length>8">
                         <i class="icon ion-search placeholder-icon"></i>
