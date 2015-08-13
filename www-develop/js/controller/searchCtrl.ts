@@ -86,8 +86,8 @@ module Controller {
                 var currentDate = new Date();
                 var start_date = new Date(this.start_date);
                 var end_date = new Date(this.end_date);
-                if (currentDate.toDateString() > start_date.toDateString() ||
-                    currentDate.toDateString() > end_date.toDateString()) {
+                if (currentDate.toISOString() > start_date.toISOString() ||
+                    currentDate.toISOString() > end_date.toISOString()) {
                     this.$ionicPopup.alert({title: 'Datum liegt in der Vergangenheit.'});
                     return;
                 }
