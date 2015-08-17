@@ -35,20 +35,20 @@
     "postinstall": "bower install && tsd reinstall"
   },
   "cordovaPlugins": [
-    "com.ionic.keyboard",
     "cordova-plugin-camera",
     "org.apache.cordova.camera",
     "org.apache.cordova.inappbrowser",
-    "cordova-plugin-crosswalk-webview",
     "cordova-plugin-whitelist",
     "cordova-plugin-geolocation",
     "cordova-plugin-splashscreen",
     "cordova-plugin-file-transfer",
     "org.apache.cordova.network-information",
-    "cordova-plugin-google-analytics@0.7.1"
+    "cordova-plugin-google-analytics@0.7.1",
+    "com.ionic.keyboard",
+    "org.apache.cordova.device"
   ],
   "cordovaPlatforms": [
-    "android",
-    "ios"
+    "ios",
+    "android"
   ]
 }
