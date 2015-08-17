@@ -2,7 +2,7 @@
  * Copyright 2014 Drifty Co.
  * http://drifty.com/
  *
- * Ionic, v1.1.0
+ * Ionic, v1.0.1
  * A powerful HTML5 mobile app framework.
  * http://ionicframework.com/
  *
@@ -2974,29 +2974,29 @@ a.subdued {
   .action-sheet-open .action-sheet-backdrop {
     pointer-events: auto; }
 
-.platform-android .action-sheet-backdrop.active {
-  background-color: rgba(0, 0, 0, 0.2); }
-.platform-android .action-sheet {
-  margin: 0; }
-  .platform-android .action-sheet .action-sheet-title, .platform-android .action-sheet .button {
-    text-align: left;
-    border-color: transparent;
-    font-size: 16px;
-    color: inherit; }
-  .platform-android .action-sheet .action-sheet-title {
-    font-size: 14px;
-    padding: 16px;
-    color: #666; }
-  .platform-android .action-sheet .button.active, .platform-android .action-sheet .button.activated {
-    background: #e8e8e8; }
-.platform-android .action-sheet-group {
-  margin: 0;
-  border-radius: 0;
-  background-color: #fafafa; }
-.platform-android .action-sheet-cancel {
-  display: none; }
-.platform-android .action-sheet-has-icons .button {
-  padding-left: 56px; }
+/*.platform-android .action-sheet-backdrop.active {*/
+  /*background-color: rgba(0, 0, 0, 0.2); }*/
+/*.platform-android .action-sheet {*/
+  /*margin: 0; }*/
+  /*.platform-android .action-sheet .action-sheet-title, .platform-android .action-sheet .button {*/
+    /*text-align: left;*/
+    /*border-color: transparent;*/
+    /*font-size: 16px;*/
+    /*color: inherit; }*/
+  /*.platform-android .action-sheet .action-sheet-title {*/
+    /*font-size: 14px;*/
+    /*padding: 16px;*/
+    /*color: #666; }*/
+  /*.platform-android .action-sheet .button.active, .platform-android .action-sheet .button.activated {*/
+    /*background: #e8e8e8; }*/
+/*.platform-android .action-sheet-group {*/
+  /*margin: 0;*/
+  /*border-radius: 0;*/
+  /*background-color: #fafafa; }*/
+/*.platform-android .action-sheet-cancel {*/
+  /*display: none; }*/
+/*.platform-android .action-sheet-has-icons .button {*/
+  /*padding-left: 56px; }*/
 
 .backdrop {
   position: fixed;
@@ -4234,12 +4234,6 @@ ion-tabs.tabs-color-active-dark .tab-item {
   cursor: default;
   pointer-events: none; }
 
-.nav-bar-tabs-top.hide ~ .view-container .tabs-top .tabs {
-  top: 0; }
-
-.pane[hide-nav-bar="true"] .has-tabs-top {
-  top: 49px; }
-
 /**
  * Menus
  * --------------------------------------------------
@@ -4266,8 +4260,7 @@ ion-tabs.tabs-color-active-dark .tab-item {
   box-shadow: -1px 0px 2px rgba(0, 0, 0, 0.2), 1px 0px 2px rgba(0, 0, 0, 0.2); }
 
 .menu-open .menu-content .pane, .menu-open .menu-content .scroll-content {
-  pointer-events: none;
-  overflow: hidden; }
+  pointer-events: none; }
 
 .grade-b .menu-content, .grade-c .menu-content {
   -webkit-box-sizing: content-box;
@@ -6452,7 +6445,7 @@ input[type="radio"][disabled], input[type="checkbox"][disabled], input[type="rad
     top: 0;
     bottom: 0;
     right: 0;
-    padding: 0 48px 0 16px;
+    padding: 14px 48px 16px 16px;
     max-width: 65%;
     border: none;
     background: #fff;
