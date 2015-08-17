@@ -67,10 +67,15 @@ angular.module('starter', deps)
 
     .run(function ($ionicPlatform, $window, $rootScope, $ionicPopup) {
         $ionicPlatform.ready(function () {
+
+            $rootScope.isAndroid = ionic.Platform.isAndroid();
+            $rootScope.isIOS = ionic.Platform.isIOS();
+
             // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
             // for form inputs)
             if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
                 cordova.plugins.Keyboard.hideKeyboardAccessoryBar(false);
+                if ($rootScope.isIOS) cordova.plugins.Keyboard.disableScroll(true);
             }
 
             // Check for network connection
@@ -101,9 +106,6 @@ angular.module('starter', deps)
                 // org.apache.cordova.statusbar required
                 StatusBar.styleDefault();
             }
-
-            $rootScope.isAndroid = ionic.Platform.isAndroid();
-            $rootScope.isIOS = ionic.Platform.isIOS();
 
             $window.onresize = () => {
                 setupValues();
@@ -580,9 +582,14 @@ angular.module('starter', deps)
         // force native scroll
         // !!! TODO: bug with native scroll and focus on textfields in Ionic version 1.0.0 !!!
         // As soon this bug is fixed, enable native scrolling
-        var configProvider:any = $ionicConfigProvider;
-        configProvider.scrolling.jsScrolling(false);
 
+
+        if (ionic.Platform.isAndroid()) {
+
+            var configProvider:any = $ionicConfigProvider;
+            configProvider.scrolling.jsScrolling(false);
+
+        }
 
         // for android to set tabs at bottom position
         $ionicConfigProvider.tabs.position('bottom');
