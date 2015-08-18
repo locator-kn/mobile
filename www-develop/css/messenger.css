@@ -12,10 +12,6 @@
     width: 100%;
 }
 
-.messages ion-content.background-color-grey.scroll-content.ionic-scroll.has-header.has-tabs {
-    margin-bottom: 47px;
-}
-
 .messages .content {
     float: left;
     width: 100%;
@@ -218,6 +214,8 @@ span.bubble {
     color: white;
     background-color: rgb(51, 196, 183);
     border: none;
+    height: 100%;
+    border-radius: 0;
 }
 
 .messenger-container .emoji-overlay {
