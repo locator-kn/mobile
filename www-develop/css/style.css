@@ -266,10 +266,6 @@ ion-nav-view.view-container.tab-content {
     display: none;
 }
 
-.keyboard-open .messages ion-content.background-color-grey.scroll-content.ionic-scroll.has-header.has-tabs {
-    margin-bottom: 49px;
-}
-
 .keyboard-open .my-has-tabs,
 .keyboard-open .has-tabs,
 .keyboard-open .button-bottom {
@@ -447,3 +443,11 @@ span.back-text {
     margin-top: 6px;
 }
 
+.clearpadding {
+    padding: 0;
+}
+
+.messenger-container ion-footer-bar.bar.bar-stable {
+    padding: 0;
+    padding-left: 14px;
+}
