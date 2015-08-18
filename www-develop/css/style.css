@@ -451,3 +451,10 @@ span.back-text {
     padding: 0;
     padding-left: 14px;
 }
+
+.login .moodal {
+    position: absolute;
+    width: 100%;
+    padding: 20px;
+    top: 10vh;
+}
