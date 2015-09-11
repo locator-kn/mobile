@@ -584,12 +584,9 @@ angular.module('starter', deps)
         // As soon this bug is fixed, enable native scrolling
 
 
-        if (ionic.Platform.isAndroid()) {
+        var configProvider:any = $ionicConfigProvider;
+        configProvider.scrolling.jsScrolling(false);
 
-            var configProvider:any = $ionicConfigProvider;
-            configProvider.scrolling.jsScrolling(false);
-
-        }
 
         // for android to set tabs at bottom position
         $ionicConfigProvider.tabs.position('bottom');
